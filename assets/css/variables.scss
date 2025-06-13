@@ -1,0 +1,668 @@
+// ===================================
+// TREKSHITZ THEME VARIABLES (SCSS)
+// ===================================
+// This file contains all customizable variables for the Trekshitz website
+// Updated for component-based architecture and mobile menu functionality
+// ===================================
+
+// ===================================
+// COLOR PALETTE
+// ===================================
+
+// Primary Colors (Nature-inspired greens)
+$primary-color: #2d5016;        // Deep forest green
+$secondary-color: #4a7c23;      // Medium forest green  
+$accent-color: #7fb069;         // Light sage green
+$tertiary-color: #355e3b;       // Hunter green
+
+// Natural Earth Tones
+$earth-brown: #8b4513;          // Saddle brown
+$mountain-gray: #708090;        // Slate gray
+$stone-beige: #f5f5dc;          // Beige
+$sand-tan: #d2b48c;             // Tan
+
+// Status Colors
+$success-color: #059669;        // Green
+$warning-color: #d97706;        // Orange
+$error-color: #dc2626;          // Red
+$info-color: #2563eb;           // Blue
+
+// ===================================
+// GRAYSCALE COLORS
+// ===================================
+$white: #ffffff;
+$gray-50: #f9fafb;
+$gray-100: #f3f4f6;
+$gray-200: #e5e7eb;
+$gray-300: #d1d5db;
+$gray-400: #9ca3af;
+$gray-500: #6b7280;
+$gray-600: #4b5563;
+$gray-700: #374151;
+$gray-800: #1f2937;
+$gray-900: #111827;
+$black: #000000;
+
+// ===================================
+// TYPOGRAPHY
+// ===================================
+
+// Font Families
+$font-primary: 'Poppins', sans-serif;
+$font-secondary: 'Roboto', sans-serif;
+$font-marathi: 'Noto Sans Devanagari', sans-serif;
+$font-monospace: 'JetBrains Mono', monospace;
+$font-devanagari: 'Noto Sans Devanagari', 'Mukti', 'Mangal', 'Shree Devanagari 714', sans-serif;
+$font-bilingual: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+
+// Font Weights
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+// Font Sizes
+$text-xs: 0.75rem;      // 12px
+$text-sm: 0.875rem;     // 14px
+$text-base: 1rem;       // 16px
+$text-lg: 1.125rem;     // 18px
+$text-xl: 1.25rem;      // 20px
+$text-2xl: 1.5rem;      // 24px
+$text-3xl: 1.875rem;    // 30px
+$text-4xl: 2.25rem;     // 36px
+$text-5xl: 3rem;        // 48px
+$text-6xl: 3.75rem;     // 60px
+$text-7xl: 4.5rem;      // 72px
+
+// Line Heights
+$leading-none: 1;
+$leading-tight: 1.25;
+$leading-snug: 1.375;
+$leading-normal: 1.5;
+$leading-relaxed: 1.625;
+$leading-loose: 2;
+
+// ===================================
+// SPACING & SIZING
+// ===================================
+
+// Spacing Scale
+$space-0: 0;
+$space-1: 0.25rem;      // 4px
+$space-2: 0.5rem;       // 8px
+$space-3: 0.75rem;      // 12px
+$space-4: 1rem;         // 16px
+$space-5: 1.25rem;      // 20px
+$space-6: 1.5rem;       // 24px
+$space-8: 2rem;         // 32px
+$space-10: 2.5rem;      // 40px
+$space-12: 3rem;        // 48px
+$space-16: 4rem;        // 64px
+$space-20: 5rem;        // 80px
+$space-24: 6rem;        // 96px
+$space-32: 8rem;        // 128px
+
+// Container Sizes
+$container-sm: 640px;
+$container-md: 768px;
+$container-lg: 1024px;
+$container-xl: 1280px;
+$container-2xl: 1536px;
+
+// ===================================
+// BREAKPOINTS
+// ===================================
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+// ===================================
+// BORDER RADIUS
+// ===================================
+$rounded-none: 0;
+$rounded-sm: 0.125rem;
+$rounded: 0.25rem;
+$rounded-md: 0.375rem;
+$rounded-lg: 0.5rem;
+$rounded-xl: 0.75rem;
+$rounded-2xl: 1rem;
+$rounded-3xl: 1.5rem;
+$rounded-full: 9999px;
+
+// ===================================
+// SHADOWS
+// ===================================
+$shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+$shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+$shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+$shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+$shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+$shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+// ===================================
+// TRANSITIONS & ANIMATIONS
+// ===================================
+$transition-fast: 150ms;
+$transition-normal: 300ms;
+$transition-slow: 500ms;
+
+$ease-linear: linear;
+$ease-in: cubic-bezier(0.4, 0, 1, 1);
+$ease-out: cubic-bezier(0, 0, 0.2, 1);
+$ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+// ===================================
+// Z-INDEX LAYERS
+// ===================================
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-mobile-menu-overlay: 1040;
+$z-mobile-menu: 1050;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;
+
+// ===================================
+// COMPONENT SPECIFIC VARIABLES
+// ===================================
+
+// Header/Navbar
+$navbar-height: 80px;
+$navbar-bg: rgba(255, 255, 255, 0.1);
+$navbar-bg-dark: rgba(0, 0, 0, 0.3);
+$navbar-blur: 10px;
+$navbar-scrolled-bg: rgba(255, 255, 255, 0.95);
+$navbar-scrolled-bg-dark: rgba(17, 24, 39, 0.95);
+
+// Mobile Menu
+$mobile-menu-width: 320px;
+$mobile-menu-bg: $white;
+$mobile-menu-bg-dark: $gray-900;
+$mobile-menu-overlay-bg: rgba(0, 0, 0, 0.5);
+
+// Hamburger Menu
+$hamburger-width: 24px;
+$hamburger-height: 18px;
+$hamburger-line-height: 2px;
+$hamburger-line-spacing: 8px;
+
+// Cards
+$card-bg: $white;
+$card-bg-dark: $gray-800;
+$card-border: $gray-200;
+$card-border-dark: $gray-700;
+$card-shadow: $shadow-lg;
+$card-radius: $rounded-2xl;
+$card-hover-transform: translateY(-4px);
+
+// Buttons
+$btn-radius: $rounded-full;
+$btn-padding-x: 2rem;
+$btn-padding-y: 0.75rem;
+$btn-font-weight: 600;
+$btn-transition: all $transition-normal;
+
+// Button Variants
+$btn-primary-bg: $primary-color;
+$btn-primary-hover-bg: $secondary-color;
+$btn-primary-text: $white;
+
+$btn-secondary-bg: transparent;
+$btn-secondary-border: 2px solid $white;
+$btn-secondary-text: $white;
+$btn-secondary-hover-bg: $white;
+$btn-secondary-hover-text: $primary-color;
+
+$btn-accent-bg: $accent-color;
+$btn-accent-hover-bg: $tertiary-color;
+$btn-accent-text: $white;
+
+// Forms
+$input-bg: $white;
+$input-bg-dark: $gray-800;
+$input-border: $gray-300;
+$input-border-dark: $gray-600;
+$input-focus: $accent-color;
+$input-radius: $rounded-lg;
+$input-padding: 0.75rem 1rem;
+
+// Dropdowns
+$dropdown-bg: $white;
+$dropdown-bg-dark: $gray-800;
+$dropdown-border: $gray-200;
+$dropdown-border-dark: $gray-700;
+$dropdown-shadow: $shadow-xl;
+$dropdown-radius: $rounded-lg;
+$dropdown-item-hover: $gray-100;
+$dropdown-item-hover-dark: $gray-700;
+
+// ===================================
+// GRADIENT DEFINITIONS
+// ===================================
+$gradient-nature: linear-gradient(135deg, #{$primary-color} 0%, #{$secondary-color} 100%);
+$gradient-earth: linear-gradient(135deg, #{$earth-brown} 0%, #{$mountain-gray} 100%);
+$gradient-hero: linear-gradient(135deg, rgba(45, 80, 22, 0.9) 0%, rgba(74, 124, 35, 0.7) 100%);
+$gradient-text: linear-gradient(135deg, #{$primary-color}, #{$accent-color});
+
+// Glass Effect Gradients
+$glass-bg-light: rgba(255, 255, 255, 0.1);
+$glass-bg-dark: rgba(0, 0, 0, 0.3);
+$glass-border-light: rgba(255, 255, 255, 0.2);
+$glass-border-dark: rgba(255, 255, 255, 0.1);
+
+// ===================================
+// DARK MODE COLORS
+// ===================================
+$dark-bg-primary: $gray-900;
+$dark-bg-secondary: $gray-800;
+$dark-text-primary: $white;
+$dark-text-secondary: $gray-300;
+$dark-border: $gray-700;
+
+// ===================================
+// TREKKING SPECIFIC COLORS
+// ===================================
+$difficulty-easy: #10b981;      // Green
+$difficulty-moderate: #f59e0b;  // Amber
+$difficulty-hard: #ef4444;      // Red
+$difficulty-extreme: #8b5cf6;   // Purple
+
+$weather-sunny: #fbbf24;        // Yellow
+$weather-cloudy: #6b7280;       // Gray
+$weather-rainy: #3b82f6;        // Blue
+$weather-snow: #e5e7eb;         // Light gray
+
+// ===================================
+// ANIMATION VARIABLES
+// ===================================
+$fade-in-up-duration: 0.8s;
+$fade-in-up-delay: 0.1s;
+$hover-lift-transform: translateY(-4px);
+$hover-scale-transform: scale(1.05);
+$bounce-duration: 1s;
+$pulse-duration: 2s;
+$spin-duration: 1s;
+
+// ===================================
+// RESPONSIVE DESIGN VARIABLES
+// ===================================
+$mobile-menu-breakpoint: $breakpoint-lg; // Show mobile menu below 1024px
+$container-padding-mobile: 1rem;
+$container-padding-tablet: 1.5rem;
+$container-padding-desktop: 2rem;
+
+// ===================================
+// UTILITY MIXINS
+// ===================================
+
+// Glass effect mixin with mobile menu support
+@mixin glass-effect($bg-opacity: 0.1, $blur: 10px, $border-opacity: 0.2) {
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  background: rgba(255, 255, 255, $bg-opacity);
+  border: 1px solid rgba(255, 255, 255, $border-opacity);
+  
+  .dark & {
+    background: rgba(0, 0, 0, $bg-opacity + 0.2);
+    border: 1px solid rgba(255, 255, 255, $border-opacity * 0.5);
+  }
+}
+
+// Mobile menu specific glass effect
+@mixin mobile-menu-glass() {
+  background: $mobile-menu-bg;
+  box-shadow: -4px 0 6px -1px rgba(0, 0, 0, 0.1);
+  
+  .dark & {
+    background: $mobile-menu-bg-dark;
+    box-shadow: -4px 0 6px -1px rgba(0, 0, 0, 0.3);
+  }
+}
+
+// Responsive breakpoint mixin
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) {
+      @content;
+    }
+  }
+  @if $breakpoint == md {
+    @media (min-width: $breakpoint-md) {
+      @content;
+    }
+  }
+  @if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) {
+      @content;
+    }
+  }
+  @if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) {
+      @content;
+    }
+  }
+  @if $breakpoint == 2xl {
+    @media (min-width: $breakpoint-2xl) {
+      @content;
+    }
+  }
+}
+
+// Mobile-first responsive mixin
+@mixin mobile-first($breakpoint) {
+  @media (max-width: $breakpoint - 1px) {
+    @content;
+  }
+}
+
+// Text gradient mixin
+@mixin text-gradient($color1: $primary-color, $color2: $accent-color) {
+  background: linear-gradient(135deg, $color1, $color2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Hover transition mixin with transform support
+@mixin hover-transition($property: all, $duration: $transition-normal, $transform: none) {
+  transition: $property $duration $ease-in-out;
+  
+  &:hover {
+    @if $transform != none {
+      transform: $transform;
+    }
+    @content;
+  }
+}
+
+// Button base mixin
+@mixin btn-base() {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $btn-padding-y $btn-padding-x;
+  border-radius: $btn-radius;
+  font-weight: $btn-font-weight;
+  text-decoration: none;
+  transition: $btn-transition;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-size: $text-base;
+  
+  &:focus {
+    outline: 2px solid $accent-color;
+    outline-offset: 2px;
+  }
+}
+
+// Button variant mixins
+@mixin btn-primary() {
+  @include btn-base();
+  background-color: $btn-primary-bg;
+  color: $btn-primary-text;
+  
+  &:hover {
+    background-color: $btn-primary-hover-bg;
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+@mixin btn-secondary() {
+  @include btn-base();
+  background-color: $btn-secondary-bg;
+  color: $btn-secondary-text;
+  border: $btn-secondary-border;
+  
+  &:hover {
+    background-color: $btn-secondary-hover-bg;
+    color: $btn-secondary-hover-text;
+  }
+}
+
+@mixin btn-accent() {
+  @include btn-base();
+  background-color: $btn-accent-bg;
+  color: $btn-accent-text;
+  
+  &:hover {
+    background-color: $btn-accent-hover-bg;
+  }
+}
+
+// Card mixin
+@mixin card() {
+  background-color: $card-bg;
+  border: 1px solid $card-border;
+  border-radius: $card-radius;
+  box-shadow: $card-shadow;
+  transition: all $transition-normal;
+  overflow: hidden;
+  
+  &:hover {
+    transform: $card-hover-transform;
+    box-shadow: $shadow-xl;
+  }
+  
+  .dark & {
+    background-color: $card-bg-dark;
+    border-color: $card-border-dark;
+  }
+}
+
+// Hamburger menu mixin
+@mixin hamburger-menu() {
+  width: $hamburger-width;
+  height: $hamburger-height;
+  position: relative;
+  cursor: pointer;
+  
+  .hamburger-line {
+    display: block;
+    height: $hamburger-line-height;
+    width: 100%;
+    background: currentColor;
+    border-radius: 1px;
+    transition: all $transition-normal;
+    position: absolute;
+    
+    &:nth-child(1) {
+      top: 0;
+    }
+    
+    &:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    &:nth-child(3) {
+      bottom: 0;
+    }
+  }
+  
+  &.hamburger-active {
+    .hamburger-line:nth-child(1) {
+      transform: rotate(45deg);
+      top: 50%;
+      margin-top: -1px;
+    }
+    
+    .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .hamburger-line:nth-child(3) {
+      transform: rotate(-45deg);
+      bottom: 50%;
+      margin-bottom: -1px;
+    }
+  }
+}
+
+// Mobile dropdown mixin
+@mixin mobile-dropdown() {
+  .mobile-dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height $transition-normal ease, opacity $transition-normal ease;
+    opacity: 0;
+    
+    &:not(.hidden) {
+      max-height: 200px;
+      opacity: 1;
+    }
+  }
+  
+  .mobile-dropdown-btn .fa-chevron-down {
+    transition: transform $transition-normal ease;
+  }
+  
+  .mobile-dropdown-active .fa-chevron-down {
+    transform: rotate(180deg);
+  }
+}
+
+// Desktop dropdown mixin
+@mixin desktop-dropdown() {
+  .dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: $dropdown-bg;
+    border: 1px solid $dropdown-border;
+    border-radius: $dropdown-radius;
+    box-shadow: $dropdown-shadow;
+    opacity: 0;
+    visibility: hidden;
+    transition: all $transition-normal;
+    z-index: $z-dropdown;
+    
+    .dark & {
+      background: $dropdown-bg-dark;
+      border-color: $dropdown-border-dark;
+    }
+  }
+  
+  &:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .dropdown-item {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: inherit;
+    text-decoration: none;
+    transition: background-color $transition-normal;
+    
+    &:hover {
+      background-color: $dropdown-item-hover;
+      
+      .dark & {
+        background-color: $dropdown-item-hover-dark;
+      }
+    }
+  }
+}
+
+// ===================================
+// ACCESSIBILITY MIXINS
+// ===================================
+
+// Focus visible mixin
+@mixin focus-visible() {
+  &:focus-visible {
+    outline: 2px solid $accent-color;
+    outline-offset: 2px;
+  }
+}
+
+// Screen reader only mixin
+@mixin sr-only() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// ===================================
+// USAGE EXAMPLES
+// ===================================
+
+/*
+// Example of using variables and mixins in your SCSS:
+
+.header {
+  @include glass-effect();
+  height: $navbar-height;
+  z-index: $z-fixed;
+}
+
+.mobile-menu {
+  @include mobile-menu-glass();
+  width: $mobile-menu-width;
+  height: 100vh;
+  z-index: $z-mobile-menu;
+}
+
+.hamburger-icon {
+  @include hamburger-menu();
+}
+
+.btn-primary {
+  @include btn-primary();
+}
+
+.card {
+  @include card();
+}
+
+.dropdown {
+  @include desktop-dropdown();
+}
+
+.mobile-dropdown {
+  @include mobile-dropdown();
+}
+
+.gradient-heading {
+  @include text-gradient($primary-color, $accent-color);
+  font-weight: $font-weight-bold;
+}
+
+.hover-lift {
+  @include hover-transition(all, $transition-normal, $hover-lift-transform);
+}
+
+// Responsive example:
+.responsive-text {
+  font-size: $text-base;
+  
+  @include respond-to(md) {
+    font-size: $text-lg;
+  }
+  
+  @include respond-to(lg) {
+    font-size: $text-xl;
+  }
+}
+
+// Mobile-first example:
+.mobile-hidden {
+  @include mobile-first($breakpoint-lg) {
+    display: none;
+  }
+}
+*/
