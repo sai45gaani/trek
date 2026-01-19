@@ -83,7 +83,7 @@ try {
         $front_stmt->close();
         
         // Fetch maps (maximum 4)
-        $maps_query = "SELECT * FROM MM_tblMapInfo WHERE FortName = ? LIMIT 4";
+        $maps_query = "SELECT * FROM MM_tblMapInfo_clean WHERE FortName = ? LIMIT 4";
         $maps_stmt = $conn->prepare($maps_query);
         $maps_stmt->bind_param("s", $fortData['FortName']);
         $maps_stmt->execute();
@@ -365,7 +365,8 @@ include '../includes/header.php';
                     </h2>
                     <div class="prose prose-lg dark:prose-invert max-w-none">
                         <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            <?php echo nl2br(htmlspecialchars($fortData['Introduction'])); ?>
+                            <?php /*echo nl2br(htmlspecialchars($fortData['Introduction']));*/ ?>
+                            <?php echo $fortData['Introduction']; ?>
                         </p>
                     </div>
                 </div>
