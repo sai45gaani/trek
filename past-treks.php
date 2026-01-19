@@ -4,252 +4,9 @@ $page_title = 'Past Treks - Completed Adventures | Trekshitz';
 $meta_description = 'Explore our completed treks and adventures. See the amazing places we have visited with Trekshitz including forts, waterfalls, and heritage walks in the Sahyadri mountains.';
 $meta_keywords = 'past treks, completed treks, Trekshitz adventures, Maharashtra trekking history, fort expeditions, waterfall treks';
 
+require_once './config/database.php';
 // Include header
 include './includes/header.php';
-
-// Static past treks data based on your screenshot
-$pastTreksData = [
-    [
-        'id' => 1,
-        'name' => 'Secret Waterfall (Cliff Jumping)',
-        'date' => '2025-06-29',
-        'category' => 'Waterfall',
-        'participants' => 35,
-        'leader' => 'Rohit Patil',
-        'grade' => 'Medium',
-        'location' => 'Western Ghats',
-        'image' => 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'description' => 'Adventure trek to a hidden waterfall with cliff jumping activities'
-    ],
-    [
-        'id' => 2,
-        'name' => 'Ramsej Fort',
-        'date' => '2025-06-22',
-        'category' => 'Fort',
-        'participants' => 28,
-        'leader' => 'Sunit Pendse',
-        'grade' => 'Easy',
-        'location' => 'Nashik',
-        'image' => 'https://images.unsplash.com/photo-1605538883669-825200433431?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'description' => 'Historical fort trek with panoramic views of surrounding valleys'
-    ],
-    [
-        'id' => 3,
-        'name' => 'Domzira Waterfall',
-        'date' => '2025-06-15',
-        'category' => 'Waterfall',
-        'participants' => 42,
-        'leader' => 'Tanmay Joshi',
-        'grade' => 'Medium',
-        'location' => 'Konkan',
-        'image' => 'https://images.unsplash.com/photo-1586348943529-beaae6c28db9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'description' => 'Monsoon trek to the spectacular Domzira waterfall'
-    ],
-    [
-        'id' => 4,
-        'name' => 'Sinhgad (Night Stay with Historian Balkawde Sir)',
-        'date' => '2025-06-07',
-        'category' => 'Fort',
-        'participants' => 25,
-        'leader' => 'Dr. Balkawde',
-        'grade' => 'Easy',
-        'location' => 'Pune',
-        'image' => 'https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'description' => 'Historical night trek with expert historian guidance'
-    ],
-    [
-        'id' => 5,
-        'name' => 'Rajgad Fort (with Historian Sachin Joshi Sir)',
-        'date' => '2025-05-24',
-        'category' => 'Fort',
-        'participants' => 38,
-        'leader' => 'Sachin Joshi',
-        'grade' => 'Medium',
-        'location' => 'Pune',
-        'image' => 'https://images.unsplash.com/photo-1464822759844-d5709c4c2d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'description' => 'Royal capital of Chhatrapati Shivaji Maharaj with historical insights'
-    ],
-    [
-        'id' => 6,
-        'name' => 'Plus Valley',
-        'date' => '2025-05-10',
-        'category' => 'Valley',
-        'participants' => 22,
-        'leader' => 'Amit Kulkarni',
-        'grade' => 'Hard',
-        'location' => 'Sahyadri',
-        'image' => 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'description' => 'Challenging valley trek through dense forests and rocky terrain'
-    ],
-    [
-        'id' => 7,
-        'name' => 'Ranthambore National Park Safari (Rajasthan)',
-        'date' => '2025-04-24',
-        'category' => 'Wildlife',
-        'participants' => 18,
-        'leader' => 'Wildlife Expert',
-        'grade' => 'Easy',
-        'location' => 'Rajasthan',
-        'image' => 'https://images.unsplash.com/photo-1549366021-9f761d040ed2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'description' => 'Wildlife safari in the famous Ranthambore National Park'
-    ],
-    [
-        'id' => 8,
-        'name' => 'Kalmandavi Waterfall (Cliff Jumping Special)',
-        'date' => '2025-04-20',
-        'category' => 'Waterfall',
-        'participants' => 31,
-        'leader' => 'Adventure Team',
-        'grade' => 'Medium',
-        'location' => 'Western Ghats',
-        'image' => 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'description' => 'Thrilling waterfall trek with cliff jumping activities'
-    ],
-    [
-        'id' => 9,
-        'name' => 'Padargad',
-        'date' => '2025-03-02',
-        'category' => 'Fort',
-        'participants' => 27,
-        'leader' => 'Historical Team',
-        'grade' => 'Medium',
-        'location' => 'Sahyadri',
-        'image' => 'https://images.unsplash.com/photo-1605538883669-825200433431?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'description' => 'Ancient fort trek with rich Maratha history'
-    ],
-    [
-        'id' => 10,
-        'name' => 'Murud Janjira with Historian Sachin Joshi Sir',
-        'date' => '2025-02-16',
-        'category' => 'Sea Fort',
-        'participants' => 33,
-        'leader' => 'Sachin Joshi',
-        'grade' => 'Easy',
-        'location' => 'Raigad',
-        'image' => 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'description' => 'Unconquered sea fort with fascinating maritime history'
-    ],
-    [
-        'id' => 11,
-        'name' => 'Sattal Birding Tour (Uttarakhand)',
-        'date' => '2025-02-06',
-        'category' => 'Wildlife',
-        'participants' => 15,
-        'leader' => 'Bird Watching Expert',
-        'grade' => 'Easy',
-        'location' => 'Uttarakhand',
-        'image' => 'https://images.unsplash.com/photo-1516466723877-e4ec1d736c8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'description' => 'Bird watching expedition in the beautiful Sattal lakes'
-    ],
-    [
-        'id' => 12,
-        'name' => 'Ajinkyatara and Sajjangad',
-        'date' => '2025-02-02',
-        'category' => 'Fort',
-        'participants' => 29,
-        'leader' => 'Cultural Team',
-        'grade' => 'Medium',
-        'location' => 'Satara',
-        'image' => 'https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'description' => 'Twin fort trek combining history and spirituality'
-    ],
-    [
-        'id' => 13,
-        'name' => 'Sudhagad Activity Trek',
-        'date' => '2025-01-25',
-        'category' => 'Adventure',
-        'participants' => 24,
-        'leader' => 'Adventure Sports Team',
-        'grade' => 'Hard',
-        'location' => 'Raigad',
-        'image' => 'https://images.unsplash.com/photo-1464822759844-d5709c4c2d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'description' => 'Adventure activities combined with fort exploration'
-    ],
-    [
-        'id' => 14,
-        'name' => 'Bahadurwadi, Vilasgad, Banurgad, Machhidragad',
-        'date' => '2025-01-11',
-        'category' => 'Multi-Fort',
-        'participants' => 35,
-        'leader' => 'Expert Guide Team',
-        'grade' => 'Hard',
-        'location' => 'Multiple Locations',
-        'image' => 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'description' => 'Multi-fort expedition covering four historical forts'
-    ],
-    [
-        'id' => 15,
-        'name' => 'Gingee (Tamilnadu)',
-        'date' => '2024-12-13',
-        'category' => 'Fort',
-        'participants' => 20,
-        'leader' => 'South India Expert',
-        'grade' => 'Medium',
-        'location' => 'Tamil Nadu',
-        'image' => 'https://images.unsplash.com/photo-1605538883669-825200433431?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'description' => 'Exploring the Troy of the East - Gingee Fort complex'
-    ],
-    [
-        'id' => 16,
-        'name' => 'Chakdev, Mahimandangad and Parbat',
-        'date' => '2024-11-30',
-        'category' => 'Multi-Fort',
-        'participants' => 31,
-        'leader' => 'Heritage Guide',
-        'grade' => 'Medium',
-        'location' => 'Maharashtra',
-        'image' => 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'description' => 'Triple fort expedition in the Sahyadri ranges'
-    ],
-    [
-        'id' => 17,
-        'name' => 'Trimbakgad (Bramhagiri) Fort',
-        'date' => '2024-11-24',
-        'category' => 'Fort',
-        'participants' => 26,
-        'leader' => 'Spiritual Guide',
-        'grade' => 'Medium',
-        'location' => 'Nashik',
-        'image' => 'https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'description' => 'Sacred fort trek near the source of river Godavari'
-    ],
-    [
-        'id' => 18,
-        'name' => 'Pune Heritage Walk with Shri Balkawde Sir',
-        'date' => '2024-11-10',
-        'category' => 'Heritage',
-        'participants' => 45,
-        'leader' => 'Dr. Balkawde',
-        'grade' => 'Easy',
-        'location' => 'Pune',
-        'image' => 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'description' => 'Historical walk through the cultural heritage of Pune city'
-    ],
-    [
-        'id' => 19,
-        'name' => 'Tahuli Trek',
-        'date' => '2024-10-13',
-        'category' => 'Peak',
-        'participants' => 23,
-        'leader' => 'Mountain Guide',
-        'grade' => 'Hard',
-        'location' => 'Sahyadri',
-        'image' => 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'description' => 'Challenging peak trek with breathtaking summit views'
-    ],
-    [
-        'id' => 20,
-        'name' => 'Hadsar Fort',
-        'date' => '2024-10-06',
-        'category' => 'Fort',
-        'participants' => 28,
-        'leader' => 'Local Expert',
-        'grade' => 'Medium',
-        'location' => 'Maharashtra',
-        'image' => 'https://images.unsplash.com/photo-1605538883669-825200433431?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'description' => 'Lesser-known fort with pristine natural surroundings'
-    ]
-];
 
 // Helper functions
 function getGradeColor($grade) {
@@ -260,6 +17,24 @@ function getGradeColor($grade) {
         'very hard', 'very difficult', 'extreme' => 'bg-red-500',
         default => 'bg-yellow-500'
     };
+}
+
+function getCategoryFromPlace($place, $description = '') {
+    $place_lower = strtolower($place . ' ' . $description);
+    
+    if (strpos($place_lower, 'waterfall') !== false) return 'Waterfall';
+    if (strpos($place_lower, 'sea fort') !== false || strpos($place_lower, 'janjira') !== false) return 'Sea Fort';
+    if (strpos($place_lower, 'fort') !== false || strpos($place_lower, 'gad') !== false) return 'Fort';
+    if (strpos($place_lower, 'heritage') !== false || strpos($place_lower, 'walk') !== false) return 'Heritage';
+    if (strpos($place_lower, 'wildlife') !== false || strpos($place_lower, 'safari') !== false || strpos($place_lower, 'birding') !== false) return 'Wildlife';
+    if (strpos($place_lower, 'valley') !== false) return 'Valley';
+    if (strpos($place_lower, 'peak') !== false || strpos($place_lower, 'summit') !== false) return 'Peak';
+    if (strpos($place_lower, 'rafting') !== false || strpos($place_lower, 'cliff') !== false) return 'Adventure';
+    
+    // Check if multiple forts mentioned
+    if (substr_count($place_lower, 'gad') > 1 || substr_count($place_lower, ',') >= 2) return 'Multi-Fort';
+    
+    return 'Adventure';
 }
 
 function getCategoryColor($category) {
@@ -293,6 +68,8 @@ function getCategoryIcon($category) {
 }
 
 function formatDate($date) {
+    if (!$date) return '';
+    
     $months = [
         1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April',
         5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August',
@@ -308,6 +85,8 @@ function formatDate($date) {
 }
 
 function getTimeAgo($date) {
+    if (!$date) return 'N/A';
+    
     $today = new DateTime();
     $trek_date = new DateTime($date);
     $diff = $today->diff($trek_date);
@@ -327,48 +106,184 @@ function getTimeAgo($date) {
     }
 }
 
-// Pagination and filtering
-$page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
-$limit = 9;
-$offset = ($page - 1) * $limit;
-
-// Apply filters
-$filteredTreks = $pastTreksData;
-
-// Search filter
-$search_query = isset($_GET['search']) ? trim($_GET['search']) : '';
-if (!empty($search_query)) {
-    $filteredTreks = array_filter($filteredTreks, function($trek) use ($search_query) {
-        return stripos($trek['name'], $search_query) !== false || 
-               stripos($trek['location'], $search_query) !== false ||
-               stripos($trek['leader'], $search_query) !== false;
-    });
+function getTrekImage($place, $category) {
+    $images = [
+        'fort' => 'https://images.unsplash.com/photo-1605538883669-825200433431?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        'waterfall' => 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        'sea fort' => 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        'wildlife' => 'https://images.unsplash.com/photo-1549366021-9f761d040ed2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        'heritage' => 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        'adventure' => 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        'valley' => 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        'peak' => 'https://images.unsplash.com/photo-1464822759844-d5709c4c2d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        'default' => 'https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    ];
+    
+    return $images[strtolower($category)] ?? $images['default'];
 }
 
-// Category filter
-$filter_category = isset($_GET['category']) ? $_GET['category'] : '';
-if (!empty($filter_category)) {
-    $filteredTreks = array_filter($filteredTreks, function($trek) use ($filter_category) {
-        return strtolower($trek['category']) === strtolower($filter_category);
-    });
+// Connect to database
+$db = new Database();
+$conn = $db->getConnection();
+
+$pastTreksData = [];
+$total_treks_count = 0;
+$total_participants = 0;
+$categories = [];
+$years = [];
+
+try {
+    // Get filter parameters
+    $search_query = isset($_GET['search']) ? trim($_GET['search']) : '';
+    $filter_category = isset($_GET['category']) ? trim($_GET['category']) : '';
+    $filter_year = isset($_GET['year']) ? trim($_GET['year']) : '';
+    
+    // Build WHERE clause for filters
+    $where_conditions = ["TrekDate < CURDATE()"]; // Only show past treks
+    $params = [];
+    $types = "";
+    
+    // Search filter
+    if (!empty($search_query)) {
+        $where_conditions[] = "(Place LIKE ? OR Leader LIKE ? OR Description LIKE ?)";
+        $search_param = "%{$search_query}%";
+        $params[] = $search_param;
+        $params[] = $search_param;
+        $params[] = $search_param;
+        $types .= "sss";
+    }
+    
+    // Year filter
+    if (!empty($filter_year)) {
+        $where_conditions[] = "YEAR(TrekDate) = ?";
+        $params[] = $filter_year;
+        $types .= "i";
+    }
+    
+    $where_clause = implode(" AND ", $where_conditions);
+    
+    // Get total participants count
+    $count_query = "SELECT COUNT(*) as total, SUM(MaxParticipants) as participants FROM TS_tblTrekDetails WHERE " . $where_clause;
+    $count_stmt = $conn->prepare($count_query);
+    
+    if (!empty($params)) {
+        $count_stmt->bind_param($types, ...$params);
+    }
+    
+    $count_stmt->execute();
+    $count_result = $count_stmt->get_result();
+    $count_row = $count_result->fetch_assoc();
+    $total_treks_count = $count_row['total'];
+    $total_participants = $count_row['participants'] ?? 0;
+    $count_stmt->close();
+    
+    // Pagination
+    $page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+    $limit = 9;
+    $offset = ($page - 1) * $limit;
+    
+    // Fetch trek data with pagination
+    $query = "SELECT 
+                TrekId,
+                Place,
+                TrekDate,
+                Leader,
+                ContDetails,
+                DisplayDate,
+                Cost,
+                Grade,
+                LDateBooking,
+                MeetingPlace,
+                MaxParticipants,
+                Description,
+                Notes
+              FROM TS_tblTrekDetails 
+              WHERE " . $where_clause . "
+              ORDER BY TrekDate DESC
+              LIMIT ? OFFSET ?";
+    
+    $stmt = $conn->prepare($query);
+    
+    // Add pagination parameters
+    $params[] = $limit;
+    $params[] = $offset;
+    $types .= "ii";
+    
+    if (!empty($params)) {
+        $stmt->bind_param($types, ...$params);
+    }
+    
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    $categoryStats = [];
+    
+    while ($row = $result->fetch_assoc()) {
+        // Determine category from place name
+        $category = getCategoryFromPlace($row['Place'], $row['Description']);
+        
+        // Process the data
+        $trek = [
+            'id' => $row['TrekId'],
+            'name' => trim($row['Place']),
+            'date' => $row['TrekDate'],
+            'category' => $category,
+            'participants' => intval($row['MaxParticipants']) ?: 25,
+            'leader' => trim($row['Leader']),
+            'grade' => trim($row['Grade']) ?: 'Medium',
+            'location' => trim($row['MeetingPlace']) ?: 'Maharashtra',
+            'description' => trim($row['Description']) ?: 'Completed trek with Trekshitz',
+            'notes' => trim($row['Notes']) ?: '',
+            'image' => getTrekImage($row['Place'], $category)
+        ];
+        
+        // Track categories for stats
+        if (!isset($categoryStats[$category])) {
+            $categoryStats[$category] = ['count' => 0, 'participants' => 0];
+        }
+        $categoryStats[$category]['count']++;
+        $categoryStats[$category]['participants'] += $trek['participants'];
+        
+        // Apply category filter if set
+        if (empty($filter_category) || strtolower($category) === strtolower($filter_category)) {
+            $pastTreksData[] = $trek;
+        }
+    }
+    
+    $stmt->close();
+    
+    // Get unique categories and years for filters
+    $cat_query = "SELECT DISTINCT YEAR(TrekDate) as year FROM TS_tblTrekDetails WHERE TrekDate < CURDATE() ORDER BY year DESC";
+    $cat_result = $conn->query($cat_query);
+    while ($row = $cat_result->fetch_assoc()) {
+        $years[] = $row['year'];
+    }
+    
+    $categories = array_keys($categoryStats);
+    
+} catch (Exception $e) {
+    error_log("Past Treks Error: " . $e->getMessage());
+    $pastTreksData = [];
+    $total_treks_count = 0;
+    $categoryStats = [];
 }
 
-// Year filter
-$filter_year = isset($_GET['year']) ? $_GET['year'] : '';
-if (!empty($filter_year)) {
-    $filteredTreks = array_filter($filteredTreks, function($trek) use ($filter_year) {
-        return date('Y', strtotime($trek['date'])) == $filter_year;
-    });
-}
-
-$total_treks = count($filteredTreks);
+// Apply pagination to filtered data
+$total_treks = count($pastTreksData);
 $total_pages = ceil($total_treks / $limit);
-$paginatedTreks = array_slice($filteredTreks, $offset, $limit);
+$paginatedTreks = array_slice($pastTreksData, 0, $limit);
 
-// Get unique categories and years for filters
-$categories = array_unique(array_column($pastTreksData, 'category'));
-$years = array_unique(array_map(function($trek) { return date('Y', strtotime($trek['date'])); }, $pastTreksData));
-rsort($years);
+// Get suggestions for search
+$suggestions = [];
+try {
+    $sugg_query = "SELECT DISTINCT Place FROM TS_tblTrekDetails WHERE TrekDate < CURDATE() ORDER BY TrekDate DESC LIMIT 20";
+    $sugg_result = $conn->query($sugg_query);
+    while ($row = $sugg_result->fetch_assoc()) {
+        $suggestions[] = trim($row['Place']);
+    }
+} catch (Exception $e) {
+    $suggestions = [];
+}
 ?>
 
 <main id="main-content" class="pt-20">
@@ -413,11 +328,11 @@ rsort($years);
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div class="text-center transform hover:scale-105 transition-transform">
-                    <div class="text-4xl font-bold text-forest dark:text-accent mb-2 animate-number" data-target="<?php echo count($pastTreksData); ?>">0</div>
+                    <div class="text-4xl font-bold text-forest dark:text-accent mb-2 animate-number" data-target="<?php echo $total_treks_count; ?>">0</div>
                     <div class="text-gray-600 dark:text-gray-300">Completed Treks</div>
                 </div>
                 <div class="text-center transform hover:scale-105 transition-transform">
-                    <div class="text-4xl font-bold text-forest dark:text-accent mb-2 animate-number" data-target="<?php echo array_sum(array_column($pastTreksData, 'participants')); ?>">0</div>
+                    <div class="text-4xl font-bold text-forest dark:text-accent mb-2 animate-number" data-target="<?php echo $total_participants; ?>">0</div>
                     <div class="text-gray-600 dark:text-gray-300">Total Participants</div>
                 </div>
                 <div class="text-center transform hover:scale-105 transition-transform">
@@ -480,7 +395,7 @@ rsort($years);
                         <select name="year" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent dark:bg-gray-700 dark:text-white">
                             <option value="">All Years</option>
                             <?php foreach($years as $year): ?>
-                                <option value="<?php echo $year; ?>" <?php echo $filter_year === $year ? 'selected' : ''; ?>>
+                                <option value="<?php echo $year; ?>" <?php echo $filter_year == $year ? 'selected' : ''; ?>>
                                     <?php echo $year; ?>
                                 </option>
                             <?php endforeach; ?>
@@ -524,7 +439,7 @@ rsort($years);
                                 <!-- Category Badge -->
                                 <span class="absolute top-4 right-4 px-3 py-1 text-xs font-bold text-white rounded-full <?php echo getCategoryColor($trek['category']); ?>">
                                     <i class="<?php echo getCategoryIcon($trek['category']); ?> mr-1"></i>
-                                    <?php echo $trek['category']; ?>
+                                    <?php echo htmlspecialchars($trek['category']); ?>
                                 </span>
                                 
                                 <!-- Time Ago Badge -->
@@ -559,7 +474,7 @@ rsort($years);
                                             <span class="font-medium"><?php echo htmlspecialchars($trek['location']); ?></span>
                                         </div>
                                         <span class="px-2 py-1 text-xs font-bold text-white rounded-full <?php echo getGradeColor($trek['grade']); ?>">
-                                            <?php echo $trek['grade']; ?>
+                                            <?php echo htmlspecialchars($trek['grade']); ?>
                                         </span>
                                     </div>
                                     
@@ -588,7 +503,7 @@ rsort($years);
                                         <i class="fas fa-images mr-1"></i>
                                         Photos
                                     </a>
-                                    <button onclick="shareTrek(<?php echo $trek['id']; ?>)" 
+                                    <button onclick="shareTrek(<?php echo $trek['id']; ?>, '<?php echo addslashes($trek['name']); ?>', '<?php echo $trek['date']; ?>')" 
                                             class="bg-blue-600 hover:bg-blue-700 text-white py-2.5 px-3 rounded-lg font-semibold transition-colors duration-300">
                                         <i class="fas fa-share-alt"></i>
                                     </button>
@@ -662,24 +577,12 @@ rsort($years);
                 </h2>
                 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                    <?php 
-                    $categoryStats = [];
-                    foreach($pastTreksData as $trek) {
-                        $cat = $trek['category'];
-                        if(!isset($categoryStats[$cat])) {
-                            $categoryStats[$cat] = ['count' => 0, 'participants' => 0];
-                        }
-                        $categoryStats[$cat]['count']++;
-                        $categoryStats[$cat]['participants'] += $trek['participants'];
-                    }
-                    
-                    foreach($categoryStats as $category => $stats):
-                    ?>
+                    <?php foreach($categoryStats as $category => $stats): ?>
                         <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-xl border border-gray-200 dark:border-gray-700 hover-lift">
                             <div class="w-16 h-16 <?php echo getCategoryColor($category); ?> rounded-2xl flex items-center justify-center mb-4 mx-auto">
                                 <i class="<?php echo getCategoryIcon($category); ?> text-2xl text-white"></i>
                             </div>
-                            <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white"><?php echo $category; ?></h3>
+                            <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white"><?php echo htmlspecialchars($category); ?></h3>
                             <div class="space-y-2 text-sm text-gray-600 dark:text-gray-300">
                                 <div class="flex items-center justify-center">
                                     <i class="fas fa-hiking mr-2 text-accent"></i>
@@ -733,7 +636,7 @@ rsort($years);
                     <div class="absolute left-1/2 transform -translate-x-0.5 w-1 h-full bg-accent"></div>
                     
                     <?php 
-                    $recentTreks = array_slice($pastTreksData, 0, 6);
+                    $recentTreks = array_slice($pastTreksData, 0, min(6, count($pastTreksData)));
                     foreach($recentTreks as $index => $trek): 
                     $isLeft = $index % 2 == 0;
                     ?>
@@ -746,7 +649,7 @@ rsort($years);
                                 <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
                                     <div class="flex items-center <?php echo $isLeft ? 'justify-end' : 'justify-start'; ?> mb-2">
                                         <span class="px-2 py-1 text-xs font-bold text-white rounded-full <?php echo getCategoryColor($trek['category']); ?>">
-                                            <?php echo $trek['category']; ?>
+                                            <?php echo htmlspecialchars($trek['category']); ?>
                                         </span>
                                     </div>
                                     <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-1">
@@ -807,10 +710,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Search functionality with suggestions
     const searchInput = document.querySelector('input[name="search"]');
     if (searchInput) {
-        const suggestions = [
-            'Rajmachi Fort', 'Sinhgad', 'Rajgad Fort', 'Domzira Waterfall', 'Ramsej Fort',
-            'Secret Waterfall', 'Plus Valley', 'Ranthambore', 'Murud Janjira', 'Ajinkyatara'
-        ];
+        const suggestions = <?php echo json_encode($suggestions); ?>;
         
         let suggestionsContainer;
         
@@ -875,38 +775,36 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Share trek functionality
-    window.shareTrek = function(trekId) {
-        const trek = <?php echo json_encode($pastTreksData); ?>.find(t => t.id == trekId);
-        if (trek) {
-            const shareText = `Check out this amazing trek: ${trek.name} on ${trek.date} with Trekshitz!`;
-            const shareUrl = `${window.location.origin}/trek-details/${trekId}`;
-            
-            if (navigator.share) {
-                navigator.share({
-                    title: trek.name,
-                    text: shareText,
-                    url: shareUrl
-                });
-            } else {
-                // Fallback: copy to clipboard
-                navigator.clipboard.writeText(`${shareText} ${shareUrl}`).then(() => {
-                    showNotification('Trek details copied to clipboard!', 'success');
-                });
-            }
+    window.shareTrek = function(trekId, trekName, trekDate) {
+        const shareText = `Check out this amazing trek: ${trekName} on ${trekDate} with Trekshitz!`;
+        const shareUrl = `${window.location.origin}/trek-details/${trekId}`;
+        
+        if (navigator.share) {
+            navigator.share({
+                title: trekName,
+                text: shareText,
+                url: shareUrl
+            }).catch(() => {
+                // User cancelled share
+            });
+        } else {
+            // Fallback: copy to clipboard
+            navigator.clipboard.writeText(`${shareText} ${shareUrl}`).then(() => {
+                showNotification('Trek details copied to clipboard!', 'success');
+            }).catch(() => {
+                alert(`${shareText}\n${shareUrl}`);
+            });
         }
     };
     
     // Notification system
     function showNotification(message, type = 'info') {
-        // Remove existing notifications
         const existingNotifications = document.querySelectorAll('.notification');
         existingNotifications.forEach(notification => notification.remove());
 
-        // Create notification element
         const notification = document.createElement('div');
         notification.className = `notification fixed top-20 right-4 z-50 max-w-sm p-4 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300`;
         
-        // Set type-specific styling
         switch (type) {
             case 'success':
                 notification.classList.add('bg-green-500', 'text-white');
@@ -923,12 +821,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         document.body.appendChild(notification);
 
-        // Show notification
         setTimeout(() => {
             notification.classList.remove('translate-x-full');
         }, 100);
 
-        // Hide notification after 3 seconds
         setTimeout(() => {
             notification.classList.add('translate-x-full');
             setTimeout(() => {

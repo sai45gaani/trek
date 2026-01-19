@@ -4,12 +4,76 @@ $page_title = 'Photo Gallery of Forts in Sahyadri | Trekshitz';
 $meta_description = 'Photographs of trekking, camping, outings etc. in wild forests, hills, forts, palaces, valleys, ravines etc. in Maharashtra.';
 $meta_keywords = 'Photos, pictures, Images, Sahyadri, Western ghats, trekking, hiking, wildlife, mumbai trek, pune trek, tourists, trek, adventure sports, forts, palaces';
 
+require_once '../config/database.php';
+
 // Include header
 include '../includes/header.php';
+
+// Connect to database
+$db = new Database();
+$conn = $db->getConnection();
+
+// Pagination settings
+$fortsPerPage = 16;
+$currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+$offset = ($currentPage - 1) * $fortsPerPage;
+
+// Get filter letter
+$filterLetter = isset($_GET['letter']) ? strtoupper($_GET['letter']) : 'ALL';
+
+// Build query based on filter
+$whereClause = "";
+if ($filterLetter !== 'ALL') {
+    $whereClause = " AND f.FortName LIKE '" . $conn->real_escape_string($filterLetter) . "%'";
+}
+
+// Get total count for pagination
+$countQuery = "SELECT COUNT(DISTINCT f.FortName) as total 
+               FROM EI_tblFortInfo f 
+               LEFT JOIN PM_tblPhotos_clean p ON f.FortName = p.FortName 
+               WHERE p.PIC_FRONT_IMAGE = 'Y' $whereClause";
+$countResult = $conn->query($countQuery);
+$totalForts = $countResult->fetch_assoc()['total'];
+$totalPages = ceil($totalForts / $fortsPerPage);
+
+// Main query to get forts with their featured images
+$query = "SELECT 
+            f.FortName,
+            f.FortDistrict,
+            f.FortType,
+            p.PIC_NAME,
+            p.PIC_DESC,
+            (SELECT COUNT(*) FROM PM_tblPhotos_clean WHERE FortName = f.FortName) as PhotoCount
+          FROM EI_tblFortInfo f
+          LEFT JOIN PM_tblPhotos_clean p ON f.FortName = p.FortName AND p.PIC_FRONT_IMAGE = 'Y'
+          WHERE p.PIC_NAME IS NOT NULL $whereClause
+          ORDER BY f.FortName ASC
+          LIMIT $fortsPerPage OFFSET $offset";
+//echo $query;
+
+$result = $conn->query($query);
+
+// Get forts data
+$fortsData = [];
+if ($result && $result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $fortsData[] = $row;
+    }
+}
+
+
+
+// Get actual stats from database
+$statsQuery = "SELECT 
+                (SELECT COUNT(DISTINCT FortName) FROM EI_tblFortInfo) as totalForts,
+                (SELECT COUNT(*) FROM PM_tblPhotos_clean) as totalPhotos,
+                (SELECT COUNT(DISTINCT FortDistrict) FROM EI_tblFortInfo WHERE FortDistrict IS NOT NULL) as totalDistricts";
+$statsResult = $conn->query($statsQuery);
+$stats = $statsResult->fetch_assoc();
 ?>
 
 <style>
-/* Fort Gallery specific styles - EXACT SAME AS BUTTERFLY GALLERY */
+/* Fort Gallery specific styles */
 .fort-card {
     transition: all 0.3s ease;
     cursor: pointer;
@@ -42,15 +106,15 @@ include '../includes/header.php';
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 70%, transparent 100%);
     color: white;
     padding: 1.5rem 1rem 1rem;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
+    opacity: 1;
+    transition: all 0.3s ease;
 }
 
 .fort-card:hover .fort-overlay {
-    transform: translateY(0);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.8) 70%, transparent 100%);
 }
 
 .fort-stats {
@@ -65,7 +129,7 @@ include '../includes/header.php';
 .photo-badge {
     display: inline-flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(127, 176, 105, 0.3);
     padding: 0.25rem 0.75rem;
     border-radius: 1rem;
     font-size: 0.875rem;
@@ -104,7 +168,6 @@ include '../includes/header.php';
     font-size: 0.9rem;
 }
 
-/* ALPHABET FILTER - EXACT SAME AS BUTTERFLY GALLERY */
 .alphabet-filter {
     display: flex;
     flex-wrap: wrap;
@@ -135,6 +198,7 @@ include '../includes/header.php';
     align-items: center;
     gap: 0.5rem;
     margin: 2rem 0;
+    flex-wrap: wrap;
 }
 
 .pagination a,
@@ -178,14 +242,15 @@ include '../includes/header.php';
     cursor: pointer;
     font-size: 1.5rem;
     transition: background 0.3s ease;
+    z-index: 10;
 }
 
 .lightbox-prev {
-    left: -60px;
+    left: 10px;
 }
 
 .lightbox-next {
-    right: -60px;
+    right: 10px;
 }
 
 .lightbox-prev:hover, .lightbox-next:hover {
@@ -195,6 +260,7 @@ include '../includes/header.php';
 .lightbox-thumbnails {
     max-height: 100px;
     overflow-x: auto;
+    padding: 0.5rem 0;
 }
 
 .lightbox-thumbnails::-webkit-scrollbar {
@@ -215,18 +281,19 @@ include '../includes/header.php';
         grid-template-columns: repeat(2, 1fr);
     }
     
-    .lightbox-prev {
-        left: 10px;
+    .alphabet-filter {
+        gap: 0.25rem;
     }
     
-    .lightbox-next {
-        right: 10px;
+    .alphabet-filter a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
     }
 }
 </style>
 
 <main id="main-content">
-    <!-- Hero Section - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
+    <!-- Hero Section -->
     <section class="relative py-20 bg-gradient-to-br from-green-700 via-green-600 to-green-500 text-white overflow-hidden">
         <div class="absolute inset-0 opacity-20">
             <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"fort\" x=\"0\" y=\"0\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\"><rect x=\"6\" y=\"6\" width=\"8\" height=\"8\" fill=\"%23ffffff\" opacity=\"0.1\"/><rect x=\"7\" y=\"4\" width=\"6\" height=\"2\" fill=\"%23ffffff\" opacity=\"0.1\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23fort)\"/></svg>');"></div>
@@ -234,7 +301,7 @@ include '../includes/header.php';
         
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 font-bilingual">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 mt-6 font-bilingual">
                     🏰 किल्ल्यांची गॅलरी
                 </h1>
                 <h2 class="text-2xl md:text-3xl font-semibold mb-8">
@@ -257,7 +324,7 @@ include '../includes/header.php';
         </div>
     </section>
 
-    <!-- Search Box - EXACT SAME AS BUTTERFLY GALLERY -->
+    <!-- Search Box -->
     <div class="container mx-auto px-4 py-4">
         <div class="max-w-md mx-auto">
             <div class="relative">
@@ -271,21 +338,21 @@ include '../includes/header.php';
         </div>
     </div>
 
-    <!-- Gallery Stats - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
+    <!-- Gallery Stats - DYNAMIC DATA -->
     <section class="py-8 bg-gray-50 dark:bg-gray-800">
         <div class="container mx-auto px-4">
-            <div class="fort-stats max-w-4xl mx-auto">
+            <div class="fort-stats mx-auto">
                 <div class="grid md:grid-cols-3 gap-6">
                     <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">150+</div>
+                        <div class="text-3xl font-bold mb-2"><?php echo $stats['totalForts']; ?>+</div>
                         <p class="opacity-90">Historic Forts</p>
                     </div>
                     <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">2000+</div>
+                        <div class="text-3xl font-bold mb-2"><?php echo $stats['totalPhotos']; ?>+</div>
                         <p class="opacity-90">Photographs</p>
                     </div>
                     <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">50+</div>
+                        <div class="text-3xl font-bold mb-2"><?php echo $stats['totalDistricts']; ?>+</div>
                         <p class="opacity-90">Locations Covered</p>
                     </div>
                 </div>
@@ -293,7 +360,7 @@ include '../includes/header.php';
         </div>
     </section>
 
-    <!-- Alphabetical Filter - HARDCODED ALPHABETS -->
+    <!-- Alphabetical Filter -->
     <section id="alphabetical" class="py-8 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4">
             <div class="text-center mb-8">
@@ -304,247 +371,99 @@ include '../includes/header.php';
             </div>
             
             <div class="alphabet-filter">
-                <a href="#" onclick="filterByAlphabet('ALL')" class="active">ALL</a>
-                <a href="#" onclick="filterByAlphabet('A')">A</a>
-                <a href="#" onclick="filterByAlphabet('B')">B</a>
-                <a href="#" onclick="filterByAlphabet('C')">C</a>
-                <a href="#" onclick="filterByAlphabet('D')">D</a>
-                <a href="#" onclick="filterByAlphabet('E')">E</a>
-                <a href="#" onclick="filterByAlphabet('F')">F</a>
-                <a href="#" onclick="filterByAlphabet('G')">G</a>
-                <a href="#" onclick="filterByAlphabet('H')">H</a>
-                <a href="#" onclick="filterByAlphabet('I')">I</a>
-                <a href="#" onclick="filterByAlphabet('J')">J</a>
-                <a href="#" onclick="filterByAlphabet('K')">K</a>
-                <a href="#" onclick="filterByAlphabet('L')">L</a>
-                <a href="#" onclick="filterByAlphabet('M')">M</a>
-                <a href="#" onclick="filterByAlphabet('N')">N</a>
-                <a href="#" onclick="filterByAlphabet('O')">O</a>
-                <a href="#" onclick="filterByAlphabet('P')">P</a>
-                <a href="#" onclick="filterByAlphabet('Q')">Q</a>
-                <a href="#" onclick="filterByAlphabet('R')">R</a>
-                <a href="#" onclick="filterByAlphabet('S')">S</a>
-                <a href="#" onclick="filterByAlphabet('T')">T</a>
-                <a href="#" onclick="filterByAlphabet('U')">U</a>
-                <a href="#" onclick="filterByAlphabet('V')">V</a>
-                <a href="#" onclick="filterByAlphabet('W')">W</a>
-                <a href="#" onclick="filterByAlphabet('X')">X</a>
-                <a href="#" onclick="filterByAlphabet('Y')">Y</a>
-                <a href="#" onclick="filterByAlphabet('Z')">Z</a>
+                <a href="?letter=ALL&page=1" class="<?php echo $filterLetter === 'ALL' ? 'active' : ''; ?>">ALL</a>
+                <?php foreach (range('A', 'Z') as $letter): ?>
+                    <a href="?letter=<?php echo $letter; ?>&page=1" class="<?php echo $filterLetter === $letter ? 'active' : ''; ?>"><?php echo $letter; ?></a>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
 
-    <!-- Fort Gallery - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
+    <!-- Fort Gallery - DYNAMIC DATA -->
     <section id="gallery" class="py-12 bg-gray-50 dark:bg-gray-800">
         <div class="container mx-auto px-4">
             <div class="max-w-7xl mx-auto">
                 <div id="gallery-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Fort Cards - EXACT SAME STRUCTURE AS BUTTERFLY CARDS -->
-                    <div class="fort-card" data-alphabet="B" onclick="openFortGallery('Barvai')">
-                        <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Barvai" class="fort-image">
-                        <div class="fort-overlay">
-                            <h3 class="font-bold text-lg mb-1">Barvai</h3>
-                            <p class="location-name mb-2">Raigad District</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                8 Photos Inside
+                    <?php if (count($fortsData) > 0): ?>
+                        <?php foreach ($fortsData as $fort): 
+                            $fortName = htmlspecialchars($fort['FortName']);
+                            $fortDistrict = htmlspecialchars($fort['FortDistrict'] ?? 'Unknown District');
+                            $picName = htmlspecialchars($fort['PIC_NAME']);
+                            $photoCount = (int)$fort['PhotoCount'];
+                            $imagePath = "../assets/images/Photos/Picture/" . $picName;
+                            $firstLetter = strtoupper(substr($fortName, 0, 1));
+                            $defaultImage = "../assets/images/default-fort.svg";
+                        ?>
+                            <div class="fort-card" data-alphabet="<?php echo $firstLetter; ?>" data-fort-name="<?php echo $fortName; ?>">
+                                <img src="<?php echo $imagePath; ?>" 
+                                     alt="<?php echo $fortName; ?>" 
+                                     class="fort-image"
+                                     onerror="this.onerror=null; this.src='<?php echo $defaultImage; ?>';">
+                                <div class="fort-overlay">
+                                    <h3 class="font-bold text-lg mb-1 text-white"><?php echo $fortName; ?></h3>
+                                    <p class="location-name mb-2"><?php echo $fortDistrict; ?></p>
+                                    <div class="photo-badge">
+                                        <i class="fas fa-camera mr-2"></i>
+                                        <?php echo $photoCount; ?> Photos Inside
+                                    </div>
+                                </div>
                             </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="col-span-full text-center py-12">
+                            <i class="fas fa-image text-6xl text-gray-400 mb-4"></i>
+                            <p class="text-xl text-gray-600 dark:text-gray-300">No forts found for this filter.</p>
+                            <a href="?letter=ALL&page=1" class="inline-block mt-4 px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700">
+                                View All Forts
+                            </a>
                         </div>
-                    </div>
-
-                    <div class="fort-card" data-alphabet="B" onclick="openFortGallery('Belapur_Fort')">
-                        <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Belapur Fort" class="fort-image">
-                        <div class="fort-overlay">
-                            <h3 class="font-bold text-lg mb-1">Belapur Fort</h3>
-                            <p class="location-name mb-2">Navi Mumbai</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                7 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="fort-card" data-alphabet="B" onclick="openFortGallery('Belgaum_Fort')">
-                        <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Belgaum Fort" class="fort-image">
-                        <div class="fort-overlay">
-                            <h3 class="font-bold text-lg mb-1">Belgaum Fort</h3>
-                            <p class="location-name mb-2">Karnataka Border</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                15 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="fort-card" data-alphabet="B" onclick="openFortGallery('Bhagwantgad')">
-                        <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Bhagwantgad" class="fort-image">
-                        <div class="fort-overlay">
-                            <h3 class="font-bold text-lg mb-1">Bhagwantgad</h3>
-                            <p class="location-name mb-2">Ahmednagar District</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                11 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="fort-card" data-alphabet="B" onclick="openFortGallery('Bhairavgad_Satara')">
-                        <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Bhairavgad (Satara)" class="fort-image">
-                        <div class="fort-overlay">
-                            <h3 class="font-bold text-lg mb-1">Bhairavgad (Satara)</h3>
-                            <p class="location-name mb-2">Satara District</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                7 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="fort-card" data-alphabet="B" onclick="openFortGallery('Bhairavgad_Kothale')">
-                        <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Bhairavgad(kothale)" class="fort-image">
-                        <div class="fort-overlay">
-                            <h3 class="font-bold text-lg mb-1">Bhairavgad(kothale)</h3>
-                            <p class="location-name mb-2">Kothale Region</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                10 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="fort-card" data-alphabet="B" onclick="openFortGallery('Bhairavgad_Moroshi')">
-                        <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Bhairavgad(Moroshi)" class="fort-image">
-                        <div class="fort-overlay">
-                            <h3 class="font-bold text-lg mb-1">Bhairavgad(Moroshi)</h3>
-                            <p class="location-name mb-2">Moroshi Region</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                19 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="fort-card" data-alphabet="B" onclick="openFortGallery('Bhairavgad_Shirpunje')">
-                        <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Bhairavgad(Shirpunje)" class="fort-image">
-                        <div class="fort-overlay">
-                            <h3 class="font-bold text-lg mb-1">Bhairavgad(Shirpunje)</h3>
-                            <p class="location-name mb-2">Shirpunje Region</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                22 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="fort-card" data-alphabet="B" onclick="openFortGallery('Bhamer')">
-                        <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Bhamer" class="fort-image">
-                        <div class="fort-overlay">
-                            <h3 class="font-bold text-lg mb-1">Bhamer</h3>
-                            <p class="location-name mb-2">Pune District</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                33 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="fort-card" data-alphabet="B" onclick="openFortGallery('Bhangsigad')">
-                        <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Bhangsigad(Bhangsi mata gad)" class="fort-image">
-                        <div class="fort-overlay">
-                            <h3 class="font-bold text-lg mb-1">Bhangsigad(Bhangsi mata gad)</h3>
-                            <p class="location-name mb-2">Raigad District</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                26 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="fort-card" data-alphabet="B" onclick="openFortGallery('Bharatgad')">
-                        <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Bharatgad" class="fort-image">
-                        <div class="fort-overlay">
-                            <h3 class="font-bold text-lg mb-1">Bharatgad</h3>
-                            <p class="location-name mb-2">Raigad District</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                33 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="fort-card" data-alphabet="B" onclick="openFortGallery('Bhaskargad')">
-                        <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Bhaskargad" class="fort-image">
-                        <div class="fort-overlay">
-                            <h3 class="font-bold text-lg mb-1">Bhaskargad</h3>
-                            <p class="location-name mb-2">Pune District</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                15 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="fort-card" data-alphabet="C" onclick="openFortGallery('Chakan_Fort')">
-                        <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chakan Fort" class="fort-image">
-                        <div class="fort-overlay">
-                            <h3 class="font-bold text-lg mb-1">Chakan Fort</h3>
-                            <p class="location-name mb-2">Pune District</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                17 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="fort-card" data-alphabet="C" onclick="openFortGallery('Chambhargad')">
-                        <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chambhargad" class="fort-image">
-                        <div class="fort-overlay">
-                            <h3 class="font-bold text-lg mb-1">Chambhargad</h3>
-                            <p class="location-name mb-2">Ratnagiri District</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                8 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="fort-card" data-alphabet="C" onclick="openFortGallery('Chandan_Vandan')">
-                        <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chandan-Vandan" class="fort-image">
-                        <div class="fort-overlay">
-                            <h3 class="font-bold text-lg mb-1">Chandan-Vandan</h3>
-                            <p class="location-name mb-2">Raigad District</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                7 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="fort-card" data-alphabet="C" onclick="openFortGallery('Chanderi')">
-                        <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chanderi" class="fort-image">
-                        <div class="fort-overlay">
-                            <h3 class="font-bold text-lg mb-1">Chanderi</h3>
-                            <p class="location-name mb-2">Madhya Pradesh</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                6 Photos Inside
-                            </div>
-                        </div>
-                    </div>
+                    <?php endif; ?>
                 </div>
                 
-                <!-- Pagination - EXACT SAME AS BUTTERFLY GALLERY -->
+                <!-- Pagination - DYNAMIC -->
+                <?php if ($totalPages > 1): ?>
                 <div class="pagination">
-                    <span class="current">1</span>
-                    <a href="#" onclick="changePage(2)">2</a>
-                    <a href="#" onclick="changePage(2)">Next &gt;&gt;</a>
+                    <?php if ($currentPage > 1): ?>
+                        <a href="?letter=<?php echo $filterLetter; ?>&page=<?php echo $currentPage - 1; ?>">&lt;&lt; Previous</a>
+                    <?php endif; ?>
+                    
+                    <?php 
+                    // Show max 10 page numbers
+                    $startPage = max(1, $currentPage - 5);
+                    $endPage = min($totalPages, $currentPage + 4);
+                    
+                    if ($startPage > 1): ?>
+                        <a href="?letter=<?php echo $filterLetter; ?>&page=1">1</a>
+                        <?php if ($startPage > 2): ?>
+                            <span>...</span>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    
+                    <?php for ($i = $startPage; $i <= $endPage; $i++): ?>
+                        <?php if ($i == $currentPage): ?>
+                            <span class="current"><?php echo $i; ?></span>
+                        <?php else: ?>
+                            <a href="?letter=<?php echo $filterLetter; ?>&page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                        <?php endif; ?>
+                    <?php endfor; ?>
+                    
+                    <?php if ($endPage < $totalPages): ?>
+                        <?php if ($endPage < $totalPages - 1): ?>
+                            <span>...</span>
+                        <?php endif; ?>
+                        <a href="?letter=<?php echo $filterLetter; ?>&page=<?php echo $totalPages; ?>"><?php echo $totalPages; ?></a>
+                    <?php endif; ?>
+                    
+                    <?php if ($currentPage < $totalPages): ?>
+                        <a href="?letter=<?php echo $filterLetter; ?>&page=<?php echo $currentPage + 1; ?>">Next &gt;&gt;</a>
+                    <?php endif; ?>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
 
-    <!-- Featured Fort Types - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
+    <!-- Featured Fort Types -->
     <section class="py-16 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
@@ -595,11 +514,11 @@ include '../includes/header.php';
     </section>
 </main>
 
-<!-- Fort Detail Modal - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
+<!-- Fort Detail Modal -->
 <div id="fort-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center p-4">
     <div class="bg-gray-900 rounded-xl max-w-6xl max-h-[90vh] overflow-y-auto w-full relative">
-        <div class="fort-modal-header">
-            <button onclick="closeFortModal()" class="absolute top-4 right-4 text-white hover:text-gray-300">
+        <div class="fort-modal-header relative">
+            <button onclick="closeFortModal()" class="absolute top-4 right-4 text-white hover:text-gray-300 z-10">
                 <i class="fas fa-times text-2xl"></i>
             </button>
             <div class="modal-header"></div>
@@ -608,8 +527,8 @@ include '../includes/header.php';
     </div>
 </div>
 
-<!-- Lightbox Modal - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
-<div id="lightbox" class="fixed inset-0 bg-black bg-opacity-95 z-60 hidden items-center justify-center p-4">
+<!-- Lightbox Modal -->
+ <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-95 z-[9999] hidden items-center justify-center p-4">
     <div class="lightbox-content max-w-5xl w-full">
         <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white hover:text-gray-300 z-10">
             <i class="fas fa-times text-2xl"></i>
@@ -620,57 +539,67 @@ include '../includes/header.php';
 
 <?php include '../includes/footer.php'; ?>
 
-<!-- JavaScript - EXACT SAME STRUCTURE AND FUNCTIONALITY AS BUTTERFLY GALLERY -->
 <script>
 $(document).ready(function() {
-    console.log('Fort Photo Gallery loaded');
+    console.log('Fort Photo Gallery loaded - Dynamic Version');
+    
+    // Add click handlers to fort cards
+    $('.fort-card').click(function() {
+        const fortName = $(this).data('fort-name');
+        openFortGallery(fortName);
+    });
 });
 
-// Filter by alphabet - EXACT SAME AS BUTTERFLY GALLERY
-function filterByAlphabet(letter) {
-    $('.alphabet-filter a').removeClass('active');
-    $('a[onclick="filterByAlphabet(\'' + letter + '\')"]').addClass('active');
+// Open fort gallery in modal - AJAX LOAD
+function openFortGallery(fortName) {
+    // Show loading state
+    $('#fort-modal .modal-body').html('<div class="text-center py-12"><i class="fas fa-spinner fa-spin text-4xl text-white"></i><p class="text-white mt-4">Loading photos...</p></div>');
+    $('#fort-modal').removeClass('hidden').addClass('flex');
+    $('body').addClass('overflow-hidden');
     
-    if (letter === 'ALL') {
-        $('.fort-card').show();
-    } else {
-        $('.fort-card').hide();
-        $('.fort-card[data-alphabet="' + letter + '"]').show();
-    }
-    
-    // Animate the filtered items
-    $('.fort-card:visible').each(function(index) {
-        $(this).css('opacity', '0').delay(index * 100).animate({opacity: 1}, 300);
+    // AJAX request to get all photos for this fort
+    $.ajax({
+        url: '../api/get_fort_photos.php',
+        method: 'POST',
+        data: { fortName: fortName },
+        dataType: 'json',
+        success: function(response) {
+            if (response.status === "200") {
+                displayFortGallery(response.data);
+            } else {
+                $('#fort-modal .modal-body').html('<div class="text-center py-12"><i class="fas fa-exclamation-triangle text-4xl text-yellow-500"></i><p class="text-white mt-4">' + response.message + '</p></div>');
+            }
+        },
+        error: function() {
+            $('#fort-modal .modal-body').html('<div class="text-center py-12"><i class="fas fa-exclamation-triangle text-4xl text-red-500"></i><p class="text-white mt-4">Error loading photos. Please try again.</p></div>');
+        }
     });
 }
 
-// Open fort gallery in modal - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY
-function openFortGallery(slug) {
-    const fortName = slug.replace(/_/g, ' ');
+// Display fort gallery in modal
+function displayFortGallery(data) {
+    const fortName = data.fortName;
+    const fortDistrict = data.fortDistrict;
+    const photos = data.photos;
     
-    // Get fort photos (in real app, this would be an AJAX call)
-    const fortPhotos = getFortPhotos(slug);
-    
-    // Create modal content - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY
     let modalContent = `
         <div class="text-center mb-6">
-            <h2 class="text-3xl font-bold mb-2">
+            <h2 class="text-3xl font-bold mb-2 text-white">
                 <i class="fas fa-fort-awesome mr-2"></i>
                 ${fortName}
             </h2>
-            <p class="text-green-300 italic text-lg mb-2">Historic Classification</p>
-            <p class="text-gray-300">${fortPhotos.length} Photographs Available</p>
+            <p class="text-green-300 italic text-lg mb-2">${fortDistrict}</p>
+            <p class="text-gray-300">${photos.length} Photographs Available</p>
         </div>
         <div class="fort-photo-grid">
     `;
     
-    fortPhotos.forEach((photo, index) => {
+    photos.forEach((photo, index) => {
         modalContent += `
-            <div class="fort-photo-item" onclick="openLightbox(${index}, '${slug}')">
-                <img src="${photo.thumb}" alt="${photo.title}" class="w-full h-48 object-cover rounded-lg">
+            <div class="fort-photo-item" onclick="openLightbox(${index}, '${fortName}')">
+                <img src="../${photo.path}" alt="${photo.description || fortName}" class="w-full h-48 object-cover rounded-lg" onerror="this.src='../assets/images/default-fort.svg';">
                 <div class="photo-info mt-2">
-                    <p class="text-white text-sm">${photo.title}</p>
-                    <p class="text-gray-300 text-xs">${photo.location}</p>
+                    <p class="text-white text-sm">${photo.description || 'Photo ' + (index + 1)}</p>
                 </div>
             </div>
         `;
@@ -678,106 +607,110 @@ function openFortGallery(slug) {
     
     modalContent += '</div>';
     
-    // Show modal
     $('#fort-modal .modal-body').html(modalContent);
-    $('#fort-modal').removeClass('hidden').addClass('flex');
-    $('body').addClass('overflow-hidden');
+    
+    // Store photos data globally for lightbox
+    window.currentFortPhotos = photos;
+    window.currentFortName = fortName;
 }
 
-// Get fort photos (mock data - in real app, fetch from API) - EXACT SAME AS BUTTERFLY GALLERY
-function getFortPhotos(slug) {
-    const mockPhotos = [];
-    const photoCount = Math.floor(Math.random() * 15) + 5; // 5-20 photos
-    const locations = ['Main Entrance', 'Ramparts', 'Darwaja', 'Bastions', 'Palace Ruins', 'Temple', 'Water Cistern', 'Viewpoint'];
-    
-    for (let i = 1; i <= photoCount; i++) {
-        mockPhotos.push({
-            thumb: `https://images.unsplash.com/photo-${1590736969955 + i}?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80`,
-            full: `https://images.unsplash.com/photo-${1590736969955 + i}?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80`,
-            title: `${slug.replace(/_/g, ' ')} - Photo ${i}`,
-            location: locations[Math.floor(Math.random() * locations.length)]
-        });
-    }
-    
-    return mockPhotos;
-}
-
-// Close fort modal - EXACT SAME AS BUTTERFLY GALLERY
+// Close fort modal
 function closeFortModal() {
     $('#fort-modal').addClass('hidden').removeClass('flex');
     $('body').removeClass('overflow-hidden');
 }
 
-// Open lightbox for individual photo - EXACT SAME AS BUTTERFLY GALLERY
-function openLightbox(index, slug) {
-    const fortPhotos = getFortPhotos(slug);
+// Open lightbox for individual photo
+function openLightbox(index, fortName) {
+    const photos = window.currentFortPhotos;
+    
+    if (!photos || photos.length === 0) return;
     
     let lightboxContent = `
         <div class="lightbox-header mb-4">
-            <h3 class="text-white text-xl mb-1">${fortPhotos[index].title}</h3>
-            <p class="text-green-300 text-sm mb-1">📍 ${fortPhotos[index].location}</p>
-            <p class="text-gray-300 text-sm">Photo ${index + 1} of ${fortPhotos.length}</p>
+            <h3 class="text-white text-xl mb-1">${fortName}</h3>
+            <p class="text-green-300 text-sm mb-1">${photos[index].description || 'Fort Photo'}</p>
+            <p class="text-gray-300 text-sm">Photo ${index + 1} of ${photos.length}</p>
         </div>
         <div class="lightbox-image-container relative">
-            <img src="${fortPhotos[index].full}" alt="${fortPhotos[index].title}" class="max-w-full max-h-[70vh] object-contain rounded-lg">
-            ${index > 0 ? '<button class="lightbox-prev" onclick="navigateLightbox(' + (index - 1) + ', \'' + slug + '\')"><i class="fas fa-chevron-left"></i></button>' : ''}
-            ${index < fortPhotos.length - 1 ? '<button class="lightbox-next" onclick="navigateLightbox(' + (index + 1) + ', \'' + slug + '\')"><i class="fas fa-chevron-right"></i></button>' : ''}
+            <img src="../${photos[index].path}" alt="${photos[index].description}" class="max-w-full max-h-[70vh] object-contain rounded-lg mx-auto" onerror="this.src='../assets/images/default-fort.svg';">
+            ${index > 0 ? '<button class="lightbox-prev" onclick="navigateLightbox(' + (index - 1) + ')"><i class="fas fa-chevron-left"></i></button>' : ''}
+            ${index < photos.length - 1 ? '<button class="lightbox-next" onclick="navigateLightbox(' + (index + 1) + ')"><i class="fas fa-chevron-right"></i></button>' : ''}
         </div>
-        <div class="lightbox-thumbnails mt-4 flex gap-2 overflow-x-auto">
+        <div class="lightbox-thumbnails mt-4 flex gap-2 overflow-x-auto justify-center">
     `;
     
-    fortPhotos.forEach((photo, i) => {
+    photos.forEach((photo, i) => {
         lightboxContent += `
-            <img src="${photo.thumb}" 
-                 alt="${photo.title}" 
+            <img src="../${photo.path}" 
+                 alt="${photo.description}" 
                  class="w-16 h-16 object-cover rounded cursor-pointer ${i === index ? 'ring-2 ring-green-500' : 'opacity-60'}"
-                 onclick="navigateLightbox(${i}, '${slug}')">
+                 onclick="navigateLightbox(${i})"
+                 onerror="this.src='../assets/images/default-fort.svg';">
         `;
     });
     
     lightboxContent += '</div>';
     
     $('#lightbox .lightbox-body').html(lightboxContent);
+    $('#fort-modal').addClass('hidden'); // hide background modal
     $('#lightbox').removeClass('hidden').addClass('flex');
 }
 
-// Navigate lightbox - EXACT SAME AS BUTTERFLY GALLERY
-function navigateLightbox(index, slug) {
-    openLightbox(index, slug);
+// Navigate lightbox
+function navigateLightbox(index) {
+    openLightbox(index, window.currentFortName);
 }
 
-// Close lightbox - EXACT SAME AS BUTTERFLY GALLERY
+// Close lightbox
 function closeLightbox() {
-    $('#lightbox').addClass('hidden').removeClass('flex');
+     $('#lightbox').addClass('hidden').removeClass('flex');
+    $('#fort-modal').removeClass('hidden').addClass('flex');
 }
 
-// Change page - EXACT SAME AS BUTTERFLY GALLERY
-function changePage(page) {
-    console.log('Changing to page:', page);
-    // In real implementation, load new page content via AJAX
-    $('.pagination .current').removeClass('current').wrap('<a href="#" onclick="changePage(' + $('.pagination .current').text() + ')"></a>');
-    $('.pagination a').each(function() {
-        if ($(this).text() == page) {
-            $(this).addClass('current').contents().unwrap();
-        }
-    });
-}
-
-// Search functionality for forts - EXACT SAME AS BUTTERFLY GALLERY
+// Search functionality for forts
 function searchForts() {
     const searchTerm = $('#fort-search').val().toLowerCase();
+    let visibleCount = 0;
+    
     $('.fort-card').each(function() {
         const fortName = $(this).find('h3').text().toLowerCase();
         const locationName = $(this).find('.location-name').text().toLowerCase();
+        
         if (fortName.includes(searchTerm) || locationName.includes(searchTerm)) {
             $(this).show();
+            visibleCount++;
         } else {
             $(this).hide();
         }
     });
+    
+    // Show message if no results
+    if (visibleCount === 0 && searchTerm.length > 0) {
+        if ($('#no-results-message').length === 0) {
+            $('#gallery-grid').append(`
+                <div id="no-results-message" class="col-span-full text-center py-12">
+                    <i class="fas fa-search text-6xl text-gray-400 mb-4"></i>
+                    <p class="text-xl text-gray-600 dark:text-gray-300">No forts found matching "${searchTerm}"</p>
+                    <button onclick="clearSearch()" class="mt-4 px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700">
+                        Clear Search
+                    </button>
+                </div>
+            `);
+        }
+    } else {
+        $('#no-results-message').remove();
+    }
 }
 
-// Keyboard navigation for lightbox - EXACT SAME AS BUTTERFLY GALLERY
+// Clear search
+function clearSearch() {
+    $('#fort-search').val('');
+    $('.fort-card').show();
+    $('#no-results-message').remove();
+}
+
+// Keyboard navigation for lightbox
 $(document).keydown(function(e) {
     if ($('#lightbox').hasClass('flex')) {
         if (e.keyCode == 37) { // Left arrow
@@ -794,20 +727,61 @@ $(document).keydown(function(e) {
     }
 });
 
-// Lazy loading for fort images - EXACT SAME AS BUTTERFLY GALLERY
-$(window).scroll(function() {
-    $('.fort-image').each(function() {
-        if ($(this).offset().top < $(window).scrollTop() + $(window).height() + 100) {
-            const src = $(this).attr('src');
-            if (src.includes('placeholder')) {
-                // Replace with actual fort image
-                $(this).attr('src', src.replace('placeholder', 'fort'));
-            }
-        }
-    });
+// Click outside modal to close
+$('#fort-modal').click(function(e) {
+    if ($(e.target).is('#fort-modal')) {
+        closeFortModal();
+    }
 });
 
-console.log('Fort Photo Gallery: All functionality loaded successfully');
-console.log('Structure matches butterfly-gallery.php exactly');
-console.log('Alphabets: ALL, A-Z are now visible and functional');
+$('#lightbox').click(function(e) {
+    if ($(e.target).is('#lightbox')) {
+        closeLightbox();
+    }
+});
+
+// Smooth scroll to gallery
+$('a[href^="#"]').on('click', function(e) {
+    const target = $(this.getAttribute('href'));
+    if (target.length) {
+        e.preventDefault();
+        $('html, body').stop().animate({
+            scrollTop: target.offset().top - 80
+        }, 800);
+    }
+});
+
+// Add animation on scroll
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '0';
+            entry.target.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                entry.target.style.transition = 'all 0.5s ease';
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }, 100);
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Observe all fort cards
+$('.fort-card').each(function() {
+    observer.observe(this);
+});
+
+// Initialize tooltips
+$('.photo-badge').attr('title', 'Click to view all photos');
+
+console.log('Fort Photo Gallery: Dynamic version loaded successfully');
+console.log('Total forts on page: ' + $('.fort-card').length);
+console.log('Current filter: <?php echo $filterLetter; ?>');
+console.log('Current page: <?php echo $currentPage; ?>');
 </script>

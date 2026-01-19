@@ -72,7 +72,7 @@ try {
         $meta_description = 'Complete information about ' . $fortData['FortName'] . ' fort including history, ways to reach, facilities, and trekking details.';
         
         // Fetch front/cover image
-        $front_img_query = "SELECT * FROM PM_tblPhotos WHERE FortName LIKE ? AND PIC_FRONT_IMAGE = 'y' LIMIT 1";
+        $front_img_query = "SELECT * FROM PM_tblPhotos_clean WHERE FortName LIKE ? AND PIC_FRONT_IMAGE = 'y' LIMIT 1";
         $front_stmt = $conn->prepare($front_img_query);
         $front_stmt->bind_param("s", $search_param);
         $front_stmt->execute();
@@ -127,7 +127,7 @@ try {
         }
         
         // Fetch photos
-        $photos_query = "SELECT * FROM PM_tblPhotos WHERE FortName = ? LIMIT 12";
+        $photos_query = "SELECT * FROM PM_tblPhotos_clean WHERE FortName = ? LIMIT 12";
         $photos_stmt = $conn->prepare($photos_query);
         $photos_stmt->bind_param("s", $fortData['FortName']);
         $photos_stmt->execute();
@@ -275,7 +275,7 @@ include '../includes/header.php';
                             </span>
                         </div>
                         <div class="relative overflow-hidden rounded-2xl shadow-2xl aspect-[4/3] bg-gray-200 dark:bg-gray-700">
-                            <img src="/images/forts/<?php echo htmlspecialchars($frontImage['PIC_NAME']); ?>" 
+                            <img src="../assets/images/Photos/Picture/<?php echo htmlspecialchars($frontImage['PIC_NAME']); ?>" 
                                  alt="<?php echo htmlspecialchars($frontImage['PIC_DESC'] ?? $fortData['FortName']); ?>"
                                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                  >
@@ -286,7 +286,7 @@ include '../includes/header.php';
                                 </p>
                             </div>
                         </div>
-                        <a href="/gallery?fort=<?php echo urlencode($fortData['FortName']); ?>" 
+                        <a href="../gallery/fort-gallery.php?fort=<?php echo urlencode($fortData['FortName']); ?>" 
                            class="mt-4 inline-flex items-center text-accent hover:text-primary font-semibold transition-colors">
                             <i class="fas fa-images mr-2"></i>
                             View Full Photo Gallery
@@ -311,7 +311,7 @@ include '../includes/header.php';
                             <?php foreach ($fortMaps as $index => $map): ?>
                             <div class="relative group cursor-pointer">
                                 <div class="relative overflow-hidden rounded-xl shadow-lg aspect-square bg-gray-100 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600">
-                                    <img src="/images/maps/<?php echo htmlspecialchars($map['MapPath'] ?? $map['MapName']); ?>" 
+                                    <img src="../assets/images/Photos/Maps/MapImages/<?php echo htmlspecialchars($map['MapPath'] ?? $map['MapName']); ?>" 
                                          alt="<?php echo htmlspecialchars($map['MapType'] ?? 'Map ' . ($index + 1)); ?>"
                                          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                                          >

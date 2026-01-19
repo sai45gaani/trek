@@ -354,12 +354,12 @@ if (!isset($fortsData[$currentFilter]) && count($fortsData) > 0) {
                             </div>
                             
                             <div class="flex gap-2">
-                                <a href="/fort/<?php echo $fort['slug']; ?>" 
+                                <a href="./fort/index.php?slug=<?php echo $fort['slug']; ?>" 
                                    class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2.5 px-3 rounded-lg font-semibold transition-colors duration-300 text-sm">
                                     <i class="fas fa-info-circle mr-1"></i>
                                     Details
                                 </a>
-                                <a href="/trek/<?php echo $fort['slug']; ?>" 
+                                <a href="./trek/index.php?slug=<?php echo $fort['slug']; ?>" 
                                    class="flex-1 bg-accent hover:bg-primary text-white text-center py-2.5 px-3 rounded-lg font-semibold transition-colors duration-300 text-sm">
                                     <i class="fas fa-route mr-1"></i>
                                     Trek

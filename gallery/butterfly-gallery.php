@@ -4,8 +4,92 @@ $page_title = 'Photo Gallery of Butterflies | Trekshitz';
 $meta_description = 'Beautiful butterfly photographs captured during trekking adventures in Sahyadri, Western Ghats, Maharashtra. Explore diverse butterfly species found in forests and hills.';
 $meta_keywords = 'butterfly photos, Sahyadri butterflies, Western ghats, trekking, wildlife, Maharashtra butterflies, nature photography';
 
+require_once '../config/database.php';
+
 // Include header
 include '../includes/header.php';
+
+// Connect to database
+$db = new Database();
+$conn = $db->getConnection();
+
+
+// Pagination settings
+$itemsPerPage = 16;
+$currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+$offset = ($currentPage - 1) * $itemsPerPage;
+
+// Get filter letter
+$filterLetter = isset($_GET['letter']) ? strtoupper($_GET['letter']) : 'ALL';
+
+// Build query based on filter
+$whereClause = "";
+if ($filterLetter !== 'ALL') {
+    $whereClause = " AND CAT_NAME LIKE '" . $conn->real_escape_string($filterLetter) . "%'";
+}
+// Get total count for pagination
+$countQuery = "
+    SELECT COUNT(*) AS total
+    FROM sw_tblcategories
+    WHERE CAT_TYPE = 'Butterfly'
+    $whereClause
+";
+
+$countResult = $conn->query($countQuery);
+$totalItems = $countResult->fetch_assoc()['total'];
+$totalPages = ceil($totalItems / $itemsPerPage);
+
+// Main query to get forts with their featured images
+$query = "
+    SELECT 
+        CAT_ID,
+        CAT_NAME,
+        CAT_IMAGE,
+        CAT_TYPE
+    FROM sw_tblcategories
+    WHERE CAT_TYPE = 'Butterfly'
+    $whereClause
+    ORDER BY CAT_NAME ASC
+    LIMIT $itemsPerPage OFFSET $offset
+";
+
+$result = $conn->query($query);
+
+// Get forts data
+$galleryData = [];
+if ($result && $result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $galleryData[] = $row;
+    }
+}
+
+
+
+// Get actual stats from database
+/*$statsQuery = "
+    SELECT
+        SUM(CAT_TYPE = 'Butterfly') AS totalButterflies,
+        SUM(CAT_TYPE = 'Flower') AS totalFlowers,
+        SUM(CAT_TYPE = 'Cave') AS totalCaves
+    FROM gallery
+";
+
+$statsResult = $conn->query($statsQuery);
+$stats = $statsResult->fetch_assoc();*/
+
+$statsQuery = "
+    SELECT
+        COUNT(*) AS totalButterflies,
+        COUNT(CAT_IMAGE) AS totalButterflyImages,
+        COUNT(DISTINCT CAT_NAME) AS uniqueButterflySpecies
+    FROM sw_tblcategories
+    WHERE CAT_TYPE = 'Butterfly'
+";
+
+$statsResult = $conn->query($statsQuery);
+$stats = $statsResult->fetch_assoc();
+
+
 ?>
 
 <style>
@@ -148,26 +232,38 @@ include '../includes/header.php';
     </section>
 
     <!-- Gallery Stats -->
-    <section class="py-8 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="butterfly-stats max-w-4xl mx-auto">
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">50+</div>
-                        <p class="opacity-90">Butterfly Species</p>
+<!-- Butterfly Gallery Stats - DYNAMIC DATA -->
+        <section class="py-8 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+        <div class="fort-stats mx-auto">
+            <div class="grid md:grid-cols-3 gap-6">
+                
+                <div class="text-center">
+                    <div class="text-3xl font-bold mb-2">
+                        <?php echo $stats['totalButterflies']; ?>+
                     </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">150+</div>
-                        <p class="opacity-90">Photographs</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">25+</div>
-                        <p class="opacity-90">Locations Covered</p>
-                    </div>
+                    <p class="opacity-90">Butterflies Listed</p>
                 </div>
+
+                <div class="text-center">
+                    <div class="text-3xl font-bold mb-2">
+                        <?php echo $stats['totalButterflyImages']; ?>+
+                    </div>
+                    <p class="opacity-90">Butterfly Images</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="text-3xl font-bold mb-2">
+                        <?php echo $stats['uniqueButterflySpecies']; ?>+
+                    </div>
+                    <p class="opacity-90">Unique Species</p>
+                </div>
+
             </div>
         </div>
-    </section>
+    </div>
+        </section>
+
 
     <!-- Alphabetical Filter -->
     <section id="alphabetical" class="py-8 bg-white dark:bg-gray-900">
@@ -180,269 +276,60 @@ include '../includes/header.php';
             </div>
             
             <div class="alphabet-filter">
-                <a href="#" onclick="filterByAlphabet('ALL')" class="active">ALL</a>
-                <?php
-                $alphabets = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-                foreach ($alphabets as $letter) {
-                    echo '<a href="#" onclick="filterByAlphabet(\'' . $letter . '\')">' . $letter . '</a>';
-                }
-                ?>
+               <a href="?letter=ALL&page=1" class="<?php echo $filterLetter === 'ALL' ? 'active' : ''; ?>">ALL</a>
+                <?php foreach (range('A', 'Z') as $letter): ?>
+                    <a href="?letter=<?php echo $letter; ?>&page=1" class="<?php echo $filterLetter === $letter ? 'active' : ''; ?>"><?php echo $letter; ?></a>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
 
     <!-- Butterfly Gallery -->
     <section id="gallery" class="py-12 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="max-w-7xl mx-auto">
-                <div id="gallery-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <?php
-                    // Butterfly gallery data (from the provided HTML)
-                    $butterflyGallery = [
-                        [
-                            'name' => 'Angled Pierrot',
-                            'scientific_name' => 'Caleta decidia',
-                            'image' => 'Category/Butterfly/Angled Pierrot-3.jpg',
-                            'photos_count' => 3,
-                            'slug' => 'Angled_Pierrot',
-                            'alphabet' => 'A',
-                            'category_id' => 2
-                        ],
-                        [
-                            'name' => 'Baronet',
-                            'scientific_name' => 'Euthalia nais',
-                            'image' => 'Category/Butterfly/Baronet-1.jpg',
-                            'photos_count' => 8,
-                            'slug' => 'Baronet',
-                            'alphabet' => 'B',
-                            'category_id' => 3
-                        ],
-                        [
-                            'name' => 'Blue Mormon',
-                            'scientific_name' => 'Papilio polymnestor',
-                            'image' => 'Category/Butterfly/BlueMormon-1.jpg',
-                            'photos_count' => 2,
-                            'slug' => 'Blue_Mormon',
-                            'alphabet' => 'B',
-                            'category_id' => 4
-                        ],
-                        [
-                            'name' => 'Blue OakLeaf',
-                            'scientific_name' => 'Kallima horsfieldii',
-                            'image' => 'Category/Butterfly/BlueOakLeaf-2.jpg',
-                            'photos_count' => 2,
-                            'slug' => 'Blue_OakLeaf',
-                            'alphabet' => 'B',
-                            'category_id' => 5
-                        ],
-                        [
-                            'name' => 'Blue Pansy',
-                            'scientific_name' => 'Junonia orithya',
-                            'image' => 'Category/Butterfly/BluePansy-1.jpg',
-                            'photos_count' => 2,
-                            'slug' => 'Blue_Pansy',
-                            'alphabet' => 'B',
-                            'category_id' => 6
-                        ],
-                        [
-                            'name' => 'Blue Tiger',
-                            'scientific_name' => 'Tirumala limniace',
-                            'image' => 'Category/Butterfly/BlueTiger-1.jpg',
-                            'photos_count' => 5,
-                            'slug' => 'Blue_Tiger',
-                            'alphabet' => 'B',
-                            'category_id' => 7
-                        ],
-                        [
-                            'name' => 'Chocolate Pansy',
-                            'scientific_name' => 'Junonia iphita',
-                            'image' => 'Category/Butterfly/ChocolatePansy-1.jpg',
-                            'photos_count' => 4,
-                            'slug' => 'Chocolate_Pansy',
-                            'alphabet' => 'C',
-                            'category_id' => 9
-                        ],
-                        [
-                            'name' => 'Common Bushbrown',
-                            'scientific_name' => 'Mycalesis perseus',
-                            'image' => 'Category/Butterfly/CommonBushbrown-3.jpg',
-                            'photos_count' => 4,
-                            'slug' => 'Common_Bushbrown',
-                            'alphabet' => 'C',
-                            'category_id' => 13
-                        ],
-                        [
-                            'name' => 'Common Crow',
-                            'scientific_name' => 'Euploea core',
-                            'image' => 'Category/Butterfly/CommonCrow-2.jpg',
-                            'photos_count' => 4,
-                            'slug' => 'Common_Crow',
-                            'alphabet' => 'C',
-                            'category_id' => 14
-                        ],
-                        [
-                            'name' => 'Common Four Ring',
-                            'scientific_name' => 'Ypthima huebneri',
-                            'image' => 'Category/Butterfly/CommonFourRing-1.jpg',
-                            'photos_count' => 1,
-                            'slug' => 'Common_Four_Ring',
-                            'alphabet' => 'C',
-                            'category_id' => 15
-                        ],
-                        [
-                            'name' => 'Common Grass Yellow',
-                            'scientific_name' => 'Eurema hecabe',
-                            'image' => 'Category/Butterfly/CommonGrassYellow-1.jpg',
-                            'photos_count' => 4,
-                            'slug' => 'Common_Grass_Yellow',
-                            'alphabet' => 'C',
-                            'category_id' => 16
-                        ],
-                        [
-                            'name' => 'Common Gull',
-                            'scientific_name' => 'Cepora nerissa',
-                            'image' => 'Category/Butterfly/Common Gull-1.jpg',
-                            'photos_count' => 4,
-                            'slug' => 'Common_Gull',
-                            'alphabet' => 'C',
-                            'category_id' => 10
-                        ],
-                        [
-                            'name' => 'Common Jay',
-                            'scientific_name' => 'Graphium doson',
-                            'image' => 'Category/Butterfly/CommonJay-1.jpg',
-                            'photos_count' => 1,
-                            'slug' => 'Common_Jay',
-                            'alphabet' => 'C',
-                            'category_id' => 17
-                        ],
-                        [
-                            'name' => 'Common Jezebel',
-                            'scientific_name' => 'Delias eucharis',
-                            'image' => 'Category/Butterfly/CommonJezebel-1.jpg',
-                            'photos_count' => 1,
-                            'slug' => 'Common_Jezebel',
-                            'alphabet' => 'C',
-                            'category_id' => 18
-                        ],
-                        [
-                            'name' => 'Common Leopard',
-                            'scientific_name' => 'Phalanta phalantha',
-                            'image' => 'Category/Butterfly/Common Leopard-1.jpg',
-                            'photos_count' => 2,
-                            'slug' => 'Common_Leopard',
-                            'alphabet' => 'C',
-                            'category_id' => 11
-                        ],
-                        [
-                            'name' => 'Common Pierrot',
-                            'scientific_name' => 'Castalius rosimon',
-                            'image' => 'Category/Butterfly/Common Pierrot-1.jpg',
-                            'photos_count' => 2,
-                            'slug' => 'Common_Pierrot',
-                            'alphabet' => 'C',
-                            'category_id' => 12
-                        ],
-                        [
-                            'name' => 'Common Sailor',
-                            'scientific_name' => 'Neptis hylas',
-                            'image' => 'Category/Butterfly/CommonSailor-1.jpg',
-                            'photos_count' => 4,
-                            'slug' => 'Common_Sailor',
-                            'alphabet' => 'C',
-                            'category_id' => 8
-                        ],
-                        [
-                            'name' => 'Common TreeBrown',
-                            'scientific_name' => 'Lethe rohria',
-                            'image' => 'Category/Butterfly/CommonTreeBrown-1.jpg',
-                            'photos_count' => 1,
-                            'slug' => 'Common_TreeBrown',
-                            'alphabet' => 'C',
-                            'category_id' => 19
-                        ],
-                        [
-                            'name' => 'Common Wanderer',
-                            'scientific_name' => 'Pareronia valeria',
-                            'image' => 'Category/Butterfly/CommonWanderer-1.jpg',
-                            'photos_count' => 3,
-                            'slug' => 'Common_Wanderer',
-                            'alphabet' => 'C',
-                            'category_id' => 20
-                        ],
-                        [
-                            'name' => 'Daniad Eggfly Female',
-                            'scientific_name' => 'Hypolimnas misippus',
-                            'image' => 'Category/Butterfly/DaniadEggflyFemale-2.jpg',
-                            'photos_count' => 2,
-                            'slug' => 'Daniad_Eggfly_Female',
-                            'alphabet' => 'D',
-                            'category_id' => 21
-                        ],
-                        [
-                            'name' => 'Daniad Eggfly Male',
-                            'scientific_name' => 'Hypolimnas misippus',
-                            'image' => 'Category/Butterfly/DaniadEggflyMale-2.jpg',
-                            'photos_count' => 2,
-                            'slug' => 'Daniad_Eggfly_Male',
-                            'alphabet' => 'D',
-                            'category_id' => 22
-                        ],
-                        [
-                            'name' => 'Glassy Tiger',
-                            'scientific_name' => 'Parantica aglea',
-                            'image' => 'Category/Butterfly/GlassyTiger-1.jpg',
-                            'photos_count' => 3,
-                            'slug' => 'Glassy_Tiger',
-                            'alphabet' => 'G',
-                            'category_id' => 23
-                        ],
-                        [
-                            'name' => 'Golden Angle',
-                            'scientific_name' => 'Caprona ransonnettii',
-                            'image' => 'Category/Butterfly/GoldenAngle-1.jpg',
-                            'photos_count' => 3,
-                            'slug' => 'Golden_Angle',
-                            'alphabet' => 'G',
-                            'category_id' => 24
-                        ],
-                        [
-                            'name' => 'Grass Demon',
-                            'scientific_name' => 'Udaspes folus',
-                            'image' => 'Category/Butterfly/Grass Demon-1.jpg',
-                            'photos_count' => 2,
-                            'slug' => 'Grass_Demon',
-                            'alphabet' => 'G',
-                            'category_id' => 25
-                        ]
-                    ];
-                    
-                    // Display butterfly gallery items
-                    foreach ($butterflyGallery as $butterfly) {
-                        echo '<div class="butterfly-card" data-alphabet="' . $butterfly['alphabet'] . '" onclick="openButterflyGallery(\'' . $butterfly['slug'] . '\')">';
-                        echo '<img src="https://images.unsplash.com/photo-1518854050639-7d4c9ad5f9e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="' . htmlspecialchars($butterfly['name']) . '" class="butterfly-image">';
-                        echo '<div class="butterfly-overlay">';
-                        echo '<h3 class="font-bold text-lg mb-1">' . htmlspecialchars($butterfly['name']) . '</h3>';
-                        echo '<p class="scientific-name mb-2">' . htmlspecialchars($butterfly['scientific_name']) . '</p>';
-                        echo '<div class="species-badge">';
-                        echo '<i class="fas fa-camera mr-2"></i>';
-                        echo $butterfly['photos_count'] . ' Photo' . ($butterfly['photos_count'] > 1 ? 's' : '') . ' Inside';
-                        echo '</div>';
-                        echo '</div>';
-                        echo '</div>';
-                    }
-                    ?>
-                </div>
-                
-                <!-- Pagination -->
-                <div class="pagination">
-                    <span class="current">1</span>
-                    <a href="#" onclick="changePage(2)">2</a>
-                    <a href="#" onclick="changePage(2)">Next &gt;&gt;</a>
-                </div>
-            </div>
-        </div>
+        <div class="container mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+<?php foreach ($galleryData as $row): 
+    $name = $row['CAT_NAME'];
+    $slug = str_replace(' ', '_', $name);
+    $alphabet = strtoupper($name[0]);
+    $image = "../assets/images/Photos/CATEGORY/Butterfly/" . $row['CAT_IMAGE'];
+?>
+<div class="butterfly-card cursor-pointer" onclick="openButterflyGallery('<?= $slug ?>')">
+
+    <img src="<?= htmlspecialchars($image) ?>"
+         alt="<?= htmlspecialchars($name) ?>"
+         class="w-full h-48 object-cover rounded"
+         loading="lazy"
+         onerror="this.src='../assets/images/default-butterfly.svg'">
+
+    <div class="p-3 bg-black text-white">
+        <h3 class="font-bold"><?= htmlspecialchars($name) ?></h3>
+        <p class="text-sm italic text-orange-300"><?= htmlspecialchars($name) ?></p>
+    </div>
+</div>
+<?php endforeach; ?>
+
+</div>
     </section>
+
+    <!-- ================= PAGINATION ================= -->
+<div class="pagination flex justify-center gap-2 py-8">
+<?php if ($currentPage > 1): ?>
+<a href="?page=<?= $currentPage - 1 ?>&letter=<?= $filterLetter ?>">&laquo; Prev</a>
+<?php endif; ?>
+
+<?php for ($i = 1; $i <= $totalPages; $i++): ?>
+<?php if ($i == $currentPage): ?>
+<span class="font-bold"><?= $i ?></span>
+<?php else: ?>
+<a href="?page=<?= $i ?>&letter=<?= $filterLetter ?>"><?= $i ?></a>
+<?php endif; ?>
+<?php endfor; ?>
+
+<?php if ($currentPage < $totalPages): ?>
+<a href="?page=<?= $currentPage + 1 ?>&letter=<?= $filterLetter ?>">Next &raquo;</a>
+<?php endif; ?>
+</div>
 
     <!-- Featured Butterfly Types -->
     <section class="py-16 bg-white dark:bg-gray-900">

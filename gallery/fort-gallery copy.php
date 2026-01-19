@@ -301,7 +301,7 @@ $stats = $statsResult->fetch_assoc();
         
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 font-bilingual">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 mt-6 font-bilingual">
                     🏰 किल्ल्यांची गॅलरी
                 </h1>
                 <h2 class="text-2xl md:text-3xl font-semibold mb-8">
@@ -341,7 +341,7 @@ $stats = $statsResult->fetch_assoc();
     <!-- Gallery Stats - DYNAMIC DATA -->
     <section class="py-8 bg-gray-50 dark:bg-gray-800">
         <div class="container mx-auto px-4">
-            <div class="fort-stats max-w-4xl mx-auto">
+            <div class="fort-stats mx-auto">
                 <div class="grid md:grid-cols-3 gap-6">
                     <div class="text-center">
                         <div class="text-3xl font-bold mb-2"><?php echo $stats['totalForts']; ?>+</div>
@@ -564,7 +564,7 @@ function openFortGallery(fortName) {
         data: { fortName: fortName },
         dataType: 'json',
         success: function(response) {
-            if (response.success) {
+            if (response.status === "200") {
                 displayFortGallery(response.data);
             } else {
                 $('#fort-modal .modal-body').html('<div class="text-center py-12"><i class="fas fa-exclamation-triangle text-4xl text-yellow-500"></i><p class="text-white mt-4">' + response.message + '</p></div>');
@@ -597,7 +597,7 @@ function displayFortGallery(data) {
     photos.forEach((photo, index) => {
         modalContent += `
             <div class="fort-photo-item" onclick="openLightbox(${index}, '${fortName}')">
-                <img src="${photo.path}" alt="${photo.description || fortName}" class="w-full h-48 object-cover rounded-lg" onerror="this.src='../assets/images/default-fort.svg';">
+                <img src="../${photo.path}" alt="${photo.description || fortName}" class="w-full h-48 object-cover rounded-lg" onerror="this.src='../assets/images/default-fort.svg';">
                 <div class="photo-info mt-2">
                     <p class="text-white text-sm">${photo.description || 'Photo ' + (index + 1)}</p>
                 </div>
@@ -633,7 +633,7 @@ function openLightbox(index, fortName) {
             <p class="text-gray-300 text-sm">Photo ${index + 1} of ${photos.length}</p>
         </div>
         <div class="lightbox-image-container relative">
-            <img src="${photos[index].path}" alt="${photos[index].description}" class="max-w-full max-h-[70vh] object-contain rounded-lg mx-auto" onerror="this.src='../assets/images/default-fort.svg';">
+            <img src="../${photos[index].path}" alt="${photos[index].description}" class="max-w-full max-h-[70vh] object-contain rounded-lg mx-auto" onerror="this.src='../assets/images/default-fort.svg';">
             ${index > 0 ? '<button class="lightbox-prev" onclick="navigateLightbox(' + (index - 1) + ')"><i class="fas fa-chevron-left"></i></button>' : ''}
             ${index < photos.length - 1 ? '<button class="lightbox-next" onclick="navigateLightbox(' + (index + 1) + ')"><i class="fas fa-chevron-right"></i></button>' : ''}
         </div>
@@ -642,7 +642,7 @@ function openLightbox(index, fortName) {
     
     photos.forEach((photo, i) => {
         lightboxContent += `
-            <img src="${photo.path}" 
+            <img src="../${photo.path}" 
                  alt="${photo.description}" 
                  class="w-16 h-16 object-cover rounded cursor-pointer ${i === index ? 'ring-2 ring-green-500' : 'opacity-60'}"
                  onclick="navigateLightbox(${i})"

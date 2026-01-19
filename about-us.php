@@ -286,7 +286,7 @@ include './includes/header.php';
 
 <main id="main-content" class="pt-20">
     <!-- Hero Section -->
-    <section class="relative py-20 bg-gradient-to-br from-primary via-secondary to-accent text-white overflow-hidden hero-pattern">
+    <section class="relative py-20 bg-gradient-to-br from-primary via-secondary to-accent text-white overflow-hidden">
         <div class="floating-elements">
             <div class="floating-element"></div>
             <div class="floating-element"></div>
@@ -295,11 +295,11 @@ include './includes/header.php';
         
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center max-w-5xl mx-auto">
-                <div class="flex justify-center mb-8">
+                <div class="flex justify-center mb-4">
                     <div class="w-20 h-1 bg-yellow-300 rounded-full"></div>
                 </div>
                 <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up">
-                    About <span class="text-yellow-300">TreKshitiZ</span>
+                    <span class="text-yellow-300">About TreKshitiZ</span>
                 </h1>
                 <p class="text-xl md:text-2xl mb-4 opacity-90">
                     Maharashtra's Premier Trekking & Fort Conservation Community

@@ -5,7 +5,82 @@ $meta_description = 'Beautiful photographs of ancient Buddhist caves, natural ro
 $meta_keywords = 'cave photos, Buddhist caves, Sahyadri caves, Western ghats, ancient caves, Maharashtra caves, heritage photography, rock formations';
 
 // Include header
+require_once '../config/database.php';
+
+// Include header
 include '../includes/header.php';
+
+// Connect to database
+$db = new Database();
+$conn = $db->getConnection();
+
+
+// Pagination settings
+$itemsPerPage = 16;
+$currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+$offset = ($currentPage - 1) * $itemsPerPage;
+
+// Get filter letter
+$filterLetter = isset($_GET['letter']) ? strtoupper($_GET['letter']) : 'ALL';
+
+// Build query based on filter
+$whereClause = "";
+if ($filterLetter !== 'ALL') {
+    $whereClause = " AND CAT_NAME LIKE '" . $conn->real_escape_string($filterLetter) . "%'";
+}
+// Get total count for pagination
+$countQuery = "
+    SELECT COUNT(*) AS total
+    FROM sw_tblcategories
+    WHERE CAT_TYPE = 'Cave'
+    $whereClause
+";
+
+$countResult = $conn->query($countQuery);
+$totalItems = $countResult->fetch_assoc()['total'];
+$totalPages = ceil($totalItems / $itemsPerPage);
+
+// Main query to get forts with their featured images
+$query = "
+    SELECT 
+        CAT_ID,
+        CAT_NAME,
+        CAT_IMAGE,
+        CAT_TYPE
+    FROM sw_tblcategories
+    WHERE CAT_TYPE = 'Cave'
+    $whereClause
+    ORDER BY CAT_NAME ASC
+    LIMIT $itemsPerPage OFFSET $offset
+";
+
+$result = $conn->query($query);
+
+// Get forts data
+$galleryData = [];
+if ($result && $result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $galleryData[] = $row;
+    }
+}
+
+
+
+// Get actual stats from database
+
+$statsQuery = "
+    SELECT
+        COUNT(*) AS totalCaves,
+        COUNT(CAT_IMAGE) AS totalCaveImages,
+        COUNT(DISTINCT CAT_NAME) AS uniqueCaveSites
+    FROM sw_tblcategories
+    WHERE CAT_TYPE = 'Cave'
+";
+
+$statsResult = $conn->query($statsQuery);
+$stats = $statsResult->fetch_assoc();
+
+
 ?>
 
 <style>
@@ -273,24 +348,34 @@ include '../includes/header.php';
 
     <!-- Gallery Stats - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
     <section class="py-8 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="cave-stats max-w-4xl mx-auto">
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">5+</div>
-                        <p class="opacity-90">Cave Complexes</p>
+    <div class="container mx-auto px-4">
+        <div class="fort-stats mx-auto">
+            <div class="grid md:grid-cols-3 gap-6">
+                
+                <div class="text-center">
+                    <div class="text-3xl font-bold mb-2">
+                        <?php echo $stats['totalCaves']; ?>+
                     </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">31+</div>
-                        <p class="opacity-90">Photographs</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">2000+</div>
-                        <p class="opacity-90">Years Old</p>
-                    </div>
+                    <p class="opacity-90">Caves Listed</p>
                 </div>
+
+                <div class="text-center">
+                    <div class="text-3xl font-bold mb-2">
+                        <?php echo $stats['totalCaveImages']; ?>+
+                    </div>
+                    <p class="opacity-90">Cave Images</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="text-3xl font-bold mb-2">
+                        <?php echo $stats['uniqueCaveSites']; ?>+
+                    </div>
+                    <p class="opacity-90">Unique Sites</p>
+                </div>
+
             </div>
         </div>
+    </div>
     </section>
 
     <!-- Alphabetical Filter - HARDCODED ALPHABETS -->
@@ -304,197 +389,61 @@ include '../includes/header.php';
             </div>
             
             <div class="alphabet-filter">
-                <a href="#" onclick="filterByAlphabet('ALL')" class="active">ALL</a>
-                <a href="#" onclick="filterByAlphabet('A')">A</a>
-                <a href="#" onclick="filterByAlphabet('B')">B</a>
-                <a href="#" onclick="filterByAlphabet('C')">C</a>
-                <a href="#" onclick="filterByAlphabet('D')">D</a>
-                <a href="#" onclick="filterByAlphabet('E')">E</a>
-                <a href="#" onclick="filterByAlphabet('F')">F</a>
-                <a href="#" onclick="filterByAlphabet('G')">G</a>
-                <a href="#" onclick="filterByAlphabet('H')">H</a>
-                <a href="#" onclick="filterByAlphabet('I')">I</a>
-                <a href="#" onclick="filterByAlphabet('J')">J</a>
-                <a href="#" onclick="filterByAlphabet('K')">K</a>
-                <a href="#" onclick="filterByAlphabet('L')">L</a>
-                <a href="#" onclick="filterByAlphabet('M')">M</a>
-                <a href="#" onclick="filterByAlphabet('N')">N</a>
-                <a href="#" onclick="filterByAlphabet('O')">O</a>
-                <a href="#" onclick="filterByAlphabet('P')">P</a>
-                <a href="#" onclick="filterByAlphabet('Q')">Q</a>
-                <a href="#" onclick="filterByAlphabet('R')">R</a>
-                <a href="#" onclick="filterByAlphabet('S')">S</a>
-                <a href="#" onclick="filterByAlphabet('T')">T</a>
-                <a href="#" onclick="filterByAlphabet('U')">U</a>
-                <a href="#" onclick="filterByAlphabet('V')">V</a>
-                <a href="#" onclick="filterByAlphabet('W')">W</a>
-                <a href="#" onclick="filterByAlphabet('X')">X</a>
-                <a href="#" onclick="filterByAlphabet('Y')">Y</a>
-                <a href="#" onclick="filterByAlphabet('Z')">Z</a>
+               <a href="?letter=ALL&page=1" class="<?php echo $filterLetter === 'ALL' ? 'active' : ''; ?>">ALL</a>
+                <?php foreach (range('A', 'Z') as $letter): ?>
+                    <a href="?letter=<?php echo $letter; ?>&page=1" class="<?php echo $filterLetter === $letter ? 'active' : ''; ?>"><?php echo $letter; ?></a>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
 
     <!-- Cave Gallery - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
     <section id="gallery" class="py-12 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="max-w-7xl mx-auto">
-                <div id="gallery-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Cave Cards - EXACT SAME STRUCTURE AS BUTTERFLY CARDS -->
-                    <div class="cave-card" data-alphabet="A" onclick="openCaveGallery('Ajanta_Caves')">
-                        <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Ajanta Caves" class="cave-image">
-                        <div class="cave-overlay">
-                            <h3 class="font-bold text-lg mb-1">Ajanta Caves</h3>
-                            <p class="heritage-name mb-2">Buddhist Monastic Complex</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                15 Photos Inside
-                            </div>
-                        </div>
-                    </div>
+  <div class="container mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-                    <div class="cave-card" data-alphabet="B" onclick="openCaveGallery('Bhaja_Caves')">
-                        <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Bhaja Caves" class="cave-image">
-                        <div class="cave-overlay">
-                            <h3 class="font-bold text-lg mb-1">Bhaja Caves</h3>
-                            <p class="heritage-name mb-2">Ancient Buddhist Caves</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                12 Photos Inside
-                            </div>
-                        </div>
-                    </div>
+<?php foreach ($galleryData as $row): 
+    $name = $row['CAT_NAME'];
+    $slug = str_replace(' ', '_', $name);
+    $alphabet = strtoupper($name[0]);
+    $image = "../assets/images/Photos/CATEGORY/Cave/" . $row['CAT_IMAGE'];
+?>
+<div class="cave-card cursor-pointer" onclick="openCaveGallery('<?= $slug ?>')">
 
-                    <div class="cave-card" data-alphabet="B" onclick="openCaveGallery('Bedse_Caves')">
-                        <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Bedse Caves" class="cave-image">
-                        <div class="cave-overlay">
-                            <h3 class="font-bold text-lg mb-1">Bedse Caves</h3>
-                            <p class="heritage-name mb-2">Rock-cut Architecture</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                8 Photos Inside
-                            </div>
-                        </div>
-                    </div>
+    <img src="<?= htmlspecialchars($image) ?>"
+         alt="<?= htmlspecialchars($name) ?>"
+         class="w-full h-48 object-cover rounded"
+         loading="lazy"
+         onerror="this.src='../assets/images/default-cave.svg'">
 
-                    <div class="cave-card" data-alphabet="E" onclick="openCaveGallery('Ellora_Caves')">
-                        <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Ellora Caves" class="cave-image">
-                        <div class="cave-overlay">
-                            <h3 class="font-bold text-lg mb-1">Ellora Caves</h3>
-                            <p class="heritage-name mb-2">Multi-religious Complex</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                20 Photos Inside
-                            </div>
-                        </div>
-                    </div>
+    <div class="p-3 bg-black text-white">
+        <h3 class="font-bold"><?= htmlspecialchars($name) ?></h3>
+        <p class="text-sm italic text-orange-300"><?= htmlspecialchars($name) ?></p>
+    </div>
+</div>
+<?php endforeach; ?>
 
-                    <div class="cave-card" data-alphabet="E" onclick="openCaveGallery('Elephanta_Caves')">
-                        <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Elephanta Caves" class="cave-image">
-                        <div class="cave-overlay">
-                            <h3 class="font-bold text-lg mb-1">Elephanta Caves</h3>
-                            <p class="heritage-name mb-2">Shiva Temple Caves</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                14 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="cave-card" data-alphabet="K" onclick="openCaveGallery('Karla_Caves')">
-                        <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Karla Caves" class="cave-image">
-                        <div class="cave-overlay">
-                            <h3 class="font-bold text-lg mb-1">Karla Caves</h3>
-                            <p class="heritage-name mb-2">Buddhist Chaitya Hall</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                10 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="cave-card" data-alphabet="K" onclick="openCaveGallery('Kanheri_Caves')">
-                        <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Kanheri Caves" class="cave-image">
-                        <div class="cave-overlay">
-                            <h3 class="font-bold text-lg mb-1">Kanheri Caves</h3>
-                            <p class="heritage-name mb-2">Buddhist Monastery</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                18 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="cave-card" data-alphabet="L" onclick="openCaveGallery('Lenyadri_Caves')">
-                        <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Lenyadri Caves" class="cave-image">
-                        <div class="cave-overlay">
-                            <h3 class="font-bold text-lg mb-1">Lenyadri Caves</h3>
-                            <p class="heritage-name mb-2">Ganesha Temple Caves</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                9 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="cave-card" data-alphabet="N" onclick="openCaveGallery('Nashik_Caves')">
-                        <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Nashik Caves" class="cave-image">
-                        <div class="cave-overlay">
-                            <h3 class="font-bold text-lg mb-1">Nashik Caves</h3>
-                            <p class="heritage-name mb-2">Pandav Leni Caves</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                11 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="cave-card" data-alphabet="P" onclick="openCaveGallery('Pitalkhora_Caves')">
-                        <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Pitalkhora Caves" class="cave-image">
-                        <div class="cave-overlay">
-                            <h3 class="font-bold text-lg mb-1">Pitalkhora Caves</h3>
-                            <p class="heritage-name mb-2">Buddhist Rock Caves</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                7 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="cave-card" data-alphabet="S" onclick="openCaveGallery('Shivneri_Caves')">
-                        <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Shivneri Caves" class="cave-image">
-                        <div class="cave-overlay">
-                            <h3 class="font-bold text-lg mb-1">Shivneri Caves</h3>
-                            <p class="heritage-name mb-2">Natural Rock Caves</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                6 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="cave-card" data-alphabet="T" onclick="openCaveGallery('Tulja_Caves')">
-                        <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Tulja Caves" class="cave-image">
-                        <div class="cave-overlay">
-                            <h3 class="font-bold text-lg mb-1">Tulja Caves</h3>
-                            <p class="heritage-name mb-2">Ancient Cave Complex</p>
-                            <div class="photo-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                5 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Pagination - EXACT SAME AS BUTTERFLY GALLERY -->
-                <div class="pagination">
-                    <span class="current">1</span>
-                    <a href="#" onclick="changePage(2)">2</a>
-                    <a href="#" onclick="changePage(2)">Next &gt;&gt;</a>
-                </div>
-            </div>
-        </div>
+</div>
     </section>
+
+        <!-- ================= PAGINATION ================= -->
+<div class="pagination flex justify-center gap-2 py-8">
+<?php if ($currentPage > 1): ?>
+<a href="?page=<?= $currentPage - 1 ?>&letter=<?= $filterLetter ?>">&laquo; Prev</a>
+<?php endif; ?>
+
+<?php for ($i = 1; $i <= $totalPages; $i++): ?>
+<?php if ($i == $currentPage): ?>
+<span class="font-bold"><?= $i ?></span>
+<?php else: ?>
+<a href="?page=<?= $i ?>&letter=<?= $filterLetter ?>"><?= $i ?></a>
+<?php endif; ?>
+<?php endfor; ?>
+
+<?php if ($currentPage < $totalPages): ?>
+<a href="?page=<?= $currentPage + 1 ?>&letter=<?= $filterLetter ?>">Next &raquo;</a>
+<?php endif; ?>
+</div>
+
 
     <!-- Featured Cave Types - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
     <section class="py-16 bg-white dark:bg-gray-900">

@@ -4,8 +4,93 @@ $page_title = 'Photo Gallery of Wild Flowers in Sahyadri | Trekshitz';
 $meta_description = 'Beautiful wild flower photographs captured during trekking adventures in Sahyadri, Western Ghats, Maharashtra. Explore diverse botanical species and monsoon blooms.';
 $meta_keywords = 'flower photos, wild flowers, Sahyadri flowers, Western ghats, botanical photography, Maharashtra flowers, nature photography, monsoon blooms';
 
+require_once '../config/database.php';
+
 // Include header
 include '../includes/header.php';
+
+
+// Connect to database
+$db = new Database();
+$conn = $db->getConnection();
+
+
+// Pagination settings
+$itemsPerPage = 16;
+$currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+$offset = ($currentPage - 1) * $itemsPerPage;
+
+// Get filter letter
+$filterLetter = isset($_GET['letter']) ? strtoupper($_GET['letter']) : 'ALL';
+
+// Build query based on filter
+$whereClause = "";
+if ($filterLetter !== 'ALL') {
+    $whereClause = " AND CAT_NAME LIKE '" . $conn->real_escape_string($filterLetter) . "%'";
+}
+// Get total count for pagination
+$countQuery = "
+    SELECT COUNT(*) AS total
+    FROM sw_tblcategories
+    WHERE CAT_TYPE = 'Flower'
+    $whereClause
+";
+
+$countResult = $conn->query($countQuery);
+$totalItems = $countResult->fetch_assoc()['total'];
+$totalPages = ceil($totalItems / $itemsPerPage);
+
+// Main query to get forts with their featured images
+$query = "
+    SELECT 
+        CAT_ID,
+        CAT_NAME,
+        CAT_IMAGE,
+        CAT_TYPE
+    FROM sw_tblcategories
+    WHERE CAT_TYPE = 'Flower'
+    $whereClause
+    ORDER BY CAT_NAME ASC
+    LIMIT $itemsPerPage OFFSET $offset
+";
+
+$result = $conn->query($query);
+
+// Get forts data
+$galleryData = [];
+if ($result && $result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $galleryData[] = $row;
+    }
+}
+
+
+
+// Get actual stats from database
+/*$statsQuery = "
+    SELECT
+        SUM(CAT_TYPE = 'Butterfly') AS totalButterflies,
+        SUM(CAT_TYPE = 'Flower') AS totalFlowers,
+        SUM(CAT_TYPE = 'Cave') AS totalCaves
+    FROM gallery
+";
+
+$statsResult = $conn->query($statsQuery);
+$stats = $statsResult->fetch_assoc();*/
+
+$statsQuery = "
+    SELECT
+        COUNT(*) AS totalFlowerflies,
+        COUNT(CAT_IMAGE) AS totalFlowerImages,
+        COUNT(DISTINCT CAT_NAME) AS uniqueFlowerSpecies
+    FROM sw_tblcategories
+    WHERE CAT_TYPE = 'Flower'
+";
+
+$statsResult = $conn->query($statsQuery);
+$stats = $statsResult->fetch_assoc();
+
+
 ?>
 
 <style>
@@ -273,25 +358,35 @@ include '../includes/header.php';
 
     <!-- Gallery Stats - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
     <section class="py-8 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="flower-stats max-w-4xl mx-auto">
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">19+</div>
-                        <p class="opacity-90">Flower Species</p>
+       <div class="container mx-auto px-4">
+        <div class="fort-stats mx-auto">
+            <div class="grid md:grid-cols-3 gap-6">
+                
+                <div class="text-center">
+                    <div class="text-3xl font-bold mb-2">
+                        <?php echo $stats['totalFlowerflies']; ?>+
                     </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">25+</div>
-                        <p class="opacity-90">Photographs</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">12+</div>
-                        <p class="opacity-90">Plant Families</p>
-                    </div>
+                    <p class="opacity-90">Flowers Listed</p>
                 </div>
+
+                <div class="text-center">
+                    <div class="text-3xl font-bold mb-2">
+                        <?php echo $stats['totalFlowerImages']; ?>+
+                    </div>
+                    <p class="opacity-90">Flower Images</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="text-3xl font-bold mb-2">
+                        <?php echo $stats['uniqueFlowerSpecies']; ?>+
+                    </div>
+                    <p class="opacity-90">Unique Species</p>
+                </div>
+
             </div>
         </div>
-    </section>
+    </div>
+ </section>
 
     <!-- Alphabetical Filter - HARDCODED ALPHABETS -->
     <section id="alphabetical" class="py-8 bg-white dark:bg-gray-900">
@@ -303,246 +398,62 @@ include '../includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300">* Click on the photo to see more photos of the flower species</p>
             </div>
             
-            <div class="alphabet-filter">
-                <a href="#" onclick="filterByAlphabet('ALL')" class="active">ALL</a>
-                <a href="#" onclick="filterByAlphabet('A')">A</a>
-                <a href="#" onclick="filterByAlphabet('B')">B</a>
-                <a href="#" onclick="filterByAlphabet('C')">C</a>
-                <a href="#" onclick="filterByAlphabet('D')">D</a>
-                <a href="#" onclick="filterByAlphabet('E')">E</a>
-                <a href="#" onclick="filterByAlphabet('F')">F</a>
-                <a href="#" onclick="filterByAlphabet('G')">G</a>
-                <a href="#" onclick="filterByAlphabet('H')">H</a>
-                <a href="#" onclick="filterByAlphabet('I')">I</a>
-                <a href="#" onclick="filterByAlphabet('J')">J</a>
-                <a href="#" onclick="filterByAlphabet('K')">K</a>
-                <a href="#" onclick="filterByAlphabet('L')">L</a>
-                <a href="#" onclick="filterByAlphabet('M')">M</a>
-                <a href="#" onclick="filterByAlphabet('N')">N</a>
-                <a href="#" onclick="filterByAlphabet('O')">O</a>
-                <a href="#" onclick="filterByAlphabet('P')">P</a>
-                <a href="#" onclick="filterByAlphabet('Q')">Q</a>
-                <a href="#" onclick="filterByAlphabet('R')">R</a>
-                <a href="#" onclick="filterByAlphabet('S')">S</a>
-                <a href="#" onclick="filterByAlphabet('T')">T</a>
-                <a href="#" onclick="filterByAlphabet('U')">U</a>
-                <a href="#" onclick="filterByAlphabet('V')">V</a>
-                <a href="#" onclick="filterByAlphabet('W')">W</a>
-                <a href="#" onclick="filterByAlphabet('X')">X</a>
-                <a href="#" onclick="filterByAlphabet('Y')">Y</a>
-                <a href="#" onclick="filterByAlphabet('Z')">Z</a>
+               <div class="alphabet-filter">
+               <a href="?letter=ALL&page=1" class="<?php echo $filterLetter === 'ALL' ? 'active' : ''; ?>">ALL</a>
+                <?php foreach (range('A', 'Z') as $letter): ?>
+                    <a href="?letter=<?php echo $letter; ?>&page=1" class="<?php echo $filterLetter === $letter ? 'active' : ''; ?>"><?php echo $letter; ?></a>
+                <?php endforeach; ?>
             </div>
+        
         </div>
     </section>
 
     <!-- Flower Gallery - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
     <section id="gallery" class="py-12 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="max-w-7xl mx-auto">
-                <div id="gallery-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Flower Cards - EXACT SAME STRUCTURE AS BUTTERFLY CARDS -->
-                    <div class="flower-card" data-alphabet="A" onclick="openFlowerGallery('Ageratum_Conyzoides')">
-                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Ageratum Conyzoides" class="flower-image">
-                        <div class="flower-overlay">
-                            <h3 class="font-bold text-lg mb-1">Ageratum Conyzoides</h3>
-                            <p class="botanical-name mb-2">Billygoat Weed</p>
-                            <div class="species-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                3 Photos Inside
-                            </div>
-                        </div>
-                    </div>
+        <div class="container mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-                    <div class="flower-card" data-alphabet="B" onclick="openFlowerGallery('Barleria_Prionitis')">
-                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Barleria Prionitis" class="flower-image">
-                        <div class="flower-overlay">
-                            <h3 class="font-bold text-lg mb-1">Barleria Prionitis</h3>
-                            <p class="botanical-name mb-2">Porcupine Flower</p>
-                            <div class="species-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                4 Photos Inside
-                            </div>
-                        </div>
-                    </div>
+<?php foreach ($galleryData as $row): 
+    $name = $row['CAT_NAME'];
+    $slug = str_replace(' ', '_', $name);
+    $alphabet = strtoupper($name[0]);
+    $image = "../assets/images/Photos/CATEGORY/Flower/" . $row['CAT_IMAGE'];
+?>
+<div class="Flower-card cursor-pointer" onclick="openFlowerGallery('<?= $slug ?>')">
 
-                    <div class="flower-card" data-alphabet="C" onclick="openFlowerGallery('Cassia_Auriculata')">
-                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Cassia Auriculata" class="flower-image">
-                        <div class="flower-overlay">
-                            <h3 class="font-bold text-lg mb-1">Cassia Auriculata</h3>
-                            <p class="botanical-name mb-2">Tanner's Cassia</p>
-                            <div class="species-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                5 Photos Inside
-                            </div>
-                        </div>
-                    </div>
+    <img src="<?= htmlspecialchars($image) ?>"
+         alt="<?= htmlspecialchars($name) ?>"
+         class="w-full h-48 object-cover rounded"
+         loading="lazy"
+         onerror="this.src='../assets/images/default-flower.svg'">
 
-                    <div class="flower-card" data-alphabet="D" onclick="openFlowerGallery('Datura_Stramonium')">
-                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Datura Stramonium" class="flower-image">
-                        <div class="flower-overlay">
-                            <h3 class="font-bold text-lg mb-1">Datura Stramonium</h3>
-                            <p class="botanical-name mb-2">Thorn Apple</p>
-                            <div class="species-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                2 Photos Inside
-                            </div>
-                        </div>
-                    </div>
+    <div class="p-3 bg-black text-white">
+        <h3 class="font-bold"><?= htmlspecialchars($name) ?></h3>
+        <p class="text-sm italic text-orange-300"><?= htmlspecialchars($name) ?></p>
+    </div>
+</div>
+<?php endforeach; ?>
 
-                    <div class="flower-card" data-alphabet="E" onclick="openFlowerGallery('Erythrina_Indica')">
-                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Erythrina Indica" class="flower-image">
-                        <div class="flower-overlay">
-                            <h3 class="font-bold text-lg mb-1">Erythrina Indica</h3>
-                            <p class="botanical-name mb-2">Indian Coral Tree</p>
-                            <div class="species-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                6 Photos Inside
-                            </div>
-                        </div>
-                    </div>
+</div></section>
 
-                    <div class="flower-card" data-alphabet="F" onclick="openFlowerGallery('Flame_Of_Forest')">
-                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Flame Of Forest" class="flower-image">
-                        <div class="flower-overlay">
-                            <h3 class="font-bold text-lg mb-1">Flame Of Forest</h3>
-                            <p class="botanical-name mb-2">Butea Monosperma</p>
-                            <div class="species-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                8 Photos Inside
-                            </div>
-                        </div>
-                    </div>
+<!-- ================= PAGINATION ================= -->
+<div class="pagination flex justify-center gap-2 py-8">
+<?php if ($currentPage > 1): ?>
+<a href="?page=<?= $currentPage - 1 ?>&letter=<?= $filterLetter ?>">&laquo; Prev</a>
+<?php endif; ?>
 
-                    <div class="flower-card" data-alphabet="G" onclick="openFlowerGallery('Gloriosa_Superba')">
-                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Gloriosa Superba" class="flower-image">
-                        <div class="flower-overlay">
-                            <h3 class="font-bold text-lg mb-1">Gloriosa Superba</h3>
-                            <p class="botanical-name mb-2">Flame Lily</p>
-                            <div class="species-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                4 Photos Inside
-                            </div>
-                        </div>
-                    </div>
+<?php for ($i = 1; $i <= $totalPages; $i++): ?>
+<?php if ($i == $currentPage): ?>
+<span class="font-bold"><?= $i ?></span>
+<?php else: ?>
+<a href="?page=<?= $i ?>&letter=<?= $filterLetter ?>"><?= $i ?></a>
+<?php endif; ?>
+<?php endfor; ?>
 
-                    <div class="flower-card" data-alphabet="H" onclick="openFlowerGallery('Hibiscus_Rosa')">
-                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Hibiscus Rosa" class="flower-image">
-                        <div class="flower-overlay">
-                            <h3 class="font-bold text-lg mb-1">Hibiscus Rosa</h3>
-                            <p class="botanical-name mb-2">Chinese Rose</p>
-                            <div class="species-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                7 Photos Inside
-                            </div>
-                        </div>
-                    </div>
+<?php if ($currentPage < $totalPages): ?>
+<a href="?page=<?= $currentPage + 1 ?>&letter=<?= $filterLetter ?>">Next &raquo;</a>
+<?php endif; ?>
+</div>
 
-                    <div class="flower-card" data-alphabet="I" onclick="openFlowerGallery('Ixora_Coccinea')">
-                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Ixora Coccinea" class="flower-image">
-                        <div class="flower-overlay">
-                            <h3 class="font-bold text-lg mb-1">Ixora Coccinea</h3>
-                            <p class="botanical-name mb-2">Jungle Flame</p>
-                            <div class="species-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                3 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flower-card" data-alphabet="J" onclick="openFlowerGallery('Jasminum_Grandiflorum')">
-                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Jasminum Grandiflorum" class="flower-image">
-                        <div class="flower-overlay">
-                            <h3 class="font-bold text-lg mb-1">Jasminum Grandiflorum</h3>
-                            <p class="botanical-name mb-2">Spanish Jasmine</p>
-                            <div class="species-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                5 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flower-card" data-alphabet="K" onclick="openFlowerGallery('Karvi_Flower')">
-                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Karvi Flower" class="flower-image">
-                        <div class="flower-overlay">
-                            <h3 class="font-bold text-lg mb-1">Karvi Flower</h3>
-                            <p class="botanical-name mb-2">Strobilanthes Callosa</p>
-                            <div class="species-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                9 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flower-card" data-alphabet="L" onclick="openFlowerGallery('Lantana_Camara')">
-                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Lantana Camara" class="flower-image">
-                        <div class="flower-overlay">
-                            <h3 class="font-bold text-lg mb-1">Lantana Camara</h3>
-                            <p class="botanical-name mb-2">Wild Sage</p>
-                            <div class="species-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                6 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flower-card" data-alphabet="M" onclick="openFlowerGallery('Mimosa_Pudica')">
-                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mimosa Pudica" class="flower-image">
-                        <div class="flower-overlay">
-                            <h3 class="font-bold text-lg mb-1">Mimosa Pudica</h3>
-                            <p class="botanical-name mb-2">Touch Me Not</p>
-                            <div class="species-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                4 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flower-card" data-alphabet="N" onclick="openFlowerGallery('Nerium_Oleander')">
-                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Nerium Oleander" class="flower-image">
-                        <div class="flower-overlay">
-                            <h3 class="font-bold text-lg mb-1">Nerium Oleander</h3>
-                            <p class="botanical-name mb-2">Oleander</p>
-                            <div class="species-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                3 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flower-card" data-alphabet="P" onclick="openFlowerGallery('Plumeria_Alba')">
-                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Plumeria Alba" class="flower-image">
-                        <div class="flower-overlay">
-                            <h3 class="font-bold text-lg mb-1">Plumeria Alba</h3>
-                            <p class="botanical-name mb-2">White Frangipani</p>
-                            <div class="species-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                5 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flower-card" data-alphabet="R" onclick="openFlowerGallery('Rhododendron_Arboreum')">
-                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Rhododendron Arboreum" class="flower-image">
-                        <div class="flower-overlay">
-                            <h3 class="font-bold text-lg mb-1">Rhododendron Arboreum</h3>
-                            <p class="botanical-name mb-2">Tree Rhododendron</p>
-                            <div class="species-badge">
-                                <i class="fas fa-camera mr-2"></i>
-                                7 Photos Inside
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Pagination - EXACT SAME AS BUTTERFLY GALLERY -->
-                <div class="pagination">
-                    <span class="current">1</span>
-                    <a href="#" onclick="changePage(2)">2</a>
-                    <a href="#" onclick="changePage(2)">Next &gt;&gt;</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Featured Flower Types - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
     <section class="py-16 bg-white dark:bg-gray-900">

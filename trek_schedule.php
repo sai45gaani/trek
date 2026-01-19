@@ -1,159 +1,12 @@
-    <?php
+<?php
 // Set page specific variables
 $page_title = 'Trek Schedule - Upcoming Treks | Trekshitz';
 $meta_description = 'Explore upcoming treks with Trekshitz. Join our scheduled treks to Rajmachi, Peb, Aadrai and other exciting destinations in Sahyadri mountains.';
 $meta_keywords = 'trek schedule, upcoming treks, Trekshitz treks, Maharashtra trekking, Sahyadri treks, adventure tours';
 
+require_once './config/database.php';
 // Include header
 include './includes/header.php';
-
-// Static trek data based on your screenshots
-$treksData = [
-    [
-        'id' => 1,
-        'name' => 'Rajmachi Fort',
-        'date' => '2025-07-12',
-        'end_date' => '2025-07-13', // For multi-day treks
-        'leader' => 'Alok Gore',
-        'contact' => '96993 83058',
-        'cost' => 0,
-        'grade' => 'Medium',
-        'last_booking_date' => '2025-07-05',
-        'meeting_place' => 'Please contact Trek Leader for Details',
-        'max_participants' => 50,
-        'description' => 'Please contact Trek Leader for Trek Cost',
-        'image' => 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'status' => 'open'
-    ],
-    [
-        'id' => 2,
-        'name' => 'Peb Fort',
-        'date' => '2025-07-20',
-        'end_date' => null,
-        'leader' => 'Kapil Kulkarni',
-        'contact' => '98202 03787',
-        'cost' => 0,
-        'grade' => 'Easy',
-        'last_booking_date' => '2025-07-13',
-        'meeting_place' => 'Please contact Trek Leader for Details',
-        'max_participants' => 25,
-        'description' => 'Please contact Trek Leader for Trek Cost',
-        'image' => 'https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'status' => 'open'
-    ],
-    [
-        'id' => 3,
-        'name' => 'Aadrai Forest Trek',
-        'date' => '2025-08-24',
-        'end_date' => null,
-        'leader' => 'Sagar Kathrani',
-        'contact' => '98707 67292',
-        'cost' => 0,
-        'grade' => 'Medium',
-        'last_booking_date' => '2025-08-17',
-        'meeting_place' => 'Please contact Trek Leader for Details',
-        'max_participants' => 25,
-        'description' => 'Please contact Trek Leader for Trek Cost',
-        'image' => 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'status' => 'open'
-    ],
-    [
-        'id' => 4,
-        'name' => 'Kolad River Rafting',
-        'date' => '2025-09-14',
-        'end_date' => null,
-        'leader' => 'Ketan Lovlekar',
-        'contact' => '98200 42854',
-        'cost' => 0,
-        'grade' => 'Easy',
-        'last_booking_date' => '2025-09-07',
-        'meeting_place' => 'Please contact Trek Leader for Details',
-        'max_participants' => 25,
-        'description' => 'Please contact Trek Leader for Trek Cost',
-        'image' => 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'status' => 'open'
-    ],
-    [
-        'id' => 5,
-        'name' => 'Naldurg & Other Bhuikot Forts',
-        'date' => '2025-09-27',
-        'end_date' => '2025-09-28',
-        'leader' => 'Tushar Dhuri',
-        'contact' => '93237 87529',
-        'cost' => 0,
-        'grade' => 'Easy',
-        'last_booking_date' => '2025-09-20',
-        'meeting_place' => 'Please contact Trek Leader for Details',
-        'max_participants' => 25,
-        'description' => 'Please contact Trek Leader for Trek Cost',
-        'image' => 'https://images.unsplash.com/photo-1605538883669-825200433431?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'status' => 'open'
-    ],
-    [
-        'id' => 6,
-        'name' => 'Harishchandragad',
-        'date' => '2025-10-15',
-        'end_date' => '2025-10-16',
-        'leader' => 'Rohit Patil',
-        'contact' => '97654 32100',
-        'cost' => 1200,
-        'grade' => 'Hard',
-        'last_booking_date' => '2025-10-08',
-        'meeting_place' => 'Pune Railway Station',
-        'max_participants' => 30,
-        'description' => 'Night trek with camping. Include transportation, meals and guide',
-        'image' => 'https://images.unsplash.com/photo-1464822759844-d5709c4c2d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'status' => 'open'
-    ],
-    [
-        'id' => 7,
-        'name' => 'Kalsubai Peak',
-        'date' => '2025-11-12',
-        'end_date' => null,
-        'leader' => 'Priya Sharma',
-        'contact' => '98765 43210',
-        'cost' => 800,
-        'grade' => 'Medium',
-        'last_booking_date' => '2025-11-05',
-        'meeting_place' => 'Kasara Railway Station',
-        'max_participants' => 40,
-        'description' => 'Highest peak in Maharashtra. Include transportation and breakfast',
-        'image' => 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'status' => 'open'
-    ],
-    [
-        'id' => 8,
-        'name' => 'Rajgad Fort',
-        'date' => '2025-12-08',
-        'end_date' => null,
-        'leader' => 'Amit Deshmukh',
-        'contact' => '91234 56789',
-        'cost' => 600,
-        'grade' => 'Medium',
-        'last_booking_date' => '2025-12-01',
-        'meeting_place' => 'Swargate Bus Stand, Pune',
-        'max_participants' => 35,
-        'description' => 'Historical fort trek with guide. Transportation included',
-        'image' => 'https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'status' => 'open'
-    ],
-    [
-        'id' => 9,
-        'name' => 'Visapur Fort',
-        'date' => '2025-12-22',
-        'end_date' => null,
-        'leader' => 'Neha Kulkarni',
-        'contact' => '98888 77777',
-        'cost' => 500,
-        'grade' => 'Easy',
-        'last_booking_date' => '2025-12-15',
-        'meeting_place' => 'Lonavala Railway Station',
-        'max_participants' => 50,
-        'description' => 'Easy trek suitable for beginners. Local transportation included',
-        'image' => 'https://images.unsplash.com/photo-1586348943529-beaae6c28db9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-        'status' => 'open'
-    ]
-];
 
 // Helper functions
 function getGradeColor($grade) {
@@ -167,6 +20,8 @@ function getGradeColor($grade) {
 }
 
 function formatDate($date) {
+    if (!$date) return '';
+    
     $months = [
         1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April',
         5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August',
@@ -182,6 +37,8 @@ function formatDate($date) {
 }
 
 function getDaysUntilTrek($date) {
+    if (!$date) return 'N/A';
+    
     $today = new DateTime();
     $trek_date = new DateTime($date);
     $diff = $today->diff($trek_date);
@@ -194,6 +51,8 @@ function getDaysUntilTrek($date) {
 }
 
 function getUrgencyClass($date) {
+    if (!$date) return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200';
+    
     $today = new DateTime();
     $trek_date = new DateTime($date);
     $diff = $today->diff($trek_date);
@@ -207,43 +66,167 @@ function getUrgencyClass($date) {
     }
 }
 
-// Pagination and filtering
-$page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
-$limit = 6;
-$offset = ($page - 1) * $limit;
-
-// Apply filters
-$filteredTreks = $treksData;
-
-// Search filter
-$search_query = isset($_GET['search']) ? trim($_GET['search']) : '';
-if (!empty($search_query)) {
-    $filteredTreks = array_filter($filteredTreks, function($trek) use ($search_query) {
-        return stripos($trek['name'], $search_query) !== false || 
-               stripos($trek['leader'], $search_query) !== false ||
-               stripos($trek['description'], $search_query) !== false;
-    });
+function getTrekImage($place) {
+    // Default images based on trek type/name
+    $images = [
+        'fort' => 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        'peak' => 'https://images.unsplash.com/photo-1464822759844-d5709c4c2d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        'forest' => 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        'rafting' => 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        'default' => 'https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    ];
+    
+    $place_lower = strtolower($place);
+    
+    if (strpos($place_lower, 'fort') !== false) return $images['fort'];
+    if (strpos($place_lower, 'peak') !== false || strpos($place_lower, 'kalsubai') !== false) return $images['peak'];
+    if (strpos($place_lower, 'forest') !== false) return $images['forest'];
+    if (strpos($place_lower, 'rafting') !== false) return $images['rafting'];
+    
+    return $images['default'];
 }
 
-// Grade filter
-$filter_grade = isset($_GET['grade']) ? $_GET['grade'] : '';
-if (!empty($filter_grade)) {
-    $filteredTreks = array_filter($filteredTreks, function($trek) use ($filter_grade) {
-        return strtolower($trek['grade']) === strtolower($filter_grade);
-    });
+// Connect to database
+$db = new Database();
+$conn = $db->getConnection();
+
+$treksData = [];
+$total_treks_count = 0;
+
+try {
+    // Get filter parameters
+    $search_query = isset($_GET['search']) ? trim($_GET['search']) : '';
+    $filter_grade = isset($_GET['grade']) ? trim($_GET['grade']) : '';
+    $filter_month = isset($_GET['month']) ? trim($_GET['month']) : '';
+    
+    // Build WHERE clause for filters
+    $where_conditions = ["TrekDate >= CURDATE()"]; // Only show upcoming treks
+    $params = [];
+    $types = "";
+    
+    // Search filter
+    if (!empty($search_query)) {
+        $where_conditions[] = "(Place LIKE ? OR Leader LIKE ? OR Description LIKE ?)";
+        $search_param = "%{$search_query}%";
+        $params[] = $search_param;
+        $params[] = $search_param;
+        $params[] = $search_param;
+        $types .= "sss";
+    }
+    
+    // Grade filter
+    if (!empty($filter_grade)) {
+        $where_conditions[] = "LOWER(Grade) = ?";
+        $params[] = strtolower($filter_grade);
+        $types .= "s";
+    }
+    
+    // Month filter
+    if (!empty($filter_month)) {
+        $where_conditions[] = "MONTH(TrekDate) = ?";
+        $params[] = $filter_month;
+        $types .= "i";
+    }
+    
+    $where_clause = implode(" AND ", $where_conditions);
+    
+    // Count total treks (for statistics)
+    $count_query = "SELECT COUNT(*) as total FROM TS_tblTrekDetails WHERE " . $where_clause;
+    $count_stmt = $conn->prepare($count_query);
+    
+    if (!empty($params)) {
+        $count_stmt->bind_param($types, ...$params);
+    }
+    
+    $count_stmt->execute();
+    $count_result = $count_stmt->get_result();
+    $total_treks_count = $count_result->fetch_assoc()['total'];
+    $count_stmt->close();
+    
+    // Pagination
+    $page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+    $limit = 6;
+    $offset = ($page - 1) * $limit;
+    
+    // Fetch trek data with pagination
+    $query = "SELECT 
+                TrekId,
+                Place,
+                TrekDate,
+                Leader,
+                ContDetails,
+                DisplayDate,
+                Cost,
+                Grade,
+                LDateBooking,
+                MeetingPlace,
+                MaxParticipants,
+                Description,
+                Notes
+              FROM TS_tblTrekDetails 
+              WHERE " . $where_clause . "
+              ORDER BY TrekDate ASC
+              LIMIT ? OFFSET ?";
+    
+    $stmt = $conn->prepare($query);
+    
+    // Add pagination parameters
+    $params[] = $limit;
+    $params[] = $offset;
+    $types .= "ii";
+    
+    if (!empty($params)) {
+        $stmt->bind_param($types, ...$params);
+    }
+    
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    while ($row = $result->fetch_assoc()) {
+        // Process the data
+        $trek = [
+            'id' => $row['TrekId'],
+            'name' => trim($row['Place']),
+            'date' => $row['TrekDate'],
+            'end_date' => null, // Can be calculated from DisplayDate if needed
+            'leader' => trim($row['Leader']),
+            'contact' => trim($row['ContDetails']),
+            'cost' => floatval($row['Cost']),
+            'grade' => trim($row['Grade']) ?: 'Medium',
+            'last_booking_date' => $row['LDateBooking'],
+            'meeting_place' => trim($row['MeetingPlace']) ?: 'Please contact Trek Leader for Details',
+            'max_participants' => intval($row['MaxParticipants']) ?: 25,
+            'description' => trim($row['Description']) ?: 'Please contact Trek Leader for Trek Cost',
+            'notes' => trim($row['Notes']) ?: '',
+            'image' => getTrekImage($row['Place']),
+            'status' => 'open'
+        ];
+        
+        $treksData[] = $trek;
+    }
+    
+    $stmt->close();
+    
+} catch (Exception $e) {
+    error_log("Trek Schedule Error: " . $e->getMessage());
+    $treksData = [];
+    $total_treks_count = 0;
 }
 
-// Month filter
-$filter_month = isset($_GET['month']) ? $_GET['month'] : '';
-if (!empty($filter_month)) {
-    $filteredTreks = array_filter($filteredTreks, function($trek) use ($filter_month) {
-        return date('m', strtotime($trek['date'])) == $filter_month;
-    });
-}
+$total_pages = ceil($total_treks_count / $limit);
+$paginatedTreks = $treksData; // Already paginated from query
 
-$total_treks = count($filteredTreks);
-$total_pages = ceil($total_treks / $limit);
-$paginatedTreks = array_slice($filteredTreks, $offset, $limit);
+// Get all trek names for search suggestions
+$suggestions = [];
+try {
+    $sugg_query = "SELECT DISTINCT Place FROM TS_tblTrekDetails WHERE TrekDate >= CURDATE() ORDER BY Place ASC LIMIT 20";
+    $sugg_result = $conn->query($sugg_query);
+    while ($row = $sugg_result->fetch_assoc()) {
+        $suggestions[] = trim($row['Place']);
+    }
+} catch (Exception $e) {
+    $suggestions = [];
+}
 ?>
 
 <main id="main-content" class="pt-20">
@@ -269,7 +252,7 @@ $paginatedTreks = array_slice($filteredTreks, $offset, $limit);
                 <div class="flex flex-wrap justify-center gap-6 text-sm opacity-90">
                     <div class="flex items-center gap-2">
                         <i class="fas fa-calendar-alt text-accent"></i>
-                        <span><?php echo count($treksData); ?> Upcoming Treks</span>
+                        <span><?php echo $total_treks_count; ?> Upcoming Treks</span>
                     </div>
                     <div class="flex items-center gap-2">
                         <i class="fas fa-users text-accent"></i>
@@ -289,7 +272,7 @@ $paginatedTreks = array_slice($filteredTreks, $offset, $limit);
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div class="text-center transform hover:scale-105 transition-transform">
-                    <div class="text-4xl font-bold text-primary dark:text-accent mb-2 animate-number" data-target="<?php echo count($treksData); ?>">0</div>
+                    <div class="text-4xl font-bold text-primary dark:text-accent mb-2 animate-number" data-target="<?php echo $total_treks_count; ?>">0</div>
                     <div class="text-gray-600 dark:text-gray-300">Upcoming Treks</div>
                 </div>
                 <div class="text-center transform hover:scale-105 transition-transform">
@@ -353,6 +336,12 @@ $paginatedTreks = array_slice($filteredTreks, $offset, $limit);
                         </label>
                         <select name="month" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent dark:bg-gray-700 dark:text-white">
                             <option value="">All Months</option>
+                            <option value="1" <?php echo $filter_month === '1' ? 'selected' : ''; ?>>January</option>
+                            <option value="2" <?php echo $filter_month === '2' ? 'selected' : ''; ?>>February</option>
+                            <option value="3" <?php echo $filter_month === '3' ? 'selected' : ''; ?>>March</option>
+                            <option value="4" <?php echo $filter_month === '4' ? 'selected' : ''; ?>>April</option>
+                            <option value="5" <?php echo $filter_month === '5' ? 'selected' : ''; ?>>May</option>
+                            <option value="6" <?php echo $filter_month === '6' ? 'selected' : ''; ?>>June</option>
                             <option value="7" <?php echo $filter_month === '7' ? 'selected' : ''; ?>>July</option>
                             <option value="8" <?php echo $filter_month === '8' ? 'selected' : ''; ?>>August</option>
                             <option value="9" <?php echo $filter_month === '9' ? 'selected' : ''; ?>>September</option>
@@ -385,7 +374,7 @@ $paginatedTreks = array_slice($filteredTreks, $offset, $limit);
                         Upcoming Treks & Adventures
                     </h2>
                     <p class="text-center text-gray-600 dark:text-gray-300 text-lg">
-                        Showing <?php echo count($paginatedTreks); ?> of <?php echo $total_treks; ?> treks
+                        Showing <?php echo count($paginatedTreks); ?> of <?php echo $total_treks_count; ?> treks
                     </p>
                 </div>
 
@@ -398,7 +387,7 @@ $paginatedTreks = array_slice($filteredTreks, $offset, $limit);
                                 
                                 <!-- Difficulty Badge -->
                                 <span class="absolute top-4 right-4 px-3 py-1 text-xs font-bold text-white rounded-full <?php echo getGradeColor($trek['grade']); ?>">
-                                    <?php echo $trek['grade']; ?>
+                                    <?php echo htmlspecialchars($trek['grade']); ?>
                                 </span>
                                 
                                 <!-- Days Until Trek Badge -->
@@ -447,7 +436,7 @@ $paginatedTreks = array_slice($filteredTreks, $offset, $limit);
                                     <div class="flex items-center text-gray-600 dark:text-gray-300 text-sm">
                                         <i class="fas fa-phone text-accent mr-3 w-4"></i>
                                         <a href="tel:<?php echo $trek['contact']; ?>" class="text-accent hover:text-primary font-semibold hover:underline">
-                                            <?php echo $trek['contact']; ?>
+                                            <?php echo htmlspecialchars($trek['contact']); ?>
                                         </a>
                                     </div>
                                     
@@ -776,10 +765,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Search functionality with suggestions
     const searchInput = document.querySelector('input[name="search"]');
     if (searchInput) {
-        const suggestions = [
-            'Rajmachi Fort', 'Peb Fort', 'Aadrai Forest Trek', 'Kolad River Rafting',
-            'Naldurg Fort', 'Harishchandragad', 'Kalsubai Peak', 'Rajgad Fort', 'Visapur Fort'
-        ];
+        const suggestions = <?php echo json_encode($suggestions); ?>;
         
         let suggestionsContainer;
         
