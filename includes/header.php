@@ -351,6 +351,8 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                             <div class="absolute top-full left-0 w-64 bg-white dark:bg-gray-800 shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-2">
                                 <div class="py-2">
                                     <a href="<?= BASE_URL ?>gallery/fort-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Forts</a>
+                                    <a href="<?= BASE_URL ?>gallery/map-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Maps</a>
+
                                     <a href="<?= BASE_URL ?>gallery/butterfly-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Butterflies</a>
                                     <a href="<?= BASE_URL ?>gallery/caves-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Caves</a>
                                     <a href="<?= BASE_URL ?>gallery/flower-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Flowers</a>

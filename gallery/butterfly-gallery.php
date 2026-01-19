@@ -66,16 +66,7 @@ if ($result && $result->num_rows > 0) {
 
 
 // Get actual stats from database
-/*$statsQuery = "
-    SELECT
-        SUM(CAT_TYPE = 'Butterfly') AS totalButterflies,
-        SUM(CAT_TYPE = 'Flower') AS totalFlowers,
-        SUM(CAT_TYPE = 'Cave') AS totalCaves
-    FROM gallery
-";
 
-$statsResult = $conn->query($statsQuery);
-$stats = $statsResult->fetch_assoc();*/
 
 $statsQuery = "
     SELECT
@@ -395,7 +386,7 @@ $stats = $statsResult->fetch_assoc();
     </div>
 
     <!-- Lightbox Modal -->
-    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-95 z-60 hidden items-center justify-center p-4">
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-95 z-[9999] hidden items-center justify-center p-4">
         <div class="lightbox-content max-w-5xl w-full">
             <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white hover:text-gray-300 z-10">
                 <i class="fas fa-times text-2xl"></i>
@@ -481,11 +472,11 @@ $stats = $statsResult->fetch_assoc();
     }
 
     .lightbox-prev {
-        left: -60px;
+        left: -20px;
     }
 
     .lightbox-next {
-        right: -60px;
+        right: -20px;
     }
 
     .lightbox-prev:hover, .lightbox-next:hover {
@@ -550,17 +541,19 @@ function filterByAlphabet(letter) {
 
 // Open butterfly gallery in modal
 function openButterflyGallery(slug) {
-    const butterflyName = slug.replace(/_/g, ' ');
+     const butterflyName = slug.replace(/_/g, ' ');
     
     // Get butterfly photos (in real app, this would be an AJAX call)
-    const butterflyPhotos = getButterflyPhotos(slug);
+    const butterflyPhotos = <?php echo json_encode($galleryData); ?> ;
+    window.currentFortPhotos = butterflyPhotos;
+    window.currentFortName = slug;
     
     // Create modal content
     let modalContent = `
         <div class="text-center mb-6">
-            <h2 class="text-3xl font-bold mb-2">
+            <h2 class="text-3xl font-bold mb-2 text-white">
                 <i class="fas fa-butterfly mr-2"></i>
-                ${butterflyName}
+                Butterfly species
             </h2>
             <p class="text-orange-300 italic text-lg mb-2">Scientific Classification</p>
             <p class="text-gray-300">${butterflyPhotos.length} Photographs Available</p>
@@ -570,11 +563,16 @@ function openButterflyGallery(slug) {
     
     butterflyPhotos.forEach((photo, index) => {
         modalContent += `
-            <div class="butterfly-photo-item" onclick="openLightbox(${index}, '${slug}')">
-                <img src="${photo.thumb}" alt="${photo.title}" class="w-full h-48 object-cover rounded-lg">
+            <div class="butterfly-photo-item"  onclick="openLightbox(
+                ${index},
+                '${photo.CAT_NAME}'
+             )">
+                <img src="../assets/images/Photos/CATEGORY/Butterfly/${photo.CAT_IMAGE}" alt="${photo.CAT_NAME}" class="w-full h-48 object-cover rounded-lg">
                 <div class="photo-info mt-2">
-                    <p class="text-white text-sm">${photo.title}</p>
-                    <p class="text-gray-300 text-xs">${photo.location}</p>
+                   <p class="text-white text-sm font-semibold">
+                    ${photo.CAT_NAME}
+                </p>
+                   
                 </div>
             </div>
         `;
@@ -588,23 +586,6 @@ function openButterflyGallery(slug) {
     $('body').addClass('overflow-hidden');
 }
 
-// Get butterfly photos (mock data - in real app, fetch from API)
-function getButterflyPhotos(slug) {
-    const mockPhotos = [];
-    const photoCount = Math.floor(Math.random() * 8) + 2; // 2-10 photos
-    const locations = ['Lonavala', 'Matheran', 'Mahabaleshwar', 'Bhimashankar', 'Rajgad', 'Sinhagad'];
-    
-    for (let i = 1; i <= photoCount; i++) {
-        mockPhotos.push({
-            thumb: `https://images.unsplash.com/photo-${1518854050639 + i}?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80`,
-            full: `https://images.unsplash.com/photo-${1518854050639 + i}?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80`,
-            title: `${slug.replace(/_/g, ' ')} - Photo ${i}`,
-            location: locations[Math.floor(Math.random() * locations.length)]
-        });
-    }
-    
-    return mockPhotos;
-}
 
 // Close butterfly modal
 function closeButterflyModal() {
@@ -612,47 +593,72 @@ function closeButterflyModal() {
     $('body').removeClass('overflow-hidden');
 }
 
-// Open lightbox for individual photo
-function openLightbox(index, slug) {
-    const butterflyPhotos = getButterflyPhotos(slug);
+
+
+function openLightboxSimple(index, name) {
+    const butterflyname = name;
+    const photos = window.currentFortPhotos;
+    console.log(photos);
+    console.log('Opening lightbox for', name, 'at index', index);
     
     let lightboxContent = `
         <div class="lightbox-header mb-4">
-            <h3 class="text-white text-xl mb-1">${butterflyPhotos[index].title}</h3>
-            <p class="text-orange-300 text-sm mb-1">📍 ${butterflyPhotos[index].location}</p>
-            <p class="text-gray-300 text-sm">Photo ${index + 1} of ${butterflyPhotos.length}</p>
+            <h3 class="text-white text-xl mb-1">${photos[index].CAT_NAME}</h3>
+            <p class="text-orange-300 text-sm mb-1">📍 ${photos[index].CAT_TYPE}</p>
+            <p class="text-gray-300 text-sm">Photo ${index + 1} of ${photos.length}</p>
         </div>
-        <div class="lightbox-image-container relative">
-            <img src="${butterflyPhotos[index].full}" alt="${butterflyPhotos[index].title}" class="max-w-full max-h-[70vh] object-contain rounded-lg">
-            ${index > 0 ? '<button class="lightbox-prev" onclick="navigateLightbox(' + (index - 1) + ', \'' + slug + '\')"><i class="fas fa-chevron-left"></i></button>' : ''}
-            ${index < butterflyPhotos.length - 1 ? '<button class="lightbox-next" onclick="navigateLightbox(' + (index + 1) + ', \'' + slug + '\')"><i class="fas fa-chevron-right"></i></button>' : ''}
-        </div>
+        <div class="lightbox-image-container relative flex items-center justify-center min-h-[70vh]">
+    <img 
+        src="../assets/images/Photos/CATEGORY/Butterfly/${photos[index].CAT_IMAGE}"
+        alt="${photos[index].CAT_NAME}"
+        class="max-w-[60vw] max-h-[50vh]  w-[343px] aspect-[343/229] object-contain
+            rounded-lg sm:w-[400px] md:w-[550px] lg:w-[700px] xl:w-[900px]"
+        onerror="this.onerror=null; this.src='../assets/images/default-butterfly.svg';"
+    >
+
+    ${index > 0
+        ? `<button class="lightbox-prev" onclick="navigateLightbox(${index - 1})">
+                <i class="fas fa-chevron-left"></i>
+           </button>`
+        : ''
+    }
+
+    ${index < photos.length - 1
+        ? `<button class="lightbox-next" onclick="navigateLightbox(${index + 1})">
+                <i class="fas fa-chevron-right"></i>
+           </button>`
+        : ''
+    }
+</div>
+
         <div class="lightbox-thumbnails mt-4 flex gap-2 overflow-x-auto">
     `;
     
-    butterflyPhotos.forEach((photo, i) => {
+    photos.forEach((photo, i) => {
         lightboxContent += `
-            <img src="${photo.thumb}" 
+            <img src="../assets/images/Photos/CATEGORY/Butterfly/${photo.CAT_IMAGE}" 
                  alt="${photo.title}" 
                  class="w-16 h-16 object-cover rounded cursor-pointer ${i === index ? 'ring-2 ring-orange-500' : 'opacity-60'}"
-                 onclick="navigateLightbox(${i}, '${slug}')">
+                 onclick="navigateLightbox(${i}, '${name}')">
         `;
     });
     
     lightboxContent += '</div>';
     
     $('#lightbox .lightbox-body').html(lightboxContent);
+    $('#butterfly-modal').addClass('hidden'); // hide background modal
     $('#lightbox').removeClass('hidden').addClass('flex');
 }
 
 // Navigate lightbox
-function navigateLightbox(index, slug) {
-    openLightbox(index, slug);
+function navigateLightbox(index, name) {
+    openLightboxSimple(index, name);
 }
 
 // Close lightbox
 function closeLightbox() {
     $('#lightbox').addClass('hidden').removeClass('flex');
+    $('#butterfly-modal').removeClass('hidden').addClass('flex');
 }
 
 // Change page

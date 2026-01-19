@@ -256,11 +256,11 @@ $stats = $statsResult->fetch_assoc();
 }
 
 .lightbox-prev {
-    left: -60px;
+    left: -20px;
 }
 
 .lightbox-next {
-    right: -60px;
+    right: -20px;
 }
 
 .lightbox-prev:hover, .lightbox-next:hover {
@@ -498,7 +498,7 @@ $stats = $statsResult->fetch_assoc();
 
 <!-- Cave Detail Modal - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
 <div id="cave-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center p-4">
-    <div class="bg-gray-900 rounded-xl max-w-6xl max-h-[90vh] overflow-y-auto w-full relative">
+    <div class="bg-gray-900 rounded-xl max-w-6xl max-h-[80vh] overflow-y-auto w-full relative">
         <div class="cave-modal-header">
             <button onclick="closeCaveModal()" class="absolute top-4 right-4 text-white hover:text-gray-300">
                 <i class="fas fa-times text-2xl"></i>
@@ -510,7 +510,7 @@ $stats = $statsResult->fetch_assoc();
 </div>
 
 <!-- Lightbox Modal - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
-<div id="lightbox" class="fixed inset-0 bg-black bg-opacity-95 z-60 hidden items-center justify-center p-4">
+<div id="lightbox" class="fixed inset-0 bg-black bg-opacity-95 z-[9999] hidden items-center justify-center p-4">
     <div class="lightbox-content max-w-5xl w-full">
         <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white hover:text-gray-300 z-10">
             <i class="fas fa-times text-2xl"></i>
@@ -550,7 +550,9 @@ function openCaveGallery(slug) {
     const caveName = slug.replace(/_/g, ' ');
     
     // Get cave photos (in real app, this would be an AJAX call)
-    const cavePhotos = getCavePhotos(slug);
+    const cavePhotos = <?php echo json_encode($galleryData); ?> ;
+    window.currentFortPhotos = cavePhotos;
+    window.currentFortName = slug;
     
     // Create modal content - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY
     let modalContent = `
@@ -566,12 +568,17 @@ function openCaveGallery(slug) {
     `;
     
     cavePhotos.forEach((photo, index) => {
-        modalContent += `
-            <div class="cave-photo-item" onclick="openLightbox(${index}, '${slug}')">
-                <img src="${photo.thumb}" alt="${photo.title}" class="w-full h-48 object-cover rounded-lg">
+         modalContent += `
+            <div class="cave-photo-item"  onclick="openLightbox(
+                ${index},
+                '${photo.CAT_NAME}'
+             )">
+                <img src="../assets/images/Photos/CATEGORY/Cave/${photo.CAT_IMAGE}" alt="${photo.CAT_NAME}" class="w-full h-48 object-cover rounded-lg">
                 <div class="photo-info mt-2">
-                    <p class="text-white text-sm">${photo.title}</p>
-                    <p class="text-gray-300 text-xs">${photo.location}</p>
+                   <p class="text-white text-sm font-semibold">
+                    ${photo.CAT_NAME}
+                </p>
+                   
                 </div>
             </div>
         `;
@@ -585,24 +592,6 @@ function openCaveGallery(slug) {
     $('body').addClass('overflow-hidden');
 }
 
-// Get cave photos (mock data - in real app, fetch from API) - EXACT SAME AS BUTTERFLY GALLERY
-function getCavePhotos(slug) {
-    const mockPhotos = [];
-    const photoCount = Math.floor(Math.random() * 12) + 5; // 5-17 photos
-    const locations = ['Main Hall', 'Chaitya Hall', 'Monastery', 'Sculpture Gallery', 'Prayer Hall', 'Entrance', 'Courtyard', 'Stone Carvings'];
-    
-    for (let i = 1; i <= photoCount; i++) {
-        mockPhotos.push({
-            thumb: `https://images.unsplash.com/photo-${1544735716392 + i}?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80`,
-            full: `https://images.unsplash.com/photo-${1544735716392 + i}?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80`,
-            title: `${slug.replace(/_/g, ' ')} - Photo ${i}`,
-            location: locations[Math.floor(Math.random() * locations.length)]
-        });
-    }
-    
-    return mockPhotos;
-}
-
 // Close cave modal - EXACT SAME AS BUTTERFLY GALLERY
 function closeCaveModal() {
     $('#cave-modal').addClass('hidden').removeClass('flex');
@@ -610,35 +599,58 @@ function closeCaveModal() {
 }
 
 // Open lightbox for individual photo - EXACT SAME AS BUTTERFLY GALLERY
-function openLightbox(index, slug) {
-    const cavePhotos = getCavePhotos(slug);
+function openLightbox(index, name) {
+    const caveName = name;
+    const photos = window.currentFortPhotos;
+    console.log(photos);
+    console.log('Opening lightbox for', name, 'at index', index);
     
-    let lightboxContent = `
+ let lightboxContent = `
         <div class="lightbox-header mb-4">
-            <h3 class="text-white text-xl mb-1">${cavePhotos[index].title}</h3>
-            <p class="text-yellow-300 text-sm mb-1">📍 ${cavePhotos[index].location}</p>
-            <p class="text-gray-300 text-sm">Photo ${index + 1} of ${cavePhotos.length}</p>
+            <h3 class="text-white text-xl mb-1">${photos[index].CAT_NAME}</h3>
+            <p class="text-orange-300 text-sm mb-1">📍 ${photos[index].CAT_TYPE}</p>
+            <p class="text-gray-300 text-sm">Photo ${index + 1} of ${photos.length}</p>
         </div>
-        <div class="lightbox-image-container relative">
-            <img src="${cavePhotos[index].full}" alt="${cavePhotos[index].title}" class="max-w-full max-h-[70vh] object-contain rounded-lg">
-            ${index > 0 ? '<button class="lightbox-prev" onclick="navigateLightbox(' + (index - 1) + ', \'' + slug + '\')"><i class="fas fa-chevron-left"></i></button>' : ''}
-            ${index < cavePhotos.length - 1 ? '<button class="lightbox-next" onclick="navigateLightbox(' + (index + 1) + ', \'' + slug + '\')"><i class="fas fa-chevron-right"></i></button>' : ''}
-        </div>
+        <div class="lightbox-image-container relative flex items-center justify-center min-h-[70vh]">
+    <img 
+        src="../assets/images/Photos/CATEGORY/Cave/${photos[index].CAT_IMAGE}"
+        alt="${photos[index].CAT_NAME}"
+        class="max-w-[60vw] max-h-[50vh]  w-[343px] aspect-[343/229] object-contain
+            rounded-lg sm:w-[400px] md:w-[550px] lg:w-[700px] xl:w-[900px]"
+        onerror="this.onerror=null; this.src='../assets/images/default-cave.svg';"
+    >
+
+    ${index > 0
+        ? `<button class="lightbox-prev" onclick="navigateLightbox(${index - 1})">
+                <i class="fas fa-chevron-left"></i>
+           </button>`
+        : ''
+    }
+
+    ${index < photos.length - 1
+        ? `<button class="lightbox-next" onclick="navigateLightbox(${index + 1})">
+                <i class="fas fa-chevron-right"></i>
+           </button>`
+        : ''
+    }
+</div>
+
         <div class="lightbox-thumbnails mt-4 flex gap-2 overflow-x-auto">
     `;
     
-    cavePhotos.forEach((photo, i) => {
+photos.forEach((photo, i) => {
         lightboxContent += `
-            <img src="${photo.thumb}" 
+            <img src="../assets/images/Photos/CATEGORY/Cave/${photo.CAT_IMAGE}" 
                  alt="${photo.title}" 
-                 class="w-16 h-16 object-cover rounded cursor-pointer ${i === index ? 'ring-2 ring-yellow-500' : 'opacity-60'}"
-                 onclick="navigateLightbox(${i}, '${slug}')">
+                 class="w-16 h-16 object-cover rounded cursor-pointer ${i === index ? 'ring-2 ring-orange-500' : 'opacity-60'}"
+                 onclick="navigateLightbox(${i}, '${name}')">
         `;
     });
     
     lightboxContent += '</div>';
     
     $('#lightbox .lightbox-body').html(lightboxContent);
+    $('#cave-modal').addClass('hidden'); // hide background modal
     $('#lightbox').removeClass('hidden').addClass('flex');
 }
 
@@ -650,6 +662,8 @@ function navigateLightbox(index, slug) {
 // Close lightbox - EXACT SAME AS BUTTERFLY GALLERY
 function closeLightbox() {
     $('#lightbox').addClass('hidden').removeClass('flex');
+    $('#cave-modal').removeClass('hidden').addClass('flex');
+
 }
 
 // Change page - EXACT SAME AS BUTTERFLY GALLERY
