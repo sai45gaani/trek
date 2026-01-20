@@ -563,7 +563,7 @@ function openButterflyGallery(slug) {
     
     butterflyPhotos.forEach((photo, index) => {
         modalContent += `
-            <div class="butterfly-photo-item"  onclick="openLightbox(
+            <div class="butterfly-photo-item"  onclick="openLightboxSimple(
                 ${index},
                 '${photo.CAT_NAME}'
              )">
