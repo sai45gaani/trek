@@ -1,0 +1,8 @@
+<?php
+require_once '../../config/database.php';
+$db = new Database();
+$conn = $db->getConnection();
+
+$id = intval($_GET['id']);
+$res = $conn->query("SELECT * FROM PM_tblPhotos WHERE PIC_ID=$id");
+echo json_encode($res->fetch_assoc());

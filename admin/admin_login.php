@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
                             $conn->close();
                             
                             // Redirect
-                            header('Location: admin_dashboard.php');
+                            header('Location: dashboard.php');
                             exit;
                         } else {
                             $error_message = 'Invalid username or password. here it is ';
@@ -146,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
             <div class="text-center">
                 <i class="fas fa-mountain text-4xl text-primary mb-3"></i>
                 <h1 class="text-2xl font-bold text-gray-800">Trekshitz Admin</h1>
-                <p class="text-sm text-gray-600">Content Management System</p>
+                <p class="text-sm text-gray-600">Trekshitiz Management System</p>
             </div>
         </div>
 

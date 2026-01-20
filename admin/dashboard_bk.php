@@ -60,15 +60,6 @@ if (isset($_GET['action']) && $_GET['action'] === 'load_content') {
         case 'photo-upload':
             include 'partials/photo_upload.php';
             break;
-        case 'fort-photos':
-            include 'partials/fort_photos.php';
-            break;
-        case 'map-photos':
-            include 'partials/map_photos.php';
-            break;
-        case 'nature-photos':
-            include 'partials/nature_photos.php';
-            break;
         case 'events':
             include 'partials/events_list.php';
             break;
@@ -277,7 +268,7 @@ $page_title = 'Admin Dashboard - Trekshitz';
             </div>
 
             <!-- Nature & Wildlife -->
-           <!-- <div class="mb-2">
+            <div class="mb-2">
                 <p class="text-xs text-gray-400 px-2 mb-1 uppercase font-semibold">Nature & Wildlife</p>
                 <button onclick="toggleDropdown('nature-menu')" class="dropdown-toggle w-full flex items-center justify-between px-2 py-1.5 rounded hover:bg-gray-700 text-sm">
                     <div class="flex items-center">
@@ -293,7 +284,7 @@ $page_title = 'Admin Dashboard - Trekshitz';
                     <a href="#" data-page="temples" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Temples</a>
                     <a href="#" data-page="caves" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Caves</a>
                 </div>
-            </div>-->
+            </div>
 
             <!-- Gallery -->
             <div class="mb-2">
@@ -306,9 +297,6 @@ $page_title = 'Admin Dashboard - Trekshitz';
                     <i class="fas fa-chevron-down text-xs transition-transform" id="gallery-menu-icon"></i>
                 </button>
                 <div id="gallery-menu" class="dropdown-content pl-6">
-                    <a href="#" data-page="fort-photos" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Fort Photos</a>
-                    <a href="#" data-page="map-photos" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Map Photos</a>
-                    <a href="#" data-page="nature-photos" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Nature Photos</a>
                     <a href="#" data-page="photos" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">All Photos</a>
                     <a href="#" data-page="categories" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Categories</a>
                     <a href="#" data-page="photo-upload" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Upload Photos</a>
@@ -391,7 +379,7 @@ $page_title = 'Admin Dashboard - Trekshitz';
         }
 
         // Navigation - Load content via AJAX
-     /*   document.querySelectorAll('.nav-link').forEach(link => {
+        document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 
@@ -404,29 +392,7 @@ $page_title = 'Admin Dashboard - Trekshitz';
                     this.classList.add('active', 'bg-gray-700');
                 }
             });
-        });*/
-
-        document.addEventListener('click', function (e) {
-                    const link = e.target.closest('.nav-link');
-                    if (!link) return;
-
-                    const page = link.getAttribute('data-page');
-                    if (!page) return;
-
-                    e.preventDefault();
-
-            // Remove active state
-            document.querySelectorAll('.nav-link').forEach(l =>
-                l.classList.remove('active', 'bg-gray-700')
-            );
-
-            // Add active state
-            link.classList.add('active', 'bg-gray-700');
-
-            // Load content
-            loadContent(page);
         });
-
 
         // Load content function
         function loadContent(page) {
@@ -918,435 +884,5 @@ $page_title = 'Admin Dashboard - Trekshitz';
             return div.innerHTML;
         }
     </script>
-    <script>
-        /* ==============================
-        FASCINATING SPOTS (GLOBAL)
-        ============================== */
-
-        window.openSpotModal = function () {
-            document.getElementById('spot-modal').classList.remove('hidden');
-        };
-
-        window.closeSpotModal = function () {
-            document.getElementById('spot-modal').classList.add('hidden');
-        };
-
-        window.loadFascinatingPage = function (page) {
-            loadContent('fascinating-spots&p=' + page);
-        };
-
-        window.saveFascinatingSpot = function () {
-            const data = {
-                id: document.getElementById('fs-id')?.value || '',
-                FortName: document.getElementById('fs-fort')?.value || '',
-                NameOfSpot: document.getElementById('fs-name')?.value || '',
-                Description: document.getElementById('fs-desc')?.value || ''
-            };
-
-            if (!data.FortName || !data.NameOfSpot || !data.Description) {
-                alert('All fields are required');
-                return;
-            }
-
-            fetch('partials/ajax/save_fascinating_spot.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            })
-            .then(r => r.json())
-            .then(res => {
-                if (res.success) {
-                    closeSpotModal();
-                    loadContent('fascinating-spots');
-                } else {
-                    alert(res.message || 'Save failed');
-                }
-            });
-        };
-
-        window.viewSpot = function (id) {
-            fetch(`partials/ajax/get_fascinating_spot.php?id=${id}`)
-                .then(r => r.json())
-                .then(d => alert(d.Description));
-        };
-
-        window.editSpot = function (id) {
-            fetch(`partials/ajax/get_fascinating_spot.php?id=${id}`)
-                .then(r => r.json())
-                .then(d => {
-                    openSpotModal();
-                    document.getElementById('fs-id').value = d.FSID;
-                    document.getElementById('fs-fort').value = d.FortName;
-                    document.getElementById('fs-name').value = d.NameOfSpot;
-                    document.getElementById('fs-desc').value = d.Description;
-                });
-        };
-
-        window.deleteSpot = function (id) {
-            if (!confirm('Delete this spot?')) return;
-
-            fetch('partials/ajax/delete_fascinating_spot.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ id })
-            })
-            .then(() => loadContent('fascinating-spots'));
-        };
-        </script>
-        <script>
-
-
-                window.loadWaysPage = function (page = 1) {
-                    fetch(`?action=load_content&page=ways-to-reach&p=${page}`)
-                        .then(res => res.text())
-                        .then(html => {
-                            document.getElementById('content-container').innerHTML = html;
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                        });
-                };
-
-                /* ---------- MODAL ---------- */
-
-                window.openWayModal = function () {
-                    document.getElementById('wtr-id').value = '';
-                    document.getElementById('wtr-fort').value = '';
-                    document.getElementById('wtr-name').value = '';
-                    document.getElementById('wtr-desc').value = '';
-                    document.getElementById('way-modal-title').innerText = 'Add Way To Reach';
-                    document.getElementById('way-modal').classList.remove('hidden');
-                };
-
-                window.closeWayModal = function () {
-                    document.getElementById('way-modal').classList.add('hidden');
-                };
-
-                /* ---------- SAVE ---------- */
-
-                window.saveWayToReach = function () {
-                    const payload = {
-                        WTRID: document.getElementById('wtr-id').value,
-                        FortName: document.getElementById('wtr-fort').value,
-                        NameOfWay: document.getElementById('wtr-name').value,
-                        Description: document.getElementById('wtr-desc').value
-                    };
-
-                    fetch('partials/ajax/ways_to_reach_save.php', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    })
-                    .then(res => res.json())
-                    .then(res => {
-                        if (res.success) {
-                            closeWayModal();
-                            loadWaysPage(1);
-                            alert('Saved successfully');
-                        } else {
-                            alert(res.message || 'Error saving');
-                        }
-                    });
-                };
-
-                /* ---------- VIEW ---------- */
-
-                window.viewWay = function (id) {
-                    fetch(`partials/ajax/ways_to_reach_get.php?id=${id}`)
-                        .then(res => res.json())
-                        .then(d => {
-                            alert(
-                                `Fort: ${d.FortName}\n\nRoute: ${d.NameOfWay}\n\n${d.Description}`
-                            );
-                        });
-                };
-
-                /* ---------- EDIT ---------- */
-
-                window.editWay = function (id) {
-                    fetch(`partials/ajax/ways_to_reach_get.php?id=${id}`)
-                        .then(res => res.json())
-                        .then(d => {
-                            document.getElementById('wtr-id').value = d.WTRID;
-                            document.getElementById('wtr-fort').value = d.FortName;
-                            document.getElementById('wtr-name').value = d.NameOfWay;
-                            document.getElementById('wtr-desc').value = d.Description;
-                            document.getElementById('way-modal-title').innerText = 'Edit Way To Reach';
-                            document.getElementById('way-modal').classList.remove('hidden');
-                        });
-                };
-
-                /* ---------- DELETE ---------- */
-
-                window.deleteWay = function (id) {
-                    if (!confirm('Delete this route?')) return;
-
-                    fetch('partials/ajax/ways_to_reach_delete.php', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ id })
-                    })
-                    .then(res => res.json())
-                    .then(res => {
-                        if (res.success) {
-                            loadWaysPage(1);
-                        } else {
-                            alert(res.message || 'Delete failed');
-                        }
-                    });
-                };
-        </script>
-        <script>
-        window.loadTreks = function(p=1,search=''){
-            fetch(`?action=load_content&page=treks&p=${p}&search=${search}`)
-                .then(r=>r.text()).then(html=>{
-                    document.getElementById('content-container').innerHTML = html;
-                });
-        };
-
-     window.openTrekModal = () => {
-    fetch('partials/treks_add.php')
-        .then(res => res.text())
-        .then(html => {
-            document.getElementById('trek-modal-content').innerHTML = html;
-            document.getElementById('trek-modal').classList.remove('hidden');
-        });
-};
-
-window.closeTrekModal = () => {
-    document.getElementById('trek-modal').classList.add('hidden');
-    document.getElementById('trek-modal-content').innerHTML = '';
-};
-
-
-        window.editTrek = id => {
-            fetch(`partials/ajax/treks_get.php?id=${id}`)
-                .then(r=>r.json()).then(d=>{
-                    for (let k in d) {
-                        let el = document.getElementById('trek-'+k.toLowerCase());
-                        if (el) el.value = d[k];
-                    }
-                    document.getElementById('trek-id').value = id;
-                    openTrekModal();
-                });
-        };
-
-        window.saveTrek = () => {
-            const data = {
-                id: document.getElementById('trek-id').value,
-                place: trek-place.value,
-                date: trek-date.value,
-                leader: trek-leader.value,
-                contact: trek-contact.value,
-                display: trek-date.value,
-                cost: trek-cost.value,
-                grade: trek-grade.value,
-                last: trek-last.value,
-                meet: trek-meet.value,
-                max: trek-max.value,
-                desc: trek-desc.value,
-                notes: trek-notes.value
-            };
-
-            fetch('partials/ajax/treks_save.php',{
-                method:'POST',
-                body:JSON.stringify(data)
-            }).then(()=>{ closeTrekModal(); loadTreks(); });
-        };
-
-        window.deleteTrek = id => {
-            if (!confirm('Delete trek?')) return;
-            fetch('partials/ajax/treks_delete.php',{
-                method:'POST',
-                headers:{'Content-Type':'application/x-www-form-urlencoded'},
-                body:`id=${id}`
-            }).then(()=>loadTreks());
-        };
-</script>
-
-<script>
-function loadFortPhotos(p){
-    fetch('?action=load_content&page=fort-photos&p='+p)
-    .then(r=>r.text())
-    .then(html=>document.getElementById('content-container').innerHTML=html);
-}
-
-function openFortPhotoModal(){
-    document.getElementById('fort-photo-modal').classList.remove('hidden');
-}
-
-function closeFortPhotoModal(){
-    document.getElementById('fort-photo-modal').classList.add('hidden');
-}
-
-function editFortPhoto(id){
-    fetch('partials/ajax/get_fort_photo.php?id='+id)
-    .then(r=>r.json())
-    .then(d=>{
-        document.getElementById('fp-id').value=d.PIC_ID;
-        document.getElementById('fp-fort').value=d.FortName;
-        document.getElementById('fp-desc').value=d.PIC_DESC||'';
-        document.getElementById('fp-front').checked=d.PIC_FRONT_IMAGE==='Y';
-        openFortPhotoModal();
-    });
-}
-
-function saveFortPhoto(){
-    var fd=new FormData();
-    fd.append('id',fp-id.value);
-    fd.append('fort',fp-fort.value);
-    fd.append('desc',fp-desc.value);
-    fd.append('front',fp-front.checked?'Y':'');
-    if(fp-file.files[0]) fd.append('image',fp-file.files[0]);
-
-    fetch('partials/ajax/save_fort_photo.php',{method:'POST',body:fd})
-    .then(()=>{closeFortPhotoModal();loadFortPhotos(1);});
-}
-
-function deleteFortPhoto(id){
-    if(!confirm('Delete photo?')) return;
-    fetch('partials/ajax/delete_fort_photo.php',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({id:id})
-    }).then(()=>loadFortPhotos(1));
-}
-</script>
-
-<script>
-/* ===== SPA SAFE ES5 JS ===== */
-
-function loadMapPhotos(p) {
-    fetch('?action=load_content&page=map-photos&p=' + p)
-        .then(function (r) {
-            return r.text();
-        })
-        .then(function (html) {
-            document.getElementById('content-container').innerHTML = html;
-        });
-}
-
-function openMapModal() {
-    document.getElementById('map-modal').classList.remove('hidden');
-}
-
-function closeMapModal() {
-    document.getElementById('map-modal').classList.add('hidden');
-}
-
-function editMap(id) {
-    fetch('partials/ajax/get_map.php?id=' + id)
-        .then(function (r) {
-            return r.json();
-        })
-        .then(function (d) {
-            document.getElementById('map-id').value = d.MapID;
-            document.getElementById('map-fort').value = d.FortName;
-            document.getElementById('map-type').value = d.MapType;
-            document.getElementById('map-name').value = d.MapName;
-            document.getElementById('map-desc').value = d.Description;
-            openMapModal();
-        });
-}
-
-function saveMap() {
-    var fd = new FormData();
-    fd.append('id', document.getElementById('map-id').value);
-    fd.append('fort', document.getElementById('map-fort').value);
-    fd.append('type', document.getElementById('map-type').value);
-    fd.append('name', document.getElementById('map-name').value);
-    fd.append('desc', document.getElementById('map-desc').value);
-
-    var fileInput = document.getElementById('map-file');
-    if (fileInput.files.length > 0) {
-        fd.append('image', fileInput.files[0]);
-    }
-
-    fetch('partials/ajax/save_map.php', {
-        method: 'POST',
-        body: fd
-    })
-    .then(function (r) {
-        return r.json();
-    })
-    .then(function () {
-        closeMapModal();
-        loadMapPhotos(1);
-    });
-}
-
-function deleteMap(id) {
-    if (!confirm('Delete map?')) return;
-
-    fetch('partials/ajax/delete_map.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: id })
-    })
-    .then(function () {
-        loadMapPhotos(1);
-    });
-}
-</script>
-
-<script>
-function loadNaturePhotos(p) {
-    fetch('?action=load_content&page=nature-photos&p=' + p)
-        .then(function (r) { return r.text(); })
-        .then(function (html) {
-            document.getElementById('content-container').innerHTML = html;
-        });
-}
-
-function openNatureModal() {
-    document.getElementById('nature-modal').classList.remove('hidden');
-}
-
-function closeNatureModal() {
-    document.getElementById('nature-modal').classList.add('hidden');
-}
-
-function editNature(id) {
-    fetch('partials/ajax/get_nature.php?id=' + id)
-        .then(function (r) { return r.json(); })
-        .then(function (d) {
-            document.getElementById('nat-id').value = d.CAT_ID;
-            document.getElementById('nat-name').value = d.CAT_NAME;
-            document.getElementById('nat-type').value = d.CAT_TYPE;
-            openNatureModal();
-        });
-}
-
-function saveNature() {
-    var fd = new FormData();
-    fd.append('id', document.getElementById('nat-id').value);
-    fd.append('name', document.getElementById('nat-name').value);
-    fd.append('type', document.getElementById('nat-type').value);
-
-    var f = document.getElementById('nat-file');
-    if (f.files.length > 0) fd.append('image', f.files[0]);
-
-    fetch('partials/ajax/save_nature.php', { method: 'POST', body: fd })
-        .then(function () {
-            closeNatureModal();
-            loadNaturePhotos(1);
-        });
-}
-
-function deleteNature(id) {
-    if (!confirm('Delete photo?')) return;
-    fetch('partials/ajax/delete_nature.php', {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({id:id})
-    }).then(function () {
-        loadNaturePhotos(1);
-    });
-}
-</script>
-
-
-
-
-
-
 </body>
 </html>
