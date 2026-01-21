@@ -115,9 +115,12 @@ try {
                 <?php endif; ?>
             </p>
         </div>
-        <button onclick="openAddModal()" class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded text-sm transition-colors">
-            <i class="fas fa-plus mr-2"></i>Add New Fort
+       <button type="button"
+        onclick="loadContent('forts-add')"
+        class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded text-sm transition-colors">
+        <i class="fas fa-plus mr-2"></i>Add New Fort
         </button>
+
     </div>
 
     <!-- Search and Filter -->

@@ -486,6 +486,68 @@ $page_title = 'Admin Dashboard - Trekshitz';
 
         console.log('SPA Admin Dashboard loaded');
     </script>
+    
+<script>
+function saveNewFort() {
+    const form = document.getElementById('add-fort-form');
+    if (!form) return;
+
+    // Collect required fields
+    const requiredFields = [
+        { name: 'FortName', label: 'Fort Name' },
+        { name: 'FortType', label: 'Fort Type' },
+        { name: 'FortDistrict', label: 'District' },
+        { name: 'FortRange', label: 'Range' },
+        { name: 'Grade', label: 'Grade' }
+    ];
+
+    let firstInvalidField = null;
+    let errors = [];
+
+    requiredFields.forEach(field => {
+        const input = form.querySelector(`[name="${field.name}"]`);
+        if (!input || !input.value.trim()) {
+            errors.push(field.label);
+            input?.classList.add('border-red-500');
+            if (!firstInvalidField) firstInvalidField = input;
+        } else {
+            input.classList.remove('border-red-500');
+        }
+    });
+
+    // ❌ Stop if validation fails
+    if (errors.length > 0) {
+        alert('Please fill the following required fields:\n\n• ' + errors.join('\n• '));
+        firstInvalidField?.focus();
+        return; // ⛔ STOP here — no API call
+    }
+
+    // ✅ All good — submit via AJAX
+    const formData = new FormData(form);
+
+    fetch('./api/add_fort.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(res => res.json())
+    .then(res => {
+        if (res.status === 'success') {
+            alert('Fort added successfully!');
+            loadContent('forts');
+        } else {
+            alert(res.message || 'Failed to add fort');
+        }
+    })
+    .catch(() => alert('Server error'));
+}
+
+document.addEventListener('submit', function (e) {
+    if (e.target && e.target.id === 'add-fort-form') {
+        e.preventDefault();
+    }
+});
+</script>
+
  <script>
         // ===== GLOBAL VARIABLES =====
         let currentFortId = null;
@@ -859,7 +921,7 @@ $page_title = 'Admin Dashboard - Trekshitz';
             };
             
             // Send update request
-            fetch('partials/update_fort.php', {
+            fetch('partials/ajax/update_fort.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)

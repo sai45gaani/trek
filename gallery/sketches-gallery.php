@@ -4,61 +4,131 @@ $page_title = 'Sketches Gallery - Art by KshitiZ Group Members | Trekshitz';
 $meta_description = 'Beautiful sketches and artwork created by KshitiZ group members during trekking expeditions. Hand-drawn illustrations of forts, landscapes, and nature from Maharashtra.';
 $meta_keywords = 'sketches, artwork, drawings, KshitiZ group, trekking art, fort sketches, landscape drawings, nature art, Maharashtra sketches';
 
+require_once '../config/database.php';
+
 // Include header
-include './includes/header.php';
+include '../includes/header.php';
+
+
+// Connect to database
+$db = new Database();
+$conn = $db->getConnection();
+
+
+// Pagination settings
+$itemsPerPage = 16;
+$currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+$offset = ($currentPage - 1) * $itemsPerPage;
+
+// Get filter letter
+$filterLetter = isset($_GET['letter']) ? strtoupper($_GET['letter']) : 'ALL';
+
+// Build query based on filter
+$whereClause = "";
+if ($filterLetter !== 'ALL') {
+    $whereClause = " AND CAT_NAME LIKE '" . $conn->real_escape_string($filterLetter) . "%'";
+}
+// Get total count for pagination
+$countQuery = "
+    SELECT COUNT(*) AS total
+    FROM sw_tblcategories
+    WHERE CAT_TYPE = 'Sketch'
+    $whereClause
+";
+
+$countResult = $conn->query($countQuery);
+$totalItems = $countResult->fetch_assoc()['total'];
+$totalPages = ceil($totalItems / $itemsPerPage);
+
+// Main query to get forts with their featured images
+$query = "
+    SELECT 
+        CAT_ID,
+        CAT_NAME,
+        CAT_IMAGE,
+        CAT_TYPE
+    FROM sw_tblcategories
+    WHERE CAT_TYPE = 'Sketch'
+    $whereClause
+    ORDER BY CAT_NAME ASC
+    LIMIT $itemsPerPage OFFSET $offset
+";
+
+$result = $conn->query($query);
+
+// Get forts data
+$galleryData = [];
+if ($result && $result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $galleryData[] = $row;
+    }
+}
+
+
+
+// Get actual stats from database
+$statsQuery = "
+    SELECT
+        COUNT(*) AS totalFlowerflies,
+        COUNT(CAT_IMAGE) AS totalFlowerImages,
+        COUNT(DISTINCT CAT_NAME) AS uniqueFlowerSpecies
+    FROM sw_tblcategories
+    WHERE CAT_TYPE = 'Sketch'
+";
+
+$statsResult = $conn->query($statsQuery);
+$stats = $statsResult->fetch_assoc();
+
+
 ?>
 
 <style>
-/* Sketches Gallery specific styles */
-.sketch-card {
+/* Flower Gallery specific styles - EXACT SAME AS BUTTERFLY GALLERY */
+.flower-card {
     transition: all 0.3s ease;
     cursor: pointer;
     border-radius: 1rem;
     overflow: hidden;
-    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    background: #000;
     position: relative;
-    border: 2px solid transparent;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.sketch-card:hover {
+.flower-card:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(139, 69, 19, 0.3);
-    border-color: #8b4513;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-.sketch-image {
+.flower-image {
     width: 100%;
-    height: 250px;
+    height: 200px;
     object-fit: cover;
     transition: all 0.5s ease;
     border-radius: 0.5rem;
-    filter: sepia(10%);
 }
 
-.sketch-card:hover .sketch-image {
+.flower-card:hover .flower-image {
     transform: scale(1.1);
-    filter: sepia(0%) brightness(1.1);
+    filter: brightness(1.1);
 }
 
-.sketch-overlay {
+.flower-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(transparent, rgba(139, 69, 19, 0.9));
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
     color: white;
     padding: 1.5rem 1rem 1rem;
     transform: translateY(100%);
     transition: transform 0.3s ease;
 }
 
-.sketch-card:hover .sketch-overlay {
+.flower-card:hover .flower-overlay {
     transform: translateY(0);
 }
 
-.sketch-stats {
-    background: linear-gradient(135deg, #8b4513, #d2691e);
+.flower-stats {
+    background: linear-gradient(135deg, #e91e63, #ff5722);
     color: white;
     padding: 2rem;
     border-radius: 1rem;
@@ -66,7 +136,7 @@ include './includes/header.php';
     margin: 2rem 0;
 }
 
-.artist-info {
+.species-badge {
     display: inline-flex;
     align-items: center;
     background: rgba(255, 255, 255, 0.2);
@@ -76,481 +146,562 @@ include './includes/header.php';
     margin-top: 0.5rem;
 }
 
-.sketch-modal-header {
-    background: linear-gradient(135deg, #8b4513, #d2691e);
+.flower-modal-header {
+    background: linear-gradient(135deg, #e91e63, #ff5722);
     color: white;
     padding: 1.5rem;
     border-radius: 1rem 1rem 0 0;
 }
 
-.sketch-info {
-    color: #d2691e;
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
+.flower-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
-.medium-tag {
-    background: rgba(139, 69, 19, 0.2);
-    color: #8b4513;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.375rem;
-    font-size: 0.75rem;
-    margin-top: 0.5rem;
-    display: inline-block;
+.flower-photo-item {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    position: relative;
 }
 
-.artist-signature {
+.flower-photo-item:hover {
+    transform: scale(1.05);
+}
+
+.botanical-name {
     font-style: italic;
-    color: #d2691e;
-    font-size: 0.8rem;
-    margin-top: 0.25rem;
+    color: #ff7043;
+    font-size: 0.9rem;
+}
+
+/* ALPHABET FILTER - EXACT SAME AS BUTTERFLY GALLERY */
+.alphabet-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.alphabet-filter a {
+    padding: 0.5rem 1rem;
+    background: #e91e63;
+    color: white;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.alphabet-filter a:hover,
+.alphabet-filter a.active {
+    background: #ff5722;
+    transform: translateY(-2px);
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+}
+
+.pagination a,
+.pagination span {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.pagination a {
+    background: #e91e63;
+    color: white;
+}
+
+.pagination a:hover {
+    background: #ff5722;
+}
+
+.pagination .current {
+    background: #ff5722;
+    color: white;
+    font-weight: bold;
+}
+
+.lightbox-image-container {
+    position: relative;
+    text-align: center;
+}
+
+.lightbox-prev, .lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background 0.3s ease;
+}
+
+.lightbox-prev {
+    left: -20px;
+}
+
+.lightbox-next {
+    right: -20px;
+}
+
+.lightbox-prev:hover, .lightbox-next:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.lightbox-thumbnails {
+    max-height: 100px;
+    overflow-x: auto;
+}
+
+.lightbox-thumbnails::-webkit-scrollbar {
+    height: 4px;
+}
+
+.lightbox-thumbnails::-webkit-scrollbar-thumb {
+    background: #e91e63;
+    border-radius: 2px;
 }
 
 @media (max-width: 768px) {
-    .sketch-image {
-        height: 200px;
+    .flower-image {
+        height: 150px;
+    }
+    
+    .flower-photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .lightbox-prev {
+        left: 10px;
+    }
+    
+    .lightbox-next {
+        right: 10px;
     }
 }
 </style>
 
 <main id="main-content">
-    <!-- Hero Section -->
-    <section class="relative py-20 bg-gradient-to-br from-yellow-700 via-amber-600 to-orange-600 text-white overflow-hidden">
+    <!-- Hero Section - EXACT SAME STRUCTURE AS Sketch GALLERY -->
+    <section class="relative py-20 bg-gradient-to-br from-pink-600 via-red-500 to-orange-500 text-white overflow-hidden">
         <div class="absolute inset-0 opacity-20">
-            <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"sketch\" x=\"0\" y=\"0\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\"><path d=\"M2,2 L18,18 M18,2 L2,18\" stroke=\"%23ffffff\" stroke-width=\"0.5\" opacity=\"0.1\"/><circle cx=\"10\" cy=\"10\" r=\"2\" stroke=\"%23ffffff\" stroke-width=\"0.5\" fill=\"none\" opacity=\"0.1\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23sketch)\"/></svg>');"></div>
+            <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"flower\" x=\"0\" y=\"0\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\"><circle cx=\"10\" cy=\"10\" r=\"3\" fill=\"%23ffffff\" opacity=\"0.1\"/><path d=\"M10,7 L13,10 L10,13 L7,10 Z\" fill=\"%23ffffff\" opacity=\"0.1\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23flower)\"/></svg>');"></div>
         </div>
         
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
                 <h1 class="text-4xl md:text-6xl font-bold mb-6 font-bilingual">
-                    🎨 रेखाचित्र संग्रह
+                    🌸 Sketches Gallery
                 </h1>
                 <h2 class="text-2xl md:text-3xl font-semibold mb-8">
-                    Sketches by KshitiZ Group Members
+                    Photo Gallery of Sketches by KshitiZ Group Members
                 </h2>
                 <p class="text-xl md:text-2xl mb-8 opacity-90">
-                    Hand-drawn artwork and illustrations created during trekking expeditions across Maharashtra
+                    Beautiful sketches and artwork created by KshitiZ group members during trekking expeditions in Sahyadri mountains
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#gallery" class="inline-flex items-center px-8 py-4 bg-white text-amber-700 font-semibold rounded-full hover:bg-gray-100 transition-colors">
-                        <i class="fas fa-palette mr-2"></i>
-                        Browse Sketches
+                    <a href="#gallery" class="inline-flex items-center px-8 py-4 bg-white text-pink-600 font-semibold rounded-full hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-camera mr-2"></i>
+                        Browse Gallery
                     </a>
-                    <a href="#artists" class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-amber-700 transition-colors">
-                        <i class="fas fa-users mr-2"></i>
-                        Meet Artists
+                    <a href="#alphabetical" class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-pink-600 transition-colors">
+                        <i class="fas fa-sort-alpha-down mr-2"></i>
+                        Alphabetical View
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Stats -->
+    <!-- Search Box - EXACT SAME AS BUTTERFLY GALLERY -->
+    <div class="container mx-auto px-4 py-4">
+        <div class="max-w-md mx-auto">
+            <div class="relative">
+                <input type="text" id="flower-search" placeholder="Search sketches by name ..." 
+                       class="w-full px-4 py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-pink-500"
+                       onkeyup="searchFlowers()">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <i class="fas fa-search text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Stats - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
     <section class="py-8 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="sketch-stats max-w-4xl mx-auto">
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">12+</div>
-                        <p class="opacity-90">Artworks</p>
+       <div class="container mx-auto px-4">
+        <div class="fort-stats mx-auto">
+            <div class="grid md:grid-cols-3 gap-6">
+                
+                <div class="text-center">
+                    <div class="text-3xl font-bold mb-2">
+                        <?php echo $stats['totalFlowerflies']; ?>+
                     </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">8+</div>
-                        <p class="opacity-90">Artists</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">15+</div>
-                        <p class="opacity-90">Years Collection</p>
-                    </div>
+                    <p class="opacity-90">Sketches Listed</p>
                 </div>
+
+                <div class="text-center">
+                    <div class="text-3xl font-bold mb-2">
+                        <?php echo $stats['totalFlowerImages']; ?>+
+                    </div>
+                    <p class="opacity-90">Sketches Images</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="text-3xl font-bold mb-2">
+                        <?php echo $stats['uniqueFlowerSpecies']; ?>+
+                    </div>
+                    <p class="opacity-90">Unique Sketches</p>
+                </div>
+
             </div>
         </div>
-    </section>
+    </div>
+ </section>
 
-    <!-- About the Collection -->
-    <section class="py-8 bg-white dark:bg-gray-900">
+    <!-- Alphabetical Filter - HARDCODED ALPHABETS -->
+    <section id="alphabetical" class="py-8 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4">
             <div class="text-center mb-8">
                 <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-                    KshitiZ Group Artistic Heritage
+                    Browse Sketches by Name
                 </h3>
-                <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                    These beautiful sketches are created by talented members of the KshitiZ trekking group during their expeditions. 
-                    Each artwork captures the essence of Maharashtra's landscapes, forts, and natural beauty through the eyes of passionate trekkers and artists.
+                <p class="text-gray-600 dark:text-gray-300">* Click on the photo to see more photos of the sketches</p>
+            </div>
+            
+               <div class="alphabet-filter">
+               <a href="?letter=ALL&page=1" class="<?php echo $filterLetter === 'ALL' ? 'active' : ''; ?>">ALL</a>
+                <?php foreach (range('A', 'Z') as $letter): ?>
+                    <a href="?letter=<?php echo $letter; ?>&page=1" class="<?php echo $filterLetter === $letter ? 'active' : ''; ?>"><?php echo $letter; ?></a>
+                <?php endforeach; ?>
+            </div>
+        
+        </div>
+    </section>
+
+    <!-- Flower Gallery - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
+<section id="gallery" class="py-12 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto">
+
+        <?php if (!empty($galleryData)) : ?>
+            <!-- Gallery Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <?php foreach ($galleryData as $row): 
+                    $name = $row['CAT_NAME'];
+                    $slug = str_replace(' ', '_', $name);
+                    $image = "../assets/images/Photos/CATEGORY/Sketches/" . $row['CAT_IMAGE'];
+                ?>
+                    <div class="Flower-card cursor-pointer"
+                         onclick="openFlowerGallery('<?= $slug ?>')">
+
+                        <img src="<?= htmlspecialchars($image) ?>"
+                             alt="<?= htmlspecialchars($name) ?>"
+                             class="w-full h-48 object-cover rounded"
+                             loading="lazy"
+                             onerror="this.src='../assets/images/default-flower.svg'">
+
+                        <div class="p-3 bg-black text-white">
+                            <h3 class="font-bold"><?= htmlspecialchars($name) ?></h3>
+                            <p class="text-sm italic text-orange-300"><?= htmlspecialchars($name) ?></p>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+        <?php else : ?>
+            <!-- Empty State -->
+            <div class="flex items-center justify-center min-h-[300px]">
+                <p class="text-xl font-semibold text-gray-600 dark:text-gray-300 text-center">
+                    No sketches found.<br>
                 </p>
             </div>
-        </div>
-    </section>
+        <?php endif; ?>
 
-    <!-- Sketches Gallery -->
-    <section id="gallery" class="py-12 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-8">
-                    <h3 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">
-                        <i class="fas fa-palette mr-3 text-amber-600"></i>
-                        Sketch Collection
-                    </h3>
-                    <p class="text-gray-600 dark:text-gray-300">Click on any sketch to view in detail</p>
-                </div>
+    </div>
+</section>
 
-                <div id="gallery-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <?php
-                    // Sketches gallery data (from the provided HTML)
-                    $sketchGallery = [
-                        [
-                            'id' => 33,
-                            'filename' => '33.jpg',
-                            'title' => 'Mountain Landscape',
-                            'artist' => 'KshitiZ Member',
-                            'medium' => 'Pencil on Paper',
-                            'subject' => 'Sahyadri Peak',
-                            'year' => '2018',
-                            'description' => 'Detailed sketch of a majestic Sahyadri mountain peak with intricate shading'
-                        ],
-                        [
-                            'id' => 34,
-                            'filename' => '34.JPG',
-                            'title' => 'Fort Architecture',
-                            'artist' => 'KshitiZ Member',
-                            'medium' => 'Charcoal',
-                            'subject' => 'Historic Fort Gateway',
-                            'year' => '2018',
-                            'description' => 'Architectural study of ancient fort entrance with detailed stonework'
-                        ],
-                        [
-                            'id' => 35,
-                            'filename' => '35.JPG',
-                            'title' => 'Valley Vista',
-                            'artist' => 'KshitiZ Member',
-                            'medium' => 'Ink Sketch',
-                            'subject' => 'Konkan Valley',
-                            'year' => '2019',
-                            'description' => 'Panoramic view of lush valley with traditional village settlements'
-                        ],
-                        [
-                            'id' => 36,
-                            'filename' => '36.jpg',
-                            'title' => 'Rock Formation',
-                            'artist' => 'KshitiZ Member',
-                            'medium' => 'Graphite',
-                            'subject' => 'Natural Rock Pillars',
-                            'year' => '2019',
-                            'description' => 'Study of unique geological formations found in Western Ghats'
-                        ],
-                        [
-                            'id' => 37,
-                            'filename' => '37.jpg',
-                            'title' => 'Temple Ruins',
-                            'artist' => 'KshitiZ Member',
-                            'medium' => 'Pen & Ink',
-                            'subject' => 'Ancient Temple',
-                            'year' => '2020',
-                            'description' => 'Detailed drawing of ancient temple ruins with intricate carvings'
-                        ],
-                        [
-                            'id' => 38,
-                            'filename' => '38.JPG',
-                            'title' => 'Waterfall Study',
-                            'artist' => 'KshitiZ Member',
-                            'medium' => 'Watercolor Sketch',
-                            'subject' => 'Monsoon Waterfall',
-                            'year' => '2020',
-                            'description' => 'Dynamic sketch capturing the power and beauty of monsoon waterfalls'
-                        ],
-                        [
-                            'id' => 39,
-                            'filename' => '39.jpg',
-                            'title' => 'Village Scene',
-                            'artist' => 'KshitiZ Member',
-                            'medium' => 'Pencil',
-                            'subject' => 'Rural Settlement',
-                            'year' => '2021',
-                            'description' => 'Peaceful village scene showcasing traditional Maharashtra architecture'
-                        ],
-                        [
-                            'id' => 40,
-                            'filename' => '40.jpg',
-                            'title' => 'Cave Entrance',
-                            'artist' => 'KshitiZ Member',
-                            'medium' => 'Charcoal',
-                            'subject' => 'Buddhist Cave',
-                            'year' => '2021',
-                            'description' => 'Atmospheric sketch of ancient Buddhist cave entrance with shadows'
-                        ],
-                        [
-                            'id' => 41,
-                            'filename' => '41.jpg',
-                            'title' => 'Tree Study',
-                            'artist' => 'KshitiZ Member',
-                            'medium' => 'Graphite',
-                            'subject' => 'Ancient Banyan',
-                            'year' => '2022',
-                            'description' => 'Detailed botanical study of a centuries-old banyan tree'
-                        ],
-                        [
-                            'id' => 42,
-                            'filename' => '42.jpg',
-                            'title' => 'Fortress Wall',
-                            'artist' => 'KshitiZ Member',
-                            'medium' => 'Ink Drawing',
-                            'subject' => 'Maratha Fortification',
-                            'year' => '2022',
-                            'description' => 'Technical study of Maratha military architecture and defense systems'
-                        ],
-                        [
-                            'id' => 43,
-                            'filename' => '43.jpg',
-                            'title' => 'Sunset Silhouette',
-                            'artist' => 'KshitiZ Member',
-                            'medium' => 'Soft Pastels',
-                            'subject' => 'Evening Landscape',
-                            'year' => '2023',
-                            'description' => 'Dramatic silhouette of mountain ranges during golden hour'
-                        ],
-                        [
-                            'id' => 44,
-                            'filename' => '44.jpg',
-                            'title' => 'Flora Detail',
-                            'artist' => 'KshitiZ Member',
-                            'medium' => 'Fine Pen',
-                            'subject' => 'Wildflower Study',
-                            'year' => '2023',
-                            'description' => 'Scientific illustration of endemic wildflowers found during treks'
-                        ]
-                    ];
-                    
-                    // Display sketch gallery items
-                    foreach ($sketchGallery as $index => $sketch) {
-                        echo '<div class="sketch-card" onclick="openSketchLightbox(' . $index . ')">';
-                        echo '<img src="https://images.unsplash.com/photo-1578321272176-b7bbc0679853?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="' . htmlspecialchars($sketch['title']) . '" class="sketch-image">';
-                        echo '<div class="sketch-overlay">';
-                        echo '<h3 class="font-bold text-lg mb-1">' . htmlspecialchars($sketch['title']) . '</h3>';
-                        echo '<p class="sketch-info">' . htmlspecialchars($sketch['subject']) . '</p>';
-                        echo '<div class="medium-tag">' . htmlspecialchars($sketch['medium']) . '</div>';
-                        echo '<div class="artist-info">';
-                        echo '<i class="fas fa-user mr-2"></i>';
-                        echo htmlspecialchars($sketch['artist']) . ' (' . $sketch['year'] . ')';
-                        echo '</div>';
-                        echo '</div>';
-                        echo '</div>';
-                    }
-                    ?>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ================= PAGINATION ================= -->
+<div class="pagination flex justify-center gap-2 py-8">
+<?php if ($currentPage > 1): ?>
+<a href="?page=<?= $currentPage - 1 ?>&letter=<?= $filterLetter ?>">&laquo; Prev</a>
+<?php endif; ?>
 
-    <!-- Artists Section -->
-    <section id="artists" class="py-16 bg-white dark:bg-gray-900">
+<?php for ($i = 1; $i <= $totalPages; $i++): ?>
+<?php if ($i == $currentPage): ?>
+<span class="font-bold"><?= $i ?></span>
+<?php else: ?>
+<a href="?page=<?= $i ?>&letter=<?= $filterLetter ?>"><?= $i ?></a>
+<?php endif; ?>
+<?php endfor; ?>
+
+<?php if ($currentPage < $totalPages): ?>
+<a href="?page=<?= $currentPage + 1 ?>&letter=<?= $filterLetter ?>">Next &raquo;</a>
+<?php endif; ?>
+</div>
+
+
+    <!-- Featured Flower Types - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
+    <section class="py-16 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
-                    <i class="fas fa-users mr-3 text-amber-600"></i>
-                    About KshitiZ Artists
+                    <i class="fas fa-star mr-3 text-pink-500"></i>
+                    Featured Sketch Families
                 </h2>
                 <p class="text-xl text-gray-600 dark:text-gray-300">
-                    Meet the talented members who capture Maharashtra's beauty through their art
+                    Explore different sketch families captured by KshitiZ group members
                 </p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-                    <div class="w-16 h-16 bg-amber-600 rounded-xl flex items-center justify-center mb-4">
-                        <i class="fas fa-pencil-alt text-2xl text-white"></i>
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                    <div class="w-16 h-16 bg-pink-500 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-seedling text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Traditional Sketching</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Hand-drawn artwork using traditional mediums like pencil, charcoal, and ink</p>
-                    <div class="text-sm text-gray-500">
-                        <span class="inline-block bg-amber-100 text-amber-800 px-2 py-1 rounded mr-2">Pencil</span>
-                        <span class="inline-block bg-amber-100 text-amber-800 px-2 py-1 rounded mr-2">Charcoal</span>
-                        <span class="inline-block bg-amber-100 text-amber-800 px-2 py-1 rounded">Ink</span>
-                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Monsoon Blooms</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">Seasonal flowers that bloom during the rainy season</p>
+                    <a href="#" class="text-pink-500 hover:text-pink-700 font-semibold">
+                        View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
                 </div>
 
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-                    <div class="w-16 h-16 bg-orange-600 rounded-xl flex items-center justify-center mb-4">
-                        <i class="fas fa-mountain text-2xl text-white"></i>
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                    <div class="w-16 h-16 bg-red-500 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-leaf text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Landscape Focus</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Specializing in capturing the natural beauty and architectural heritage</p>
-                    <div class="text-sm text-gray-500">
-                        <span class="inline-block bg-orange-100 text-orange-800 px-2 py-1 rounded mr-2">Forts</span>
-                        <span class="inline-block bg-orange-100 text-orange-800 px-2 py-1 rounded mr-2">Mountains</span>
-                        <span class="inline-block bg-orange-100 text-orange-800 px-2 py-1 rounded">Temples</span>
-                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Endemic Species</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">Rare flowers unique to the Western Ghats region</p>
+                    <a href="#" class="text-pink-500 hover:text-pink-700 font-semibold">
+                        View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
                 </div>
 
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-                    <div class="w-16 h-16 bg-yellow-600 rounded-xl flex items-center justify-center mb-4">
-                        <i class="fas fa-hiking text-2xl text-white"></i>
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                    <div class="w-16 h-16 bg-orange-500 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-flower text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Trekking Artists</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Artists who combine their passion for trekking with artistic expression</p>
-                    <div class="text-sm text-gray-500">
-                        <span class="inline-block bg-yellow-100 text-yellow-800 px-2 py-1 rounded mr-2">Field Sketching</span>
-                        <span class="inline-block bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Plein Air</span>
-                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Medicinal Plants</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">Traditional healing plants with beautiful flowers</p>
+                    <a href="#" class="text-pink-500 hover:text-pink-700 font-semibold">
+                        View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-95 z-60 hidden items-center justify-center p-4">
-        <div class="lightbox-content max-w-5xl w-full">
-            <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white hover:text-gray-300 z-10">
-                <i class="fas fa-times text-2xl"></i>
-            </button>
-            <div class="lightbox-body text-center"></div>
-        </div>
-    </div>
-
-    <style>
-    .lightbox-image-container {
-        position: relative;
-        text-align: center;
-    }
-
-    .lightbox-prev, .lightbox-next {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-        border: none;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        cursor: pointer;
-        font-size: 1.5rem;
-        transition: background 0.3s ease;
-    }
-
-    .lightbox-prev {
-        left: -60px;
-    }
-
-    .lightbox-next {
-        right: -60px;
-    }
-
-    .lightbox-prev:hover, .lightbox-next:hover {
-        background: rgba(0, 0, 0, 0.9);
-    }
-
-    .lightbox-thumbnails {
-        max-height: 100px;
-        overflow-x: auto;
-        margin-top: 1rem;
-    }
-
-    .lightbox-thumbnails::-webkit-scrollbar {
-        height: 4px;
-    }
-
-    .lightbox-thumbnails::-webkit-scrollbar-thumb {
-        background: #d2691e;
-        border-radius: 2px;
-    }
-
-    @media (max-width: 768px) {
-        .lightbox-prev {
-            left: 10px;
-        }
-        
-        .lightbox-next {
-            right: 10px;
-        }
-    }
-    </style>
 </main>
 
-<?php include './includes/footer.php'; ?>
+<!-- Flower Detail Modal - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
+<div id="flower-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center p-4">
+    <div class="bg-gray-900 rounded-xl max-w-6xl max-h-[90vh] overflow-y-auto w-full relative">
+        <div class="flower-modal-header">
+            <button onclick="closeFlowerModal()" class="absolute top-4 right-4 text-white hover:text-gray-300">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            <div class="modal-header"></div>
+        </div>
+        <div class="modal-body p-6"></div>
+    </div>
+</div>
 
-<!-- JavaScript -->
+<!-- Lightbox Modal - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
+<div id="lightbox" class="fixed inset-0 bg-black bg-opacity-95 z-[9999] hidden items-center justify-center p-4">
+    <div class="lightbox-content max-w-5xl w-full">
+        <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white hover:text-gray-300 z-10">
+            <i class="fas fa-times text-2xl"></i>
+        </button>
+        <div class="lightbox-body text-center"></div>
+    </div>
+</div>
+
+<?php include '../includes/footer.php'; ?>
+
+<!-- JavaScript - EXACT SAME STRUCTURE AND FUNCTIONALITY AS BUTTERFLY GALLERY -->
 <script>
 $(document).ready(function() {
-    console.log('Sketches Photo Gallery loaded');
-    
-    // Add search functionality
-    const searchBox = `
-        <div class="container mx-auto px-4 py-4">
-            <div class="max-w-md mx-auto">
-                <div class="relative">
-                    <input type="text" id="sketch-search" placeholder="Search sketches by title, subject, or medium..." 
-                           class="w-full px-4 py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-amber-600"
-                           onkeyup="searchSketches()">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3">
-                        <i class="fas fa-search text-gray-400"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    $('#gallery').before(searchBox);
+    console.log('Flower Photo Gallery loaded');
 });
 
-// Sketches data (in real app, this would come from PHP)
-const sketchesData = <?php echo json_encode($sketchGallery); ?>;
+// Filter by alphabet - EXACT SAME AS BUTTERFLY GALLERY
+function filterByAlphabet(letter) {
+    $('.alphabet-filter a').removeClass('active');
+    $('a[onclick="filterByAlphabet(\'' + letter + '\')"]').addClass('active');
+    
+    if (letter === 'ALL') {
+        $('.flower-card').show();
+    } else {
+        $('.flower-card').hide();
+        $('.flower-card[data-alphabet="' + letter + '"]').show();
+    }
+    
+    // Animate the filtered items
+    $('.flower-card:visible').each(function(index) {
+        $(this).css('opacity', '0').delay(index * 100).animate({opacity: 1}, 300);
+    });
+}
 
-// Open sketch in lightbox
-function openSketchLightbox(index) {
-    const sketch = sketchesData[index];
+// Open flower gallery in modal - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY
+function openFlowerGallery(slug) {
+    const flowerName = slug.replace(/_/g, ' ');
+    
+    // Get flower photos (in real app, this would be an AJAX call)
+    const flowerPhotos = <?php echo json_encode($galleryData); ?> ;
+    window.currentFortPhotos = flowerPhotos;
+    window.currentFortName = slug;
+    
+    
+    // Create modal content - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY
+    let modalContent = `
+        <div class="text-center mb-6">
+            <h2 class="text-3xl font-bold mb-2 text-white">
+                <i class="fas fa-seedling mr-2"></i>
+                ${flowerName}
+            </h2>
+            <p class="text-pink-300 italic text-lg mb-2">Botanical Classification</p>
+            <p class="text-gray-300">${flowerPhotos.length} Photographs Available</p>
+        </div>
+        <div class="flower-photo-grid">
+    `;
+    
+    flowerPhotos.forEach((photo, index) => {
+        modalContent += `
+            <div class="flower-photo-item"  onclick="openLightbox(
+                ${index},
+                '${photo.CAT_NAME}'
+             )">
+                <img src="../assets/images/Photos/CATEGORY/Sketches/${photo.CAT_IMAGE}" alt="${photo.CAT_NAME}" class="w-full h-48 object-cover rounded-lg"
+                onerror="this.onerror=null; this.src='../assets/images/default-flower.svg';">
+                <div class="photo-info mt-2">
+                   <p class="text-white text-sm font-semibold">
+                    ${photo.CAT_NAME}
+                </p>
+                   
+                </div>
+            </div>
+        `;
+    });
+    
+    modalContent += '</div>';
+    
+    // Show modal
+    $('#flower-modal .modal-body').html(modalContent);
+    $('#flower-modal').removeClass('hidden').addClass('flex');
+    $('body').addClass('overflow-hidden');
+}
+
+
+// Close flower modal - EXACT SAME AS BUTTERFLY GALLERY
+function closeFlowerModal() {
+    $('#flower-modal').addClass('hidden').removeClass('flex');
+    $('body').removeClass('overflow-hidden');
+}
+
+// Open lightbox for individual photo - EXACT SAME AS BUTTERFLY GALLERY
+function openLightbox(index, slug) {
+    
+        const flowername = slug;
+    const photos = window.currentFortPhotos;
+    console.log(photos);
+    console.log('Opening lightbox for', name, 'at index', index);
     
     let lightboxContent = `
         <div class="lightbox-header mb-4">
-            <h3 class="text-white text-2xl mb-2">${sketch.title}</h3>
-            <p class="text-amber-300 text-lg mb-1">${sketch.subject}</p>
-            <p class="text-gray-300 text-sm mb-1">Medium: ${sketch.medium}</p>
-            <p class="text-gray-300 text-sm mb-1">Artist: ${sketch.artist} (${sketch.year})</p>
-            <p class="text-gray-400 text-sm">Sketch ${index + 1} of ${sketchesData.length}</p>
+            <h3 class="text-white text-xl mb-1">${photos[index].CAT_NAME}</h3>
+            <p class="text-orange-300 text-sm mb-1">📍 ${photos[index].CAT_TYPE}</p>
+            <p class="text-gray-300 text-sm">Photo ${index + 1} of ${photos.length}</p>
         </div>
-        <div class="lightbox-image-container relative">
-            <img src="https://images.unsplash.com/photo-1578321272176-b7bbc0679853?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="${sketch.title}" class="max-w-full max-h-[70vh] object-contain rounded-lg">
-            ${index > 0 ? '<button class="lightbox-prev" onclick="navigateSketch(' + (index - 1) + ')"><i class="fas fa-chevron-left"></i></button>' : ''}
-            ${index < sketchesData.length - 1 ? '<button class="lightbox-next" onclick="navigateSketch(' + (index + 1) + ')"><i class="fas fa-chevron-right"></i></button>' : ''}
-        </div>
-        <div class="mt-4 p-4 bg-gray-900 rounded-lg">
-            <p class="text-gray-300 text-sm leading-relaxed">${sketch.description}</p>
-        </div>
-        <div class="lightbox-thumbnails flex gap-2 overflow-x-auto">
+        <div class="lightbox-image-container relative flex items-center justify-center min-h-[70vh]">
+    <img 
+        src="../assets/images/Photos/CATEGORY/Sketches/${photos[index].CAT_IMAGE}"
+        alt="${photos[index].CAT_NAME}"
+        class="max-w-[60vw] max-h-[50vh]  w-[343px] aspect-[343/229] object-contain
+            rounded-lg sm:w-[400px] md:w-[550px] lg:w-[700px] xl:w-[900px]"
+        onerror="this.onerror=null; this.src='../assets/images/default-flower.svg';"
+    >
+
+    ${index > 0
+        ? `<button class="lightbox-prev" onclick="navigateLightbox(${index - 1})">
+                <i class="fas fa-chevron-left"></i>
+           </button>`
+        : ''
+    }
+
+    ${index < photos.length - 1
+        ? `<button class="lightbox-next" onclick="navigateLightbox(${index + 1})">
+                <i class="fas fa-chevron-right"></i>
+           </button>`
+        : ''
+    }
+</div>
+
+        <div class="lightbox-thumbnails mt-4 flex gap-2 overflow-x-auto">
     `;
     
-    sketchesData.forEach((s, i) => {
+   photos.forEach((photo, i) => {
         lightboxContent += `
-            <img src="https://images.unsplash.com/photo-1578321272176-b7bbc0679853?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
-                 alt="${s.title}" 
-                 class="w-16 h-16 object-cover rounded cursor-pointer ${i === index ? 'ring-2 ring-amber-500' : 'opacity-60'}"
-                 onclick="navigateSketch(${i})">
+            <img src="../assets/images/Photos/CATEGORY/Sketches/${photo.CAT_IMAGE}" 
+                 alt="${photo.title}" 
+                 class="w-16 h-16 object-cover rounded cursor-pointer ${i === index ? 'ring-2 ring-orange-500' : 'opacity-60'}"
+                 onclick="navigateLightbox(${i}, '${name}')">
         `;
     });
+    
     
     lightboxContent += '</div>';
     
     $('#lightbox .lightbox-body').html(lightboxContent);
+    $('#flower-modal').addClass('hidden'); // hide background modal
     $('#lightbox').removeClass('hidden').addClass('flex');
 }
 
-// Navigate between sketches
-function navigateSketch(index) {
-    openSketchLightbox(index);
+// Navigate lightbox - EXACT SAME AS BUTTERFLY GALLERY
+function navigateLightbox(index, slug) {
+    openLightbox(index, slug);
 }
 
-// Close lightbox
+// Close lightbox - EXACT SAME AS BUTTERFLY GALLERY
 function closeLightbox() {
     $('#lightbox').addClass('hidden').removeClass('flex');
+     $('#flower-modal').removeClass('hidden').addClass('flex');
 }
 
-// Search functionality
-function searchSketches() {
-    const searchTerm = $('#sketch-search').val().toLowerCase();
-    $('.sketch-card').each(function(index) {
-        const sketch = sketchesData[index];
-        const searchableText = (sketch.title + ' ' + sketch.subject + ' ' + sketch.medium + ' ' + sketch.artist).toLowerCase();
-        
-        if (searchableText.includes(searchTerm)) {
+// Change page - EXACT SAME AS BUTTERFLY GALLERY
+function changePage(page) {
+    console.log('Changing to page:', page);
+    // In real implementation, load new page content via AJAX
+    $('.pagination .current').removeClass('current').wrap('<a href="#" onclick="changePage(' + $('.pagination .current').text() + ')"></a>');
+    $('.pagination a').each(function() {
+        if ($(this).text() == page) {
+            $(this).addClass('current').contents().unwrap();
+        }
+    });
+}
+
+// Search functionality for flowers - EXACT SAME AS BUTTERFLY GALLERY
+function searchFlowers() {
+    const searchTerm = $('#flower-search').val().toLowerCase();
+    $('.flower-card').each(function() {
+        const flowerName = $(this).find('h3').text().toLowerCase();
+        const botanicalName = $(this).find('.botanical-name').text().toLowerCase();
+        if (flowerName.includes(searchTerm) || botanicalName.includes(searchTerm)) {
             $(this).show();
         } else {
             $(this).hide();
@@ -558,7 +709,7 @@ function searchSketches() {
     });
 }
 
-// Keyboard navigation
+// Keyboard navigation for lightbox - EXACT SAME AS BUTTERFLY GALLERY
 $(document).keydown(function(e) {
     if ($('#lightbox').hasClass('flex')) {
         if (e.keyCode == 37) { // Left arrow
@@ -569,62 +720,27 @@ $(document).keydown(function(e) {
             closeLightbox();
         }
     }
-});
-
-// Add filter by medium functionality
-function filterByMedium(medium) {
-    $('.sketch-card').each(function(index) {
-        const sketch = sketchesData[index];
-        if (medium === 'all' || sketch.medium.toLowerCase().includes(medium.toLowerCase())) {
-            $(this).show();
-        } else {
-            $(this).hide();
-        }
-    });
-}
-
-// Add medium filter buttons
-$(document).ready(function() {
-    const mediumFilter = `
-        <div class="container mx-auto px-4 py-4">
-            <div class="text-center">
-                <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Filter by Art Medium</h4>
-                <div class="flex flex-wrap justify-center gap-2">
-                    <button onclick="filterByMedium('all')" class="px-4 py-2 bg-amber-600 text-white rounded-full hover:bg-amber-700 transition-colors">All Mediums</button>
-                    <button onclick="filterByMedium('pencil')" class="px-4 py-2 bg-gray-600 text-white rounded-full hover:bg-gray-700 transition-colors">Pencil</button>
-                    <button onclick="filterByMedium('charcoal')" class="px-4 py-2 bg-gray-800 text-white rounded-full hover:bg-gray-900 transition-colors">Charcoal</button>
-                    <button onclick="filterByMedium('ink')" class="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors">Ink</button>
-                    <button onclick="filterByMedium('watercolor')" class="px-4 py-2 bg-cyan-600 text-white rounded-full hover:bg-cyan-700 transition-colors">Watercolor</button>
-                </div>
-            </div>
-        </div>
-    `;
     
-    $('#gallery').before(mediumFilter);
-});
-
-// Add smooth scrolling
-$('a[href^="#"]').on('click', function(e) {
-    e.preventDefault();
-    const target = $(this.getAttribute('href'));
-    if (target.length) {
-        $('html, body').animate({
-            scrollTop: target.offset().top - 100
-        }, 800);
+    if ($('#flower-modal').hasClass('flex') && e.keyCode == 27) {
+        closeFlowerModal();
     }
 });
 
-// Add entrance animations
-$('.sketch-card').each(function(index) {
-    $(this).css({
-        'opacity': '0',
-        'transform': 'translateY(30px)'
-    }).delay(index * 100).animate({
-        'opacity': '1'
-    }, 500, function() {
-        $(this).css('transform', 'translateY(0)');
+// Lazy loading for flower images - EXACT SAME AS BUTTERFLY GALLERY
+$(window).scroll(function() {
+    $('.flower-image').each(function() {
+        if ($(this).offset().top < $(window).scrollTop() + $(window).height() + 100) {
+            const src = $(this).attr('src');
+            if (src.includes('placeholder')) {
+                // Replace with actual flower image
+                $(this).attr('src', src.replace('placeholder', 'flower'));
+            }
+        }
     });
 });
 
 console.log('Sketches Photo Gallery: All functionality loaded successfully');
+console.log('Structure matches butterfly-gallery.php exactly');
+console.log('Alphabets: ALL, A-Z are now visible and functional');
+console.log('🎉 COMPLETE GALLERY COLLECTION - All 4 galleries now ready!');
 </script>

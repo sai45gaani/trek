@@ -356,6 +356,7 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                                     <a href="<?= BASE_URL ?>gallery/butterfly-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Butterflies</a>
                                     <a href="<?= BASE_URL ?>gallery/caves-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Caves</a>
                                     <a href="<?= BASE_URL ?>gallery/flower-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Flowers</a>
+                                    <a href="<?= BASE_URL ?>gallery/sketches-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Sketches</a>
                                 </div>
                             </div>
                         </li>

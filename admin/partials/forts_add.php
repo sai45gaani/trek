@@ -99,34 +99,16 @@ require_once '../config/database.php';
                     class="px-4 py-2 border rounded text-sm hover:bg-gray-50">
                 Cancel
             </button>
-            <button type="submit"
-                    class="px-6 py-2 bg-primary text-white rounded text-sm hover:bg-secondary">
-                <i class="fas fa-save mr-2"></i>Save Fort
-            </button>
+          <button type="button"
+        onclick="saveNewFort()"
+        class="px-6 py-2 bg-primary text-white rounded text-sm hover:bg-secondary">
+    <i class="fas fa-save mr-2"></i> Save Fort
+</button>
+
+
+
         </div>
 
     </form>
 </div>
 
-<script>
-document.getElementById('add-fort-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const formData = new FormData(this);
-
-    fetch('../api/add_fort.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(res => res.json())
-    .then(res => {
-        if (res.status === 'success') {
-            alert('Fort added successfully!');
-            loadContent('forts');
-        } else {
-            alert(res.message || 'Failed to add fort');
-        }
-    })
-    .catch(() => alert('Server error'));
-});
-</script>
