@@ -1,5 +1,5 @@
 <?php
-require_once '../../config/database.php';
+require_once '../../../config/database.php';
 
 $id = intval($_GET['id'] ?? 0);
 

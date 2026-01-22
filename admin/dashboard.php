@@ -34,7 +34,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'load_content') {
             include 'partials/treks_list.php';
             break;
         case 'treks-add':
-            include 'partials/treks_add.php';
+            include 'partials/treks_add_sidebar.php';
             break;
         case 'birds':
             include 'partials/birds_list.php';
@@ -989,8 +989,16 @@ document.addEventListener('submit', function (e) {
             document.getElementById('spot-modal').classList.remove('hidden');
         };
 
+         window.openSpotModalView = function () {
+            document.getElementById('spot-modal-view').classList.remove('hidden');
+        };
+
         window.closeSpotModal = function () {
             document.getElementById('spot-modal').classList.add('hidden');
+        };
+
+        window.closeSpotModalView = function () {
+            document.getElementById('spot-modal-view').classList.add('hidden');
         };
 
         window.loadFascinatingPage = function (page) {
@@ -1029,7 +1037,13 @@ document.addEventListener('submit', function (e) {
         window.viewSpot = function (id) {
             fetch(`partials/ajax/get_fascinating_spot.php?id=${id}`)
                 .then(r => r.json())
-                .then(d => alert(d.Description));
+                .then(d => {
+                     openSpotModalView();
+                     document.getElementById('fs-id-view').value = d.FSID;
+                     document.getElementById('fs-fort-view').value = d.FortName;
+                     document.getElementById('fs-name-view').value = d.NameOfSpot;
+                     document.getElementById('fs-desc-view').value = d.Description;
+                });
         };
 
         window.editSpot = function (id) {
@@ -1082,6 +1096,9 @@ document.addEventListener('submit', function (e) {
                     document.getElementById('way-modal').classList.add('hidden');
                 };
 
+                 window.closeWayModalView = function () {
+                    document.getElementById('way-modal-view').classList.add('hidden');
+                };
                 /* ---------- SAVE ---------- */
 
                 window.saveWayToReach = function () {
@@ -1115,9 +1132,11 @@ document.addEventListener('submit', function (e) {
                     fetch(`partials/ajax/ways_to_reach_get.php?id=${id}`)
                         .then(res => res.json())
                         .then(d => {
-                            alert(
-                                `Fort: ${d.FortName}\n\nRoute: ${d.NameOfWay}\n\n${d.Description}`
-                            );
+                            document.getElementById('wtr-id-view').value = d.WTRID;
+                            document.getElementById('wtr-fort-view').value = d.FortName;
+                            document.getElementById('wtr-name-view').value = d.NameOfWay;
+                            document.getElementById('wtr-desc-view').value = d.Description;
+                            document.getElementById('way-modal-view').classList.remove('hidden');
                         });
                 };
 
@@ -1164,64 +1183,246 @@ document.addEventListener('submit', function (e) {
                 });
         };
 
-     window.openTrekModal = () => {
+function openTrekModal(mode, trekId) {
     fetch('partials/treks_add.php')
-        .then(res => res.text())
-        .then(html => {
+        .then(function (res) {
+            return res.text();
+        })
+        .then(function (html) {
             document.getElementById('trek-modal-content').innerHTML = html;
             document.getElementById('trek-modal').classList.remove('hidden');
+
+            if (mode === 'add') {
+                setTrekMode('add');
+            }
+
+            if (mode === 'edit' || mode === 'view') {
+                loadTrekData(trekId, mode);
+            }
         });
+}
+
+
+
+window.closeTrekModal = function () {
+    var modal = document.getElementById('trek-modal');
+    if (modal) {
+        modal.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+        document.getElementById('trek-modal-content').innerHTML = '';
+    }
 };
 
-window.closeTrekModal = () => {
-    document.getElementById('trek-modal').classList.add('hidden');
-    document.getElementById('trek-modal-content').innerHTML = '';
+function setTrekMode(mode) {
+    document.getElementById('trek-mode').value = mode;
+
+    var isView = mode === 'view';
+    var title = 'Add Trek';
+    var btnText = 'Save Trek';
+
+    if (mode === 'edit') {
+        title = 'Edit Trek';
+        btnText = 'Update Trek';
+    }
+    if (mode === 'view') {
+        title = 'View Trek Details';
+        btnText = 'Close';
+    }
+
+    document.getElementById('trek-title').innerText = title;
+    document.getElementById('trek-save-btn').innerText = btnText;
+
+    var inputs = document.querySelectorAll(
+        '#trek-modal-content input, #trek-modal-content textarea'
+    );
+
+    for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].id !== 'trek-id' && inputs[i].id !== 'trek-mode') {
+            inputs[i].disabled = isView;
+        }
+    }
+
+    document.getElementById('trek-save-btn').style.display =
+        isView ? 'none' : 'inline-block';
+
+    updateLabels(mode);
+}
+
+function updateLabels(mode) {
+    var map = {
+        add: 'Please enter ',
+        edit: 'Update ',
+        view: 'This is '
+    };
+
+    var prefix = map[mode];
+
+    var labels = {
+        place: 'place',
+        leader: 'leader',
+        date: 'trek date',
+        display: 'display date',
+        contact: 'contact number',
+        cost: 'cost',
+        grade: 'grade',
+        last: 'last booking date',
+        max: 'max participants',
+        meet: 'meeting place',
+        desc: 'description',
+        notes: 'notes'
+    };
+
+    for (var k in labels) {
+        document.getElementById('lbl-' + k).innerText =
+            prefix + labels[k];
+    }
+}
+
+
+window.editTrek = function (id) {
+
+    openTrekModal();
+
+    setTimeout(function () {
+        fetch('partials/ajax/treks_get.php?id=' + id)
+            .then(function (r) {
+                return r.json();
+            })
+            .then(function (d) {
+
+                document.getElementById('trek-title').innerText = 'Edit Trek';
+                document.getElementById('trek-id').value = d.TrekId;
+                document.getElementById('trek-place').value = d.Place || '';
+                document.getElementById('trek-leader').value = d.Leader || '';
+                document.getElementById('trek-date').value = d.TrekDate ? d.TrekDate.split(' ')[0] : '';
+                document.getElementById('trek-contact').value = d.ContDetails || '';
+                document.getElementById('trek-cost').value = d.Cost || '';
+                document.getElementById('trek-grade').value = d.Grade || '';
+                document.getElementById('trek-desc').value = d.Description || '';
+            });
+    }, 100);
 };
 
 
-        window.editTrek = id => {
-            fetch(`partials/ajax/treks_get.php?id=${id}`)
-                .then(r=>r.json()).then(d=>{
-                    for (let k in d) {
-                        let el = document.getElementById('trek-'+k.toLowerCase());
-                        if (el) el.value = d[k];
-                    }
-                    document.getElementById('trek-id').value = id;
-                    openTrekModal();
+function loadTrekData(id, mode) {
+    fetch('partials/ajax/treks_get.php?id=' + id)
+        .then(function (r) {
+            return r.json();
+        })
+        .then(function (d) {
+
+            document.getElementById('trek-id').value = d.TrekId;
+
+            document.getElementById('trek-place').value = d.Place;
+            document.getElementById('trek-leader').value = d.Leader;
+            document.getElementById('trek-contact').value = d.ContDetails;
+            document.getElementById('trek-cost').value = d.Cost;
+            document.getElementById('trek-grade').value = d.Grade;
+            document.getElementById('trek-display').value = d.DisplayDate;
+            document.getElementById('trek-max').value = d.MaxParticipants;
+            document.getElementById('trek-meet').value = d.MeetingPlace;
+            document.getElementById('trek-desc').value = d.Description;
+            document.getElementById('trek-notes').value = d.Notes;
+
+            if (d.TrekDate) {
+                document.getElementById('trek-date').value =
+                    d.TrekDate.split(' ')[0];
+            }
+
+            if (d.LDateBooking) {
+                document.getElementById('trek-last').value =
+                    d.LDateBooking.split(' ')[0];
+            }
+
+            setTrekMode(mode);
+        });
+}
+
+function validateTrekForm() {
+    var requiredFields = [
+        { id: 'trek-place', name: 'Place' },
+        { id: 'trek-date', name: 'Trek Date' },
+        { id: 'trek-leader', name: 'Leader' },
+        { id: 'trek-contact', name: 'Contact Details' },
+        { id: 'trek-grade', name: 'Grade' },
+        { id: 'trek-display', name: 'Display Date' }
+    ];
+
+    var firstInvalid = null;
+    var messages = [];
+
+    for (var i = 0; i < requiredFields.length; i++) {
+        var field = document.getElementById(requiredFields[i].id);
+
+        if (!field || field.value.trim() === '') {
+            messages.push(requiredFields[i].name + ' is required');
+
+            if (field) {
+                field.classList.add('border-red-500');
+                if (!firstInvalid) firstInvalid = field;
+            }
+        } else {
+            field.classList.remove('border-red-500');
+        }
+    }
+
+    if (messages.length > 0) {
+        alert('Please fix the following:\n\n• ' + messages.join('\n• '));
+        if (firstInvalid) firstInvalid.focus();
+        return false;
+    }
+
+    return true;
+}
+
+
+
+
+            window.saveTrek = function () {
+                 if (!validateTrekForm()) {
+                    return; // ⛔ STOP HERE
+                 }
+                var data = {
+                    id: document.getElementById('trek-id').value,
+                    place: document.getElementById('trek-place').value,
+                    date: document.getElementById('trek-date').value,
+                    leader: document.getElementById('trek-leader').value,
+                    contact: document.getElementById('trek-contact').value,
+                    display: document.getElementById('trek-date').value,
+                    cost: document.getElementById('trek-cost').value,
+                    grade: document.getElementById('trek-grade').value,
+                    last: document.getElementById('trek-last').value,
+                    meet: document.getElementById('trek-meet').value,
+                    max: document.getElementById('trek-max').value,
+                    desc: document.getElementById('trek-desc').value,
+                    notes: document.getElementById('trek-notes').value
+                };
+
+                fetch('partials/ajax/treks_save.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                }).then(function () {
+                    closeTrekModal();
+                    loadTreks();
                 });
-        };
-
-        window.saveTrek = () => {
-            const data = {
-                id: document.getElementById('trek-id').value,
-                place: trek-place.value,
-                date: trek-date.value,
-                leader: trek-leader.value,
-                contact: trek-contact.value,
-                display: trek-date.value,
-                cost: trek-cost.value,
-                grade: trek-grade.value,
-                last: trek-last.value,
-                meet: trek-meet.value,
-                max: trek-max.value,
-                desc: trek-desc.value,
-                notes: trek-notes.value
             };
 
-            fetch('partials/ajax/treks_save.php',{
-                method:'POST',
-                body:JSON.stringify(data)
-            }).then(()=>{ closeTrekModal(); loadTreks(); });
-        };
+            window.deleteTrek = function (id) {
+                if (!confirm('Delete trek?')) return;
 
-        window.deleteTrek = id => {
-            if (!confirm('Delete trek?')) return;
-            fetch('partials/ajax/treks_delete.php',{
-                method:'POST',
-                headers:{'Content-Type':'application/x-www-form-urlencoded'},
-                body:`id=${id}`
-            }).then(()=>loadTreks());
-        };
+                fetch('partials/ajax/treks_delete.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: 'id=' + encodeURIComponent(id)
+                }).then(function () {
+                    loadTreks();
+                });
+            };
 </script>
 
 <script>

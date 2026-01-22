@@ -68,9 +68,6 @@
 </div>
 
 <div class="flex justify-end gap-2 mt-4">
-    <button onclick="closeTrekModal()" class="border px-4 py-2 rounded">
-        Close
-    </button>
     <button id="trek-save-btn"
             onclick="saveTrek()"
             class="bg-primary text-white px-4 py-2 rounded">

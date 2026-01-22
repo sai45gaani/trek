@@ -75,9 +75,9 @@ $data = $conn->query($sql);
                         <button onclick="editWay(<?= $row['WTRID'] ?>)" class="text-green-600">
                             <i class="fas fa-edit"></i>
                         </button>
-                        <button onclick="deleteWay(<?= $row['WTRID'] ?>)" class="text-red-600">
+                       <!-- <button onclick="deleteWay(<?= $row['WTRID'] ?>)" class="text-red-600">
                             <i class="fas fa-trash"></i>
-                        </button>
+                        </button>-->
                     </td>
                 </tr>
                 <?php endwhile; ?>
@@ -174,6 +174,37 @@ $data = $conn->query($sql);
             <button onclick="saveWayToReach()" class="px-4 py-2 bg-primary text-white rounded">
                 Save
             </button>
+        </div>
+    </div>
+</div>
+
+<div id="way-modal-view" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+    <div class="bg-white rounded-lg w-full max-w-lg p-4">
+        <h3 class="text-lg font-bold mb-3" id="way-modal-title">View Way To Reach</h3>
+
+        <input type="hidden" id="wtr-id-view">
+
+        <div class="space-y-3">
+            <select id="wtr-fort-view" class="w-full border px-3 py-2 rounded">
+                <option value="">Select Fort</option>
+                <?php foreach ($forts as $f): ?>
+                    <option value="<?= htmlspecialchars($f) ?>"><?= htmlspecialchars($f) ?></option>
+                <?php endforeach; ?>
+            </select>
+
+            <input type="text" id="wtr-name-view"
+                class="w-full border px-3 py-2 rounded"
+                placeholder="Route Name">
+
+            <textarea id="wtr-desc-view"
+                class="w-full border px-3 py-2 rounded"
+                rows="4"
+                placeholder="Description"></textarea>
+        </div>
+
+        <div class="flex justify-end gap-2 mt-4">
+            <button onclick="closeWayModalView()" class="px-4 py-2 border rounded">Cancel</button>
+            
         </div>
     </div>
 </div>

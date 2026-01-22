@@ -77,10 +77,10 @@ $data = $conn->query($sql);
                             class="text-green-600">
                             <i class="fas fa-edit"></i>
                         </button>
-                        <button onclick="deleteSpot(<?= $row['FSID'] ?>)"
+                     <!--   <button onclick="deleteSpot(<?= $row['FSID'] ?>)"
                             class="text-red-600">
                             <i class="fas fa-trash"></i>
-                        </button>
+                        </button>-->
                     </td>
                 </tr>
                 <?php endwhile; ?>
@@ -177,6 +177,36 @@ $data = $conn->query($sql);
             <button onclick="saveFascinatingSpot()" class="px-4 py-2 bg-primary text-white rounded">
                 Save
             </button>
+        </div>
+    </div>
+</div>
+
+<div id="spot-modal-view" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+    <div class="bg-white rounded-lg w-full max-w-lg p-4">
+        <h3 class="text-lg font-bold mb-3" id="spot-modal-title">Add Fascinating Spot</h3>
+
+        <input type="hidden" id="fs-id-view">
+
+        <div class="space-y-3">
+            <select id="fs-fort-view" class="w-full border px-3 py-2 rounded">
+                <option value="">Select Fort</option>
+                <?php foreach ($forts as $f): ?>
+                    <option value="<?= htmlspecialchars($f) ?>"><?= htmlspecialchars($f) ?></option>
+                <?php endforeach; ?>
+            </select>
+
+            <input type="text" id="fs-name-view"
+                class="w-full border px-3 py-2 rounded"
+                placeholder="Spot Name">
+
+            <textarea id="fs-desc-view"
+                class="w-full border px-3 py-2 rounded"
+                rows="4"
+                placeholder="Description"></textarea>
+        </div>
+
+        <div class="flex justify-end gap-2 mt-4">
+            <button onclick="closeSpotModalView()" class="px-4 py-2 border rounded">Cancel</button>
         </div>
     </div>
 </div>

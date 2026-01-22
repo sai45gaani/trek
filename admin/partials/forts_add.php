@@ -29,8 +29,14 @@ require_once '../config/database.php';
 
             <div>
                 <label class="block text-sm font-medium mb-1">Fort Type *</label>
-                <input type="text" name="FortType" required
-                       class="w-full border px-3 py-2 rounded text-sm">
+                <select name="FortType" required class="w-full border px-3 py-2 rounded text-sm">
+                    <option value="">Select FortType</option>
+                    <option value="Hill forts">Hill forts</option>
+                    <option value="Coastal Forts">Coastal Forts</option>
+                    <option value="Sea forts">Sea forts</option>
+                    <option value="Forest forts">Forest forts</option>
+                    <option value="Land Forts">Land Forts</option>
+                </select>
             </div>
 
             <div>
