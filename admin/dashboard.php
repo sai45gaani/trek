@@ -1388,7 +1388,7 @@ function validateTrekForm() {
                     date: document.getElementById('trek-date').value,
                     leader: document.getElementById('trek-leader').value,
                     contact: document.getElementById('trek-contact').value,
-                    display: document.getElementById('trek-date').value,
+                    display: document.getElementById('trek-display').value,
                     cost: document.getElementById('trek-cost').value,
                     grade: document.getElementById('trek-grade').value,
                     last: document.getElementById('trek-last').value,
@@ -1452,17 +1452,34 @@ function editFortPhoto(id){
     });
 }
 
-function saveFortPhoto(){
-    var fd=new FormData();
-    fd.append('id',fp-id.value);
-    fd.append('fort',fp-fort.value);
-    fd.append('desc',fp-desc.value);
-    fd.append('front',fp-front.checked?'Y':'');
-    if(fp-file.files[0]) fd.append('image',fp-file.files[0]);
+function saveFortPhoto() {
+    var fd = new FormData();
 
-    fetch('partials/ajax/save_fort_photo.php',{method:'POST',body:fd})
-    .then(()=>{closeFortPhotoModal();loadFortPhotos(1);});
+    var idEl    = document.getElementById('fp-id');
+    var fortEl  = document.getElementById('fp-fort');
+    var descEl  = document.getElementById('fp-desc');
+    var frontEl = document.getElementById('fp-front');
+    var fileEl  = document.getElementById('fp-file');
+
+    fd.append('id', idEl.value);
+    fd.append('fort', fortEl.value);
+    fd.append('desc', descEl.value);
+    fd.append('front', frontEl.checked ? 'Y' : '');
+
+    if (fileEl.files.length > 0) {
+        fd.append('image', fileEl.files[0]);
+    }
+
+    fetch('partials/ajax/save_fort_photo.php', {
+        method: 'POST',
+        body: fd
+    })
+    .then(function () {
+        closeFortPhotoModal();
+        loadFortPhotos(1);
+    });
 }
+
 
 function deleteFortPhoto(id){
     if(!confirm('Delete photo?')) return;

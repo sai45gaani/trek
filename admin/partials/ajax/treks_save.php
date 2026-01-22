@@ -1,36 +1,74 @@
 <?php
-require_once '../../config/database.php';
+require_once '../../../config/database.php';
+
 $db = new Database();
 $conn = $db->getConnection();
 
 $data = json_decode(file_get_contents("php://input"), true);
 
-$id = $data['id'] ?? null;
+$id = !empty($data['id']) ? (int)$data['id'] : null;
+
+/* Normalize dates to DATETIME */
+$trekDate = $data['date'] . ' 00:00:00';
+$lastDate = $data['last'] . ' 00:00:00';
 
 $params = [
-    $data['date'], $data['place'], $data['leader'], $data['contact'],
-    $data['display'], $data['cost'], $data['grade'], $data['last'],
-    $data['meet'], $data['max'], $data['desc'], $data['notes']
+    $trekDate,
+    $data['place'],
+    $data['leader'],
+    $data['contact'],
+    $data['display'],
+    (float)$data['cost'],
+    $data['grade'],
+    $lastDate,
+    $data['meet'],
+    (int)$data['max'],
+    $data['desc'],
+    $data['notes']
 ];
 
 if ($id) {
+
     $params[] = $id;
+
     $stmt = $conn->prepare("
         UPDATE TS_tblTrekDetails SET
-        TrekDate=?, Place=?, Leader=?, ContDetails=?, DisplayDate=?, Cost=?,
-        Grade=?, LDateBooking=?, MeetingPlace=?, MaxParticipants=?,
-        Description=?, Notes=?
+            TrekDate=?,
+            Place=?,
+            Leader=?,
+            ContDetails=?,
+            DisplayDate=?,
+            Cost=?,
+            Grade=?,
+            LDateBooking=?,
+            MeetingPlace=?,
+            MaxParticipants=?,
+            Description=?,
+            Notes=?
         WHERE TrekId=?
     ");
+
+    // 12 fields + 1 ID
+    $stmt->bind_param("sssssdsssissi", ...$params);
+
 } else {
+
     $stmt = $conn->prepare("
         INSERT INTO TS_tblTrekDetails
-        (TrekDate,Place,Leader,ContDetails,DisplayDate,Cost,Grade,LDateBooking,MeetingPlace,MaxParticipants,Description,Notes)
+        (
+            TrekDate, Place, Leader, ContDetails, DisplayDate,
+            Cost, Grade, LDateBooking, MeetingPlace,
+            MaxParticipants, Description, Notes
+        )
         VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
     ");
+
+    $stmt->bind_param("sssssdsssiss", ...$params);
 }
 
-$stmt->bind_param("ssssdsississ", ...$params);
 $stmt->execute();
 
-echo json_encode(['success' => true]);
+echo json_encode([
+    'success' => true,
+    'id' => $id ?? $conn->insert_id
+]);

@@ -9,16 +9,16 @@ $offset = ($page - 1) * $limit;
 
 /* Fort dropdown */
 $forts = [];
-$qf = $conn->query("SELECT FortName FROM EI_tblFortInfo ORDER BY FortName");
+$qf = $conn->query("SELECT FortName FROM mi_tblfortinfo_unicode ORDER BY FortName");
 while ($r = $qf->fetch_assoc()) $forts[] = $r['FortName'];
 
 /* Count */
-$total = $conn->query("SELECT COUNT(*) cnt FROM PM_tblPhotos")->fetch_assoc()['cnt'];
+$total = $conn->query("SELECT COUNT(*) cnt FROM PM_tblPhotos_clean")->fetch_assoc()['cnt'];
 $totalPages = ceil($total / $limit);
 
 /* Data */
 $sql = "SELECT PIC_ID, FortName, PIC_NAME, PIC_DESC, PIC_FRONT_IMAGE
-        FROM PM_tblPhotos
+        FROM PM_tblPhotos_clean
         ORDER BY PIC_ID DESC
         LIMIT $limit OFFSET $offset";
 $data = $conn->query($sql);
@@ -50,7 +50,23 @@ $data = $conn->query($sql);
 <tr>
     <td class="px-3 py-2"><?= $row['PIC_ID'] ?></td>
     <td class="px-3 py-2"><?= htmlspecialchars($row['FortName']) ?></td>
-    <td class="px-3 py-2"><?= htmlspecialchars($row['PIC_NAME']) ?></td>
+    <td class="px-3 py-2">
+            <?php if (!empty($row['PIC_NAME'])): ?>
+                <div class="flex items-center gap-2">
+                    <img 
+                        src="../assets/images/Photos/Fort/<?= htmlspecialchars($row['PIC_NAME']) ?>" 
+                        class="w-40 h-28 object-cover rounded border"
+                        alt="Fort Image"
+                    >
+                    <span class="text-gray-700 text-sm">
+                        <?= htmlspecialchars($row['PIC_NAME']) ?>
+                    </span>
+                </div>
+            <?php else: ?>
+                <span class="text-gray-400">-</span>
+            <?php endif; ?>
+    </td>
+
     <td class="px-3 py-2 text-gray-600">
         <?= htmlspecialchars(mb_strimwidth($row['PIC_DESC'],0,40,'...')) ?>
     </td>
@@ -59,9 +75,9 @@ $data = $conn->query($sql);
         <button onclick="editFortPhoto(<?= $row['PIC_ID'] ?>)" class="text-green-600">
             <i class="fas fa-edit"></i>
         </button>
-        <button onclick="deleteFortPhoto(<?= $row['PIC_ID'] ?>)" class="text-red-600">
+        <!--<button onclick="deleteFortPhoto(<?= $row['PIC_ID'] ?>)" class="text-red-600">
             <i class="fas fa-trash"></i>
-        </button>
+        </button>-->
     </td>
 </tr>
 <?php endwhile; ?>
