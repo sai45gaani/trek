@@ -76,7 +76,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'load_content') {
             include 'partials/organizations_list.php';
             break;
         case 'settings':
-            include 'partials/settings.php';
+            include 'partials/settings_ui.php';
             break;
         case 'users':
             include 'partials/admin_users.php';
@@ -309,14 +309,14 @@ $page_title = 'Admin Dashboard - Trekshitz';
                     <a href="#" data-page="fort-photos" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Fort Photos</a>
                     <a href="#" data-page="map-photos" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Map Photos</a>
                     <a href="#" data-page="nature-photos" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Nature Photos</a>
-                    <a href="#" data-page="photos" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">All Photos</a>
+                  <!--  <a href="#" data-page="photos" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">All Photos</a>
                     <a href="#" data-page="categories" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Categories</a>
-                    <a href="#" data-page="photo-upload" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Upload Photos</a>
+                    <a href="#" data-page="photo-upload" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Upload Photos</a>-->
                 </div>
             </div>
 
             <!-- Events & Organizations -->
-            <div class="mb-2">
+         <!--   <div class="mb-2">
                 <p class="text-xs text-gray-400 px-2 mb-1 uppercase font-semibold">Events</p>
                 <button onclick="toggleDropdown('events-menu')" class="dropdown-toggle w-full flex items-center justify-between px-2 py-1.5 rounded hover:bg-gray-700 text-sm">
                     <div class="flex items-center">
@@ -329,15 +329,15 @@ $page_title = 'Admin Dashboard - Trekshitz';
                     <a href="#" data-page="events" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">All Events</a>
                     <a href="#" data-page="organizations" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Organizations</a>
                 </div>
-            </div>
+            </div>-->
 
             <!-- Settings -->
             <div class="mb-2">
                 <p class="text-xs text-gray-400 px-2 mb-1 uppercase font-semibold">Settings</p>
-                <a href="#" data-page="settings" class="nav-link flex items-center px-2 py-1.5 rounded hover:bg-gray-700 text-sm">
+              <!--  <a href="#" data-page="settings" class="nav-link flex items-center px-2 py-1.5 rounded hover:bg-gray-700 text-sm">
                     <i class="fas fa-cog w-4 mr-2 text-accent text-xs"></i>
                     <span>Configuration</span>
-                </a>
+                </a>-->
                 <a href="#" data-page="users" class="nav-link flex items-center px-2 py-1.5 rounded hover:bg-gray-700 text-sm">
                     <i class="fas fa-users w-4 mr-2 text-accent text-xs"></i>
                     <span>Admin Users</span>
@@ -1622,6 +1622,83 @@ function deleteNature(id) {
     });
 }
 </script>
+
+<script>
+function saveSettings() {
+    var inputs = document.querySelectorAll('.setting-input');
+    var data = {};
+
+    for (var i = 0; i < inputs.length; i++) {
+        data[inputs[i].dataset.key] = inputs[i].value;
+    }
+
+    fetch('partials/ajax/save_settings.php', {
+        method: 'POST',
+        body: JSON.stringify(data)
+    })
+    .then(function () {
+        alert('Settings saved successfully');
+    });
+}
+</script>
+
+<script>
+function openUserModal(){
+    document.getElementById('user-modal').classList.remove('hidden');
+}
+function closeUserModal(){
+    document.getElementById('user-modal').classList.add('hidden');
+}
+
+function editUser(id){
+    fetch('partials/ajax/admin_user_get.php?id='+id)
+    .then(function(r){return r.json();})
+    .then(function(d){
+        document.getElementById('user-id').value = d.admin_id;
+        document.getElementById('user-username').value = d.username;
+        document.getElementById('user-fullname').value = d.full_name;
+        document.getElementById('user-email').value = d.email;
+        document.getElementById('user-role').value = d.role;
+        openUserModal();
+    });
+}
+
+function saveUser() {
+    var data = {
+        id: document.getElementById('user-id').value,
+        username: document.getElementById('user-username').value,
+        fullname: document.getElementById('user-fullname').value,
+        email: document.getElementById('user-email').value,
+        role: document.getElementById('user-role').value,
+        password: document.getElementById('user-password').value
+    };
+
+        if (!data.username || !data.email || !data.role) {
+        alert('Username, Email and Role are required');
+        return;
+        }
+
+        fetch('partials/ajax/admin_user_save.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+        })
+        .then(function (res) {
+                return res.json();
+        })
+        .then(function () {
+                closeUserModal();
+                location.reload();
+        });
+}
+
+
+</script>
+
+
+
 
 
 

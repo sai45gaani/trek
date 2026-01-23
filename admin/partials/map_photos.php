@@ -9,7 +9,7 @@ $offset = ($page - 1) * $limit;
 
 /* FORT DROPDOWN */
 $forts = [];
-$q = $conn->query("SELECT FortName FROM EI_tblFortInfo ORDER BY FortName");
+$q = $conn->query("SELECT FortName FROM mi_tblfortinfo_unicode ORDER BY FortName");
 while ($r = $q->fetch_assoc()) $forts[] = $r['FortName'];
 
 /* COUNT */
@@ -53,7 +53,23 @@ $data = $conn->query("
     <td class="px-3 py-2"><?= $row['MapID'] ?></td>
     <td class="px-3 py-2"><?= htmlspecialchars($row['FortName']) ?></td>
     <td class="px-3 py-2"><?= htmlspecialchars($row['MapType']) ?></td>
-    <td class="px-3 py-2 font-medium"><?= htmlspecialchars($row['MapName']) ?></td>
+    <td class="px-3 py-2">
+        <div class="flex items-center gap-2">
+            <!-- MAP ICON -->
+            <img 
+                src="../assets/images/Photos/Maps/MapImages/<?= htmlspecialchars($row['MapPath']) ?>" 
+                alt="<?= htmlspecialchars($row['MapName']) ?>"
+                class="w-40 h-28 object-cover rounded border"
+                onerror="this.style.display='none'"
+            >
+
+            <!-- MAP NAME -->
+            <span class="font-medium">
+                <?= htmlspecialchars($row['MapName']) ?>
+            </span>
+        </div>
+    </td>
+
     <td class="px-3 py-2 text-gray-600">
         <?= htmlspecialchars(mb_strimwidth(strip_tags($row['Description']),0,60,'...')) ?>
     </td>
@@ -61,9 +77,9 @@ $data = $conn->query("
         <button onclick="editMap(<?= $row['MapID'] ?>)" class="text-green-600">
             <i class="fas fa-edit"></i>
         </button>
-        <button onclick="deleteMap(<?= $row['MapID'] ?>)" class="text-red-600">
+    <!--    <button onclick="deleteMap(<?= $row['MapID'] ?>)" class="text-red-600">
             <i class="fas fa-trash"></i>
-        </button>
+        </button>-->
     </td>
 </tr>
 <?php endwhile; ?>
@@ -109,7 +125,13 @@ if($page<$totalPages): ?>
 <?php endforeach; ?>
 </select>
 
-<input id="map-type" class="w-full border p-2 rounded mb-2" placeholder="Map Type">
+<label class="text-sm font-medium">Map Type</label>
+<select id="map-type" class="w-full border p-2 rounded mb-2" onchange="toggleMapFort()">
+    <option value="">Select Type</option>
+    <option value="Fort">Fort</option>
+    <option value="Range">Range</option>
+</select>
+
 <input id="map-name" class="w-full border p-2 rounded mb-2" placeholder="Map Name">
 <textarea id="map-desc" class="w-full border p-2 rounded mb-2" rows="3" placeholder="Description"></textarea>
 <input type="file" id="map-file" class="w-full border p-2 rounded mb-3">

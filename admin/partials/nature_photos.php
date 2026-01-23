@@ -54,14 +54,31 @@ $data = $conn->query($sql);
                     <td class="px-3 py-2"><?= $row['CAT_ID'] ?></td>
                     <td class="px-3 py-2"><?= htmlspecialchars($row['CAT_TYPE']) ?></td>
                     <td class="px-3 py-2 font-medium"><?= htmlspecialchars($row['CAT_NAME']) ?></td>
-                    <td class="px-3 py-2 text-xs text-gray-500"><?= htmlspecialchars($row['CAT_IMAGE']) ?></td>
+                    <td class="px-3 py-2">
+                        <div class="flex items-center gap-2 text-xs text-gray-500">
+                            <!-- IMAGE PREVIEW -->
+                            <?php if (!empty($row['CAT_IMAGE'])): ?>
+                                <img 
+                                    src="../assets/images/Photos/CATEGORY/<?= htmlspecialchars($row['CAT_TYPE']) ?>/<?= htmlspecialchars($row['CAT_IMAGE']) ?>"
+                                    alt="<?= htmlspecialchars($row['CAT_NAME']) ?>"
+                                    class="w-40 h-28 object-cover rounded border"
+                                    onerror="this.style.display='none'"
+                                >
+                            <?php endif; ?>
+
+                            <!-- IMAGE NAME -->
+                            <span>
+                                <?= htmlspecialchars($row['CAT_IMAGE']) ?>
+                            </span>
+                        </div>
+                    </td>
                     <td class="px-3 py-2 text-center space-x-2">
                         <button onclick="editNature(<?= $row['CAT_ID'] ?>)" class="text-green-600">
                             <i class="fas fa-edit"></i>
                         </button>
-                        <button onclick="deleteNature(<?= $row['CAT_ID'] ?>)" class="text-red-600">
+                      <!--  <button onclick="deleteNature(<?= $row['CAT_ID'] ?>)" class="text-red-600">
                             <i class="fas fa-trash"></i>
-                        </button>
+                        </button>-->
                     </td>
                 </tr>
                 <?php endwhile; ?>

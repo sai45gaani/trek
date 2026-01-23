@@ -46,7 +46,7 @@ if ($result && $result->num_rows > 0) {
         }
 
         $photos[] = [
-            'path'        => "/assets/images/Photos/".$row['PIC_NAME'],   // add full path in frontend or here
+            'path'        => "/assets/images/Photos/Fort/".$row['PIC_NAME'],   // add full path in frontend or here
             'description' => $row['PIC_DESC']
         ];
     }

@@ -390,7 +390,7 @@ $stats = $statsResult->fetch_assoc();
                             $fortDistrict = htmlspecialchars($fort['FortDistrict'] ?? 'Unknown District');
                             $picName = htmlspecialchars($fort['PIC_NAME']);
                             $photoCount = (int)$fort['PhotoCount'];
-                            $imagePath = "../assets/images/Photos/Picture/" . $picName;
+                            $imagePath = "../assets/images/Photos/Picture/Fort/" . $picName;
                             $firstLetter = strtoupper(substr($fortName, 0, 1));
                             $defaultImage = "../assets/images/default-fort.svg";
                         ?>

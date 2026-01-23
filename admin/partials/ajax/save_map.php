@@ -1,5 +1,5 @@
 <?php
-require '../../config/database.php';
+require '../../../config/database.php';
 $db=new Database();$c=$db->getConnection();
 
 $id=$_POST['id']??0;
@@ -12,7 +12,7 @@ $image=null;
 if(!empty($_FILES['image']['name'])){
     $image=time().'_'.$_FILES['image']['name'];
     move_uploaded_file($_FILES['image']['tmp_name'],
-        '../../assets/images/Photos/Maps/MapImages/'.$image);
+        '../../../assets/images/Photos/Maps/MapImages/'.$image);
 }
 
 if($id){

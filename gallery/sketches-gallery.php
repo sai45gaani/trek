@@ -32,7 +32,7 @@ if ($filterLetter !== 'ALL') {
 $countQuery = "
     SELECT COUNT(*) AS total
     FROM sw_tblcategories
-    WHERE CAT_TYPE = 'Sketch'
+    WHERE CAT_TYPE = 'Sketches'
     $whereClause
 ";
 
@@ -48,7 +48,7 @@ $query = "
         CAT_IMAGE,
         CAT_TYPE
     FROM sw_tblcategories
-    WHERE CAT_TYPE = 'Sketch'
+    WHERE CAT_TYPE = 'Sketches'
     $whereClause
     ORDER BY CAT_NAME ASC
     LIMIT $itemsPerPage OFFSET $offset
@@ -73,7 +73,7 @@ $statsQuery = "
         COUNT(CAT_IMAGE) AS totalFlowerImages,
         COUNT(DISTINCT CAT_NAME) AS uniqueFlowerSpecies
     FROM sw_tblcategories
-    WHERE CAT_TYPE = 'Sketch'
+    WHERE CAT_TYPE = 'Sketches'
 ";
 
 $statsResult = $conn->query($statsQuery);
