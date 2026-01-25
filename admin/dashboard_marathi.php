@@ -16,19 +16,19 @@ if (isset($_GET['action']) && $_GET['action'] === 'load_content') {
     // Load appropriate content based on page
     switch($page) {
         case 'dashboard':
-            include 'partials/dashboard_content.php';
+            include 'partials/dashboard_content_marathi.php';
             break;
-        case 'forts':
-            include 'partials/forts_list.php';
+        case 'forts-mar':
+            include 'partials/forts_list_marathi.php';
             break;
-        case 'forts-add':
-            include 'partials/forts_add.php';
+        case 'forts-add-mar':
+            include 'partials/forts_add_marathi.php';
             break;
-        case 'fascinating-spots':
-            include 'partials/fascinating_spots.php';
+        case 'fascinating-spots-mar':
+            include 'partials/fascinating_spots_marathi.php';
             break;
-        case 'ways-to-reach':
-            include 'partials/ways_to_reach.php';
+        case 'ways-to-reach-mar':
+            include 'partials/ways_to_reach_marathi.php';
             break;
         case 'treks':
             include 'partials/treks_list.php';
@@ -63,8 +63,8 @@ if (isset($_GET['action']) && $_GET['action'] === 'load_content') {
         case 'fort-photos':
             include 'partials/fort_photos.php';
             break;
-        case 'map-photos':
-            include 'partials/map_photos.php';
+        case 'map-photos-mar':
+            include 'partials/map_photos_marathi.php';
             break;
         case 'nature-photos':
             include 'partials/nature_photos.php';
@@ -238,15 +238,14 @@ $page_title = 'Admin Dashboard - Trekshitz';
                 <p class="text-xs text-gray-400 px-2 mb-1 uppercase font-semibold">Main Navigation</p>
                 <a href="#" data-page="dashboard" class="nav-link flex items-center px-2 py-1.5 rounded hover:bg-gray-700 text-sm active">
                     <i class="fas fa-tachometer-alt w-4 mr-2 text-accent text-xs"></i>
-                    <span>Dashboard</span>
-                </a>
-                <!-- Dashboard Marathi (FULL PAGE LOAD) -->
-                <a href="dashboard_marathi.php"
-                   class="nav-link-full flex items-center px-2 py-1.5 rounded hover:bg-gray-700 text-sm">
-                    <i class="fas fa-language w-4 mr-2 text-accent text-xs"></i>
                     <span>Dashboard (मराठी)</span>
                 </a>
-                
+                    <!-- Dashboard Marathi (FULL PAGE LOAD) -->
+                <a href="dashboard.php"
+                   class="nav-link-full flex items-center px-2 py-1.5 rounded hover:bg-gray-700 text-sm">
+                    <i class="fas fa-language w-4 mr-2 text-accent text-xs"></i>
+                    <span>Dashboard (English)</span>
+                </a>
             </div>
 
             <!-- Forts & Historical -->
@@ -255,20 +254,20 @@ $page_title = 'Admin Dashboard - Trekshitz';
                 <button onclick="toggleDropdown('forts-menu')" class="dropdown-toggle w-full flex items-center justify-between px-2 py-1.5 rounded hover:bg-gray-700 text-sm">
                     <div class="flex items-center">
                         <i class="fas fa-fort-awesome w-4 mr-2 text-accent text-xs"></i>
-                        <span>Forts Management</span>
+                        <span>Forts Management  <span class="text-gray-400 ml-1">(किल्ले व्यवस्थापन)</span> </span>
                     </div>
                     <i class="fas fa-chevron-down text-xs transition-transform" id="forts-menu-icon"></i>
                 </button>
                 <div id="forts-menu" class="dropdown-content pl-6">
-                    <a href="#" data-page="forts" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">All Forts</a>
-                    <a href="#" data-page="forts-add" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Add New Fort</a>
-                    <a href="#" data-page="fascinating-spots" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Fascinating Spots</a>
-                    <a href="#" data-page="ways-to-reach" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Ways to Reach</a>
+                    <a href="#" data-page="forts-mar" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">All Forts (सर्व किल्ले)</a>
+                    <a href="#" data-page="forts-add-mar" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Add New Fort (नवीन किल्ला जोडा)</a>
+                    <a href="#" data-page="fascinating-spots-mar" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Fascinating Spots (प्रेक्षणीय स्थळे)</a>
+                    <a href="#" data-page="ways-to-reach-mar" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Ways to Reach (पोहोचण्याचे मार्ग)</a>
                 </div>
             </div>
 
             <!-- Trekking -->
-            <div class="mb-2">
+        <!--    <div class="mb-2">
                 <p class="text-xs text-gray-400 px-2 mb-1 uppercase font-semibold">Trekking</p>
                 <button onclick="toggleDropdown('trek-menu')" class="dropdown-toggle w-full flex items-center justify-between px-2 py-1.5 rounded hover:bg-gray-700 text-sm">
                     <div class="flex items-center">
@@ -281,63 +280,24 @@ $page_title = 'Admin Dashboard - Trekshitz';
                     <a href="#" data-page="treks" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">All Treks</a>
                     <a href="#" data-page="treks-add" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Add New Trek</a>
                 </div>
-            </div>
-
-            <!-- Nature & Wildlife -->
-           <!-- <div class="mb-2">
-                <p class="text-xs text-gray-400 px-2 mb-1 uppercase font-semibold">Nature & Wildlife</p>
-                <button onclick="toggleDropdown('nature-menu')" class="dropdown-toggle w-full flex items-center justify-between px-2 py-1.5 rounded hover:bg-gray-700 text-sm">
-                    <div class="flex items-center">
-                        <i class="fas fa-leaf w-4 mr-2 text-accent text-xs"></i>
-                        <span>Nature Content</span>
-                    </div>
-                    <i class="fas fa-chevron-down text-xs transition-transform" id="nature-menu-icon"></i>
-                </button>
-                <div id="nature-menu" class="dropdown-content pl-6">
-                    <a href="#" data-page="birds" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Birds</a>
-                    <a href="#" data-page="butterflies" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Butterflies</a>
-                    <a href="#" data-page="flowers" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Flowers</a>
-                    <a href="#" data-page="temples" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Temples</a>
-                    <a href="#" data-page="caves" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Caves</a>
-                </div>
             </div>-->
 
             <!-- Gallery -->
             <div class="mb-2">
-                <p class="text-xs text-gray-400 px-2 mb-1 uppercase font-semibold">Media</p>
+                <p class="text-xs text-gray-400 px-2 mb-1 uppercase font-semibold">Media <span class="normal-case">(मीडिया)</span></p>
                 <button onclick="toggleDropdown('gallery-menu')" class="dropdown-toggle w-full flex items-center justify-between px-2 py-1.5 rounded hover:bg-gray-700 text-sm">
                     <div class="flex items-center">
                         <i class="fas fa-images w-4 mr-2 text-accent text-xs"></i>
-                        <span>Gallery</span>
+                        <span>Gallery <span class="text-gray-400 ml-1">(गॅलरी)</span></span>
                     </div>
                     <i class="fas fa-chevron-down text-xs transition-transform" id="gallery-menu-icon"></i>
                 </button>
                 <div id="gallery-menu" class="dropdown-content pl-6">
-                    <a href="#" data-page="fort-photos" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Fort Photos</a>
-                    <a href="#" data-page="map-photos" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Map Photos</a>
-                    <a href="#" data-page="nature-photos" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Nature Photos</a>
-                  <!--  <a href="#" data-page="photos" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">All Photos</a>
-                    <a href="#" data-page="categories" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Categories</a>
-                    <a href="#" data-page="photo-upload" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Upload Photos</a>-->
+                    <a href="#" data-page="map-photos-mar" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Map Photos <span class="text-gray-400 ml-1">(नकाशांचे फोटो)</span></a>
                 </div>
             </div>
 
-            <!-- Events & Organizations -->
-         <!--   <div class="mb-2">
-                <p class="text-xs text-gray-400 px-2 mb-1 uppercase font-semibold">Events</p>
-                <button onclick="toggleDropdown('events-menu')" class="dropdown-toggle w-full flex items-center justify-between px-2 py-1.5 rounded hover:bg-gray-700 text-sm">
-                    <div class="flex items-center">
-                        <i class="fas fa-calendar-alt w-4 mr-2 text-accent text-xs"></i>
-                        <span>Events & Orgs</span>
-                    </div>
-                    <i class="fas fa-chevron-down text-xs transition-transform" id="events-menu-icon"></i>
-                </button>
-                <div id="events-menu" class="dropdown-content pl-6">
-                    <a href="#" data-page="events" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">All Events</a>
-                    <a href="#" data-page="organizations" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Organizations</a>
-                </div>
-            </div>-->
-
+            
             <!-- Settings -->
             <div class="mb-2">
                 <p class="text-xs text-gray-400 px-2 mb-1 uppercase font-semibold">Settings</p>
@@ -365,8 +325,7 @@ $page_title = 'Admin Dashboard - Trekshitz';
 
         <!-- Content will be loaded here dynamically -->
         <div id="content-container">
-            <!-- Default Dashboard Content -->
-            <?php include 'partials/dashboard_content.php'; ?>
+             <?php include 'partials/dashboard_content_marathi.php'; ?>
         </div>
     </main>
 
@@ -397,30 +356,9 @@ $page_title = 'Admin Dashboard - Trekshitz';
             icon.classList.toggle('rotate-180');
         }
 
-        // Navigation - Load content via AJAX
-     /*   document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const page = this.getAttribute('data-page');
-                if (page) {
-                    loadContent(page);
-                    
-                    // Update active state
-                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active', 'bg-gray-700'));
-                    this.classList.add('active', 'bg-gray-700');
-                }
-            });
-        });*/
-
         document.addEventListener('click', function (e) {
                     const link = e.target.closest('.nav-link');
                     if (!link) return;
-
-                      // ❌ Not a SPA link → let browser handle it
-                    if (!link || !link.hasAttribute('data-page')) {
-                        return;
-                    }
 
                     const page = link.getAttribute('data-page');
                     if (!page) return;
@@ -1187,535 +1125,5 @@ document.addEventListener('submit', function (e) {
                     });
                 };
         </script>
-        <script>
-        window.loadTreks = function(p=1,search=''){
-            fetch(`?action=load_content&page=treks&p=${p}&search=${search}`)
-                .then(r=>r.text()).then(html=>{
-                    document.getElementById('content-container').innerHTML = html;
-                });
-        };
 
-function openTrekModal(mode, trekId) {
-    fetch('partials/treks_add.php')
-        .then(function (res) {
-            return res.text();
-        })
-        .then(function (html) {
-            document.getElementById('trek-modal-content').innerHTML = html;
-            document.getElementById('trek-modal').classList.remove('hidden');
-
-            if (mode === 'add') {
-                setTrekMode('add');
-            }
-
-            if (mode === 'edit' || mode === 'view') {
-                loadTrekData(trekId, mode);
-            }
-        });
-}
-
-
-
-window.closeTrekModal = function () {
-    var modal = document.getElementById('trek-modal');
-    if (modal) {
-        modal.classList.add('hidden');
-        document.body.classList.remove('overflow-hidden');
-        document.getElementById('trek-modal-content').innerHTML = '';
-    }
-};
-
-function setTrekMode(mode) {
-    document.getElementById('trek-mode').value = mode;
-
-    var isView = mode === 'view';
-    var title = 'Add Trek';
-    var btnText = 'Save Trek';
-
-    if (mode === 'edit') {
-        title = 'Edit Trek';
-        btnText = 'Update Trek';
-    }
-    if (mode === 'view') {
-        title = 'View Trek Details';
-        btnText = 'Close';
-    }
-
-    document.getElementById('trek-title').innerText = title;
-    document.getElementById('trek-save-btn').innerText = btnText;
-
-    var inputs = document.querySelectorAll(
-        '#trek-modal-content input, #trek-modal-content textarea'
-    );
-
-    for (var i = 0; i < inputs.length; i++) {
-        if (inputs[i].id !== 'trek-id' && inputs[i].id !== 'trek-mode') {
-            inputs[i].disabled = isView;
-        }
-    }
-
-    document.getElementById('trek-save-btn').style.display =
-        isView ? 'none' : 'inline-block';
-
-    updateLabels(mode);
-}
-
-function updateLabels(mode) {
-    var map = {
-        add: 'Please enter ',
-        edit: 'Update ',
-        view: 'This is '
-    };
-
-    var prefix = map[mode];
-
-    var labels = {
-        place: 'place',
-        leader: 'leader',
-        date: 'trek date',
-        display: 'display date',
-        contact: 'contact number',
-        cost: 'cost',
-        grade: 'grade',
-        last: 'last booking date',
-        max: 'max participants',
-        meet: 'meeting place',
-        desc: 'description',
-        notes: 'notes'
-    };
-
-    for (var k in labels) {
-        document.getElementById('lbl-' + k).innerText =
-            prefix + labels[k];
-    }
-}
-
-
-window.editTrek = function (id) {
-
-    openTrekModal();
-
-    setTimeout(function () {
-        fetch('partials/ajax/treks_get.php?id=' + id)
-            .then(function (r) {
-                return r.json();
-            })
-            .then(function (d) {
-
-                document.getElementById('trek-title').innerText = 'Edit Trek';
-                document.getElementById('trek-id').value = d.TrekId;
-                document.getElementById('trek-place').value = d.Place || '';
-                document.getElementById('trek-leader').value = d.Leader || '';
-                document.getElementById('trek-date').value = d.TrekDate ? d.TrekDate.split(' ')[0] : '';
-                document.getElementById('trek-contact').value = d.ContDetails || '';
-                document.getElementById('trek-cost').value = d.Cost || '';
-                document.getElementById('trek-grade').value = d.Grade || '';
-                document.getElementById('trek-desc').value = d.Description || '';
-            });
-    }, 100);
-};
-
-
-function loadTrekData(id, mode) {
-    fetch('partials/ajax/treks_get.php?id=' + id)
-        .then(function (r) {
-            return r.json();
-        })
-        .then(function (d) {
-
-            document.getElementById('trek-id').value = d.TrekId;
-
-            document.getElementById('trek-place').value = d.Place;
-            document.getElementById('trek-leader').value = d.Leader;
-            document.getElementById('trek-contact').value = d.ContDetails;
-            document.getElementById('trek-cost').value = d.Cost;
-            document.getElementById('trek-grade').value = d.Grade;
-            document.getElementById('trek-display').value = d.DisplayDate;
-            document.getElementById('trek-max').value = d.MaxParticipants;
-            document.getElementById('trek-meet').value = d.MeetingPlace;
-            document.getElementById('trek-desc').value = d.Description;
-            document.getElementById('trek-notes').value = d.Notes;
-
-            if (d.TrekDate) {
-                document.getElementById('trek-date').value =
-                    d.TrekDate.split(' ')[0];
-            }
-
-            if (d.LDateBooking) {
-                document.getElementById('trek-last').value =
-                    d.LDateBooking.split(' ')[0];
-            }
-
-            setTrekMode(mode);
-        });
-}
-
-function validateTrekForm() {
-    var requiredFields = [
-        { id: 'trek-place', name: 'Place' },
-        { id: 'trek-date', name: 'Trek Date' },
-        { id: 'trek-leader', name: 'Leader' },
-        { id: 'trek-contact', name: 'Contact Details' },
-        { id: 'trek-grade', name: 'Grade' },
-        { id: 'trek-display', name: 'Display Date' }
-    ];
-
-    var firstInvalid = null;
-    var messages = [];
-
-    for (var i = 0; i < requiredFields.length; i++) {
-        var field = document.getElementById(requiredFields[i].id);
-
-        if (!field || field.value.trim() === '') {
-            messages.push(requiredFields[i].name + ' is required');
-
-            if (field) {
-                field.classList.add('border-red-500');
-                if (!firstInvalid) firstInvalid = field;
-            }
-        } else {
-            field.classList.remove('border-red-500');
-        }
-    }
-
-    if (messages.length > 0) {
-        alert('Please fix the following:\n\n• ' + messages.join('\n• '));
-        if (firstInvalid) firstInvalid.focus();
-        return false;
-    }
-
-    return true;
-}
-
-
-
-
-            window.saveTrek = function () {
-                 if (!validateTrekForm()) {
-                    return; // ⛔ STOP HERE
-                 }
-                var data = {
-                    id: document.getElementById('trek-id').value,
-                    place: document.getElementById('trek-place').value,
-                    date: document.getElementById('trek-date').value,
-                    leader: document.getElementById('trek-leader').value,
-                    contact: document.getElementById('trek-contact').value,
-                    display: document.getElementById('trek-display').value,
-                    cost: document.getElementById('trek-cost').value,
-                    grade: document.getElementById('trek-grade').value,
-                    last: document.getElementById('trek-last').value,
-                    meet: document.getElementById('trek-meet').value,
-                    max: document.getElementById('trek-max').value,
-                    desc: document.getElementById('trek-desc').value,
-                    notes: document.getElementById('trek-notes').value
-                };
-
-                fetch('partials/ajax/treks_save.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                }).then(function () {
-                    closeTrekModal();
-                    loadTreks();
-                });
-            };
-
-            window.deleteTrek = function (id) {
-                if (!confirm('Delete trek?')) return;
-
-                fetch('partials/ajax/treks_delete.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: 'id=' + encodeURIComponent(id)
-                }).then(function () {
-                    loadTreks();
-                });
-            };
-</script>
-
-<script>
-function loadFortPhotos(p){
-    fetch('?action=load_content&page=fort-photos&p='+p)
-    .then(r=>r.text())
-    .then(html=>document.getElementById('content-container').innerHTML=html);
-}
-
-function openFortPhotoModal(){
-    document.getElementById('fort-photo-modal').classList.remove('hidden');
-}
-
-function closeFortPhotoModal(){
-    document.getElementById('fort-photo-modal').classList.add('hidden');
-}
-
-function editFortPhoto(id){
-    fetch('partials/ajax/get_fort_photo.php?id='+id)
-    .then(r=>r.json())
-    .then(d=>{
-        document.getElementById('fp-id').value=d.PIC_ID;
-        document.getElementById('fp-fort').value=d.FortName;
-        document.getElementById('fp-desc').value=d.PIC_DESC||'';
-        document.getElementById('fp-front').checked=d.PIC_FRONT_IMAGE==='Y';
-        openFortPhotoModal();
-    });
-}
-
-function saveFortPhoto() {
-    var fd = new FormData();
-
-    var idEl    = document.getElementById('fp-id');
-    var fortEl  = document.getElementById('fp-fort');
-    var descEl  = document.getElementById('fp-desc');
-    var frontEl = document.getElementById('fp-front');
-    var fileEl  = document.getElementById('fp-file');
-
-    fd.append('id', idEl.value);
-    fd.append('fort', fortEl.value);
-    fd.append('desc', descEl.value);
-    fd.append('front', frontEl.checked ? 'Y' : '');
-
-    if (fileEl.files.length > 0) {
-        fd.append('image', fileEl.files[0]);
-    }
-
-    fetch('partials/ajax/save_fort_photo.php', {
-        method: 'POST',
-        body: fd
-    })
-    .then(function () {
-        closeFortPhotoModal();
-        loadFortPhotos(1);
-    });
-}
-
-
-function deleteFortPhoto(id){
-    if(!confirm('Delete photo?')) return;
-    fetch('partials/ajax/delete_fort_photo.php',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({id:id})
-    }).then(()=>loadFortPhotos(1));
-}
-</script>
-
-<script>
-/* ===== SPA SAFE ES5 JS ===== */
-
-function loadMapPhotos(p) {
-    fetch('?action=load_content&page=map-photos&p=' + p)
-        .then(function (r) {
-            return r.text();
-        })
-        .then(function (html) {
-            document.getElementById('content-container').innerHTML = html;
-        });
-}
-
-function openMapModal() {
-    document.getElementById('map-modal').classList.remove('hidden');
-}
-
-function closeMapModal() {
-    document.getElementById('map-modal').classList.add('hidden');
-}
-
-function editMap(id) {
-    fetch('partials/ajax/get_map.php?id=' + id)
-        .then(function (r) {
-            return r.json();
-        })
-        .then(function (d) {
-            document.getElementById('map-id').value = d.MapID;
-            document.getElementById('map-fort').value = d.FortName;
-            document.getElementById('map-type').value = d.MapType;
-            document.getElementById('map-name').value = d.MapName;
-            document.getElementById('map-desc').value = d.Description;
-            openMapModal();
-        });
-}
-
-function saveMap() {
-    var fd = new FormData();
-    fd.append('id', document.getElementById('map-id').value);
-    fd.append('fort', document.getElementById('map-fort').value);
-    fd.append('type', document.getElementById('map-type').value);
-    fd.append('name', document.getElementById('map-name').value);
-    fd.append('desc', document.getElementById('map-desc').value);
-
-    var fileInput = document.getElementById('map-file');
-    if (fileInput.files.length > 0) {
-        fd.append('image', fileInput.files[0]);
-    }
-
-    fetch('partials/ajax/save_map.php', {
-        method: 'POST',
-        body: fd
-    })
-    .then(function (r) {
-        return r.json();
-    })
-    .then(function () {
-        closeMapModal();
-        loadMapPhotos(1);
-    });
-}
-
-function deleteMap(id) {
-    if (!confirm('Delete map?')) return;
-
-    fetch('partials/ajax/delete_map.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: id })
-    })
-    .then(function () {
-        loadMapPhotos(1);
-    });
-}
-</script>
-
-<script>
-function loadNaturePhotos(p) {
-    fetch('?action=load_content&page=nature-photos&p=' + p)
-        .then(function (r) { return r.text(); })
-        .then(function (html) {
-            document.getElementById('content-container').innerHTML = html;
-        });
-}
-
-function openNatureModal() {
-    document.getElementById('nature-modal').classList.remove('hidden');
-}
-
-function closeNatureModal() {
-    document.getElementById('nature-modal').classList.add('hidden');
-}
-
-function editNature(id) {
-    fetch('partials/ajax/get_nature.php?id=' + id)
-        .then(function (r) { return r.json(); })
-        .then(function (d) {
-            document.getElementById('nat-id').value = d.CAT_ID;
-            document.getElementById('nat-name').value = d.CAT_NAME;
-            document.getElementById('nat-type').value = d.CAT_TYPE;
-            openNatureModal();
-        });
-}
-
-function saveNature() {
-    var fd = new FormData();
-    fd.append('id', document.getElementById('nat-id').value);
-    fd.append('name', document.getElementById('nat-name').value);
-    fd.append('type', document.getElementById('nat-type').value);
-
-    var f = document.getElementById('nat-file');
-    if (f.files.length > 0) fd.append('image', f.files[0]);
-
-    fetch('partials/ajax/save_nature.php', { method: 'POST', body: fd })
-        .then(function () {
-            closeNatureModal();
-            loadNaturePhotos(1);
-        });
-}
-
-function deleteNature(id) {
-    if (!confirm('Delete photo?')) return;
-    fetch('partials/ajax/delete_nature.php', {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({id:id})
-    }).then(function () {
-        loadNaturePhotos(1);
-    });
-}
-</script>
-
-<script>
-function saveSettings() {
-    var inputs = document.querySelectorAll('.setting-input');
-    var data = {};
-
-    for (var i = 0; i < inputs.length; i++) {
-        data[inputs[i].dataset.key] = inputs[i].value;
-    }
-
-    fetch('partials/ajax/save_settings.php', {
-        method: 'POST',
-        body: JSON.stringify(data)
-    })
-    .then(function () {
-        alert('Settings saved successfully');
-    });
-}
-</script>
-
-<script>
-function openUserModal(){
-    document.getElementById('user-modal').classList.remove('hidden');
-}
-function closeUserModal(){
-    document.getElementById('user-modal').classList.add('hidden');
-}
-
-function editUser(id){
-    fetch('partials/ajax/admin_user_get.php?id='+id)
-    .then(function(r){return r.json();})
-    .then(function(d){
-        document.getElementById('user-id').value = d.admin_id;
-        document.getElementById('user-username').value = d.username;
-        document.getElementById('user-fullname').value = d.full_name;
-        document.getElementById('user-email').value = d.email;
-        document.getElementById('user-role').value = d.role;
-        openUserModal();
-    });
-}
-
-function saveUser() {
-    var data = {
-        id: document.getElementById('user-id').value,
-        username: document.getElementById('user-username').value,
-        fullname: document.getElementById('user-fullname').value,
-        email: document.getElementById('user-email').value,
-        role: document.getElementById('user-role').value,
-        password: document.getElementById('user-password').value
-    };
-
-        if (!data.username || !data.email || !data.role) {
-        alert('Username, Email and Role are required');
-        return;
-        }
-
-        fetch('partials/ajax/admin_user_save.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-        })
-        .then(function (res) {
-                return res.json();
-        })
-        .then(function () {
-                closeUserModal();
-                location.reload();
-        });
-}
-
-
-</script>
-
-
-
-
-
-
-
-
-
-</body>
 </html>

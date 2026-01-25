@@ -125,7 +125,7 @@ try {
                     <p class="text-xs text-gray-500">Add new trek</p>
                 </div>
             </a>
-            <a href="#" data-page="photos" class="nav-link flex items-center p-3 bg-purple-50 rounded hover:bg-purple-100 transition-colors">
+            <a href="#" data-page="fort-photos" class="nav-link flex items-center p-3 bg-purple-50 rounded hover:bg-purple-100 transition-colors">
                 <i class="fas fa-upload text-xl text-purple-600 mr-3"></i>
                 <div>
                     <p class="font-medium text-sm">Upload Photos</p>
