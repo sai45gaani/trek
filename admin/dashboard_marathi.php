@@ -1569,5 +1569,212 @@ window.editWayMarathi = function (id) {
 })();
 </script>
 
+<script>
+/* ===============================
+   OPEN ADD MODAL
+================================ */
+window.openSpotModalMarathi = function () {
+    document.getElementById('fs-id-mar').value = '';
+    document.getElementById('fs-fort-mar').value = '';
+    document.getElementById('fs-name-mar').value = '';
+    document.getElementById('fs-desc-mar').value = '';
+
+    document.getElementById('spot-modal-title-mar').innerText =
+        'Add Fascinating Spot (Marathi)';
+
+    document.getElementById('spot-modal-mar').classList.remove('hidden');
+};
+
+/* ===============================
+   CLOSE ADD / EDIT MODAL
+================================ */
+window.closeSpotModalMarathi = function () {
+    document.getElementById('spot-modal-mar').classList.add('hidden');
+};
+
+/* ===============================
+   CLOSE VIEW MODAL
+================================ */
+window.closeSpotModalViewMarathi = function () {
+    document.getElementById('spot-modal-view-mar').classList.add('hidden');
+};
+
+/* ===============================
+   VIEW SPOT (MARATHI)
+================================ */
+window.viewSpotMarathi = function (id) {
+    fetch(`partials/ajax/fascinating_spot_get_marathi.php?id=${id}`)
+        .then(res => res.json())
+        .then(d => {
+            if (!d || typeof d.FSID === 'undefined') {
+                alert('Record not found');
+                return;
+            }
+
+            document.getElementById('fs-id-view-mar').value = d.FSID;
+            document.getElementById('fs-fort-view-mar').value = d.FortName;
+            document.getElementById('fs-name-view-mar').value = d.NameOfSpot;
+            document.getElementById('fs-desc-view-mar').value = d.Description;
+
+            document.getElementById('spot-modal-view-mar').classList.remove('hidden');
+        })
+        .catch(err => {
+            console.error(err);
+            alert('Error loading data');
+        });
+};
+
+/* ===============================
+   EDIT SPOT (MARATHI)
+================================ */
+window.editSpotMarathi = function (id) {
+    fetch(`partials/ajax/fascinating_spot_get_marathi.php?id=${id}`)
+        .then(res => res.json())
+        .then(d => {
+            if (!d || typeof d.FSID === 'undefined') {
+                alert('Record not found');
+                return;
+            }
+
+            document.getElementById('fs-id-mar').value = d.FSID;
+            document.getElementById('fs-fort-mar').value = d.FortName;
+            document.getElementById('fs-name-mar').value = d.NameOfSpot;
+            document.getElementById('fs-desc-mar').value = d.Description;
+
+            document.getElementById('spot-modal-title-mar').innerText =
+                'Edit Fascinating Spot (Marathi)';
+
+            document.getElementById('spot-modal-mar').classList.remove('hidden');
+        })
+        .catch(err => {
+            console.error(err);
+            alert('Error loading data');
+        });
+};
+
+/* ===============================
+   SAVE (ADD / UPDATE) – MARATHI
+================================ */
+window.saveFascinatingSpotMarathi = function () {
+
+    const payload = {
+        id: document.getElementById('fs-id-mar').value,
+        FortName: document.getElementById('fs-fort-mar').value,
+        NameOfSpot: document.getElementById('fs-name-mar').value.trim(),
+        Description: document.getElementById('fs-desc-mar').value.trim()
+    };
+
+    if (!payload.FortName || !payload.NameOfSpot || !payload.Description) {
+        alert('All fields are required');
+        return;
+    }
+
+    fetch('partials/ajax/fascinating_spot_save_marathi.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    })
+    .then(res => res.json())
+    .then(resp => {
+        if (resp.success) {
+            closeSpotModalMarathi();
+            loadContent('fascinating-spots-mar');
+        } else {
+            alert(resp.message || 'Failed to save');
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert('Error saving data');
+    });
+};
+
+/* ===============================
+   PAGINATION – MARATHI
+================================ */
+window.loadFascinatingPageMarathi = function (page) {
+    loadContent('fascinating-spots-mar', { p: page });
+};
+</script>
+
+<script>
+/* ===== SPA SAFE ES5 JS ===== */
+
+function loadMapPhotos(p) {
+    fetch('?action=load_content&page=map-photos&p=' + p)
+        .then(function (r) {
+            return r.text();
+        })
+        .then(function (html) {
+            document.getElementById('content-container').innerHTML = html;
+        });
+}
+
+function openMapModal() {
+    document.getElementById('map-modal').classList.remove('hidden');
+}
+
+function closeMapModal() {
+    document.getElementById('map-modal').classList.add('hidden');
+}
+
+function editMap(id) {
+    fetch('partials/ajax/get_map.php?id=' + id)
+        .then(function (r) {
+            return r.json();
+        })
+        .then(function (d) {
+            document.getElementById('map-id').value = d.MapID;
+            document.getElementById('map-fort').value = d.FortName;
+            document.getElementById('map-type').value = d.MapType;
+            document.getElementById('map-name').value = d.MapName;
+            document.getElementById('map-desc').value = d.Description;
+            openMapModal();
+        });
+}
+
+function saveMap() {
+    var fd = new FormData();
+    fd.append('id', document.getElementById('map-id').value);
+    fd.append('fort', document.getElementById('map-fort').value);
+    fd.append('type', document.getElementById('map-type').value);
+    fd.append('name', document.getElementById('map-name').value);
+    fd.append('desc', document.getElementById('map-desc').value);
+
+    var fileInput = document.getElementById('map-file');
+    if (fileInput.files.length > 0) {
+        fd.append('image', fileInput.files[0]);
+    }
+
+    fetch('partials/ajax/save_map.php', {
+        method: 'POST',
+        body: fd
+    })
+    .then(function (r) {
+        return r.json();
+    })
+    .then(function () {
+        closeMapModal();
+        loadMapPhotos(1);
+    });
+}
+
+function deleteMap(id) {
+    if (!confirm('Delete map?')) return;
+
+    fetch('partials/ajax/delete_map.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: id })
+    })
+    .then(function () {
+        loadMapPhotos(1);
+    });
+}
+</script>
+
+
+
+
 
 </html>
