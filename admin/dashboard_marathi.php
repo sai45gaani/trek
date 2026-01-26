@@ -483,7 +483,7 @@ function saveNewFort() {
     .then(res => {
         if (res.status === 'success') {
             alert('Fort added successfully!');
-            loadContent('forts');
+            loadContent('forts-mar');
         } else {
             alert(res.message || 'Failed to add fort');
         }
@@ -977,7 +977,7 @@ document.addEventListener('submit', function (e) {
             .then(res => {
                 if (res.success) {
                     closeSpotModal();
-                    loadContent('fascinating-spots');
+                    loadContent('fascinating-spots-mar');
                 } else {
                     alert(res.message || 'Save failed');
                 }
@@ -1016,7 +1016,7 @@ document.addEventListener('submit', function (e) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ id })
             })
-            .then(() => loadContent('fascinating-spots'));
+            .then(() => loadContent('fascinating-spots-mar'));
         };
         </script>
         <script>
@@ -1044,6 +1044,11 @@ document.addEventListener('submit', function (e) {
 
                 window.closeWayModal = function () {
                     document.getElementById('way-modal').classList.add('hidden');
+                };
+
+                
+                window.closeWayModalMarathi = function () {
+                    document.getElementById('way-modal-mar').classList.add('hidden');
                 };
 
                  window.closeWayModalView = function () {
@@ -1105,6 +1110,8 @@ document.addEventListener('submit', function (e) {
                         });
                 };
 
+
+
                 /* ---------- DELETE ---------- */
 
                 window.deleteWay = function (id) {
@@ -1125,5 +1132,442 @@ document.addEventListener('submit', function (e) {
                     });
                 };
         </script>
+        <script>
+/* =====================================================
+   MARATHI FORTS – SPA SAFE FUNCTIONS
+   (Exact copy of English logic, separate namespace)
+===================================================== */
+
+/* Load forts page without filters */
+function loadFortsPageMarathi(page) {
+    fetch(`?action=load_content&page=forts-mar&p=${page}`)
+        .then(response => response.text())
+        .then(html => {
+            const container = document.getElementById('content-container');
+            container.classList.add('fade-out');
+
+            setTimeout(() => {
+                container.innerHTML = html;
+                container.classList.remove('fade-out');
+                container.classList.add('fade-in');
+
+                setTimeout(() => {
+                    container.classList.remove('fade-in');
+                }, 300);
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 200);
+        });
+}
+
+/* Load forts page WITH filters */
+function loadFortsPageMarathiWithFilters(page) {
+
+    const searchInput = document.getElementById('search-input-mar');
+    const typeFilter  = document.getElementById('type-filter-mar');
+
+    const search = searchInput ? searchInput.value.trim() : '';
+    const type   = typeFilter ? typeFilter.value : '';
+
+    let params = new URLSearchParams();
+    params.append('action', 'load_content');
+    params.append('page', 'forts-mar');
+    params.append('p', page);
+
+    if (search) params.append('search', search);
+    if (type)   params.append('type', type);
+
+    fetch(`?${params.toString()}`)
+        .then(response => response.text())
+        .then(html => {
+            const container = document.getElementById('content-container');
+            container.classList.add('fade-out');
+
+            setTimeout(() => {
+                container.innerHTML = html;
+                container.classList.remove('fade-out');
+                container.classList.add('fade-in');
+
+                setTimeout(() => {
+                    container.classList.remove('fade-in');
+                }, 300);
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 200);
+        });
+}
+
+/* Apply filters */
+function applyFiltersMarathi() {
+    loadFortsPageMarathiWithFilters(1);
+}
+
+/* Clear all filters */
+function clearFiltersMarathi() {
+    loadFortsPageMarathi(1);
+}
+
+/* Clear search only */
+function clearSearchMarathi() {
+    const input = document.getElementById('search-input-mar');
+    if (input) {
+        input.value = '';
+        applyFiltersMarathi();
+    }
+}
+
+/* Clear type filter only */
+function clearTypeFilterMarathi() {
+    const select = document.getElementById('type-filter-mar');
+    if (select) {
+        select.value = '';
+        applyFiltersMarathi();
+    }
+}
+
+function viewFortMarathi(id) {
+    fetch(`partials/ajax/get_fort_details_marathi.php?id=${id}`)
+        .then(r => r.json())
+        .then(d => {
+            openFortModalMarathi('view', d);
+        });
+}
+
+function editFortMarathi(id) {
+    fetch(`partials/ajax/get_fort_details_marathi.php?id=${id}`)
+        .then(r => r.json())
+        .then(d => {
+            openFortModalMarathi('edit', d);
+        });
+}
+
+function openFortModalMarathi(mode, data) {
+
+    currentFortId = data.FortID;
+    isEditMode = mode === 'edit';
+
+    const modalTitle = document.getElementById('modal-title');
+    const saveBtn = document.getElementById('save-btn');
+
+    modalTitle.innerText = mode === 'edit'
+        ? 'Edit Fort (Marathi)'
+        : 'View Fort (Marathi)';
+
+    saveBtn.classList.toggle('hidden', mode === 'view');
+
+    const disabled = mode === 'view' ? 'disabled' : '';
+
+    document.getElementById('modal-content').innerHTML = `
+        <div class="space-y-6">
+
+            <!-- ================= ENGLISH FIELDS ================= -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">
+                    English Fields
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    ${inputBlock('Fort Name (English)', 'FortName', data.FortName, disabled)}
+                    ${inputBlock('Fort Type (English)', 'FortType', data.FortType, disabled)}
+                    ${inputBlock('District (English)', 'FortDistrict', data.FortDistrict, disabled)}
+                    ${inputBlock('Range (English)', 'FortRange', data.FortRange, disabled)}
+                    ${inputBlock('Grade (English)', 'Grade', data.Grade, disabled)}
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- ================= MARATHI FIELDS ================= -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">
+                    Marathi Fields
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    ${inputBlock('Fort Name (Marathi)', 'FortNameMar', data.FortNameMar, disabled)}
+                    ${inputBlock('Fort Type (Marathi)', 'FortTypeMar', data.FortTypeMar, disabled)}
+                    ${inputBlock('District (Marathi)', 'FortDistrictMar', data.FortDistrictMar, disabled)}
+                    ${inputBlock('Range (Marathi)', 'FortRangeMar', data.FortRangeMar, disabled)}
+                    ${inputBlock('Grade (Marathi)', 'GradeMar', data.GradeMar, disabled)}
+                    ${inputBlock('Height (Marathi)', 'HeightMar', data.HeightMar, disabled)}
+                </div>
+
+                <div class="mt-4 space-y-4">
+                    ${textareaBlock('Introduction (Marathi)', 'Introduction', data.Introduction, disabled)}
+                    ${textareaBlock('History (Marathi)', 'History', data.History, disabled)}
+                    ${textareaBlock('Geography (Marathi)', 'Geography', data.Geography, disabled)}
+                    ${textareaBlock('Notes (Marathi)', 'Notes', data.Notes, disabled)}
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.getElementById('fort-modal').classList.remove('hidden');
+}
+
+function inputBlock(label, id, value = '', disabled = '') {
+    return `
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+                ${label}
+            </label>
+            <input
+                id="${id}"
+                value="${value || ''}"
+                ${disabled}
+                class="w-full px-3 py-2 border rounded text-sm
+                       focus:outline-none focus:ring-2 focus:ring-primary
+                       ${disabled ? 'bg-gray-100 cursor-not-allowed' : ''}">
+        </div>
+    `;
+}
+
+function textareaBlock(label, id, value = '', disabled = '') {
+    return `
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+                ${label}
+            </label>
+            <textarea
+                id="${id}"
+                rows="4"
+                ${disabled}
+                class="w-full px-3 py-2 border rounded text-sm
+                       focus:outline-none focus:ring-2 focus:ring-primary
+                       resize-none
+                       ${disabled ? 'bg-gray-100 cursor-not-allowed' : ''}">
+${value || ''}
+            </textarea>
+        </div>
+    `;
+}
+
+
+
+
+function saveFortMarathi() {
+
+    fetch('partials/ajax/update_fort_marathi.php', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({
+            id: currentFortId,
+
+            FortName: FortName.value,
+            FortNameMar: FortNameMar.value,
+            FortType: FortType.value,
+            FortTypeMar: FortTypeMar.value,
+            FortDistrict: FortDistrict.value,
+            FortDistrictMar: FortDistrictMar.value,
+            FortRange: FortRange.value,
+            FortRangeMar: FortRangeMar.value,
+            Grade: Grade.value,
+            GradeMar: GradeMar.value,
+            HeightMar: HeightMar.value,
+
+            Introduction: Introduction.value,
+            History: History.value,
+            Geography: Geography.value,
+            Notes: Notes.value
+        })
+    })
+    .then(r=>r.json())
+    .then(res=>{
+        if(res.success){
+            closeModal();
+            loadFortsPageMarathiWithFilters(1);
+            alert('Fort updated successfully');
+        } else {
+            alert(res.message || 'Update failed');
+        }
+    });
+}
+
+
+function saveNewFortMarathi() {
+    
+
+const form = document.getElementById('add-fort-marathi-form');
+    if (!form) return;
+
+    // List of REQUIRED fields (English + Marathi)
+    const requiredFields = [
+        { name: 'FortName', label: 'Fort Name (English)' },
+        { name: 'FortNameMar', label: 'Fort Name (Marathi)' },
+        { name: 'FortType', label: 'Fort Type (English)' },
+        { name: 'FortTypeMar', label: 'Fort Type (Marathi)' },
+        { name: 'FortDistrict', label: 'District (English)' },
+        { name: 'FortDistrictMar', label: 'District (Marathi)' },
+        { name: 'FortRange', label: 'Range (English)' },
+        { name: 'FortRangeMar', label: 'Range (Marathi)' },
+        { name: 'Grade', label: 'Grade (English)' },
+        { name: 'GradeMar', label: 'Grade (Marathi)' },
+        { name: 'Introduction', label: 'Introduction (Marathi)' },
+        { name: 'History', label: 'History (Marathi)' }
+    ];
+
+    let errors = [];
+    let firstInvalid = null;
+
+    // Reset previous error styles
+    form.querySelectorAll('input, textarea').forEach(el => {
+        el.classList.remove('border-red-500');
+    });
+
+    // Validation check
+    requiredFields.forEach(field => {
+        const input = form.querySelector(`[name="${field.name}"]`);
+        if (!input || !input.value.trim()) {
+            errors.push(field.label);
+            if (input) {
+                input.classList.add('border-red-500');
+                if (!firstInvalid) firstInvalid = input;
+            }
+        }
+    });
+
+    // ❌ STOP if validation fails
+    if (errors.length > 0) {
+        alert(
+            'Please fill the following required fields:\n\n• ' +
+            errors.join('\n• ')
+        );
+        firstInvalid?.focus();
+        return; // ⛔ prevent API call
+    }
+
+    
+    const formData = new FormData(form);
+
+    fetch('./api/add_fort_marathi.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(r => r.json())
+    .then(res => {
+        if (res.status === 'success') {
+            alert('Marathi fort added successfully');
+            loadContent('forts-mar');
+        } else {
+            alert(res.message || 'Failed to add fort');
+        }
+    })
+    .catch(() => alert('Server error'));
+}
+
+function loadWaysPageMarathi(page = 1) {
+    loadContent('ways-to-reach-mar&p=' + page);
+}
+
+function openWayModalMarathi() {
+    document.getElementById('wtr-id-mar').value = '';
+    document.getElementById('wtr-name-mar').value = '';
+    document.getElementById('wtr-desc-mar').value = '';
+    document.getElementById('way-modal-mar').classList.remove('hidden');
+}
+
+function saveWayToReachMarathi() {
+    const payload = {
+        WTRID: document.getElementById('wtr-id-mar').value,
+        FortName: document.getElementById('wtr-fort-mar').value,
+        NameOfWay: document.getElementById('wtr-name-mar').value,
+        Description: document.getElementById('wtr-desc-mar').value
+    };
+
+    if (!payload.FortName || !payload.NameOfWay) {
+        alert('Required fields are missing');
+        return;
+    }
+
+    fetch('partials/ajax/ways_to_reach_save_marathi.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(payload)
+    })
+    .then(r => r.json())
+    .then(res => {
+        if (res.success) {
+            closeWayModalMarathi();
+            loadWaysPageMarathi(1);
+        } else {
+            alert(res.message || 'Save failed');
+        }
+    });
+}
+
+function closeWayModalViewMarathi() {
+    const modal = document.getElementById('way-modal-view-mar');
+    if (modal) {
+        modal.classList.add('hidden');
+    }
+}
+
+
+                /* ---------- VIEW (MARATHI) ---------- */
+window.viewWayMarathi = function (id) {
+    fetch(`partials/ajax/ways_to_reach_get_marathi.php?id=${id}`)
+        .then(res => res.json())
+        .then(d => {
+
+            if (!d || !d.WTRID) {
+                alert('Record not found');
+                return;
+            }
+
+            document.getElementById('wtr-id-view-mar').value   = d.WTRID;
+            document.getElementById('wtr-fort-view-mar').value = d.FortName;
+            document.getElementById('wtr-name-view-mar').value = d.NameOfWay;
+            document.getElementById('wtr-desc-view-mar').value = d.Description;
+
+            document.getElementById('way-modal-view-mar').classList.remove('hidden');
+        })
+        .catch(err => {
+            console.error(err);
+            alert('Error loading data');
+        });
+};
+
+
+
+/* ---------- EDIT (MARATHI) ---------- */
+window.editWayMarathi = function (id) {
+    console.log('Editing way to reach ID:', id);
+    fetch(`partials/ajax/ways_to_reach_get_marathi.php?id=${id}`)
+        .then(res => res.json())
+        .then(d => {
+            if (!d || !d.WTRID) {
+                alert('Record not found');
+                return;
+            }
+
+            document.getElementById('wtr-id-mar').value   = d.WTRID;
+            document.getElementById('wtr-fort-mar').value = d.FortName;
+            document.getElementById('wtr-name-mar').value = d.NameOfWay;
+            document.getElementById('wtr-desc-mar').value = d.Description;
+
+            document.getElementById('way-modal-title-mar').innerText = 'Edit Way To Reach';
+            document.getElementById('way-modal-mar').classList.remove('hidden');
+        })
+        .catch(() => alert('Error loading data'));
+};
+
+
+
+
+/* Real-time search (same debounce logic as English) */
+(function () {
+    const input = document.getElementById('search-input-mar');
+    if (!input) return;
+
+    let timeout;
+    input.addEventListener('input', function () {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            applyFiltersMarathi();
+        }, 500);
+    });
+})();
+</script>
+
 
 </html>

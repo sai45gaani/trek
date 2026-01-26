@@ -56,10 +56,10 @@ try {
     <!-- Header -->
     <div>
         <h1 class="text-2xl font-bold text-gray-900">
-            डॅशबोर्ड <span class="text-sm text-gray-500">(Dashboard)</span>
+           Dashboard
         </h1>
         <p class="text-sm text-gray-500">
-            व्यवस्थापन प्रणालीचा संक्षिप्त आढावा (Overview of CMS)
+             Overview of Marathi content management
         </p>
     </div>
 
@@ -71,7 +71,7 @@ try {
             <div class="w-10 h-10 bg-green-100 rounded flex items-center justify-center mb-2">
                 <i class="fas fa-fort-awesome text-primary"></i>
             </div>
-            <p class="text-xs text-gray-500">एकूण किल्ले (Total Forts)</p>
+            <p class="text-xs text-gray-500">Total Marathi Forts</p>
             <p class="text-2xl font-bold"><?= number_format($stats['total_forts']) ?></p>
         </div>
 
@@ -81,7 +81,7 @@ try {
                 <i class="fas fa-hiking text-blue-600"></i>
             </div>
             <p class="text-xs text-gray-500">
-                आगामी ट्रेक्स (Upcoming Treks)
+                Upcoming Treks
             </p>
             <p class="text-2xl font-bold"><?= number_format($stats['upcoming_treks']) ?></p>
         </div>
@@ -92,7 +92,7 @@ try {
                 <i class="fas fa-images text-purple-600"></i>
             </div>
             <p class="text-xs text-gray-500">
-                एकूण फोटो (Total Photos)
+                Total Photos
             </p>
             <p class="text-2xl font-bold"><?= number_format($stats['total_photos']) ?></p>
         </div>
@@ -103,7 +103,7 @@ try {
                 <i class="fas fa-calendar text-orange-600"></i>
             </div>
             <p class="text-xs text-gray-500">
-                सक्रिय कार्यक्रम (Active Events)
+               Active Events
             </p>
             <p class="text-2xl font-bold"><?= number_format($stats['total_events']) ?></p>
         </div>
@@ -113,7 +113,7 @@ try {
     <!-- Quick Actions -->
     <div class="bg-white rounded-lg shadow p-4">
         <h2 class="text-lg font-bold mb-3">
-            जलद क्रिया (Quick Actions)
+            Quick Actions
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -123,10 +123,10 @@ try {
                 <i class="fas fa-plus-circle text-primary text-xl mr-3"></i>
                 <div>
                     <p class="font-medium text-sm">
-                        नवीन किल्ला जोडा
+                        Add New Fort (Marathi)
                     </p>
                     <p class="text-xs text-gray-500">
-                        Add New Fort
+                       Insert Marathi fort details
                     </p>
                 </div>
             </a>
@@ -136,7 +136,7 @@ try {
                 <i class="fas fa-route text-blue-600 text-xl mr-3"></i>
                 <div>
                     <p class="font-medium text-sm">
-                        ट्रेक नियोजन
+                        Upcoming Treks
                     </p>
                     <p class="text-xs text-gray-500">
                         Schedule Trek
@@ -149,10 +149,10 @@ try {
                 <i class="fas fa-upload text-purple-600 text-xl mr-3"></i>
                 <div>
                     <p class="font-medium text-sm">
-                        फोटो अपलोड
+                       Upload Map Photos
                     </p>
                     <p class="text-xs text-gray-500">
-                        Upload Photos
+                       Marathi map gallery
                     </p>
                 </div>
             </a>
@@ -163,15 +163,15 @@ try {
     <!-- Overview Table -->
     <div class="bg-white rounded-lg shadow p-4">
         <h2 class="text-lg font-bold mb-3">
-            सामग्री आढावा (Content Overview)
+           Content Overview
         </h2>
 
         <table class="min-w-full text-sm">
             <thead class="bg-gray-50">
             <tr>
-                <th class="px-4 py-2 text-left">प्रकार (Category)</th>
-                <th class="px-4 py-2">नोंदी (Records)</th>
-                <th class="px-4 py-2">कृती (Action)</th>
+                <th class="px-4 py-2 text-left">Category</th>
+                <th class="px-4 py-2">Records</th>
+                <th class="px-4 py-2">Action</th>
             </tr>
             </thead>
             <tbody class="divide-y">
@@ -179,12 +179,12 @@ try {
             <tr>
                 <td class="px-4 py-2">
                     <i class="fas fa-fort-awesome text-primary mr-2"></i>
-                    किल्ले (Forts)
+                   Marathi Forts
                 </td>
                 <td class="px-4 py-2"><?= number_format($stats['total_forts']) ?></td>
                 <td class="px-4 py-2">
                     <a href="#" data-page="forts" class="nav-link text-primary">
-                        व्यवस्थापन →
+                       Manage →
                     </a>
                 </td>
             </tr>
@@ -192,12 +192,12 @@ try {
             <tr>
                 <td class="px-4 py-2">
                     <i class="fas fa-hiking text-blue-600 mr-2"></i>
-                    ट्रेक्स (Treks)
+                    Treks
                 </td>
                 <td class="px-4 py-2"><?= number_format($stats['total_treks']) ?></td>
                 <td class="px-4 py-2">
                     <a href="#" data-page="treks" class="nav-link text-primary">
-                        व्यवस्थापन →
+                        Manage →
                     </a>
                 </td>
             </tr>
@@ -205,12 +205,12 @@ try {
             <tr>
                 <td class="px-4 py-2">
                     <i class="fas fa-images text-purple-600 mr-2"></i>
-                    फोटो (Photos)
+                     Map Photos
                 </td>
                 <td class="px-4 py-2"><?= number_format($stats['total_photos']) ?></td>
                 <td class="px-4 py-2">
                     <a href="#" data-page="fort-photos" class="nav-link text-primary">
-                        व्यवस्थापन →
+                        Manage →
                     </a>
                 </td>
             </tr>
