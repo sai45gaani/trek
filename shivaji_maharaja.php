@@ -161,7 +161,7 @@ include './includes/header.php';
 }
 </style>
 
-<main id="main-content" class="pt-20">
+<main id="main-content" class="">
     <!-- Hero Slider Section -->
     <section id="home" class="hero-slider">
         <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80');">

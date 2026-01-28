@@ -9,171 +9,150 @@ include './includes/header.php';
 ?>
 
 <style>
-/* Trek Gear page specific styles */
+/* Trek Gear page specific styles – TreKshitiZ Brown & Cream Theme */
+
 .gear-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(127, 176, 105, 0.2);
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
+    background: #FFFEF7; /* cream-light */
+    border: 1px solid #DEB887; /* mountain */
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: box-shadow 0.25s ease;
 }
 
 .dark .gear-card {
-    background: linear-gradient(135deg, rgba(31, 41, 55, 0.9), rgba(31, 41, 55, 0.8));
-    border-color: rgba(127, 176, 105, 0.3);
+    background: #1f2937;
+    border-color: #8B4513; /* primary */
 }
 
 .gear-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(45, 80, 22, 0.15);
-    border-color: var(--accent-color);
+    box-shadow: 0 10px 28px rgba(139, 69, 19, 0.18);
 }
 
-.gear-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(127, 176, 105, 0.1), transparent);
-    transition: left 0.6s;
-}
-
-.gear-card:hover::before {
-    left: 100%;
-}
-
-.season-badge {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
-    margin: 2px;
-}
-
-.season-summer {
-    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-    color: white;
-}
-
-.season-monsoon {
-    background: linear-gradient(135deg, #4834d4, #706fd3);
-    color: white;
-}
-
-.season-winter {
-    background: linear-gradient(135deg, #00d2d3, #54a0ff);
-    color: white;
-}
-
-.gear-item {
-    background: linear-gradient(135deg, rgba(127, 176, 105, 0.1), rgba(74, 124, 35, 0.1));
-    border-left: 4px solid #7fb069;
-    padding: 12px 16px;
-    margin: 8px 0;
-    border-radius: 0 8px 8px 0;
-    transition: all 0.3s ease;
-}
-
-.dark .gear-item {
-    background: linear-gradient(135deg, rgba(127, 176, 105, 0.2), rgba(74, 124, 35, 0.2));
-}
-
-.gear-item:hover {
-    transform: translateX(8px);
-    box-shadow: 0 4px 12px rgba(127, 176, 105, 0.2);
-}
-
+/* Gear icon */
 .gear-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #7fb069, #4a7c23);
-    border-radius: 15px;
+    width: 56px;
+    height: 56px;
+    background: #8B4513; /* primary */
+    border-radius: 0.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 24px;
+    color: #FFF8DC; /* cream-medium */
+    font-size: 22px;
     margin: 0 auto 16px;
-    transition: all 0.3s ease;
 }
 
-.gear-card:hover .gear-icon {
-    transform: rotateY(180deg);
-    background: linear-gradient(135deg, #4a7c23, #7fb069);
+/* Season badge (subtle, no gradients) */
+.season-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    background: #F5F5DC; /* cream-dark */
+    color: #8B4513; /* primary */
+    margin-left: 6px;
 }
 
+/* Gear item blocks (Do / Don't / Forest items) */
+.gear-item {
+    background: #FAF0E6; /* cream-warm */
+    border-left: 4px solid #8B4513; /* primary */
+    padding: 12px 16px;
+    margin: 8px 0;
+    border-radius: 0.375rem;
+}
+
+.dark .gear-item {
+    background: #111827;
+    border-left-color: #D2691E; /* secondary */
+}
+
+/* Do & Don't color distinction (still subtle) */
 .dos-item {
-    border-left-color: #10b981;
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+    border-left-color: #8B4513; /* primary */
 }
 
 .donts-item {
-    border-left-color: #ef4444;
-    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
+    border-left-color: #A0522D; /* earth */
 }
 
+/* Checklist items */
 .checklist-item {
     display: flex;
     align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(127, 176, 105, 0.1);
-    transition: all 0.3s ease;
+    padding: 6px 0;
+    border-bottom: 1px solid #F5F5DC; /* cream-dark */
 }
 
-.checklist-item:hover {
-    background: rgba(127, 176, 105, 0.05);
-    padding-left: 8px;
+.dark .checklist-item {
+    border-color: #374151;
 }
 
+/* Checklist icon */
 .checklist-icon {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #7fb069;
-    color: white;
+    background: #D2691E; /* secondary */
+    color: #FFFEF7;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 12px;
     font-size: 12px;
 }
+
+/* Remove hover gimmicks – heritage friendly */
+.gear-card:hover,
+.gear-item:hover,
+.checklist-item:hover {
+    transform: none;
+}
+
+/* Print friendly */
+@media print {
+    .gear-card {
+        box-shadow: none !important;
+        border: 1px solid #A0522D !important;
+        background: #ffffff !important;
+    }
+
+    h1, h2, h3 {
+        color: #000 !important;
+    }
+}
 </style>
 
-<main class="min-h-screen pt-20 bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-    
+
+<main id="main-content">   
     <!-- Hero Section -->
-    <section class="py-16 px-4">
-        <div class="container mx-auto max-w-6xl text-center">
+   <section class="py-20 bg-gradient-to-r from-primary to-secondary text-white text-center">
+     <div class="container mx-auto max-w-6xl text-center">
             <div class="mb-8">
-                <h1 class="text-5xl md:text-6xl font-bold text-gray-800 dark:text-white mb-6">
-                    Trek <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">Gear Guide</span>
-                </h1>
-                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                    Essential equipment and safety guidelines for your trekking adventures. From one-day trips to multi-day expeditions, 
-                    we've got you covered with comprehensive gear recommendations and safety protocols.
-                </p>
-                <p class="text-lg text-gray-500 dark:text-gray-400 mt-4 font-devanagari">
-                    ट्रेकिंगसाठी आवश्यक साहित्य आणि सुरक्षा मार्गदर्शन
-                </p>
+                 <h1 class="text-4xl font-bold dark:text-white mb-4">
+      Trek Gear & Planning Guide
+    </h1>
+    <p class="max-w-3xl mx-auto">
+      Practical trekking gear checklist, seasonal guidance, and fort etiquette
+      followed by TreKshitiZ trekkers across Maharashtra.
+    </p>
+               
             </div>
             
             <!-- Quick Stats -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-12">
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-green-600 dark:text-green-400">30+</div>
-                    <div class="text-gray-600 dark:text-gray-300">Essential Items</div>
+                <div class="text-center opacity-90">
+                    <div class="text-4xl font-bold ">30+</div>
+                    <div class="">Essential Items</div>
                 </div>
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-blue-600 dark:text-blue-400">3</div>
-                    <div class="text-gray-600 dark:text-gray-300">Trek Categories</div>
+                <div class="text-center opacity-90">
+                    <div class="text-4xl font-bold ">3</div>
+                    <div class="">Trek Categories</div>
                 </div>
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-purple-600 dark:text-purple-400">10+</div>
-                    <div class="text-gray-600 dark:text-gray-300">Safety Guidelines</div>
+                <div class="text-center opacity-90">
+                    <div class="text-4xl font-bold ">10+</div>
+                    <div class="">Safety Guidelines</div>
                 </div>
             </div>
         </div>
@@ -183,8 +162,8 @@ include './includes/header.php';
     <section class="py-16 px-4 bg-white dark:bg-gray-800">
         <div class="container mx-auto max-w-6xl">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">
-                    <i class="fas fa-calendar-alt text-green-600 mr-3"></i>
+                <h2 class="text-3xl font-bold text-primary dark:text-white mb-4">
+                    <i class="fas fa-calendar-alt text-primary-600 mr-3"></i>
                     When to Go Trekking
                 </h2>
                 <div class="w-24 h-1 bg-gradient-to-r from-green-600 to-blue-600 mx-auto rounded-full"></div>
@@ -759,30 +738,37 @@ include './includes/header.php';
         </div>
     </section>
 
-    <!-- Call to Action Section -->
-    <section class="py-16 px-4 bg-gradient-to-r from-green-600 to-blue-600 text-white">
-        <div class="container mx-auto max-w-4xl text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">
-                Ready for Your Next Adventure?
-            </h2>
-            <p class="text-xl mb-8 opacity-90">
-                Now that you know what to pack, join us on our upcoming treks and experience the beauty of Sahyadri mountains!
-            </p>
-            <p class="text-lg mb-8 opacity-80 font-devanagari">
-                आता तुम्हाला काय पॅक करायचे हे माहित आहे, आमच्या आगामी ट्रेकमध्ये सामील व्हा!
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#treks" class="bg-white text-green-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
-                    <i class="fas fa-calendar-check mr-2"></i>
-                    View Trek Schedule
-                </a>
-                <a href="#contact" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-green-600 transition-all duration-300 transform hover:scale-105">
-                    <i class="fas fa-phone mr-2"></i>
-                    Contact Us
-                </a>
-            </div>
+  <!-- Call to Action Section -->
+<section class="py-16 px-4 bg-primary text-cream-light">
+    <div class="container mx-auto max-w-4xl text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            Ready for Your Next Adventure?
+        </h2>
+
+        <p class="text-lg md:text-xl mb-6 text-cream-medium">
+            Now that you know what to pack, join us on our upcoming treks and experience the beauty of the Sahyadri mountains.
+        </p>
+
+      
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#treks"
+               class="bg-cream-light text-primary px-8 py-3 rounded-full font-semibold
+                      hover:bg-cream-medium transition-colors duration-200 shadow-md">
+                <i class="fas fa-calendar-check mr-2"></i>
+                View Trek Schedule
+            </a>
+
+            <a href="#contact"
+               class="border border-cream-light text-cream-light px-8 py-3 rounded-full font-semibold
+                      hover:bg-cream-light hover:text-primary transition-colors duration-200">
+                <i class="fas fa-phone mr-2"></i>
+                Contact Us
+            </a>
         </div>
-    </section>
+    </div>
+</section>
+
 </main>
 
 <?php include './includes/footer.php'; ?>
@@ -906,33 +892,13 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
     
-    // Add print functionality
-    const printButton = document.createElement('button');
-    printButton.innerHTML = '<i class="fas fa-print mr-2"></i>Print Gear List';
-    printButton.className = 'fixed bottom-6 right-6 bg-green-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-green-700 transition-colors z-50';
-    printButton.addEventListener('click', function() {
-        window.print();
-    });
-    document.body.appendChild(printButton);
+
     
     // Gear list completion tracker
     let completedItems = 0;
     const totalItems = checklistItems.length;
     
-    const progressDiv = document.createElement('div');
-    progressDiv.className = 'fixed top-24 right-6 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg z-40 border border-gray-200 dark:border-gray-700';
-    progressDiv.innerHTML = `
-        <div class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-            <i class="fas fa-tasks mr-2 text-green-600"></i>Gear Progress
-        </div>
-        <div class="w-32 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-            <div id="progress-bar" class="h-full bg-green-600 transition-all duration-300" style="width: 0%"></div>
-        </div>
-        <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
-            <span id="progress-text">0/${totalItems} items</span>
-        </div>
-    `;
-    document.body.appendChild(progressDiv);
+
     
     // Update progress when items are clicked
     checklistItems.forEach(item => {

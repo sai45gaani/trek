@@ -96,7 +96,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?= BASE_URL ?>" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>gallery/gallery.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-images mr-2 group-hover:translate-x-1 transition-transform"></i>
                             Photo Gallery
                         </a>
@@ -108,7 +108,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?= BASE_URL ?>" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>trek-gear.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-tools mr-2 group-hover:translate-x-1 transition-transform"></i>
                             Trek Gear
                         </a>
@@ -123,19 +123,19 @@
                 </h4>
                 <ul class="space-y-3">
                     <li>
-                        <a href="<?= BASE_URL ?>project-map.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>gallery/map-gallery.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-map mr-2 group-hover:translate-x-1 transition-transform"></i>
                             Maps
                         </a>
                     </li>
                     <li>
-                        <a href="<?= BASE_URL ?>project-map.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>articles.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-newspaper mr-2 group-hover:translate-x-1 transition-transform"></i>
                             Articles
                         </a>
                     </li>
                     <li>
-                        <a href="<?= BASE_URL ?>project-map.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>emagazine.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-newspaper mr-2 group-hover:translate-x-1 transition-transform"></i>
                            E-Magazine
                         </a>
@@ -147,19 +147,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?= BASE_URL ?>" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
-                            <i class="fas fa-mountain mr-2 group-hover:translate-x-1 transition-transform"></i>
-                            Rock Climbing
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?= BASE_URL ?>" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>gallery/sketches-gallery.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-palette mr-2 group-hover:translate-x-1 transition-transform"></i>
                             Sketches
                         </a>
                     </li>
                     <li>
-                        <a href="<?= BASE_URL ?>" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>shivaji_maharaja.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-crown mr-2 group-hover:translate-x-1 transition-transform"></i>
                             Shivaji Maharaj
                         </a>
