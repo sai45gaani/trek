@@ -192,7 +192,7 @@ $stats = $statsResult->fetch_assoc();
 
 <main id="main-content">
     <!-- Hero Section -->
-    <section class="relative py-20 bg-gradient-to-br from-orange-500 via-red-500 to-pink-500 text-white overflow-hidden">
+    <section class="relative py-20 bg-gradient-to-r from-primary to-secondary text-white overflow-hidden">
         <div class="absolute inset-0 opacity-20">
             <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"butterfly\" x=\"0\" y=\"0\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\"><path d=\"M10,8 C8,6 6,8 8,12 C6,14 8,16 10,14 C12,16 14,14 12,12 C14,8 12,6 10,8 Z\" fill=\"%23ffffff\" opacity=\"0.1\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23butterfly)\"/></svg>');"></div>
         </div>

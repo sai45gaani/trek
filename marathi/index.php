@@ -1,18 +1,18 @@
-   
-    <!-- Include Header Component -->
+<!-- Include Header Component -->
     <?php 
-    $page_title = "Trekshitz - Explore Sahyadri Mountains | Trekking Adventures";
-    $meta_description = "Explore the beautiful Sahyadri mountains with Trekshitz. Join our trekking adventures, discover ancient forts, and connect with nature.";
-    $meta_keywords = "trekking, sahyadri, forts, hiking, adventure, nature, maharashtra, mountains";
+    // Default values (can be overridden by individual pages)
+    $page_title = "ट्रेकशितिज – सह्याद्रीतील किल्ले व ट्रेक्स";
+    $meta_description =  "ट्रेकशितिज सोबत सह्याद्रीतील किल्ले, निसर्ग आणि ट्रेकिंगचा अनुभव घ्या.";
+    $meta_keywords = "ट्रेकिंग, किल्ले, सह्याद्री, महाराष्ट्र, निसर्गभ्रमंती";
 
-    require_once './config/database.php';
-    include 'includes/header.php'; 
+    require_once './../config/database.php';
+    include './../includes/header_marathi.php'; 
     $db = new Database();
     $conn = $db->getConnection();
 
         /* ================= STATS ================= */
         $stats = [
-            'forts' => $conn->query("SELECT COUNT(*) c FROM EI_tblFortInfo")->fetch_assoc()['c'],
+            'forts' => $conn->query("SELECT COUNT(*) c FROM mi_tblfortinfo_unicode")->fetch_assoc()['c'],
             'treks' => $conn->query("SELECT COUNT(*) c FROM TS_tblTrekDetails")->fetch_assoc()['c'],
             'photos' => $conn->query("SELECT COUNT(*) c FROM pm_tblphotos_clean")->fetch_assoc()['c']
         ];
@@ -29,7 +29,7 @@
         /* ============ FEATURED FORTS ============ */
         $forts = $conn->query("
             SELECT f.FortName, f.FortDistrict, p.PIC_NAME
-            FROM EI_tblFortInfo f
+            FROM mi_tblfortinfo_unicode f
             LEFT JOIN pm_tblphotos_clean p 
                 ON p.FortName = f.FortName AND p.PIC_FRONT_IMAGE = 'Y'
             ORDER BY f.FortName ASC
@@ -56,7 +56,7 @@
         /* Slide 2: Featured Fort */
         $heroFort = $conn->query("
             SELECT f.FortName, f.FortDistrict, p.PIC_NAME
-            FROM EI_tblFortInfo f
+            FROM mi_tblfortinfo_unicode f
             LEFT JOIN pm_tblphotos_clean p 
                 ON p.FortName = f.FortName AND p.PIC_FRONT_IMAGE = 'Y'
             ORDER BY RAND()
@@ -104,17 +104,17 @@
                         <div class="relative z-20 h-full flex items-center justify-center text-center text-white px-4">
                             <div class="max-w-4xl">
                                 <h1 class="text-5xl md:text-7xl font-bold mb-6">
-                                    Explore <span class="text-accent">Sahyadri</span>
+                                   सह्याद्रीचा <span class="text-accent">शोध</span>
                                 </h1>
                                 <p class="text-xl md:text-2xl mb-8 opacity-90">
-                                    Climb the majestic peaks of Sahyadri and embark on an unforgettable journey with nature
+                                    सह्याद्रीच्या पर्वतरांगांमध्ये ट्रेकिंग आणि किल्ले अनुभवण्यासाठी आमच्यासोबत या
                                 </p>
                                 <div class="space-x-4">
                                     <button class="btn btn-primary">
-                                        Start Your Journey
+                                       तुमचा प्रवास सुरू करा
                                     </button>
                                     <button class="btn btn-secondary">
-                                        View Treks
+                                         ट्रेक्स पहा
                                     </button>
                                 </div>
                             </div>
@@ -128,14 +128,14 @@
                         <div class="relative z-20 h-full flex items-center justify-center text-center text-white px-4">
                             <div class="max-w-4xl">
                                 <h1 class="text-5xl md:text-7xl font-bold mb-6">
-                                    Ancient <span class="text-accent">Forts</span>
+                                    ऐतिहासिक <span class="text-accent">किल्ले</span>
                                 </h1>
                                 <p class="text-xl md:text-2xl mb-8 opacity-90">
-                                    Information about 350+ forts, their history and trekking guidance
+                                     ३५०+ किल्ल्यांची सविस्तर माहिती, इतिहास आणि ट्रेक मार्गदर्शन
                                 </p>
                                 <div class="space-x-4">
                                     <button class="btn btn-primary">
-                                        Explore Forts
+                                    किल्ले पाहा
                                     </button>
                                 </div>
                             </div>
@@ -179,7 +179,7 @@
                                         <div class="max-w-4xl">
 
                                             <span class="inline-block mb-4 px-5 py-1 text-sm font-semibold bg-accent text-black rounded-full">
-                                                Upcoming Trek
+                                                आगामी ट्रेक
                                             </span>
 
                                             <h1 class="text-5xl md:text-7xl font-bold mb-6">
@@ -194,18 +194,18 @@
                                             </p>
 
                                             <p class="text-lg md:text-xl mb-8 opacity-80">
-                                                Join us for another unforgettable Sahyadri adventure
+                                               सह्याद्रीतील आणखी एका अविस्मरणीय साहसासाठी आमच्यासोबत सहभागी व्हा
                                             </p>
 
                                             <div class="flex justify-center gap-4 flex-wrap">
                                                 <a href="/trek-details/<?= $heroTrek['TrekId'] ?>"
                                                 class="px-8 py-3 bg-primary text-white rounded-full font-semibold hover:bg-secondary transition">
-                                                    View Details
+                                                     तपशील पहा
                                                 </a>
 
                                                 <a href="/trek-schedule"
                                                 class="px-8 py-3 text-white rounded-full font-semibold hover:bg-white hover:text-black transition btn-secondary">
-                                                    Full Schedule
+                                                    संपूर्ण वेळापत्रक
                                                 </a>
                                             </div>
 
@@ -233,32 +233,32 @@
                                 <div class="max-w-4xl">
 
                                     <span class="inline-block mb-4 px-5 py-1 text-sm font-semibold bg-accent text-black rounded-full">
-                                        Trek Schedule Update
+                                        नवीन ट्रेक वेळापत्रक
                                     </span>
 
                                     <h1 class="text-5xl md:text-7xl font-bold mb-6">
-                                        No Treks Scheduled Right Now
+                                        सध्या ट्रेक उपलब्ध नाहीत
                                     </h1>
 
                                     <p class="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed">
-                                        We are currently planning our next adventures in the Sahyadri mountains.
-                                        New trek schedules will be announced soon.
+                                        सध्या सह्याद्री पर्वतरांगांतील पुढील साहसांचे नियोजन सुरू आहे.
+                                        नवीन ट्रेक वेळापत्रक लवकरच जाहीर केले जाईल.
                                     </p>
 
                                     <div class="flex justify-center gap-4 flex-wrap">
                                         <a href="/gallery"
                                         class="px-8 py-3 bg-accent text-black rounded-full font-semibold hover:bg-primary hover:text-white transition">
-                                            Explore Gallery
+                                           छायाचित्र संग्रह पहा
                                         </a>
 
                                         <a href="/contact"
                                         class="px-8 py-3 border border-white text-white rounded-full font-semibold hover:bg-white hover:text-black transition">
-                                            Get Notified
+                                           सूचना मिळवा
                                         </a>
                                     </div>
 
                                     <p class="mt-6 text-sm opacity-70">
-                                        Follow us to stay updated with upcoming trek announcements
+                                        आगामी ट्रेक घोषणांसाठी आमचे अनुसरण करा
                                     </p>
 
                                 </div>
@@ -275,7 +275,7 @@
                                 <div class="relative z-20 h-full flex items-center justify-center text-white px-6">
                                     <div class="max-w-6xl w-full">
                                         <h1 class="text-5xl font-bold text-center mb-10">
-                                            Explore Our <span class="text-accent">Gallery</span>
+                                           आमची <span class="text-accent">फोटो गॅलरी</span> पहा
                                         </h1>
 
                                         <div class="grid md:grid-cols-3 gap-6">
@@ -287,8 +287,8 @@
                                                     style="background-image:url('/assets/images/Photos/Fort/sample.jpg')"></div>
                                                 <div class="absolute inset-0 bg-black/50"></div>
                                                 <div class="relative z-10 h-full flex flex-col justify-end p-5">
-                                                    <h3 class="text-2xl font-bold">Fort Photos</h3>
-                                                    <p class="text-sm opacity-80">Historic forts of Sahyadri</p>
+                                                    <h3 class="text-2xl font-bold">किल्ल्यांचे फोटो</h3>
+                                                    <p class="text-sm opacity-80">सह्याद्रीचे ऐतिहासिक किल्ले</p>
                                                 </div>
                                             </a>
 
@@ -299,8 +299,8 @@
                                                     style="background-image:url('/assets/images/Photos/Maps/MapImages/sample.jpg')"></div>
                                                 <div class="absolute inset-0 bg-black/50"></div>
                                                 <div class="relative z-10 h-full flex flex-col justify-end p-5">
-                                                    <h3 class="text-2xl font-bold">Fort Maps</h3>
-                                                    <p class="text-sm opacity-80">Routes & navigation</p>
+                                                    <h3 class="text-2xl font-bold">किल्ल्यांचे नकाशे</h3>
+                                                    <p class="text-sm opacity-80">मार्गदर्शन</p>
                                                 </div>
                                             </a>
 
@@ -311,8 +311,8 @@
                                                     style="background-image:url('/assets/images/Photos/Sketches/sample.jpg')"></div>
                                                 <div class="absolute inset-0 bg-black/50"></div>
                                                 <div class="relative z-10 h-full flex flex-col justify-end p-5">
-                                                    <h3 class="text-2xl font-bold">Sketches</h3>
-                                                    <p class="text-sm opacity-80">Art inspired by forts</p>
+                                                    <h3 class="text-2xl font-bold">रेखाचित्रे</h3>
+                                                    <p class="text-sm opacity-80">किल्ल्यांवर आधारित कला</p>
                                                 </div>
                                             </a>
 
@@ -329,7 +329,7 @@
                                     <div class="relative z-20 h-full flex items-center justify-center text-white px-6">
                                         <div class="max-w-6xl w-full">
                                             <h1 class="text-5xl font-bold text-center mb-10">
-                                                Nature of <span class="text-accent">Sahyadri</span>
+                                                सह्याद्रीची <span class="text-accent">निसर्गसंपदा</span>
                                             </h1>
 
                                          
@@ -342,8 +342,8 @@
                                                     style="background-image:url('/assets/images/Photos/Fort/sample.jpg')"></div>
                                                 <div class="absolute inset-0 bg-black/50"></div>
                                                 <div class="relative z-10 h-full flex flex-col justify-end p-5">
-                                                    <h3 class="text-2xl font-bold">Butterfly Photos</h3>
-                                                    <p class="text-sm opacity-80">Butterflies</p>
+                                                    <h3 class="text-2xl font-bold">फुलपाखरांचे फोटो</h3>
+                                                    <p class="text-sm opacity-80">फुलपाखरे</p>
                                                 </div>
                                             </a>
 
@@ -354,8 +354,8 @@
                                                     style="background-image:url('/assets/images/Photos/Maps/MapImages/sample.jpg')"></div>
                                                 <div class="absolute inset-0 bg-black/50"></div>
                                                 <div class="relative z-10 h-full flex flex-col justify-end p-5">
-                                                    <h3 class="text-2xl font-bold">Caves Photos</h3>
-                                                    <p class="text-sm opacity-80">Caves</p>
+                                                    <h3 class="text-2xl font-bold">गुहांचे फोटो</h3>
+                                                    <p class="text-sm opacity-80">गुहा</p>
                                                 </div>
                                             </a>
 
@@ -366,8 +366,9 @@
                                                     style="background-image:url('/assets/images/Photos/Sketches/sample.jpg')"></div>
                                                 <div class="absolute inset-0 bg-black/50"></div>
                                                 <div class="relative z-10 h-full flex flex-col justify-end p-5">
-                                                    <h3 class="text-2xl font-bold">Flowers Photos</h3>
-                                                    <p class="text-sm opacity-80">Flowers</p>
+                                                    <h3 class="text-2xl font-bold">फुलांचे फोटो</h3>
+                                                    <p class="text-sm opacity-80">फुले</p>
+
                                                 </div>
                                             </a>
 
@@ -384,16 +385,19 @@
                                     <div class="relative z-20 h-full flex items-center justify-center text-center text-white px-6">
                                         <div class="max-w-4xl">
                                             <h1 class="text-6xl font-extrabold mb-6 tracking-wide">
-                                                Chhatrapati Shivaji Maharaj
+                                                छत्रपती शिवाजी महाराज
                                             </h1>
+
                                             <p class="text-xl leading-relaxed mb-8 opacity-90">
-                                                Founder of the Maratha Empire · Master of Guerrilla Warfare ·
-                                                The soul behind Sahyadri forts
+                                                मराठा साम्राज्याचे संस्थापक · गनिमी काव्याचे जनक ·
+                                                सह्याद्रीतील किल्ल्यांचे आत्मा
                                             </p>
+
                                             <a href="/shivaji-maharaj"
                                             class="inline-flex items-center px-8 py-3 bg-accent text-black font-bold rounded-lg hover:bg-primary transition">
-                                                Read Legacy
+                                                वारसा वाचा
                                             </a>
+
                                         </div>
                                     </div>
                     </div>
@@ -440,7 +444,7 @@
                     <?= $stats['forts'] ?>+
                 </div>
                 <div class="text-gray-600 dark:text-gray-300 text-lg font-medium">
-                    Historic Forts
+                   ऐतिहासिक किल्ले
                 </div>
             </div>
 
@@ -451,7 +455,7 @@
                     <?= $stats['treks'] ?>+
                 </div>
                 <div class="text-gray-600 dark:text-gray-300 text-lg font-medium">
-                    Trek Programs
+                   ट्रेक कार्यक्रम
                 </div>
             </div>
 
@@ -462,7 +466,7 @@
                     <?= $stats['photos'] ?>+
                 </div>
                 <div class="text-gray-600 dark:text-gray-300 text-lg font-medium">
-                    Photographs
+                    छायाचित्रे
                 </div>
             </div>
 
@@ -479,10 +483,10 @@
                             <!-- Section Heading -->
                             <div class="text-center mb-16">
                                 <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-4 p-4">
-                                    Upcoming Treks
+                                   आगामी ट्रेक
                                 </h2>
                                 <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                                    Upcoming trek programs – get ready to explore your favorite destinations
+                                    आगामी ट्रेक कार्यक्रम – आपल्या आवडत्या स्थळांचा शोध घेण्यासाठी सज्ज व्हा
                                 </p>
                             </div>
 
@@ -519,7 +523,7 @@
 
                                                 <a href="/trek-details/<?= $t['TrekId'] ?>" 
                                                 class="btn btn-primary w-full text-center">
-                                                    View Trek
+                                                   ट्रेक पहा
                                                 </a>
                                             </div>
                                         </div>
@@ -536,16 +540,16 @@
                                     <div class="text-6xl mb-6">🥾</div>
 
                                     <h3 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">
-                                        No Upcoming Treks
+                                        सध्या नवीन ट्रेक नियोजित नाहीत
                                     </h3>
 
                                     <p class="text-gray-600 dark:text-gray-300 mb-8">
-                                        We’re currently planning our next adventures.  
-                                        Stay tuned — exciting treks are coming soon!
+                                        सध्या आमच्या पुढील साहसांचे नियोजन सुरू आहे.
+                                        थोडा वेळ थांबा - लवकरच रोमांचक ट्रेक येत आहेत!
                                     </p>
 
                                     <a href="/contact" class="btn btn-primary px-8">
-                                        Get Notified
+                                       सूचना मिळवा
                                     </a>
                                 </div>
 
@@ -560,9 +564,9 @@
         <section class="py-20 bg-cream-light dark:bg-gray-800">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-4">Explore With Us</h2>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-4">आमच्यासोबत प्रवास करा</h2>
                     <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                        Experience the beauty of Sahyadri with us
+                       आमच्यासोबत सह्याद्रीच्या सौंदर्याचा अनुभव घ्या
                     </p>
                 </div>
                 
@@ -572,13 +576,18 @@
                         <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
                             <i class="fas fa-fort-awesome text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Fort Information</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-6">
-                            Detailed information about 350+ forts, photographs and maps included
-                        </p>
-                        <a href="#" class="text-primary dark:text-accent font-semibold hover:underline">
-                            Learn More →
-                        </a>
+                                                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                                किल्ल्यांची माहिती
+                            </h3>
+
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">
+                                ३५० हून अधिक किल्ल्यांची सविस्तर माहिती, छायाचित्रे व नकाशांसह
+                            </p>
+
+                            <a href="#" class="text-primary dark:text-accent font-semibold hover:underline">
+                                अधिक जाणून घ्या →
+                            </a>
+
                     </div>
                     
                     <!-- Feature Card 2 -->
@@ -586,13 +595,18 @@
                         <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mb-6">
                             <i class="fas fa-images text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Picture Gallery</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-6">
-                            Forts, Butterflies, Caves, Flowers and more beautiful captures
-                        </p>
-                        <a href="#" class="text-primary dark:text-accent font-semibold hover:underline">
-                            View Gallery →
-                        </a>
+                                                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                                छायाचित्र संग्रह
+                            </h3>
+
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">
+                                किल्ले, फुलपाखरे, गुहा, फुले आणि आणखी सुंदर छायाचित्रे
+                            </p>
+
+                            <a href="#" class="text-primary dark:text-accent font-semibold hover:underline">
+                                गॅलरी पहा →
+                            </a>
+
                     </div>
                     
                     <!-- Feature Card 3 -->
@@ -600,13 +614,18 @@
                         <div class="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center mb-6">
                             <i class="fas fa-comments text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Discussion Forum</h3>
+                                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                            चर्चा मंच
+                        </h3>
+
                         <p class="text-gray-600 dark:text-gray-300 mb-6">
-                            Connect with fellow trekkers, share experiences and get guidance
+                            इतर ट्रेकर्सशी संपर्क साधा, अनुभव शेअर करा आणि मार्गदर्शन मिळवा
                         </p>
+
                         <a href="#" class="text-primary dark:text-accent font-semibold hover:underline">
-                            Join Discussion →
+                            चर्चेत सहभागी व्हा →
                         </a>
+
                     </div>
                     
                     <!-- Feature Card 4 -->
@@ -614,13 +633,18 @@
                         <div class="w-16 h-16 bg-forest rounded-2xl flex items-center justify-center mb-6">
                             <i class="fas fa-crown text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">King Shivaji Maharaj</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-6">
-                            Learn about the great Maratha warrior king and his forts
-                        </p>
-                        <a href="#" class="text-primary dark:text-accent font-semibold hover:underline">
-                            Read More →
-                        </a>
+                                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                        छत्रपती शिवाजी महाराज
+                    </h3>
+
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        महान मराठा योद्धा राजे आणि त्यांच्या किल्ल्यांविषयी माहिती मिळवा
+                    </p>
+
+                    <a href="#" class="text-primary dark:text-accent font-semibold hover:underline">
+                        अधिक वाचा →
+                    </a>
+
                     </div>
                     
                     <!-- Feature Card 5 -->
@@ -628,13 +652,18 @@
                         <div class="w-16 h-16 bg-earth rounded-2xl flex items-center justify-center mb-6">
                             <i class="fas fa-map text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Maps</h3>
+                                            <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                            नकाशे
+                        </h3>
+
                         <p class="text-gray-600 dark:text-gray-300 mb-6">
-                            Detailed maps of forts and surrounding regions for better navigation
+                            उत्तम दिशादर्शनासाठी किल्ले व परिसराचे सविस्तर नकाशे
                         </p>
+
                         <a href="#" class="text-primary dark:text-accent font-semibold hover:underline">
-                            View Maps →
+                            नकाशे पहा →
                         </a>
+
                     </div>
                     
                     <!-- Feature Card 6 -->
@@ -642,12 +671,16 @@
                         <div class="w-16 h-16 bg-mountain rounded-2xl flex items-center justify-center mb-6">
                             <i class="fas fa-book text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">E-Magazine</h3>
+                                            <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                            ई-मासिक
+                        </h3>
+
                         <p class="text-gray-600 dark:text-gray-300 mb-6">
-                            Trekshitiz organization's e-magazine: forts, nature, expert guidance
+                            ट्रेकशितीज संस्थेचे ई-मासिक: किल्ले, निसर्ग आणि तज्ज्ञ मार्गदर्शन
                         </p>
+
                         <a href="#" class="text-primary dark:text-accent font-semibold hover:underline">
-                            Read Magazine →
+                            मासिक वाचा →
                         </a>
                     </div>
                 </div>
@@ -680,14 +713,14 @@
     </main>
 
     <!-- Include Footer Component -->
-    <?php include 'includes/footer.php'; ?>
+    <?php include './../includes/footer_marathi.php'; ?>
 
     <!-- External Scripts -->
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     
     <!-- Main JavaScript File -->
-    <script src="assets/js/main.js"></script>
+    <script src="./../assets/js/main.js"></script>
 
     <!-- Google Analytics Placeholder -->
     <script>

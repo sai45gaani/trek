@@ -8,155 +8,170 @@ require_once './config/database.php';
 // Include header
 include './includes/header.php';
 
+function getDifficultyInEnglish($english) {
+    return match (strtolower(trim($english))) {
+        'easy' => 'Easy',
+        'medium' => 'Medium',
+        'hard', 'difficult' => 'Hard',
+        'very hard', 'very difficult', 'extreme' => 'Extreme',
+        default => 'Medium'
+    };
+}
+
+// Slug generation
+function slugify($string) {
+    $string = preg_replace('/[^\p{L}\p{N}\s]/u', '', $string); // Remove punctuation
+    $string = preg_replace('/\s+/u', '-', trim($string));      // Replace spaces with hyphens
+    return mb_strtolower($string) . '-fort';                    // Convert to lowercase and add '-fort'
+}
+
 // Connect to database
 $db = new Database();
 $conn = $db->getConnection();
 
-// Predefined district information (for descriptions and metadata)
-$districtInfo = [
+// District data with complete information
+$districts = [
     'Ahmednagar' => [
+        'name' => 'Ahmednagar',
         'description' => 'Historical district with numerous Maratha era forts',
+        'forts' => ['Ahmednagar Fort', 'Harishchandragad', 'Ratangad', 'Bhandardara Fort', 'Kalsubai', 'Ankai Fort', 'Tankai Fort'],
+        'color' => 'bg-red-100 dark:bg-red-900',
         'region' => 'North Maharashtra',
         'elevation' => '1695m',
         'climate' => 'Semi-arid'
     ],
-    'Nashik' => [
-        'description' => 'Ancient city with rich historical and religious significance',
-        'region' => 'North Maharashtra',
-        'elevation' => '600m',
-        'climate' => 'Semi-arid'
-    ],
-    'Pune' => [
-        'description' => 'Cultural capital with maximum number of historical forts',
-        'region' => 'Western Maharashtra',
-        'elevation' => '560m',
-        'climate' => 'Moderate'
-    ],
-    'Raigad' => [
-        'description' => 'Home to Shivaji Maharaj\'s capital and numerous coastal forts',
-        'region' => 'Konkan',
-        'elevation' => '820m',
+    'Akola' => [
+        'name' => 'Akola',
+        'description' => 'Eastern Maharashtra district with ancient fortifications',
+        'forts' => ['Akola Fort', 'Narnala Fort', 'Gawilgarh Fort'],
+        'color' => 'bg-blue-100 dark:bg-blue-900',
+        'region' => 'Vidarbha',
+        'elevation' => '307m',
         'climate' => 'Tropical'
     ],
-    'Satara' => [
-        'description' => 'District with strong Maratha heritage and hill forts',
-        'region' => 'Western Maharashtra',
-        'elevation' => '625m',
-        'climate' => 'Moderate'
-    ],
-    'Kolhapur' => [
-        'description' => 'Southern Maharashtra with rich Maratha heritage',
-        'region' => 'Western Maharashtra',
-        'elevation' => '550m',
-        'climate' => 'Tropical'
-    ],
-    'Ratnagiri' => [
-        'description' => 'Konkan coastal district with sea and hill forts',
-        'region' => 'Konkan',
-        'elevation' => '450m',
-        'climate' => 'Tropical'
-    ],
-    'Sindhudurg' => [
-        'description' => 'Southernmost coastal district with sea forts',
-        'region' => 'Konkan',
-        'elevation' => '300m',
-        'climate' => 'Tropical'
-    ],
-    'Thane' => [
-        'description' => 'Mumbai metropolitan region with coastal and hill forts',
-        'region' => 'Konkan',
-        'elevation' => '400m',
+    'Amravati' => [
+        'name' => 'Amravati',
+        'description' => 'Central Maharashtra district with strategic hill forts',
+        'forts' => ['Amravati Fort', 'Melghat Fort', 'Chikhaldara Fort'],
+        'color' => 'bg-green-100 dark:bg-green-900',
+        'region' => 'Vidarbha',
+        'elevation' => '343m',
         'climate' => 'Tropical'
     ],
     'Aurangabad' => [
+        'name' => 'Aurangabad',
         'description' => 'Historical city with Mughal and Maratha heritage',
+        'forts' => ['Daulatabad Fort', 'Aurangabad Fort', 'Antur Fort', 'Parli Fort', 'Jalna Fort'],
+        'color' => 'bg-yellow-100 dark:bg-yellow-900',
         'region' => 'Marathwada',
         'elevation' => '568m',
         'climate' => 'Semi-arid'
+    ],
+    'Beed' => [
+        'name' => 'Beed',
+        'description' => 'Marathwada district with ancient hill fortifications',
+        'forts' => ['Beed Fort', 'Parali Fort', 'Wadgaon Fort'],
+        'color' => 'bg-purple-100 dark:bg-purple-900',
+        'region' => 'Marathwada',
+        'elevation' => '465m',
+        'climate' => 'Semi-arid'
+    ],
+    'Bhandara' => [
+        'name' => 'Bhandara',
+        'description' => 'Eastern district known for rice cultivation and forts',
+        'forts' => ['Bhandara Fort', 'Tumsar Fort'],
+        'color' => 'bg-indigo-100 dark:bg-indigo-900',
+        'region' => 'Vidarbha',
+        'elevation' => '268m',
+        'climate' => 'Tropical'
+    ],
+    'Buldhana' => [
+        'name' => 'Buldhana',
+        'description' => 'Central Maharashtra with historic fortifications',
+        'forts' => ['Buldhana Fort', 'Lonar Fort', 'Sindkhed Raja Fort'],
+        'color' => 'bg-teal-100 dark:bg-teal-900',
+        'region' => 'Vidarbha',
+        'elevation' => '425m',
+        'climate' => 'Semi-arid'
+    ],
+    'Chandrapur' => [
+        'name' => 'Chandrapur',
+        'description' => 'Eastern district with ancient Gond dynasty forts',
+        'forts' => ['Chandrapur Fort', 'Ballarpur Fort', 'Korpana Fort'],
+        'color' => 'bg-pink-100 dark:bg-pink-900',
+        'region' => 'Vidarbha',
+        'elevation' => '189m',
+        'climate' => 'Tropical'
+    ],
+    'Dhule' => [
+        'name' => 'Dhule',
+        'description' => 'North Maharashtra district with Khandesh heritage',
+        'forts' => ['Dhule Fort', 'Laling Fort', 'Songir Fort', 'Thalner Fort'],
+        'color' => 'bg-cyan-100 dark:bg-cyan-900',
+        'region' => 'North Maharashtra',
+        'elevation' => '244m',
+        'climate' => 'Semi-arid'
+    ],
+    'Gadchiroli' => [
+        'name' => 'Gadchiroli',
+        'description' => 'Eastern tribal district with natural fortifications',
+        'forts' => ['Gadchiroli Fort', 'Chaprala Fort', 'Tipagad'],
+        'color' => 'bg-orange-100 dark:bg-orange-900',
+        'region' => 'Vidarbha',
+        'elevation' => '208m',
+        'climate' => 'Tropical'
+    ],
+    'Gondiya' => [
+        'name' => 'Gondiya',
+        'description' => 'Northern Vidarbha district with tribal heritage',
+        'forts' => ['Gondiya Fort', 'Tirora Fort'],
+        'color' => 'bg-lime-100 dark:bg-lime-900',
+        'region' => 'Vidarbha',
+        'elevation' => '356m',
+        'climate' => 'Tropical'
+    ],
+    'Hingoli' => [
+        'name' => 'Hingoli',
+        'description' => 'Marathwada district with ancient fortifications',
+        'forts' => ['Hingoli Fort', 'Aundha Fort'],
+        'color' => 'bg-emerald-100 dark:bg-emerald-900',
+        'region' => 'Marathwada',
+        'elevation' => '408m',
+        'climate' => 'Semi-arid'
+    ],
+    'Jalgaon' => [
+        'name' => 'Jalgaon',
+        'description' => 'North Maharashtra district with banana cultivation',
+        'forts' => ['Jalgaon Fort', 'Muktainagar Fort', 'Raver Fort'],
+        'color' => 'bg-violet-100 dark:bg-violet-900',
+        'region' => 'North Maharashtra',
+        'elevation' => '209m',
+        'climate' => 'Semi-arid'
+    ],
+    'Jalna' => [
+        'name' => 'Jalna',
+        'description' => 'Marathwada district with historic Maratha forts',
+        'forts' => ['Jalna Fort', 'Partur Fort', 'Bhokardan Fort'],
+        'color' => 'bg-fuchsia-100 dark:bg-fuchsia-900',
+        'region' => 'Marathwada',
+        'elevation' => '508m',
+        'climate' => 'Semi-arid'
+    ],
+    'Kolhapur' => [
+        'name' => 'Kolhapur',
+        'description' => 'Southern Maharashtra with rich Maratha heritage',
+        'forts' => ['Panhala Fort', 'Vishalgad', 'Bhudargad', 'Rangna Fort', 'Samangad', 'Bavda Fort'],
+        'color' => 'bg-rose-100 dark:bg-rose-900',
+        'region' => 'Western Maharashtra',
+        'elevation' => '550m',
+        'climate' => 'Tropical'
     ]
 ];
-
-// Function to get color for district
-function getDistrictColor($index) {
-    $colors = [
-        'bg-red-100 dark:bg-red-900',
-        'bg-blue-100 dark:bg-blue-900',
-        'bg-green-100 dark:bg-green-900',
-        'bg-yellow-100 dark:bg-yellow-900',
-        'bg-purple-100 dark:bg-purple-900',
-        'bg-indigo-100 dark:bg-indigo-900',
-        'bg-teal-100 dark:bg-teal-900',
-        'bg-pink-100 dark:bg-pink-900',
-        'bg-cyan-100 dark:bg-cyan-900',
-        'bg-orange-100 dark:bg-orange-900'
-    ];
-    
-    return $colors[$index % count($colors)];
-}
-
-// Build districts array from database
-$districts = [];
-
-// Query to get all districts and their forts
-$query = "SELECT FortDistrict, FortName 
-          FROM EI_tblFortInfo 
-          WHERE FortDistrict IS NOT NULL 
-          AND FortDistrict != '' 
-          AND FortName IS NOT NULL 
-          ORDER BY FortDistrict, FortName";
-
-$result = $conn->query($query);
-
-// Group forts by district
-$districtData = [];
-while ($row = $result->fetch_assoc()) {
-    $district = trim($row['FortDistrict']);
-    $fortName = trim($row['FortName']);
-    
-    if (!empty($district) && !empty($fortName)) {
-        if (!isset($districtData[$district])) {
-            $districtData[$district] = [];
-        }
-        $districtData[$district][] = $fortName;
-    }
-}
-
-// Convert to the expected format
-$colorIndex = 0;
-foreach ($districtData as $districtName => $forts) {
-    // Get predefined info or use defaults
-    $info = $districtInfo[$districtName] ?? [
-        'description' => "Historic district with " . count($forts) . " forts offering excellent trekking opportunities",
-        'region' => 'Maharashtra',
-        'elevation' => 'Varies',
-        'climate' => 'Tropical'
-    ];
-    
-    $districts[$districtName] = [
-        'name' => $districtName,
-        'description' => $info['description'],
-        'forts' => $forts,
-        'color' => getDistrictColor($colorIndex),
-        'region' => $info['region'],
-        'elevation' => $info['elevation'],
-        'climate' => $info['climate']
-    ];
-    
-    $colorIndex++;
-}
-
-// Sort districts alphabetically
-ksort($districts);
 
 // Get current district from URL parameter
 $currentDistrict = isset($_GET['district']) ? $_GET['district'] : '';
 $selectedDistrict = $currentDistrict && isset($districts[$currentDistrict]) ? $districts[$currentDistrict] : null;
-
-// Calculate statistics
-$totalForts = array_sum(array_map(function($d) { return count($d['forts']); }, $districts));
-$uniqueRegions = count(array_unique(array_column($districts, 'region')));
 ?>
-
 <main id="main-content" class="pt-20">
     <!-- Hero Section -->
     <section class="relative py-20 bg-gradient-to-r from-primary to-secondary text-white overflow-hidden">
@@ -201,21 +216,20 @@ $uniqueRegions = count(array_unique(array_column($districts, 'region')));
                     <div class="text-gray-600 dark:text-gray-300">Districts</div>
                 </div>
                 <div class="text-center transform hover:scale-105 transition-transform">
-                    <div class="text-4xl font-bold text-primary dark:text-accent mb-2 animate-number" data-target="<?php echo $totalForts; ?>">0</div>
+                    <div class="text-4xl font-bold text-primary dark:text-accent mb-2 animate-number" data-target="350">0</div>
                     <div class="text-gray-600 dark:text-gray-300">Total Forts</div>
                 </div>
                 <div class="text-center transform hover:scale-105 transition-transform">
-                    <div class="text-4xl font-bold text-primary dark:text-accent mb-2 animate-number" data-target="<?php echo $uniqueRegions; ?>">0</div>
+                    <div class="text-4xl font-bold text-primary dark:text-accent mb-2 animate-number" data-target="5">0</div>
                     <div class="text-gray-600 dark:text-gray-300">Regions</div>
                 </div>
                 <div class="text-center transform hover:scale-105 transition-transform">
-                    <div class="text-4xl font-bold text-primary dark:text-accent mb-2 animate-number" data-target="1500">0</div>
-                    <div class="text-gray-600 dark:text-gray-300">Years of History</div>
+                    <div class="text-4xl font-bold text-primary dark:text-accent mb-2 animate-number" data-target="1695">0</div>
+                    <div class="text-gray-600 dark:text-gray-300">Meters (Highest)</div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Search Section -->
     <section class="py-12 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4">
@@ -240,13 +254,11 @@ $uniqueRegions = count(array_unique(array_column($districts, 'region')));
                         </label>
                         <select id="regionFilter" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent dark:bg-gray-700 dark:text-white">
                             <option value="">All Regions</option>
-                            <?php 
-                            $regions = array_unique(array_column($districts, 'region'));
-                            sort($regions);
-                            foreach($regions as $region): 
-                            ?>
-                                <option value="<?php echo htmlspecialchars($region); ?>"><?php echo htmlspecialchars($region); ?></option>
-                            <?php endforeach; ?>
+                            <option value="North Maharashtra">North Maharashtra</option>
+                            <option value="Vidarbha">Vidarbha</option>
+                            <option value="Marathwada">Marathwada</option>
+                            <option value="Western Maharashtra">Western Maharashtra</option>
+                            <option value="Konkan">Konkan</option>
                         </select>
                     </div>
                     
@@ -299,10 +311,9 @@ $uniqueRegions = count(array_unique(array_column($districts, 'region')));
                 
                 <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700">
                     <h3 class="text-3xl font-bold mb-8 text-gray-800 dark:text-white text-center">
-                        <?php echo count($selectedDistrict['forts']); ?> Forts in <?php echo $selectedDistrict['name']; ?> District
+                        Forts in <?php echo $selectedDistrict['name']; ?> District
                     </h3>
                     
-                    <?php if (count($selectedDistrict['forts']) > 0): ?>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <?php foreach($selectedDistrict['forts'] as $fort): ?>
                             <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:transform hover:scale-105 border border-gray-200 dark:border-gray-700">
@@ -314,6 +325,10 @@ $uniqueRegions = count(array_unique(array_column($districts, 'region')));
                                 </div>
                                 
                                 <div class="space-y-2 mb-4">
+                                    <div class="flex items-center text-gray-600 dark:text-gray-300 text-sm">
+                                        <i class="fas fa-mountain mr-2 text-accent"></i>
+                                        <span>Hill Fort</span>
+                                    </div>
                                     <div class="flex items-center text-gray-600 dark:text-gray-300 text-sm">
                                         <i class="fas fa-map-marker-alt mr-2 text-accent"></i>
                                         <span><?php echo $selectedDistrict['name']; ?></span>
@@ -339,12 +354,6 @@ $uniqueRegions = count(array_unique(array_column($districts, 'region')));
                             </div>
                         <?php endforeach; ?>
                     </div>
-                    <?php else: ?>
-                    <div class="text-center py-12">
-                        <i class="fas fa-mountain text-6xl text-gray-400 mb-4"></i>
-                        <p class="text-gray-600 dark:text-gray-400 text-lg">No forts found in this district</p>
-                    </div>
-                    <?php endif; ?>
                 </div>
             </div>
         </section>
@@ -515,7 +524,6 @@ $uniqueRegions = count(array_unique(array_column($districts, 'region')));
             </div>
         </div>
     </section>
-
     <!-- Additional Information Section -->
     <section class="py-20 bg-gray-50 dark:bg-gray-800">
         <div class="container mx-auto px-4">
@@ -531,29 +539,9 @@ $uniqueRegions = count(array_unique(array_column($districts, 'region')));
                         <div class="w-20 h-20 bg-accent rounded-2xl flex items-center justify-center mb-6 mx-auto">
                             <i class="fas fa-hiking text-3xl text-white"></i>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">Trekking Adventures</h3>
+                        <h3 class="text-2xl font-bold mb-4">Trekking Adventures</h3>
                         <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
                             From easy day treks to challenging expeditions, each district offers diverse trekking experiences suitable for all skill levels.
-                        </p>
-                    </div>
-                    
-                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 text-center shadow-xl border border-gray-200 dark:border-gray-700">
-                        <div class="w-20 h-20 bg-primary rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                            <i class="fas fa-landmark text-3xl text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">Rich Heritage</h3>
-                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                            Explore centuries of Maratha history through magnificent forts built by Shivaji Maharaj and his successors across Maharashtra.
-                        </p>
-                    </div>
-                    
-                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 text-center shadow-xl border border-gray-200 dark:border-gray-700">
-                        <div class="w-20 h-20 bg-secondary rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                            <i class="fas fa-camera text-3xl text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">Scenic Beauty</h3>
-                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                            Capture breathtaking views from hilltops, witness stunning sunrises and sunsets, and enjoy the natural beauty of Sahyadri ranges.
                         </p>
                     </div>
                 </div>
@@ -680,7 +668,7 @@ document.addEventListener('DOMContentLoaded', function() {
     animateNumbers();
     
     // Add loading animation to cards
-    const districtCardsAnimation = document.querySelectorAll('.searchable-district');
+    const districtCardsAnimation = document.querySelectorAll('.bg-white, .dark\\:bg-gray-800');
     const cardObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
@@ -696,7 +684,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     districtCardsAnimation.forEach(card => {
-        cardObserver.observe(card);
+        if (card.classList.contains('searchable-district')) {
+            cardObserver.observe(card);
+        }
     });
     
     // Enhanced hover effects for fort tags
@@ -707,6 +697,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
                 const fortName = this.textContent.trim();
                 console.log('Clicked on fort:', fortName);
+                // You can add navigation to individual fort pages here
+                // Example: window.location.href = `/fort/${fortName.toLowerCase().replace(/\s+/g, '-')}`;
             });
             
             tag.addEventListener('mouseenter', function() {
@@ -721,10 +713,92 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    console.log('Forts by District (Database-driven) page loaded successfully');
+    // Search suggestions functionality
+    if (searchInput) {
+        const suggestions = Object.keys(<?php echo json_encode($districts); ?>);
+        let suggestionsContainer;
+        
+        // Create suggestions container
+        suggestionsContainer = document.createElement('div');
+        suggestionsContainer.className = 'absolute top-full left-0 right-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg mt-2 shadow-xl z-50 max-h-48 overflow-y-auto hidden';
+        searchInput.parentElement.style.position = 'relative';
+        searchInput.parentElement.appendChild(suggestionsContainer);
+        
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase().trim();
+            
+            if (query.length >= 2) {
+                const matches = suggestions.filter(item => 
+                    item.toLowerCase().includes(query)
+                ).slice(0, 5);
+                
+                if (matches.length > 0) {
+                    showSuggestions(matches, query);
+                } else {
+                    hideSuggestions();
+                }
+            } else {
+                hideSuggestions();
+            }
+        });
+        
+        // Hide suggestions when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!searchInput.parentElement.contains(e.target)) {
+                hideSuggestions();
+            }
+        });
+        
+        function showSuggestions(matches, query) {
+            suggestionsContainer.innerHTML = matches.map(name => {
+                const highlighted = name.replace(new RegExp(`(${query})`, 'gi'), '<mark class="bg-yellow-200 dark:bg-yellow-600">$1</mark>');
+                return `
+                    <div class="suggestion-item px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer border-b border-gray-100 dark:border-gray-600 last:border-b-0 transition-colors" data-name="${name}">
+                        <i class="fas fa-map-marked-alt text-accent mr-2"></i>
+                        ${highlighted}
+                    </div>
+                `;
+            }).join('');
+            
+            suggestionsContainer.classList.remove('hidden');
+            
+            // Add click handlers to suggestions
+            suggestionsContainer.querySelectorAll('.suggestion-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    searchInput.value = this.dataset.name;
+                    hideSuggestions();
+                    filterDistricts();
+                });
+            });
+        }
+        
+        function hideSuggestions() {
+            if (suggestionsContainer) {
+                suggestionsContainer.classList.add('hidden');
+            }
+        }
+    }
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const headerHeight = 80;
+                const targetPosition = target.offsetTop - headerHeight;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    console.log('Forts by District page loaded successfully');
 });
 
-// Add CSS for animations
+// Add CSS for animations and styling
 const style = document.createElement('style');
 style.textContent = `
     .animate-fade-in-up {
@@ -740,6 +814,12 @@ style.textContent = `
             opacity: 1;
             transform: translateY(0);
         }
+    }
+    
+    .suggestion-item mark {
+        background-color: rgba(255, 255, 0, 0.3);
+        color: inherit;
+        padding: 0;
     }
     
     .bg-gradient-to-r {

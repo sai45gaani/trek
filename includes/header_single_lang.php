@@ -4,13 +4,6 @@
 $current_page = basename($_SERVER['PHP_SELF'], '.php');
 define('BASE_URL', '/fort/trek/');
 
-$scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-$host   = $scheme . '://' . $_SERVER['HTTP_HOST'];
-
-// Paths relative to /fort/trek/
-$englishPath = BASE_URL . basename($_SERVER['PHP_SELF']);
-$marathiPath = BASE_URL . 'marathi/' . basename($_SERVER['PHP_SELF']);
-
 // Default values (can be overridden by individual pages)
 $page_title = isset($page_title) ? $page_title : 'Trekshitz - Explore Sahyadri Mountains | Trekking Adventures';
 $meta_description = isset($meta_description) ? $meta_description : 'Explore the beautiful Sahyadri mountains with Trekshitz. Join our trekking adventures, discover ancient forts, and connect with nature.';
@@ -37,11 +30,6 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
     <link rel="manifest" href="assets/images/favicon/site.webmanifest">
-    <link rel="canonical" href="<?= $host . $englishPath ?>">
-<link rel="alternate" hreflang="en" href="<?= $host . $englishPath ?>">
-<link rel="alternate" hreflang="mr" href="<?= $host . $marathiPath ?>">
-<link rel="alternate" hreflang="x-default" href="<?= $host . $englishPath ?>">
-
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -51,8 +39,6 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-     <!-- Google Fonts - English + Devanagari -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Mukti:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
@@ -393,7 +379,7 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                             </div>-->
                         </li>
                         <li class="relative group">
-                            <a href="<?= BASE_URL ?>treks.php" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
+                            <a href="#treks" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
                                 Treks
                                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary dark:bg-accent transition-all duration-300 group-hover:w-full"></span>
                             </a>
@@ -406,7 +392,7 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                             </div>
                         </li>
                         <li class="relative group">
-                            <a href="<?= BASE_URL ?>fort_in_english.php" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
+                            <a href="#forts" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
                                 Forts
                                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary dark:bg-accent transition-all duration-300 group-hover:w-full"></span>
                             </a>
@@ -414,12 +400,12 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                             <div class="absolute top-full left-0 w-64 bg-white dark:bg-gray-800 shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-2">
                                 <div class="py-2">
                                     <a href="<?= BASE_URL ?>fort_in_english.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Fort Information</a>
-                                    <a href="<?= BASE_URL ?>gallery/map-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Maps</a>
+                                    <a href="<?= BASE_URL ?>project-map.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Maps</a>
                                 </div>
                             </div>
                         </li>
                         <li class="relative group">
-                            <a href="<?= BASE_URL ?>gallery/gallery.php" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
+                            <a href="#gallery" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
                                 Photo Gallery
                                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary dark:bg-accent transition-all duration-300 group-hover:w-full"></span>
                             </a>
@@ -458,10 +444,10 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                         </button>
                         <div class="absolute right-0 top-full w-32 bg-white dark:bg-gray-800 shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-2">
                             <div class="py-2">
-                                <a href="<?= $englishPath ?>" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" data-language="en">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" data-language="en">
                                     <i class="fas fa-flag mr-2"></i>English
                                 </a>
-                                <a href="<?= $marathiPath ?>" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" data-language="mr">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" data-language="mr">
                                     <i class="fas fa-flag mr-2"></i>मराठी
                                 </a>
                             </div>
@@ -612,17 +598,9 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                                 <div class="flex items-center justify-between mb-4">
                                     <span class="text-gray-700 dark:text-gray-300">Language:</span>
                                     <div class="flex space-x-2">
-    <a href="<?= BASE_URL ?>index.php"
-       class="px-3 py-1 text-sm bg-primary text-white rounded">
-        EN
-    </a>
-
-    <a href="<?= BASE_URL ?>marathi/index.php"
-       class="px-3 py-1 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">
-        मराठी
-    </a>
-</div>
-
+                                        <button class="px-3 py-1 text-sm bg-primary text-white rounded" data-language="en">EN</button>
+                                        <button class="px-3 py-1 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded" data-language="mr">मराठी</button>
+                                    </div>
                                 </div>
                                 
                                 <!-- CTA Button Mobile -->

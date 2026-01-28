@@ -4,42 +4,16 @@ $page_title = 'Forts by Difficulty Grade - Trekking Levels | Trekshitz';
 $meta_description = 'Easy, Medium, Hard and Extreme difficulty level forts in Maharashtra. Find forts according to your trekking experience and fitness level.';
 $meta_keywords = 'fort grades, trekking difficulty, easy forts, hard forts, grading system, fort classification';
 
-require_once './config/database.php';
 // Include header
 include './includes/header.php';
 
-// Connect to database
-$db = new Database();
-$conn = $db->getConnection();
-
-// Function to normalize grade names from database
-function normalizeGrade($grade) {
-    $grade = trim(strtolower($grade));
-    
-    // Map various grade names to standard grades
-    $gradeMap = [
-        'easy' => 'Easy',
-        'simple' => 'Easy',
-        'beginner' => 'Easy',
-        'medium' => 'Medium',
-        'moderate' => 'Medium',
-        'intermediate' => 'Medium',
-        'hard' => 'Hard',
-        'difficult' => 'Hard',
-        'challenging' => 'Hard',
-        'extreme' => 'Extreme',
-        'very hard' => 'Extreme',
-        'very difficult' => 'Extreme',
-        'expert' => 'Extreme'
-    ];
-    
-    return $gradeMap[$grade] ?? 'Medium'; // Default to Medium if unknown
-}
-
-// Predefined grade information
-$gradeInfo = [
+// Complete grade-wise forts data
+$gradeData = [
     'Easy' => [
+        'name' => 'Easy',
         'description' => 'Perfect for beginners - requires minimal technical skills',
+        'forts' => ['Sindhudurg', 'Jaigad', 'Vikatgad', 'Arnala', 'Kulaba', 'Kokankada', 'Suvarnadurg', 'Shriwardhan', 'Harihareshwar', 'Asheri', 'Murudgad', 'Kandak Gad'],
+        'color' => 'bg-green-100 dark:bg-green-900',
         'icon' => 'fa-smile',
         'duration' => '2-4 hours',
         'experience' => 'Beginner',
@@ -47,7 +21,10 @@ $gradeInfo = [
         'tips' => 'Carry water and snacks, wear proper shoes'
     ],
     'Medium' => [
+        'name' => 'Medium',
         'description' => 'Moderate experience required - some technical sections and climbing',
+        'forts' => ['Raigad', 'Pratapgad', 'Sinhagad', 'Lohgad', 'Bhaje', 'Karla', 'Torana', 'Purandar', 'Shivneri', 'Daulatgiri', 'Hadsar', 'Kondana'],
+        'color' => 'bg-yellow-100 dark:bg-yellow-900',
         'icon' => 'fa-meh',
         'duration' => '4-6 hours',
         'experience' => 'Intermediate',
@@ -55,7 +32,10 @@ $gradeInfo = [
         'tips' => 'Go with a guide, check weather conditions'
     ],
     'Hard' => [
+        'name' => 'Hard',
         'description' => 'For experienced trekkers - technical climbing and rock climbing required',
+        'forts' => ['Madan', 'Kalyan', 'Bhairavgad', 'Mahuli', 'Dhak', 'Irshalgad', 'Kotligad', 'Gehu', 'Chandragad', 'Ramsej', 'Awandgad', 'Avandgad'],
+        'color' => 'bg-orange-100 dark:bg-orange-900',
         'icon' => 'fa-frown',
         'duration' => '6-8 hours',
         'experience' => 'Experienced',
@@ -63,7 +43,10 @@ $gradeInfo = [
         'tips' => 'Go in groups, climb with experts, use safety equipment'
     ],
     'Extreme' => [
+        'name' => 'Extreme',
         'description' => 'For experts only - extremely dangerous and technical climbing',
+        'forts' => ['Alang', 'Madan-Kalyan', 'Kulang', 'Ratangad', 'Andheri', 'Ram', 'Vyaparadurg', 'Naneghat', 'Kelve', 'Tungi', 'Tikona', 'Ghorpade'],
+        'color' => 'bg-red-100 dark:bg-red-900',
         'icon' => 'fa-skull',
         'duration' => '8+ hours',
         'experience' => 'Expert',
@@ -72,50 +55,9 @@ $gradeInfo = [
     ]
 ];
 
-// Build grade data from database
-$gradeData = [];
-
-// Initialize empty arrays for each grade
-foreach ($gradeInfo as $gradeName => $info) {
-    $gradeData[$gradeName] = array_merge([
-        'name' => $gradeName,
-        'forts' => [],
-        'color' => ''
-    ], $info);
-}
-
-// Set colors for each grade
-$gradeData['Easy']['color'] = 'bg-green-100 dark:bg-green-900';
-$gradeData['Medium']['color'] = 'bg-yellow-100 dark:bg-yellow-900';
-$gradeData['Hard']['color'] = 'bg-orange-100 dark:bg-orange-900';
-$gradeData['Extreme']['color'] = 'bg-red-100 dark:bg-red-900';
-
-// Query to get all forts with their grades
-$query = "SELECT FortName, Grade 
-          FROM EI_tblFortInfo 
-          WHERE FortName IS NOT NULL 
-          AND Grade IS NOT NULL 
-          AND Grade != ''
-          ORDER BY Grade, FortName";
-
-$result = $conn->query($query);
-
-// Group forts by grade
-while ($row = $result->fetch_assoc()) {
-    $fortName = trim($row['FortName']);
-    $grade = normalizeGrade($row['Grade']);
-    
-    if (!empty($fortName) && isset($gradeData[$grade])) {
-        $gradeData[$grade]['forts'][] = $fortName;
-    }
-}
-
 // Get current grade from URL parameter
 $currentGrade = isset($_GET['grade']) ? $_GET['grade'] : '';
 $selectedGrade = $currentGrade && isset($gradeData[$currentGrade]) ? $gradeData[$currentGrade] : null;
-
-// Calculate total forts
-$totalForts = array_sum(array_map(function($grade) { return count($grade['forts']); }, $gradeData));
 ?>
 
 <main id="main-content" class="pt-20">
@@ -265,10 +207,9 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
                 
                 <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700">
                     <h3 class="text-3xl font-bold mb-8 text-gray-800 dark:text-white text-center">
-                        <?php echo count($selectedGrade['forts']); ?> Forts in This Grade
+                        Forts in This Grade
                     </h3>
                     
-                    <?php if (count($selectedGrade['forts']) > 0): ?>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <?php foreach($selectedGrade['forts'] as $fort): ?>
                             <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:transform hover:scale-105 border border-gray-200 dark:border-gray-700">
@@ -305,12 +246,6 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
                             </div>
                         <?php endforeach; ?>
                     </div>
-                    <?php else: ?>
-                    <div class="text-center py-12">
-                        <i class="fas fa-mountain text-6xl text-gray-400 mb-4"></i>
-                        <p class="text-gray-600 dark:text-gray-400 text-lg">No forts found in this grade level</p>
-                    </div>
-                    <?php endif; ?>
                     
                     <!-- Tips Section -->
                     <div class="mt-8 bg-blue-50 dark:bg-blue-900 p-6 rounded-xl">
@@ -501,26 +436,45 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
                 </h2>
                 
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-                    <?php foreach($gradeData as $grade): ?>
-                    <?php
-                    $iconColorMap = [
-                        'Easy' => 'bg-green-500',
-                        'Medium' => 'bg-yellow-500',
-                        'Hard' => 'bg-orange-500',
-                        'Extreme' => 'bg-red-500'
-                    ];
-                    $iconColor = $iconColorMap[$grade['name']] ?? 'bg-primary';
-                    ?>
                     <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-xl border border-gray-200 dark:border-gray-700">
-                        <div class="w-16 h-16 <?php echo $iconColor; ?> rounded-2xl flex items-center justify-center mb-4 mx-auto">
-                            <i class="fas <?php echo $grade['icon']; ?> text-2xl text-white"></i>
+                        <div class="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-smile text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white"><?php echo $grade['name']; ?> Treks</h3>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Easy Treks</h3>
                         <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                            <?php echo $grade['description']; ?>
+                            Perfect for beginners. Basic fitness sufficient. Well-marked trails.
                         </p>
                     </div>
-                    <?php endforeach; ?>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-xl border border-gray-200 dark:border-gray-700">
+                        <div class="w-16 h-16 bg-yellow-500 rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-meh text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Medium Treks</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                            Some experience required. Good fitness. Few technical sections.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-xl border border-gray-200 dark:border-gray-700">
+                        <div class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-frown text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Hard Treks</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                            Experienced trekkers. Excellent fitness. Rock climbing required.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-xl border border-gray-200 dark:border-gray-700">
+                        <div class="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-skull text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Extreme Treks</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                            Experts only. Technical climbing. Dangerous routes.
+                        </p>
+                    </div>
                 </div>
                 
                 <div class="bg-gradient-to-r from-primary to-secondary text-white p-8 rounded-2xl text-center">
@@ -671,6 +625,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
                 const fortName = this.textContent.trim();
                 console.log('Clicked on fort:', fortName);
+                // You can add navigation to individual fort pages here
             });
             
             tag.addEventListener('mouseenter', function() {
@@ -701,7 +656,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    console.log('Forts by Grade (Database-driven) page loaded successfully');
+    console.log('Forts by Grade (English) page loaded successfully');
 });
 
 // Add CSS for animations

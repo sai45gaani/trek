@@ -256,15 +256,12 @@
                 <div class="flex items-center space-x-4">
                     <span class="text-gray-400 text-sm">Language:</span>
                     <div class="flex space-x-2">
-                                        <a href="<?= BASE_URL ?>index.php"
-                                        class="px-3 py-1 text-sm bg-primary text-white rounded">
-                                            EN
-                                        </a>
-
-                                        <a href="<?= BASE_URL ?>marathi/index.php"
-                                        class="px-3 py-1 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">
-                                            मराठी
-                                        </a>
+                        <button class="px-3 py-1 text-sm bg-accent text-white rounded-md hover:bg-primary transition-colors footer-lang-btn" data-language="en">
+                            English
+                        </button>
+                        <button class="px-3 py-1 text-sm text-gray-400 hover:text-white hover:bg-gray-700 rounded-md transition-colors footer-lang-btn" data-language="mr">
+                            मराठी
+                        </button>
                     </div>
                 </div>
                 
@@ -686,7 +683,6 @@ window.addEventListener('load', function() {
   "@type": "Organization",
   "name": "Trekshitz",
   "alternateName": "ट्रेकशित्ज़ संस्था",
-  "availableLanguage": ["Marathi", "English"],
   "url": "https://www.trekshitz.com",
   "logo": "https://www.trekshitz.com/assets/images/logo.png",
   "description": "Explore the beautiful Sahyadri mountains with Trekshitz. Join our trekking adventures, discover ancient forts, and connect with nature.",

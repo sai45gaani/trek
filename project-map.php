@@ -5,7 +5,58 @@ $meta_description = 'Explore historic forts of Maharashtra with interactive maps
 $meta_keywords = 'forts, maharashtra, maps, trekking, heritage, historical forts, fort maps, sahyadri';
 
 // Include header
+require_once './config/database.php';
 include './includes/header.php';
+
+
+$db = new Database();
+$conn = $db->getConnection();
+
+/*
+|---------------------------------------------------------
+| Fetch alphabetical fort list dynamically
+|---------------------------------------------------------
+*/
+$fortsQuery = "
+    SELECT DISTINCT f.FortName
+    FROM EI_tblFortInfo f
+    INNER JOIN mm_tblmapinfo_clean m ON f.FortName = m.FortName
+    ORDER BY f.FortName ASC
+";
+$fortsResult = $conn->query($fortsQuery);
+
+$forts = [];
+while ($row = $fortsResult->fetch_assoc()) {
+    $forts[] = $row['FortName'];
+}
+
+$fortData = [];
+
+// Initialize A–Z keys (optional but recommended for UI consistency)
+foreach (range('A', 'Z') as $letter) {
+    $fortData[$letter] = [];
+}
+
+// Group forts by first letter
+foreach ($forts as $fortName) {
+
+    // Trim & sanitize
+    $fortName = trim($fortName);
+
+    // Get first character (supports normal ASCII names)
+    $firstLetter = strtoupper(substr($fortName, 0, 1));
+
+    // Safety check (only A–Z)
+    if (!preg_match('/^[A-Z]$/', $firstLetter)) {
+        continue;
+    }
+
+    $fortData[$firstLetter][] = $fortName;
+}
+
+// OPTIONAL: remove empty alphabets if you want
+// $fortData = array_filter($fortData);
+
 ?>
 
 <style>
@@ -167,15 +218,11 @@ include './includes/header.php';
         
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 font-bilingual">
-                    🏰 किल्ले आणि नकाशे
-                </h1>
-                <h2 class="text-2xl md:text-3xl font-semibold mb-8">
-                    Fort Maps - Interactive Explorer
-                </h2>
-                <p class="text-xl md:text-2xl mb-8 opacity-90">
-                    Discover Maharashtra's historic forts with detailed interactive maps and trekking routes
-                </p>
+              <h1 class="text-4xl md:text-6xl font-bold mb-4">🗺️ Fort Map Explorer</h1>
+   
+               <p class="text-xl opacity-90 max-w-3xl mx-auto">
+        Explore Sahyadri forts with interactive route maps, navigation layouts, and geographic insights
+         </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="#fort-list" class="inline-flex items-center px-8 py-4 bg-white text-primary font-semibold rounded-full hover:bg-gray-100 transition-colors">
                         <i class="fas fa-list mr-2"></i>
@@ -207,38 +254,50 @@ include './includes/header.php';
         </div>
     </section>
 
+    
+
     <!-- Map Display Section -->
     <section id="map-view" class="py-12 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4">
             <div class="max-w-6xl mx-auto">
                 <div class="map-container relative">
-                    <div class="loading" id="loading">
-                        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
-                        <p class="text-white mt-4">Loading map...</p>
-                    </div>
+                   
                     
-                    <div class="map-controls">
-                        <button onclick="zoomIn()" title="Zoom In">
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        <button onclick="zoomOut()" title="Zoom Out">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <button onclick="resetView()" title="Reset View">
-                            <i class="fas fa-refresh"></i>
-                        </button>
+                   <div id="map-content" class="w-full">
+                        <div class="grid grid-cols-12 gap-6">
+
+                            <!-- MAPS SECTION (col-8) -->
+                            <div id="map-gallery" class="col-span-12 lg:col-span-8">
+                                <div class="grid sm:grid-cols-2 gap-4">
+                                    <!-- maps injected here -->
+                                </div>
+                            </div>
+
+                            <!-- INFO SECTION (col-4) -->
+                            <div id="map-info" class="col-span-12 lg:col-span-4 hidden">
+                                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 sticky top-24">
+                                    <h3 id="info-title" class="text-xl font-bold mb-3 text-gray-800 dark:text-white"></h3>
+                                    <p id="info-district" class="text-sm text-green-600 mb-3"></p>
+
+                                    <div class="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                                        <p><strong>Total Maps:</strong> <span id="info-map-count"></span></p>
+                                        <p><strong>Region:</strong> Sahyadri, Maharashtra</p>
+                                        <p><strong>Category:</strong> Historic Fort</p>
+                                    </div>
+
+                                    <hr class="my-4">
+
+                                    <p class="text-xs text-gray-500">
+                                        Click on any map to view full resolution.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
+
                     
-                    <div id="map-content" class="map-placeholder">
-                        <i class="fas fa-mountain"></i>
-                        <h3 class="text-2xl font-bold mb-4">Select a Fort to View Map</h3>
-                        <p class="text-lg opacity-80">Click on any fort name below to load its interactive map</p>
-                    </div>
                     
-                    <div id="selected-fort-info" class="selected-fort-info" style="display: none;">
-                        <h4 class="font-bold text-lg mb-2">Fort Information</h4>
-                        <p id="fort-description">Select a fort to view detailed information</p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -260,95 +319,7 @@ include './includes/header.php';
 
                 <?php
                 // Fort data organized by alphabet
-                $fortData = [
-                    'A' => [
-                        'Aad', 'Aamner', 'Achala', 'Aguada', 'Ahivant', 'Ajinkyatara', 'Ajmera', 'Alang', 
-                        'Ambagad', 'Anantapura Fort', 'Anghai', 'Ankai', 'Antoor', 'Arnala', 'Asawa', 
-                        'Asherigad', 'Asirgarh Fort', 'Aundha', 'Ausa', 'Avchitgad'
-                    ],
-                    'B' => [
-                        'Bahula', 'Balwantgad', 'Bankot', 'Bhairavgad (Satara)', 'Bhairavgad(kothale)', 
-                        'Bhairavgad(Moroshi)', 'Bhairavgad(Shirpunje)', 'Bhamer', 'Bhangsigad(Bhangsi mata gad)', 
-                        'Bharatgad', 'Bhaskargad', 'Bhavanigad', 'Bhilai', 'Bhilai Fort', 'Bhivgad(Bhimgad)', 
-                        'Bhorgiri', 'Bhorwadi Fort', 'Bhor-Wai-Satara', 'Bhudargad', 'Bhupatgad', 'Bhushangad', 'Bitangad'
-                    ],
-                    'C' => [
-                        'Chandan-vandan', 'Chapora Fort', 'Chaugaon Fort', 'Chavand', 'Colaba'
-                    ],
-                    'D' => [
-                        'Dahanu Fort', 'Dategad', 'Dehergad (Bhorgad)', 'Dermal', 'Dermal To Pisol Route Map', 
-                        'Devgad Fort', 'Devgiri (Daulatabad)', 'Dhak-Bahiri', 'Dharmapuri', 'Dharur', 'Dhodap', 
-                        'Dronagiri', 'Dundha'
-                    ],
-                    'F' => [
-                        'fort'
-                    ],
-                    'G' => [
-                        'Gadgada (Ghargad)', 'Galna', 'Gavilgad', 'Ghosalgad', 'Gopalgad', 'Gorakhgad', 
-                        'Gowalkot', 'Gunawantgad'
-                    ],
-                    'H' => [
-                        'Hadsar', 'Hanumantgad(Nimgiri)', 'Hanumantgad(Sindhudurg)', 'Hargad', 'Hargapurgad', 
-                        'Harihar', 'Harishchandragad', 'Hatgad', 'Honnur Fort'
-                    ],
-                    'I' => [
-                        'Indrai'
-                    ],
-                    'J' => [
-                        'Janjala (Vaishagad)', 'Janjira', 'Jivdhan', 'Juna Panhala'
-                    ],
-                    'K' => [
-                        'Kaladgad', 'kalanidhigad (kalanandigad)', 'Kalyangad(Nandgiri)', 'Kamalgad', 'Kanchan', 
-                        'Kandhar', 'Kanhergad(Chalisgaon)', 'Kanhergad(Nashik)', 'Kankrala', 'Karha', 'Karnala', 
-                        'Katra', 'Kavnai', 'Kenjalgad', 'Khairai', 'Khairai 1', 'Khanderi', 'Kharda', 'Kohoj', 
-                        'Kolkewadi', 'Korigad', 'Korlai', 'Kulang', 'Kulang 1', 'Kurdugad'
-                    ],
-                    'L' => [
-                        'Lahugad', 'Laling', 'Lohgad', 'Lonza'
-                    ],
-                    'M' => [
-                        'Machindragad', 'Madangad', 'Madgad', 'Mahimangad', 'Mahimatgad', 'Mahimatgad 1', 
-                        'Mahipatgad', 'Mahuli', 'Mahurgad', 'Malhargad', 'Mandvi Kot', 'Mangad', 'Mangalgad', 
-                        'Manikdurg', 'Manikgad', 'Manikpunj', 'Manohar-Mansantoshgad', 'Mohandar(Shidaka)', 
-                        'Moragad', 'Mulher'
-                    ],
-                    'N' => [
-                        'Nagardhan', 'Naldurg', 'Narayangad', 'Narnala', 'Nhavigad', 'Nimgiri'
-                    ],
-                    'P' => [
-                        'Padmadurg ( Kasa Killa)', 'Palgad', 'Pandavgad', 'Panhalgad', 'Paranda', 'Pargad', 
-                        'Parola', 'Parvatgad', 'Patta', 'Pawangad', 'Peb', 'Pedka', 'Pemgiri(Shahagad)', 
-                        'Peth (Kothaligad)', 'Pimpla', 'Pisol', 'Prachitgad', 'Pratapgad', 'Premgiri', 'Purandar'
-                    ],
-                    'R' => [
-                        'Raigad', 'Raikot', 'Rajdeher', 'Rajdher', 'Rajgad', 'Rajhansgad (Yellur Fort)', 
-                        'Rajmachi', 'Ramdurg', 'Ramgad', 'Ramshej', 'Ranjangiri', 'Rasalgad', 'Ratangad', 'Rohida'
-                    ],
-                    'S' => [
-                        'Sada Fort', 'Sadanandgad', 'Sadashivgad', 'Sajjangad', 'Salher', 'Sankshi', 'Santoshgad', 
-                        'Sarasgad', 'Sarjekot(Malvan)', 'Segawa', 'Shirgaon', 'Shivgad', 'Shivneri', 
-                        'Siddhagad (Malvan)', 'Sindhudurg', 'Sindola', 'Sinhagad', 'Sondai', 'Songad', 
-                        'Songir (Dhule)', 'Sudhagad', 'Sumargad', 'Surgad', 'Sutonda(Naigaon Fort)', 'Suvarnadurg'
-                    ],
-                    'T' => [
-                        'Takmak', 'Talgad', 'Tankai', 'Tarapur Fort', 'Tikona', 'Torna', 'Trimbakgad', 
-                        'Tringalwadi', 'Tung', 'Tungi (Karjat)'
-                    ],
-                    'U' => [
-                        'Udgir', 'Underi'
-                    ],
-                    'V' => [
-                        'Vairatgad', 'Vallabhgad(Hargapur)', 'Vardhangad', 'Varugad', 'Vasai', 'Vasantgad', 
-                        'Vasota', 'Vetalgad', 'Vetalwadi gad', 'Vijaydurg', 'Vijaygad', 'Vilasgad (Mallikarjun)', 
-                        'Visapur', 'Vishalgad'
-                    ],
-                    'W' => [
-                        'Waghera'
-                    ],
-                    'Y' => [
-                        'Yashawantgad (Redi Fort)'
-                    ]
-                ];
+              
 
                 // Generate fort sections dynamically
                 foreach ($fortData as $alphabet => $forts) {
@@ -456,117 +427,179 @@ include './includes/header.php';
 <!-- JavaScript -->
 <script>
 $(document).ready(function() {
-    console.log('Fort Maps page loaded');
-    
-    // Fort link click handler
+
     $('.fort-link').click(function(e) {
         e.preventDefault();
         const fortName = $(this).data('fort');
+
         loadFortMap(fortName);
-        
-        // Scroll to map view
+
         $('html, body').animate({
             scrollTop: $('#map-view').offset().top - 100
         }, 800);
     });
-    
-    // Load more forts functionality (removed as all forts are now loaded dynamically)
-    // All forts are now loaded from PHP array, so no need for load more button
-    
-    // Function to load fort map
+
     function loadFortMap(fortName) {
-        console.log('Loading map for:', fortName);
-        
-        // Show loading indicator
-        $('#loading').addClass('show');
-        $('#map-content').html('');
-        
-        // Simulate AJAX call to load map
-        setTimeout(() => {
-            // Hide loading
+
+    $('#loading').addClass('show');
+
+    $.ajax({
+        url: './api/get_fort_maps.php',
+        type: 'POST',
+        data: { fortName },
+        dataType: 'json',
+        success: function(res) {
+
             $('#loading').removeClass('show');
-            
-            // Create map placeholder with fort information
-            const mapHTML = `
-                <div class="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white">
-                    <div class="text-center">
-                        <i class="fas fa-fort-awesome text-6xl mb-4"></i>
-                        <h3 class="text-3xl font-bold mb-2">${fortName}</h3>
-                        <p class="text-xl opacity-80">Interactive Map</p>
-                        <div class="mt-6 grid grid-cols-2 gap-4 text-sm">
-                            <div class="bg-white/20 p-3 rounded">
-                                <i class="fas fa-mountain text-yellow-300"></i>
-                                <p class="mt-1">Elevation: 1200m</p>
-                            </div>
-                            <div class="bg-white/20 p-3 rounded">
-                                <i class="fas fa-clock text-green-300"></i>
-                                <p class="mt-1">Trek Time: 3-4 hrs</p>
-                            </div>
-                            <div class="bg-white/20 p-3 rounded">
-                                <i class="fas fa-star text-orange-300"></i>
-                                <p class="mt-1">Difficulty: Moderate</p>
-                            </div>
-                            <div class="bg-white/20 p-3 rounded">
-                                <i class="fas fa-map-marker-alt text-red-300"></i>
-                                <p class="mt-1">Location: Maharashtra</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            $('#map-content').html(mapHTML);
-            
-            // Update fort info
-            $('#selected-fort-info').show();
-            $('#fort-description').text(`${fortName} is a historic fort in Maharashtra with rich cultural heritage and excellent trekking opportunities.`);
-            
-            // In a real application, you would make an AJAX call here:
-            // $.ajax({
-            //     url: `MM_DefaultUserMap.asp?FortName=${fortName}`,
-            //     method: 'GET',
-            //     success: function(data) {
-            //         $('#map-content').html(data);
-            //     },
-            //     error: function() {
-            //         $('#map-content').html('<p class="text-red-500">Error loading map</p>');
-            //     }
-            // });
-            
-        }, 1000);
-    }
-    
-    // Map control functions
+
+            if (res.status !== "200") {
+                $('#map-gallery').find('.grid').html(`
+                    <p class="text-center text-gray-500 col-span-full">
+                        No maps available for this fort
+                    </p>
+                `);
+                return;
+            }
+
+            const maps = res.data.maps;
+
+            let mapsHTML = '';
+            maps.forEach((map, index) => {
+             mapsHTML += `
+<div class="group bg-white border rounded-xl overflow-hidden hover:shadow-lg transition">
+    <div class="relative">
+        <img src="${map.path}"
+             class="w-full h-56 object-contain bg-gray-100 cursor-pointer"
+             onclick="openFullMap('${map.path}')">
+
+        <span class="absolute top-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+            Map ${index + 1}
+        </span>
+    </div>
+
+    <div class="p-4">
+        <h4 class="font-semibold text-sm text-gray-800">
+            ${map.name || 'Fort Map'}
+        </h4>
+        <p class="text-xs text-gray-500 mt-1">
+            ${map.description || ''}
+        </p>
+    </div>
+</div>
+`;
+
+            });
+
+            $('#map-gallery').find('.grid').html(mapsHTML);
+
+            $('#map-info').removeClass('hidden');
+            $('#info-title').text(res.data.fortName);
+            $('#info-district').text(res.data.fortDistrict);
+            $('#info-map-count').text(maps.length);
+        },
+        error: function() {
+            $('#loading').removeClass('show');
+            $('#map-gallery').find('.grid').html(`
+                <p class="text-center text-red-500 col-span-full">
+                    Error loading map data
+                </p>
+            `);
+        }
+    });
+}
+
+
+    window.openFullMap = function(path) {
+        window.open(path, '_blank');
+    };
+
     window.zoomIn = function() {
-        console.log('Zoom in');
-        // Implement zoom in functionality
+        console.log('Zoom in (future enhancement)');
     };
-    
+
     window.zoomOut = function() {
-        console.log('Zoom out');
-        // Implement zoom out functionality
+        console.log('Zoom out (future enhancement)');
     };
-    
+
     window.resetView = function() {
         console.log('Reset view');
-        // Implement reset view functionality
     };
-    
+
     window.showMapSymbols = function() {
         $('#map-symbols').slideToggle();
     };
-    
-    // Search functionality
-    $('#fort-search').on('input', function() {
-        const searchTerm = $(this).val().toLowerCase();
-        $('.fort-link').each(function() {
-            const fortName = $(this).data('fort').toLowerCase();
-            if (fortName.includes(searchTerm)) {
-                $(this).show();
-            } else {
-                $(this).hide();
-            }
+
+});
+</script>
+
+<script>
+$(document).ready(function () {
+
+    // Click fort
+    $('.fort-btn').on('click', function () {
+        const fortName = $(this).data('fort');
+        loadFortMaps(fortName);
+    });
+
+    // Search
+    $('#fortSearch').on('keyup', function () {
+        const val = $(this).val().toLowerCase();
+        $('.fort-btn').each(function () {
+            $(this).toggle($(this).text().toLowerCase().includes(val));
         });
     });
+
 });
+
+/*
+|---------------------------------------------------------
+| Load maps using EXISTING API
+|---------------------------------------------------------
+*/
+function loadFortMaps(fortName) {
+
+    $('#mapContainer').html(`
+        <div class="text-center">
+            <i class="fas fa-spinner fa-spin text-4xl mb-3"></i>
+            <p>Loading maps...</p>
+        </div>
+    `);
+
+    $.ajax({
+        url: '../api/get_fort_maps.php',
+        method: 'POST',
+        data: { fortName },
+        dataType: 'json',
+        success: function (res) {
+
+            if (res.status !== '200') {
+                $('#mapContainer').html('<p>No maps found</p>');
+                return;
+            }
+
+            const maps = res.data.maps;
+            const firstMap = maps[0];
+
+            // Info
+            $('#fortTitle').text(res.data.fortName);
+            $('#fortDistrict').text(res.data.fortDistrict);
+            $('#fortInfo').removeClass('hidden');
+
+            // Buttons
+            $('#viewMapsBtn').attr('href', `/maps/?fort=${encodeURIComponent(res.data.fortName)}`);
+            $('#viewPhotosBtn').attr('href', `/gallery/?fort=${encodeURIComponent(res.data.fortName)}`);
+
+            // Map preview
+            $('#mapContainer').html(`
+                <img src="${firstMap.path}"
+                     alt="${res.data.fortName}"
+                     class="w-full h-full object-contain rounded-xl"
+                     onerror="this.src='../assets/images/default-map.svg'">
+            `);
+        },
+        error: function () {
+            $('#mapContainer').html('<p>Error loading maps</p>');
+        }
+    });
+}
 </script>

@@ -4,46 +4,27 @@ $page_title = 'Forts by Category - Hill Forts, Sea Forts & More | Trekshitz';
 $meta_description = 'Complete categorization of forts in Maharashtra by type - Hill forts, Sea forts, Land forts, and Cave forts. Detailed information about different types of forts with trekking guides.';
 $meta_keywords = 'hill forts, sea forts, land forts, cave forts, Maharashtra fort types, Sahyadri fort categories, fort classification';
 
-require_once './config/database.php';
 // Include header
 include './includes/header.php';
 
-// Connect to database
-$db = new Database();
-$conn = $db->getConnection();
-
-// Function to normalize fort type names
-function normalizeFortType($type) {
-    $type = trim(strtolower($type));
-    
-    // Map various type names to standard categories
-    $typeMap = [
-        'hill fort' => 'Hill Forts',
-        'hill forts' => 'Hill Forts',
-        'mountain fort' => 'Hill Forts',
-        'sea fort' => 'Sea Forts',
-        'sea forts' => 'Sea Forts',
-        'coastal fort' => 'Sea Forts',
-        'island fort' => 'Sea Forts',
-        'land fort' => 'Land Forts',
-        'land forts' => 'Land Forts',
-        'plain fort' => 'Land Forts',
-        'cave fort' => 'Cave Forts',
-        'cave forts' => 'Cave Forts',
-        'rock fort' => 'Cave Forts',
-        'water fort' => 'Water Forts',
-        'river fort' => 'Water Forts',
-        'border fort' => 'Border Forts'
-    ];
-    
-    return $typeMap[$type] ?? 'Hill Forts'; // Default to Hill Forts
-}
-
-// Predefined category information
-$categoryInfo = [
+// Complete fort categories data
+$fortCategories = [
     'Hill Forts' => [
+        'name' => 'Hill Forts',
         'description' => 'Forts built on hills and mountains for strategic advantage',
+        'forts' => [
+            'Rajgad', 'Raigad', 'Pratapgad', 'Sinhagad', 'Lohagad', 'Visapur', 
+            'Tikona', 'Torna', 'Purandar', 'Shivneri', 'Harishchandragad', 
+            'Kalsubai', 'Ratangad', 'Sandhan Valley', 'Alang', 'Madan', 
+            'Kulang', 'Chandragad', 'Mahuli', 'Karnala', 'Prabalgad', 
+            'Irshalgad', 'Manikgad', 'Bhimashankar', 'Ajoba', 'Ghangad',
+            'Kothaligad Peth', 'Naneghat', 'Malshej Ghat', 'Bhandardara',
+            'Anjaneri', 'Brahmagiri', 'Trimbakeshwar', 'Harihar', 'Bitangad',
+            'Chavand', 'Sudhagad', 'Songad', 'Sarasgad', 'Makrandgad'
+        ],
+        'color' => 'bg-green-100 dark:bg-green-900',
         'icon' => 'fas fa-mountain',
+        'total_count' => 280,
         'difficulty_range' => 'Easy to Extreme',
         'best_season' => 'October to March',
         'features' => [
@@ -52,12 +33,21 @@ $categoryInfo = [
             'Panoramic valley views',
             'Ancient architecture',
             'Challenging trekking routes'
-        ],
-        'color' => 'bg-green-100 dark:bg-green-900'
+        ]
     ],
     'Sea Forts' => [
+        'name' => 'Sea Forts',
         'description' => 'Coastal forts built on islands and rocky outcrops in the Arabian Sea',
+        'forts' => [
+            'Janjira', 'Murud-Janjira', 'Suvarnadurg', 'Padmadurg', 
+            'Khanderi', 'Underi', 'Kolaba', 'Alibag Fort', 'Revdanda',
+            'Chaul', 'Korlai', 'Bankot', 'Vijaydurg', 'Sindhudurg',
+            'Malvan Fort', 'Rajkot Fort', 'Sarjekot', 'Yeshwantgad',
+            'Anjanvel', 'Kanakdurg', 'Gopalgad', 'Redi Fort', 'Tiracol Fort'
+        ],
+        'color' => 'bg-blue-100 dark:bg-blue-900',
         'icon' => 'fas fa-anchor',
+        'total_count' => 35,
         'difficulty_range' => 'Easy to Medium',
         'best_season' => 'November to February',
         'features' => [
@@ -66,12 +56,23 @@ $categoryInfo = [
             'Boat access required',
             'Maritime architecture',
             'Coastal defense systems'
-        ],
-        'color' => 'bg-blue-100 dark:bg-blue-900'
+        ]
     ],
     'Land Forts' => [
+        'name' => 'Land Forts',
         'description' => 'Forts built on plains and plateaus for territorial control',
+        'forts' => [
+            'Ahmednagar Fort', 'Daulatabad', 'Parenda', 'Solapur Fort',
+            'Naldurg', 'Tuljapur', 'Sholapur', 'Kalyani Chalukya Fort',
+            'Bidar Fort', 'Udgir Fort', 'Ausa Fort', 'Nanded Fort',
+            'Mahur Fort', 'Kinwat Fort', 'Yavatmal Fort', 'Akola Fort',
+            'Amravati Fort', 'Nagpur Fort', 'Ramtek Fort', 'Sewagram Fort',
+            'Wardha Fort', 'Chandrapur Fort', 'Gadchiroli Fort', 'Gondia Fort',
+            'Bhandara Fort', 'Balaghat Fort', 'Chhindwara Fort', 'Betul Fort'
+        ],
+        'color' => 'bg-yellow-100 dark:bg-yellow-900',
         'icon' => 'fas fa-city',
+        'total_count' => 45,
         'difficulty_range' => 'Easy to Medium',
         'best_season' => 'October to March',
         'features' => [
@@ -80,12 +81,22 @@ $categoryInfo = [
             'Urban fort complexes',
             'Trade route control',
             'Cultural significance'
-        ],
-        'color' => 'bg-yellow-100 dark:bg-yellow-900'
+        ]
     ],
     'Cave Forts' => [
+        'name' => 'Cave Forts',
         'description' => 'Natural and artificial caves fortified for defense',
+        'forts' => [
+            'Karla Caves', 'Bhaja Caves', 'Bedse Caves', 'Lenyadri',
+            'Junnar Caves', 'Tulja Caves', 'Elephanta Caves', 'Kanheri Caves',
+            'Mahakali Caves', 'Jogeshwari Caves', 'Mandapeshwar Caves',
+            'Magathane Caves', 'Kondane Caves', 'Shivleni Caves',
+            'Pandavleni Caves', 'Aurangabad Caves', 'Ellora Caves',
+            'Ajanta Caves', 'Pitalkhora Caves', 'Ghatotkacha Caves'
+        ],
+        'color' => 'bg-purple-100 dark:bg-purple-900',
         'icon' => 'fas fa-archway',
+        'total_count' => 25,
         'difficulty_range' => 'Easy to Hard',
         'best_season' => 'October to March',
         'features' => [
@@ -94,12 +105,20 @@ $categoryInfo = [
             'Ancient rock-cut architecture',
             'Archaeological importance',
             'Religious significance'
-        ],
-        'color' => 'bg-purple-100 dark:bg-purple-900'
+        ]
     ],
     'Water Forts' => [
+        'name' => 'Water Forts',
         'description' => 'Forts built around or within water bodies like lakes and rivers',
+        'forts' => [
+            'Bhandardara Fort', 'Koyna Fort', 'Wai Fort', 'Karad Fort',
+            'Sangli Fort', 'Miraj Fort', 'Kolhapur Fort', 'Panhala',
+            'Bahubali Fort', 'Jayakwadi Fort', 'Ujjani Fort', 'Temghar Fort',
+            'Mulshi Fort', 'Varasgaon Fort', 'Bhatghar Fort', 'Pawna Fort'
+        ],
+        'color' => 'bg-cyan-100 dark:bg-cyan-900',
         'icon' => 'fas fa-water',
+        'total_count' => 20,
         'difficulty_range' => 'Easy to Medium',
         'best_season' => 'November to February',
         'features' => [
@@ -108,12 +127,20 @@ $categoryInfo = [
             'Scenic beauty',
             'Engineering marvels',
             'Monsoon attractions'
-        ],
-        'color' => 'bg-cyan-100 dark:bg-cyan-900'
+        ]
     ],
     'Border Forts' => [
+        'name' => 'Border Forts',
         'description' => 'Strategic forts built along territorial boundaries',
+        'forts' => [
+            'Goa Border Forts', 'Karnataka Border Forts', 'Telangana Border Forts',
+            'Madhya Pradesh Border Forts', 'Gujarat Border Forts', 'Belgaum Fort',
+            'Nipani Fort', 'Miraj Fort', 'Sangli Fort', 'Kolhapur Forts',
+            'Yavatmal Border Forts', 'Nanded Border Forts', 'Osmanabad Forts'
+        ],
+        'color' => 'bg-red-100 dark:bg-red-900',
         'icon' => 'fas fa-flag',
+        'total_count' => 15,
         'difficulty_range' => 'Easy to Hard',
         'best_season' => 'October to March',
         'features' => [
@@ -122,77 +149,13 @@ $categoryInfo = [
             'Trade route monitoring',
             'Cultural exchange points',
             'Historical importance'
-        ],
-        'color' => 'bg-red-100 dark:bg-red-900'
+        ]
     ]
 ];
-
-// Build fort categories from database
-$fortCategories = [];
-
-// Query to get all fort types and their forts
-$query = "SELECT FortType, FortName 
-          FROM EI_tblFortInfo 
-          WHERE FortType IS NOT NULL 
-          AND FortType != '' 
-          AND FortName IS NOT NULL 
-          ORDER BY FortType, FortName";
-
-$result = $conn->query($query);
-
-// Group forts by type
-$typeData = [];
-while ($row = $result->fetch_assoc()) {
-    $type = normalizeFortType($row['FortType']);
-    $fortName = trim($row['FortName']);
-    
-    if (!empty($type) && !empty($fortName)) {
-        if (!isset($typeData[$type])) {
-            $typeData[$type] = [];
-        }
-        $typeData[$type][] = $fortName;
-    }
-}
-
-// Convert to expected format
-foreach ($typeData as $typeName => $forts) {
-    // Get predefined info or use defaults
-    $info = $categoryInfo[$typeName] ?? [
-        'description' => "Forts of " . strtolower($typeName) . " with " . count($forts) . " historical sites",
-        'icon' => 'fas fa-fort-awesome',
-        'difficulty_range' => 'Varies',
-        'best_season' => 'October to March',
-        'features' => [
-            'Historical significance',
-            'Cultural heritage',
-            'Architectural beauty',
-            'Trekking opportunities',
-            'Scenic locations'
-        ],
-        'color' => 'bg-gray-100 dark:bg-gray-900'
-    ];
-    
-    $fortCategories[$typeName] = [
-        'name' => $typeName,
-        'description' => $info['description'],
-        'forts' => $forts,
-        'total_count' => count($forts),
-        'icon' => $info['icon'],
-        'difficulty_range' => $info['difficulty_range'],
-        'best_season' => $info['best_season'],
-        'features' => $info['features'],
-        'color' => $info['color']
-    ];
-}
 
 // Get current category from URL parameter
 $currentCategory = isset($_GET['category']) ? $_GET['category'] : '';
 $selectedCategory = $currentCategory && isset($fortCategories[$currentCategory]) ? $fortCategories[$currentCategory] : null;
-
-// Calculate statistics
-$totalForts = array_sum(array_map(function($cat) { return $cat['total_count']; }, $fortCategories));
-$hillFortsCount = isset($fortCategories['Hill Forts']) ? $fortCategories['Hill Forts']['total_count'] : 0;
-$seaFortsCount = isset($fortCategories['Sea Forts']) ? $fortCategories['Sea Forts']['total_count'] : 0;
 ?>
 
 <main id="main-content" class="pt-20">
@@ -239,21 +202,20 @@ $seaFortsCount = isset($fortCategories['Sea Forts']) ? $fortCategories['Sea Fort
                     <div class="text-gray-600 dark:text-gray-300">Fort Categories</div>
                 </div>
                 <div class="text-center transform hover:scale-105 transition-transform">
-                    <div class="text-4xl font-bold text-primary dark:text-accent mb-2 animate-number" data-target="<?php echo $totalForts; ?>">0</div>
+                    <div class="text-4xl font-bold text-primary dark:text-accent mb-2 animate-number" data-target="350">0</div>
                     <div class="text-gray-600 dark:text-gray-300">Total Forts</div>
                 </div>
                 <div class="text-center transform hover:scale-105 transition-transform">
-                    <div class="text-4xl font-bold text-primary dark:text-accent mb-2 animate-number" data-target="<?php echo $hillFortsCount; ?>">0</div>
+                    <div class="text-4xl font-bold text-primary dark:text-accent mb-2 animate-number" data-target="280">0</div>
                     <div class="text-gray-600 dark:text-gray-300">Hill Forts</div>
                 </div>
                 <div class="text-center transform hover:scale-105 transition-transform">
-                    <div class="text-4xl font-bold text-primary dark:text-accent mb-2 animate-number" data-target="<?php echo $seaFortsCount; ?>">0</div>
+                    <div class="text-4xl font-bold text-primary dark:text-accent mb-2 animate-number" data-target="35">0</div>
                     <div class="text-gray-600 dark:text-gray-300">Sea Forts</div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Search Section -->
     <section class="py-12 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4">
@@ -377,12 +339,11 @@ $seaFortsCount = isset($fortCategories['Sea Forts']) ? $fortCategories['Sea Fort
                 
                 <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700">
                     <h3 class="text-3xl font-bold mb-8 text-gray-800 dark:text-white text-center">
-                        <?php echo $selectedCategory['total_count']; ?> <?php echo $selectedCategory['name']; ?> in Maharashtra
+                        Popular <?php echo $selectedCategory['name']; ?>
                     </h3>
                     
-                    <?php if(count($selectedCategory['forts']) > 0): ?>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                        <?php foreach($selectedCategory['forts'] as $fort): ?>
+                        <?php foreach(array_slice($selectedCategory['forts'], 0, 12) as $fort): ?>
                             <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 border border-gray-200 dark:border-gray-700">
                                 <div class="flex items-center justify-between mb-4">
                                     <h4 class="text-lg font-bold text-gray-800 dark:text-white">
@@ -417,11 +378,14 @@ $seaFortsCount = isset($fortCategories['Sea Forts']) ? $fortCategories['Sea Fort
                             </div>
                         <?php endforeach; ?>
                     </div>
-                    <?php else: ?>
-                    <div class="text-center py-12">
-                        <i class="fas fa-mountain text-6xl text-gray-400 mb-4"></i>
-                        <p class="text-gray-600 dark:text-gray-400 text-lg">No forts found in this category</p>
-                    </div>
+                    
+                    <?php if(count($selectedCategory['forts']) > 12): ?>
+                        <div class="text-center mt-8">
+                            <button class="bg-primary hover:bg-secondary text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl" onclick="loadMoreForts()">
+                                <i class="fas fa-plus mr-2"></i>
+                                View All <?php echo $selectedCategory['total_count']; ?> Forts
+                            </button>
+                        </div>
                     <?php endif; ?>
                 </div>
             </div>
@@ -485,7 +449,6 @@ $seaFortsCount = isset($fortCategories['Sea Forts']) ? $fortCategories['Sea Fort
                                     <div class="text-xs text-gray-600 dark:text-gray-400">Best Season</div>
                                 </div>
                             </div>
-
                             <!-- Key Features -->
                             <div class="mb-6">
                                 <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 flex items-center">
@@ -755,6 +718,11 @@ document.addEventListener('DOMContentLoaded', function() {
         filterCategories();
     };
     
+    // Load more forts function
+    window.loadMoreForts = function() {
+        console.log('Loading more forts...');
+    };
+    
     // Number animation for stats
     const animateNumbers = () => {
         const numbers = document.querySelectorAll('.animate-number');
@@ -814,33 +782,6 @@ document.addEventListener('DOMContentLoaded', function() {
         cardObserver.observe(card);
     });
     
-    console.log('Forts by Category (Database-driven) page loaded successfully');
+    console.log('Forts by Category (English) page loaded successfully');
 });
-
-// Add CSS for animations
-const style = document.createElement('style');
-style.textContent = `
-    .bg-gradient-to-r {
-        background-image: linear-gradient(to right, var(--tw-gradient-stops));
-    }
-    
-    .from-primary {
-        --tw-gradient-from: var(--primary-color);
-        --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(45, 80, 22, 0));
-    }
-    
-    .to-accent {
-        --tw-gradient-to: var(--accent-color);
-    }
-    
-    .bg-clip-text {
-        background-clip: text;
-        -webkit-background-clip: text;
-    }
-    
-    .text-transparent {
-        color: transparent;
-    }
-`;
-document.head.appendChild(style);
 </script>

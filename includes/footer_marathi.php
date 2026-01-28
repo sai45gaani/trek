@@ -18,13 +18,17 @@
                     <div>
                         <h3 class="text-3xl font-bold">Trekshitz</h3>
                      <!--   <p class="text-lg text-gray-400 font-devanagari">ट्रेकशित्ज़ संस्था</p>-->
-                        <p class="text-sm text-accent">Explore • Discover • Adventure</p>
+                        <p class="text-sm text-accent">अन्वेषण • शोध • साहस</p>
                     </div>
                 </div>
                 
                 <!-- Description -->
                 <p class="text-gray-300 mb-6 max-w-md leading-relaxed">
-             Enjoy the thrill of trekking through the beautiful mountains of the Sahyadri range. Discover detailed information about over 350 forts with us and experience the wonders of nature up close. Join our community of passionate trekkers and explore the majestic Western Ghats.   </p>
+            सह्याद्री पर्वतरांगांमधील अप्रतिम निसर्गात ट्रेकिंगचा आनंद घ्या.
+    आमच्यासोबत ३५० हून अधिक किल्ल्यांची सविस्तर माहिती जाणून घ्या
+    आणि निसर्गाच्या सान्निध्यात साहसी अनुभव घ्या.
+    उत्साही ट्रेकर्सच्या समुदायात सामील व्हा आणि पश्चिम घाटाचे सौंदर्य अनुभवा.
+</p>
                 
                 <!-- Newsletter Signup -->
                 <!--<div class="mb-6">
@@ -40,7 +44,7 @@
                 
                 <!-- Social Media Links -->
                 <div>
-                    <h4 class="text-lg font-semibold mb-3 text-accent">Follow Us</h4>
+                    <h4 class="text-lg font-semibold mb-3 text-accent">आम्हाला फॉलो करा</h4>
                     <div class="flex space-x-4">
                         <a href="https://www.facebook.com/groups/trekshitiz/" target="_blank" class="group social-link">
                             <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center group-hover:bg-blue-700 transition-all duration-300 transform group-hover:scale-110">
@@ -74,43 +78,43 @@
             <!-- Quick Links Section -->
             <div>
                 <h4 class="text-xl font-semibold mb-6 text-accent border-b border-gray-700 pb-2">
-                    <i class="fas fa-link mr-2"></i>Quick Links
+                    <i class="fas fa-link mr-2"></i>जलद दुवे
                 </h4>
                 <ul class="space-y-3">
                     <li>
-                        <a href="<?= BASE_URL ?>" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>marathi/index.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-home mr-2 group-hover:translate-x-1 transition-transform"></i>
-                            Home
+                            मुख्यपृष्ठ
                         </a>
                     </li>
                     <li>
-                        <a href="<?= BASE_URL ?>trek_schedule.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>marathi/trek_schedule.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-hiking mr-2 group-hover:translate-x-1 transition-transform"></i>
-                            Upcoming Treks
+                            आगामी ट्रेक्स
                         </a>
                     </li>
                     <li>
-                        <a href="<?= BASE_URL ?>fort_in_english.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>marathi/fort-in-marathi.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-fort-awesome mr-2 group-hover:translate-x-1 transition-transform"></i>
-                            Forts Information
+                            किल्ला माहिती
                         </a>
                     </li>
                     <li>
-                        <a href="<?= BASE_URL ?>" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>marathi/gallery/fort-gallery.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-images mr-2 group-hover:translate-x-1 transition-transform"></i>
-                            Photo Gallery
+                            छायाचित्र संग्रह
                         </a>
                     </li>
                     <li>
                         <a href="<?= BASE_URL ?>" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-comments mr-2 group-hover:translate-x-1 transition-transform"></i>
-                            Discussion Forum
+                            चर्चा मंच
                         </a>
                     </li>
                     <li>
                         <a href="<?= BASE_URL ?>" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-tools mr-2 group-hover:translate-x-1 transition-transform"></i>
-                            Trek Gear
+                           ट्रेकिंग साहित्य
                         </a>
                     </li>
                 </ul>
@@ -119,49 +123,49 @@
             <!-- Resources Section -->
             <div>
                 <h4 class="text-xl font-semibold mb-6 text-accent border-b border-gray-700 pb-2">
-                    <i class="fas fa-book mr-2"></i>Resources
+                    <i class="fas fa-book mr-2"></i>संसाधने
                 </h4>
                 <ul class="space-y-3">
                     <li>
-                        <a href="<?= BASE_URL ?>project-map.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>>marathi/project-map.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-map mr-2 group-hover:translate-x-1 transition-transform"></i>
-                            Maps
+                            नकाशे
                         </a>
                     </li>
                     <li>
                         <a href="<?= BASE_URL ?>project-map.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-newspaper mr-2 group-hover:translate-x-1 transition-transform"></i>
-                            Articles
+                            लेख
                         </a>
                     </li>
                     <li>
                         <a href="<?= BASE_URL ?>project-map.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-newspaper mr-2 group-hover:translate-x-1 transition-transform"></i>
-                           E-Magazine
+                           ई-मासिक
                         </a>
                     </li>
                     <li>
                         <a href="<?= BASE_URL ?>" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-phone-alt mr-2 group-hover:translate-x-1 transition-transform"></i>
-                            Help Line
+                            मदत केंद्र
                         </a>
                     </li>
                     <li>
                         <a href="<?= BASE_URL ?>" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-mountain mr-2 group-hover:translate-x-1 transition-transform"></i>
-                            Rock Climbing
+                            रॉक क्लायम्बिंग
                         </a>
                     </li>
                     <li>
-                        <a href="<?= BASE_URL ?>" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>marathi/gallery/sketches-gallery.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-palette mr-2 group-hover:translate-x-1 transition-transform"></i>
-                            Sketches
+                            रेखाचित्रे
                         </a>
                     </li>
                     <li>
                         <a href="<?= BASE_URL ?>" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-crown mr-2 group-hover:translate-x-1 transition-transform"></i>
-                            Shivaji Maharaj
+                            छत्रपती शिवाजी महाराज
                         </a>
                     </li>
                 </ul>
@@ -178,9 +182,9 @@
                             <i class="fas fa-map-marker-alt text-accent text-xl"></i>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-400 uppercase tracking-wide">Location</p>
-                            <p class="text-white font-semibold">Maharashtra, India</p>
-                            <p class="text-xs text-gray-400">Western Ghats Region</p>
+                            <p class="text-sm text-gray-400 uppercase tracking-wide">स्थान</p>
+                            <p class="text-white font-semibold">महाराष्ट्र, भारत</p>
+                            <p class="text-xs text-gray-400">पश्चिम घाट प्रदेश</p>
                         </div>
                     </div>
                 </div>
@@ -192,11 +196,11 @@
                             <i class="fas fa-envelope text-accent text-xl"></i>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-400 uppercase tracking-wide">Email</p>
+                            <p class="text-sm text-gray-400 uppercase tracking-wide">ई-मेल</p>
                             <a href="mailto:info@trekshitz.com" class="text-white font-semibold hover:text-accent transition-colors">
                                 info@trekshitz.com
                             </a>
-                            <p class="text-xs text-gray-400">24/7 Support Available</p>
+                            <p class="text-xs text-gray-400">२४x७ सेवा उपलब्ध</p>
                         </div>
                     </div>
                 </div>
@@ -208,11 +212,11 @@
                             <i class="fas fa-phone text-accent text-xl"></i>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-400 uppercase tracking-wide">Contact</p>
+                            <p class="text-sm text-gray-400 uppercase tracking-wide">संपर्क</p>
                             <a href="tel:+919876543210" class="text-white font-semibold hover:text-accent transition-colors">
                                 +91 98765 43210
                             </a>
-                            <p class="text-xs text-gray-400">Mon-Sun 8AM-8PM</p>
+                            <p class="text-xs text-gray-400">सोम-रवि सकाळी ८ ते रात्री ८</p>
                         </div>
                     </div>
                 </div>
@@ -224,18 +228,18 @@
             <div class="grid grid-cols-3 md:grid-cols-3 gap-6 text-center">
                 <div class="group">
                     <div class="text-3xl font-bold text-accent mb-2 group-hover:scale-110 transition-transform footer-stat" data-target="350">0</div>
-                    <div class="text-gray-400 text-sm">Forts</div>
-                    <div class="text-xs text-gray-500">Documented Forts</div>
+                    <div class="text-gray-400 text-sm">किल्ले</div>
+                    <div class="text-xs text-gray-500">नोंदवलेले किल्ले</div>
                 </div>
                 <div class="group">
                     <div class="text-3xl font-bold text-accent mb-2 group-hover:scale-110 transition-transform footer-stat" data-target="30">0</div>
-                    <div class="text-gray-400 text-sm">Annual Treks</div>
-                    <div class="text-xs text-gray-500">Regular Adventures</div>
+                    <div class="text-gray-400 text-sm">वार्षिक ट्रेक्स</div>
+                    <div class="text-xs text-gray-500">नियमित साहसी उपक्रम</div>
                 </div>
                 <div class="group">
                     <div class="text-3xl font-bold text-accent mb-2 group-hover:scale-110 transition-transform footer-stat" data-target="25">0</div>
-                    <div class="text-gray-400 text-sm">Years Experience</div>
-                    <div class="text-xs text-gray-500">Since 2000</div>
+                    <div class="text-gray-400 text-sm">वर्षांचा अनुभव</div>
+                    <div class="text-xs text-gray-500">२००० पासून</div>
                 </div>
             </div>
         </div>
@@ -247,7 +251,7 @@
                 <!-- Copyright and Credits -->
                 <div class="text-center lg:text-left">
                     <p class="text-gray-400 mb-2">
-                        &copy; 2025 <span class="text-accent font-semibold">Trekshitz.com</span>. All rights reserved.
+                        &copy; 2025 <span class="text-accent font-semibold">Trekshitz.com</span>. सर्व हक्क राखीव.
                     </p>
 
                 </div>
@@ -255,7 +259,7 @@
                 <!-- Language Switcher -->
                 <div class="flex items-center space-x-4">
                     <span class="text-gray-400 text-sm">Language:</span>
-                    <div class="flex space-x-2">
+                                    <div class="flex space-x-2">
                                         <a href="<?= BASE_URL ?>index.php"
                                         class="px-3 py-1 text-sm bg-primary text-white rounded">
                                             EN
@@ -265,22 +269,22 @@
                                         class="px-3 py-1 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">
                                             मराठी
                                         </a>
-                    </div>
+                                    </div>
                 </div>
                 
                 <!-- Footer Navigation Links -->
                 <div class="flex flex-wrap justify-center lg:justify-end space-x-6 text-sm">
                     <a href="#" class="text-gray-400 hover:text-accent transition-colors duration-300 hover:underline footer-link">
-                        Privacy Policy
+                        गोपनीयता धोरण
                     </a>
                     <a href="#" class="text-gray-400 hover:text-accent transition-colors duration-300 hover:underline footer-link">
-                        Terms of Service
+                        सेवा अटी
                     </a>
                     <a href="#" class="text-gray-400 hover:text-accent transition-colors duration-300 hover:underline footer-link">
-                        Cookie Policy
+                        कुकी धोरण
                     </a>
                     <a href="#contact" class="text-gray-400 hover:text-accent transition-colors duration-300 hover:underline footer-link">
-                        Contact Us
+                        संपर्क करा
                     </a>
                 </div>
             </div>
@@ -689,7 +693,7 @@ window.addEventListener('load', function() {
   "availableLanguage": ["Marathi", "English"],
   "url": "https://www.trekshitz.com",
   "logo": "https://www.trekshitz.com/assets/images/logo.png",
-  "description": "Explore the beautiful Sahyadri mountains with Trekshitz. Join our trekking adventures, discover ancient forts, and connect with nature.",
+  "description": "सह्याद्री पर्वतरांगांमधील किल्ले, ट्रेकिंग आणि निसर्ग अनुभवण्यासाठी Trekshitz सोबत जुडा.",
   "sameAs": [
     "https://www.facebook.com/groups/trekshitiz/",
     "https://www.instagram.com/trekshitiz_ts/",

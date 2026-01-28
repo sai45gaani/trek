@@ -269,9 +269,12 @@ try {
 }
 
 // Apply pagination to filtered data
-$total_treks = count($pastTreksData);
-$total_pages = ceil($total_treks / $limit);
-$paginatedTreks = array_slice($pastTreksData, 0, $limit);
+//$total_treks = count($pastTreksData);
+//$total_pages = ceil($total_treks / $limit);
+//$paginatedTreks = array_slice($pastTreksData, 0, $limit);
+$total_pages = ceil($total_treks_count / $limit);
+$paginatedTreks = $pastTreksData;
+
 
 // Get suggestions for search
 $suggestions = [];
@@ -286,9 +289,9 @@ try {
 }
 ?>
 
-<main id="main-content" class="pt-20">
+<main id="main-content" class="">
     <!-- Hero Section -->
-    <section class="relative py-20 bg-gradient-to-r from-forest to-mountain text-white overflow-hidden">
+    <section class="relative py-20 bg-gradient-to-r from-primary to-secondary text-white overflow-hidden">
         <div class="absolute inset-0 opacity-10">
             <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"past-trek-pattern\" x=\"0\" y=\"0\" width=\"25\" height=\"25\" patternUnits=\"userSpaceOnUse\"><circle cx=\"12.5\" cy=\"12.5\" r=\"3\" fill=\"%23ffffff\" opacity=\"0.1\"/><path d=\"M5,20 L20,5\" stroke=\"%23ffffff\" stroke-width=\"0.5\" opacity=\"0.1\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23past-trek-pattern)\"/></svg>');"></div>
         </div>
@@ -328,19 +331,19 @@ try {
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div class="text-center transform hover:scale-105 transition-transform">
-                    <div class="text-4xl font-bold text-forest dark:text-accent mb-2 animate-number" data-target="<?php echo $total_treks_count; ?>">0</div>
+                    <div class="text-4xl font-bold text-primary dark:text-accent mb-2 animate-number" data-target="<?php echo $total_treks_count; ?>">0</div>
                     <div class="text-gray-600 dark:text-gray-300">Completed Treks</div>
                 </div>
                 <div class="text-center transform hover:scale-105 transition-transform">
-                    <div class="text-4xl font-bold text-forest dark:text-accent mb-2 animate-number" data-target="<?php echo $total_participants; ?>">0</div>
+                    <div class="text-4xl font-bold text-primary dark:text-accentmb-2 animate-number" data-target="<?php echo $total_participants; ?>">0</div>
                     <div class="text-gray-600 dark:text-gray-300">Total Participants</div>
                 </div>
                 <div class="text-center transform hover:scale-105 transition-transform">
-                    <div class="text-4xl font-bold text-forest dark:text-accent mb-2 animate-number" data-target="<?php echo count($categories); ?>">0</div>
+                    <div class="text-4xl font-bold text-primary dark:text-accent mb-2 animate-number" data-target="<?php echo count($categories); ?>">0</div>
                     <div class="text-gray-600 dark:text-gray-300">Categories Covered</div>
                 </div>
                 <div class="text-center transform hover:scale-105 transition-transform">
-                    <div class="text-4xl font-bold text-forest dark:text-accent mb-2 animate-number" data-target="8">0</div>
+                    <div class="text-4xl font-bold text-primary dark:text-accent mb-2 animate-number" data-target="8">0</div>
                     <div class="text-gray-600 dark:text-gray-300">States Explored</div>
                 </div>
             </div>
@@ -404,7 +407,7 @@ try {
 
                     <!-- Buttons -->
                     <div class="flex gap-2">
-                        <button type="submit" class="bg-forest hover:bg-mountain text-white px-6 py-3 rounded-lg transition-colors font-semibold">
+                        <button type="submit" class="bg-primary hover:bg-mountain text-white px-6 py-3 rounded-lg transition-colors font-semibold">
                             <i class="fas fa-filter mr-2"></i>Filter
                         </button>
                         <a href="?" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-colors">
@@ -421,11 +424,11 @@ try {
         <div class="container mx-auto px-4">
             <?php if(!empty($paginatedTreks)): ?>
                 <div class="mb-12">
-                    <h2 class="text-4xl md:text-5xl font-bold text-center text-gradient mb-4">
+                    <h2 class="text-4xl md:text-5xl font-bold text-center text-gradient text-primary mb-4">
                         Our Adventure Chronicles
                     </h2>
                     <p class="text-center text-gray-600 dark:text-gray-300 text-lg">
-                        Showing <?php echo count($paginatedTreks); ?> of <?php echo $total_treks; ?> completed adventures
+                        Showing <?php echo count($paginatedTreks); ?> of <?php echo $total_treks_count; ?> completed adventures
                     </p>
                 </div>
 
@@ -494,7 +497,7 @@ try {
                                 <!-- Action Buttons -->
                                 <div class="flex gap-2">
                                     <a href="/trek-details/<?php echo $trek['id']; ?>" 
-                                       class="flex-1 bg-forest hover:bg-mountain text-white text-center py-2.5 px-3 rounded-lg font-semibold transition-colors duration-300 text-sm">
+                                       class="flex-1 bg-primary hover:bg-mountain text-white text-center py-2.5 px-3 rounded-lg font-semibold transition-colors duration-300 text-sm">
                                         <i class="fas fa-eye mr-1"></i>
                                         View Details
                                     </a>
@@ -576,7 +579,7 @@ try {
                     Our Adventure Categories
                 </h2>
                 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-6 mb-12">
                     <?php foreach($categoryStats as $category => $stats): ?>
                         <div class="card bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-xl border border-gray-200 dark:border-gray-700 hover-lift">
                             <div class="w-16 h-16 <?php echo getCategoryColor($category); ?> rounded-2xl flex items-center justify-center mb-4 mx-auto">
@@ -597,7 +600,7 @@ try {
                     <?php endforeach; ?>
                 </div>
                 
-                <div class="bg-gradient-to-r from-forest to-mountain text-white p-8 rounded-2xl text-center">
+                <div class="bg-gradient-to-r from-primary to-secondary text-white p-8 rounded-2xl text-center">
                     <h3 class="text-3xl font-bold mb-4">
                         Want to Join Our Next Adventure?
                     </h3>
@@ -613,62 +616,14 @@ try {
                             <i class="fas fa-images mr-2"></i>
                             View Photo Gallery
                         </a>
-                        <a href="/testimonials" class="inline-flex items-center justify-center px-6 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold rounded-lg transition-colors border border-white border-opacity-30">
-                            <i class="fas fa-heart mr-2"></i>
-                            Read Stories
-                        </a>
+                      
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Timeline Section -->
-    <section class="py-20 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-gradient mb-12">
-                Recent Adventure Timeline
-            </h2>
-            
-            <div class="max-w-4xl mx-auto">
-                <div class="relative">
-                    <!-- Timeline line -->
-                    <div class="absolute left-1/2 transform -translate-x-0.5 w-1 h-full bg-accent"></div>
-                    
-                    <?php 
-                    $recentTreks = array_slice($pastTreksData, 0, min(6, count($pastTreksData)));
-                    foreach($recentTreks as $index => $trek): 
-                    $isLeft = $index % 2 == 0;
-                    ?>
-                        <div class="relative flex items-center mb-8">
-                            <!-- Timeline dot -->
-                            <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-accent rounded-full border-4 border-white dark:border-gray-800 z-10"></div>
-                            
-                            <!-- Content -->
-                            <div class="<?php echo $isLeft ? 'w-1/2 pr-8 text-right' : 'w-1/2 ml-auto pl-8'; ?>">
-                                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
-                                    <div class="flex items-center <?php echo $isLeft ? 'justify-end' : 'justify-start'; ?> mb-2">
-                                        <span class="px-2 py-1 text-xs font-bold text-white rounded-full <?php echo getCategoryColor($trek['category']); ?>">
-                                            <?php echo htmlspecialchars($trek['category']); ?>
-                                        </span>
-                                    </div>
-                                    <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-1">
-                                        <?php echo htmlspecialchars($trek['name']); ?>
-                                    </h4>
-                                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">
-                                        <?php echo formatDate($trek['date']); ?> • <?php echo $trek['participants']; ?> participants
-                                    </p>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">
-                                        Led by <?php echo htmlspecialchars($trek['leader']); ?>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </div>
-    </section>
+   
 </main>
 
 <?php include './includes/footer.php'; ?>

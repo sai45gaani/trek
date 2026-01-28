@@ -3,7 +3,6 @@
 // Get current page for active nav highlighting
 $current_page = basename($_SERVER['PHP_SELF'], '.php');
 define('BASE_URL', '/fort/trek/');
-
 $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
 $host   = $scheme . '://' . $_SERVER['HTTP_HOST'];
 
@@ -11,13 +10,14 @@ $host   = $scheme . '://' . $_SERVER['HTTP_HOST'];
 $englishPath = BASE_URL . basename($_SERVER['PHP_SELF']);
 $marathiPath = BASE_URL . 'marathi/' . basename($_SERVER['PHP_SELF']);
 
+
 // Default values (can be overridden by individual pages)
-$page_title = isset($page_title) ? $page_title : 'Trekshitz - Explore Sahyadri Mountains | Trekking Adventures';
-$meta_description = isset($meta_description) ? $meta_description : 'Explore the beautiful Sahyadri mountains with Trekshitz. Join our trekking adventures, discover ancient forts, and connect with nature.';
-$meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, forts, hiking, adventure, nature, maharashtra, mountains';
+$page_title = isset($page_title) ? $page_title : 'ट्रेकशितिज – सह्याद्रीतील किल्ले व ट्रेक्स';
+$meta_description = isset($meta_description) ? $meta_description : 'ट्रेकशितिज सोबत सह्याद्रीतील किल्ले, निसर्ग आणि ट्रेकिंगचा अनुभव घ्या.';
+$meta_keywords = isset($meta_keywords) ? $meta_keywords : 'ट्रेकिंग, किल्ले, सह्याद्री, महाराष्ट्र, निसर्गभ्रमंती';
 ?>
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="mr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,13 +33,13 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
     <title><?php echo htmlspecialchars($page_title); ?></title>
     
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="assets/images/favicon/site.webmanifest">
-    <link rel="canonical" href="<?= $host . $englishPath ?>">
-<link rel="alternate" hreflang="en" href="<?= $host . $englishPath ?>">
+    <link rel="apple-touch-icon" sizes="180x180" href="./../assets/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./../assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./../assets/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./../assets/images/favicon/site.webmanifest">
+    <link rel="canonical" href="<?= $host . $marathiPath ?>">
 <link rel="alternate" hreflang="mr" href="<?= $host . $marathiPath ?>">
+<link rel="alternate" hreflang="en" href="<?= $host . $englishPath ?>">
 <link rel="alternate" hreflang="x-default" href="<?= $host . $englishPath ?>">
 
     
@@ -51,12 +51,10 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-     <!-- Google Fonts - English + Devanagari -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Mukti:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/variables.scss">
+    <link rel="stylesheet" href="./../assets/css/style.css">
+    <link rel="stylesheet" href="./../assets/css/variables.scss">
 
     <!-- ✅ jQuery Core -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -89,7 +87,7 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <!-- ✅ Your Custom Script -->
-<script src="/assets/js/custom.js"></script>
+<script src="./../assets/js/custom.js"></script>
 
 
 
@@ -363,7 +361,7 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                     <!--<i class="fas fa-mountain text-3xl text-primary dark:text-accent mr-2 group-hover:scale-110 transition-transform"></i>-->
                     <div>
                         <span class="self-center text-xl font-bold whitespace-nowrap text-primary dark:text-white">
-                            Trekshitz
+                            ट्रेकशितिज
                         </span>
                     </div>
                 </a>
@@ -373,13 +371,13 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                     <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                         <li>
                             <a href="<?= BASE_URL ?>index.php" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300 relative group">
-                                Home
+                                मुख्यपृष्ठ
                                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary dark:bg-accent transition-all duration-300 group-hover:w-full"></span>
                             </a>
                         </li>
                           <li class="relative group">
-                            <a href="<?= BASE_URL ?>about-us.php" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
-                                About
+                            <a href="<?= BASE_URL ?>marathi/about-us.php" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
+                                संस्थेविषयी
                                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary dark:bg-accent transition-all duration-300 group-hover:w-full"></span>
                             </a>
                             <!-- Dropdown Menu for About -->
@@ -393,53 +391,53 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                             </div>-->
                         </li>
                         <li class="relative group">
-                            <a href="<?= BASE_URL ?>treks.php" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
-                                Treks
+                            <a href="#treks" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
+                               ट्रेक्स
                                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary dark:bg-accent transition-all duration-300 group-hover:w-full"></span>
                             </a>
                             <!-- Dropdown Menu for Treks -->
                             <div class="absolute top-full left-0 w-64 bg-white dark:bg-gray-800 shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-2">
                                 <div class="py-2">
-                                    <a href="<?= BASE_URL ?>trek_schedule.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Upcoming Treks</a>
-                                    <a href="<?= BASE_URL ?>past-treks.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Past Treks</a>
+                                    <a href="<?= BASE_URL ?>marathi/trek_schedule.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">आगामी ट्रेक्स</a>
+                                    <a href="<?= BASE_URL ?>marathi/past-treks.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">मागील ट्रेक्स</a>
                                 </div>
                             </div>
                         </li>
                         <li class="relative group">
-                            <a href="<?= BASE_URL ?>fort_in_english.php" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
-                                Forts
+                            <a href="#forts" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
+                                किल्ले
                                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary dark:bg-accent transition-all duration-300 group-hover:w-full"></span>
                             </a>
                             <!-- Dropdown Menu for Forts -->
                             <div class="absolute top-full left-0 w-64 bg-white dark:bg-gray-800 shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-2">
                                 <div class="py-2">
-                                    <a href="<?= BASE_URL ?>fort_in_english.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Fort Information</a>
-                                    <a href="<?= BASE_URL ?>gallery/map-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Maps</a>
+                                    <a href="<?= BASE_URL ?>marathi/fort_in_marathi.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">किल्ल्यांची माहिती</a>
+                                    <a href="<?= BASE_URL ?>marathi/project-map.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">नकाशे</a>
                                 </div>
                             </div>
                         </li>
                         <li class="relative group">
-                            <a href="<?= BASE_URL ?>gallery/gallery.php" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
-                                Photo Gallery
+                            <a href="#gallery" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
+                                छायाचित्र संग्रह
                                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary dark:bg-accent transition-all duration-300 group-hover:w-full"></span>
                             </a>
                             <!-- Dropdown Menu for Gallery -->
                             <div class="absolute top-full left-0 w-64 bg-white dark:bg-gray-800 shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-2">
                                 <div class="py-2">
-                                    <a href="<?= BASE_URL ?>gallery/fort-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Forts</a>
-                                    <a href="<?= BASE_URL ?>gallery/map-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Maps</a>
+                                    <a href="<?= BASE_URL ?><marathi/gallery/fort-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">किल्ले</a>
+                                    <a href="<?= BASE_URL ?>marathi/gallery/map-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">किल्ले</a>
 
-                                    <a href="<?= BASE_URL ?>gallery/butterfly-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Butterflies</a>
-                                    <a href="<?= BASE_URL ?>gallery/caves-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Caves</a>
-                                    <a href="<?= BASE_URL ?>gallery/flower-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Flowers</a>
-                                    <a href="<?= BASE_URL ?>gallery/sketches-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Sketches</a>
+                                    <a href="<?= BASE_URL ?>marathi/gallery/butterfly-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"> फुलपाखरे</a>
+                                    <a href="<?= BASE_URL ?>marathi/gallery/caves-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">गुहा</a>
+                                    <a href="<?= BASE_URL ?>marathi/gallery/flower-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">फुले</a>
+                                    <a href="<?= BASE_URL ?>marathi/gallery/sketches-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">रेखाचित्रे</a>
                                 </div>
                             </div>
                         </li>
                       
                         <li>
                             <a href="<?= BASE_URL ?>" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300 relative group">
-                                Contact
+                               संपर्क
                                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary dark:bg-accent transition-all duration-300 group-hover:w-full"></span>
                             </a>
                         </li>
@@ -453,16 +451,16 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                     <div class="relative group hidden md:block">
                         <button class="flex items-center text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none rounded-lg text-sm p-2.5">
                             <i class="fas fa-globe mr-1"></i>
-                            <span class="text-xs">EN</span>
+                            <span class="text-xs">MR</span>
                             <i class="fas fa-chevron-down ml-1 text-xs"></i>
                         </button>
                         <div class="absolute right-0 top-full w-32 bg-white dark:bg-gray-800 shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-2">
                             <div class="py-2">
-                                <a href="<?= $englishPath ?>" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" data-language="en">
-                                    <i class="fas fa-flag mr-2"></i>English
-                                </a>
                                 <a href="<?= $marathiPath ?>" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" data-language="mr">
                                     <i class="fas fa-flag mr-2"></i>मराठी
+                                </a>
+                                <a href="<?= $englishPath ?>" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" data-language="en">
+                                    <i class="fas fa-flag mr-2"></i>English
                                 </a>
                             </div>
                         </div>
@@ -521,16 +519,16 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                         <nav class="p-6">
                             <ul class="space-y-4">
                                 <li>
-                                    <a href="<?= BASE_URL ?>index.php" class="flex items-center py-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors mobile-menu-link">
+                                    <a href="<?= BASE_URL ?>marathi/index.php" class="flex items-center py-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors mobile-menu-link">
                                         <i class="fas fa-home mr-3"></i>
-                                        Home
+                                         मुख्यपृष्ठ
                                     </a>
                                 </li>
                                 <li>
                                     <div class="mobile-dropdown">
                                             <div class="flex items-center">
                                                 <i class="fas fa-info-circle mr-3"></i>
-                                             <a href="<?= BASE_URL ?>about-us.php">   About </a>
+                                             <a href="<?= BASE_URL ?>marathi/about-us.php">   संस्थेविषयी </a>
                                             </div>
                                     </div>
                                 </li>
@@ -539,13 +537,13 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                                         <button class="flex items-center justify-between w-full py-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors mobile-dropdown-btn">
                                             <div class="flex items-center">
                                                 <i class="fas fa-hiking mr-3"></i>
-                                                Treks
+                                                ट्रेक्स
                                             </div>
                                             <i class="fas fa-chevron-down transition-transform duration-300"></i>
                                         </button>
                                         <div class="mobile-dropdown-content ml-6 mt-2 space-y-2 hidden">
-                                            <a href="<?= BASE_URL ?>trek_schedule.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">Upcoming Treks</a>
-                                            <a href="<?= BASE_URL ?>past-treks.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">Past Treks</a>
+                                            <a href="<?= BASE_URL ?>marathi/trek_schedule.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">आगामी ट्रेक्स</a>
+                                            <a href="<?= BASE_URL ?>marathi/past-treks.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">मागील ट्रेक्स</a>
                                         </div>
                                     </div>
                                 </li>
@@ -554,13 +552,13 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                                         <button class="flex items-center justify-between w-full py-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors mobile-dropdown-btn">
                                             <div class="flex items-center">
                                                 <i class="fas fa-fort-awesome mr-3"></i>
-                                                Forts
+                                                किल्ले
                                             </div>
                                             <i class="fas fa-chevron-down transition-transform duration-300"></i>
                                         </button>
                                         <div class="mobile-dropdown-content ml-6 mt-2 space-y-2 hidden">
-                                            <a href="<?= BASE_URL ?>fort_in_english.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">Fort Information</a>
-                                            <a href="<?= BASE_URL ?>project-map.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">Maps</a>
+                                            <a href="<?= BASE_URL ?>marathi/fort_in_english.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">किल्ले</a>
+                                            <a href="<?= BASE_URL ?>marathi/project-map.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">नकाशे</a>
                                         </div>
                                     </div>
                               </li>
@@ -569,15 +567,15 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                                         <button class="flex items-center justify-between w-full py-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors mobile-dropdown-btn">
                                             <div class="flex items-center">
                                                 <i class="fas fa-images mr-3"></i>
-                                                Photo Gallery
+                                                छायाचित्र संग्रह
                                             </div>
                                             <i class="fas fa-chevron-down transition-transform duration-300"></i>
                                         </button>
                                         <div class="mobile-dropdown-content ml-6 mt-2 space-y-2 hidden">
-                                            <a href="<?= BASE_URL ?>gallery/fort-gallery.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">Forts</a>
-                                            <a href="<?= BASE_URL ?>gallery/butterfly-gallery.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">Butterflies</a>
-                                            <a href="<?= BASE_URL ?>gallery/caves-gallery.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">Caves</a>
-                                            <a href="<?= BASE_URL ?>gallery/sketches-gallery.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">Flowers</a>
+                                            <a href="<?= BASE_URL ?>marathi/gallery/fort-gallery.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">किल्ले</a>
+                                            <a href="<?= BASE_URL ?>marathi/gallery/butterfly-gallery.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">फुलपाखरे</a>
+                                            <a href="<?= BASE_URL ?>marathi/gallery/caves-gallery.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">गुहा</a>
+                                            <a href="<?= BASE_URL ?>marathi/gallery/sketches-gallery.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">फुले</a>
                                         </div>
                                     </div>
                                 </li>
@@ -601,7 +599,7 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                                 <li>
                                     <a href="<?= BASE_URL ?>" class="flex items-center py-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors mobile-menu-link">
                                         <i class="fas fa-envelope mr-3"></i>
-                                        Contact
+                                        संपर्क
                                     </a>
                                 </li>
                             </ul>
@@ -610,18 +608,18 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                             <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
                                 <!-- Language Switcher Mobile -->
                                 <div class="flex items-center justify-between mb-4">
-                                    <span class="text-gray-700 dark:text-gray-300">Language:</span>
-                                    <div class="flex space-x-2">
-    <a href="<?= BASE_URL ?>index.php"
-       class="px-3 py-1 text-sm bg-primary text-white rounded">
-        EN
-    </a>
+                                    <span class="text-gray-700 dark:text-gray-300">भाषा :</span>
+                                  <div class="flex space-x-2">
+                                        <a href="<?= BASE_URL ?>index.php"
+                                        class="px-3 py-1 text-sm bg-primary text-white rounded">
+                                            EN
+                                        </a>
 
-    <a href="<?= BASE_URL ?>marathi/index.php"
-       class="px-3 py-1 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">
-        मराठी
-    </a>
-</div>
+                                        <a href="<?= BASE_URL ?>marathi/index.php"
+                                        class="px-3 py-1 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">
+                                            मराठी
+                                        </a>
+                                    </div>
 
                                 </div>
                                 

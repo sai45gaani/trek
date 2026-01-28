@@ -164,7 +164,7 @@ include '../includes/header.php';
 
 
 
-<main id="main-content" class="pt-20">
+<main id="main-content" class="">
     <!-- Hero Section with Fort Name -->
     <section class="relative py-16 bg-gradient-to-r from-primary to-secondary text-white overflow-hidden">
         <div class="absolute inset-0 opacity-10">
@@ -180,10 +180,10 @@ include '../includes/header.php';
                 </a>
                 
                 <div class="flex gap-2">
-                    <a href="../fort_in_english.php" class="inline-flex items-center px-4 py-2 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-lg transition-colors">
+                    <!--<a href="../fort_in_english.php" class="inline-flex items-center px-4 py-2 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-lg transition-colors">
                         <i class="fas fa-search mr-2"></i>
                         Search Forts
-                    </a>
+                    </a>-->
                 <!--    <button onclick="window.print()" class="inline-flex items-center px-4 py-2 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-lg transition-colors">
                         <i class="fas fa-print mr-2"></i>
                         Print

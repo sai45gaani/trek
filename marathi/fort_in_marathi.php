@@ -4,9 +4,9 @@ $page_title = 'महाराष्ट्रातील किल्ले - �
 $meta_description = 'महाराष्ट्रातील 350+ किल्ल्यांची संपूर्ण यादी मुळाक्षरानुसार. सह्याद्री पर्वतरांगेतील सर्व किल्ल्यांची माहिती, नकाशे आणि ट्रेकिंग मार्गदर्शन.';
 $meta_keywords = 'महाराष्ट्र किल्ले, सह्याद्री किल्ले, मराठी किल्ले, ट्रेकिंग, हिस्टोरिकल फोर्ट्स, शिवाजी महाराज किल्ले';
 
-require_once './config/database.php';
+require_once './../config/database.php';
 // Include header
-include './includes/header.php';
+include './../includes/header.php';
 
 function getDifficultyInMarathi($marathiGrade) {
     if (!empty($marathiGrade)) {
@@ -173,7 +173,7 @@ if (!isset($fortsData[$currentFilter]) && count($fortsData) > 0) {
 }
 </style>
 
-<main id="main-content" class="pt-20">
+<main id="main-content" class="">
     <!-- Hero Section with Breadcrumb Navigation -->
     <section class="relative py-20 bg-gradient-to-r from-primary to-secondary text-white overflow-hidden">
         <div class="absolute inset-0 opacity-10">
@@ -196,13 +196,13 @@ if (!isset($fortsData[$currentFilter]) && count($fortsData) > 0) {
                 <div class="flex flex-wrap justify-center gap-4 text-sm opacity-90">
                     <span class="text-accent font-semibold">मुळाक्षरानुसार</span>
                     <span>•</span>
-                    <a href="/marathi/forts-by-range" class="hover:text-accent transition-colors">डोंगररांगेनुसार</a>
+                    <a href="./fort_by_range_marathi.php" class="hover:text-accent transition-colors">डोंगररांगेनुसार</a>
                     <span>•</span>
-                    <a href="/marathi/forts-by-district" class="hover:text-accent transition-colors">जिल्ह्यानुसार</a>
+                    <a href="./fort_by_district_marathi.php" class="hover:text-accent transition-colors">जिल्ह्यानुसार</a>
                     <span>•</span>
-                    <a href="/marathi/forts-by-category" class="hover:text-accent transition-colors">प्रकारानुसार</a>
+                    <a href="./fort_by_category_marathi.php" class="hover:text-accent transition-colors">प्रकारानुसार</a>
                     <span>•</span>
-                    <a href="/marathi/forts-by-grade" class="hover:text-accent transition-colors">कठीणतेनुसार</a>
+                    <a href="./fort_by_grade_marathi.php" class="hover:text-accent transition-colors">कठीणतेनुसार</a>
                 </div>
             </div>
         </div>
@@ -445,7 +445,7 @@ if (!isset($fortsData[$currentFilter]) && count($fortsData) > 0) {
         </div>
     </section>
 
-    <!-- Quick Navigation -->
+     <!-- Quick Navigation -->
     <section class="py-16 bg-gray-50 dark:bg-gray-800">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">
@@ -460,6 +460,42 @@ if (!isset($fortsData[$currentFilter]) && count($fortsData) > 0) {
                         <i class="fas fa-mountain text-2xl text-white"></i>
                     </div>
                     <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">
+                        डोंगररांगेनुसार
+                    </h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">
+                        सह्याद्री, पश्चिम घाट इत्यादी
+                    </p>
+                </a>
+                
+                <a href="/marathi/forts-by-district" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 group shadow-xl border border-gray-200 dark:border-gray-700">
+                    <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:bg-primary transition-colors">
+                        <i class="fas fa-map text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">
+                        जिल्ह्यानुसार
+                    </h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">
+                        पुणे, मुंबई, नाशिक इत्यादी
+                    </p>
+                </a>
+                
+                <a href="/marathi/forts-by-category" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 group shadow-xl border border-gray-200 dark:border-gray-700">
+                    <div class="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:bg-forest transition-colors">
+                        <i class="fas fa-layer-group text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">
+                        प्रकारानुसार
+                    </h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">
+                        पर्वतीय, समुद्रकिनारी इत्यादी
+                    </p>
+                </a>
+                
+                <a href="/marathi/forts-by-grade" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 group shadow-xl border border-gray-200 dark:border-gray-700">
+                    <div class="w-16 h-16 bg-forest rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:bg-accent transition-colors">
+                        <i class="fas fa-signal text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">
                         कठीणतेनुसार
                     </h3>
                     <p class="text-sm text-gray-600 dark:text-gray-300">
@@ -471,7 +507,7 @@ if (!isset($fortsData[$currentFilter]) && count($fortsData) > 0) {
     </section>
 </main>
 
-<?php include './includes/footer.php'; ?>
+<?php include './../includes/footer.php'; ?>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

@@ -4,9 +4,9 @@ $page_title = 'कठीणतेनुसार किल्ले - ट्र�
 $meta_description = 'महाराष्ट्रातील सोपे, मध्यम, कठीण आणि अत्यंत कठीण किल्ले. आपल्या ट्रेकिंग अनुभव आणि फिटनेस स्तरानुसार किल्ले शोधा.';
 $meta_keywords = 'किल्ल्यांची श्रेणी, ट्रेकिंग कठीणता, सोपे किल्ले, कठीण किल्ले, श्रेणी प्रणाली, किल्ला वर्गीकरण';
 
-require_once './config/database.php';
+require_once './../config/database.php';
 // Include header
-include './includes/header.php';
+include './../includes/header.php';
 
 // Connect to database
 $db = new Database();
@@ -134,6 +134,8 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
                     <a href="/marathi/forts-by-range" class="hover:text-accent transition-colors">डोंगररांगेनुसार</a>
                     <span>•</span>
                     <a href="/marathi/forts-by-district" class="hover:text-accent transition-colors">जिल्ह्यानुसार</a>
+                     <span>•</span>
+                    <a href="./fort_by_category_marathi.php" class="hover:text-accent transition-colors">प्रकारानुसार</a>
                     <span>•</span>
                     <span class="text-accent font-semibold">कठीणतेनुसार</span>
                 </div>
@@ -546,7 +548,7 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
     </section>
 </main>
 
-<?php include './includes/footer.php'; ?>
+<?php include './../includes/footer.php'; ?>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

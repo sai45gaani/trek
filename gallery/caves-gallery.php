@@ -302,7 +302,7 @@ $stats = $statsResult->fetch_assoc();
 
 <main id="main-content">
     <!-- Hero Section - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
-    <section class="relative py-20 bg-gradient-to-br from-yellow-800 via-yellow-700 to-yellow-600 text-white overflow-hidden">
+    <section class="relative py-20 bg-gradient-to-r from-primary to-secondary text-white overflow-hidden">
         <div class="absolute inset-0 opacity-20">
             <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"cave\" x=\"0\" y=\"0\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\"><path d=\"M10,2 C6,6 4,12 6,16 C8,18 12,18 14,16 C16,12 14,6 10,2 Z\" fill=\"%23ffffff\" opacity=\"0.1\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23cave)\"/></svg>');"></div>
         </div>

@@ -229,7 +229,7 @@ try {
 }
 ?>
 
-<main id="main-content" class="pt-20">
+<main id="main-content" class="">
     <!-- Hero Section -->
     <section class="relative py-20 bg-gradient-to-r from-primary to-secondary text-white overflow-hidden">
         <div class="absolute inset-0 opacity-10">
