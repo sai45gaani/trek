@@ -1,164 +1,306 @@
 <?php
 // Set page specific variables
-$page_title = 'Chhatrapati Shivaji Maharaj | Founder of Swarajya | TrekshitiZ';
-$meta_description = 'Complete historical information about Chhatrapati Shivaji Maharaj – founder of Swarajya, great Maratha warrior king, administrator, and visionary leader.';
-$meta_keywords = 'Shivaji Maharaj, Maratha Empire, Maharashtra history, forts, battles, warrior king, swarajya';
+$page_title = 'Books & Literature on Shivaji Maharaj | Historical Books & Literature | Trekshitz';
+$meta_description = 'A complete collection of historical books, novels, and literature on Chhatrapati Shivaji Maharaj, including classical works, modern research, and biographical publications.';
+$meta_keywords = 'Shivaji Maharaj books, historical literature, Maratha history books, Shivaji biography, Maratha literature, research publications';
+
+$books_english = [
+    ["title" => "Raja Shivchhatrapati", "author" => "Balaji Deshpande"],
+    ["title" => "The Greatness of Shivaji Maharaj", "author" => "Shridhar Savarkar"],
+    ["title" => "Shivaji Maharaj’s Royal Edict (Agyapatra)", "author" => "Babasaheb Purandare"],
+    ["title" => "In Search of Shivshahi", "author" => "Vasant Kanetkar"],
+    ["title" => "Shivaji Maharaj and His Influence", "author" => "Setu Madhavrao Pagde"],
+    ["title" => "Agra Escape", "author" => "V. S. Inamdar"],
+    ["title" => "The Great Emperor", "author" => "Babasaheb Purandare"],
+    ["title" => "Military History of the Marathas", "author" => "Brigadier F. G. Pitre"],
+    ["title" => "Pawankhind", "author" => "Ranjit Desai"],
+    ["title" => "The Fort Was Won, the Lion Was Lost", "author" => "Harinarayan Apte"],
+    ["title" => "Panhala Fort", "author" => "Babasaheb Purandare"],
+    ["title" => "Raigad Fort", "author" => "Babasaheb Purandare"],
+    ["title" => "Rajgad Fort", "author" => "Babasaheb Purandare"],
+    ["title" => "Sinhagad Fort", "author" => "Babasaheb Purandare"],
+    ["title" => "Pratapgad Fort", "author" => "Babasaheb Purandare"],
+    ["title" => "Chakan", "author" => "Babasaheb Purandare"],
+    ["title" => "The Battle of Purandar", "author" => "Colonel B. S. Paranjpe"],
+    ["title" => "Battle of Pratapgad", "author" => "G. V. Modak"],
+    ["title" => "Purandar Fort", "author" => "K. B. Purandare"],
+    ["title" => "Murud-Janjira", "author" => "A. R. Patil"],
+    ["title" => "History of Janjira State", "author" => "B. K. Bhosale"],
+    ["title" => "Kanhoji Angre", "author" => "Mrs. Shila Saraswade"],
+    ["title" => "Collection of Letters", "author" => "Editor: Sunil Chicholikar"],
+    ["title"=>"Chhatrapati (Volumes 1–4)","author"=>"Manmohan"],
+    ["title"=>"In the Shadow of Chhatrapati","author"=>"V. P. Dangre"],
+    ["title"=>"Leadership of Chhatrapati","author"=>"M. V. Gogate"],
+    ["title"=>"Chhatrapati and His Influence","author"=>"Setu Madhavrao"],
+    ["title"=>"Questions to Chhatrapati","author"=>"V. V. Hadap"],
+    ["title"=>"Chhatrapati Shivaraya","author"=>"Yashwant Pendharkar"],
+    ["title"=>"Chhatrapati Shivaji","author"=>"Bhakar Machve"],
+    ["title"=>"Chhatrapati Shivaji","author"=>"Hardas Balshastri"],
+    ["title"=>"Shivaji Maharaj and Samarth Ramdas","author"=>"Bhat V. V."],
+    ["title"=>"Chhatrapati Shivaji Maharaj","author"=>"R. R. Bhagwat"],
+    ["title"=>"Chhatrapati Shivaji Maharaj","author"=>"D. V. Kale"],
+    ["title"=>"Chhatrapati Shivaji Maharaj","author"=>"Ghosalbuddhe"],
+    ["title"=>"Chhatrapati Shivaji Maharaj","author"=>"Keluskar"],
+    ["title"=>"Life Secrets of Shivaji Maharaj","author"=>"Nahar Kundkar"],
+    ["title"=>"Forts of Shivaji Maharaj","author"=>"Government of Maharashtra"],
+    ["title"=>"Chhatrapati Shivaji Raje","author"=>"S. N. Joshi"],
+    ["title"=>"Raja Shivaji","author"=>"Mahadev Kunte"],
+    ["title"=>"Coronation","author"=>"G. O. Agashe"],
+    ["title"=>"Coronation Ceremony","author"=>"N. A. Chitnis"],
+    ["title"=>"Raja Shivchhatrapati","author"=>"Babasaheb Purandare"],
+    ["title"=>"Raja Shivchhatrapati","author"=>"Kamlakar Nadkarni"],
+    ["title"=>"Raja Shivaji","author"=>"G. R. Sardesai"],
+    ["title"=>"Raja Shivaji","author"=>"Dr. M. Kunte"],
+    ["title"=>"Raja Shivaji","author"=>"Kumud Ogle"],
+    ["title"=>"Raja Sambhaji Chhatrapati","author"=>"Vijay Deshmukh"],
+    ["title"=>"Escape from Agra","author"=>"N. R. Inamdar"],
+    ["title"=>"Ramdas and Shivaji","author"=>"Hari P. Bokil"],
+    ["title"=>"Shivkalyan Raja","author"=>"Bal Samant"],
+    ["title"=>"Women in the Shivaji Era","author"=>"Deshmukh"],
+    ["title"=>"Shivaji Era Documents","author"=>"Hari G. Khobragade"],
+    ["title"=>"Shivaji Era Fortifications","author"=>"Dho. Mu. Deshpande"],
+    ["title"=>"Shivaji Era Maharashtra","author"=>"V. K. Bhave"],
+    ["title"=>"Letters of Shivaji Era","author"=>"Reference Compilation"],
+    ["title"=>"Poetry of Shivaji Era","author"=>"V. B. Bhave"],
+    ["title"=>"Maharashtra in Shivaji Era","author"=>"A. R. Kulkarni"],
+    ["title"=>"Biography of Shivaji","author"=>"Setu Madhavrao"],
+    ["title"=>"Shivaji Biography Series","author"=>"G. S. Khole"],
+    ["title"=>"Shivaji Biography Series","author"=>"Babasaheb Purandare"],
+    ["title"=>"Biography of Shivaji","author"=>"G. H. Khare"],
+    ["title"=>"Biography of Shivaji – Pradeep Divekar","author"=>"Apte"],
+    ["title"=>"Shivaji Essays Collection","author"=>"Various"],
+    ["title"=>"Shivaji Documents Collection","author"=>"P. B. Desai"],
+    ["title"=>"Shivaji Literature","author"=>"S. N. Joshi"],
+    ["title"=>"Shivaji Literature","author"=>"K. V. Purandare"],
+    ["title"=>"Aspects of Shivaji’s Life","author"=>"D. V. Potdar"],
+    ["title"=>"Shivaji Thought Reforms","author"=>"Bhogleadar"],
+    ["title"=>"Shivchhatrapati","author"=>"P. R. Khandekar"],
+    ["title"=>"Shivchhatrapati","author"=>"V. P. Sathe"],
+    ["title"=>"Shivchhatrapati","author"=>"B. R. Kelkar"],
+    ["title"=>"Shivchhatrapati","author"=>"R. K. Sabhasad"],
+    ["title"=>"History and Biography of Shivchhatrapati","author"=>"Y. D. Phadke"],
+    ["title"=>"109-Point Chronicle of Shivchhatrapati","author"=>"R. N. Deshpande"],
+    ["title"=>"91-Point Chronicle of Shivchhatrapati","author"=>"V. R. Vakaskar"],
+    ["title"=>"Biography of Shivchhatrapati","author"=>"R. K. Sabhasad"],
+    ["title"=>"Shivchhatrapati","author"=>"M. R. Kelkar"],
+    ["title"=>"Biography of Shivchhatrapati","author"=>"K. N. Sane"],
+    ["title"=>"Shivchhatrapati Maharaj","author"=>"—"],
+    ["title"=>"Dimensions of Shivchhatrapati","author"=>"B. K. Patwardhan"],
+    ["title"=>"Coronation of Shivchhatrapati","author"=>"Krishna Mate"],
+    ["title"=>"Victory of Shivchhatrapati","author"=>"A. M. Joshi"],
+    ["title"=>"Birth Anniversary of Shivaji","author"=>"—"],
+    ["title"=>"Shiv Jayanti Festival","author"=>"—"],
+    ["title"=>"Shivkalyan Raja","author"=>"Bhaskar Marathe"],
+    ["title"=>"Divine Victory of Shivaji","author"=>"R. C. Thore"],
+    ["title"=>"Prelude of Shivneri","author"=>"Yashwantrao Chavan"],
+    ["title"=>"Shiv Memorial","author"=>"V. N. Wad"],
+    ["title"=>"Shivnabharati Drama","author"=>"S. K. Kolhatkar"],
+    ["title"=>"Warriors of Shivaji","author"=>"G. N. Dandekar"],
+    ["title"=>"Coronation Poetry","author"=>"S. G. Prabhu"],
+    ["title"=>"Shivyogi Shivshahi","author"=>"G. S. Khole"],
+    ["title"=>"Wealth of Shivrajya","author"=>"G. G. Bhatt"],
+    ["title"=>"Adornment of Shivrajya","author"=>"D. A. Tiwari"],
+    ["title"=>"The Glory of Shivaji","author"=>"T. V. Jadhav"],
+    ["title"=>"Victory Chant of Shivaji","author"=>"Bhaskar Rane"],
+    ["title"=>"Shivshahi","author"=>"M. Y. Deshmukh"],
+    ["title"=>"Meaning of Shivshahi","author"=>"V. V. Hadap"],
+    ["title"=>"End of Shivshahi","author"=>"—"],
+    ["title"=>"Impact of Shivshahi","author"=>"—"],
+    ["title"=>"Voice of Shivshahi","author"=>"A. B. Joshi-Chandodkar"],
+    ["title"=>"Crown Jewel of Shivshahi","author"=>"Abasaheb Acharekar"],
+    ["title"=>"Enemies of Shivshahi","author"=>"V. V. Hadap"],
+    ["title"=>"Search of Shivshahi","author"=>"Vasant Kanetkar"],
+    ["title"=>"Golden Age of Shivshahi","author"=>"V. V. Hadap"],
+    ["title"=>"From Shivshahi to Peshwai","author"=>"G. Ramsane"],
+    ["title"=>"Shiv Sangram","author"=>"S. G. Prabhu"],
+    ["title"=>"Message of Shivaji","author"=>"Moropant Kar"],
+    ["title"=>"Rise of Shivaji","author"=>"V. V. Khare"],
+    ["title"=>"Epic of Shivaji","author"=>"Kadam"],
+    ["title"=>"Shivneri","author"=>"B. Purandare"],
+    ["title"=>"Devotion of Yesubai","author"=>"Lata Khedkar"],
+    ["title"=>"Resolve of Shivaji","author"=>"Nath Madhav"],
+    ["title"=>"Shiv Movement","author"=>"V. A. Kolhatkar"],
+    ["title"=>"Shivaji Maharaj","author"=>"Kanetkar"],
+    ["title"=>"Musical Shivaji","author"=>"H. P. Wagle"],
+    ["title"=>"Shivaji (English)","author"=>"J. L. Mankar"],
+    ["title"=>"Shivaji and Chandrarao More","author"=>"C. V. Vaidya"],
+    ["title"=>"Shivaji and His Era","author"=>"Vilas Bhoir"],
+    ["title"=>"Shivaji and the Shiv Yug","author"=>"Sadanand Athawale"],
+    ["title"=>"Biography of Shivaji","author"=>"Shyamkumar Loh"],
+    ["title"=>"Contribution of Shivaji","author"=>"E. B. Athawale"],
+    ["title"=>"Who Was Shivaji","author"=>"S. P. Joshi"],
+    ["title"=>"Legacy of Shivaji Maharaj","author"=>"G. G. Desai"],
+    ["title"=>"Merit of Shivaji Maharaj","author"=>"H. R. Bhagwat"],
+    ["title"=>"Biography of Shivaji Maharaj","author"=>"—"],
+    ["title"=>"Mavalas of Shivaji Maharaj","author"=>"Saubhadrā"],
+    ["title"=>"Career of Shivaji Maharaj","author"=>"—"],
+    ["title"=>"Description of Shivaji Raja","author"=>"—"],
+    ["title"=>"Omkar Raja","author"=>"18 Purandare"],
+    ["title"=>"Shriman Yogi","author"=>"Ranjit Desai"],
+    ["title"=>"Biography of Shivchhatrapati","author"=>"Dattatraya Bhagwat"],
+    ["title"=>"Raja Shivchhatrapati","author"=>"Babasaheb Purandare"],
+    ["title"=>"History and Biography of Shivchhatrapati","author"=>"Editorial Board"],
+    ["title"=>"Shri Raja Shivchhatrapati (Vol 1 & 2)","author"=>"G. B. Mehendale"],
+    ["title"=>"Search of Shivshahi","author"=>"Vasant Kanetkar"],
+    ["title"=>"Greatness of Shivaji","author"=>"Shrinivas Sawant"],
+    ["title"=>"Maharaj","author"=>"Babasaheb Purandare"]
+];
 
 // Include header
-include './includes/header.php';
+include './../includes/header.php';
 ?>
 
 <style>
 /* Custom styles for Shivaji Maharaj theme */
-.hero-slider {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-}
+            .hero-slider {
+                position: relative;
+                height: 100vh;
+                overflow: hidden;
+            }
 
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
+            .slide {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                transition: opacity 1s ease-in-out;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
 
-.slide.active {
-    opacity: 1;
-}
+            .slide.active {
+                opacity: 1;
+            }
 
-.slide::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(220, 38, 38, 0.8), rgba(255, 153, 51, 0.6));
-    z-index: 1;
-}
+            .slide::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(135deg, rgba(220, 38, 38, 0.8), rgba(255, 153, 51, 0.6));
+                z-index: 1;
+            }
 
-.slide-content {
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-}
+            .slide-content {
+                position: relative;
+                z-index: 2;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                color: white;
+            }
 
-.royal-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 153, 51, 0.3);
-    transition: all 0.3s ease;
-}
+            .royal-card {
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 153, 51, 0.3);
+                transition: all 0.3s ease;
+            }
 
-.royal-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
-    border-color: #ff9933;
-}
+            .royal-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+                border-color: #ff9933;
+            }
 
-.section-indicator {
-    width: 60px;
-    height: 4px;
-    background: linear-gradient(90deg, #dc2626, #ff9933);
-    margin: 0 auto 2rem;
-}
+            .section-indicator {
+                width: 60px;
+                height: 4px;
+                background: linear-gradient(90deg, #dc2626, #ff9933);
+                margin: 0 auto 2rem;
+            }
 
-.maratha-pattern {
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="maratha" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="%23ff9933" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23maratha)"/></svg>');
-}
+            .maratha-pattern {
+                background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="maratha" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="%23ff9933" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23maratha)"/></svg>');
+            }
 
-.timeline-item {
-    border-left: 3px solid #ff9933;
-    position: relative;
-}
+            .timeline-item {
+                border-left: 3px solid #ff9933;
+                position: relative;
+            }
 
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -8px;
-    top: 1rem;
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-    background: #dc2626;
-    border: 3px solid #ff9933;
-}
+            .timeline-item::before {
+                content: '';
+                position: absolute;
+                left: -8px;
+                top: 1rem;
+                width: 13px;
+                height: 13px;
+                border-radius: 50%;
+                background: #dc2626;
+                border: 3px solid #ff9933;
+            }
 
-.saffron {
-    color: #ff9933;
-}
+            .saffron {
+                color: #ff9933;
+            }
 
-.maratha {
-    color: #dc2626;
-}
+            .maratha {
+                color: #dc2626;
+            }
 
-.bg-saffron {
-    background-color: #ff9933;
-}
+            .bg-saffron {
+                background-color: #ff9933;
+            }
 
-.bg-maratha {
-    background-color: #dc2626;
-}
+            .bg-maratha {
+                background-color: #dc2626;
+            }
 
-.text-saffron {
-    color: #ff9933;
-}
+            .text-saffron {
+                color: #ff9933;
+            }
 
-.text-maratha {
-    color: #dc2626;
-}
+            .text-maratha {
+                color: #dc2626;
+            }
 
-.hover\:text-saffron:hover {
-    color: #ff9933;
-}
+            .hover\:text-saffron:hover {
+                color: #ff9933;
+            }
 
-.hover\:text-maratha:hover {
-    color: #dc2626;
-}
+            .hover\:text-maratha:hover {
+                color: #dc2626;
+            }
 
-.hover\:bg-saffron:hover {
-    background-color: #ff9933;
-}
+            .hover\:bg-saffron:hover {
+                background-color: #ff9933;
+            }
 
-.hover\:bg-maratha:hover {
-    background-color: #dc2626;
-}
+            .hover\:bg-maratha:hover {
+                background-color: #dc2626;
+            }
 
-.from-maratha {
-    --tw-gradient-from: #dc2626;
-    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(220, 38, 38, 0));
-}
+            .from-maratha {
+                --tw-gradient-from: #dc2626;
+                --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(220, 38, 38, 0));
+            }
 
-.to-saffron {
-    --tw-gradient-to: #ff9933;
-}
+            .to-saffron {
+                --tw-gradient-to: #ff9933;
+            }
 
-.from-saffron {
-    --tw-gradient-from: #ff9933;
-    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 153, 51, 0));
-}
+            .from-saffron {
+                --tw-gradient-from: #ff9933;
+                --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 153, 51, 0));
+            }
 
-.to-maratha {
-    --tw-gradient-to: #dc2626;
-}
+            .to-maratha {
+                --tw-gradient-to: #dc2626;
+            }
 
-@media (max-width: 768px) {
-    .hero-slider {
-        height: 70vh;
-    }
-}
+            @media (max-width: 768px) {
+                .hero-slider {
+                    height: 70vh;
+                }
+            }
 </style>
 <main id="main-content" class="">
 <section class="relative py-20 bg-gradient-to-br from-red-700 via-yellow-600 to-orange-500 text-white overflow-hidden">
@@ -175,17 +317,16 @@ include './includes/header.php';
 
             <!-- Title -->
             <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up mt-6">
-                Chhatrapati Shivaji Maharaj
-            </h1>
+           Books & Literature on Chhatrapati Shivaji Maharaj    </h1>
 
             <!-- Subtitle -->
             <p class="text-xl md:text-2xl mb-4 opacity-95">
-                Founder of Swarajya • The Great Maratha Warrior King
-            </p>
+                Historical Books & Literature on Shivaji Maharaj
+                </p>
 
             <!-- Tagline -->
             <p class="text-lg md:text-xl mb-8 opacity-85">
-                A visionary ruler, brilliant strategist, and an eternal symbol of self-rule
+                Warfare and Strategic Battle Tactics
             </p>
 
             <!-- Key Highlights -->
@@ -193,23 +334,20 @@ include './includes/header.php';
 
                 <span class="bg-white bg-opacity-20 px-5 py-2 rounded-full backdrop-blur">
                     <i class="fas fa-fort-awesome mr-2"></i>
-                    350+ Forts
+                    Classical Works
                 </span>
 
                 <span class="bg-white bg-opacity-20 px-5 py-2 rounded-full backdrop-blur">
                     <i class="fas fa-flag mr-2"></i>
-                    Swarajya
+                    Modern Research
                 </span>
 
                 <span class="bg-white bg-opacity-20 px-5 py-2 rounded-full backdrop-blur">
                     <i class="fas fa-calendar-alt mr-2"></i>
-                    1630 – 1680
+                   Biographical Literature
                 </span>
 
-                <span class="bg-white bg-opacity-20 px-5 py-2 rounded-full backdrop-blur">
-                    <i class="fas fa-ship mr-2"></i>
-                    Father of the Indian Navy
-                </span>
+             
 
             </div>
 
@@ -217,105 +355,53 @@ include './includes/header.php';
     </div>
 </section>
 
-
-<!-- PREFACE IMAGE SECTION -->
-<section class="py-16 bg-cream-medium dark:bg-gray-800">
-    <div class="container mx-auto px-4">
-
-        <div class="max-w-5xl mx-auto text-center">
-
-            <!-- Image Card -->
-            <div class="royal-card rounded-2xl overflow-hidden border border-mountain shadow-lg">
-
-                <img 
-    src="./shivaji/photos/maharaj_prastavna.jpg"
-    alt="Chhatrapati Shivaji Maharaj - Preface"
-    class="w-full  max-w-[700px] mx-auto h-auto max-h-[680px] object-contain"
-/>
-
-
-                <!-- Optional Caption -->
-                <div class="bg-cream-light dark:bg-gray-900 p-6">
-                    <p class="text-lg text-gray-800 dark:text-gray-200">
-                        A visionary king who dreamed of Swarajya — a man of an era
-                    </p>
-
-                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                        Chhatrapati Shivaji Maharaj — a visionary who reshaped Indian history
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-</section>
 
         
-        <!-- ABOUT SHIVAJI MAHARAJ -->
-<section id="about" class="py-20 bg-cream-light dark:bg-gray-900">
-    <div class="container mx-auto max-w-5xl px-4">
-
-        <!-- Section Header -->
-        <div class="text-center mb-12">
+<div class="container mx-auto px-4 py-10">
+    <div class="text-center mb-16">
             <div class="section-indicator"></div>
             <h2 class="text-4xl md:text-5xl font-bold mb-6">
                 <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
-                    About Shivaji Maharaj
+                    Books Of Chhatrapati Shivaji Maharaj
                 </span>
             </h2>
-            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                The visionary founder of Swarajya and one of the greatest leaders in Indian history
+            <p class="text-xl text-gray-600 dark:text-gray-300">
+            List of Books
             </p>
-        </div>
-
-        <!-- Content Card -->
-        <div class="royal-card rounded-2xl p-8 md:p-10 space-y-6">
-
-            <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                Born in 1630 at <strong>Shivneri Fort</strong>, Chhatrapati Shivaji Maharaj emerged as a
-                legendary ruler who reshaped the course of Indian history. He founded the
-                <strong>Maratha Empire</strong> and established the concept of
-                <strong>Swarajya</strong> (self-rule), grounded in justice, equality, and the welfare
-                of the people.
-            </p>
-
-            <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                A master military strategist, Shivaji Maharaj pioneered
-                <strong>guerrilla warfare (Ganimi Kava)</strong>, built a formidable
-                <strong>navy</strong>, and created a disciplined administrative system.
-                His governance protected the land, culture, and dignity of the people while
-                upholding values of tolerance, courage, and righteous rule.
-            </p>
-
-            <!-- Highlights -->
-            <div class="flex flex-wrap gap-4 pt-6">
-
-                <span class="inline-flex items-center px-4 py-2 rounded-full bg-red-600 text-white text-sm font-semibold">
-                    <i class="fas fa-flag mr-2"></i>
-                    Founder of Swarajya
-                </span>
-
-                <span class="inline-flex items-center px-4 py-2 rounded-full bg-yellow-500 text-white text-sm font-semibold">
-                    <i class="fas fa-shield-alt mr-2"></i>
-                    Military Strategist
-                </span>
-
-                <span class="inline-flex items-center px-4 py-2 rounded-full bg-green-600 text-white text-sm font-semibold">
-                    <i class="fas fa-ship mr-2"></i>
-                    Naval Visionary
-                </span>
-
-                <span class="inline-flex items-center px-4 py-2 rounded-full bg-gray-800 text-white text-sm font-semibold">
-                    <i class="fas fa-users mr-2"></i>
-                    People-Centric Ruler
-                </span>
-
-            </div>
-        </div>
-
     </div>
-</section>
+
+    <div class="overflow-x-auto royal-card rounded-xl">
+        <table class="min-w-full border border-gray-200 dark:border-gray-700">
+            <thead class="bg-gradient-to-r from-red-700 to-yellow-600 text-white">
+                <tr>
+      <th width="5%">No</th>
+      <th width="45%" id="thTitle">Book Title</th>
+      <th width="50%" id="thAuthor">Author</th>
+    </tr>
+            </thead>
+
+            <tbody id="booksBody" class="bg-white dark:bg-gray-900">
+                <!-- JS will inject rows here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="flex justify-between items-center mt-6">
+        <button id="prevBtn"
+            class="px-6 py-2 bg-gray-300 dark:bg-gray-700 rounded disabled:opacity-50">
+            Previous
+        </button>
+
+        <span id="pageInfo" class="text-sm text-gray-600 dark:text-gray-300"></span>
+
+        <button id="nextBtn"
+            class="px-6 py-2 bg-red-600 text-white rounded hover:bg-yellow-600">
+            Next
+        </button>
+    </div>
+
+</div>
 
 
 <!-- Information Cards Section -->
@@ -564,146 +650,6 @@ include './includes/header.php';
 </section>
 
 
-<!-- KEY CONTRIBUTIONS -->
-<section class="py-20 bg-cream-warm dark:bg-gray-800">
-    <div class="container mx-auto max-w-6xl px-4">
-
-        <!-- Section Header -->
-        <div class="text-center mb-14">
-            <div class="section-indicator"></div>
-            <h2 class="text-4xl md:text-5xl font-bold mb-4">
-                <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
-                    Key Contributions
-                </span>
-            </h2>
-            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Enduring achievements that shaped the Maratha Empire and inspired generations
-            </p>
-        </div>
-
-        <!-- Cards -->
-        <div class="grid md:grid-cols-3 gap-8">
-
-            <!-- Swarajya -->
-            <div class="royal-card bg-cream-light dark:bg-gray-900 p-8 rounded-2xl border border-mountain text-center hover:shadow-xl transition-all">
-                <div class="w-16 h-16 bg-gradient-to-br from-red-600 to-yellow-500 rounded-full flex items-center justify-center mb-6 mx-auto">
-                    <i class="fas fa-flag text-2xl text-white"></i>
-                </div>
-                <h3 class="text-xl font-bold text-primary mb-3">
-                    Swarajya
-                </h3>
-                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    Established an independent and people-centric kingdom founded on justice,
-                    self-rule, and the welfare of the common people.
-                </p>
-            </div>
-
-            <!-- Military Strategy -->
-            <div class="royal-card bg-cream-light dark:bg-gray-900 p-8 rounded-2xl border border-mountain text-center hover:shadow-xl transition-all">
-                <div class="w-16 h-16 bg-gradient-to-br from-yellow-600 to-orange-500 rounded-full flex items-center justify-center mb-6 mx-auto">
-                    <i class="fas fa-sword text-2xl text-white"></i>
-                </div>
-                <h3 class="text-xl font-bold text-primary mb-3">
-                    Military Strategy
-                </h3>
-                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    Pioneered guerrilla warfare techniques (Ganimi Kava) that revolutionized
-                    battlefield tactics and are studied even today.
-                </p>
-            </div>
-
-            <!-- Fort Administration -->
-            <div class="royal-card bg-cream-light dark:bg-gray-900 p-8 rounded-2xl border border-mountain text-center hover:shadow-xl transition-all">
-                <div class="w-16 h-16 bg-gradient-to-br from-green-600 to-emerald-700 rounded-full flex items-center justify-center mb-6 mx-auto">
-                    <i class="fas fa-fort-awesome text-2xl text-white"></i>
-                </div>
-                <h3 class="text-xl font-bold text-primary mb-3">
-                    Fort Administration
-                </h3>
-                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    Strengthened, administered, and strategically managed more than
-                    <strong>300 forts</strong> across the Sahyadri mountain range.
-                </p>
-            </div>
-
-        </div>
-    </div>
-</section>
-
- 
-    <!-- Timeline Section -->
-<section class="py-20 bg-gray-50 dark:bg-gray-800">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-            <div class="section-indicator"></div>
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
-                    Timeline of Chhatrapati Shivaji Maharaj
-                </span>
-            </h2>
-            <p class="text-xl text-gray-600 dark:text-gray-300">
-                Important events in the life of the great Maratha warrior king
-            </p>
-        </div>
-
-        <div class="max-w-4xl mx-auto">
-            <div class="space-y-8">
-
-                <div class="timeline-item pl-8 py-6">
-                    <h3 class="text-2xl font-bold text-red-600 mb-2">1630</h3>
-                    <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">
-                        Birth
-                    </h4>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        Born on 19th February 1630 at Shivneri Fort to Shahaji Bhosale and Jijabai.
-                    </p>
-                </div>
-
-                <div class="timeline-item pl-8 py-6">
-                    <h3 class="text-2xl font-bold text-red-600 mb-2">1645</h3>
-                    <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">
-                        First Fort Capture
-                    </h4>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        Captured Torna Fort at the age of 15, marking the beginning of his journey as a military leader.
-                    </p>
-                </div>
-
-                <div class="timeline-item pl-8 py-6">
-                    <h3 class="text-2xl font-bold text-red-600 mb-2">1659</h3>
-                    <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">
-                        Slaying of Afzal Khan
-                    </h4>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        Defeated Afzal Khan in a historic encounter at Pratapgad, showcasing exceptional courage and strategy.
-                    </p>
-                </div>
-
-                <div class="timeline-item pl-8 py-6">
-                    <h3 class="text-2xl font-bold text-red-600 mb-2">1674</h3>
-                    <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">
-                        Coronation
-                    </h4>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        Coronated as Chhatrapati at Raigad Fort, formally establishing the Maratha Empire.
-                    </p>
-                </div>
-
-                <div class="timeline-item pl-8 py-6">
-                    <h3 class="text-2xl font-bold text-red-600 mb-2">1680</h3>
-                    <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">
-                        Demise
-                    </h4>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        Passed away on 3rd April 1680 at Raigad Fort, leaving behind a powerful and enduring legacy.
-                    </p>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- Legacy Section -->
 <section id="legacy" class="py-20 bg-white dark:bg-gray-900">
     <div class="container mx-auto px-4">
@@ -764,93 +710,11 @@ include './includes/header.php';
     </div>
 </section>
 
-<!-- Forts Gallery Section -->
-<section id="forts" class="py-20 bg-gray-50 dark:bg-gray-800">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-            <div class="section-indicator"></div>
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
-                    Forts of Shivaji Maharaj
-                </span>
-            </h2>
-            <p class="text-xl text-gray-600 dark:text-gray-300">
-                Explore the magnificent forts associated with Chhatrapati Shivaji Maharaj
-            </p>
-        </div>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            <!-- Raigad -->
-            <div class="royal-card rounded-2xl overflow-hidden group">
-                <div class="h-48 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                     style="background-image: url('https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
-                        Raigad Fort
-                    </h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                        The capital fort of the Maratha Empire and the site of Chhatrapati Shivaji Maharaj’s coronation.
-                    </p>
-                    <a href="/forts/raigad" class="text-red-600 hover:text-yellow-500 font-semibold">
-                        Explore Fort <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Pratapgad -->
-            <div class="royal-card rounded-2xl overflow-hidden group">
-                <div class="h-48 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                     style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
-                        Pratapgad Fort
-                    </h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                        The historic fort where the legendary encounter between Shivaji Maharaj and Afzal Khan took place.
-                    </p>
-                    <a href="/forts/pratapgad" class="text-red-600 hover:text-yellow-500 font-semibold">
-                        Explore Fort <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Shivneri -->
-            <div class="royal-card rounded-2xl overflow-hidden group">
-                <div class="h-48 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                     style="background-image: url('https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
-                        Shivneri Fort
-                    </h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                        The birthplace of Chhatrapati Shivaji Maharaj and one of the most revered forts in Maratha history.
-                    </p>
-                    <a href="/forts/shivneri" class="text-red-600 hover:text-yellow-500 font-semibold">
-                        Explore Fort <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="text-center mt-12">
-            <a href="/forts/shivaji-forts"
-               class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-red-600 to-yellow-500 text-white font-semibold rounded-full hover:from-yellow-500 hover:to-red-600 transition-all duration-300">
-                <i class="fas fa-fort-awesome mr-2"></i>
-                View All Shivaji Forts
-            </a>
-        </div>
-    </div>
-</section>
 
 
 </main>
 
-<?php include './includes/footer.php'; ?>
+<?php include './../includes/footer.php'; ?>
 
 <!-- JavaScript -->
 <script>
@@ -1043,3 +907,74 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 </script>
+<script>
+    const booksData = <?php echo json_encode($books_english); ?>;
+</script>
+<script>
+    const rowsPerPage = 15;
+    let currentPage = 1;
+    let currentLang = 'mr'; // mr | en
+
+    function renderBooksTable() {
+        const tbody = document.getElementById('booksBody');
+        tbody.innerHTML = '';
+
+        const start = (currentPage - 1) * rowsPerPage;
+        const end = start + rowsPerPage;
+        const pageData = booksData.slice(start, end);
+
+        pageData.forEach((book, index) => {
+            const i = start + index + 1;
+
+            const title  =  book.title ;
+            const author =  book.author ;
+
+            const row = `
+                <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800">
+                    <td class="px-4 py-2">${i}</td>
+                    <td class="px-4 py-2 font-semibold">${title}</td>
+                    <td class="px-4 py-2">${author}</td>
+                </tr>
+            `;
+            tbody.insertAdjacentHTML('beforeend', row);
+        });
+
+        updateBooksControls();
+    }
+
+    function updateBooksControls() {
+        const totalPages = Math.ceil(booksData.length / rowsPerPage);
+
+        document.getElementById('pageInfo').innerText =
+            `Page ${currentPage} of ${totalPages}`;
+
+        document.getElementById('prevBtn').disabled = currentPage === 1;
+        document.getElementById('nextBtn').disabled = currentPage === totalPages;
+    }
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            renderBooksTable();
+        }
+    });
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        const totalPages = Math.ceil(booksData.length / rowsPerPage);
+        if (currentPage < totalPages) {
+            currentPage++;
+            renderBooksTable();
+        }
+    });
+
+    function switchBooksLanguage(lang) {
+        currentLang = lang;
+        renderBooksTable();
+    }
+
+    // Initial Load
+    renderBooksTable();
+</script>
+
+
+

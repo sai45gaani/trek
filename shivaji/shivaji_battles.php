@@ -1,500 +1,2657 @@
 <?php
 // Set page specific variables
-$page_title = 'शिवरायांच्या लढाया - भाग १ | Battles of Shivaji Maharaj - Part 1 | Trekshitz';
-$meta_description = 'Complete details of all major battles fought by Chhatrapati Shivaji Maharaj including Battle of Pratapgad, Afzal Khan encounter, and early military campaigns.';
-$meta_keywords = 'Shivaji battles, Afzal Khan, Pratapgad, Maratha warfare, गनिमी कावा, शिवाजी युद्ध';
+$page_title = 'Battles of Chhatrapati Shivaji Maharaj | TrekshitiZ';
+
+$meta_description = 'Detailed information about the early battles of Chhatrapati Shivaji Maharaj, including the Battle of Pratapgad, the encounter with Afzal Khan, and the initial military campaigns that laid the foundation of the Maratha Empire.';
+
+$meta_keywords = 'Battles of Shivaji Maharaj, Pratapgad battle, Afzal Khan encounter, Maratha warfare, guerrilla warfare, Ganimi Kava, Shivaji military history';
+
+$battles = [
+    [
+        'sr_no' => 1,
+        'year' => 1644,
+        'battle_name' => 'Rohida',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Baaji Bandal',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 2,
+        'year' => 1646,
+        'battle_name' => 'Shirval',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Miya Rahim Ahmad',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 3,
+        'year' => 1648,
+        'battle_name' => 'Belsar',
+        'maratha_leader' => 'Baji Pasalkar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Fateh Khan',
+        'related_fort' => 'Near Purandar'
+    ],
+    [
+        'sr_no' => 4,
+        'year' => 1648,
+        'battle_name' => 'Purandar',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Muse Khan',
+        'related_fort' => 'Purandar – Vajragad'
+    ],
+    [
+        'sr_no' => 5,
+        'year' => 1648,
+        'battle_name' => 'Shirval',
+        'maratha_leader' => 'Kavji Malhar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Balaji Haibatrao',
+        'related_fort' => 'Subhanmangal'
+    ],
+    [
+        'sr_no' => 6,
+        'year' => 1651,
+        'battle_name' => 'Govle',
+        'maratha_leader' => 'Kay Savant',
+        'enemy_power' => '',
+        'enemy_leader' => 'Krishnaji Pasalkar Shiddi',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 7,
+        'year' => 1656,
+        'battle_name' => 'Chaturved',
+        'maratha_leader' => 'Shambhaji Kavaji',
+        'enemy_power' => '',
+        'enemy_leader' => 'More',
+        'related_fort' => 'Pratapgad'
+    ],
+    [
+        'sr_no' => 8,
+        'year' => 1656,
+        'battle_name' => 'Javli',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => '',
+        'enemy_leader' => 'Chandrao More',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 9,
+        'year' => 1656,
+        'battle_name' => 'Johor',
+        'maratha_leader' => 'Raghunath Korde',
+        'enemy_power' => '',
+        'enemy_leader' => 'More',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 10,
+        'year' => 1656,
+        'battle_name' => 'Supe',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => '',
+        'enemy_leader' => 'Mohite Sambhaji',
+        'related_fort' => ''
+    ],
+
+    [
+        'sr_no' => 11,
+        'year' => 1656,
+        'battle_name' => 'Uttar Konkan',
+        'maratha_leader' => 'Raghunath Korde',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 12,
+        'year' => 1657,
+        'battle_name' => 'Ahmednagar',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Nausir Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 13,
+        'year' => 1657,
+        'battle_name' => 'Ahmednagar',
+        'maratha_leader' => 'Minaji Bhosale',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Multif Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 14,
+        'year' => 1657,
+        'battle_name' => 'Asheri',
+        'maratha_leader' => 'Sakhoji Krishna',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => '',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 15,
+        'year' => 1657,
+        'battle_name' => 'Danda Rajpuri',
+        'maratha_leader' => 'Raghunath Korde',
+        'enemy_power' => 'Siddi',
+        'enemy_leader' => 'Siddi',
+        'related_fort' => 'Janjira'
+    ],
+
+    [
+        'sr_no' => 16,
+        'year' => 1657,
+        'battle_name' => 'Junnar',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 17,
+        'year' => 1657,
+        'battle_name' => 'Kalyan',
+        'maratha_leader' => 'Dadoji Bapuji',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Muhammad Yusuf',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 18,
+        'year' => 1657,
+        'battle_name' => 'Kalyan',
+        'maratha_leader' => 'Habshi Khan',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Muhammad Yusuf',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 19,
+        'year' => 1658,
+        'battle_name' => 'Janjira',
+        'maratha_leader' => 'Vyankoji Datto',
+        'enemy_power' => 'Siddi',
+        'enemy_leader' => 'Siddi',
+        'related_fort' => 'Janjira'
+    ],
+    [
+        'sr_no' => 20,
+        'year' => 1658,
+        'battle_name' => 'Terdal',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Krishnagauda Desai',
+        'related_fort' => ''
+    ],
+
+    [
+        'sr_no' => 21,
+        'year' => 1659,
+        'battle_name' => 'Panhala',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 22,
+        'year' => 1659,
+        'battle_name' => 'Pratapgad',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Afzal Khan',
+        'related_fort' => 'Pratapgad'
+    ],
+    [
+        'sr_no' => 23,
+        'year' => 1659,
+        'battle_name' => 'Raibag',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Rustam-e-Jaman',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 24,
+        'year' => 1660,
+        'battle_name' => 'Chakan',
+        'maratha_leader' => 'Firangoji Narsala',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Shaista Khan',
+        'related_fort' => 'Chakan'
+    ],
+    [
+        'sr_no' => 25,
+        'year' => 1660,
+        'battle_name' => 'Garadyachi Khind',
+        'maratha_leader' => 'Maratha Sardars',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Shaista Khan',
+        'related_fort' => ''
+    ],
+
+    [
+        'sr_no' => 26,
+        'year' => 1660,
+        'battle_name' => 'Ghodkhind (Pavan Khind)',
+        'maratha_leader' => 'Baji Prabhu Deshpande',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Siddi Masood',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 27,
+        'year' => 1660,
+        'battle_name' => 'Konkan',
+        'maratha_leader' => 'Maratha Sardars',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 28,
+        'year' => 1660,
+        'battle_name' => 'Miraj',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 29,
+        'year' => 1660,
+        'battle_name' => 'Panhala',
+        'maratha_leader' => 'Netaji Palkar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Siddi Johar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 30,
+        'year' => 1660,
+        'battle_name' => 'Panhala',
+        'maratha_leader' => 'Netaji Palkar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Siddhi Jauhar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 30,
+        'year' => 1660,
+        'battle_name' => 'Rajapur',
+        'maratha_leader' => 'Doraji',
+        'enemy_power' => 'British',
+        'enemy_leader' => 'Henry Revington',
+        'related_fort' => ''
+    ],
+
+    [
+        'sr_no' => 31,
+        'year' => 1660,
+        'battle_name' => 'Rajgad Region',
+        'maratha_leader' => 'Maratha Sardars',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Shaista Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 32,
+        'year' => 1660,
+        'battle_name' => 'Saswad',
+        'maratha_leader' => 'Murarbaji',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Shaista Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 33,
+        'year' => 1660,
+        'battle_name' => 'Shahapur',
+        'maratha_leader' => 'Netaji Palkar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Khavas Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 34,
+        'year' => 1660,
+        'battle_name' => 'Shahapur',
+        'maratha_leader' => 'Netaji Palkar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Mulla Muhammad',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 35,
+        'year' => 1660,
+        'battle_name' => 'Tikote',
+        'maratha_leader' => 'Netaji Palkar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+
+    [
+        'sr_no' => 36,
+        'year' => 1660,
+        'battle_name' => 'Vasota',
+        'maratha_leader' => 'Maratha Sardars',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 37,
+        'year' => 1660,
+        'battle_name' => 'Vijapur',
+        'maratha_leader' => 'Netaji Palkar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Khavas Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 38,
+        'year' => 1660,
+        'battle_name' => 'Vijapur',
+        'maratha_leader' => 'Netaji Palkar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Khavas Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 39,
+        'year' => 1660,
+        'battle_name' => 'Vishalgad',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Surve, Dalvi',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 40,
+        'year' => 1661,
+        'battle_name' => 'Deherigad',
+        'maratha_leader' => 'Kavji Kondhalkar',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Bulakhi',
+        'related_fort' => 'Gorakhgad – Siddhagad'
+    ],
+
+    [
+        'sr_no' => 41,
+        'year' => 1661,
+        'battle_name' => 'Junnar Region',
+        'maratha_leader' => 'Moropant Pingle',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 42,
+        'year' => 1661,
+        'battle_name' => 'Kalyan–Bhiwandi',
+        'maratha_leader' => 'Dadoji Bapuji',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Naamdar Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 43,
+        'year' => 1661,
+        'battle_name' => 'Palvan',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => '',
+        'enemy_leader' => 'Raja Yashwant Dalvi',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 44,
+        'year' => 1661,
+        'battle_name' => 'Shrungarpur',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => '',
+        'enemy_leader' => 'Raja Suryarao Surve',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 45,
+        'year' => 1661,
+        'battle_name' => 'Umbarkhind',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Kartalab Khan, Raibagan',
+        'related_fort' => ''
+    ],
+
+    [
+        'sr_no' => 46,
+        'year' => 1662,
+        'battle_name' => 'Mirya Dongar',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Namdar Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 47,
+        'year' => 1662,
+        'battle_name' => 'Supe–Parinda',
+        'maratha_leader' => 'Netaji Palkar',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Sarfaraz Khan, Namdar Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 48,
+        'year' => 1663,
+        'battle_name' => 'Lal Mahal',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Shaista Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 49,
+        'year' => 1664,
+        'battle_name' => 'Ahmednagar',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Mughal Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 50,
+        'year' => 1664,
+        'battle_name' => 'Bande',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Khavas Khan',
+        'related_fort' => ''
+    ],
+
+    [
+        'sr_no' => 51,
+        'year' => 1664,
+        'battle_name' => 'Hubli',
+        'maratha_leader' => 'Maratha Sardars',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 52,
+        'year' => 1664,
+        'battle_name' => 'Khudwantpur',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 53,
+        'year' => 1664,
+        'battle_name' => 'Kudal',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Lakham Sawant',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 54,
+        'year' => 1664,
+        'battle_name' => 'Mudhol',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Baji Ghorpade',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 55,
+        'year' => 1664,
+        'battle_name' => 'Phonda',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Mahabat Khan',
+        'related_fort' => ''
+    ],
+        [
+        'sr_no' => 56,
+        'year' => 1664,
+        'battle_name' => 'Sinhagad',
+        'maratha_leader' => 'Sinhagad Killedar',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Jaswant Singh',
+        'related_fort' => 'Sinhagad'
+    ],
+    [
+        'sr_no' => 57,
+        'year' => 1664,
+        'battle_name' => 'Surat',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Inayat Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 58,
+        'year' => 1664,
+        'battle_name' => 'Vadgaon',
+        'maratha_leader' => 'Naro Bapuji',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Mukandasinh',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 59,
+        'year' => 1664,
+        'battle_name' => 'Vengurla',
+        'maratha_leader' => 'Maratha Sardars',
+        'enemy_power' => 'Dutch',
+        'enemy_leader' => 'Dutch Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 60,
+        'year' => 1665,
+        'battle_name' => 'Basrur',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => '',
+        'enemy_leader' => 'Nayak',
+        'related_fort' => ''
+    ],
+
+    [
+        'sr_no' => 61,
+        'year' => 1665,
+        'battle_name' => 'Khatav',
+        'maratha_leader' => 'Netaji Palkar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 62,
+        'year' => 1665,
+        'battle_name' => 'Lohagad',
+        'maratha_leader' => 'Killedar',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Dawood Khan',
+        'related_fort' => 'Lohagad'
+    ],
+    [
+        'sr_no' => 63,
+        'year' => 1665,
+        'battle_name' => 'Mangalvedha',
+        'maratha_leader' => 'Netaji Palkar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 64,
+        'year' => 1665,
+        'battle_name' => 'Parinda',
+        'maratha_leader' => 'Netaji Palkar',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 65,
+        'year' => 1665,
+        'battle_name' => 'Phaltan',
+        'maratha_leader' => 'Netaji Palkar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Bajaji Nimbalkar',
+        'related_fort' => ''
+    ],
+
+    [
+        'sr_no' => 66,
+        'year' => 1665,
+        'battle_name' => 'Purandar',
+        'maratha_leader' => 'Murarbaji Deshpande',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Diler Khan',
+        'related_fort' => 'Purandar – Vajragad'
+    ],
+    [
+        'sr_no' => 67,
+        'year' => 1665,
+        'battle_name' => 'Rajgad',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Dawood Khan',
+        'related_fort' => 'Rajgad'
+    ],
+    [
+        'sr_no' => 68,
+        'year' => 1665,
+        'battle_name' => 'Rohida',
+        'maratha_leader' => 'Killedar',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Diler Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 69,
+        'year' => 1665,
+        'battle_name' => 'Taathvada',
+        'maratha_leader' => 'Netaji Palkar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 70,
+        'year' => 1665,
+        'battle_name' => 'Talkonkan',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Ikhlas Khan',
+        'related_fort' => ''
+    ],
+
+    [
+        'sr_no' => 71,
+        'year' => 1665,
+        'battle_name' => 'Vajragad',
+        'maratha_leader' => 'Babaji / Yashwantrao Bovaji',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Diler Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 72,
+        'year' => 1665,
+        'battle_name' => 'Vijapur',
+        'maratha_leader' => 'Netaji Palkar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Sardar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 73,
+        'year' => 1665,
+        'battle_name' => 'Vijapur',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Sarjakhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 74,
+        'year' => 1666,
+        'battle_name' => 'Devrukh',
+        'maratha_leader' => 'Vyankoji Datto',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Pirmiya',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 75,
+        'year' => 1666,
+        'battle_name' => 'Panhala',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+
+    [
+        'sr_no' => 76,
+        'year' => 1666,
+        'battle_name' => 'Phonda',
+        'maratha_leader' => 'Ibrahim',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Mahammad Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 77,
+        'year' => 1666,
+        'battle_name' => 'Rangana',
+        'maratha_leader' => 'Rahuji Somnath',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 78,
+        'year' => 1666,
+        'battle_name' => 'Vishalgad Route',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Siddi Masood Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 79,
+        'year' => 1667,
+        'battle_name' => 'Bardesh',
+        'maratha_leader' => 'Maratha Sardars',
+        'enemy_power' => 'Portuguese',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 80,
+        'year' => 1667,
+        'battle_name' => 'Kalbarga',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Sayyad Asil',
+        'related_fort' => ''
+    ],
+
+    [
+        'sr_no' => 81,
+        'year' => 1667,
+        'battle_name' => 'Kolwal',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Portuguese',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 82,
+        'year' => 1667,
+        'battle_name' => 'Rangana',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Bahlol Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 83,
+        'year' => 1668,
+        'battle_name' => 'Goa',
+        'maratha_leader' => 'Maratha Sardars',
+        'enemy_power' => 'Portuguese',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 84,
+        'year' => 1669,
+        'battle_name' => 'Janjira',
+        'maratha_leader' => 'Maratha Sardars',
+        'enemy_power' => 'Siddi',
+        'enemy_leader' => 'Fateh Khan',
+        'related_fort' => 'Janjira'
+    ],
+    [
+        'sr_no' => 85,
+        'year' => 1669,
+        'battle_name' => 'Varhad',
+        'maratha_leader' => 'Rahuji Somnath',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Udaybhanu',
+        'related_fort' => ''
+    ],
+
+    [
+        'sr_no' => 86,
+        'year' => 1670,
+        'battle_name' => 'Bahadurpura',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Hamid Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 87,
+        'year' => 1670,
+        'battle_name' => 'Chandvad',
+        'maratha_leader' => 'Maratha Sardars',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Bakhi Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 88,
+        'year' => 1670,
+        'battle_name' => 'Danda Rajpuri',
+        'maratha_leader' => 'Maratha Sardars',
+        'enemy_power' => 'Siddi',
+        'enemy_leader' => 'Siddi',
+        'related_fort' => 'Janjira'
+    ],
+    [
+        'sr_no' => 89,
+        'year' => 1670,
+        'battle_name' => 'Hindola',
+        'maratha_leader' => 'Maratha Sardars',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 90,
+        'year' => 1670,
+        'battle_name' => 'Junnar',
+        'maratha_leader' => 'Moropant Pingle',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+
+    [
+        'sr_no' => 91,
+        'year' => 1670,
+        'battle_name' => 'Kalyan',
+        'maratha_leader' => 'Maratha Sardars',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Uzbeg Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 92,
+        'year' => 1670,
+        'battle_name' => 'Karanja',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 93,
+        'year' => 1670,
+        'battle_name' => 'Karnala',
+        'maratha_leader' => 'Maratha Sardars',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 94,
+        'year' => 1670,
+        'battle_name' => 'Karnala',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 95,
+        'year' => 1670,
+        'battle_name' => 'Kohoj',
+        'maratha_leader' => 'Maratha Sardars',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+
+    [
+        'sr_no' => 96,
+        'year' => 1670,
+        'battle_name' => 'Kurdugad',
+        'maratha_leader' => 'Maratha Sardars',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 97,
+        'year' => 1670,
+        'battle_name' => 'Lohagad',
+        'maratha_leader' => 'Maratha Sardars',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 98,
+        'year' => 1670,
+        'battle_name' => 'Mahuli',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Alavardi Beg',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 99,
+        'year' => 1670,
+        'battle_name' => 'Mahuli',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Manohardas Gound',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 100,
+        'year' => 1670,
+        'battle_name' => 'Prabalgad',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Keshar Singh Hada',
+        'related_fort' => ''
+    ],
+
+    [
+        'sr_no' => 101,
+        'year' => 1670,
+        'battle_name' => 'Purandar',
+        'maratha_leader' => 'Nilopant',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Sheikh Raziuddin',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 102,
+        'year' => 1670,
+        'battle_name' => 'Rohida',
+        'maratha_leader' => 'Maratha Sardars',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 103,
+        'year' => 1670,
+        'battle_name' => 'Salher',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Fattullah Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 104,
+        'year' => 1670,
+        'battle_name' => 'Sinhagad',
+        'maratha_leader' => 'Tanaji Malusare',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Udaybhanu',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 105,
+        'year' => 1670,
+        'battle_name' => 'Sultangad',
+        'maratha_leader' => 'Moropant Pingle',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Fathullah Khan',
+        'related_fort' => ''
+    ],
+
+    [
+        'sr_no' => 106,
+        'year' => 1670,
+        'battle_name' => 'Surat',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => '',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 107,
+        'year' => 1670,
+        'battle_name' => 'Vani Dindori',
+        'maratha_leader' => 'Shivaji Maharaj',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Dawood Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 108,
+        'year' => 1671,
+        'battle_name' => 'Achalgad',
+        'maratha_leader' => 'Killedar',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Mahabat Khan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 109,
+        'year' => 1671,
+        'battle_name' => 'Ahivantgad',
+        'maratha_leader' => 'Killedar',
+        'enemy_power' => 'Mughal',
+        'enemy_leader' => 'Mahabat Khan',
+        'related_fort' => ''
+    ],
+      [
+        'sr_no' => 112,
+        'year' => '1671',
+        'battle_name' => 'Javla',
+        'maratha_leader' => 'Shivray',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Mahabatkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 113,
+        'year' => '1671',
+        'battle_name' => 'Khandergad',
+        'maratha_leader' => 'Ramji Pangera',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Dilerkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 114,
+        'year' => '1671',
+        'battle_name' => 'Markinda',
+        'maratha_leader' => 'Shivray',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Mahabatkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 115,
+        'year' => '1671',
+        'battle_name' => 'Pune',
+        'maratha_leader' => 'Amaldar',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Dilerkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 116,
+        'year' => '1671',
+        'battle_name' => 'Rajpuri',
+        'maratha_leader' => 'Amaldar',
+        'enemy_power' => 'Shiddi',
+        'enemy_leader' => 'Yakut',
+        'related_fort' => 'Janjira'
+    ],
+    [
+        'sr_no' => 117,
+        'year' => '1671',
+        'battle_name' => 'Ravla',
+        'maratha_leader' => 'Killedar',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Dilerkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 118,
+        'year' => '1671',
+        'battle_name' => 'Salher',
+        'maratha_leader' => 'Killedar',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Ikhalaskhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 119,
+        'year' => '1672',
+        'battle_name' => 'Antoor',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Dilerkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 120,
+        'year' => '1672',
+        'battle_name' => 'Chamund – Harishchandragad – Mahish – Jivdhan',
+        'maratha_leader' => 'Shivray',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 121,
+        'year' => '1672',
+        'battle_name' => 'Jawhar',
+        'maratha_leader' => 'Moropant',
+        'enemy_power' => 'Koli',
+        'enemy_leader' => 'Somshah',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 122,
+        'year' => '1672',
+        'battle_name' => 'Karwar',
+        'maratha_leader' => 'Shivray',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 123,
+        'year' => '1672',
+        'battle_name' => 'Konkan Kinara',
+        'maratha_leader' => 'Amaldar',
+        'enemy_power' => 'Shiddi',
+        'enemy_leader' => 'Sambool',
+        'related_fort' => 'Janjira'
+    ],
+    [
+        'sr_no' => 124,
+        'year' => '1672',
+        'battle_name' => 'Kutbshahi Border',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Dilerkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 125,
+        'year' => '1672',
+        'battle_name' => 'Mulher',
+        'maratha_leader' => 'Moropant',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 126,
+        'year' => '1672',
+        'battle_name' => 'Nashik – Trimbak',
+        'maratha_leader' => 'Moropant',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Jadhav',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 127,
+        'year' => '1672',
+        'battle_name' => 'Ramgir',
+        'maratha_leader' => 'Shivray',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 128,
+        'year' => '1672',
+        'battle_name' => 'Ramnagar',
+        'maratha_leader' => 'Moropant',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 129,
+        'year' => '1672',
+        'battle_name' => 'Salher',
+        'maratha_leader' => 'Moropant',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Dilerkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 130,
+        'year' => '1672',
+        'battle_name' => 'Samudra',
+        'maratha_leader' => 'Amaldar',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 131,
+        'year' => '1672',
+        'battle_name' => 'Telangan',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Bahadurkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 132,
+        'year' => '1672',
+        'battle_name' => 'Vani – Dindori',
+        'maratha_leader' => 'Moropant',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Siddi Hilal',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 133,
+        'year' => '1673',
+        'battle_name' => 'Athni',
+        'maratha_leader' => 'Prataprao',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 134,
+        'year' => '1673',
+        'battle_name' => 'Bankapur',
+        'maratha_leader' => 'Shivray',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Bahlolkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 135,
+        'year' => '1673',
+        'battle_name' => 'Chandan – Vandan',
+        'maratha_leader' => 'Prataprao',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 136,
+        'year' => '1673',
+        'battle_name' => 'Chandgad',
+        'maratha_leader' => 'Vithoji Shinde',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Sarjakhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 137,
+        'year' => '1673',
+        'battle_name' => 'Hubli',
+        'maratha_leader' => 'Prataprao',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 138,
+        'year' => '1673',
+        'battle_name' => 'Karhad',
+        'maratha_leader' => 'Prataprao',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 139,
+        'year' => '1673',
+        'battle_name' => 'Kolhapur',
+        'maratha_leader' => 'Prataprao',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 140,
+        'year' => '1673',
+        'battle_name' => 'Nandgiri',
+        'maratha_leader' => 'Prataprao',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 141,
+        'year' => '1673',
+        'battle_name' => 'Pandavgad',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 142,
+        'year' => '1673',
+        'battle_name' => 'Panhala',
+        'maratha_leader' => 'Kondaji Farjad',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Babulkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 143,
+        'year' => '1673',
+        'battle_name' => 'Panhala',
+        'maratha_leader' => 'Mahimaji Shinde',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Sarjakhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 144,
+        'year' => '1673',
+        'battle_name' => 'Parli',
+        'maratha_leader' => 'Shivray',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 145,
+        'year' => '1673',
+        'battle_name' => 'Satara',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 146,
+        'year' => '1673',
+        'battle_name' => 'Tekdi near Goa',
+        'maratha_leader' => 'Shivray',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 147,
+        'year' => '1673',
+        'battle_name' => 'Umravi',
+        'maratha_leader' => 'Prataprao',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Bahlolkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 148,
+        'year' => '1673',
+        'battle_name' => 'Wai to Laxmeshwar',
+        'maratha_leader' => 'Prataprao',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 149,
+        'year' => '1674',
+        'battle_name' => 'Bankapur',
+        'maratha_leader' => 'Anandrao',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Khijkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 150,
+        'year' => '1674',
+        'battle_name' => 'Dumgaon',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'English',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 151,
+        'year' => '1674',
+        'battle_name' => 'Dumgaon',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Kutubkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 152,
+        'year' => '1674',
+        'battle_name' => 'Kansa',
+        'maratha_leader' => 'Daulatkhan',
+        'enemy_power' => 'Shiddi',
+        'enemy_leader' => 'Shiddi',
+        'related_fort' => 'Janjira'
+    ],
+    [
+        'sr_no' => 153,
+        'year' => '1674',
+        'battle_name' => 'Kelanja',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Gangaji Vishwasrao',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 154,
+        'year' => '1674',
+        'battle_name' => 'Konkan Ghat',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Dilerkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 155,
+        'year' => '1674',
+        'battle_name' => 'Nesri',
+        'maratha_leader' => 'Prataprao',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Bahlolkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 156,
+        'year' => '1674',
+        'battle_name' => 'Pedgaon',
+        'maratha_leader' => 'Shivray',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Bahadurkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 157,
+        'year' => '1674',
+        'battle_name' => 'Pench',
+        'maratha_leader' => 'Anandrao',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 158,
+        'year' => '1674',
+        'battle_name' => 'Ramnagar',
+        'maratha_leader' => 'Shivray',
+        'enemy_power' => 'Koli',
+        'enemy_leader' => 'Bhillancha Sardar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 159,
+        'year' => '1674',
+        'battle_name' => 'Sampgaon',
+        'maratha_leader' => 'Anandrao',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Sardar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 160,
+        'year' => '1674',
+        'battle_name' => 'Satvalichi Khadi',
+        'maratha_leader' => 'Daulatkhan',
+        'enemy_power' => 'Shiddi',
+        'enemy_leader' => 'Siddi Sambool',
+        'related_fort' => 'Janjira'
+    ],
+    [
+        'sr_no' => 161,
+        'year' => '1675',
+        'battle_name' => 'Ankola',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 162,
+        'year' => '1675',
+        'battle_name' => 'Aurangabad Region',
+        'maratha_leader' => 'Moropant',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Bahadurkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 163,
+        'year' => '1675',
+        'battle_name' => 'Kalyan – Bhiwandi',
+        'maratha_leader' => 'Amaldar',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Bahadurkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 164,
+        'year' => '1675',
+        'battle_name' => 'Karwar',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 165,
+        'year' => '1675',
+        'battle_name' => 'Kolhapur',
+        'maratha_leader' => 'Dattajipant',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 166,
+        'year' => '1675',
+        'battle_name' => 'Konkan Kinara',
+        'maratha_leader' => 'Amaldar',
+        'enemy_power' => 'Shiddi',
+        'enemy_leader' => 'Shiddi',
+        'related_fort' => 'Janjira'
+    ],
+    [
+        'sr_no' => 167,
+        'year' => '1675',
+        'battle_name' => 'Kutubshahi Cities',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 168,
+        'year' => '1675',
+        'battle_name' => 'Lasur',
+        'maratha_leader' => 'Hambirrao',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Bahadurkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 169,
+        'year' => '1675',
+        'battle_name' => 'Phonda',
+        'maratha_leader' => 'Annajipant',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Mahmadkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 170,
+        'year' => '1675',
+        'battle_name' => 'Phonda',
+        'maratha_leader' => 'Shivray',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Mahmadkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 171,
+        'year' => '1675',
+        'battle_name' => 'Phonda',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 172,
+        'year' => '1675',
+        'battle_name' => 'Putagiri',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 173,
+        'year' => '1675',
+        'battle_name' => 'Satara',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 174,
+        'year' => '1675',
+        'battle_name' => 'Shiveshwar',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 175,
+        'year' => '1675',
+        'battle_name' => 'Sibaan',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Portuguese',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 176,
+        'year' => '1675',
+        'battle_name' => 'Vengurla',
+        'maratha_leader' => 'Amaldar',
+        'enemy_power' => 'Shiddi',
+        'enemy_leader' => 'Shiddi',
+        'related_fort' => 'Janjira'
+    ],
+    [
+        'sr_no' => 177,
+        'year' => '1676',
+        'battle_name' => 'Athni',
+        'maratha_leader' => 'Bakaji Farjad',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 178,
+        'year' => '1676',
+        'battle_name' => 'Belgaum',
+        'maratha_leader' => 'Shivray',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Annukhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 179,
+        'year' => '1676',
+        'battle_name' => 'Daman – Parner',
+        'maratha_leader' => 'Moropant',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 180,
+        'year' => '1676',
+        'battle_name' => 'Goa',
+        'maratha_leader' => 'Shambhaji',
+        'enemy_power' => 'Portuguese',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 181,
+        'year' => '1676',
+        'battle_name' => 'Janjira',
+        'maratha_leader' => 'Moropant',
+        'enemy_power' => 'Shiddi',
+        'enemy_leader' => 'Siddi Kasam',
+        'related_fort' => 'Janjira'
+    ],
+    [
+        'sr_no' => 182,
+        'year' => '1676',
+        'battle_name' => 'Ramnagar',
+        'maratha_leader' => 'Moropant',
+        'enemy_power' => 'Koli',
+        'enemy_leader' => 'Somshah',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 183,
+        'year' => '1676',
+        'battle_name' => 'Yelgendal',
+        'maratha_leader' => 'Hambirrao',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Husenkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 184,
+        'year' => '1677',
+        'battle_name' => 'Aarani',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Vyonkji',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 185,
+        'year' => '1677',
+        'battle_name' => 'Aarani',
+        'maratha_leader' => 'Hambirrao',
+        'enemy_power' => 'Vyonkji',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 186,
+        'year' => '1677',
+        'battle_name' => 'Alvansoor',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Vyonkji',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 187,
+        'year' => '1677',
+        'battle_name' => 'Arulnayakche Aryan',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Sherkhan Lodi',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 188,
+        'year' => '1677',
+        'battle_name' => 'Bangrool',
+        'maratha_leader' => 'Hambirrao',
+        'enemy_power' => 'Vyonkji',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 189,
+        'year' => '1677',
+        'battle_name' => 'Belvadi',
+        'maratha_leader' => 'Dadaji Raghunath',
+        'enemy_power' => 'Palegar',
+        'enemy_leader' => 'Yashprabhoo',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 190,
+        'year' => '1677',
+        'battle_name' => 'Bhuvnagiripattan',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Sherkhan Lodi',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 191,
+        'year' => '1677',
+        'battle_name' => 'Bhuvnagiripattan Fort',
+        'maratha_leader' => 'Shivray',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Sherkhan Lodi',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 192,
+        'year' => '1677',
+        'battle_name' => 'Chidambar',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Vyonkji',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 193,
+        'year' => '1677',
+        'battle_name' => 'Haskot',
+        'maratha_leader' => 'Hambirrao',
+        'enemy_power' => 'Vyonkji',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 194,
+        'year' => '1677',
+        'battle_name' => 'Jang Devgad',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Vyonkji',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 195,
+        'year' => '1677',
+        'battle_name' => 'Jinji',
+        'maratha_leader' => 'Shivray',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Nasir Muhammad',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 196,
+        'year' => '1677',
+        'battle_name' => 'Kolhar',
+        'maratha_leader' => 'Hambirrao',
+        'enemy_power' => 'Vyonkji',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 197,
+        'year' => '1677',
+        'battle_name' => 'Konkan Kinara',
+        'maratha_leader' => 'Amaldar',
+        'enemy_power' => 'Shiddi',
+        'enemy_leader' => 'Shiddi Kasim',
+        'related_fort' => 'Janjira'
+    ],
+    [
+        'sr_no' => 198,
+        'year' => '1677',
+        'battle_name' => 'Shirlkot',
+        'maratha_leader' => 'Hambirrao',
+        'enemy_power' => 'Vyonkji',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 199,
+        'year' => '1677',
+        'battle_name' => 'Shringpattan',
+        'maratha_leader' => 'Shivray',
+        'enemy_power' => 'Ranja',
+        'enemy_leader' => 'Sardar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 200,
+        'year' => '1677',
+        'battle_name' => 'Tirvadi',
+        'maratha_leader' => 'Shivray',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Sherkhan Lodi',
+        'related_fort' => ''
+    ],
+   [
+        'sr_no' => 201,
+        'year' => '1677',
+        'battle_name' => 'Utloor',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 202,
+        'year' => '1677',
+        'battle_name' => 'Valgandpur',
+        'maratha_leader' => 'Hambirrao',
+        'enemy_power' => 'Vyonkji',
+        'enemy_leader' => 'Sardar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 203,
+        'year' => '1677',
+        'battle_name' => 'Valgandpur',
+        'maratha_leader' => 'Hambirrao',
+        'enemy_power' => 'Vyonkji',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 204,
+        'year' => '1677',
+        'battle_name' => 'Valigandapuras',
+        'maratha_leader' => 'Shivray',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Sherkhan Lodi',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 205,
+        'year' => '1677',
+        'battle_name' => 'Vellore',
+        'maratha_leader' => 'Shivray',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Abdulkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 206,
+        'year' => '1677',
+        'battle_name' => 'Vrundhchalam',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Vyonkji',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 207,
+        'year' => '1678',
+        'battle_name' => 'Bankapur',
+        'maratha_leader' => 'Amaldar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Jamshidkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 208,
+        'year' => '1678',
+        'battle_name' => 'Belvadi',
+        'maratha_leader' => 'Shivray',
+        'enemy_power' => 'Palegar',
+        'enemy_leader' => 'Malbai',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 209,
+        'year' => '1678',
+        'battle_name' => 'Danda Rajpur',
+        'maratha_leader' => 'Bahiropant',
+        'enemy_power' => 'Shiddi',
+        'enemy_leader' => 'Shiddi',
+        'related_fort' => 'Janjira'
+    ],
+    [
+        'sr_no' => 210,
+        'year' => '1678',
+        'battle_name' => 'Shivneri',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Abdul Ajijkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 211,
+        'year' => '1679',
+        'battle_name' => 'Ahivantgad',
+        'maratha_leader' => 'Moropant',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 212,
+        'year' => '1679',
+        'battle_name' => 'Bahadur Binda',
+        'maratha_leader' => 'Moropant',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 213,
+        'year' => '1679',
+        'battle_name' => 'Bhupalgad',
+        'maratha_leader' => 'Firangoji Narsala',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Dilerkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 214,
+        'year' => '1679',
+        'battle_name' => 'Bhupalgad',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Ikhalaskhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 215,
+        'year' => '1679',
+        'battle_name' => 'Doha Balapur',
+        'maratha_leader' => 'Anandrao',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 216,
+        'year' => '1679',
+        'battle_name' => 'Jalna',
+        'maratha_leader' => 'Shivray',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 217,
+        'year' => '1679',
+        'battle_name' => 'Khanderi',
+        'maratha_leader' => 'Maynak Bhandari',
+        'enemy_power' => 'English',
+        'enemy_leader' => '',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 218,
+        'year' => '1679',
+        'battle_name' => 'Nahvaa',
+        'maratha_leader' => 'Moropant',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 219,
+        'year' => '1679',
+        'battle_name' => 'Vijapur',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Adilshahi',
+        'enemy_leader' => 'Masaudkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 220,
+        'year' => '1680',
+        'battle_name' => 'Aurangabad Region',
+        'maratha_leader' => 'Sardar',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Amaldar',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 221,
+        'year' => '1680',
+        'battle_name' => 'Koppal',
+        'maratha_leader' => 'Janardan Hanmante',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Dilerkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 222,
+        'year' => '1680',
+        'battle_name' => 'Koppal',
+        'maratha_leader' => 'Janardan Hanmante',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Dilerkhan',
+        'related_fort' => ''
+    ],
+    [
+        'sr_no' => 223,
+        'year' => '1680',
+        'battle_name' => 'Mulher',
+        'maratha_leader' => 'Moropant',
+        'enemy_power' => 'Moghal',
+        'enemy_leader' => 'Killedar',
+        'related_fort' => ''
+    ],
+];
 
 // Include header
-include '../includes/header.php';
+include './../includes/header.php';
 ?>
 
-<main id="main-content" class="pt-20">
-    <!-- Hero Section -->
-    <section class="relative py-20 bg-gradient-to-r from-red-600 to-yellow-500 text-white overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"sword-pattern\" x=\"0\" y=\"0\" width=\"40\" height=\"40\" patternUnits=\"userSpaceOnUse\"><path d=\"M20,5 L25,15 L35,15 L30,25 L35,35 L25,35 L20,45 L15,35 L5,35 L10,25 L5,15 L15,15 Z\" fill=\"%23ffffff\" opacity=\"0.1\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23sword-pattern)\"/></svg>');"></div>
-        </div>
-        
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center max-w-4xl mx-auto">
-                <div class="flex justify-center mb-6">
-                    <div class="w-16 h-1 bg-yellow-400 rounded-full"></div>
-                </div>
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up">
-                    <span class="font-devanagari">शिवरायांच्या</span> <span class="text-yellow-400">लढाया</span>
-                </h1>
-                <p class="text-xl md:text-2xl mb-4 opacity-90">
-                    Battles of Chhatrapati Shivaji Maharaj
+<style>
+/* Custom styles for Shivaji Maharaj theme */
+            .hero-slider {
+                position: relative;
+                height: 100vh;
+                overflow: hidden;
+            }
+
+            .slide {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                transition: opacity 1s ease-in-out;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+
+            .slide.active {
+                opacity: 1;
+            }
+
+            .slide::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(135deg, rgba(220, 38, 38, 0.8), rgba(255, 153, 51, 0.6));
+                z-index: 1;
+            }
+
+            .slide-content {
+                position: relative;
+                z-index: 2;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                color: white;
+            }
+
+            .royal-card {
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 153, 51, 0.3);
+                transition: all 0.3s ease;
+            }
+
+            .royal-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+                border-color: #ff9933;
+            }
+
+            .section-indicator {
+                width: 60px;
+                height: 4px;
+                background: linear-gradient(90deg, #dc2626, #ff9933);
+                margin: 0 auto 2rem;
+            }
+
+            .maratha-pattern {
+                background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="maratha" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="%23ff9933" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23maratha)"/></svg>');
+            }
+
+            .timeline-item {
+                border-left: 3px solid #ff9933;
+                position: relative;
+            }
+
+            .timeline-item::before {
+                content: '';
+                position: absolute;
+                left: -8px;
+                top: 1rem;
+                width: 13px;
+                height: 13px;
+                border-radius: 50%;
+                background: #dc2626;
+                border: 3px solid #ff9933;
+            }
+
+            .saffron {
+                color: #ff9933;
+            }
+
+            .maratha {
+                color: #dc2626;
+            }
+
+            .bg-saffron {
+                background-color: #ff9933;
+            }
+
+            .bg-maratha {
+                background-color: #dc2626;
+            }
+
+            .text-saffron {
+                color: #ff9933;
+            }
+
+            .text-maratha {
+                color: #dc2626;
+            }
+
+            .hover\:text-saffron:hover {
+                color: #ff9933;
+            }
+
+            .hover\:text-maratha:hover {
+                color: #dc2626;
+            }
+
+            .hover\:bg-saffron:hover {
+                background-color: #ff9933;
+            }
+
+            .hover\:bg-maratha:hover {
+                background-color: #dc2626;
+            }
+
+            .from-maratha {
+                --tw-gradient-from: #dc2626;
+                --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(220, 38, 38, 0));
+            }
+
+            .to-saffron {
+                --tw-gradient-to: #ff9933;
+            }
+
+            .from-saffron {
+                --tw-gradient-from: #ff9933;
+                --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 153, 51, 0));
+            }
+
+            .to-maratha {
+                --tw-gradient-to: #dc2626;
+            }
+
+            @media (max-width: 768px) {
+                .hero-slider {
+                    height: 70vh;
+                }
+            }
+</style>
+<main id="main-content" class="">
+<section class="relative py-20 bg-gradient-to-br from-red-700 via-yellow-600 to-orange-500 text-white overflow-hidden">
+
+    <!-- Floating Decorative Elements -->
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center max-w-5xl mx-auto">
+
+            <!-- Title -->
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up mt-6">
+             Battles of Chhatrapati Shivaji Maharaj
+               </h1>
+
+            <!-- Subtitle -->
+            <p class="text-xl md:text-2xl mb-4 opacity-95">
+                A visionary ruler, brilliant strategist, and an eternal symbol of self-rule
                 </p>
-                <p class="text-lg md:text-xl mb-8 opacity-80 font-devanagari">
-                    गनिमी कावा आणि रणनीतिक युद्धकला - भाग १
-                </p>
-                <div class="flex flex-wrap justify-center gap-4 text-sm opacity-90">
-                    <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">Early Campaigns (1645-1660)</span>
-                    <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">Major Victories</span>
-                    <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">Strategic Encounters</span>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Introduction Section -->
-    <section class="py-16 bg-white dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto text-center mb-16">
-                <div class="w-16 h-1 bg-gradient-to-r from-red-600 to-yellow-500 mx-auto mb-8"></div>
-                <h2 class="text-4xl md:text-5xl font-bold mb-8">
-                    <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
-                        Military Genius
-                    </span>
-                </h2>
-                <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                    Chhatrapati Shivaji Maharaj revolutionized warfare in the Indian subcontinent through his innovative military strategies, guerrilla tactics (गनिमी कावा), and strategic brilliance. His battles were not just military encounters but masterclasses in leadership, courage, and tactical innovation.
-                </p>
-                <p class="text-lg text-gray-600 dark:text-gray-300 font-devanagari leading-relaxed">
-                    शिवरायांनी केवळ युद्ध नव्हे तर युद्धकलेची नवी व्याख्या केली. त्यांच्या रणनीतिक बुद्धिमत्तेमुळे छोट्या सैन्याने मोठ्या शत्रूंचा पराभव केला.
-                </p>
-            </div>
-
-            <!-- Battle Statistics -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-                <div class="text-center p-6 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900 dark:to-green-800 rounded-2xl border border-green-200 dark:border-green-700">
-                    <div class="text-4xl font-bold text-green-600 dark:text-green-400 mb-2">47</div>
-                    <div class="text-gray-700 dark:text-gray-300 font-semibold">Major Battles</div>
-                </div>
-                <div class="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-800 rounded-2xl border border-blue-200 dark:border-blue-700">
-                    <div class="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">38</div>
-                    <div class="text-gray-700 dark:text-gray-300 font-semibold">Victories</div>
-                </div>
-                <div class="text-center p-6 bg-gradient-to-br from-yellow-50 to-yellow-100 dark:from-yellow-900 dark:to-yellow-800 rounded-2xl border border-yellow-200 dark:border-yellow-700">
-                    <div class="text-4xl font-bold text-yellow-600 dark:text-yellow-400 mb-2">350+</div>
-                    <div class="text-gray-700 dark:text-gray-300 font-semibold">Forts Captured</div>
-                </div>
-                <div class="text-center p-6 bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900 dark:to-red-800 rounded-2xl border border-red-200 dark:border-red-700">
-                    <div class="text-4xl font-bold text-red-600 dark:text-red-400 mb-2">35</div>
-                    <div class="text-gray-700 dark:text-gray-300 font-semibold">Years of Warfare</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Early Military Campaigns (1645-1650) -->
-    <section class="py-20 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <div class="w-16 h-1 bg-gradient-to-r from-red-600 to-yellow-500 mx-auto mb-8"></div>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                    <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent font-devanagari">
-                        प्रारंभिक मोहिमा (1645-1650)
-                    </span>
-                </h2>
-                <p class="text-xl text-gray-600 dark:text-gray-300">
-                    Early Military Campaigns that established Shivaji as a formidable leader
-                </p>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-8">
-                <!-- Torna Fort Capture -->
-                <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="flex items-center justify-between mb-6">
-                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white font-devanagari">तोरणा किल्ला जिंकणे</h3>
-                        <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Victory</span>
-                    </div>
-                    
-                    <div class="space-y-4 mb-6">
-                        <div class="flex items-center text-gray-600 dark:text-gray-300">
-                            <i class="fas fa-calendar text-red-500 mr-3 w-5"></i>
-                            <span class="font-semibold">1645 (Age 15)</span>
-                        </div>
-                        <div class="flex items-center text-gray-600 dark:text-gray-300">
-                            <i class="fas fa-map-marker-alt text-red-500 mr-3 w-5"></i>
-                            <span>Torna Fort, Pune District</span>
-                        </div>
-                        <div class="flex items-center text-gray-600 dark:text-gray-300">
-                            <i class="fas fa-users text-red-500 mr-3 w-5"></i>
-                            <span>Against: Adil Shahi Sultanate</span>
-                        </div>
-                    </div>
-                    
-                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                        Shivaji's first major military achievement at the tender age of 15. He captured Torna Fort through a clever strategy, marking the beginning of his legendary military career. This victory demonstrated his early understanding of hill warfare and fort capture techniques.
-                    </p>
-                    
-                    <div class="bg-gradient-to-r from-red-50 to-yellow-50 dark:from-red-900 dark:to-yellow-900 p-4 rounded-lg">
-                        <h4 class="font-semibold text-gray-800 dark:text-white mb-2 font-devanagari">रणनीतिक महत्त्व:</h4>
-                        <p class="text-sm text-gray-600 dark:text-gray-300">
-                            First step towards building the Maratha Empire. Established Shivaji as a capable military leader and inspired local population to join his cause.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Chakan Fort Siege -->
-                <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="flex items-center justify-between mb-6">
-                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white font-devanagari">चाकण किल्ला वेढा</h3>
-                        <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Victory</span>
-                    </div>
-                    
-                    <div class="space-y-4 mb-6">
-                        <div class="flex items-center text-gray-600 dark:text-gray-300">
-                            <i class="fas fa-calendar text-red-500 mr-3 w-5"></i>
-                            <span class="font-semibold">1648</span>
-                        </div>
-                        <div class="flex items-center text-gray-600 dark:text-gray-300">
-                            <i class="fas fa-map-marker-alt text-red-500 mr-3 w-5"></i>
-                            <span>Chakan, Pune District</span>
-                        </div>
-                        <div class="flex items-center text-gray-600 dark:text-gray-300">
-                            <i class="fas fa-users text-red-500 mr-3 w-5"></i>
-                            <span>Against: Mughal Forces</span>
-                        </div>
-                    </div>
-                    
-                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                        Strategic siege warfare demonstration where Shivaji employed psychological warfare and cut supply lines. The fort's capture gave him control over important trade routes and demonstrated his growing military sophistication.
-                    </p>
-                    
-                    <div class="bg-gradient-to-r from-red-50 to-yellow-50 dark:from-red-900 dark:to-yellow-900 p-4 rounded-lg">
-                        <h4 class="font-semibold text-gray-800 dark:text-white mb-2">Strategic Importance:</h4>
-                        <p class="text-sm text-gray-600 dark:text-gray-300">
-                            Control over major trade routes. First major victory against Mughal forces, establishing Maratha presence in the region.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Kondana Fort Capture -->
-                <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="flex items-center justify-between mb-6">
-                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white font-devanagari">कोंडाणा (सिंहगड) जिंकणे</h3>
-                        <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Victory</span>
-                    </div>
-                    
-                    <div class="space-y-4 mb-6">
-                        <div class="flex items-center text-gray-600 dark:text-gray-300">
-                            <i class="fas fa-calendar text-red-500 mr-3 w-5"></i>
-                            <span class="font-semibold">1647</span>
-                        </div>
-                        <div class="flex items-center text-gray-600 dark:text-gray-300">
-                            <i class="fas fa-map-marker-alt text-red-500 mr-3 w-5"></i>
-                            <span>Sinhagad, Pune District</span>
-                        </div>
-                        <div class="flex items-center text-gray-600 dark:text-gray-300">
-                            <i class="fas fa-users text-red-500 mr-3 w-5"></i>
-                            <span>Against: Adil Shahi Forces</span>
-                        </div>
-                    </div>
-                    
-                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                        Famous night assault led by Tanaji Malusare. This daring operation showcased innovative climbing techniques and guerrilla warfare tactics. Though victorious, it cost the life of brave Tanaji, earning the phrase "गड आला पण सिंह गेला".
-                    </p>
-                    
-                    <div class="bg-gradient-to-r from-red-50 to-yellow-50 dark:from-red-900 dark:to-yellow-900 p-4 rounded-lg">
-                        <h4 class="font-semibold text-gray-800 dark:text-white mb-2 font-devanagari">वीरगाथा:</h4>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 font-devanagari">
-                            "गड आला पण सिंह गेला" - तानाजी मालुसरे यांच्या वीरगतीने मिळालेला विजय
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Rajgad Fort Establishment -->
-                <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="flex items-center justify-between mb-6">
-                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white font-devanagari">राजगड स्थापना</h3>
-                        <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Strategic</span>
-                    </div>
-                    
-                    <div class="space-y-4 mb-6">
-                        <div class="flex items-center text-gray-600 dark:text-gray-300">
-                            <i class="fas fa-calendar text-red-500 mr-3 w-5"></i>
-                            <span class="font-semibold">1648</span>
-                        </div>
-                        <div class="flex items-center text-gray-600 dark:text-gray-300">
-                            <i class="fas fa-map-marker-alt text-red-500 mr-3 w-5"></i>
-                            <span>Rajgad, Pune District</span>
-                        </div>
-                        <div class="flex items-center text-gray-600 dark:text-gray-300">
-                            <i class="fas fa-crown text-red-500 mr-3 w-5"></i>
-                            <span>Capital Establishment</span>
-                        </div>
-                    </div>
-                    
-                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                        Transformation of Murumbdev into Rajgad marked the establishment of Maratha capital. This strategic location became the center of administration and military operations for the growing Maratha Empire.
-                    </p>
-                    
-                    <div class="bg-gradient-to-r from-red-50 to-yellow-50 dark:from-red-900 dark:to-yellow-900 p-4 rounded-lg">
-                        <h4 class="font-semibold text-gray-800 dark:text-white mb-2">Administrative Importance:</h4>
-                        <p class="text-sm text-gray-600 dark:text-gray-300">
-                            Became the de facto capital of Maratha Empire. Central location for coordinating military campaigns and administrative activities.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- The Famous Afzal Khan Encounter (1659) -->
-    <section class="py-20 bg-white dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <div class="w-16 h-1 bg-gradient-to-r from-red-600 to-yellow-500 mx-auto mb-8"></div>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                    <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent font-devanagari">
-                        अफझल खानाचा वध (1659)
-                    </span>
-                </h2>
-                <p class="text-xl text-gray-600 dark:text-gray-300">
-                    The Most Famous Encounter in Maratha History at Pratapgad
-                </p>
-            </div>
-
-            <div class="max-w-6xl mx-auto">
-                <!-- Main Battle Description -->
-                <div class="bg-gradient-to-br from-red-50 to-yellow-50 dark:from-red-900 dark:to-yellow-900 rounded-3xl p-8 mb-12 border border-red-200 dark:border-red-700">
-                    <div class="grid lg:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <h3 class="text-3xl font-bold text-gray-800 dark:text-white mb-6 font-devanagari">
-                                प्रतापगडवरील महासामना
-                            </h3>
-                            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                                On November 10, 1659, at Pratapgad Fort, one of the most legendary encounters in Indian history took place. Afzal Khan, the formidable general of Adil Shah, came with a massive army to capture or kill Shivaji. What followed was a masterclass in courage, strategy, and quick thinking.
-                            </p>
-                            <p class="text-gray-700 dark:text-gray-300 leading-relaxed font-devanagari">
-                                अफझल खानाने शिवरायांना भेटीचे निमंत्रण दिले, परंतु त्याचा खरा हेतू शिवरायांचा खून करण्याचा होता. शिवरायांना याची कल्पना होती आणि त्यांनी स्वतःची तयारी केली होती.
-                            </p>
-                        </div>
-                        <div class="relative">
-                            <div class="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-lg">
-                                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                                     alt="Pratapgad Fort" 
-                                     class="w-full h-64 object-cover rounded-xl">
-                                <p class="text-center text-sm text-gray-600 dark:text-gray-300 mt-2">Pratapgad Fort - Site of the Historic Encounter</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Battle Timeline -->
-                <div class="mb-12">
-                    <h3 class="text-3xl font-bold text-center mb-8 font-devanagari">युद्धाचा कालक्रम</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-start space-x-4 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-l-4 border-red-500">
-                            <div class="bg-red-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm">1</div>
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Diplomatic Meeting Proposal</h4>
-                                <p class="text-gray-600 dark:text-gray-300">Afzal Khan sends a proposal for a peaceful meeting to discuss terms, while secretly planning to assassinate Shivaji.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start space-x-4 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-l-4 border-yellow-500">
-                            <div class="bg-yellow-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm">2</div>
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-800 dark:text-white mb-2 font-devanagari">शिवरायांची तयारी</h4>
-                                <p class="text-gray-600 dark:text-gray-300">Shivaji suspects foul play and prepares hidden weapons - Bagh Nakh (tiger claws) and a blade concealed in his clothes.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start space-x-4 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-l-4 border-green-500">
-                            <div class="bg-green-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm">3</div>
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-800 dark:text-white mb-2">The Fatal Embrace</h4>
-                                <p class="text-gray-600 dark:text-gray-300">During the meeting, Afzal Khan attempts to attack Shivaji during an embrace, but Shivaji strikes first with his concealed weapons.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start space-x-4 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-l-4 border-blue-500">
-                            <div class="bg-blue-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm">4</div>
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-800 dark:text-white mb-2 font-devanagari">मराठा विजय</h4>
-                                <p class="text-gray-600 dark:text-gray-300">Following Afzal Khan's death, the Maratha forces attack the demoralized Adil Shahi army, resulting in a complete victory.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Battle Outcome -->
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center border border-gray-200 dark:border-gray-700">
-                        <div class="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-trophy text-green-600 dark:text-green-400 text-2xl"></i>
-                        </div>
-                        <h4 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Complete Victory</h4>
-                        <p class="text-gray-600 dark:text-gray-300 text-sm">Maratha forces routed the massive Adil Shahi army</p>
-                    </div>
-                    
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center border border-gray-200 dark:border-gray-700">
-                        <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-coins text-blue-600 dark:text-blue-400 text-2xl"></i>
-                        </div>
-                        <h4 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Rich Spoils</h4>
-                        <p class="text-gray-600 dark:text-gray-300 text-sm">Captured war elephants, horses, and treasury</p>
-                    </div>
-                    
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center border border-gray-200 dark:border-gray-700">
-                        <div class="w-16 h-16 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-crown text-yellow-600 dark:text-yellow-400 text-2xl"></i>
-                        </div>
-                        <h4 class="text-xl font-bold text-gray-800 dark:text-white mb-2 font-devanagari">प्रतिष्ठा वाढ</h4>
-                        <p class="text-gray-600 dark:text-gray-300 text-sm">Established Shivaji as a formidable leader</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Navigation to Next Part -->
-    <section class="py-16 bg-gradient-to-r from-red-600 to-yellow-500 text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6 font-devanagari">
-                पुढील भाग - मोठ्या युद्धांचा इतिहास
-            </h2>
-            <p class="text-xl mb-8 opacity-90">
-                Continue reading about Shivaji's major campaigns and strategic victories
+            <!-- Tagline -->
+            <p class="text-lg md:text-xl mb-8 opacity-85">
+                Warfare and Strategic Battle Tactics
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="/shivaji/battles-part-2" class="inline-flex items-center px-8 py-4 bg-white text-red-600 font-semibold rounded-full hover:bg-gray-100 transition-colors">
-                    <i class="fas fa-arrow-right mr-2"></i>
-                    भाग २ - Major Campaigns (1660-1670)
-                </a>
-                <a href="/shivaji/battles-part-3" class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-red-600 transition-colors">
-                    <i class="fas fa-fast-forward mr-2"></i>
-                    भाग ३ - Later Battles (1670-1680)
-                </a>
-                <a href="/shivaji/battles-part-4" class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-red-600 transition-colors">
-                    <i class="fas fa-book mr-2"></i>
-                    भाग ४ - Legacy & Analysis
-                </a>
-            </div>
-            
-            <!-- Quick Links to Other Battle Pages -->
-            <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
-                <a href="/shivaji/navy" class="bg-white bg-opacity-20 hover:bg-opacity-30 px-4 py-3 rounded-lg transition-colors">
-                    <i class="fas fa-ship mr-2"></i>
-                    Naval Battles
-                </a>
-                <a href="/shivaji/army" class="bg-white bg-opacity-20 hover:bg-opacity-30 px-4 py-3 rounded-lg transition-colors">
-                    <i class="fas fa-shield-alt mr-2"></i>
-                    Army Organization
-                </a>
-                <a href="/shivaji/forts" class="bg-white bg-opacity-20 hover:bg-opacity-30 px-4 py-3 rounded-lg transition-colors">
-                    <i class="fas fa-fort-awesome mr-2"></i>
-                    Fort Battles
-                </a>
-                <a href="/shivaji/strategies" class="bg-white bg-opacity-20 hover:bg-opacity-30 px-4 py-3 rounded-lg transition-colors">
-                    <i class="fas fa-chess mr-2"></i>
-                    War Strategies
-                </a>
-            </div>
-        </div>
-    </section>
 
-    <!-- Related Articles -->
-    <section class="py-16 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">
-                    <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
-                        Related Topics
-                    </span>
-                </h2>
-                <p class="text-gray-600 dark:text-gray-300">Explore more about Chhatrapati Shivaji Maharaj</p>
+            <!-- Key Highlights -->
+            <div class="flex flex-wrap justify-center gap-4 text-sm md:text-base opacity-95">
+
+                <span class="bg-white bg-opacity-20 px-5 py-2 rounded-full backdrop-blur">
+                    <i class="fas fa-fort-awesome mr-2"></i>
+                    Early Campaigns (1645-1660)
+                </span>
+
+                <span class="bg-white bg-opacity-20 px-5 py-2 rounded-full backdrop-blur">
+                    <i class="fas fa-flag mr-2"></i>
+                    Swarajya
+                </span>
+
+                <span class="bg-white bg-opacity-20 px-5 py-2 rounded-full backdrop-blur">
+                    <i class="fas fa-calendar-alt mr-2"></i>
+                    Strategic Encounters
+                </span>
+
+                <span class="bg-white bg-opacity-20 px-5 py-2 rounded-full backdrop-blur">
+                    <i class="fas fa-ship mr-2"></i>
+                Major Victories
+                </span>
+
             </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <a href="/shivaji/army" class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-gray-700">
-                    <div class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-shield-alt text-green-600 dark:text-green-400 text-xl"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2 font-devanagari">मराठा सेना</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Military organization and training methods</p>
-                </a>
-                
-                <a href="/shivaji/navy" class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-gray-700">
-                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-ship text-blue-600 dark:text-blue-400 text-xl"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2 font-devanagari">मराठा नौदल</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Naval warfare and coastal defense strategies</p>
-                </a>
-                
-                <a href="/shivaji/intelligence-network" class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-gray-700">
-                    <div class="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-eye text-gray-600 dark:text-gray-400 text-xl"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2 font-devanagari">हरखारे विभाग</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Intelligence and spy network systems</p>
-                </a>
-                
-                <a href="/shivaji/economic-policy" class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-gray-700">
-                    <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-coins text-yellow-600 dark:text-yellow-400 text-xl"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2 font-devanagari">आर्थिक धोरण</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Economic policies and trade strategies</p>
-                </a>
-            </div>
+
         </div>
-    </section>
+    </div>
+</section>
+
+
+        
+
+<div class="container mx-auto px-4 py-10">
+    <div class="text-center mb-16">
+            <div class="section-indicator"></div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
+                    Battles Of Chhatrapati Shivaji Maharaj
+                </span>
+            </h2>
+            <p class="text-xl text-gray-600 dark:text-gray-300">
+            List of Battles
+            </p>
+    </div>
+
+    <div class="overflow-x-auto royal-card rounded-xl">
+        <table class="min-w-full border border-gray-200 dark:border-gray-700">
+            <thead class="bg-gradient-to-r from-red-700 to-yellow-600 text-white">
+                <tr>
+                    <th class="px-4 py-3 text-left">Sr No</th>
+                    <th class="px-4 py-3 text-left">Year</th>
+                    <th class="px-4 py-3 text-left">Battle Name</th>
+                    <th class="px-4 py-3 text-left">Maratha Leader</th>
+                    <th class="px-4 py-3 text-left">Enemy</th>
+                    <th class="px-4 py-3 text-left">Enemy Leader</th>
+                    <th class="px-4 py-3 text-left">Related Fort</th>
+                </tr>
+            </thead>
+
+            <tbody id="battlesTableBody" class="bg-white dark:bg-gray-900">
+                <!-- JS will inject rows here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="flex justify-between items-center mt-6">
+        <button id="prevBtn"
+            class="px-6 py-2 bg-gray-300 dark:bg-gray-700 rounded disabled:opacity-50">
+            Previous
+        </button>
+
+        <span id="pageInfo" class="text-sm text-gray-600 dark:text-gray-300"></span>
+
+        <button id="nextBtn"
+            class="px-6 py-2 bg-red-600 text-white rounded hover:bg-yellow-600">
+            Next
+        </button>
+    </div>
+
+</div>
+
+<!-- Information Cards Section -->
+<section class="py-20 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <div class="section-indicator"></div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
+                    Information about Chhatrapati Shivaji Maharaj
+                </span>
+            </h2>
+            <p class="text-xl text-gray-600 dark:text-gray-300">
+                Detailed insights into the life, administration, warfare, and legacy of the great Maratha ruler
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+            <!-- Battles -->
+            <div class="royal-card rounded-2xl p-6 text-center group">
+                <div class="w-16 h-16 bg-gradient-to-br from-red-600 to-yellow-500 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    <i class="fas fa-sword text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                    Battles of Shivaji Maharaj
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                    Detailed accounts of the major battles fought by Shivaji Maharaj, including strategies and outcomes.
+                </p>
+                <a href="https://trekshitiz.com/Shivaji/Battles-of-Shivaji-Maharaj1.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Books -->
+            <div class="royal-card rounded-2xl p-6 text-center group">
+                <div class="w-16 h-16 bg-gradient-to-br from-teal-600 to-teal-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    <i class="fas fa-book text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                    Books & Literature
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                    Historical books, novels, and literary works written on the life and achievements of Shivaji Maharaj.
+                </p>
+                <a href="https://trekshitiz.com/Shivaji/Historical-Books-Novels-on-Shivaji-Maharaj.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Economic Policy -->
+            <div class="royal-card rounded-2xl p-6 text-center group">
+                <div class="w-16 h-16 bg-gradient-to-br from-yellow-600 to-yellow-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    <i class="fas fa-coins text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                    Economic Policy
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                    Economic reforms, trade systems, taxation methods, and financial administration of the Maratha Empire.
+                </p>
+                <a href="https://trekshitiz.com/Shivaji/ECONOMIC-POLICY-OF-SHIVAJI-MAHARAJ.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Photos -->
+            <div class="royal-card rounded-2xl p-6 text-center group">
+                <div class="w-16 h-16 bg-gradient-to-br from-orange-600 to-orange-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    <i class="fas fa-camera text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                    Photographs & Paintings
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                    Historic photographs, portraits, paintings, and artistic depictions of Shivaji Maharaj.
+                </p>
+                <a href="https://trekshitiz.com/Shivaji/Shivaji-Maharaj-Photos.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Navy -->
+            <div class="royal-card rounded-2xl p-6 text-center group">
+                <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    <i class="fas fa-ship text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                    Maratha Navy
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                    The powerful naval force established by Shivaji Maharaj to protect the western coastline.
+                </p>
+                <a href="https://trekshitiz.com/Shivaji/Aarmar-Navey-of-Shivaji-Maharaj.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Spy Network -->
+            <div class="royal-card rounded-2xl p-6 text-center group">
+                <div class="w-16 h-16 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    <i class="fas fa-eye text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                    Intelligence & Spy Network
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                    The efficient intelligence system that played a vital role in military and administrative success.
+                </p>
+                <a href="https://trekshitiz.com/Shivaji/Herkhate-Spy-Department-of-Shivaji.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Army -->
+            <div class="royal-card rounded-2xl p-6 text-center group">
+                <div class="w-16 h-16 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    <i class="fas fa-shield-alt text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                    Maratha Army
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                    Military organization, discipline, and the legendary structure of the Maratha army.
+                </p>
+                <a href="https://trekshitiz.com/Shivaji/Lashkar-Army-of-Shivaji.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Justice -->
+            <div class="royal-card rounded-2xl p-6 text-center group">
+                <div class="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    <i class="fas fa-balance-scale text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                    Justice System
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                    Judicial system, legal reforms, and policies implemented during Shivaji Maharaj’s rule.
+                </p>
+                <a href="https://trekshitiz.com/Shivaji/NyayNiti-Policy-of-Justice-Shivaji.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Factories -->
+            <div class="royal-card rounded-2xl p-6 text-center group">
+                <div class="w-16 h-16 bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    <i class="fas fa-industry text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                    Industries & Workshops
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                    Industrial activities, production centers, and trade establishments during the Maratha period.
+                </p>
+                <a href="https://trekshitiz.com/Shivaji/Karkhane-Factories-of-Shivaji.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Palaces -->
+            <div class="royal-card rounded-2xl p-6 text-center group">
+                <div class="w-16 h-16 bg-gradient-to-br from-pink-600 to-pink-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    <i class="fas fa-landmark text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                    Palaces & Residences
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                    Royal palaces, architectural marvels, and residential complexes of the Maratha Empire.
+                </p>
+                <a href="https://trekshitiz.com/Shivaji/Mahal-Palaces-of-Shivaji.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Unknown Facts -->
+            <div class="royal-card rounded-2xl p-6 text-center group">
+                <div class="w-16 h-16 bg-gradient-to-br from-violet-600 to-violet-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    <i class="fas fa-question-circle text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                    Lesser-known Facts
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                    Rare, lesser-known, and interesting facts about Chhatrapati Shivaji Maharaj.
+                </p>
+                <a href="https://trekshitiz.com/Shivaji/Unknown-Information-of-Shivaji.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Songs -->
+            <div class="royal-card rounded-2xl p-6 text-center group">
+                <div class="w-16 h-16 bg-gradient-to-br from-red-600 to-red-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    <i class="fas fa-music text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                    Songs & Poetry
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                    Songs, poems, and musical tributes dedicated to the bravery and legacy of Shivaji Maharaj.
+                </p>
+                <a href="https://trekshitiz.com/Shivaji/Songs-of-Shivaji-Maharaj.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Shivbawani -->
+            <div class="royal-card rounded-2xl p-6 text-center group">
+                <div class="w-16 h-16 bg-gradient-to-br from-amber-600 to-amber-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    <i class="fas fa-scroll text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                    Shivbawani – by Kavi Bhushan
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                    Classical poetry by Kavi Bhushan glorifying the valor and achievements of Shivaji Maharaj.
+                </p>
+                <a href="https://trekshitiz.com/Shivaji/Shivbawni-Kavi-Bhushan.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Shivbawani Part 2 -->
+            <div class="royal-card rounded-2xl p-6 text-center group">
+                <div class="w-16 h-16 bg-gradient-to-br from-emerald-600 to-emerald-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    <i class="fas fa-feather-alt text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                    Shivbawani – Part II
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                    The second part of the famous Shivbawani poetry composed by the renowned poet Kavi Bhushan.
+                </p>
+                <a href="https://trekshitiz.com/Shivaji/Shiv-bawani2-Kavi-Bhushan.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Legacy Section -->
+<section id="legacy" class="py-20 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <div class="section-indicator"></div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
+                    Eternal Legacy
+                </span>
+            </h2>
+            <p class="text-xl text-gray-600 dark:text-gray-300">
+                Timeless inspiration — ideals of Shivaji Maharaj that continue to live on
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+
+            <!-- Swarajya -->
+            <div class="royal-card rounded-2xl p-8 text-center">
+                <div class="w-20 h-20 bg-gradient-to-br from-red-600 to-yellow-500 rounded-full flex items-center justify-center mb-6 mx-auto">
+                    <i class="fas fa-flag text-3xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                    Concept of Swarajya
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    The revolutionary idea of Swarajya (self-rule) introduced by Shivaji Maharaj later became the foundation of India’s freedom movement.
+                </p>
+            </div>
+
+            <!-- Religious Tolerance -->
+            <div class="royal-card rounded-2xl p-8 text-center">
+                <div class="w-20 h-20 bg-gradient-to-br from-yellow-500 to-red-600 rounded-full flex items-center justify-center mb-6 mx-auto">
+                    <i class="fas fa-heart text-3xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                    Religious Tolerance
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Principles of religious harmony and secular governance that ensured unity and respect among diverse communities within the empire.
+                </p>
+            </div>
+
+            <!-- Welfare of People -->
+            <div class="royal-card rounded-2xl p-8 text-center">
+                <div class="w-20 h-20 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center mb-6 mx-auto">
+                    <i class="fas fa-users text-3xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                    Welfare of the People
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Governance centered on public welfare — a ruler’s foremost duty — a philosophy that continues to inspire modern democratic values.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
 </main>
 
-<?php include '../includes/footer.php'; ?>
+<?php include './../includes/footer.php'; ?>
 
+<!-- JavaScript -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Animate battle cards on scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+    // Hero Slider functionality
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.slider-dot');
+    let currentSlide = 0;
     
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }, index * 200);
-                observer.unobserve(entry.target);
-            }
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
         });
-    }, observerOptions);
-    
-    // Observe all battle cards
-    document.querySelectorAll('.bg-white.dark\\:bg-gray-900').forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(card);
-    });
-    
-    // Animate statistics counters
-    function animateCounter(element, target) {
-        let current = 0;
-        const increment = target / 50;
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                current = target;
-                clearInterval(timer);
-            }
-            element.textContent = Math.floor(current) + (target > 100 ? '+' : '');
-        }, 50);
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('bg-white', i === index);
+            dot.classList.toggle('bg-white/50', i !== index);
+        });
     }
     
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const numberElement = entry.target.querySelector('.text-4xl');
-                const target = parseInt(numberElement.textContent);
-                animateCounter(numberElement, target);
-                statsObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
     
-    document.querySelectorAll('.grid.grid-cols-2.md\\:grid-cols-4 > div').forEach(stat => {
-        statsObserver.observe(stat);
+    // Auto slide every 5 seconds
+    const slideInterval = setInterval(nextSlide, 5000);
+    
+    // Pause auto-slide on hover
+    const heroSlider = document.querySelector('.hero-slider');
+    if (heroSlider) {
+        heroSlider.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        heroSlider.addEventListener('mouseleave', () => {
+            setInterval(nextSlide, 5000);
+        });
+    }
+    
+    // Dot navigation
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            showSlide(currentSlide);
+        });
     });
+    
+    // Initialize first slide
+    showSlide(0);
     
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -512,23 +2669,68 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Add hover effects for timeline items
-    document.querySelectorAll('.border-l-4').forEach(item => {
-        item.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateX(10px)';
-            this.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1)';
+    // Animate cards on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
         });
+    }, observerOptions);
+    
+    // Observe all cards
+    document.querySelectorAll('.royal-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+    });
+    
+    // Add parallax effect to hero background
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const parallax = scrolled * 0.5;
         
-        item.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateX(0)';
-            this.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)';
+        slides.forEach(slide => {
+            slide.style.transform = `translateY(${parallax}px)`;
         });
     });
     
-    console.log('Shivaji Battles Part 1 page loaded successfully');
+    // Add typing effect to hero title
+    function typeWriter(element, text, speed = 100) {
+        let i = 0;
+        element.innerHTML = '';
+        
+        function type() {
+            if (i < text.length) {
+                element.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            }
+        }
+        type();
+    }
+    
+    // Initialize typing effect for main title after page load
+    setTimeout(() => {
+        const mainTitle = document.querySelector('.slide.active h1');
+        if (mainTitle) {
+            const originalText = mainTitle.textContent;
+            typeWriter(mainTitle, originalText, 80);
+        }
+    }, 1000);
+    
+    console.log('Shivaji Maharaj page loaded successfully');
 });
 
-// Add CSS for gradient text support
+// Add CSS for better animations
 const style = document.createElement('style');
 style.textContent = `
     .bg-clip-text {
@@ -551,9 +2753,108 @@ style.textContent = `
         }
     }
     
-    .animate-fade-in-up {
+    .animate-fade-in {
         animation: fadeInUp 1s ease-out;
+    }
+    
+    .royal-card {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .royal-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: rotate(45deg);
+        transition: all 0.6s;
+        opacity: 0;
+    }
+    
+    .royal-card:hover::before {
+        animation: shimmer 1.5s ease-in-out;
+    }
+    
+    @keyframes shimmer {
+        0% {
+            transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateX(100%) translateY(100%) rotate(45deg);
+            opacity: 0;
+        }
     }
 `;
 document.head.appendChild(style);
 </script>
+<script>
+    const battlesData = <?php echo json_encode($battles); ?>;
+</script>
+<script>
+    const rowsPerPage = 15;
+    let currentPage = 1;
+
+    function renderTable() {
+        const tbody = document.getElementById('battlesTableBody');
+        tbody.innerHTML = '';
+
+        const start = (currentPage - 1) * rowsPerPage;
+        const end = start + rowsPerPage;
+        const pageData = battlesData.slice(start, end);
+
+        pageData.forEach((battle, index) => {
+            const i = start + index + 1;
+            const row = `
+                <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800">
+                    <td class="px-4 py-2">${i}</td>
+                    <td class="px-4 py-2">${battle.year}</td>
+                    <td class="px-4 py-2 font-semibold">${battle.battle_name}</td>
+                    <td class="px-4 py-2">${battle.maratha_leader}</td>
+                    <td class="px-4 py-2">${battle.enemy_power}</td>
+                    <td class="px-4 py-2">${battle.enemy_leader}</td>
+                    <td class="px-4 py-2">${battle.related_fort || '-'}</td>
+                </tr>
+            `;
+            tbody.insertAdjacentHTML('beforeend', row);
+        });
+
+        updateControls();
+    }
+
+    function updateControls() {
+        const totalPages = Math.ceil(battlesData.length / rowsPerPage);
+
+        document.getElementById('pageInfo').innerText =
+            `Page ${currentPage} of ${totalPages}`;
+
+        document.getElementById('prevBtn').disabled = currentPage === 1;
+        document.getElementById('nextBtn').disabled = currentPage === totalPages;
+    }
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            renderTable();
+        }
+    });
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        const totalPages = Math.ceil(battlesData.length / rowsPerPage);
+        if (currentPage < totalPages) {
+            currentPage++;
+            renderTable();
+        }
+    });
+
+    // Initial Load
+    renderTable();
+</script>
+

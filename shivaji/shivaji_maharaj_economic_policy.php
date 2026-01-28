@@ -1,164 +1,165 @@
 <?php
 // Set page specific variables
-$page_title = 'Chhatrapati Shivaji Maharaj | Founder of Swarajya | TrekshitiZ';
-$meta_description = 'Complete historical information about Chhatrapati Shivaji Maharaj – founder of Swarajya, great Maratha warrior king, administrator, and visionary leader.';
-$meta_keywords = 'Shivaji Maharaj, Maratha Empire, Maharashtra history, forts, battles, warrior king, swarajya';
+$page_title = 'Economic Policy of Shivaji Maharaj | Maratha Economic System | Trekshitz';
+$meta_description = 'Detailed information on the economic policies, revenue system, trade relations, and financial administration of Chhatrapati Shivaji Maharaj and the Maratha Empire.';
+$meta_keywords = 'Shivaji Maharaj economic policy, Maratha revenue system, Chauth, Sardeshmukhi, Maratha trade policy, Shivaji economy';
+
 
 // Include header
-include './includes/header.php';
+include './../includes/header.php';
 ?>
 
 <style>
 /* Custom styles for Shivaji Maharaj theme */
-.hero-slider {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-}
+            .hero-slider {
+                position: relative;
+                height: 100vh;
+                overflow: hidden;
+            }
 
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
+            .slide {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                transition: opacity 1s ease-in-out;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
 
-.slide.active {
-    opacity: 1;
-}
+            .slide.active {
+                opacity: 1;
+            }
 
-.slide::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(220, 38, 38, 0.8), rgba(255, 153, 51, 0.6));
-    z-index: 1;
-}
+            .slide::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(135deg, rgba(220, 38, 38, 0.8), rgba(255, 153, 51, 0.6));
+                z-index: 1;
+            }
 
-.slide-content {
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-}
+            .slide-content {
+                position: relative;
+                z-index: 2;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                color: white;
+            }
 
-.royal-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 153, 51, 0.3);
-    transition: all 0.3s ease;
-}
+            .royal-card {
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 153, 51, 0.3);
+                transition: all 0.3s ease;
+            }
 
-.royal-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
-    border-color: #ff9933;
-}
+            .royal-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+                border-color: #ff9933;
+            }
 
-.section-indicator {
-    width: 60px;
-    height: 4px;
-    background: linear-gradient(90deg, #dc2626, #ff9933);
-    margin: 0 auto 2rem;
-}
+            .section-indicator {
+                width: 60px;
+                height: 4px;
+                background: linear-gradient(90deg, #dc2626, #ff9933);
+                margin: 0 auto 2rem;
+            }
 
-.maratha-pattern {
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="maratha" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="%23ff9933" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23maratha)"/></svg>');
-}
+            .maratha-pattern {
+                background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="maratha" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="%23ff9933" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23maratha)"/></svg>');
+            }
 
-.timeline-item {
-    border-left: 3px solid #ff9933;
-    position: relative;
-}
+            .timeline-item {
+                border-left: 3px solid #ff9933;
+                position: relative;
+            }
 
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -8px;
-    top: 1rem;
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-    background: #dc2626;
-    border: 3px solid #ff9933;
-}
+            .timeline-item::before {
+                content: '';
+                position: absolute;
+                left: -8px;
+                top: 1rem;
+                width: 13px;
+                height: 13px;
+                border-radius: 50%;
+                background: #dc2626;
+                border: 3px solid #ff9933;
+            }
 
-.saffron {
-    color: #ff9933;
-}
+            .saffron {
+                color: #ff9933;
+            }
 
-.maratha {
-    color: #dc2626;
-}
+            .maratha {
+                color: #dc2626;
+            }
 
-.bg-saffron {
-    background-color: #ff9933;
-}
+            .bg-saffron {
+                background-color: #ff9933;
+            }
 
-.bg-maratha {
-    background-color: #dc2626;
-}
+            .bg-maratha {
+                background-color: #dc2626;
+            }
 
-.text-saffron {
-    color: #ff9933;
-}
+            .text-saffron {
+                color: #ff9933;
+            }
 
-.text-maratha {
-    color: #dc2626;
-}
+            .text-maratha {
+                color: #dc2626;
+            }
 
-.hover\:text-saffron:hover {
-    color: #ff9933;
-}
+            .hover\:text-saffron:hover {
+                color: #ff9933;
+            }
 
-.hover\:text-maratha:hover {
-    color: #dc2626;
-}
+            .hover\:text-maratha:hover {
+                color: #dc2626;
+            }
 
-.hover\:bg-saffron:hover {
-    background-color: #ff9933;
-}
+            .hover\:bg-saffron:hover {
+                background-color: #ff9933;
+            }
 
-.hover\:bg-maratha:hover {
-    background-color: #dc2626;
-}
+            .hover\:bg-maratha:hover {
+                background-color: #dc2626;
+            }
 
-.from-maratha {
-    --tw-gradient-from: #dc2626;
-    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(220, 38, 38, 0));
-}
+            .from-maratha {
+                --tw-gradient-from: #dc2626;
+                --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(220, 38, 38, 0));
+            }
 
-.to-saffron {
-    --tw-gradient-to: #ff9933;
-}
+            .to-saffron {
+                --tw-gradient-to: #ff9933;
+            }
 
-.from-saffron {
-    --tw-gradient-from: #ff9933;
-    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 153, 51, 0));
-}
+            .from-saffron {
+                --tw-gradient-from: #ff9933;
+                --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 153, 51, 0));
+            }
 
-.to-maratha {
-    --tw-gradient-to: #dc2626;
-}
+            .to-maratha {
+                --tw-gradient-to: #dc2626;
+            }
 
-@media (max-width: 768px) {
-    .hero-slider {
-        height: 70vh;
-    }
-}
+            @media (max-width: 768px) {
+                .hero-slider {
+                    height: 70vh;
+                }
+            }
 </style>
 <main id="main-content" class="">
 <section class="relative py-20 bg-gradient-to-br from-red-700 via-yellow-600 to-orange-500 text-white overflow-hidden">
@@ -171,151 +172,170 @@ include './includes/header.php';
     </div>
 
     <div class="container mx-auto px-4 relative z-10">
-        <div class="text-center max-w-5xl mx-auto">
+    <div class="text-center max-w-5xl mx-auto">
 
-            <!-- Title -->
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up mt-6">
-                Chhatrapati Shivaji Maharaj
-            </h1>
+        <!-- Title -->
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up mt-6">
+            Economic Policy of Chhatrapati Shivaji Maharaj
+        </h1>
 
-            <!-- Subtitle -->
-            <p class="text-xl md:text-2xl mb-4 opacity-95">
-                Founder of Swarajya • The Great Maratha Warrior King
-            </p>
+        <!-- Subtitle -->
+        <p class="text-xl md:text-2xl mb-4 opacity-95">
+            Financial Administration & Revenue System of the Maratha Empire
+        </p>
 
-            <!-- Tagline -->
-            <p class="text-lg md:text-xl mb-8 opacity-85">
-                A visionary ruler, brilliant strategist, and an eternal symbol of self-rule
-            </p>
+        <!-- Tagline -->
+        <p class="text-lg md:text-xl mb-8 opacity-85">
+            Trade, Taxation, Land Revenue & State Economy
+        </p>
 
-            <!-- Key Highlights -->
-            <div class="flex flex-wrap justify-center gap-4 text-sm md:text-base opacity-95">
+        <!-- Key Highlights -->
+        <div class="flex flex-wrap justify-center gap-4 text-sm md:text-base opacity-95">
 
-                <span class="bg-white bg-opacity-20 px-5 py-2 rounded-full backdrop-blur">
-                    <i class="fas fa-fort-awesome mr-2"></i>
-                    350+ Forts
-                </span>
+            <span class="bg-white bg-opacity-20 px-5 py-2 rounded-full backdrop-blur">
+                <i class="fas fa-coins mr-2"></i>
+                Land Revenue System
+            </span>
 
-                <span class="bg-white bg-opacity-20 px-5 py-2 rounded-full backdrop-blur">
-                    <i class="fas fa-flag mr-2"></i>
-                    Swarajya
-                </span>
+            <span class="bg-white bg-opacity-20 px-5 py-2 rounded-full backdrop-blur">
+                <i class="fas fa-ship mr-2"></i>
+                Trade & Customs Duties
+            </span>
 
-                <span class="bg-white bg-opacity-20 px-5 py-2 rounded-full backdrop-blur">
-                    <i class="fas fa-calendar-alt mr-2"></i>
-                    1630 – 1680
-                </span>
-
-                <span class="bg-white bg-opacity-20 px-5 py-2 rounded-full backdrop-blur">
-                    <i class="fas fa-ship mr-2"></i>
-                    Father of the Indian Navy
-                </span>
-
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<!-- PREFACE IMAGE SECTION -->
-<section class="py-16 bg-cream-medium dark:bg-gray-800">
-    <div class="container mx-auto px-4">
-
-        <div class="max-w-5xl mx-auto text-center">
-
-            <!-- Image Card -->
-            <div class="royal-card rounded-2xl overflow-hidden border border-mountain shadow-lg">
-
-                <img 
-    src="./shivaji/photos/maharaj_prastavna.jpg"
-    alt="Chhatrapati Shivaji Maharaj - Preface"
-    class="w-full  max-w-[700px] mx-auto h-auto max-h-[680px] object-contain"
-/>
-
-
-                <!-- Optional Caption -->
-                <div class="bg-cream-light dark:bg-gray-900 p-6">
-                    <p class="text-lg text-gray-800 dark:text-gray-200">
-                        A visionary king who dreamed of Swarajya — a man of an era
-                    </p>
-
-                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                        Chhatrapati Shivaji Maharaj — a visionary who reshaped Indian history
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-</section>
+            <span class="bg-white bg-opacity-20 px-5 py-2 rounded-full backdrop-blur">
+                <i class="fas fa-balance-scale mr-2"></i>
+                Taxation & Administration
+            </span>
 
         
-        <!-- ABOUT SHIVAJI MAHARAJ -->
-<section id="about" class="py-20 bg-cream-light dark:bg-gray-900">
-    <div class="container mx-auto max-w-5xl px-4">
 
-        <!-- Section Header -->
-        <div class="text-center mb-12">
-            <div class="section-indicator"></div>
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
-                    About Shivaji Maharaj
-                </span>
-            </h2>
-            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                The visionary founder of Swarajya and one of the greatest leaders in Indian history
-            </p>
-        </div>
-
-        <!-- Content Card -->
-        <div class="royal-card rounded-2xl p-8 md:p-10 space-y-6">
-
-            <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                Born in 1630 at <strong>Shivneri Fort</strong>, Chhatrapati Shivaji Maharaj emerged as a
-                legendary ruler who reshaped the course of Indian history. He founded the
-                <strong>Maratha Empire</strong> and established the concept of
-                <strong>Swarajya</strong> (self-rule), grounded in justice, equality, and the welfare
-                of the people.
-            </p>
-
-            <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                A master military strategist, Shivaji Maharaj pioneered
-                <strong>guerrilla warfare (Ganimi Kava)</strong>, built a formidable
-                <strong>navy</strong>, and created a disciplined administrative system.
-                His governance protected the land, culture, and dignity of the people while
-                upholding values of tolerance, courage, and righteous rule.
-            </p>
-
-            <!-- Highlights -->
-            <div class="flex flex-wrap gap-4 pt-6">
-
-                <span class="inline-flex items-center px-4 py-2 rounded-full bg-red-600 text-white text-sm font-semibold">
-                    <i class="fas fa-flag mr-2"></i>
-                    Founder of Swarajya
-                </span>
-
-                <span class="inline-flex items-center px-4 py-2 rounded-full bg-yellow-500 text-white text-sm font-semibold">
-                    <i class="fas fa-shield-alt mr-2"></i>
-                    Military Strategist
-                </span>
-
-                <span class="inline-flex items-center px-4 py-2 rounded-full bg-green-600 text-white text-sm font-semibold">
-                    <i class="fas fa-ship mr-2"></i>
-                    Naval Visionary
-                </span>
-
-                <span class="inline-flex items-center px-4 py-2 rounded-full bg-gray-800 text-white text-sm font-semibold">
-                    <i class="fas fa-users mr-2"></i>
-                    People-Centric Ruler
-                </span>
-
-            </div>
         </div>
 
     </div>
+</div>
+
 </section>
+
+
+        
+<section class="max-w-6xl mx-auto px-4 py-8">
+  <div class="bg-[#ECC783] border border-yellow-700 rounded-lg p-6">
+
+    <h2 class="text-3xl font-bold text-center mb-6">
+      Economic Policy of Chhatrapati Shivaji Maharaj
+    </h2>
+
+    <p class="mb-4 text-justify">
+      In a modern state, there are numerous sources of income such as taxation, fees,
+      fines, public loans, grants, and customs duties. However, this was not the case in
+      the seventeenth century. During the reign of Chhatrapati Shivaji Maharaj, states
+      had to depend on limited internal resources to meet their administrative and
+      military expenses.
+    </p>
+
+    <p class="mb-6 text-justify">
+      Shivaji Maharaj founded a newly born and relatively small state with scarce
+      resources. Despite this limitation, he displayed exceptional administrative skill
+      and financial prudence. His primary objective was to strengthen Swarajya without
+      imposing excessive financial burdens on his subjects.
+    </p>
+
+    <!-- Booty & Tribute -->
+    <h3 class="text-2xl font-semibold mb-3 border-b border-yellow-700">
+      Booty and Tribute
+    </h3>
+
+    <p class="mb-4 text-justify">
+      The most significant source of revenue for the Maratha state was booty and tribute
+      obtained through military campaigns. Shivaji Maharaj frequently invaded enemy
+      territories—particularly those of the Mughals and the Adilshahi Sultanate of
+      Bijapur—to secure funds for administration and defense.
+    </p>
+
+    <p class="mb-4 text-justify">
+      The victory over Afzalkhan yielded immense wealth, including elephants, Arabian
+      horses, camels, precious jewelry, gold, cash, weapons, and military equipment.
+      Such resources were crucial for the survival and expansion of Swarajya.
+    </p>
+
+    <p class="mb-6 text-justify">
+      The plunder of Surat stands as a major example. Shivaji Maharaj targeted wealthy
+      merchants rather than common citizens. Women, children, the poor, and religious
+      institutions were strictly protected. The collected booty was used solely for
+      state-building purposes.
+    </p>
+
+    <!-- Land Revenue -->
+    <h3 class="text-2xl font-semibold mb-3 border-b border-yellow-700">
+      Land Revenue System
+    </h3>
+
+    <p class="mb-4 text-justify">
+      Land revenue was the most stable source of income after booty and tribute. It was
+      known as <strong>Rajbhag</strong>, the king’s share of agricultural produce. The
+      state’s share was fixed at approximately two-fifths or one-third of the produce
+      value.
+    </p>
+
+    <p class="mb-6 text-justify">
+      A systematic land survey was conducted under the supervision of Annaji Datto, the
+      Peshwa. Revenue assessment was based on average agricultural output over three
+      years, ensuring fairness to cultivators. This prevented exploitation, especially
+      during poor harvests.
+    </p>
+
+    <!-- Taxation -->
+    <h3 class="text-2xl font-semibold mb-3 border-b border-yellow-700">
+      Taxation Policy
+    </h3>
+
+    <p class="mb-4 text-justify">
+      Shivaji Maharaj imposed taxes cautiously and only when necessary. The burden on
+      farmers and common people was deliberately kept minimal. Revenue was collected
+      efficiently through village officials such as Patils and Deshmukhs.
+    </p>
+
+    <ul class="list-disc pl-6 mb-6">
+      <li><strong>Government Dues:</strong> Inampatti, Miraspatti, Deshmukhpatti, Sardeshmukhpatti</li>
+      <li><strong>Professional Taxes:</strong> Telpatti, Sarafpatti, Hejbatti, Vethbegari</li>
+    </ul>
+
+    <!-- Indirect Taxes -->
+    <h3 class="text-2xl font-semibold mb-3 border-b border-yellow-700">
+      Indirect Taxes and Customs Duties
+    </h3>
+
+    <p class="mb-4 text-justify">
+      Customs duties formed an important component of state revenue. Major ports such
+      as Chaul, Dabhol, Vengurla, Rajapur, and Ratnagiri were active centers of trade.
+    </p>
+
+    <p class="mb-6 text-justify">
+      Import-export duties and transit taxes were levied on foreign goods. The customs
+      tax, known as <strong>Jakat</strong>, was one of the most significant and reliable
+      sources of income.
+    </p>
+
+    <!-- Other Sources -->
+    <h3 class="text-2xl font-semibold mb-3 border-b border-yellow-700">
+      Other Sources of Income
+    </h3>
+
+    <ul class="list-disc pl-6 mb-6">
+      <li>Gifts and tributes from nobles, envoys, and subordinate rulers</li>
+      <li>Judicial fines and penalties imposed on lawbreakers</li>
+      <li>Income from minting coins through licensed mints</li>
+    </ul>
+
+    <p class="text-justify font-medium">
+      In conclusion, Shivaji Maharaj’s economic policy was marked by fiscal discipline,
+      justice, and foresight. His financial system supported military expansion while
+      safeguarding the welfare of his people, laying a strong foundation for Swarajya.
+    </p>
+
+  </div>
+</section>
+
 
 
 <!-- Information Cards Section -->
@@ -564,146 +584,6 @@ include './includes/header.php';
 </section>
 
 
-<!-- KEY CONTRIBUTIONS -->
-<section class="py-20 bg-cream-warm dark:bg-gray-800">
-    <div class="container mx-auto max-w-6xl px-4">
-
-        <!-- Section Header -->
-        <div class="text-center mb-14">
-            <div class="section-indicator"></div>
-            <h2 class="text-4xl md:text-5xl font-bold mb-4">
-                <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
-                    Key Contributions
-                </span>
-            </h2>
-            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Enduring achievements that shaped the Maratha Empire and inspired generations
-            </p>
-        </div>
-
-        <!-- Cards -->
-        <div class="grid md:grid-cols-3 gap-8">
-
-            <!-- Swarajya -->
-            <div class="royal-card bg-cream-light dark:bg-gray-900 p-8 rounded-2xl border border-mountain text-center hover:shadow-xl transition-all">
-                <div class="w-16 h-16 bg-gradient-to-br from-red-600 to-yellow-500 rounded-full flex items-center justify-center mb-6 mx-auto">
-                    <i class="fas fa-flag text-2xl text-white"></i>
-                </div>
-                <h3 class="text-xl font-bold text-primary mb-3">
-                    Swarajya
-                </h3>
-                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    Established an independent and people-centric kingdom founded on justice,
-                    self-rule, and the welfare of the common people.
-                </p>
-            </div>
-
-            <!-- Military Strategy -->
-            <div class="royal-card bg-cream-light dark:bg-gray-900 p-8 rounded-2xl border border-mountain text-center hover:shadow-xl transition-all">
-                <div class="w-16 h-16 bg-gradient-to-br from-yellow-600 to-orange-500 rounded-full flex items-center justify-center mb-6 mx-auto">
-                    <i class="fas fa-sword text-2xl text-white"></i>
-                </div>
-                <h3 class="text-xl font-bold text-primary mb-3">
-                    Military Strategy
-                </h3>
-                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    Pioneered guerrilla warfare techniques (Ganimi Kava) that revolutionized
-                    battlefield tactics and are studied even today.
-                </p>
-            </div>
-
-            <!-- Fort Administration -->
-            <div class="royal-card bg-cream-light dark:bg-gray-900 p-8 rounded-2xl border border-mountain text-center hover:shadow-xl transition-all">
-                <div class="w-16 h-16 bg-gradient-to-br from-green-600 to-emerald-700 rounded-full flex items-center justify-center mb-6 mx-auto">
-                    <i class="fas fa-fort-awesome text-2xl text-white"></i>
-                </div>
-                <h3 class="text-xl font-bold text-primary mb-3">
-                    Fort Administration
-                </h3>
-                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    Strengthened, administered, and strategically managed more than
-                    <strong>300 forts</strong> across the Sahyadri mountain range.
-                </p>
-            </div>
-
-        </div>
-    </div>
-</section>
-
- 
-    <!-- Timeline Section -->
-<section class="py-20 bg-gray-50 dark:bg-gray-800">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-            <div class="section-indicator"></div>
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
-                    Timeline of Chhatrapati Shivaji Maharaj
-                </span>
-            </h2>
-            <p class="text-xl text-gray-600 dark:text-gray-300">
-                Important events in the life of the great Maratha warrior king
-            </p>
-        </div>
-
-        <div class="max-w-4xl mx-auto">
-            <div class="space-y-8">
-
-                <div class="timeline-item pl-8 py-6">
-                    <h3 class="text-2xl font-bold text-red-600 mb-2">1630</h3>
-                    <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">
-                        Birth
-                    </h4>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        Born on 19th February 1630 at Shivneri Fort to Shahaji Bhosale and Jijabai.
-                    </p>
-                </div>
-
-                <div class="timeline-item pl-8 py-6">
-                    <h3 class="text-2xl font-bold text-red-600 mb-2">1645</h3>
-                    <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">
-                        First Fort Capture
-                    </h4>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        Captured Torna Fort at the age of 15, marking the beginning of his journey as a military leader.
-                    </p>
-                </div>
-
-                <div class="timeline-item pl-8 py-6">
-                    <h3 class="text-2xl font-bold text-red-600 mb-2">1659</h3>
-                    <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">
-                        Slaying of Afzal Khan
-                    </h4>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        Defeated Afzal Khan in a historic encounter at Pratapgad, showcasing exceptional courage and strategy.
-                    </p>
-                </div>
-
-                <div class="timeline-item pl-8 py-6">
-                    <h3 class="text-2xl font-bold text-red-600 mb-2">1674</h3>
-                    <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">
-                        Coronation
-                    </h4>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        Coronated as Chhatrapati at Raigad Fort, formally establishing the Maratha Empire.
-                    </p>
-                </div>
-
-                <div class="timeline-item pl-8 py-6">
-                    <h3 class="text-2xl font-bold text-red-600 mb-2">1680</h3>
-                    <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">
-                        Demise
-                    </h4>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        Passed away on 3rd April 1680 at Raigad Fort, leaving behind a powerful and enduring legacy.
-                    </p>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- Legacy Section -->
 <section id="legacy" class="py-20 bg-white dark:bg-gray-900">
     <div class="container mx-auto px-4">
@@ -764,93 +644,11 @@ include './includes/header.php';
     </div>
 </section>
 
-<!-- Forts Gallery Section -->
-<section id="forts" class="py-20 bg-gray-50 dark:bg-gray-800">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-            <div class="section-indicator"></div>
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
-                    Forts of Shivaji Maharaj
-                </span>
-            </h2>
-            <p class="text-xl text-gray-600 dark:text-gray-300">
-                Explore the magnificent forts associated with Chhatrapati Shivaji Maharaj
-            </p>
-        </div>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            <!-- Raigad -->
-            <div class="royal-card rounded-2xl overflow-hidden group">
-                <div class="h-48 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                     style="background-image: url('https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
-                        Raigad Fort
-                    </h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                        The capital fort of the Maratha Empire and the site of Chhatrapati Shivaji Maharaj’s coronation.
-                    </p>
-                    <a href="/forts/raigad" class="text-red-600 hover:text-yellow-500 font-semibold">
-                        Explore Fort <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Pratapgad -->
-            <div class="royal-card rounded-2xl overflow-hidden group">
-                <div class="h-48 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                     style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
-                        Pratapgad Fort
-                    </h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                        The historic fort where the legendary encounter between Shivaji Maharaj and Afzal Khan took place.
-                    </p>
-                    <a href="/forts/pratapgad" class="text-red-600 hover:text-yellow-500 font-semibold">
-                        Explore Fort <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Shivneri -->
-            <div class="royal-card rounded-2xl overflow-hidden group">
-                <div class="h-48 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                     style="background-image: url('https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
-                        Shivneri Fort
-                    </h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                        The birthplace of Chhatrapati Shivaji Maharaj and one of the most revered forts in Maratha history.
-                    </p>
-                    <a href="/forts/shivneri" class="text-red-600 hover:text-yellow-500 font-semibold">
-                        Explore Fort <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="text-center mt-12">
-            <a href="/forts/shivaji-forts"
-               class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-red-600 to-yellow-500 text-white font-semibold rounded-full hover:from-yellow-500 hover:to-red-600 transition-all duration-300">
-                <i class="fas fa-fort-awesome mr-2"></i>
-                View All Shivaji Forts
-            </a>
-        </div>
-    </div>
-</section>
 
 
 </main>
 
-<?php include './includes/footer.php'; ?>
+<?php include './../includes/footer.php'; ?>
 
 <!-- JavaScript -->
 <script>
@@ -1043,3 +841,6 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 </script>
+
+
+
