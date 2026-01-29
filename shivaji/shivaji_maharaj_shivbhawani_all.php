@@ -313,9 +313,7 @@ include './../includes/header.php';
           ताऱ्यांप्रमाणे धूळ आकाश व्यापून राहिली,<br>
           समुद्रही हालचालींनी थरथरला॥
         </div>
-      </details>
-
-      <!-- Shabdarth -->
+        <!-- Shabdarth -->
       <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
         <h3 class="font-devanagari font-bold text-lg mb-3">✍️ शब्दार्थ (संक्षेप)</h3>
         <ul class="space-y-2 font-devanagari text-lg">
@@ -325,6 +323,9 @@ include './../includes/header.php';
           <li><strong>कोलाहल</strong> – गोंधळ, रणगर्जना</li>
         </ul>
       </div>
+      </details>
+
+      
 
       <!-- Pad 3 -->
       <details class="shiv-pad bg-amber-50 dark:bg-gray-800 rounded-2xl p-6 border border-amber-200 dark:border-gray-700">
