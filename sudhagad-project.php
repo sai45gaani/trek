@@ -5,7 +5,7 @@ $meta_description = 'Project Sudhagad - Last chance of Fort Conservation. Learn 
 $meta_keywords = 'Project Sudhagad, fort conservation, Sudhagad fort, Pali, Kshitiz group, heritage preservation, Maha Darwaza, fort restoration, Maharashtra forts';
 
 // Include header
-include '../includes/header.php';
+include './includes/header.php';
 ?>
 
 <style>
@@ -556,5 +556,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <?php
 // Include footer
-include '../includes/footer.php';
+include './includes/footer.php';
 ?>
