@@ -55,8 +55,8 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Mukti:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/variables.scss">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/variables.scss">
 
     <!-- ✅ jQuery Core -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -89,7 +89,7 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <!-- ✅ Your Custom Script -->
-<script src="/assets/js/custom.js"></script>
+<script src="<?= BASE_URL ?>assets/js/custom.js"></script>
 
 
 
