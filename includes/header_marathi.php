@@ -357,7 +357,7 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'ट्रेकिं
             <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                 
                 <!-- Logo Section with Bilingual Support -->
-                <a href="<?= BASE_URL ?>index.php" class="flex items-center group">
+                <a href="<?= BASE_URL ?>marathi/index.php" class="flex items-center group">
                     <!--<i class="fas fa-mountain text-3xl text-primary dark:text-accent mr-2 group-hover:scale-110 transition-transform"></i>-->
                     <div>
                         <span class="self-center text-xl font-bold whitespace-nowrap text-primary dark:text-white">
@@ -370,7 +370,7 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'ट्रेकिं
                 <div class="hidden lg:flex lg:w-auto lg:order-1" id="desktop-menu">
                     <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                         <li>
-                            <a href="<?= BASE_URL ?>index.php" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300 relative group">
+                            <a href="<?= BASE_URL ?>marathi/index.php" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300 relative group">
                                 मुख्यपृष्ठ
                                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary dark:bg-accent transition-all duration-300 group-hover:w-full"></span>
                             </a>

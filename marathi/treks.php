@@ -5,8 +5,8 @@ $meta_description = 'Explore upcoming and past treks by Trekshitz. Join Sahyadri
 $meta_keywords = 'treks, sahyadri treks, trekshitz, upcoming treks, past treks, fort trekking';
 
 // ================= INCLUDES =================
-require_once './config/database.php';
-include './includes/header.php';
+require_once './../config/database.php';
+include './../includes/header_marathi.php';
 
 $db = new Database();
 $conn = $db->getConnection();
@@ -65,16 +65,16 @@ $pastTreks = $conn->query("
             </div>
 
             <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up">
-                <span class="text-yellow-300">TreKshitiZ Treks</span>
+                <span class="text-yellow-300">TreKshitiZ ट्रेक्स</span>
             </h1>
 
             <p class="text-xl md:text-2xl mb-4 opacity-90">
-                Expertly Planned Trekking Adventures in the Sahyadri
+                सह्याद्रीतील नियोजनबद्ध व अनुभवी मार्गदर्शनाखाली ट्रेक्स
             </p>
 
             <p class="text-lg md:text-xl mb-8 opacity-80">
-                Join our well-organized treks across Sahyadri forts, scenic trails,
-                and breathtaking landscapes, guided by experienced trek leaders.
+                सह्याद्रीतील किल्ले, निसर्गरम्य वाटा आणि मनमोहक दृश्यांचा अनुभव घ्या —
+                अनुभवी ट्रेक लीडर्सच्या मार्गदर्शनाखाली आयोजित केलेल्या ट्रेक्समध्ये सहभागी व्हा.
             </p>
 
             <!-- Stats Pills -->
@@ -82,17 +82,17 @@ $pastTreks = $conn->query("
 
                 <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">
                     <i class="fas fa-mountain mr-2"></i>
-                    350+ Forts
+                    ४००+ किल्ले
                 </span>
 
                 <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">
                     <i class="fas fa-route mr-2"></i>
-                    Regular Treks
+                     नियमित ट्रेक्स
                 </span>
 
                 <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">
                     <i class="fas fa-calendar mr-2"></i>
-                    Since 2000
+                    सन २००० पासून
                 </span>
 
             </div>
@@ -107,17 +107,17 @@ $pastTreks = $conn->query("
 
         <!-- Header -->
         <span class="text-3xl sm:text-4xl font-semibold uppercase tracking-wider text-primary dark:text-accent">
-            Trekking
+           ट्रेकिंग
         </span>
 
         <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">
-            Our Core Motive
+            आमचा मुख्य उद्देश
         </h2>
 
         <p class="mt-6 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            Trekking is the most cherished activity of the Trek Kshitij Group. Our aim is not only to trek
-            through nature, but also to inspire more nature lovers to develop a deeper connection with
-            trekking, history, and conservation.
+             ट्रेकिंग ही TreKshitiZ समूहाची सर्वात जिव्हाळ्याची आणि महत्त्वाची गतिविधी आहे.
+            आमचा उद्देश केवळ निसर्गात फिरणे एवढाच नसून, अधिकाधिक निसर्गप्रेमींमध्ये
+            ट्रेकिंग, इतिहास आणि संवर्धन याबाबत जाणीव निर्माण करणे हाच आहे.
         </p>
 
         <!-- Divider -->
@@ -126,44 +126,45 @@ $pastTreks = $conn->query("
         <!-- Objectives -->
         <div class="text-left">
             <h3 class="text-2xl font-bold text-primary dark:text-white mb-8 text-center">
-                Main Objectives
+                 मुख्य उद्दिष्टे
             </h3>
 
             <ul class="space-y-6 text-gray-700 dark:text-gray-300">
                 <li class="flex items-start gap-4">
                     <span class="text-primary dark:text-accent font-bold mt-1">•</span>
-                    To introduce the visionary work of Chhatrapati Shivaji Maharaj, who dreamed of Hindu
-                    Swarajya and achieved it through leadership and the strength of the Sahyadri ranges.
+                    सह्याद्री पर्वतरांगांच्या बळावर हिंदवी स्वराज्याची संकल्पना साकार करणाऱ्या
+                    छत्रपती शिवाजी महाराजांचे दूरदृष्टीचे कार्य लोकांपर्यंत पोहोचवणे.
                 </li>
 
                 <li class="flex items-start gap-4">
                     <span class="text-primary dark:text-accent font-bold mt-1">•</span>
-                    To create historical awareness about the forts that shaped Maharashtra’s history,
-                    preserved Maratha culture, and witnessed the journey of Swarajya.
+                    महाराष्ट्राच्या इतिहासाला आकार देणाऱ्या, मराठा संस्कृती जपणाऱ्या
+                    आणि स्वराज्याच्या प्रवासाचे साक्षीदार असलेल्या किल्ल्यांविषयी
+                    ऐतिहासिक जाणीव निर्माण करणे.
                 </li>
 
                 <li class="flex items-start gap-4">
                     <span class="text-primary dark:text-accent font-bold mt-1">•</span>
-                    To pass on the stories of sacrifice and bravery of Tanaji Malusare, Baji Prabhu
-                    Deshpande, Murarbaji Deshpande, and many unsung heroes.
+                    तानाजी मालुसरे, बाजीप्रभू देशपांडे, मुरारबाजी देशपांडे
+                    तसेच अनेक अज्ञात वीरांच्या बलिदान व पराक्रमाच्या कथा पुढील पिढीपर्यंत पोहोचवणे.
                 </li>
 
                 <li class="flex items-start gap-4">
                     <span class="text-primary dark:text-accent font-bold mt-1">•</span>
-                    To keep our inspiring history alive while learning from past mistakes and their
-                    consequences.
+                     आपल्या प्रेरणादायी इतिहासाची जपणूक करताना,
+                    भूतकाळातील चुका आणि त्यांचे परिणाम यांमधून शिकणे.
                 </li>
 
                 <li class="flex items-start gap-4">
                     <span class="text-primary dark:text-accent font-bold mt-1">•</span>
-                    To organize treks that provide joy, peace, and relief from the stress of everyday
-                    life.
+                    दैनंदिन जीवनातील तणावातून मुक्तता मिळावी,
+                    आनंद व मानसिक शांती मिळावी यासाठी नियोजनबद्ध ट्रेक्स आयोजित करणे.
                 </li>
 
                 <li class="flex items-start gap-4">
                     <span class="text-primary dark:text-accent font-bold mt-1">•</span>
-                    To prevent the deterioration of forts due to human negligence and protect natural
-                    resources.
+                    मानवी दुर्लक्षामुळे होणाऱ्या किल्ल्यांच्या ऱ्हासास प्रतिबंध करणे
+                    आणि नैसर्गिक साधनसंपत्तीचे संरक्षण करणे.
                 </li>
             </ul>
         </div>
@@ -171,21 +172,21 @@ $pastTreks = $conn->query("
         <!-- Features Card -->
         <div class="mt-16 bg-white dark:bg-gray-800 rounded-2xl p-10 shadow-lg text-left">
             <h3 class="text-2xl font-bold text-primary dark:text-white mb-6 text-center">
-                Key Features of Our Treks
+                आमच्या ट्रेक्सची वैशिष्ट्ये
             </h3>
 
             <ul class="space-y-6 text-gray-700 dark:text-gray-300">
                 <li>
-                    Trekking with Trek Kshitij is not just about travel or recreation. Participants are
-                    provided with in-depth knowledge of the fort’s history, geographical importance, and
-                    key events—ensuring that the fort is truly experienced, not just visited.
+                    TreKshitiZ सोबतची ट्रेकिंग केवळ फिरणे किंवा करमणूक नाही.
+                    प्रत्येक सहभागीला किल्ल्याचा इतिहास, भौगोलिक महत्त्व
+                    आणि महत्त्वाच्या घटनांची सखोल माहिती दिली जाते —
+                    ज्यामुळे किल्ला केवळ पाहिला जात नाही, तर अनुभवला जातो.
                 </li>
 
                 <li>
-                    Fort cleanliness drives are conducted during treks, including garbage collection,
-                    proper waste disposal, and installation of preventive boards to encourage responsible
-                    and eco-friendly behavior.
-                </li>
+                   ट्रेक्सदरम्यान किल्ल्यांची स्वच्छता मोहीम राबवली जाते,
+                    ज्यामध्ये कचरा संकलन, योग्य विल्हेवाट
+                    आणि जबाबदार व पर्यावरणपूरक वर्तनासाठी सूचना फलक बसवले जातात.
             </ul>
         </div>
 
@@ -199,25 +200,27 @@ $pastTreks = $conn->query("
 
         <div class="card p-6 text-center">
             <i class="fas fa-backpack text-4xl text-accent mb-4"></i>
-            <h3 class="text-xl font-bold mb-2">What to Carry</h3>
+            <h3 class="text-xl font-bold mb-2">काय सोबत आणावे</h3>
             <p class="text-gray-600 text-sm">
-                Trek shoes, water (2L), snacks, rain protection, personal medicines.
+                 ट्रेकिंग शूज, पाणी (किमान २ लिटर), हलके खाद्यपदार्थ,
+                पावसापासून संरक्षण, वैयक्तिक औषधे.
             </p>
         </div>
 
         <div class="card p-6 text-center">
             <i class="fas fa-shield-alt text-4xl text-accent mb-4"></i>
-            <h3 class="text-xl font-bold mb-2">Safety First</h3>
+            <h3 class="text-xl font-bold mb-2">सुरक्षितता प्रथम</h3>
             <p class="text-gray-600 text-sm">
-                Certified leaders, first aid, group discipline, no littering policy.
+                 प्रशिक्षित ट्रेक लीडर्स, प्रथमोपचार सुविधा,
+                गटशिस्तीचे पालन, कचरा न टाकण्याचे नियम.
             </p>
         </div>
 
         <div class="card p-6 text-center">
             <i class="fas fa-signal text-4xl text-accent mb-4"></i>
-            <h3 class="text-xl font-bold mb-2">Difficulty Levels</h3>
+            <h3 class="text-xl font-bold mb-2">अवघडपणाची पातळी</h3>
             <p class="text-gray-600 text-sm">
-                Easy • Medium • Hard – choose what suits your fitness.
+                सोपा • मध्यम • अवघड – आपल्या क्षमतेनुसार ट्रेक निवडा.
             </p>
         </div>
 
@@ -229,8 +232,8 @@ $pastTreks = $conn->query("
     <div class="container mx-auto px-4">
 
         <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold text-primary">Upcoming Treks</h2>
-            <p class="text-gray-600 mt-2">Register now and be part of our next adventure</p>
+            <h2 class="text-4xl font-bold text-primary">आगामी ट्रेक्स</h2>
+            <p class="text-gray-600 mt-2">आत्ताच नोंदणी करा आणि आमच्या पुढील साहसाचा भाग बना</p>
         </div>
 
         <?php if ($upcomingTreks->num_rows): ?>
@@ -249,8 +252,8 @@ $pastTreks = $conn->query("
                     </span>
 
                     <div class="mt-4 flex gap-2">
-                        <a href="./trek-details.php?id=<?= $t['TrekId'] ?>" class="btn btn-primary w-full">Details</a>
-                        <a href="tel:<?= $t['ContDetails'] ?>" class="btn btn-secondary w-full">Call</a>
+                        <a href="./trek-details.php?id=<?= $t['TrekId'] ?>" class="btn btn-primary w-full">तपशील</a>
+                        <a href="tel:<?= $t['ContDetails'] ?>" class="btn btn-secondary w-full">कॉल करा</a>
                     </div>
                 </div>
             <?php endwhile; ?>
@@ -262,7 +265,7 @@ $pastTreks = $conn->query("
                 max-w-md mx-auto">
 
         <span class="text-primary font-semibold text-lg group-hover:underline">
-            View Full Schedule →
+            संपूर्ण ट्रेक वेळापत्रक पहा →
         </span>
 
     </div>
@@ -271,7 +274,7 @@ $pastTreks = $conn->query("
 
 
         <?php else: ?>
-            <p class="text-center text-gray-500">No upcoming treks announced yet.</p>
+            <p class="text-center text-gray-500">सध्या कोणतेही आगामी ट्रेक्स जाहीर करण्यात आलेले नाहीत.</p>
         <?php endif; ?>
     </div>
 </section>
@@ -281,8 +284,8 @@ $pastTreks = $conn->query("
     <div class="container mx-auto px-4">
 
         <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold text-primary">Past Treks</h2>
-            <p class="text-gray-600 mt-2">Memories from our completed adventures</p>
+            <h2 class="text-4xl font-bold text-primary">मागील ट्रेक्स</h2>
+            <p class="text-gray-600 mt-2">आमच्या यशस्वी ट्रेक्समधील आठवणी</p>
         </div>
 
         <?php if ($pastTreks->num_rows): ?>
@@ -302,7 +305,7 @@ $pastTreks = $conn->query("
 
                     <div class="mt-4">
                         <a href="./trek-details.php?id=<?= $t['TrekId'] ?>" class="btn btn-secondary w-full">
-                            View Memories
+                           आठवणी पहा
                         </a>
                     </div>
                 </div>
@@ -315,7 +318,7 @@ $pastTreks = $conn->query("
                 max-w-md mx-auto">
 
         <span class="text-primary font-semibold text-lg group-hover:underline">
-            View All Past Treks →
+            सर्व मागील ट्रेक्स पहा →
         </span>
 
     </div>
@@ -324,7 +327,7 @@ $pastTreks = $conn->query("
 
 
         <?php else: ?>
-            <p class="text-center text-gray-500">No past treks found.</p>
+            <p class="text-center text-gray-500">सध्या कोणतेही मागील ट्रेक्स उपलब्ध नाहीत.</p>
         <?php endif; ?>
     </div>
 </section>
@@ -332,8 +335,8 @@ $pastTreks = $conn->query("
     <section class="py-20 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4">
             <div class="max-w-6xl mx-auto">
-                <h2 class="text-4xl md:text-5xl font-bold text-center text-gradient mb-12">
-                    Important Information for Trekkers
+                <h2 class="text-4xl md:text-5xl font-bold text-center text-gradient mb-12 mt-4 pt-8">
+                  ट्रेकर्ससाठी महत्त्वाची माहिती
                 </h2>
                 
                 <div class="grid md:grid-cols-2 gap-8 mb-12">
@@ -341,31 +344,31 @@ $pastTreks = $conn->query("
                         <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
                             <i class="fas fa-backpack text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">What to Bring</h3>
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">  काय सोबत आणावे</h3>
                         <ul class="text-gray-600 dark:text-gray-300 space-y-3">
                             <li class="flex items-start">
                                 <i class="fas fa-check text-accent mr-3 mt-1 flex-shrink-0"></i>
-                                <span>Comfortable trekking shoes with good grip</span>
+                                <span>चांगल्या ग्रिपचे आरामदायक ट्रेकिंग शूज</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-accent mr-3 mt-1 flex-shrink-0"></i>
-                                <span>Water bottle (minimum 2 liters)</span>
+                                <span>पाण्याची बाटली (किमान २ लिटर)</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-accent mr-3 mt-1 flex-shrink-0"></i>
-                                <span>Light snacks and energy food</span>
+                                <span>हलके खाण्याचे पदार्थ व एनर्जी फूड</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-accent mr-3 mt-1 flex-shrink-0"></i>
-                                <span>First aid kit and personal medicines</span>
+                                <span>प्रथमोपचार पेटी व वैयक्तिक औषधे</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-accent mr-3 mt-1 flex-shrink-0"></i>
-                                <span>Sun hat and sunscreen (SPF 30+)</span>
+                                <span>टोपी व सनस्क्रीन (SPF 30+)</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-accent mr-3 mt-1 flex-shrink-0"></i>
-                                <span>Raincoat (during monsoon season)</span>
+                                <span>पावसाळ्यात रेनकोट</span>
                             </li>
                         </ul>
                     </div>
@@ -374,31 +377,31 @@ $pastTreks = $conn->query("
                         <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mb-6">
                             <i class="fas fa-shield-alt text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">Safety Guidelines</h3>
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">सुरक्षिततेचे नियम</h3>
                         <ul class="text-gray-600 dark:text-gray-300 space-y-3">
                             <li class="flex items-start">
                                 <i class="fas fa-check text-accent mr-3 mt-1 flex-shrink-0"></i>
-                                <span>Follow trek leader's instructions at all times</span>
+                                <span>ट्रेक लीडरच्या सूचनांचे नेहमी पालन करा</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-accent mr-3 mt-1 flex-shrink-0"></i>
-                                <span>Stay with the group, don't venture alone</span>
+                                <span>गटासोबत रहा, एकटे भटकू नका</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-accent mr-3 mt-1 flex-shrink-0"></i>
-                                <span>Inform about any medical conditions</span>
+                                <span>कोणतीही वैद्यकीय समस्या असल्यास आधी कळवा</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-accent mr-3 mt-1 flex-shrink-0"></i>
-                                <span>Carry emergency contact numbers</span>
+                                <span>आपत्कालीन संपर्क क्रमांक सोबत ठेवा</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-accent mr-3 mt-1 flex-shrink-0"></i>
-                                <span>Don't litter - keep nature clean</span>
+                                <span>कचरा टाकू नका – निसर्ग स्वच्छ ठेवा</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-accent mr-3 mt-1 flex-shrink-0"></i>
-                                <span>Start early to avoid afternoon heat</span>
+                                <span>दुपारची उष्णता टाळण्यासाठी लवकर सुरुवात करा</span>
                             </li>
                         </ul>
                     </div>
@@ -409,9 +412,9 @@ $pastTreks = $conn->query("
                         <div class="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mb-4 mx-auto">
                             <i class="fas fa-leaf text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Easy Level</h3>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">सोपा स्तर</h3>
                         <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                            Suitable for beginners. 2-4 hours duration with minimal elevation gain.
+                             नवशिक्यांसाठी योग्य. कालावधी २–४ तास, कमी चढउतार.
                         </p>
                     </div>
                     
@@ -419,9 +422,9 @@ $pastTreks = $conn->query("
                         <div class="w-16 h-16 bg-yellow-500 rounded-2xl flex items-center justify-center mb-4 mx-auto">
                             <i class="fas fa-mountain text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Medium Level</h3>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white"> मध्यम स्तर</h3>
                         <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                            Moderate fitness required. 4-6 hours with some steep sections.
+                            मध्यम तंदुरुस्ती आवश्यक. ४–६ तास, काही ठिकाणी चढण.
                         </p>
                     </div>
                     
@@ -429,32 +432,32 @@ $pastTreks = $conn->query("
                         <div class="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center mb-4 mx-auto">
                             <i class="fas fa-flag text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Hard Level</h3>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">अवघड स्तर</h3>
                         <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                            Good fitness required. 6+ hours with challenging terrain.
+                           चांगली शारीरिक क्षमता आवश्यक. ६ तासांपेक्षा अधिक, कठीण मार्ग.
                         </p>
                     </div>
                 </div>
                 
                 <div class="bg-gradient-to-r from-primary to-secondary text-white p-8 rounded-2xl text-center">
                     <h3 class="text-3xl font-bold mb-4">
-                        Ready for Adventure?
+                      साहसासाठी तयार आहात का?
                     </h3>
                     <p class="text-xl mb-8 opacity-90">
-                        Join our trekking community and explore the beautiful Sahyadri mountains
+                         आमच्या ट्रेकिंग समुदायात सामील व्हा आणि सुंदर सह्याद्रीचा अनुभव घ्या
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center">
                         <a href="https://wa.me/919876543210" target="_blank" class="inline-flex items-center justify-center px-6 py-3 bg-accent hover:bg-forest text-white font-semibold rounded-lg transition-colors">
                             <i class="fab fa-whatsapp mr-2"></i>
-                            Join WhatsApp Group
+                            WhatsApp ग्रुपमध्ये सहभागी व्हा
                         </a>
                         <a href="#newsletter" class="inline-flex items-center justify-center px-6 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold rounded-lg transition-colors border border-white border-opacity-30">
                             <i class="fas fa-envelope mr-2"></i>
-                            Subscribe Newsletter
+                             न्यूजलेटर सबस्क्राइब करा
                         </a>
                         <a href="/safety-guidelines" class="inline-flex items-center justify-center px-6 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold rounded-lg transition-colors border border-white border-opacity-30">
                             <i class="fas fa-book mr-2"></i>
-                            Safety Guidelines
+                            सुरक्षिततेचे नियम
                         </a>
                     </div>
                 </div>
@@ -464,4 +467,4 @@ $pastTreks = $conn->query("
 
 </main>
 
-<?php include './includes/footer.php'; ?>
+<?php include './../includes/footer_marathi.php'; ?>

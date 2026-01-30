@@ -1,11 +1,12 @@
 <?php
 // Set page specific variables
-$page_title = 'About TreKshitiZ - Explore Sahyadri Mountains | Trekking Community';
-$meta_description = 'Learn about TreKshitiZ.com - Maharashtra\'s premier trekking website. Discover our mission, projects like Sudhagad conservation, and join our community of 1000+ trekkers exploring 350+ forts.';
-$meta_keywords = 'About TreKshitiZ, Maharashtra trekking, Sahyadri forts, fort conservation, Sudhagad project, trekking community, nature photography';
+$page_title = 'TreKshitiZ विषयी – सह्याद्रीतील ट्रेकिंग व दुर्गसंवर्धन संस्था';
 
+$meta_description = 'TreKshitiZ विषयी जाणून घ्या – महाराष्ट्रातील अग्रगण्य ट्रेकिंग व दुर्गसंवर्धन संस्था. सह्याद्री पर्वतरांगांतील ४०० पेक्षा अधिक किल्ल्यांचे दस्तऐवजीकरण, सुधागड संवर्धन प्रकल्प आणि १०००+ ट्रेकर्सचा सक्रिय समुदाय.';
+
+$meta_keywords = 'TreKshitiZ, ट्रेकिंग संस्था महाराष्ट्र, सह्याद्री किल्ले, दुर्गसंवर्धन, सुधागड प्रकल्प, ट्रेकिंग समुदाय, किल्ले दस्तऐवजीकरण, निसर्ग छायाचित्रण';
 // Include header
-include './includes/header.php';
+include './../includes/header_marathi.php';
 ?>
 
 <style>
@@ -299,26 +300,26 @@ include './includes/header.php';
                     <!--<div class="w-20 h-1 bg-yellow-300 rounded-full"></div>-->
                 </div>
                 <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up">
-                    <span class="text-yellow-300">About TreKshitiZ</span>
+                    <span class="text-yellow-300">TreKshitiZ विषयी</span>
                 </h1>
                 <p class="text-xl md:text-2xl mb-4 opacity-90">
-                    Maharashtra's Premier Trekking & Fort Conservation Community
+                    महाराष्ट्रातील अग्रगण्य ट्रेकिंग व किल्ले संवर्धन संस्था
                 </p>
                 <p class="text-lg md:text-xl mb-8 opacity-80 font-devanagari">
-                    A leading organization for trekking and fort conservation in the Sahyadri mountain range.
-                </p>
+                सह्याद्री पर्वतरांगांमध्ये ट्रेकिंग, दुर्गभ्रमंती आणि ऐतिहासिक किल्ल्यांच्या जतन-संवर्धनासाठी सातत्याने कार्यरत असलेली एक अग्रणी संस्था.
+             </p>
                 <div class="flex flex-wrap justify-center gap-4 text-sm opacity-90">
                     <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">
                         <i class="fas fa-mountain mr-2"></i>
-                        350+ Forts
+                        ४०० पेक्षा अधिक किल्ले
                     </span>
                     <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">
                         <i class="fas fa-users mr-2"></i>
-                        1000+ Trekkers
+                         १००० पेक्षा अधिक ट्रेकर्स
                     </span>
                     <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">
                         <i class="fas fa-calendar mr-2"></i>
-                        Since 2000
+                        स्थापना : सन २०००
                     </span>
                 </div>
             </div>
@@ -335,17 +336,17 @@ include './includes/header.php';
 
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">
                     <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                        Our Story
+                        आमची वाटचाल
                     </span>
                 </h2>
                 
 
                 <p class="text-xl text-gray-600 dark:text-gray-300">
-                    Trek Kshitij Sanstha, Dombivli – A Journey Towards the Horizon
+                   ट्रेक क्षितिज संस्था, डोंबिवली – क्षितिजाकडे नेणारी एक प्रेरणादायी यात्रा
                 </p>
 
                 <p class="mt-2 text-gray-500 italic">
-                    The Challenge of Dream Fort Exploration
+                     दुर्गभ्रमंतीचं स्वप्न आणि क्षितिजाचं आव्हान
                 </p>
             </div>
 
@@ -353,71 +354,92 @@ include './includes/header.php';
             <div class="max-w-4xl mx-auto space-y-6 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
 
                 <p>
-                    Trek Kshitij began as a small initiative among four college friends who shared a passion for
-                    trekking and fort exploration. What started as casual treks gradually evolved into a
-                    structured movement driven by curiosity, discipline, and respect for heritage.
+                    ट्रेक क्षितिजची सुरुवात चार महाविद्यालयीन मित्रांच्या एका छोट्या उपक्रमातून झाली.
+                ट्रेकिंग आणि किल्ल्यांच्या भटकंतीची समान आवड असलेल्या या मित्रांनी सुरुवातीला
+                साध्या ट्रेक्सपासून वाटचाल सुरू केली. हळूहळू हीच भटकंती कुतूहल, शिस्त
+                आणि ऐतिहासिक वारशाविषयी आदर या मूल्यांवर आधारित एका संघटित चळवळीत रूपांतरित झाली.
                 </p>
 
                 <p>
-                    In 2001, under the guidance of <strong>Pramod Joshisar</strong>, a group of thirteen trekking
-                    enthusiasts from Dombivli formally established the Kshitij Group with the guiding motto:
-                    <em>“Dream of Fort Wandering, Challenge of Kshitij.”</em>
-                    Trek Kshitij Sanstha is a registered Public Trust (NGO) dedicated to trekking, documentation,
-                    and fort conservation.
+                   सन २००१ मध्ये <strong>प्रमोद जोशीसर</strong> यांच्या मार्गदर्शनाखाली
+                डोंबिवलीतील तेरा दुर्गप्रेमींनी
+                <em>“दुर्गभ्रमंतीचं स्वप्न, क्षितिजाचं आव्हान”</em>
+                या ब्रीदवाक्यासह ‘क्षितिज गट’ औपचारिकरित्या स्थापन केला.
+                ट्रेक क्षितिज संस्था ही ट्रेकिंग, दस्तऐवजीकरण
+                आणि किल्ले संवर्धनासाठी कार्यरत असलेली नोंदणीकृत सार्वजनिक संस्था (एनजीओ) आहे.
                 </p>
 
                 <p>
-                    Recognizing the importance of structured knowledge sharing, the group ventured into digital
-                    documentation at a time when such initiatives were rare. In the same year,
-                    <a href="https://www.trekshitiz.com" target="_blank" rel="noopener"
-                    class="text-primary font-semibold hover:underline">
-                        www.trekshitiz.com
-                    </a>
-                    was launched, becoming the first platform to provide systematic fort information in Marathi.
-                    Over time, the website expanded to include information on more than
-                    <strong>350 forts</strong>, nearly <strong>10,000 photographs</strong>,
-                    computer-generated maps, trekking resources, and travel guidance.
+                    माहितीचे शिस्तबद्ध जतन आणि प्रसार किती आवश्यक आहे हे ओळखून,
+                त्या काळात दुर्मिळ असलेल्या डिजिटल दस्तऐवजीकरणाकडे संस्थेने पाऊल टाकले.
+                याच वर्षी
+                <a href="https://www.trekshitiz.com" target="_blank" rel="noopener"
+                   class="text-primary font-semibold hover:underline">
+                    www.trekshitiz.com
+                </a>
+                ही संकेतस्थळ सुरू करण्यात आली.
+                मराठीत किल्ल्यांची शास्त्रीय आणि सुसंगत माहिती देणारे हे पहिले व्यासपीठ ठरले.
+                आज या संकेतस्थळावर
+                <strong>४०० पेक्षा अधिक किल्ल्यांची माहिती</strong>,
+                सुमारे <strong>१०,००० छायाचित्रे</strong>,
+                संगणकावर तयार केलेले नकाशे,
+                ट्रेकिंगसंबंधी मार्गदर्शन आणि उपयुक्त माहिती उपलब्ध आहे.
                 </p>
 
                 <p>
-                    Beyond documentation, Trek Kshitij actively works toward heritage awareness and conservation.
-                    One of its most significant long-term initiatives is the conservation effort at
-                    <strong>Sudhagad Fort</strong>, where volunteers have continuously contributed through
-                    cleaning, plantation, maintenance, and restoration support for over a decade.
+                     केवळ माहितीपुरतेच मर्यादित न राहता,
+                ट्रेक क्षितिज संस्थेने प्रत्यक्ष वारसा संवर्धनालाही प्राधान्य दिले आहे.
+                <strong>सुधागड किल्ला संवर्धन प्रकल्प</strong>
+                हा संस्थेचा एक महत्त्वाचा दीर्घकालीन उपक्रम असून,
+                गेल्या अनेक वर्षांपासून स्वयंसेवकांनी
+                स्वच्छता, वृक्षारोपण, देखभाल
+                आणि संवर्धनात्मक कामांमध्ये सातत्याने योगदान दिले आहे.
                 </p>
 
                 <p>
-                    Social responsibility forms an integral part of the organization’s philosophy. Trek Kshitij
-                    has supported educational initiatives in villages near trekking regions by developing school
-                    libraries, improving infrastructure, and organizing educational and health programs for
-                    students.
+                   सामाजिक जबाबदारी हा संस्थेच्या कार्याचा अविभाज्य भाग आहे.
+                ट्रेकिंग परिसरातील गावांमध्ये
+                शालेय ग्रंथालयांची उभारणी,
+                शैक्षणिक सुविधा सुधारणा
+                तसेच विद्यार्थ्यांसाठी शैक्षणिक आणि आरोग्यविषयक उपक्रम
+                राबविण्यात संस्थेने मोलाची भूमिका बजावली आहे.
                 </p>
 
                 <p>
-                    Creative documentation has also played a major role in spreading awareness. The organization
-                    has produced over <strong>200 fort-related slide shows</strong>, organized photo exhibitions,
-                    published themed calendars, and conducted fort model-making competitions to engage younger
-                    generations in heritage and environmental awareness.
+                   सर्जनशील दस्तऐवजीकरणाद्वारे जनजागृती करणे हेही संस्थेचे एक महत्त्वाचे उद्दिष्ट आहे.
+                आतापर्यंत
+                <strong>२०० पेक्षा अधिक किल्ल्यांवरील स्लाइड शो</strong>,
+                छायाचित्र प्रदर्शन,
+                विषयानुरूप दिनदर्शिका
+                तसेच किल्ल्यांच्या प्रतिकृती बनवण्याच्या स्पर्धा
+                आयोजित करून तरुण पिढीला इतिहास आणि पर्यावरणाशी जोडण्याचा प्रयत्न केला आहे.
                 </p>
 
                 <p>
-                    Trek Kshitij’s contributions have been recognized through several honors, including the
-                    <strong>Girimitra Sanstha Samman</strong> and the
-                    <strong>Swarajya Bhushan Puraskar</strong>. Its publication efforts, particularly fort map
-                    documentation, have received national-level recognition.
+                    ट्रेक क्षितिजच्या कार्याची दखल घेत
+                <strong>गिरीमित्र संस्था सन्मान</strong>
+                आणि <strong>स्वराज्य भूषण पुरस्कार</strong>
+                असे विविध सन्मान संस्थेला प्राप्त झाले आहेत.
+                विशेषतः किल्ल्यांच्या नकाशा दस्तऐवजीकरणासाठी
+                संस्थेच्या प्रकाशन कार्याला राष्ट्रीय पातळीवर मान्यता मिळाली आहे.
                 </p>
 
                 <p>
-                    Today, Trek Kshitij continues to organize regular treks across the Sahyadri range, combining
-                    physical exploration with historical and geographical learning. Special treks led by
-                    historians and naturalists offer participants deeper insights into Maharashtra’s rich
-                    heritage.
+                   आज ट्रेक क्षितिज सह्याद्री पर्वतरांगांमध्ये नियमित ट्रेक्स आयोजित करत असून,
+                भौगोलिक आणि ऐतिहासिक अभ्यासासोबत
+                प्रत्यक्ष अनुभवाची सांगड घालते.
+                इतिहासतज्ज्ञ आणि निसर्ग अभ्यासकांच्या मार्गदर्शनाखाली
+                आयोजित विशेष ट्रेक्समुळे
+                सहभागी सदस्यांना महाराष्ट्राच्या समृद्ध वारशाची
+                सखोल ओळख मिळते.
                 </p>
 
                 <p>
-                    While many college-based trekking groups dissolve over time, Trek Kshitij continues its
-                    journey with strength and purpose — carried forward by both experienced members and new
-                    generations, steadily moving toward the horizon.
+                   अनेक महाविद्यालयीन गट कालांतराने विस्कळीत होत असताना,
+                ट्रेक क्षितिज मात्र अनुभवसंपन्न सदस्य
+                आणि नव्या पिढीच्या सहभागातून
+                सातत्याने पुढे जात आहे —
+                क्षितिजाच्या दिशेने अखंड वाटचाल करत.
                 </p>
 
             </div>
@@ -435,11 +457,11 @@ include './includes/header.php';
             <div class="section-divider mb-4"></div>
             <h2 class="text-4xl md:text-5xl font-bold mb-3">
                 <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    Our Impact
+                     आमचा प्रभाव
                 </span>
             </h2>
             <p class="text-base md:text-lg text-gray-600 dark:text-gray-300">
-                A snapshot of our journey and contribution
+                 आमच्या प्रवासाचा आणि योगदानाचा एक झलक
             </p>
         </div>
 
@@ -449,28 +471,28 @@ include './includes/header.php';
             <div class="text-center">
                 <div class="stats-counter animate-number text-3xl md:text-4xl" data-target="350">0</div>
                 <div class="mt-1 text-sm font-semibold text-gray-700 dark:text-gray-200">
-                    Forts Documented
+                    दस्तऐवजीकरण केलेले किल्ले
                 </div>
             </div>
 
             <div class="text-center">
                 <div class="stats-counter animate-number text-3xl md:text-4xl" data-target="5000">0</div>
                 <div class="mt-1 text-sm font-semibold text-gray-700 dark:text-gray-200">
-                    Photographs
+                    छायाचित्रे
                 </div>
             </div>
 
             <div class="text-center">
                 <div class="stats-counter animate-number text-3xl md:text-4xl" data-target="1000">0</div>
                 <div class="mt-1 text-sm font-semibold text-gray-700 dark:text-gray-200">
-                    Community Members
+                   समुदाय सदस्य
                 </div>
             </div>
 
             <div class="text-center">
                 <div class="stats-counter animate-number text-3xl md:text-4xl" data-target="24">0</div>
                 <div class="mt-1 text-sm font-semibold text-gray-700 dark:text-gray-200">
-                    Years of Legacy
+                    वर्षांची परंपरा
                 </div>
             </div>
 
@@ -489,10 +511,9 @@ include './includes/header.php';
 <?php include './our_call_to_actions.php';  ?>    
 
 
-
 </main>
 
-<?php include './includes/footer.php'; ?>
+<?php include './../includes/footer_marathi.php'; ?>
 
 <!-- JavaScript -->
 <script>
