@@ -403,16 +403,16 @@ $seaFortsCount = isset($fortCategories['Sea Forts']) ? $fortCategories['Sea Fort
                                 </div>
                                 
                                 <div class="flex gap-2">
-                                    <a href="/fort/<?php echo strtolower(str_replace(' ', '-', $fort)); ?>" 
+                                    <a href="./fort/index.php?slug=<?php echo strtolower(str_replace(' ', '-', $fort)); ?>" 
                                        class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2 px-3 rounded-lg text-sm font-semibold transition-all duration-300 transform hover:scale-105">
                                         <i class="fas fa-info-circle mr-1"></i>
-                                        Details
+                                        Fort Information
                                     </a>
-                                    <a href="/trek/<?php echo strtolower(str_replace(' ', '-', $fort)); ?>" 
+                                    <!--<a href="/trek/<?php echo strtolower(str_replace(' ', '-', $fort)); ?>" 
                                        class="flex-1 bg-accent hover:bg-primary text-white text-center py-2 px-3 rounded-lg text-sm font-semibold transition-all duration-300 transform hover:scale-105">
                                         <i class="fas fa-route mr-1"></i>
                                         Trek
-                                    </a>
+                                    </a>-->
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -560,66 +560,7 @@ $seaFortsCount = isset($fortCategories['Sea Forts']) ? $fortCategories['Sea Fort
         </section>
     <?php endif; ?>
 
-    <!-- Quick Navigation -->
-    <section class="py-16 bg-white dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">
-                <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    Explore by Other Classifications
-                </span>
-            </h2>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <a href="/english/forts-alphabetical" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-accent group">
-                    <div class="w-16 h-16 bg-primary group-hover:bg-secondary rounded-2xl flex items-center justify-center mb-4 mx-auto transition-all duration-300 transform group-hover:scale-110">
-                        <i class="fas fa-sort-alpha-down text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2 group-hover:text-primary dark:group-hover:text-accent transition-colors">
-                        Alphabetical
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">
-                        A, B, C... order
-                    </p>
-                </a>
-                
-                <a href="/english/forts-by-range" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-accent group">
-                    <div class="w-16 h-16 bg-secondary group-hover:bg-primary rounded-2xl flex items-center justify-center mb-4 mx-auto transition-all duration-300 transform group-hover:scale-110">
-                        <i class="fas fa-mountain text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2 group-hover:text-secondary dark:group-hover:text-accent transition-colors">
-                        By Mountain Range
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">
-                        Sahyadri, Western Ghats, etc.
-                    </p>
-                </a>
-                
-                <a href="/english/forts-by-district" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-accent group">
-                    <div class="w-16 h-16 bg-accent group-hover:bg-forest rounded-2xl flex items-center justify-center mb-4 mx-auto transition-all duration-300 transform group-hover:scale-110">
-                        <i class="fas fa-map text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2 group-hover:text-accent dark:group-hover:text-accent transition-colors">
-                        By District
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">
-                        Pune, Mumbai, Nashik, etc.
-                    </p>
-                </a>
-                
-                <a href="/english/forts-by-grade" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-accent group">
-                    <div class="w-16 h-16 bg-forest group-hover:bg-accent rounded-2xl flex items-center justify-center mb-4 mx-auto transition-all duration-300 transform group-hover:scale-110">
-                        <i class="fas fa-signal text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2 group-hover:text-forest dark:group-hover:text-accent transition-colors">
-                        By Difficulty
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">
-                        Easy, Medium, Hard, etc.
-                    </p>
-                </a>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Additional Information Section -->
     <section class="py-20 bg-gray-50 dark:bg-gray-800">
@@ -663,31 +604,11 @@ $seaFortsCount = isset($fortCategories['Sea Forts']) ? $fortCategories['Sea Fort
                     </div>
                 </div>
                 
-                <div class="bg-gradient-to-r from-primary to-secondary text-white p-8 rounded-2xl text-center">
-                    <h3 class="text-3xl font-bold mb-4">
-                        Fort Category Exploration Guide
-                    </h3>
-                    <p class="text-xl mb-8 opacity-90">
-                        Detailed guides for each fort category with historical context, trekking information, and safety guidelines
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="/category-guide" class="inline-flex items-center justify-center px-6 py-3 bg-accent hover:bg-forest text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                            <i class="fas fa-download mr-2"></i>
-                            Download Category Guide
-                        </a>
-                        <a href="/historical-significance" class="inline-flex items-center justify-center px-6 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold rounded-lg transition-all duration-300 border border-white border-opacity-30 transform hover:scale-105">
-                            <i class="fas fa-book mr-2"></i>
-                            Historical Significance
-                        </a>
-                        <a href="/trekking-by-category" class="inline-flex items-center justify-center px-6 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold rounded-lg transition-all duration-300 border border-white border-opacity-30 transform hover:scale-105">
-                            <i class="fas fa-route mr-2"></i>
-                            Trekking by Category
-                        </a>
-                    </div>
-                </div>
+               
             </div>
         </div>
     </section>
+    <?php include './our_more_about_fort_info.php'; ?>
 </main>
 
 <?php include './includes/footer.php'; ?>

@@ -325,16 +325,16 @@ $uniqueRegions = count(array_unique(array_column($districts, 'region')));
                                 </div>
                                 
                                 <div class="flex gap-2">
-                                    <a href="/fort/<?php echo strtolower(str_replace(' ', '-', $fort)); ?>" 
+                                    <a href="./fort/index.php?slug=<?php echo strtolower(str_replace(' ', '-', $fort)); ?>" 
                                        class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2 px-3 rounded-lg text-sm font-semibold transition-colors">
                                         <i class="fas fa-info-circle mr-1"></i>
-                                        Details
+                                        Fort Information
                                     </a>
-                                    <a href="/trek/<?php echo strtolower(str_replace(' ', '-', $fort)); ?>" 
+                                    <!--<a href="/trek/<?php echo strtolower(str_replace(' ', '-', $fort)); ?>" 
                                        class="flex-1 bg-accent hover:bg-primary text-white text-center py-2 px-3 rounded-lg text-sm font-semibold transition-colors">
                                         <i class="fas fa-route mr-1"></i>
                                         Trek
-                                    </a>
+                                    </a>-->
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -455,66 +455,6 @@ $uniqueRegions = count(array_unique(array_column($districts, 'region')));
         </section>
     <?php endif; ?>
 
-    <!-- Quick Navigation -->
-    <section class="py-16 bg-white dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">
-                <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    Explore by Other Categories
-                </span>
-            </h2>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <a href="/english/forts-alphabetical" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 group shadow-xl border border-gray-200 dark:border-gray-700">
-                    <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:bg-secondary transition-colors">
-                        <i class="fas fa-sort-alpha-down text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">
-                        Alphabetical
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">
-                        A, B, C... order
-                    </p>
-                </a>
-                
-                <a href="/english/forts-by-range" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 group shadow-xl border border-gray-200 dark:border-gray-700">
-                    <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:bg-primary transition-colors">
-                        <i class="fas fa-mountain text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">
-                        By Mountain Range
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">
-                        Sahyadri, Western Ghats, etc.
-                    </p>
-                </a>
-                
-                <a href="/english/forts-by-category" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 group shadow-xl border border-gray-200 dark:border-gray-700">
-                    <div class="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:bg-forest transition-colors">
-                        <i class="fas fa-layer-group text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">
-                        By Type
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">
-                        Hill forts, Sea forts, etc.
-                    </p>
-                </a>
-                
-                <a href="/english/forts-by-grade" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 group shadow-xl border border-gray-200 dark:border-gray-700">
-                    <div class="w-16 h-16 bg-forest rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:bg-accent transition-colors">
-                        <i class="fas fa-signal text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">
-                        By Difficulty
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">
-                        Easy, Medium, Hard, etc.
-                    </p>
-                </a>
-            </div>
-        </div>
-    </section>
 
     <!-- Additional Information Section -->
     <section class="py-20 bg-gray-50 dark:bg-gray-800">
@@ -558,32 +498,13 @@ $uniqueRegions = count(array_unique(array_column($districts, 'region')));
                     </div>
                 </div>
                 
-                <div class="bg-gradient-to-r from-primary to-secondary text-white p-8 rounded-2xl text-center">
-                    <h3 class="text-3xl font-bold mb-4">
-                        District-wise Fort Explorer Guide
-                    </h3>
-                    <p class="text-xl mb-8 opacity-90">
-                        Complete district-wise guide with maps, weather information, local transportation and cultural insights
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="/district-guide" class="inline-flex items-center justify-center px-6 py-3 bg-accent hover:bg-forest text-white font-semibold rounded-lg transition-colors">
-                            <i class="fas fa-download mr-2"></i>
-                            Download District Guide
-                        </a>
-                        <a href="/transportation" class="inline-flex items-center justify-center px-6 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold rounded-lg transition-colors border border-white border-opacity-30">
-                            <i class="fas fa-bus mr-2"></i>
-                            Transportation Info
-                        </a>
-                        <a href="/local-culture" class="inline-flex items-center justify-center px-6 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold rounded-lg transition-colors border border-white border-opacity-30">
-                            <i class="fas fa-users mr-2"></i>
-                            Local Culture
-                        </a>
-                    </div>
-                </div>
+               
             </div>
         </div>
     </section>
+    <?php include './our_more_about_fort_info.php'; ?>
 </main>
+
 
 <?php include './includes/footer.php'; ?>
 

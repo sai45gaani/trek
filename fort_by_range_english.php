@@ -235,7 +235,7 @@ $selectedRange = $currentRange && isset($mountainRanges[$currentRange]) ? $mount
                                         Trekking Available
                                     </span>
                                     
-                                    <a href="/fort-details/<?php echo strtolower(str_replace(' ', '-', $fort)); ?>" 
+                                    <a href="./fort/index.php?slug=<?php echo strtolower(str_replace(' ', '-', $fort)); ?>" 
                                        class="bg-accent hover:bg-primary text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 text-sm group">
                                         View Details
                                         <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform"></i>
@@ -395,6 +395,8 @@ $selectedRange = $currentRange && isset($mountainRanges[$currentRange]) ? $mount
             </div>
         </section>
     <?php endif; ?>
+
+    <?php include './our_more_about_fort_info.php'; ?>
 </main>
 
 <?php include './includes/footer.php'; ?>

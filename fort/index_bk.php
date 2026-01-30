@@ -230,39 +230,29 @@ include '../includes/header.php';
                     </div>
                 </div>
 
-                <?php //if (!empty($fortData['Height'])): 
-                ?>
+                <?php if (!empty($fortData['Height'])): ?>
                 <div class="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-200 dark:border-gray-700 text-center">
                     <div class="text-3xl mb-2">📏</div>
                     <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">Height</div>
                     <div class="font-bold text-gray-800 dark:text-white"><?php echo htmlspecialchars($fortData['Height']); ?></div>
                 </div>
-                <?php //endif; 
-                ?>
+                <?php endif; ?>
                 
-                <?php // if (!empty($fortData['TimeToReach'])):
-                ?>
+                <?php if (!empty($fortData['TimeToReach'])): ?>
                 <div class="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-200 dark:border-gray-700 text-center">
                     <div class="text-3xl mb-2">⏱️</div>
                     <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">Trek Duration</div>
-                    <div class="font-bold text-gray-800 dark:text-white text-sm"><?php echo !empty(trim($fortData['TimeToReach']))
-    ? htmlspecialchars(substr($fortData['TimeToReach'], 0, 50))
-    : 'N/A'; ?></div>
+                    <div class="font-bold text-gray-800 dark:text-white text-sm"><?php echo htmlspecialchars(substr($fortData['TimeToReach'], 0, 50)); ?></div>
                 </div>
-                <?php // endif; 
-                ?>
+                <?php endif; ?>
                 
-                <?php //if (!empty($fortData['BestSeasonToVisit'])):
-                 ?>
+                <?php if (!empty($fortData['BestSeasonToVisit'])): ?>
                 <div class="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-200 dark:border-gray-700 text-center">
                     <div class="text-3xl mb-2">🌤️</div>
                     <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">Best Season</div>
-                    <div class="font-bold text-gray-800 dark:text-white text-sm"><?php echo !empty(trim($fortData['BestSeasonToVisit'])) 
-    ? htmlspecialchars($fortData['BestSeasonToVisit']) 
-    : 'N/A';  ?></div>
+                    <div class="font-bold text-gray-800 dark:text-white text-sm"><?php echo htmlspecialchars($fortData['BestSeasonToVisit']); ?></div>
                 </div>
-                <?php //endif; 
-                ?>
+                <?php endif; ?>
             </div>
         </div>
     </section>
