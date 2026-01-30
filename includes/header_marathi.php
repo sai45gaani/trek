@@ -391,7 +391,7 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'ट्रेकिं
                             </div>-->
                         </li>
                         <li class="relative group">
-                            <a href="#treks" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
+                            <a href="<?= BASE_URL ?>marathi/treks.php" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
                                ट्रेक्स
                                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary dark:bg-accent transition-all duration-300 group-hover:w-full"></span>
                             </a>
@@ -404,7 +404,7 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'ट्रेकिं
                             </div>
                         </li>
                         <li class="relative group">
-                            <a href="#forts" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
+                            <a href="<?= BASE_URL ?>marathi/fort_in_marathi.php" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
                                 किल्ले
                                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary dark:bg-accent transition-all duration-300 group-hover:w-full"></span>
                             </a>
@@ -417,7 +417,7 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'ट्रेकिं
                             </div>
                         </li>
                         <li class="relative group">
-                            <a href="#gallery" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
+                            <a href="<?= BASE_URL ?><marathi/gallery/gallery.php" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
                                 छायाचित्र संग्रह
                                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary dark:bg-accent transition-all duration-300 group-hover:w-full"></span>
                             </a>
