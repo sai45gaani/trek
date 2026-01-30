@@ -563,7 +563,7 @@ html {
         <p class="text-sm text-gray-600 mb-6">
           Conservation work completed so far at Sudhagad.
         </p>
-        <a href="project-sudhagad-overview.php#sudhagad-activities" class="text-green-700 font-semibold">
+        <a href="project-sudhagad-overview.php#sudhagad-work" class="text-green-700 font-semibold">
           Open <i class="fas fa-arrow-right ml-1"></i>
         </a>
       </div>
@@ -591,7 +591,7 @@ html {
         <p class="text-sm text-gray-600 mb-6">
           Be part of the Sudhagad conservation initiative.
         </p>
-        <a href="project-sudhagad-overview.php#udhagad-future" class="text-green-700 font-semibold">
+        <a href="project-sudhagad-overview.php#sudhagad-future" class="text-green-700 font-semibold">
           Join <i class="fas fa-arrow-right ml-1"></i>
         </a>
       </div>

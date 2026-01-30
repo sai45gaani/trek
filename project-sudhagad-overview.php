@@ -773,7 +773,7 @@ html {
         <p class="text-sm text-gray-600 mb-6">
           How the conservation project is structured and organized.
         </p>
-        <a href="project-sudhagad-overview.php#sudhagad-structure" class="text-green-700 font-semibold">
+        <a href="#sudhagad-structure" class="text-green-700 font-semibold">
           Open <i class="fas fa-arrow-right ml-1"></i>
         </a>
       </div>
@@ -787,7 +787,7 @@ html {
         <p class="text-sm text-gray-600 mb-6">
           Planned conservation and restoration activities.
         </p>
-        <a href="project-sudhagad-overview.php#sudhagad-future" class="text-green-700 font-semibold">
+        <a href="#sudhagad-future" class="text-green-700 font-semibold">
           Open <i class="fas fa-arrow-right ml-1"></i>
         </a>
       </div>
@@ -801,7 +801,7 @@ html {
         <p class="text-sm text-gray-600 mb-6">
           Conservation work completed so far at Sudhagad.
         </p>
-        <a href="project-sudhagad-overview.php#sudhagad-work" class="text-green-700 font-semibold">
+        <a href="#sudhagad-work" class="text-green-700 font-semibold">
           Open <i class="fas fa-arrow-right ml-1"></i>
         </a>
       </div>
@@ -815,7 +815,7 @@ html {
         <p class="text-sm text-gray-600 mb-6">
           Methodology and execution process of the project.
         </p>
-        <a href="project-sudhagad-overview.php#sudhagad-execution" class="text-green-700 font-semibold">
+        <a href="#sudhagad-execution" class="text-green-700 font-semibold">
           Open <i class="fas fa-arrow-right ml-1"></i>
         </a>
       </div>
@@ -829,7 +829,7 @@ html {
         <p class="text-sm text-gray-600 mb-6">
           Be part of the Sudhagad conservation initiative.
         </p>
-        <a href="project-sudhagad-overview.php#sudhagad-join" class="text-green-700 font-semibold">
+        <a href="#sudhagad-future" class="text-green-700 font-semibold">
           Join <i class="fas fa-arrow-right ml-1"></i>
         </a>
       </div>
