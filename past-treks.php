@@ -600,28 +600,12 @@ try {
                     <?php endforeach; ?>
                 </div>
                 
-                <div class="bg-gradient-to-r from-primary to-secondary text-white p-8 rounded-2xl text-center">
-                    <h3 class="text-3xl font-bold mb-4">
-                        Want to Join Our Next Adventure?
-                    </h3>
-                    <p class="text-xl mb-8 opacity-90">
-                        Check out our upcoming treks and be part of our growing community
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="/trek-schedule" class="inline-flex items-center justify-center px-6 py-3 bg-accent hover:bg-forest text-white font-semibold rounded-lg transition-colors">
-                            <i class="fas fa-calendar-plus mr-2"></i>
-                            View Upcoming Treks
-                        </a>
-                        <a href="/gallery" class="inline-flex items-center justify-center px-6 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold rounded-lg transition-colors border border-white border-opacity-30">
-                            <i class="fas fa-images mr-2"></i>
-                            View Photo Gallery
-                        </a>
-                      
-                    </div>
-                </div>
+               
             </div>
         </div>
     </section>
+
+    <?php include './our_important_information_for_trek.php';  ?>
 
    
 </main>
