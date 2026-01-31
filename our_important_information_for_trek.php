@@ -118,11 +118,11 @@
                             <i class="fab fa-whatsapp mr-2"></i>
                             Join WhatsApp Group
                         </a>
-                        <a href="#newsletter" class="inline-flex items-center justify-center px-6 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold rounded-lg transition-colors border border-white border-opacity-30">
+                       <!-- <a href="#newsletter" class="inline-flex items-center justify-center px-6 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold rounded-lg transition-colors border border-white border-opacity-30">
                             <i class="fas fa-envelope mr-2"></i>
                             Subscribe Newsletter
-                        </a>
-                        <a href="/safety-guidelines" class="inline-flex items-center justify-center px-6 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold rounded-lg transition-colors border border-white border-opacity-30">
+                        </a>-->
+                        <a href="./trek-gear.php" class="inline-flex items-center justify-center px-6 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold rounded-lg transition-colors border border-white border-opacity-30">
                             <i class="fas fa-book mr-2"></i>
                             Safety Guidelines
                         </a>

@@ -336,7 +336,8 @@ include './includes/header.php';
         <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
 
             <!-- Battles -->
-            <div class="royal-card rounded-2xl p-6 text-center group">
+            <a href="./shivaji/shivaji_battles.php" class="block group focus:outline-none">
+            <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                 <div class="w-16 h-16 bg-gradient-to-br from-red-600 to-yellow-500 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                     <i class="fas fa-sword text-2xl text-white"></i>
                 </div>
@@ -346,13 +347,16 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Detailed accounts of the major battles fought by Shivaji Maharaj, including strategies and outcomes.
                 </p>
-                <a href="https://trekshitiz.com/Shivaji/Battles-of-Shivaji-Maharaj1.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                <span href="./shivaji/shivaji_battles.php" class="text-red-600 hover:text-yellow-500 font-semibold transition-colors">
                     Read More <i class="fas fa-arrow-right ml-2"></i>
-                </a>
+                </span>
             </div>
+            </a>
 
             <!-- Books -->
-            <div class="royal-card rounded-2xl p-6 text-center group">
+            <a href="./shivaji/shivaji_maharaj_books.php" class="block group focus:outline-none">
+             
+            <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                 <div class="w-16 h-16 bg-gradient-to-br from-teal-600 to-teal-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                     <i class="fas fa-book text-2xl text-white"></i>
                 </div>
@@ -362,13 +366,15 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Historical books, novels, and literary works written on the life and achievements of Shivaji Maharaj.
                 </p>
-                <a href="https://trekshitiz.com/Shivaji/Historical-Books-Novels-on-Shivaji-Maharaj.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
                     Read More <i class="fas fa-arrow-right ml-2"></i>
-                </a>
+                </span>
             </div>
-
+            </a>
             <!-- Economic Policy -->
-            <div class="royal-card rounded-2xl p-6 text-center group">
+             
+            <a href="./shivaji/shivaji_maharaj_economic_policy.php" class="block group focus:outline-none">
+            <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                 <div class="w-16 h-16 bg-gradient-to-br from-yellow-600 to-yellow-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                     <i class="fas fa-coins text-2xl text-white"></i>
                 </div>
@@ -378,13 +384,16 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Economic reforms, trade systems, taxation methods, and financial administration of the Maratha Empire.
                 </p>
-                <a href="https://trekshitiz.com/Shivaji/ECONOMIC-POLICY-OF-SHIVAJI-MAHARAJ.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                <span class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
                     Read More <i class="fas fa-arrow-right ml-2"></i>
-                </a>
+                </span>
             </div>
+            </a>
 
             <!-- Photos -->
-            <div class="royal-card rounded-2xl p-6 text-center group">
+            
+            <a href="./shivaji/shivaji_maharaj_photos.php" class="block group focus:outline-none">
+            <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                 <div class="w-16 h-16 bg-gradient-to-br from-orange-600 to-orange-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                     <i class="fas fa-camera text-2xl text-white"></i>
                 </div>
@@ -394,13 +403,16 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Historic photographs, portraits, paintings, and artistic depictions of Shivaji Maharaj.
                 </p>
-                <a href="https://trekshitiz.com/Shivaji/Shivaji-Maharaj-Photos.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                    Read More <i class="fas fa-arrow-right ml-2"></i>
-                </a>
+                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>   
+                </span>
             </div>
+</a>
 
             <!-- Navy -->
-            <div class="royal-card rounded-2xl p-6 text-center group">
+    
+            <a href="./shivaji/shivaji_maharaj_navy_page.php" class="block group focus:outline-none">
+            <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                 <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                     <i class="fas fa-ship text-2xl text-white"></i>
                 </div>
@@ -410,13 +422,15 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     The powerful naval force established by Shivaji Maharaj to protect the western coastline.
                 </p>
-                <a href="https://trekshitiz.com/Shivaji/Aarmar-Navey-of-Shivaji-Maharaj.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                    Read More <i class="fas fa-arrow-right ml-2"></i>
-                </a>
+                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>   
+                </span>
             </div>
-
+</a>
             <!-- Spy Network -->
-            <div class="royal-card rounded-2xl p-6 text-center group">
+             
+            <a href="./shivaji/shivaji_maharaj_herchate.php" class="block group focus:outline-none">
+            <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                 <div class="w-16 h-16 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                     <i class="fas fa-eye text-2xl text-white"></i>
                 </div>
@@ -426,13 +440,16 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     The efficient intelligence system that played a vital role in military and administrative success.
                 </p>
-                <a href="https://trekshitiz.com/Shivaji/Herkhate-Spy-Department-of-Shivaji.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                    Read More <i class="fas fa-arrow-right ml-2"></i>
-                </a>
+                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>   
+                </span>
             </div>
+</a>
 
             <!-- Army -->
-            <div class="royal-card rounded-2xl p-6 text-center group">
+    
+            <a href="./shivaji/shivaji_maharaj_lakshar_army.php" class="block group focus:outline-none">
+            <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                 <div class="w-16 h-16 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                     <i class="fas fa-shield-alt text-2xl text-white"></i>
                 </div>
@@ -442,13 +459,16 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Military organization, discipline, and the legendary structure of the Maratha army.
                 </p>
-                <a href="https://trekshitiz.com/Shivaji/Lashkar-Army-of-Shivaji.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                    Read More <i class="fas fa-arrow-right ml-2"></i>
-                </a>
+                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>   
+                </span>
             </div>
+</a>
 
             <!-- Justice -->
-            <div class="royal-card rounded-2xl p-6 text-center group">
+             
+            <a href="./shivaji/shivaji_maharaj_justice.php" class="block group focus:outline-none">
+            <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                 <div class="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                     <i class="fas fa-balance-scale text-2xl text-white"></i>
                 </div>
@@ -458,13 +478,16 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Judicial system, legal reforms, and policies implemented during Shivaji Maharaj’s rule.
                 </p>
-                <a href="https://trekshitiz.com/Shivaji/NyayNiti-Policy-of-Justice-Shivaji.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                    Read More <i class="fas fa-arrow-right ml-2"></i>
-                </a>
+                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>   
+                </span>
             </div>
+</a>
 
             <!-- Factories -->
-            <div class="royal-card rounded-2xl p-6 text-center group">
+    
+            <a href="./shivaji/shivaji_maharaj_factories.php" class="block group focus:outline-none">
+            <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                 <div class="w-16 h-16 bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                     <i class="fas fa-industry text-2xl text-white"></i>
                 </div>
@@ -474,13 +497,16 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Industrial activities, production centers, and trade establishments during the Maratha period.
                 </p>
-                <a href="https://trekshitiz.com/Shivaji/Karkhane-Factories-of-Shivaji.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                    Read More <i class="fas fa-arrow-right ml-2"></i>
-                </a>
+                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>   
+                </span>
             </div>
+</a>
 
             <!-- Palaces -->
-            <div class="royal-card rounded-2xl p-6 text-center group">
+    
+            <a href="./shivaji/shivaji_maharaj_palaces.php" class="block group focus:outline-none">
+            <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                 <div class="w-16 h-16 bg-gradient-to-br from-pink-600 to-pink-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                     <i class="fas fa-landmark text-2xl text-white"></i>
                 </div>
@@ -490,13 +516,16 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Royal palaces, architectural marvels, and residential complexes of the Maratha Empire.
                 </p>
-                <a href="https://trekshitiz.com/Shivaji/Mahal-Palaces-of-Shivaji.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                    Read More <i class="fas fa-arrow-right ml-2"></i>
-                </a>
+                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>   
+                </span>
             </div>
+</a>
 
             <!-- Unknown Facts -->
-            <div class="royal-card rounded-2xl p-6 text-center group">
+    
+            <a href="./shivaji/shivaji_maharaj_unknown_info.php" class="block group focus:outline-none">
+            <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                 <div class="w-16 h-16 bg-gradient-to-br from-violet-600 to-violet-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                     <i class="fas fa-question-circle text-2xl text-white"></i>
                 </div>
@@ -506,13 +535,16 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Rare, lesser-known, and interesting facts about Chhatrapati Shivaji Maharaj.
                 </p>
-                <a href="https://trekshitiz.com/Shivaji/Unknown-Information-of-Shivaji.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                    Read More <i class="fas fa-arrow-right ml-2"></i>
-                </a>
+                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>   
+                </span>
             </div>
+</a>
 
             <!-- Songs -->
-            <div class="royal-card rounded-2xl p-6 text-center group">
+    
+            <a href="./shivaji/shivaji_maharaj_songs.php" class="block group focus:outline-none">
+            <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                 <div class="w-16 h-16 bg-gradient-to-br from-red-600 to-red-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                     <i class="fas fa-music text-2xl text-white"></i>
                 </div>
@@ -522,13 +554,16 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Songs, poems, and musical tributes dedicated to the bravery and legacy of Shivaji Maharaj.
                 </p>
-                <a href="https://trekshitiz.com/Shivaji/Songs-of-Shivaji-Maharaj.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                    Read More <i class="fas fa-arrow-right ml-2"></i>
-                </a>
+                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>   
+                </span>
             </div>
+</a>
 
             <!-- Shivbawani -->
-            <div class="royal-card rounded-2xl p-6 text-center group">
+    
+            <a href="./shivaji/shivaji_maharaj_shivbhawani_all.php" class="block group focus:outline-none">
+            <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                 <div class="w-16 h-16 bg-gradient-to-br from-amber-600 to-amber-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                     <i class="fas fa-scroll text-2xl text-white"></i>
                 </div>
@@ -538,13 +573,16 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Classical poetry by Kavi Bhushan glorifying the valor and achievements of Shivaji Maharaj.
                 </p>
-                <a href="https://trekshitiz.com/Shivaji/Shivbawni-Kavi-Bhushan.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                    Read More <i class="fas fa-arrow-right ml-2"></i>
-                </a>
+                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>   
+                </span>
             </div>
+</a>
 
             <!-- Shivbawani Part 2 -->
-            <div class="royal-card rounded-2xl p-6 text-center group">
+    <!--
+            <a href="./shivaji/shivaji_battles.php" class="block group focus:outline-none">
+            <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                 <div class="w-16 h-16 bg-gradient-to-br from-emerald-600 to-emerald-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                     <i class="fas fa-feather-alt text-2xl text-white"></i>
                 </div>
@@ -554,11 +592,12 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     The second part of the famous Shivbawani poetry composed by the renowned poet Kavi Bhushan.
                 </p>
-                <a href="https://trekshitiz.com/Shivaji/Shiv-bawani2-Kavi-Bhushan.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                    Read More <i class="fas fa-arrow-right ml-2"></i>
-                </a>
+                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>   
+                </span>
             </div>
-
+            </a>
+-->
         </div>
     </div>
 </section>

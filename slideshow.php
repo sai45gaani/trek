@@ -9,10 +9,24 @@ include './includes/header.php';
 
     <!-- ================= HERO / INTRO ================= -->
     <section class="py-20 bg-gradient-to-r from-primary to-secondary text-white text-center">
-        <h1 class="text-5xl font-bold mb-4">  TrekshitiZ Slide-Show</h1>
-        <p class="text-xl max-w-3xl mx-auto opacity-90">
+        <h1 class="text-5xl font-bold mb-6 mt-6">  TrekshitiZ <span class="text-yellow-300">Slide-Show </span></h1>
+        <p class="text-xl max-w-3xl mx-auto opacity-90 mb-8">
             Educational & inspirational presentations on Sahyadri, forts, trekking and history
         </p>
+        <div class="flex flex-wrap justify-center gap-4 text-sm opacity-90">
+                    <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">
+                        <i class="fas fa-mountain mr-2"></i>
+                        350+ Forts
+                    </span>
+                    <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">
+                        <i class="fas fa-users mr-2"></i>
+                        1000+ Trekkers
+                    </span>
+                    <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">
+                        <i class="fas fa-calendar mr-2"></i>
+                        Since 2000
+                    </span>
+                </div>
     </section>
 
     <!-- English Section -->

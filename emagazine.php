@@ -8,11 +8,29 @@ include './includes/header.php';
 
 <!-- ================= HERO / INTRO ================= -->
 <section class="py-20 bg-gradient-to-r from-primary to-secondary text-white text-center">
-    <h1 class="text-5xl font-bold mb-4">Kshitizians eMagazine</h1>
-    <p class="text-xl max-w-3xl mx-auto opacity-90">
-        A digital magazine by TreKshitiZ members featuring trekking experiences,
-            Sahyadri stories, poetry, articles, and memories.
+    <h1 class="text-5xl font-bold mb-6 mt-4">Kshitizians <span class="text-yellow-300">eMagazine </span></h1>
+    <p class="text-2xl max-w-3xl mx-auto opacity-90 mb-4">
+        A digital magazine by TreKshitiZ members.
     </p>
+    <p class="text-xl max-w-3xl mx-auto opacity-90 mb-8">
+        featuring trekking experiences,Sahyadri stories, poetry, articles, and memories.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4 text-sm opacity-90">
+                    <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">
+                        <i class="fas fa-mountain mr-2"></i>
+                        350+ Forts
+                    </span>
+                    <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">
+                        <i class="fas fa-users mr-2"></i>
+                        1000+ Trekkers
+                    </span>
+                    <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">
+                        <i class="fas fa-calendar mr-2"></i>
+                        Since 2000
+                    </span>
+    </div>
+    
+
 </section>
 
 

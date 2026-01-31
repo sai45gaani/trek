@@ -32,7 +32,7 @@
                         A long-running fort conservation initiative at Sudhagad near Pali, focusing on
                         restoration, cleaning, plantation, and heritage protection.
                     </p>
-                    <a href="/about/sudhagad-project" class="text-sm font-semibold text-primary hover:text-accent">
+                    <a href="./project-sudhagad-main.php" class="text-sm font-semibold text-primary hover:text-accent">
                         Learn more →
                     </a>
                 </div>
@@ -51,7 +51,7 @@
                         Regular fort treks, educational heritage walks, and expert-led explorations across
                         the Sahyadri mountain range.
                     </p>
-                    <a href="/about/trekking-activities" class="text-sm font-semibold text-primary hover:text-accent">
+                    <a href="./treks.php" class="text-sm font-semibold text-primary hover:text-accent">
                         View activities →
                     </a>
                 </div>
@@ -70,7 +70,7 @@
                         More than 200 educational slide shows showcasing forts, history, trekking routes,
                         and natural heritage.
                     </p>
-                    <a href="/about/slide-shows" class="text-sm font-semibold text-primary hover:text-accent">
+                    <a href="./slideshow.php" class="text-sm font-semibold text-primary hover:text-accent">
                         Explore →
                     </a>
                 </div>
@@ -89,7 +89,7 @@
                         A rich archive of fort photography, hand-drawn sketches, and visual documentation
                         created by Trek Kshitij members.
                     </p>
-                    <a href="/about/photography-sketches" class="text-sm font-semibold text-primary hover:text-accent">
+                    <a href="./gallery/gallery.php" class="text-sm font-semibold text-primary hover:text-accent">
                         View collection →
                     </a>
                 </div>
@@ -108,30 +108,38 @@
                         Books, fort maps, and research publications documenting Sahyadri forts for
                         educational and preservation purposes.
                     </p>
-                    <a href="/about/publications" class="text-sm font-semibold text-primary hover:text-accent">
+                    <a href="./gallery/map-gallery.php" class="text-sm font-semibold text-primary hover:text-accent">
                         Read more →
                     </a>
                 </div>
             </div>
 
-            <!-- Sanstha & Social Initiatives -->
             <div class="project-card group">
-                <div class="h-40 bg-cover bg-center rounded-t-xl"
-                     style="background-image:url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="p-5">
-                    <span class="inline-block mb-2 text-xs font-semibold text-indigo-700 bg-indigo-100 px-3 py-1 rounded-full">
-                        Community
-                    </span>
-                    <h3 class="text-lg font-bold mb-2">Social & Educational Initiatives</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                        Shivotsav programs, lectures, exhibitions, school support initiatives, and
-                        community awareness activities conducted by the Sanstha.
-                    </p>
-                    <a href="/about/community-initiatives" class="text-sm font-semibold text-primary hover:text-accent">
-                        Learn more →
-                    </a>
-                </div>
-            </div>
+    <div class="h-40 bg-cover bg-center rounded-t-xl"
+        style="background-image:url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                
+    <div class="p-5">
+        <span class="inline-block mb-2 text-xs font-semibold text-orange-700 bg-orange-100 px-3 py-1 rounded-full">
+            Swarajya
+        </span>
+
+        <h3 class="text-lg font-bold mb-2">
+            Chhatrapati Shivaji Maharaj
+        </h3>
+
+        <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+            Explore the life, ideals, forts, military strategy, and legacy of
+            Chhatrapati Shivaji Maharaj — the founder of Swarajya and an eternal
+            source of inspiration for Maharashtra.
+        </p>
+
+        <a href="./shivaji_maharaja.php"
+           class="text-sm font-semibold text-primary hover:text-accent">
+            Explore legacy →
+        </a>
+    </div>
+</div>
+
 
         </div>
     </div>

@@ -111,10 +111,14 @@
                                 </p>
                                 <div class="space-x-4">
                                     <button class="btn btn-primary">
+                                        <a href="#">
                                         Start Your Journey
+                                        </a>
                                     </button>
                                     <button class="btn btn-secondary">
+                                        <a href="#">
                                         View Treks
+                                        </a>
                                     </button>
                                 </div>
                             </div>
@@ -135,7 +139,9 @@
                                 </p>
                                 <div class="space-x-4">
                                     <button class="btn btn-primary">
+                                        <a href="#">
                                         Explore Forts
+                                        </a>
                                     </button>
                                 </div>
                             </div>
@@ -198,12 +204,12 @@
                                             </p>
 
                                             <div class="flex justify-center gap-4 flex-wrap">
-                                                <a href="/trek-details/<?= $heroTrek['TrekId'] ?>"
+                                                <a href="./trek-details.php?id=<?= $heroTrek['TrekId'] ?>"
                                                 class="px-8 py-3 bg-primary text-white rounded-full font-semibold hover:bg-secondary transition">
                                                     View Details
                                                 </a>
 
-                                                <a href="/trek-schedule"
+                                                <a href="./trek_schedule.php"
                                                 class="px-8 py-3 text-white rounded-full font-semibold hover:bg-white hover:text-black transition btn-secondary">
                                                     Full Schedule
                                                 </a>
@@ -281,7 +287,7 @@
                                         <div class="grid md:grid-cols-3 gap-6">
                                             
                                             <!-- Fort Gallery -->
-                                            <a href="/gallery/forts"
+                                            <a href="./gallery/fort-gallery.php"
                                             class="group relative h-64 rounded-xl overflow-hidden">
                                                 <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition"
                                                     style="background-image:url('/assets/images/Photos/Fort/sample.jpg')"></div>
@@ -293,7 +299,7 @@
                                             </a>
 
                                             <!-- Maps Gallery -->
-                                            <a href="/gallery/maps"
+                                            <a href="./gallery/map-gallery.php"
                                             class="group relative h-64 rounded-xl overflow-hidden">
                                                 <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition"
                                                     style="background-image:url('/assets/images/Photos/Maps/MapImages/sample.jpg')"></div>
@@ -305,7 +311,7 @@
                                             </a>
 
                                             <!-- Sketches -->
-                                            <a href="/gallery/sketches"
+                                            <a href="./gallery/sketches-gallery.php"
                                             class="group relative h-64 rounded-xl overflow-hidden">
                                                 <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition"
                                                     style="background-image:url('/assets/images/Photos/Sketches/sample.jpg')"></div>
@@ -336,7 +342,7 @@
                                             <div class="grid md:grid-cols-3 gap-6">
                                             
                                             <!-- Fort Gallery -->
-                                            <a href="/gallery/forts"
+                                            <a href="./gallery/butterfly-gallery.php"
                                             class="group relative h-64 rounded-xl overflow-hidden">
                                                 <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition"
                                                     style="background-image:url('/assets/images/Photos/Fort/sample.jpg')"></div>
@@ -348,7 +354,7 @@
                                             </a>
 
                                             <!-- Maps Gallery -->
-                                            <a href="/gallery/maps"
+                                            <a href="./gallery/caves-gallery.php"
                                             class="group relative h-64 rounded-xl overflow-hidden">
                                                 <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition"
                                                     style="background-image:url('/assets/images/Photos/Maps/MapImages/sample.jpg')"></div>
@@ -360,7 +366,7 @@
                                             </a>
 
                                             <!-- Sketches -->
-                                            <a href="/gallery/sketches"
+                                            <a href="./gallery/flower-gallery.php"
                                             class="group relative h-64 rounded-xl overflow-hidden">
                                                 <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition"
                                                     style="background-image:url('/assets/images/Photos/Sketches/sample.jpg')"></div>
@@ -390,7 +396,7 @@
                                                 Founder of the Maratha Empire · Master of Guerrilla Warfare ·
                                                 The soul behind Sahyadri forts
                                             </p>
-                                            <a href="/shivaji-maharaj"
+                                            <a href="./shivaji_maharaja.php"
                                             class="inline-flex items-center px-8 py-3 bg-accent text-black font-bold rounded-lg hover:bg-primary transition">
                                                 Read Legacy
                                             </a>
@@ -517,7 +523,7 @@
                                                     By <?= htmlspecialchars($t['Leader']) ?>
                                                 </div>
 
-                                                <a href="/trek-details/<?= $t['TrekId'] ?>" 
+                                                <a href="./trek-details.php?id=<?= $t['TrekId'] ?>" 
                                                 class="btn btn-primary w-full text-center">
                                                     View Trek
                                                 </a>
@@ -570,83 +576,86 @@
                     <!-- Feature Card 1 -->
                     <div class="card hover-lift p-8">
                         <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
-                            <i class="fas fa-fort-awesome text-2xl text-white"></i>
+                            <i class="fas fa-info text-2xl text-white"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Fort Information</h3>
                         <p class="text-gray-600 dark:text-gray-300 mb-6">
                             Detailed information about 350+ forts, photographs and maps included
                         </p>
-                        <a href="#" class="text-primary dark:text-accent font-semibold hover:underline">
+                        <a href="./fort_in_english.php" class="text-primary dark:text-accent font-semibold hover:underline">
                             Learn More →
                         </a>
                     </div>
                     
                     <!-- Feature Card 2 -->
-                    <div class="card hover-lift p-8">
+                     <div class="card hover-lift p-8">
                         <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mb-6">
-                            <i class="fas fa-images text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Picture Gallery</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-6">
-                            Forts, Butterflies, Caves, Flowers and more beautiful captures
-                        </p>
-                        <a href="#" class="text-primary dark:text-accent font-semibold hover:underline">
-                            View Gallery →
-                        </a>
-                    </div>
-                    
-                    <!-- Feature Card 3 -->
-                    <div class="card hover-lift p-8">
-                        <div class="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center mb-6">
-                            <i class="fas fa-comments text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Discussion Forum</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-6">
-                            Connect with fellow trekkers, share experiences and get guidance
-                        </p>
-                        <a href="#" class="text-primary dark:text-accent font-semibold hover:underline">
-                            Join Discussion →
-                        </a>
-                    </div>
-                    
-                    <!-- Feature Card 4 -->
-                    <div class="card hover-lift p-8">
-                        <div class="w-16 h-16 bg-forest rounded-2xl flex items-center justify-center mb-6">
-                            <i class="fas fa-crown text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">King Shivaji Maharaj</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-6">
-                            Learn about the great Maratha warrior king and his forts
-                        </p>
-                        <a href="#" class="text-primary dark:text-accent font-semibold hover:underline">
-                            Read More →
-                        </a>
-                    </div>
-                    
-                    <!-- Feature Card 5 -->
-                    <div class="card hover-lift p-8">
-                        <div class="w-16 h-16 bg-earth rounded-2xl flex items-center justify-center mb-6">
                             <i class="fas fa-map text-2xl text-white"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Maps</h3>
                         <p class="text-gray-600 dark:text-gray-300 mb-6">
                             Detailed maps of forts and surrounding regions for better navigation
                         </p>
-                        <a href="#" class="text-primary dark:text-accent font-semibold hover:underline">
+                        <a href="./gallery/map-gallery.php" class="text-primary dark:text-accent font-semibold hover:underline">
                             View Maps →
                         </a>
                     </div>
+
+                    <div class="card hover-lift p-8">
+                        <div class="w-16 h-16 bg-earth rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-comments text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Upcoming Treks</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">
+                            Connect with fellow trekkers, share experiences and get guidance
+                        </p>
+                        <a href="./trek_schedule.php" class="text-primary dark:text-accent font-semibold hover:underline">
+                            View Schedule →
+                        </a>
+                    </div>
+                    
+                    <div class="card hover-lift p-8">
+                        <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-images text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Picture Gallery</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">
+                            Forts, Butterflies, Caves, Flowers and more beautiful captures
+                        </p>
+                        <a href="./gallery/gallery.php" class="text-primary dark:text-accent font-semibold hover:underline">
+                            View Gallery →
+                        </a>
+                    </div>
+                    
+                    <!-- Feature Card 3 -->
+                    
+                    <!-- Feature Card 4 -->
+                    <div class="card hover-lift p-8">
+                        <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-crown text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">King Shivaji Maharaj</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">
+                            Learn about the great Maratha warrior king and his forts
+                        </p>
+                        <a href="./shivaji_maharaja.php" class="text-primary dark:text-accent font-semibold hover:underline">
+                            Read More →
+                        </a>
+                    </div>
+                    
+                    <!-- Feature Card 5 -->
+                    
                     
                     <!-- Feature Card 6 -->
                     <div class="card hover-lift p-8">
-                        <div class="w-16 h-16 bg-mountain rounded-2xl flex items-center justify-center mb-6">
+                        <div class="w-16 h-16 bg-earth rounded-2xl flex items-center justify-center mb-6">
                             <i class="fas fa-book text-2xl text-white"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">E-Magazine</h3>
                         <p class="text-gray-600 dark:text-gray-300 mb-6">
                             Trekshitiz organization's e-magazine: forts, nature, expert guidance
                         </p>
-                        <a href="#" class="text-primary dark:text-accent font-semibold hover:underline">
+                        <a href="./emagazine.php" class="text-primary dark:text-accent font-semibold hover:underline">
                             Read Magazine →
                         </a>
                     </div>

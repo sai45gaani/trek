@@ -78,7 +78,7 @@
                 </h4>
                 <ul class="space-y-3">
                     <li>
-                        <a href="<?= BASE_URL ?>" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>index.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-home mr-2 group-hover:translate-x-1 transition-transform"></i>
                             Home
                         </a>
@@ -101,10 +101,16 @@
                             Photo Gallery
                         </a>
                     </li>
-                    <li>
+                    <!--<li>
                         <a href="<?= BASE_URL ?>" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-comments mr-2 group-hover:translate-x-1 transition-transform"></i>
                             Discussion Forum
+                        </a>
+                    </li>-->
+                    <li>
+                        <a href="<?= BASE_URL ?>project-sudhagad-main.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                            <i class="fas fa-comments mr-2 group-hover:translate-x-1 transition-transform"></i>
+                            Project Sudhagad
                         </a>
                     </li>
                     <li>

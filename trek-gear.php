@@ -130,16 +130,16 @@ include './includes/header.php';
    <section class="py-20 bg-gradient-to-r from-primary to-secondary text-white text-center">
      <div class="container mx-auto max-w-6xl text-center">
             <div class="mb-8">
-                 <h1 class="text-4xl font-bold dark:text-white mb-4">
-      Trek Gear & Planning Guide
-    </h1>
-    <p class="max-w-3xl mx-auto">
-      Practical trekking gear checklist, seasonal guidance, and fort etiquette
-      followed by TreKshitiZ trekkers across Maharashtra.
-    </p>
-               
+                 <h1 class="text-5xl font-bold dark:text-white mb-4 mt-8">
+                  Trek Gear & <span class="text-yellow-300">Planning Guide </span>
+                </h1>
+                <p class="max-w-4xl text-xl mx-auto">
+                Practical trekking gear checklist, seasonal guidance, and <br> fort etiquette
+                followed by TreKshitiZ trekkers across Maharashtra.
+                </p>
+                        
             </div>
-            
+                        
             <!-- Quick Stats -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-12">
                 <div class="text-center opacity-90">
@@ -688,7 +688,7 @@ include './includes/header.php';
         <div class="container mx-auto max-w-6xl">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">
-                    <i class="fas fa-lightbulb text-green-600 mr-3"></i>
+                    <i class="fas fa-icon text-green-600 mr-3"></i>
                     Quick Tips for New Trekkers
                 </h2>
                 <div class="w-24 h-1 bg-gradient-to-r from-green-600 to-blue-600 mx-auto rounded-full"></div>
@@ -697,7 +697,7 @@ include './includes/header.php';
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="gear-card rounded-2xl p-6 shadow-xl text-center">
                     <div class="gear-icon mx-auto mb-4">
-                        <i class="fas fa-backpack"></i>
+                        <i class="fas fa-info"></i>
                     </div>
                     <h3 class="font-bold text-gray-800 dark:text-white mb-2">Right Backpack</h3>
                     <p class="text-sm text-gray-600 dark:text-gray-300">
@@ -752,14 +752,14 @@ include './includes/header.php';
       
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#treks"
+            <a href="./trek_schedule.php"
                class="bg-cream-light text-primary px-8 py-3 rounded-full font-semibold
                       hover:bg-cream-medium transition-colors duration-200 shadow-md">
                 <i class="fas fa-calendar-check mr-2"></i>
                 View Trek Schedule
             </a>
 
-            <a href="#contact"
+            <a href="./contact-us.php"
                class="border border-cream-light text-cream-light px-8 py-3 rounded-full font-semibold
                       hover:bg-cream-light hover:text-primary transition-colors duration-200">
                 <i class="fas fa-phone mr-2"></i>

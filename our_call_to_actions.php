@@ -1,19 +1,19 @@
 <!-- Call to Action Section -->
  <section class="py-16 bg-gradient-to-r from-primary to-secondary text-white">
     <div class="container mx-auto px-4 text-center">
-
+     
         <h2 class="text-3xl md:text-4xl font-bold mb-4">
-            Join the Trek Kshitij Community
+            Stay Connected with Trekshitiz Sanstha
         </h2>
 
         <p class="text-lg md:text-xl mb-8 opacity-90 max-w-3xl mx-auto">
-            Be a part of our journey to explore, document, and preserve the forts and natural heritage
-            of the Sahyadri mountains.
+            Follow our journey through upcoming adventures, completed treks,
+            fort explorations, and conservation initiatives across the Sahyadri mountains.
         </p>
 
         <!-- Primary Actions -->
         <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-            <a href="/trek-schedule"
+            <!--<a href="/trek-schedule"
                class="inline-flex items-center justify-center px-8 py-3 bg-white text-primary font-semibold rounded-full hover:bg-gray-100 transition-colors">
                 <i class="fas fa-hiking mr-2"></i>
                 Join Our Treks
@@ -23,6 +23,17 @@
                class="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-primary transition-colors">
                 <i class="fas fa-users mr-2"></i>
                 Explore the Community
+            </a>-->
+             <a href="./about-us.php"
+               class="inline-flex items-center justify-center px-8 py-3 bg-white text-primary font-semibold rounded-full hover:bg-gray-100 transition-colors">
+                <i class="fas fa-users mr-2"></i>
+                About Trekshitiz
+            </a>
+
+            <a href="./contact-us.php"
+               class="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-primary transition-colors">
+                <i class="fas fa-envelope mr-2"></i>
+                Get in Touch
             </a>
         </div>
 
