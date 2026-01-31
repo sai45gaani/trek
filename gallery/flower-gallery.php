@@ -83,7 +83,8 @@ $stats = $statsResult->fetch_assoc();
 ?>
 
 <style>
-/* Flower Gallery specific styles - EXACT SAME AS BUTTERFLY GALLERY */
+/* ================= FLOWER GALLERY – TREKSHITIZ THEME ================= */
+
 .flower-card {
     transition: all 0.3s ease;
     cursor: pointer;
@@ -111,12 +112,18 @@ $stats = $statsResult->fetch_assoc();
     filter: brightness(1.1);
 }
 
+/* Overlay */
 .flower-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0.7) 70%,
+        transparent 100%
+    );
     color: white;
     padding: 1.5rem 1rem 1rem;
     transform: translateY(100%);
@@ -127,8 +134,9 @@ $stats = $statsResult->fetch_assoc();
     transform: translateY(0);
 }
 
+/* Stats */
 .flower-stats {
-    background: linear-gradient(135deg, #e91e63, #ff5722);
+    background: linear-gradient(135deg, #8B4513, #D2691E);
     color: white;
     padding: 2rem;
     border-radius: 1rem;
@@ -136,23 +144,26 @@ $stats = $statsResult->fetch_assoc();
     margin: 2rem 0;
 }
 
+/* Badge */
 .species-badge {
     display: inline-flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(244, 164, 96, 0.3); /* accent */
     padding: 0.25rem 0.75rem;
     border-radius: 1rem;
     font-size: 0.875rem;
     margin-top: 0.5rem;
 }
 
+/* Modal Header */
 .flower-modal-header {
-    background: linear-gradient(135deg, #e91e63, #ff5722);
+    background: linear-gradient(135deg, #8B4513, #D2691E);
     color: white;
     padding: 1.5rem;
     border-radius: 1rem 1rem 0 0;
 }
 
+/* Photo Grid */
 .flower-photo-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -172,13 +183,15 @@ $stats = $statsResult->fetch_assoc();
     transform: scale(1.05);
 }
 
+/* Botanical name */
 .botanical-name {
     font-style: italic;
-    color: #ff7043;
+    color: #D2691E; /* secondary */
     font-size: 0.9rem;
 }
 
-/* ALPHABET FILTER - EXACT SAME AS BUTTERFLY GALLERY */
+/* ================= ALPHABET FILTER ================= */
+
 .alphabet-filter {
     display: flex;
     flex-wrap: wrap;
@@ -189,7 +202,7 @@ $stats = $statsResult->fetch_assoc();
 
 .alphabet-filter a {
     padding: 0.5rem 1rem;
-    background: #e91e63;
+    background: #8B4513; /* primary */
     color: white;
     border-radius: 0.5rem;
     text-decoration: none;
@@ -199,9 +212,11 @@ $stats = $statsResult->fetch_assoc();
 
 .alphabet-filter a:hover,
 .alphabet-filter a.active {
-    background: #ff5722;
+    background: #F4A460; /* accent */
     transform: translateY(-2px);
 }
+
+/* ================= PAGINATION ================= */
 
 .pagination {
     display: flex;
@@ -220,26 +235,29 @@ $stats = $statsResult->fetch_assoc();
 }
 
 .pagination a {
-    background: #e91e63;
+    background: #8B4513;
     color: white;
 }
 
 .pagination a:hover {
-    background: #ff5722;
+    background: #F4A460;
 }
 
 .pagination .current {
-    background: #ff5722;
-    color: white;
+    background: #F4A460;
+    color: #3b2f2f;
     font-weight: bold;
 }
+
+/* ================= LIGHTBOX ================= */
 
 .lightbox-image-container {
     position: relative;
     text-align: center;
 }
 
-.lightbox-prev, .lightbox-next {
+.lightbox-prev,
+.lightbox-next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -262,7 +280,8 @@ $stats = $statsResult->fetch_assoc();
     right: -20px;
 }
 
-.lightbox-prev:hover, .lightbox-next:hover {
+.lightbox-prev:hover,
+.lightbox-next:hover {
     background: rgba(0, 0, 0, 0.9);
 }
 
@@ -276,27 +295,43 @@ $stats = $statsResult->fetch_assoc();
 }
 
 .lightbox-thumbnails::-webkit-scrollbar-thumb {
-    background: #e91e63;
+    background: #8B4513;
     border-radius: 2px;
 }
+
+/* ================= MOBILE ================= */
 
 @media (max-width: 768px) {
     .flower-image {
         height: 150px;
     }
-    
+
     .flower-photo-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .lightbox-prev {
         left: 10px;
     }
-    
+
     .lightbox-next {
         right: 10px;
     }
 }
+
+        .fort-stats {
+                background: linear-gradient(
+                    135deg,
+                    #8B4513,  /* primary */
+                    #D2691E   /* secondary */
+                );
+                color: #FFFEF7;
+                padding: 2rem;
+                border-radius: 1rem;
+                text-align: center;
+                margin: 2rem 0; 
+            }
+
 </style>
 
 <main id="main-content">
@@ -308,8 +343,8 @@ $stats = $statsResult->fetch_assoc();
         
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 font-bilingual">
-                    🌸 फुलांची गॅलरी
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 mt-6 font-bilingual">
+                    🌸 Flower Gallery
                 </h1>
                 <h2 class="text-2xl md:text-3xl font-semibold mb-8">
                     Photo Gallery of Wild Flowers
@@ -318,11 +353,11 @@ $stats = $statsResult->fetch_assoc();
                     Beautiful wildflower species captured during trekking adventures in Sahyadri mountains
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#gallery" class="inline-flex items-center px-8 py-4 bg-white text-pink-600 font-semibold rounded-full hover:bg-gray-100 transition-colors">
+                    <a href="#gallery" class="inline-flex items-center px-8 py-4 bg-white text-primary font-semibold rounded-full hover:bg-gray-100 transition-colors">
                         <i class="fas fa-camera mr-2"></i>
                         Browse Gallery
                     </a>
-                    <a href="#alphabetical" class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-pink-600 transition-colors">
+                    <a href="#alphabetical" class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-secondary rounded-full hover:bg-white hover:text-secondary transition-colors">
                         <i class="fas fa-sort-alpha-down mr-2"></i>
                         Alphabetical View
                     </a>
@@ -331,19 +366,7 @@ $stats = $statsResult->fetch_assoc();
         </div>
     </section>
 
-    <!-- Search Box - EXACT SAME AS BUTTERFLY GALLERY -->
-    <div class="container mx-auto px-4 py-4">
-        <div class="max-w-md mx-auto">
-            <div class="relative">
-                <input type="text" id="flower-search" placeholder="Search flowers by name or botanical name..." 
-                       class="w-full px-4 py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-pink-500"
-                       onkeyup="searchFlowers()">
-                <div class="absolute inset-y-0 left-0 flex items-center pl-3">
-                    <i class="fas fa-search text-gray-400"></i>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Gallery Stats - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
     <section class="py-8 bg-gray-50 dark:bg-gray-800">
@@ -377,7 +400,21 @@ $stats = $statsResult->fetch_assoc();
     </div>
  </section>
 
-    <!-- Alphabetical Filter - HARDCODED ALPHABETS -->
+    <!-- Search Box - EXACT SAME AS BUTTERFLY GALLERY -->
+    <div class="container mx-auto px-4 py-4">
+        <div class="max-w-md mx-auto">
+            <div class="relative">
+                <input type="text" id="flower-search" placeholder="Search flowers by name or botanical name..." 
+                       class="w-full px-4 py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-pink-500"
+                       onkeyup="searchFlowers()">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <i class="fas fa-search text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ <!-- Alphabetical Filter - HARDCODED ALPHABETS -->
     <section id="alphabetical" class="py-8 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4">
             <div class="text-center mb-8">
@@ -444,55 +481,93 @@ $stats = $statsResult->fetch_assoc();
 </div>
 
 
-    <!-- Featured Flower Types - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
-    <section class="py-16 bg-white dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
-                    <i class="fas fa-star mr-3 text-pink-500"></i>
-                    Featured Flower Families
-                </h2>
-                <p class="text-xl text-gray-600 dark:text-gray-300">
-                    Explore different botanical families found in Maharashtra
-                </p>
-            </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                    <div class="w-16 h-16 bg-pink-500 rounded-xl flex items-center justify-center mb-4">
-                        <i class="fas fa-seedling text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Monsoon Blooms</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Seasonal flowers that bloom during the rainy season</p>
-                    <a href="#" class="text-pink-500 hover:text-pink-700 font-semibold">
-                        View Gallery <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
-                </div>
+            <!-- Featured Galleries -->
+<section class="py-16 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
 
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                    <div class="w-16 h-16 bg-red-500 rounded-xl flex items-center justify-center mb-4">
-                        <i class="fas fa-leaf text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Endemic Species</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Rare flowers unique to the Western Ghats region</p>
-                    <a href="#" class="text-pink-500 hover:text-pink-700 font-semibold">
-                        View Gallery <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
-                </div>
-
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                    <div class="w-16 h-16 bg-orange-500 rounded-xl flex items-center justify-center mb-4">
-                        <i class="fas fa-flower text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Medicinal Plants</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Traditional healing plants with beautiful flowers</p>
-                    <a href="#" class="text-pink-500 hover:text-pink-700 font-semibold">
-                        View Gallery <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
-                </div>
-            </div>
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+                <i class="fas fa-images mr-3 text-primary"></i>
+                Featured Galleries
+            </h2>
+            <p class="text-xl text-gray-600 dark:text-gray-300">
+                Explore nature, heritage, and creativity through our curated collections
+            </p>
         </div>
-    </section>
+
+        <!-- Gallery Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <!-- Butterflies -->
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-xl">
+                <div class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mb-4 ">
+                    <i class="fas fa-mountain text-2xl text-cream-light"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                    Butterflies
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                    A colorful collection of butterfly species captured across Maharashtra.
+                </p>
+                <a href="./butterfly-gallery.php" class="text-secondary font-semibold hover:underline">
+                    View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+
+            <!-- Caves -->
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-xl">
+                <div class="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center mb-4">
+                    <i class="fas fa-mountain text-2xl text-cream-light"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                    Caves
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                    Ancient caves, rock-cut architecture, and hidden formations of Sahyadri.
+                </p>
+                <a href="./caves-gallery.php" class="text-secondary font-semibold hover:underline">
+                    View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+
+            <!-- Flowers -->
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-xl">
+                <div class="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mb-4">
+                    <i class="fas fa-seedling text-2xl text-cream-light"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                    Flowers
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                    Wildflowers and seasonal blooms found on forts and trekking routes.
+                </p>
+                <a href="./flower-gallery.php" class="text-secondary font-semibold hover:underline">
+                    View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+
+            <!-- Sketches -->
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-xl">
+                <div class="w-16 h-16 bg-pink-500 rounded-2xl flex items-center justify-center mb-4">
+                    <i class="fas fa-pencil-alt text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                    Sketches
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                    Hand-drawn fort sketches, maps, and artistic impressions by members.
+                </p>
+                <a href="./sketches-gallery.php" class="text-secondary font-semibold hover:underline">
+                    View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 </main>
 
 <!-- Flower Detail Modal - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
@@ -561,7 +636,7 @@ function openFlowerGallery(slug) {
                 <i class="fas fa-seedling mr-2"></i>
                 ${flowerName}
             </h2>
-            <p class="text-pink-300 italic text-lg mb-2">Botanical Classification</p>
+            <p class="text-orange-300 italic text-lg mb-2">Botanical Classification</p>
             <p class="text-gray-300">${flowerPhotos.length} Photographs Available</p>
         </div>
         <div class="flower-photo-grid">
@@ -611,7 +686,7 @@ function openLightbox(index, slug) {
     let lightboxContent = `
         <div class="lightbox-header mb-4">
             <h3 class="text-white text-xl mb-1">${photos[index].CAT_NAME}</h3>
-            <p class="text-orange-300 text-sm mb-1">📍 ${photos[index].CAT_TYPE}</p>
+            <p class="text-secondary 0 text-sm mb-1">📍 ${photos[index].CAT_TYPE}</p>
             <p class="text-gray-300 text-sm">Photo ${index + 1} of ${photos.length}</p>
         </div>
         <div class="lightbox-image-container relative flex items-center justify-center min-h-[70vh]">

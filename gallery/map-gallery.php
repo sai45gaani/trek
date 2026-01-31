@@ -139,13 +139,29 @@ $stats = $statsResult->fetch_assoc();
 }
 
 .fort-stats {
-    background: linear-gradient(135deg, #2d5016, #4a7c23);
+/*    background: linear-gradient(135deg, #2d5016, #4a7c23);
     color: white;
     padding: 2rem;
     border-radius: 1rem;
     text-align: center;
     margin: 2rem 0;
+*/
 }
+
+.fort-stats
+{
+                background: linear-gradient(
+                    135deg,
+                    #8B4513,  /* primary */
+                    #D2691E   /* secondary */
+                );
+                color: #FFFEF7;
+                padding: 2rem;
+                border-radius: 1rem;
+                text-align: center;
+                margin: 2rem 0; 
+}
+
 
 .photo-badge {
     display: inline-flex;
@@ -311,6 +327,210 @@ $stats = $statsResult->fetch_assoc();
         font-size: 0.9rem;
     }
 }
+
+            /* ================= FORT GALLERY – THEME VERSION ================= */
+
+.fort-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: #000;
+    position: relative;
+}
+
+.fort-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(139, 69, 19, 0.35); /* primary */
+}
+
+/* Image */
+.fort-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: all 0.5s ease;
+    border-radius: 0.5rem;
+}
+
+.fort-card:hover .fort-image {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+
+/* Modal Header */
+.fort-modal-header {
+    background: linear-gradient(
+        135deg,
+        #8B4513,
+        #CD853F   /* forest */
+    );
+    color: #FFFEF7;
+    padding: 1.5rem;
+    border-radius: 1rem 1rem 0 0;
+}
+
+/* Photo Grid */
+.fort-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.fort-photo-item {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.fort-photo-item:hover {
+    transform: scale(1.05);
+}
+
+/* Location text */
+.location-name {
+    font-style: italic;
+    color: #F4A460; /* accent */
+    font-size: 0.9rem;
+}
+
+/* Alphabet Filter */
+.alphabet-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.alphabet-filter a {
+    padding: 0.5rem 1rem;
+    background: #8B4513; /* primary */
+    color: #FFFEF7;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.alphabet-filter a:hover,
+.alphabet-filter a.active {
+    background: #F4A460; /* accent */
+    color: #3b2a1a;
+    transform: translateY(-2px);
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.pagination a,
+.pagination span {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.pagination a {
+    background: #8B4513; /* primary */
+    color: #FFFEF7;
+}
+
+.pagination a:hover {
+    background: #F4A460; /* accent */
+    color: #3b2a1a;
+}
+
+.pagination .current {
+    background: #F4A460;
+    color: #3b2a1a;
+    font-weight: bold;
+}
+
+/* Lightbox */
+.lightbox-image-container {
+    position: relative;
+    text-align: center;
+}
+
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(139, 69, 19, 0.85);
+    color: #FFFEF7;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background 0.3s ease;
+    z-index: 10;
+}
+
+.lightbox-prev {
+    left: 10px;
+}
+
+.lightbox-next {
+    right: 10px;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: rgba(210, 105, 30, 0.95); /* secondary */
+}
+
+/* Thumbnails */
+.lightbox-thumbnails {
+    max-height: 100px;
+    overflow-x: auto;
+    padding: 0.5rem 0;
+}
+
+.lightbox-thumbnails::-webkit-scrollbar {
+    height: 4px;
+}
+
+.lightbox-thumbnails::-webkit-scrollbar-thumb {
+    background: #8B4513; /* primary */
+    border-radius: 2px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .fort-image {
+        height: 150px;
+    }
+
+    .fort-photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .alphabet-filter {
+        gap: 0.25rem;
+    }
+
+    .alphabet-filter a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+
 </style>
 
 <main id="main-content">
@@ -323,7 +543,7 @@ $stats = $statsResult->fetch_assoc();
       <div class="container mx-auto px-4 relative z-10">
     <div class="text-center max-w-4xl mx-auto">
         <h1 class="text-4xl md:text-6xl font-bold mb-6 mt-6 font-bilingual">
-            🗺️ किल्ल्यांचे नकाशे
+            🗺️ Fort Maps
         </h1>
         <h2 class="text-2xl md:text-3xl font-semibold mb-8">
             Fort Map Gallery of Sahyadri
@@ -332,11 +552,11 @@ $stats = $statsResult->fetch_assoc();
             Explore historic forts of Sahyadri through detailed maps, trekking routes, and geographic layouts
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#gallery" class="inline-flex items-center px-8 py-4 bg-white text-green-700 font-semibold rounded-full hover:bg-gray-100 transition-colors">
+            <a href="#gallery" class="inline-flex items-center px-8 py-4 bg-white text-primary font-semibold rounded-full hover:bg-gray-100 transition-colors">
                 <i class="fas fa-map-marked-alt mr-2"></i>
                 Browse Maps
             </a>
-            <a href="#alphabetical" class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-green-700 transition-colors">
+            <a href="#alphabetical" class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-secondary transition-colors">
                 <i class="fas fa-sort-alpha-down mr-2"></i>
                 Alphabetical View
             </a>
@@ -538,6 +758,55 @@ $stats = $statsResult->fetch_assoc();
             </div>
         </div>
     </section>-->
+        <!-- Featured Fort Types -->
+    <section class="py-16 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+                    <i class="fas fa-star mr-3 text-green-600"></i>
+                    Featured Fort Categories
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300">
+                    Explore different types of forts found in Maharashtra
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                    <div class="w-16 h-16 bg-green-600 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-mountain text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Hill Forts</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">Majestic fortresses built on mountain peaks and ridges</p>
+                    <a href="./../fort-by-category-english.php?category=Hill+Forts" class="text-green-600 hover:text-green-800 font-semibold">
+                        View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                    <div class="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-water text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Sea Forts</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">Coastal fortifications protecting ancient harbors</p>
+                    <a href="./../fort-by-category-english.php?category=Sea+Forts" class="text-green-600 hover:text-green-800 font-semibold">
+                        View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                    <div class="w-16 h-16 bg-yellow-600 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-crown text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Land Forts</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">Historic Land Forts of the Sahyadri Ranges </p>
+                    <a href="./../fort-by-category-english.php?category=Land+Forts" class="text-green-600 hover:text-green-800 font-semibold">
+                        View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 
 <!-- Fort Detail Modal -->

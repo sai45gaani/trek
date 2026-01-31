@@ -539,19 +539,7 @@ $stats = $statsResult->fetch_assoc();
         </div>
     </section>
 
-    <!-- Search Box -->
-    <div class="container mx-auto px-4 py-4">
-        <div class="max-w-md mx-auto">
-            <div class="relative">
-                <input type="text" id="fort-search" placeholder="Search forts by name or location..." 
-                       class="w-full px-4 py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-green-600"
-                       onkeyup="searchForts()">
-                <div class="absolute inset-y-0 left-0 flex items-center pl-3">
-                    <i class="fas fa-search text-gray-400"></i>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Gallery Stats - DYNAMIC DATA -->
     <section class="py-8 bg-gray-50 dark:bg-gray-800">
@@ -575,6 +563,20 @@ $stats = $statsResult->fetch_assoc();
         </div>
     </section>
 
+        <!-- Search Box -->
+    <div class="container mx-auto px-4 py-4">
+        <div class="max-w-md mx-auto">
+            <div class="relative">
+                <input type="text" id="fort-search" placeholder="Search forts by name or location..." 
+                       class="w-full px-4 py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-green-600"
+                       onkeyup="searchForts()">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <i class="fas fa-search text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- Alphabetical Filter -->
     <section id="alphabetical" class="py-8 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4">

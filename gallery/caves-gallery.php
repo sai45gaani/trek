@@ -190,20 +190,23 @@ $stats = $statsResult->fetch_assoc();
 
 .alphabet-filter a {
     padding: 0.5rem 1rem;
-    background: #8b5a2b;
-    color: white;
+    background: #8B4513; /* primary */
+    color: #FFF8DC; /* cream */
     border-radius: 0.5rem;
     text-decoration: none;
     transition: all 0.3s ease;
     font-weight: bold;
+    box-shadow: 0 4px 10px rgba(139, 69, 19, 0.35);
 }
 
 .alphabet-filter a:hover,
 .alphabet-filter a.active {
-    background: #daa520;
+    background: #D2691E; /* secondary */
     transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(210, 105, 30, 0.45);
 }
 
+/* Pagination */
 .pagination {
     display: flex;
     justify-content: center;
@@ -218,41 +221,47 @@ $stats = $statsResult->fetch_assoc();
     border-radius: 0.5rem;
     text-decoration: none;
     transition: all 0.3s ease;
+    font-weight: 600;
 }
 
 .pagination a {
-    background: #8b5a2b;
-    color: white;
+    background: #8B4513; /* primary */
+    color: #FFF8DC;
+    box-shadow: 0 4px 10px rgba(139, 69, 19, 0.35);
 }
 
 .pagination a:hover {
-    background: #daa520;
+    background: #CD853F; /* forest */
+    transform: translateY(-2px);
 }
 
 .pagination .current {
-    background: #daa520;
-    color: white;
+    background: #F4A460; /* accent */
+    color: #3b1f0f;
     font-weight: bold;
 }
 
+/* Lightbox */
 .lightbox-image-container {
     position: relative;
     text-align: center;
 }
 
-.lightbox-prev, .lightbox-next {
+.lightbox-prev,
+.lightbox-next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
+    background: rgba(43, 26, 15, 0.85); /* dark earth */
+    color: #FFF8DC;
     border: none;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 1.5rem;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
 
 .lightbox-prev {
@@ -263,10 +272,13 @@ $stats = $statsResult->fetch_assoc();
     right: -20px;
 }
 
-.lightbox-prev:hover, .lightbox-next:hover {
-    background: rgba(0, 0, 0, 0.9);
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: rgba(139, 69, 19, 0.95); /* primary hover */
+    transform: translateY(-50%) scale(1.1);
 }
 
+/* Thumbnails scrollbar */
 .lightbox-thumbnails {
     max-height: 100px;
     overflow-x: auto;
@@ -277,9 +289,10 @@ $stats = $statsResult->fetch_assoc();
 }
 
 .lightbox-thumbnails::-webkit-scrollbar-thumb {
-    background: #8b5a2b;
+    background: #8B4513; /* primary */
     border-radius: 2px;
 }
+
 
 @media (max-width: 768px) {
     .cave-image {
@@ -298,6 +311,22 @@ $stats = $statsResult->fetch_assoc();
         right: 10px;
     }
 }
+
+        .fort-stats {
+                background: linear-gradient(
+                    135deg,
+                    #8B4513,  /* primary */
+                    #D2691E   /* secondary */
+                );
+                color: #FFFEF7;
+                padding: 2rem;
+                border-radius: 1rem;
+                text-align: center;
+                margin: 2rem 0; 
+            }
+
+
+
 </style>
 
 <main id="main-content">
@@ -309,8 +338,8 @@ $stats = $statsResult->fetch_assoc();
         
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 font-bilingual">
-                    🏔️ गुहांची गॅलरी
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 mt-6 font-bilingual">
+                    🏔️ Caves Gallery
                 </h1>
                 <h2 class="text-2xl md:text-3xl font-semibold mb-8">
                     Photo Gallery of Ancient Caves
@@ -332,19 +361,7 @@ $stats = $statsResult->fetch_assoc();
         </div>
     </section>
 
-    <!-- Search Box - EXACT SAME AS BUTTERFLY GALLERY -->
-    <div class="container mx-auto px-4 py-4">
-        <div class="max-w-md mx-auto">
-            <div class="relative">
-                <input type="text" id="cave-search" placeholder="Search caves by name or heritage type..." 
-                       class="w-full px-4 py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-yellow-600"
-                       onkeyup="searchCaves()">
-                <div class="absolute inset-y-0 left-0 flex items-center pl-3">
-                    <i class="fas fa-search text-gray-400"></i>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Gallery Stats - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
     <section class="py-8 bg-gray-50 dark:bg-gray-800">
@@ -377,6 +394,20 @@ $stats = $statsResult->fetch_assoc();
         </div>
     </div>
     </section>
+
+        <!-- Search Box - EXACT SAME AS BUTTERFLY GALLERY -->
+    <div class="container mx-auto px-4 py-4">
+        <div class="max-w-md mx-auto">
+            <div class="relative">
+                <input type="text" id="cave-search" placeholder="Search caves by name or heritage type..." 
+                       class="w-full px-4 py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-yellow-600"
+                       onkeyup="searchCaves()">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <i class="fas fa-search text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Alphabetical Filter - HARDCODED ALPHABETS -->
     <section id="alphabetical" class="py-8 bg-white dark:bg-gray-900">
@@ -444,56 +475,92 @@ $stats = $statsResult->fetch_assoc();
 <?php endif; ?>
 </div>
 
+        <!-- Featured Galleries -->
+<section class="py-16 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
 
-    <!-- Featured Cave Types - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
-    <section class="py-16 bg-white dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
-                    <i class="fas fa-star mr-3 text-yellow-600"></i>
-                    Featured Cave Categories
-                </h2>
-                <p class="text-xl text-gray-600 dark:text-gray-300">
-                    Explore different types of ancient caves found in Maharashtra
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                    <div class="w-16 h-16 bg-yellow-600 rounded-xl flex items-center justify-center mb-4">
-                        <i class="fas fa-pray text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Buddhist Caves</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Ancient monastic complexes and chaitya halls</p>
-                    <a href="#" class="text-yellow-600 hover:text-yellow-800 font-semibold">
-                        View Gallery <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
-                </div>
-
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                    <div class="w-16 h-16 bg-orange-600 rounded-xl flex items-center justify-center mb-4">
-                        <i class="fas fa-om text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Hindu Caves</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Temple caves dedicated to Hindu deities</p>
-                    <a href="#" class="text-yellow-600 hover:text-yellow-800 font-semibold">
-                        View Gallery <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
-                </div>
-
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                    <div class="w-16 h-16 bg-brown-600 rounded-xl flex items-center justify-center mb-4">
-                        <i class="fas fa-mountain text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Natural Caves</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Rock formations and natural cave systems</p>
-                    <a href="#" class="text-yellow-600 hover:text-yellow-800 font-semibold">
-                        View Gallery <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
-                </div>
-            </div>
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+                <i class="fas fa-images mr-3 text-primary"></i>
+                Featured Galleries
+            </h2>
+            <p class="text-xl text-gray-600 dark:text-gray-300">
+                Explore nature, heritage, and creativity through our curated collections
+            </p>
         </div>
-    </section>
+
+        <!-- Gallery Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <!-- Butterflies -->
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-xl">
+                <div class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mb-4 ">
+                    <i class="fas fa-mountain text-2xl text-cream-light"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                    Butterflies
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                    A colorful collection of butterfly species captured across Maharashtra.
+                </p>
+                <a href="./butterfly-gallery.php" class="text-secondary font-semibold hover:underline">
+                    View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+
+            <!-- Caves -->
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-xl">
+                <div class="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center mb-4">
+                    <i class="fas fa-mountain text-2xl text-cream-light"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                    Caves
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                    Ancient caves, rock-cut architecture, and hidden formations of Sahyadri.
+                </p>
+                <a href="./caves-gallery.php" class="text-secondary font-semibold hover:underline">
+                    View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+
+            <!-- Flowers -->
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-xl">
+                <div class="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mb-4">
+                    <i class="fas fa-seedling text-2xl text-cream-light"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                    Flowers
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                    Wildflowers and seasonal blooms found on forts and trekking routes.
+                </p>
+                <a href="./flower-gallery.php" class="text-secondary font-semibold hover:underline">
+                    View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+
+            <!-- Sketches -->
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-xl">
+                <div class="w-16 h-16 bg-pink-500 rounded-2xl flex items-center justify-center mb-4">
+                    <i class="fas fa-pencil-alt text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                    Sketches
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                    Hand-drawn fort sketches, maps, and artistic impressions by members.
+                </p>
+                <a href="./sketches-gallery.php" class="text-secondary font-semibold hover:underline">
+                    View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 </main>
 
 <!-- Cave Detail Modal - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY -->
@@ -557,7 +624,7 @@ function openCaveGallery(slug) {
     // Create modal content - EXACT SAME STRUCTURE AS BUTTERFLY GALLERY
     let modalContent = `
         <div class="text-center mb-6">
-            <h2 class="text-3xl font-bold mb-2">
+            <h2 class="text-3xl font-bold mb-2 text-white">
                 <i class="fas fa-mountain mr-2"></i>
                 ${caveName}
             </h2>

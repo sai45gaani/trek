@@ -188,6 +188,138 @@ $stats = $statsResult->fetch_assoc();
         grid-template-columns: repeat(2, 1fr);
     }
 }
+.butterfly-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: #2b1a0f; /* dark earthy base */
+    position: relative;
+}
+
+.butterfly-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(139, 69, 19, 0.45); /* primary shadow */
+}
+
+.butterfly-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: all 0.5s ease;
+    border-radius: 0.5rem;
+}
+
+.butterfly-card:hover .butterfly-image {
+    transform: scale(1.1);
+    filter: brightness(1.08) contrast(1.05);
+}
+
+/* Overlay with fort-style dark gradient */
+.butterfly-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(
+        to top,
+        rgba(43, 26, 15, 0.95),
+        rgba(43, 26, 15, 0.6),
+        transparent
+    );
+    color: #fff;
+    padding: 1.5rem 1rem 1rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.butterfly-card:hover .butterfly-overlay {
+    transform: translateY(0);
+}
+
+/* Stats section */
+.butterfly-stats {
+    background: linear-gradient(135deg, #8B4513, #D2691E);
+    color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    margin: 2rem 0;
+    box-shadow: 0 12px 30px rgba(139, 69, 19, 0.4);
+}
+
+/* Badge */
+.species-badge {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(244, 164, 96, 0.25); /* accent tint */
+    color: #F4A460;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    border: 1px solid rgba(244, 164, 96, 0.4);
+}
+
+/* Modal Header */
+.butterfly-modal-header {
+    background: linear-gradient(135deg, #8B4513, #A0522D);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 1rem 1rem 0 0;
+}
+
+/* Photo Grid */
+.butterfly-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.butterfly-photo-item {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.butterfly-photo-item:hover {
+    transform: scale(1.05);
+}
+
+/* Scientific name – fort accent style */
+.scientific-name {
+    font-style: italic;
+    color: #DEB887; /* mountain / parchment tone */
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .butterfly-image {
+        height: 150px;
+    }
+
+    .butterfly-photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+            .fort-stats {
+                background: linear-gradient(
+                    135deg,
+                    #8B4513,  /* primary */
+                    #D2691E   /* secondary */
+                );
+                color: #FFFEF7;
+                padding: 2rem;
+                border-radius: 1rem;
+                text-align: center;
+                margin: 2rem 0; 
+            }
+
+
 </style>
 
 <main id="main-content">
@@ -199,8 +331,8 @@ $stats = $statsResult->fetch_assoc();
         
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 font-bilingual">
-                    🦋 फुलपाखरांची गॅलरी
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 mt-6 font-bilingual">
+                    🦋 Butterfly Gallery
                 </h1>
                 <h2 class="text-2xl md:text-3xl font-semibold mb-8">
                     Photo Gallery of Butterflies
@@ -209,11 +341,11 @@ $stats = $statsResult->fetch_assoc();
                     Beautiful butterfly species captured during trekking adventures in Sahyadri mountains
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#gallery" class="inline-flex items-center px-8 py-4 bg-white text-orange-500 font-semibold rounded-full hover:bg-gray-100 transition-colors">
+                    <a href="#gallery" class="inline-flex items-center px-8 py-4 bg-white text-primary font-semibold rounded-full hover:bg-gray-100 transition-colors">
                         <i class="fas fa-camera mr-2"></i>
                         Browse Gallery
                     </a>
-                    <a href="#alphabetical" class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-orange-500 transition-colors">
+                    <a href="#alphabetical" class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-primary transition-colors">
                         <i class="fas fa-sort-alpha-down mr-2"></i>
                         Alphabetical View
                     </a>
@@ -222,40 +354,43 @@ $stats = $statsResult->fetch_assoc();
         </div>
     </section>
 
-    <!-- Gallery Stats -->
+
+
+
+        <!-- Gallery Stats -->
 <!-- Butterfly Gallery Stats - DYNAMIC DATA -->
-        <section class="py-8 bg-gray-50 dark:bg-gray-800">
-    <div class="container mx-auto px-4">
-        <div class="fort-stats mx-auto">
-            <div class="grid md:grid-cols-3 gap-6">
-                
-                <div class="text-center">
-                    <div class="text-3xl font-bold mb-2">
-                        <?php echo $stats['totalButterflies']; ?>+
-                    </div>
-                    <p class="opacity-90">Butterflies Listed</p>
-                </div>
+    <section class="py-8 bg-gray-50 dark:bg-gray-800" id="butterfly-statistics">
+            <div class="container mx-auto px-4">
+                <div class="fort-stats mx-auto">
+                    <div class="grid md:grid-cols-3 gap-6">
+                        
+                        <div class="text-center">
+                            <div class="text-3xl font-bold mb-2">
+                                <?php echo $stats['totalButterflies']; ?>+
+                            </div>
+                            <p class="opacity-90">Butterflies Listed</p>
+                        </div>
 
-                <div class="text-center">
-                    <div class="text-3xl font-bold mb-2">
-                        <?php echo $stats['totalButterflyImages']; ?>+
-                    </div>
-                    <p class="opacity-90">Butterfly Images</p>
-                </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold mb-2">
+                                <?php echo $stats['totalButterflyImages']; ?>+
+                            </div>
+                            <p class="opacity-90">Butterfly Images</p>
+                        </div>
 
-                <div class="text-center">
-                    <div class="text-3xl font-bold mb-2">
-                        <?php echo $stats['uniqueButterflySpecies']; ?>+
-                    </div>
-                    <p class="opacity-90">Unique Species</p>
-                </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold mb-2">
+                                <?php echo $stats['uniqueButterflySpecies']; ?>+
+                            </div>
+                            <p class="opacity-90">Unique Species</p>
+                        </div>
 
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-        </section>
+    </section>
 
-
+    
     <!-- Alphabetical Filter -->
     <section id="alphabetical" class="py-8 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4">
@@ -274,6 +409,7 @@ $stats = $statsResult->fetch_assoc();
             </div>
         </div>
     </section>
+
 
     <!-- Butterfly Gallery -->
     <section id="gallery" class="py-12 bg-gray-50 dark:bg-gray-800">
@@ -323,54 +459,93 @@ $stats = $statsResult->fetch_assoc();
 </div>
 
     <!-- Featured Butterfly Types -->
-    <section class="py-16 bg-white dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
-                    <i class="fas fa-star mr-3 text-orange-500"></i>
-                    Featured Butterfly Families
-                </h2>
-                <p class="text-xl text-gray-600 dark:text-gray-300">
-                    Explore different butterfly families found in Maharashtra
-                </p>
-            </div>
+    
+    <!-- Featured Galleries -->
+<section class="py-16 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                    <div class="w-16 h-16 bg-orange-500 rounded-xl flex items-center justify-center mb-4">
-                        <i class="fas fa-crown text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Swallowtails</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Large, colorful butterflies with distinctive tail-like extensions</p>
-                    <a href="#" class="text-orange-500 hover:text-red-500 font-semibold">
-                        View Gallery <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
-                </div>
-
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                    <div class="w-16 h-16 bg-red-500 rounded-xl flex items-center justify-center mb-4">
-                        <i class="fas fa-palette text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Nymphalids</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Brush-footed butterflies with vibrant patterns and colors</p>
-                    <a href="#" class="text-orange-500 hover:text-red-500 font-semibold">
-                        View Gallery <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
-                </div>
-
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                    <div class="w-16 h-16 bg-pink-500 rounded-xl flex items-center justify-center mb-4">
-                        <i class="fas fa-gem text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Blues & Coppers</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Small, delicate butterflies with metallic sheens</p>
-                    <a href="#" class="text-orange-500 hover:text-red-500 font-semibold">
-                        View Gallery <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
-                </div>
-            </div>
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+                <i class="fas fa-images mr-3 text-primary"></i>
+                Featured Galleries
+            </h2>
+            <p class="text-xl text-gray-600 dark:text-gray-300">
+                Explore nature, heritage, and creativity through our curated collections
+            </p>
         </div>
-    </section>
+
+        <!-- Gallery Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <!-- Butterflies -->
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-xl">
+                <div class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mb-4 ">
+                    <i class="fas fa-mountain text-2xl text-cream-light"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                    Butterflies
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                    A colorful collection of butterfly species captured across Maharashtra.
+                </p>
+                <a href="./butterfly-gallery.php" class="text-secondary font-semibold hover:underline">
+                    View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+
+            <!-- Caves -->
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-xl">
+                <div class="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center mb-4">
+                    <i class="fas fa-mountain text-2xl text-cream-light"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                    Caves
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                    Ancient caves, rock-cut architecture, and hidden formations of Sahyadri.
+                </p>
+                <a href="./caves-gallery.php" class="text-secondary font-semibold hover:underline">
+                    View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+
+            <!-- Flowers -->
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-xl">
+                <div class="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mb-4">
+                    <i class="fas fa-seedling text-2xl text-cream-light"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                    Flowers
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                    Wildflowers and seasonal blooms found on forts and trekking routes.
+                </p>
+                <a href="./flower-gallery.php" class="text-secondary font-semibold hover:underline">
+                    View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+
+            <!-- Sketches -->
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-xl">
+                <div class="w-16 h-16 bg-pink-500 rounded-2xl flex items-center justify-center mb-4">
+                    <i class="fas fa-pencil-alt text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                    Sketches
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                    Hand-drawn fort sketches, maps, and artistic impressions by members.
+                </p>
+                <a href="./sketches-gallery.php" class="text-secondary font-semibold hover:underline">
+                    View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 
     <!-- Butterfly Detail Modal -->
     <div id="butterfly-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center p-4">
@@ -395,122 +570,135 @@ $stats = $statsResult->fetch_assoc();
         </div>
     </div>
 
-    <style>
-    .alphabet-filter {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        justify-content: center;
-        margin: 2rem 0;
-    }
+<style>
+.alphabet-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 2rem 0;
+}
 
-    .alphabet-filter a {
-        padding: 0.5rem 1rem;
-        background: #ff6b6b;
-        color: white;
-        border-radius: 0.5rem;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        font-weight: bold;
-    }
+.alphabet-filter a {
+    padding: 0.5rem 1rem;
+    background: #8B4513; /* primary */
+    color: #FFF8DC; /* cream */
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(139, 69, 19, 0.35);
+}
 
-    .alphabet-filter a:hover,
-    .alphabet-filter a.active {
-        background: #ffa500;
-        transform: translateY(-2px);
-    }
+.alphabet-filter a:hover,
+.alphabet-filter a.active {
+    background: #D2691E; /* secondary */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(210, 105, 30, 0.45);
+}
 
-    .pagination {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 0.5rem;
-        margin: 2rem 0;
-    }
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+}
 
-    .pagination a,
-    .pagination span {
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        text-decoration: none;
-        transition: all 0.3s ease;
-    }
+.pagination a,
+.pagination span {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
 
-    .pagination a {
-        background: #ff6b6b;
-        color: white;
-    }
+.pagination a {
+    background: #8B4513; /* primary */
+    color: #FFF8DC;
+    box-shadow: 0 4px 10px rgba(139, 69, 19, 0.35);
+}
 
-    .pagination a:hover {
-        background: #ffa500;
-    }
+.pagination a:hover {
+    background: #CD853F; /* forest */
+    transform: translateY(-2px);
+}
 
-    .pagination .current {
-        background: #ffa500;
-        color: white;
-        font-weight: bold;
-    }
+.pagination .current {
+    background: #F4A460; /* accent */
+    color: #3b1f0f;
+    font-weight: bold;
+}
 
-    .lightbox-image-container {
-        position: relative;
-        text-align: center;
-    }
+/* Lightbox */
+.lightbox-image-container {
+    position: relative;
+    text-align: center;
+}
 
-    .lightbox-prev, .lightbox-next {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-        border: none;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        cursor: pointer;
-        font-size: 1.5rem;
-        transition: background 0.3s ease;
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(43, 26, 15, 0.85); /* dark earth */
+    color: #FFF8DC;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.lightbox-prev {
+    left: -20px;
+}
+
+.lightbox-next {
+    right: -20px;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: rgba(139, 69, 19, 0.95); /* primary hover */
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Thumbnails scrollbar */
+.lightbox-thumbnails {
+    max-height: 100px;
+    overflow-x: auto;
+}
+
+.lightbox-thumbnails::-webkit-scrollbar {
+    height: 4px;
+}
+
+.lightbox-thumbnails::-webkit-scrollbar-thumb {
+    background: #8B4513; /* primary */
+    border-radius: 2px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .butterfly-photo-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .lightbox-prev {
-        left: -20px;
+        left: 10px;
     }
 
     .lightbox-next {
-        right: -20px;
+        right: 10px;
     }
-
-    .lightbox-prev:hover, .lightbox-next:hover {
-        background: rgba(0, 0, 0, 0.9);
-    }
-
-    .lightbox-thumbnails {
-        max-height: 100px;
-        overflow-x: auto;
-    }
-
-    .lightbox-thumbnails::-webkit-scrollbar {
-        height: 4px;
-    }
-
-    .lightbox-thumbnails::-webkit-scrollbar-thumb {
-        background: #ff6b6b;
-        border-radius: 2px;
-    }
-
-    @media (max-width: 768px) {
-        .butterfly-photo-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        
-        .lightbox-prev {
-            left: 10px;
-        }
-        
-        .lightbox-next {
-            right: 10px;
-        }
-    }
-    </style>
+}
+</style>
 </main>
 
 <?php include '../includes/footer.php'; ?>
