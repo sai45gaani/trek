@@ -162,7 +162,227 @@ include '../includes/header.php';
 
 ?>
 
+<style>
 
+.fort-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: #000;
+    position: relative;
+}
+
+.fort-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.fort-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: all 0.5s ease;
+    border-radius: 0.5rem;
+}
+
+.fort-card:hover .fort-image {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+.fort-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 70%, transparent 100%);
+    color: white;
+    padding: 1.5rem 1rem 1rem;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.fort-card:hover .fort-overlay {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.8) 70%, transparent 100%);
+}
+
+.fort-stats {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.photo-badge {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(127, 176, 105, 0.3);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+.fort-modal-header {
+    background: linear-gradient(135deg, #2d5016, #4a7c23);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.fort-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.fort-photo-item {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.fort-photo-item:hover {
+    transform: scale(1.05);
+}
+
+.location-name {
+    font-style: italic;
+    color: #60a5fa;
+    font-size: 0.9rem;
+}
+
+.alphabet-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.alphabet-filter a {
+    padding: 0.5rem 1rem;
+    background: #1e3a8a;
+    color: white;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.alphabet-filter a:hover,
+.alphabet-filter a.active {
+    background: #60a5fa;
+    transform: translateY(-2px);
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.pagination a,
+.pagination span {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.pagination a {
+    background: #1e3a8a;
+    color: white;
+}
+
+.pagination a:hover {
+    background: #60a5fa;
+}
+
+.pagination .current {
+    background: #60a5fa;
+    color: white;
+    font-weight: bold;
+}
+
+
+.lightbox-image-container {
+    position: relative;
+    text-align: center;
+}
+
+.lightbox-prev, .lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background 0.3s ease;
+    z-index: 10;
+}
+
+.lightbox-prev {
+    left: 10px;
+}
+
+.lightbox-next {
+    right: 10px;
+}
+
+.lightbox-prev:hover, .lightbox-next:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.lightbox-thumbnails {
+    max-height: 100px;
+    overflow-x: auto;
+    padding: 0.5rem 0;
+}
+
+.lightbox-thumbnails::-webkit-scrollbar {
+    height: 4px;
+}
+
+.lightbox-thumbnails::-webkit-scrollbar-thumb {
+    background: #1e3a8a;
+    border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+    .fort-image {
+        height: 150px;
+    }
+    
+    .fort-photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .alphabet-filter {
+        gap: 0.25rem;
+    }
+    
+    .alphabet-filter a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+</style>
 
 <main id="main-content" class="">
     <!-- Hero Section with Fort Name -->
@@ -277,15 +497,26 @@ include '../includes/header.php';
                 <div class="grid md:grid-cols-2 gap-8">
                     
                     <!-- Front/Hero Image -->
+                     
+                    
                     <?php if ($frontImage): ?>
                     <div class="relative group">
+                        
+                            <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-2 flex items-center">
+                                <i class="fas fa-map text-accent mr-3"></i>
+                                Fort Images
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                                Explore Various Images of the Fort
+                            </p>
+                        
+                        <div class="relative overflow-hidden rounded-2xl shadow-2xl aspect-[4/3] bg-gray-200 dark:bg-gray-700">
                         <div class="absolute top-4 left-4 z-10">
                             <span class="bg-accent text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
                                 <i class="fas fa-camera mr-2"></i>Featured Photo
                             </span>
                         </div>
-                        <div class="relative overflow-hidden rounded-2xl shadow-2xl aspect-[4/3] bg-gray-200 dark:bg-gray-700">
-                            <img src="../assets/images/Photos/Picture/<?php echo htmlspecialchars($frontImage['PIC_NAME']); ?>" 
+                        <img src="../assets/images/Photos/Fort/<?php echo htmlspecialchars($frontImage['PIC_NAME']); ?>" 
                                  alt="<?php echo htmlspecialchars($frontImage['PIC_DESC'] ?? $fortData['FortName']); ?>"
                                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                  >
@@ -296,8 +527,10 @@ include '../includes/header.php';
                                 </p>
                             </div>
                         </div>
-                        <a href="../gallery/fort-gallery.php?fort=<?php echo urlencode($fortData['FortName']); ?>" 
-                           class="mt-4 inline-flex items-center text-accent hover:text-primary font-semibold transition-colors">
+                        <a href="javascript:void(0)"
+                            onclick="openFortGallery('<?php echo addslashes($fortData['FortName']); ?>')" 
+                           class="mt-4 inline-flex items-center inline-flex items-center justify-center w-full px-6 py-3 bg-primary hover:bg-secondary text-white rounded-lg font-semibold transition-colors"
+                           >
                             <i class="fas fa-images mr-2"></i>
                             View Full Photo Gallery
                         </a>
@@ -318,30 +551,34 @@ include '../includes/header.php';
                         
                         <?php if (!empty($fortMaps)): ?>
                         <div class="grid grid-cols-2 gap-4 mb-4">
+                            <?php $count = 0; ?>
                             <?php foreach ($fortMaps as $index => $map): ?>
-                            <div class="relative group cursor-pointer">
-                                <div class="relative overflow-hidden rounded-xl shadow-lg aspect-square bg-gray-100 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600">
-                                    <img src="../assets/images/Photos/Maps/MapImages/<?php echo htmlspecialchars($map['MapPath'] ?? $map['MapName']); ?>" 
-                                         alt="<?php echo htmlspecialchars($map['MapType'] ?? 'Map ' . ($index + 1)); ?>"
-                                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                                         >
-                                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                                        <i class="fas fa-search-plus text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                 <?php if ($count >= 2) break; ?>
+                                 <?php $count++; ?>
+                                    <div class="relative group cursor-pointer">
+                                        <div class="relative overflow-hidden rounded-xl shadow-lg aspect-square bg-gray-100 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600">
+                                            <img src="../assets/images/Photos/Maps/MapImages/<?php echo htmlspecialchars($map['MapPath'] ?? $map['MapName']); ?>" 
+                                                alt="<?php echo htmlspecialchars($map['MapType'] ?? 'Map ' . ($index + 1)); ?>"
+                                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                                >
+                                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                                <i class="fas fa-search-plus text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                            </div>
+                                        </div>
+                                        <div class="mt-2 text-center">
+                                            <p class="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                                                <?php echo htmlspecialchars($map['MapType'] ?? 'Map ' . ($index + 1)); ?>
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="mt-2 text-center">
-                                    <p class="text-xs font-semibold text-gray-700 dark:text-gray-300">
-                                        <?php echo htmlspecialchars($map['MapType'] ?? 'Map ' . ($index + 1)); ?>
-                                    </p>
-                                </div>
-                            </div>
                             <?php endforeach; ?>
                         </div>
                         
-                        <a href="/maps?fort=<?php echo urlencode($fortData['FortName']); ?>" 
+                        <a href="javascript:void(0)"
+                            onclick="openMapGallery('<?php echo addslashes($fortData['FortName']); ?>')" 
                            class="inline-flex items-center justify-center w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors">
                             <i class="fas fa-map-marked-alt mr-2"></i>
-                            View All Maps & Download
+                            View All Maps
                         </a>
                         
                         <?php else: ?>
@@ -685,7 +922,7 @@ include '../includes/header.php';
     </section>
 
     <!-- Trek Tips Section -->
-    <section class="py-12 bg-gradient-to-r from-forest to-mountain text-white">
+    <section class="py-12 bg-gradient-to-r from-primary to-secondary text-white">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-3xl font-bold mb-8">Planning Your Trek?</h2>
@@ -723,6 +960,29 @@ include '../includes/header.php';
             </div>
         </div>
     </section>
+
+            <!-- Fort Detail Modal -->
+        <div id="fort-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center p-4">
+            <div class="bg-gray-900 rounded-xl max-w-6xl max-h-[90vh] overflow-y-auto w-full relative">
+                <div class="fort-modal-header relative">
+                    <button onclick="closeFortModal()" class="absolute top-4 right-4 text-white">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <div class="modal-body p-6"></div>
+            </div>
+        </div>
+
+        <!-- Lightbox Modal -->
+        <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-95 z-[9999] hidden items-center justify-center p-4">
+            <div class="lightbox-content max-w-5xl w-full">
+                <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+                <div class="lightbox-body text-center"></div>
+            </div>
+        </div>
+
 
 </main>
 
@@ -876,4 +1136,189 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
 });
+
+// Open fort gallery in modal - AJAX LOAD
+function openFortGallery(fortName) {
+    // Show loading state
+    $('#fort-modal .modal-body').html('<div class="text-center py-12"><i class="fas fa-spinner fa-spin text-4xl text-white"></i><p class="text-white mt-4">Loading photos...</p></div>');
+    $('#fort-modal').removeClass('hidden').addClass('flex');
+    $('body').addClass('overflow-hidden');
+    
+    // AJAX request to get all photos for this fort
+    $.ajax({
+        url: '../api/get_fort_photos.php',
+        method: 'POST',
+        data: { fortName: fortName },
+        dataType: 'json',
+        success: function(response) {
+            if (response.status === "200") {
+                displayFortGallery(response.data);
+            } else {
+                $('#fort-modal .modal-body').html('<div class="text-center py-12"><i class="fas fa-exclamation-triangle text-4xl text-yellow-500"></i><p class="text-white mt-4">' + response.message + '</p></div>');
+            }
+        },
+        error: function() {
+            $('#fort-modal .modal-body').html('<div class="text-center py-12"><i class="fas fa-exclamation-triangle text-4xl text-red-500"></i><p class="text-white mt-4">Error loading photos. Please try again.</p></div>');
+        }
+    });
+}
+
+// Open fort gallery in modal - AJAX LOAD
+function openMapGallery(fortName) {
+    // Show loading state
+    $('#fort-modal .modal-body').html('<div class="text-center py-12"><i class="fas fa-spinner fa-spin text-4xl text-white"></i><p class="text-white mt-4">Loading maps...</p></div>');
+    $('#fort-modal').removeClass('hidden').addClass('flex');
+    $('body').addClass('overflow-hidden');
+    
+    // AJAX request to get all photos for this fort
+    $.ajax({
+        url: '../api/get_fort_maps.php',
+        method: 'POST',
+        data: { fortName: fortName },
+        dataType: 'json',
+        success: function(response) {
+            if (response.status === "200") {
+                displayMapGallery(response.data);
+            } else {
+                $('#fort-modal .modal-body').html('<div class="text-center py-12"><i class="fas fa-exclamation-triangle text-4xl text-yellow-500"></i><p class="text-white mt-4">' + response.message + '</p></div>');
+            }
+        },
+        error: function() {
+            $('#fort-modal .modal-body').html('<div class="text-center py-12"><i class="fas fa-exclamation-triangle text-4xl text-red-500"></i><p class="text-white mt-4">Error loading maps. Please try again.</p></div>');
+        }
+    });
+}
+
+// Display fort gallery in modal
+function displayMapGallery(data) {
+    const fortName = data.fortName;
+    const fortDistrict = data.fortDistrict;
+    const photos = data.maps;
+    
+    let modalContent = `
+        <div class="text-center mb-6">
+            <h2 class="text-3xl font-bold mb-2 text-white">
+                <i class="fas fa-fort-awesome mr-2"></i>
+                ${fortName}
+            </h2>
+            <p class="text-green-300 italic text-lg mb-2">${fortDistrict}</p>
+            <p class="text-gray-300">${photos.length} Maps Available</p>
+        </div>
+        <div class="fort-photo-grid">
+    `;
+    
+    photos.forEach((photo, index) => {
+        modalContent += `
+            <div class="fort-photo-item" onclick="openLightbox(${index}, '${fortName}')">
+                <img src="../${photo.path}" alt="${photo.description || fortName}" class="w-full h-48 object-cover rounded-lg" onerror="this.src='../assets/images/default-map.svg';">
+                <div class="photo-info mt-2">
+                    <p class="text-white text-sm">${photo.description || 'Photo ' + (index + 1)}</p>
+                </div>
+            </div>
+        `;
+    });
+    
+    modalContent += '</div>';
+    
+    $('#fort-modal .modal-body').html(modalContent);
+    
+    // Store photos data globally for lightbox
+    window.currentFortPhotos = photos;
+    window.currentFortName = fortName;
+}
+
+// Display fort gallery in modal
+function displayFortGallery(data) {
+    const fortName = data.fortName;
+    const fortDistrict = data.fortDistrict;
+    const photos = data.photos;
+    
+    let modalContent = `
+        <div class="text-center mb-6">
+            <h2 class="text-3xl font-bold mb-2 text-white">
+                <i class="fas fa-fort-awesome mr-2"></i>
+                ${fortName}
+            </h2>
+            <p class="text-green-300 italic text-lg mb-2">${fortDistrict}</p>
+            <p class="text-gray-300">${photos.length} Photographs Available</p>
+        </div>
+        <div class="fort-photo-grid">
+    `;
+    
+    photos.forEach((photo, index) => {
+        modalContent += `
+            <div class="fort-photo-item" onclick="openLightbox(${index}, '${fortName}')">
+                <img src="../${photo.path}" alt="${photo.description || fortName}" class="w-full h-48 object-cover rounded-lg" onerror="this.src='../assets/images/default-fort.svg';">
+                <div class="photo-info mt-2">
+                    <p class="text-white text-sm">${photo.description || 'Photo ' + (index + 1)}</p>
+                </div>
+            </div>
+        `;
+    });
+    
+    modalContent += '</div>';
+    
+    $('#fort-modal .modal-body').html(modalContent);
+    
+    // Store photos data globally for lightbox
+    window.currentFortPhotos = photos;
+    window.currentFortName = fortName;
+}
+
+// Close fort modal
+function closeFortModal() {
+    $('#fort-modal').addClass('hidden').removeClass('flex');
+    $('body').removeClass('overflow-hidden');
+}
+
+// Open lightbox for individual photo
+function openLightbox(index, fortName) {
+    const photos = window.currentFortPhotos;
+    
+    if (!photos || photos.length === 0) return;
+    
+    let lightboxContent = `
+        <div class="lightbox-header mb-4">
+            <h3 class="text-white text-xl mb-1">${fortName}</h3>
+            <p class="text-green-300 text-sm mb-1">${photos[index].description || 'Fort Photo'}</p>
+            <p class="text-gray-300 text-sm">Photo ${index + 1} of ${photos.length}</p>
+        </div>
+        <div class="lightbox-image-container relative">
+            <img src="../${photos[index].path}" alt="${photos[index].description}" class="max-w-full max-h-[70vh] object-contain rounded-lg mx-auto" onerror="this.src='../assets/images/default-fort.svg';">
+            ${index > 0 ? '<button class="lightbox-prev" onclick="navigateLightbox(' + (index - 1) + ')"><i class="fas fa-chevron-left"></i></button>' : ''}
+            ${index < photos.length - 1 ? '<button class="lightbox-next" onclick="navigateLightbox(' + (index + 1) + ')"><i class="fas fa-chevron-right"></i></button>' : ''}
+        </div>
+        <div class="lightbox-thumbnails mt-4 flex gap-2 overflow-x-auto justify-center">
+    `;
+    
+    photos.forEach((photo, i) => {
+        lightboxContent += `
+            <img src="../${photo.path}" 
+                 alt="${photo.description}" 
+                 class="w-16 h-16 object-cover rounded cursor-pointer ${i === index ? 'ring-2 ring-green-500' : 'opacity-60'}"
+                 onclick="navigateLightbox(${i})"
+                 onerror="this.src='../assets/images/default-fort.svg';">
+        `;
+    });
+    
+    lightboxContent += '</div>';
+    
+    $('#lightbox .lightbox-body').html(lightboxContent);
+    $('#fort-modal').addClass('hidden'); // hide background modal
+    $('#lightbox').removeClass('hidden').addClass('flex');
+}
+
+
+
+
+// Navigate lightbox
+function navigateLightbox(index) {
+    openLightbox(index, window.currentFortName);
+}
+
+// Close lightbox
+function closeLightbox() {
+     $('#lightbox').addClass('hidden').removeClass('flex');
+    $('#fort-modal').removeClass('hidden').addClass('flex');
+}
 </script>

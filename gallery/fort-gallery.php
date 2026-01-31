@@ -73,223 +73,223 @@ $stats = $statsResult->fetch_assoc();
 ?>
 
 <style>
-/* Fort Gallery specific styles */
-.fort-card {
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border-radius: 1rem;
-    overflow: hidden;
-    background: #000;
-    position: relative;
-}
+            /* Fort Gallery specific styles */
+            .fort-card {
+                transition: all 0.3s ease;
+                cursor: pointer;
+                border-radius: 1rem;
+                overflow: hidden;
+                background: #000;
+                position: relative;
+            }
 
-.fort-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
+            .fort-card:hover {
+                transform: translateY(-8px) scale(1.02);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            }
 
-.fort-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    transition: all 0.5s ease;
-    border-radius: 0.5rem;
-}
+            .fort-image {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                transition: all 0.5s ease;
+                border-radius: 0.5rem;
+            }
 
-.fort-card:hover .fort-image {
-    transform: scale(1.1);
-    filter: brightness(1.1);
-}
+            .fort-card:hover .fort-image {
+                transform: scale(1.1);
+                filter: brightness(1.1);
+            }
 
-.fort-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 70%, transparent 100%);
-    color: white;
-    padding: 1.5rem 1rem 1rem;
-    opacity: 1;
-    transition: all 0.3s ease;
-}
+            .fort-overlay {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 70%, transparent 100%);
+                color: white;
+                padding: 1.5rem 1rem 1rem;
+                opacity: 1;
+                transition: all 0.3s ease;
+            }
 
-.fort-card:hover .fort-overlay {
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.8) 70%, transparent 100%);
-}
+            .fort-card:hover .fort-overlay {
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.8) 70%, transparent 100%);
+            }
 
-.fort-stats {
-    background: linear-gradient(135deg, #2d5016, #4a7c23);
-    color: white;
-    padding: 2rem;
-    border-radius: 1rem;
-    text-align: center;
-    margin: 2rem 0;
-}
+            .fort-stats {
+                background: linear-gradient(135deg, #2d5016, #4a7c23);
+                color: white;
+                padding: 2rem;
+                border-radius: 1rem;
+                text-align: center;
+                margin: 2rem 0;
+            }
 
-.photo-badge {
-    display: inline-flex;
-    align-items: center;
-    background: rgba(127, 176, 105, 0.3);
-    padding: 0.25rem 0.75rem;
-    border-radius: 1rem;
-    font-size: 0.875rem;
-    margin-top: 0.5rem;
-}
+            .photo-badge {
+                display: inline-flex;
+                align-items: center;
+                background: rgba(127, 176, 105, 0.3);
+                padding: 0.25rem 0.75rem;
+                border-radius: 1rem;
+                font-size: 0.875rem;
+                margin-top: 0.5rem;
+            }
 
-.fort-modal-header {
-    background: linear-gradient(135deg, #2d5016, #4a7c23);
-    color: white;
-    padding: 1.5rem;
-    border-radius: 1rem 1rem 0 0;
-}
+            .fort-modal-header {
+                background: linear-gradient(135deg, #2d5016, #4a7c23);
+                color: white;
+                padding: 1.5rem;
+                border-radius: 1rem 1rem 0 0;
+            }
 
-.fort-photo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
-}
+            .fort-photo-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+                margin-top: 1rem;
+            }
 
-.fort-photo-item {
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    position: relative;
-}
+            .fort-photo-item {
+                cursor: pointer;
+                transition: transform 0.3s ease;
+                border-radius: 0.5rem;
+                overflow: hidden;
+                position: relative;
+            }
 
-.fort-photo-item:hover {
-    transform: scale(1.05);
-}
+            .fort-photo-item:hover {
+                transform: scale(1.05);
+            }
 
-.location-name {
-    font-style: italic;
-    color: #7fb069;
-    font-size: 0.9rem;
-}
+            .location-name {
+                font-style: italic;
+                color: #7fb069;
+                font-size: 0.9rem;
+            }
 
-.alphabet-filter {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: center;
-    margin: 2rem 0;
-}
+            .alphabet-filter {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                justify-content: center;
+                margin: 2rem 0;
+            }
 
-.alphabet-filter a {
-    padding: 0.5rem 1rem;
-    background: #2d5016;
-    color: white;
-    border-radius: 0.5rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-weight: bold;
-}
+            .alphabet-filter a {
+                padding: 0.5rem 1rem;
+                background: #2d5016;
+                color: white;
+                border-radius: 0.5rem;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                font-weight: bold;
+            }
 
-.alphabet-filter a:hover,
-.alphabet-filter a.active {
-    background: #7fb069;
-    transform: translateY(-2px);
-}
+            .alphabet-filter a:hover,
+            .alphabet-filter a.active {
+                background: #7fb069;
+                transform: translateY(-2px);
+            }
 
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    margin: 2rem 0;
-    flex-wrap: wrap;
-}
+            .pagination {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 0.5rem;
+                margin: 2rem 0;
+                flex-wrap: wrap;
+            }
 
-.pagination a,
-.pagination span {
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
+            .pagination a,
+            .pagination span {
+                padding: 0.5rem 1rem;
+                border-radius: 0.5rem;
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
 
-.pagination a {
-    background: #2d5016;
-    color: white;
-}
+            .pagination a {
+                background: #2d5016;
+                color: white;
+            }
 
-.pagination a:hover {
-    background: #7fb069;
-}
+            .pagination a:hover {
+                background: #7fb069;
+            }
 
-.pagination .current {
-    background: #7fb069;
-    color: white;
-    font-weight: bold;
-}
+            .pagination .current {
+                background: #7fb069;
+                color: white;
+                font-weight: bold;
+            }
 
-.lightbox-image-container {
-    position: relative;
-    text-align: center;
-}
+            .lightbox-image-container {
+                position: relative;
+                text-align: center;
+            }
 
-.lightbox-prev, .lightbox-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.5rem;
-    transition: background 0.3s ease;
-    z-index: 10;
-}
+            .lightbox-prev, .lightbox-next {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(0, 0, 0, 0.7);
+                color: white;
+                border: none;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 1.5rem;
+                transition: background 0.3s ease;
+                z-index: 10;
+            }
 
-.lightbox-prev {
-    left: 10px;
-}
+            .lightbox-prev {
+                left: 10px;
+            }
 
-.lightbox-next {
-    right: 10px;
-}
+            .lightbox-next {
+                right: 10px;
+            }
 
-.lightbox-prev:hover, .lightbox-next:hover {
-    background: rgba(0, 0, 0, 0.9);
-}
+            .lightbox-prev:hover, .lightbox-next:hover {
+                background: rgba(0, 0, 0, 0.9);
+            }
 
-.lightbox-thumbnails {
-    max-height: 100px;
-    overflow-x: auto;
-    padding: 0.5rem 0;
-}
+            .lightbox-thumbnails {
+                max-height: 100px;
+                overflow-x: auto;
+                padding: 0.5rem 0;
+            }
 
-.lightbox-thumbnails::-webkit-scrollbar {
-    height: 4px;
-}
+            .lightbox-thumbnails::-webkit-scrollbar {
+                height: 4px;
+            }
 
-.lightbox-thumbnails::-webkit-scrollbar-thumb {
-    background: #2d5016;
-    border-radius: 2px;
-}
+            .lightbox-thumbnails::-webkit-scrollbar-thumb {
+                background: #2d5016;
+                border-radius: 2px;
+            }
 
-@media (max-width: 768px) {
-    .fort-image {
-        height: 150px;
-    }
-    
-    .fort-photo-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .alphabet-filter {
-        gap: 0.25rem;
-    }
-    
-    .alphabet-filter a {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.9rem;
-    }
-}
+            @media (max-width: 768px) {
+                .fort-image {
+                    height: 150px;
+                }
+                
+                .fort-photo-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+                
+                .alphabet-filter {
+                    gap: 0.25rem;
+                }
+                
+                .alphabet-filter a {
+                    padding: 0.4rem 0.8rem;
+                    font-size: 0.9rem;
+                }
+            }
 </style>
 
 <main id="main-content">
