@@ -19,133 +19,164 @@
         <!-- Cards Grid -->
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            <!-- Sudhagad Project -->
-            <div class="project-card group">
-                <div class="h-40 bg-cover bg-center rounded-t-xl"
-                     style="background-image:url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="p-5">
-                    <span class="inline-block mb-2 text-xs font-semibold text-red-700 bg-red-100 px-3 py-1 rounded-full">
-                        Conservation
-                    </span>
-                    <h3 class="text-lg font-bold mb-2">Project Sudhagad</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                        A long-running fort conservation initiative at Sudhagad near Pali, focusing on
-                        restoration, cleaning, plantation, and heritage protection.
-                    </p>
-                    <a href="./project-sudhagad-main.php" class="text-sm font-semibold text-primary hover:text-accent">
-                        Learn more →
-                    </a>
+            <!-- Project Sudhagad -->
+            <a href="./project-sudhagad-main.php" class="block h-full group focus:outline-none">
+                <div class="project-card h-full flex flex-col rounded-2xl overflow-hidden">
+
+                    <div class="h-40 bg-cover bg-center"
+                         style="background-image:url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+
+                    <div class="p-5 flex flex-col flex-grow">
+                        <span class="inline-block mb-2 text-xs font-semibold text-red-700 bg-red-100 px-3 py-1 rounded-full">
+                            Conservation
+                        </span>
+
+                        <h3 class="text-lg font-bold mb-2">Project Sudhagad</h3>
+
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                            A long-running fort conservation initiative at Sudhagad near Pali,
+                            focusing on restoration, cleaning, plantation, and heritage protection.
+                        </p>
+
+                        <span class="mt-auto text-sm font-semibold text-primary hover:text-accent">
+                            Learn more →
+                        </span>
+                    </div>
                 </div>
-            </div>
+            </a>
 
             <!-- Trekking Activities -->
-            <div class="project-card group">
-                <div class="h-40 bg-cover bg-center rounded-t-xl"
-                     style="background-image:url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="p-5">
-                    <span class="inline-block mb-2 text-xs font-semibold text-green-700 bg-green-100 px-3 py-1 rounded-full">
-                        Adventure
-                    </span>
-                    <h3 class="text-lg font-bold mb-2">Trekking Activities</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                        Regular fort treks, educational heritage walks, and expert-led explorations across
-                        the Sahyadri mountain range.
-                    </p>
-                    <a href="./treks.php" class="text-sm font-semibold text-primary hover:text-accent">
-                        View activities →
-                    </a>
+            <a href="./treks.php" class="block h-full group focus:outline-none">
+                <div class="project-card h-full flex flex-col rounded-2xl overflow-hidden">
+
+                    <div class="h-40 bg-cover bg-center"
+                         style="background-image:url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+
+                    <div class="p-5 flex flex-col flex-grow">
+                        <span class="inline-block mb-2 text-xs font-semibold text-green-700 bg-green-100 px-3 py-1 rounded-full">
+                            Adventure
+                        </span>
+
+                        <h3 class="text-lg font-bold mb-2">Trekking Activities</h3>
+
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                            Regular fort treks, educational heritage walks, and expert-led
+                            explorations across the Sahyadri mountain range.
+                        </p>
+
+                        <span class="mt-auto text-sm font-semibold text-primary hover:text-accent">
+                            View activities →
+                        </span>
+                    </div>
                 </div>
-            </div>
+            </a>
 
             <!-- Slide Shows -->
-            <div class="project-card group">
-                <div class="h-40 bg-cover bg-center rounded-t-xl"
-                    style="background-image:url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-           <div class="p-5">
-                    <span class="inline-block mb-2 text-xs font-semibold text-blue-700 bg-blue-100 px-3 py-1 rounded-full">
-                        Documentation
-                    </span>
-                    <h3 class="text-lg font-bold mb-2">Slide Shows</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                        More than 200 educational slide shows showcasing forts, history, trekking routes,
-                        and natural heritage.
-                    </p>
-                    <a href="./slideshow.php" class="text-sm font-semibold text-primary hover:text-accent">
-                        Explore →
-                    </a>
+            <a href="./slideshow.php" class="block h-full group focus:outline-none">
+                <div class="project-card h-full flex flex-col rounded-2xl overflow-hidden">
+
+                    <div class="h-40 bg-cover bg-center"
+                         style="background-image:url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+
+                    <div class="p-5 flex flex-col flex-grow">
+                        <span class="inline-block mb-2 text-xs font-semibold text-blue-700 bg-blue-100 px-3 py-1 rounded-full">
+                            Documentation
+                        </span>
+
+                        <h3 class="text-lg font-bold mb-2">Slide Shows</h3>
+
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                            More than 200 educational slide shows showcasing forts, history,
+                            trekking routes, and natural heritage.
+                        </p>
+
+                        <span class="mt-auto text-sm font-semibold text-primary hover:text-accent">
+                            Explore →
+                        </span>
+                    </div>
                 </div>
-            </div>
+            </a>
 
             <!-- Photography & Sketches -->
-            <div class="project-card group">
-                <div class="h-40 bg-cover bg-center rounded-t-xl"
-                     style="background-image:url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="p-5">
-                    <span class="inline-block mb-2 text-xs font-semibold text-purple-700 bg-purple-100 px-3 py-1 rounded-full">
-                        Art & Media
-                    </span>
-                    <h3 class="text-lg font-bold mb-2">Photography & Sketches</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                        A rich archive of fort photography, hand-drawn sketches, and visual documentation
-                        created by Trek Kshitij members.
-                    </p>
-                    <a href="./gallery/gallery.php" class="text-sm font-semibold text-primary hover:text-accent">
-                        View collection →
-                    </a>
+            <a href="./gallery/gallery.php" class="block h-full group focus:outline-none">
+                <div class="project-card h-full flex flex-col rounded-2xl overflow-hidden">
+
+                    <div class="h-40 bg-cover bg-center"
+                         style="background-image:url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+
+                    <div class="p-5 flex flex-col flex-grow">
+                        <span class="inline-block mb-2 text-xs font-semibold text-purple-700 bg-purple-100 px-3 py-1 rounded-full">
+                            Art & Media
+                        </span>
+
+                        <h3 class="text-lg font-bold mb-2">Photography & Sketches</h3>
+
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                            A rich archive of fort photography, hand-drawn sketches,
+                            and visual documentation by Trek Kshitij members.
+                        </p>
+
+                        <span class="mt-auto text-sm font-semibold text-primary hover:text-accent">
+                            View collection →
+                        </span>
+                    </div>
                 </div>
-            </div>
+            </a>
 
             <!-- Publications & Maps -->
-            <div class="project-card group">
-                <div class="h-40 bg-cover bg-center rounded-t-xl"
-                    style="background-image:url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-           <div class="p-5">
-                    <span class="inline-block mb-2 text-xs font-semibold text-yellow-700 bg-yellow-100 px-3 py-1 rounded-full">
-                        Research
-                    </span>
-                    <h3 class="text-lg font-bold mb-2">Publications & Maps</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                        Books, fort maps, and research publications documenting Sahyadri forts for
-                        educational and preservation purposes.
-                    </p>
-                    <a href="./gallery/map-gallery.php" class="text-sm font-semibold text-primary hover:text-accent">
-                        Read more →
-                    </a>
+            <a href="./gallery/map-gallery.php" class="block h-full group focus:outline-none">
+                <div class="project-card h-full flex flex-col rounded-2xl overflow-hidden">
+
+                    <div class="h-40 bg-cover bg-center"
+                         style="background-image:url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+
+                    <div class="p-5 flex flex-col flex-grow">
+                        <span class="inline-block mb-2 text-xs font-semibold text-yellow-700 bg-yellow-100 px-3 py-1 rounded-full">
+                            Research
+                        </span>
+
+                        <h3 class="text-lg font-bold mb-2">Publications & Maps</h3>
+
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                            Books, fort maps, and research publications documenting
+                            Sahyadri forts for educational and preservation purposes.
+                        </p>
+
+                        <span class="mt-auto text-sm font-semibold text-primary hover:text-accent">
+                            Read more →
+                        </span>
+                    </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="project-card group">
-    <div class="h-40 bg-cover bg-center rounded-t-xl"
-        style="background-image:url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                
-    <div class="p-5">
-        <span class="inline-block mb-2 text-xs font-semibold text-orange-700 bg-orange-100 px-3 py-1 rounded-full">
-            Swarajya
-        </span>
+            <!-- Chhatrapati Shivaji Maharaj -->
+            <a href="./shivaji_maharaja.php" class="block h-full group focus:outline-none">
+                <div class="project-card h-full flex flex-col rounded-2xl overflow-hidden">
 
-        <h3 class="text-lg font-bold mb-2">
-            Chhatrapati Shivaji Maharaj
-        </h3>
+                    <div class="h-40 bg-cover bg-center"
+                         style="background-image:url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
 
-        <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
-            Explore the life, ideals, forts, military strategy, and legacy of
-            Chhatrapati Shivaji Maharaj — the founder of Swarajya and an eternal
-            source of inspiration for Maharashtra.
-        </p>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <span class="inline-block mb-2 text-xs font-semibold text-orange-700 bg-orange-100 px-3 py-1 rounded-full">
+                            Swarajya
+                        </span>
 
-        <a href="./shivaji_maharaja.php"
-           class="text-sm font-semibold text-primary hover:text-accent">
-            Explore legacy →
-        </a>
-    </div>
-</div>
+                        <h3 class="text-lg font-bold mb-2">
+                            Chhatrapati Shivaji Maharaj
+                        </h3>
 
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                            Explore the life, ideals, forts, military strategy,
+                            and legacy of the founder of Swarajya.
+                        </p>
+
+                        <span class="mt-auto text-sm font-semibold text-primary hover:text-accent">
+                            Explore legacy →
+                        </span>
+                    </div>
+                </div>
+            </a>
 
         </div>
     </div>
 </section>
-
-    <!-- Call to Action Section -->
-    
-
-
