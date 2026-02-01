@@ -110,16 +110,16 @@
                                     Climb the majestic peaks of Sahyadri and embark on an unforgettable journey with nature
                                 </p>
                                 <div class="space-x-4">
+                                    <a href="./trek_schedule.php">
                                     <button class="btn btn-primary">
-                                        <a href="#">
                                         Start Your Journey
-                                        </a>
                                     </button>
+                                    </a>
+                                    <a href="./treks.php">
                                     <button class="btn btn-secondary">
-                                        <a href="#">
                                         View Treks
-                                        </a>
                                     </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -138,11 +138,11 @@
                                     Information about 350+ forts, their history and trekking guidance
                                 </p>
                                 <div class="space-x-4">
+                                    <a href="./fort_in_english.php">
                                     <button class="btn btn-primary">
-                                        <a href="#">
-                                        Explore Forts
-                                        </a>
+                                    Explore Forts
                                     </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -252,15 +252,15 @@
                                     </p>
 
                                     <div class="flex justify-center gap-4 flex-wrap">
-                                        <a href="/gallery"
+                                        <a href="./gallery/gallery.php"
                                         class="px-8 py-3 bg-accent text-black rounded-full font-semibold hover:bg-primary hover:text-white transition">
                                             Explore Gallery
                                         </a>
 
-                                        <a href="/contact"
+                                        <!--<a href="/contact"
                                         class="px-8 py-3 border border-white text-white rounded-full font-semibold hover:bg-white hover:text-black transition">
                                             Get Notified
-                                        </a>
+                                        </a>-->
                                     </div>
 
                                     <p class="mt-6 text-sm opacity-70">
@@ -550,8 +550,8 @@
                                         Stay tuned — exciting treks are coming soon!
                                     </p>
 
-                                    <a href="/contact" class="btn btn-primary px-8">
-                                        Get Notified
+                                    <a href="./gallery/gallery.php" class="btn btn-primary px-8">
+                                        Explore Gallery
                                     </a>
                                 </div>
 

@@ -731,6 +731,7 @@ html {
   </div>
 </section>
 
+
 <section class="py-20 bg-white dark:bg-gray-900">
   <div class="container mx-auto px-4">
 
@@ -751,92 +752,153 @@ html {
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
       <!-- Project Sudhagad -->
-      <div class="nature-card p-6 text-center">
-        <div class="w-16 h-16 bg-green-700 rounded-full flex items-center justify-center mx-auto mb-6">
-          <i class="fas fa-leaf text-white text-2xl"></i>
+      <a href="project-sudhagad-main.php#sudhagad-overview" class="block focus:outline-none">
+        <div class="nature-card p-6 text-center hover:scale-[1.02] transition-transform">
+          
+          <div class="w-16 h-16 bg-green-700 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-leaf text-white text-2xl"></i>
+          </div>
+
+          <h3 class="text-xl font-bold mb-3">
+            Project Sudhagad
+          </h3>
+
+          <p class="text-sm text-gray-600 mb-6">
+            Overview of the Sudhagad fort conservation initiative.
+          </p>
+
+          <span class="text-green-700 font-semibold">
+            Open <i class="fas fa-arrow-right ml-1"></i>
+          </span>
+
         </div>
-        <h3 class="text-xl font-bold mb-3">Project Sudhagad</h3>
-        <p class="text-sm text-gray-600 mb-6">
-          Overview of the Sudhagad fort conservation initiative.
-        </p>
-        <a href="project-sudhagad-main.php#sudhagad-overview" class="text-green-700 font-semibold">
-          Open <i class="fas fa-arrow-right ml-1"></i>
-        </a>
-      </div>
+      </a>
+
 
       <!-- Project Structure -->
-      <div class="nature-card p-6 text-center">
-        <div class="w-16 h-16 bg-lime-700 rounded-full flex items-center justify-center mx-auto mb-6">
-          <i class="fas fa-sitemap text-white text-2xl"></i>
-        </div>
-        <h3 class="text-xl font-bold mb-3">Project Structure</h3>
-        <p class="text-sm text-gray-600 mb-6">
-          How the conservation project is structured and organized.
-        </p>
-        <a href="#sudhagad-structure" class="text-green-700 font-semibold">
-          Open <i class="fas fa-arrow-right ml-1"></i>
-        </a>
-      </div>
+      <a href="#sudhagad-structure" class="block focus:outline-none group">
+        <div class="nature-card p-6 text-center h-full hover:scale-[1.02] transition-transform">
+          
+          <div class="w-16 h-16 bg-lime-700 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-sitemap text-white text-2xl"></i>
+          </div>
 
-      <!-- Future Activities -->
-      <div class="nature-card p-6 text-center">
-        <div class="w-16 h-16 bg-teal-700 rounded-full flex items-center justify-center mx-auto mb-6">
-          <i class="fas fa-seedling text-white text-2xl"></i>
+          <h3 class="text-xl font-bold mb-3">
+            Project Structure
+          </h3>
+
+          <p class="text-sm text-gray-600 mb-6">
+            How the conservation project is structured and organized.
+          </p>
+
+          <span class="text-green-700 font-semibold">
+            Open <i class="fas fa-arrow-right ml-1"></i>
+          </span>
+
         </div>
-        <h3 class="text-xl font-bold mb-3">Future Activities</h3>
-        <p class="text-sm text-gray-600 mb-6">
-          Planned conservation and restoration activities.
-        </p>
-        <a href="#sudhagad-future" class="text-green-700 font-semibold">
-          Open <i class="fas fa-arrow-right ml-1"></i>
-        </a>
-      </div>
+      </a>
+
+
+            <!-- Future Activities -->
+            <a href="#sudhagad-future" class="block focus:outline-none group">
+              <div class="nature-card p-6 text-center h-full hover:scale-[1.02] transition-transform">
+                
+                <div class="w-16 h-16 bg-teal-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <i class="fas fa-seedling text-white text-2xl"></i>
+                </div>
+
+                <h3 class="text-xl font-bold mb-3">
+                  Future Activities
+                </h3>
+
+                <p class="text-sm text-gray-600 mb-6">
+                  Planned conservation and restoration activities.
+                </p>
+
+                <span class="text-green-700 font-semibold">
+                  Open <i class="fas fa-arrow-right ml-1"></i>
+                </span>
+
+              </div>
+      </a>
+
 
       <!-- Activities Performed -->
-      <div class="nature-card p-6 text-center">
-        <div class="w-16 h-16 bg-green-800 rounded-full flex items-center justify-center mx-auto mb-6">
-          <i class="fas fa-hands-helping text-white text-2xl"></i>
+      <a href="#sudhagad-work" class="block focus:outline-none group">
+        <div class="nature-card p-6 text-center h-full hover:scale-[1.02] transition-transform">
+          
+          <div class="w-16 h-16 bg-green-800 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-hands-helping text-white text-2xl"></i>
+          </div>
+
+          <h3 class="text-xl font-bold mb-3">
+            Activities Performed
+          </h3>
+
+          <p class="text-sm text-gray-600 mb-6">
+            Conservation work completed so far at Sudhagad.
+          </p>
+
+          <span class="text-green-700 font-semibold">
+            Open <i class="fas fa-arrow-right ml-1"></i>
+          </span>
+
         </div>
-        <h3 class="text-xl font-bold mb-3">Activities Performed</h3>
-        <p class="text-sm text-gray-600 mb-6">
-          Conservation work completed so far at Sudhagad.
-        </p>
-        <a href="#sudhagad-work" class="text-green-700 font-semibold">
-          Open <i class="fas fa-arrow-right ml-1"></i>
-        </a>
-      </div>
+      </a>
+
 
       <!-- How Executed -->
-      <div class="nature-card p-6 text-center">
-        <div class="w-16 h-16 bg-emerald-700 rounded-full flex items-center justify-center mx-auto mb-6">
-          <i class="fas fa-cogs text-white text-2xl"></i>
+      <a href="#sudhagad-execution" class="block focus:outline-none group">
+        <div class="nature-card p-6 text-center h-full hover:scale-[1.02] transition-transform">
+          
+          <div class="w-16 h-16 bg-emerald-700 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-cogs text-white text-2xl"></i>
+          </div>
+
+          <h3 class="text-xl font-bold mb-3">
+            How Executed
+          </h3>
+
+          <p class="text-sm text-gray-600 mb-6">
+            Methodology and execution process of the project.
+          </p>
+
+          <span class="text-green-700 font-semibold">
+            Open <i class="fas fa-arrow-right ml-1"></i>
+          </span>
+
         </div>
-        <h3 class="text-xl font-bold mb-3">How Executed</h3>
-        <p class="text-sm text-gray-600 mb-6">
-          Methodology and execution process of the project.
-        </p>
-        <a href="#sudhagad-execution" class="text-green-700 font-semibold">
-          Open <i class="fas fa-arrow-right ml-1"></i>
-        </a>
-      </div>
+      </a>
+
 
       <!-- Contact Us -->
-      <div class="nature-card p-6 text-center">
-        <div class="w-16 h-16 bg-green-900 rounded-full flex items-center justify-center mx-auto mb-6">
-          <i class="fas fa-user-plus text-white text-2xl"></i>
-        </div>
-        <h3 class="text-xl font-bold mb-3">Contact / Join</h3>
-        <p class="text-sm text-gray-600 mb-6">
-          Be part of the Sudhagad conservation initiative.
-        </p>
-        <a href="#sudhagad-future" class="text-green-700 font-semibold">
-          Join <i class="fas fa-arrow-right ml-1"></i>
-        </a>
-      </div>
+      <a href="#sudhagad-future" class="block focus:outline-none group">
+          <div class="nature-card p-6 text-center h-full hover:scale-[1.02] transition-transform">
+            
+            <div class="w-16 h-16 bg-green-900 rounded-full flex items-center justify-center mx-auto mb-6">
+              <i class="fas fa-user-plus text-white text-2xl"></i>
+            </div>
+
+            <h3 class="text-xl font-bold mb-3">
+              Contact / Join
+            </h3>
+
+            <p class="text-sm text-gray-600 mb-6">
+              Be part of the Sudhagad conservation initiative.
+            </p>
+
+            <span class="text-green-700 font-semibold">
+              Join <i class="fas fa-arrow-right ml-1"></i>
+            </span>
+
+          </div>
+      </a>
+
 
     </div>
   </div>
 </section>
+
 
 
 </main>

@@ -339,7 +339,7 @@ include './includes/header.php';
             <a href="./shivaji/shivaji_battles.php" class="block group focus:outline-none">
             <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                 <div class="w-16 h-16 bg-gradient-to-br from-red-600 to-yellow-500 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
-                    <i class="fas fa-sword text-2xl text-white"></i>
+                    <i class="fas fa-shield-alt text-2xl text-white"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
                     Battles of Shivaji Maharaj
@@ -347,8 +347,8 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Detailed accounts of the major battles fought by Shivaji Maharaj, including strategies and outcomes.
                 </p>
-                <span href="./shivaji/shivaji_battles.php" class="text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                    Read More <i class="fas fa-arrow-right ml-2"></i>
+                <span href="./shivaji/shivaji_battles.php" class="mt-auto text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2 bottom-4"></i>
                 </span>
             </div>
             </a>
@@ -366,8 +366,8 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Historical books, novels, and literary works written on the life and achievements of Shivaji Maharaj.
                 </p>
-                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                    Read More <i class="fas fa-arrow-right ml-2"></i>
+                <span  class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2 bottom-4"></i>
                 </span>
             </div>
             </a>
@@ -384,7 +384,7 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Economic reforms, trade systems, taxation methods, and financial administration of the Maratha Empire.
                 </p>
-                <span class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                <span class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
                     Read More <i class="fas fa-arrow-right ml-2"></i>
                 </span>
             </div>
@@ -403,11 +403,11 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Historic photographs, portraits, paintings, and artistic depictions of Shivaji Maharaj.
                 </p>
-                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                <span  class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
                     Read More <i class="fas fa-arrow-right ml-2"></i>   
                 </span>
             </div>
-</a>
+            </a>
 
             <!-- Navy -->
     
@@ -422,11 +422,11 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     The powerful naval force established by Shivaji Maharaj to protect the western coastline.
                 </p>
-                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                <span  class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
                     Read More <i class="fas fa-arrow-right ml-2"></i>   
                 </span>
             </div>
-</a>
+            </a>
             <!-- Spy Network -->
              
             <a href="./shivaji/shivaji_maharaj_herchate.php" class="block group focus:outline-none">
@@ -440,11 +440,11 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     The efficient intelligence system that played a vital role in military and administrative success.
                 </p>
-                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                <span  class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
                     Read More <i class="fas fa-arrow-right ml-2"></i>   
                 </span>
             </div>
-</a>
+            </a>
 
             <!-- Army -->
     
@@ -459,11 +459,11 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Military organization, discipline, and the legendary structure of the Maratha army.
                 </p>
-                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                <span  class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
                     Read More <i class="fas fa-arrow-right ml-2"></i>   
                 </span>
             </div>
-</a>
+            </a>
 
             <!-- Justice -->
              
@@ -478,11 +478,11 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Judicial system, legal reforms, and policies implemented during Shivaji Maharaj’s rule.
                 </p>
-                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                <span  class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
                     Read More <i class="fas fa-arrow-right ml-2"></i>   
                 </span>
             </div>
-</a>
+            </a>
 
             <!-- Factories -->
     
@@ -497,11 +497,11 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Industrial activities, production centers, and trade establishments during the Maratha period.
                 </p>
-                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                <span  class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
                     Read More <i class="fas fa-arrow-right ml-2"></i>   
                 </span>
             </div>
-</a>
+            </a>
 
             <!-- Palaces -->
     
@@ -516,11 +516,11 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Royal palaces, architectural marvels, and residential complexes of the Maratha Empire.
                 </p>
-                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                <span  class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
                     Read More <i class="fas fa-arrow-right ml-2"></i>   
                 </span>
             </div>
-</a>
+            </a>
 
             <!-- Unknown Facts -->
     
@@ -535,11 +535,11 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Rare, lesser-known, and interesting facts about Chhatrapati Shivaji Maharaj.
                 </p>
-                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                <span  class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
                     Read More <i class="fas fa-arrow-right ml-2"></i>   
                 </span>
             </div>
-</a>
+            </a>
 
             <!-- Songs -->
     
@@ -554,11 +554,11 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Songs, poems, and musical tributes dedicated to the bravery and legacy of Shivaji Maharaj.
                 </p>
-                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                <span  class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
                     Read More <i class="fas fa-arrow-right ml-2"></i>   
                 </span>
             </div>
-</a>
+            </a>
 
             <!-- Shivbawani -->
     
@@ -573,14 +573,14 @@ include './includes/header.php';
                 <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     Classical poetry by Kavi Bhushan glorifying the valor and achievements of Shivaji Maharaj.
                 </p>
-                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                <span  class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
                     Read More <i class="fas fa-arrow-right ml-2"></i>   
                 </span>
             </div>
-</a>
+            </a>
 
             <!-- Shivbawani Part 2 -->
-    <!--
+            <!--
             <a href="./shivaji/shivaji_battles.php" class="block group focus:outline-none">
             <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                 <div class="w-16 h-16 bg-gradient-to-br from-emerald-600 to-emerald-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
@@ -597,7 +597,7 @@ include './includes/header.php';
                 </span>
             </div>
             </a>
--->
+            -->
         </div>
     </div>
 </section>
@@ -820,10 +820,12 @@ include './includes/header.php';
         
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <!-- Raigad -->
-            <div class="royal-card rounded-2xl overflow-hidden group">
+        <!-- Raigad -->
+         
+            <a href="./fort/index.php?slug=raigad-fort" class="block group focus:outline-none">
+            <div class="royal-card rounded-2xl p-6 group h-full flex flex-col">
                 <div class="h-48 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                     style="background-image: url('https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
+                     style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
                 </div>
                 <div class="p-6">
                     <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
@@ -832,14 +834,16 @@ include './includes/header.php';
                     <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
                         The capital fort of the Maratha Empire and the site of Chhatrapati Shivaji Maharaj’s coronation.
                     </p>
-                    <a href="/forts/raigad" class="text-red-600 hover:text-yellow-500 font-semibold">
+                    <span class="mt-auto text-red-600 hover:text-yellow-500 font-semibold">
                         Explore Fort <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
+                    </span>
                 </div>
             </div>
+            </a>
 
             <!-- Pratapgad -->
-            <div class="royal-card rounded-2xl overflow-hidden group">
+            <a href="./fort/index.php?slug=pratapgad-fort" class="block group focus:outline-none">
+            <div class="royal-card rounded-2xl p-6  group h-full flex flex-col">
                 <div class="h-48 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
                      style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
                 </div>
@@ -850,16 +854,18 @@ include './includes/header.php';
                     <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
                         The historic fort where the legendary encounter between Shivaji Maharaj and Afzal Khan took place.
                     </p>
-                    <a href="/forts/pratapgad" class="text-red-600 hover:text-yellow-500 font-semibold">
+                    <span class="mt-auto text-red-600 hover:text-yellow-500 font-semibold">
                         Explore Fort <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
+                    </span>
                 </div>
             </div>
+            </a>
 
             <!-- Shivneri -->
-            <div class="royal-card rounded-2xl overflow-hidden group">
+            <a href="./fort/index.php?slug=shivneri-fort" class="block group focus:outline-none">
+            <div class="royal-card rounded-2xl p-6 group h-full flex flex-col">
                 <div class="h-48 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                     style="background-image: url('https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
+                     style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
                 </div>
                 <div class="p-6">
                     <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
@@ -868,16 +874,17 @@ include './includes/header.php';
                     <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
                         The birthplace of Chhatrapati Shivaji Maharaj and one of the most revered forts in Maratha history.
                     </p>
-                    <a href="/forts/shivneri" class="text-red-600 hover:text-yellow-500 font-semibold">
+                    <span class="mt-auto text-red-600 hover:text-yellow-500 font-semibold">
                         Explore Fort <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
+                    </span>
                 </div>
             </div>
+            </a>
 
         </div>
 
         <div class="text-center mt-12">
-            <a href="/forts/shivaji-forts"
+            <a href="./fort_in_english.php"
                class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-red-600 to-yellow-500 text-white font-semibold rounded-full hover:from-yellow-500 hover:to-red-600 transition-all duration-300">
                 <i class="fas fa-fort-awesome mr-2"></i>
                 View All Shivaji Forts
