@@ -894,7 +894,7 @@ if (navbar) {
         const languageButtons = document.querySelectorAll('[data-language]');
         languageButtons.forEach(button => {
             button.addEventListener('click', function(e) {
-                e.preventDefault();
+                //e.preventDefault();
                 const language = this.getAttribute('data-language');
                 console.log('Header: Language switched to:', language);
                 

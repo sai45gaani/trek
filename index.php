@@ -564,104 +564,157 @@
 
         <!-- Features Grid Section -->
         <section class="py-20 bg-cream-light dark:bg-gray-800">
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-4">Explore With Us</h2>
-                    <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                        Experience the beauty of Sahyadri with us
-                    </p>
-                </div>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Feature Card 1 -->
-                    <div class="card hover-lift p-8">
-                        <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
-                            <i class="fas fa-info text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Fort Information</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-6">
-                            Detailed information about 350+ forts, photographs and maps included
-                        </p>
-                        <a href="./fort_in_english.php" class="text-primary dark:text-accent font-semibold hover:underline">
-                            Learn More →
-                        </a>
-                    </div>
-                    
-                    <!-- Feature Card 2 -->
-                     <div class="card hover-lift p-8">
-                        <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mb-6">
-                            <i class="fas fa-map text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Maps</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-6">
-                            Detailed maps of forts and surrounding regions for better navigation
-                        </p>
-                        <a href="./gallery/map-gallery.php" class="text-primary dark:text-accent font-semibold hover:underline">
-                            View Maps →
-                        </a>
+    <div class="container mx-auto px-4">
+
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-4">
+                Explore With Us
+            </h2>
+            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Experience the beauty of Sahyadri with us
+            </p>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Fort Information -->
+            <a href="./fort_in_english.php" class="block h-full group focus:outline-none">
+                <div class="card hover-lift p-8 h-full flex flex-col">
+
+                    <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-info text-2xl text-white"></i>
                     </div>
 
-                    <div class="card hover-lift p-8">
-                        <div class="w-16 h-16 bg-earth rounded-2xl flex items-center justify-center mb-6">
-                            <i class="fas fa-comments text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Upcoming Treks</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-6">
-                            Connect with fellow trekkers, share experiences and get guidance
-                        </p>
-                        <a href="./trek_schedule.php" class="text-primary dark:text-accent font-semibold hover:underline">
-                            View Schedule →
-                        </a>
-                    </div>
-                    
-                    <div class="card hover-lift p-8">
-                        <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
-                            <i class="fas fa-images text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Picture Gallery</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-6">
-                            Forts, Butterflies, Caves, Flowers and more beautiful captures
-                        </p>
-                        <a href="./gallery/gallery.php" class="text-primary dark:text-accent font-semibold hover:underline">
-                            View Gallery →
-                        </a>
-                    </div>
-                    
-                    <!-- Feature Card 3 -->
-                    
-                    <!-- Feature Card 4 -->
-                    <div class="card hover-lift p-8">
-                        <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mb-6">
-                            <i class="fas fa-crown text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">King Shivaji Maharaj</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-6">
-                            Learn about the great Maratha warrior king and his forts
-                        </p>
-                        <a href="./shivaji_maharaja.php" class="text-primary dark:text-accent font-semibold hover:underline">
-                            Read More →
-                        </a>
-                    </div>
-                    
-                    <!-- Feature Card 5 -->
-                    
-                    
-                    <!-- Feature Card 6 -->
-                    <div class="card hover-lift p-8">
-                        <div class="w-16 h-16 bg-earth rounded-2xl flex items-center justify-center mb-6">
-                            <i class="fas fa-book text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">E-Magazine</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-6">
-                            Trekshitiz organization's e-magazine: forts, nature, expert guidance
-                        </p>
-                        <a href="./emagazine.php" class="text-primary dark:text-accent font-semibold hover:underline">
-                            Read Magazine →
-                        </a>
-                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                        Fort Information
+                    </h3>
+
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        Detailed information about 350+ forts, photographs and maps included
+                    </p>
+
+                    <span class="mt-auto text-primary dark:text-accent font-semibold hover:underline">
+                        Learn More →
+                    </span>
                 </div>
-            </div>
-        </section>
+            </a>
+
+            <!-- Maps -->
+            <a href="./gallery/map-gallery.php" class="block h-full group focus:outline-none">
+                <div class="card hover-lift p-8 h-full flex flex-col">
+
+                    <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-map text-2xl text-white"></i>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                        Maps
+                    </h3>
+
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        Detailed maps of forts and surrounding regions for better navigation
+                    </p>
+
+                    <span class="mt-auto text-primary dark:text-accent font-semibold hover:underline">
+                        View Maps →
+                    </span>
+                </div>
+            </a>
+
+            <!-- Upcoming Treks -->
+            <a href="./trek_schedule.php" class="block h-full group focus:outline-none">
+                <div class="card hover-lift p-8 h-full flex flex-col">
+
+                    <div class="w-16 h-16 bg-earth rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-comments text-2xl text-white"></i>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                        Upcoming Treks
+                    </h3>
+
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        Connect with fellow trekkers, share experiences and get guidance
+                    </p>
+
+                    <span class="mt-auto text-primary dark:text-accent font-semibold hover:underline">
+                        View Schedule →
+                    </span>
+                </div>
+            </a>
+
+            <!-- Picture Gallery -->
+            <a href="./gallery/gallery.php" class="block h-full group focus:outline-none">
+                <div class="card hover-lift p-8 h-full flex flex-col">
+
+                    <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-images text-2xl text-white"></i>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                        Picture Gallery
+                    </h3>
+
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        Forts, Butterflies, Caves, Flowers and more beautiful captures
+                    </p>
+
+                    <span class="mt-auto text-primary dark:text-accent font-semibold hover:underline">
+                        View Gallery →
+                    </span>
+                </div>
+            </a>
+
+            <!-- King Shivaji Maharaj -->
+            <a href="./shivaji_maharaja.php" class="block h-full group focus:outline-none">
+                <div class="card hover-lift p-8 h-full flex flex-col">
+
+                    <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-crown text-2xl text-white"></i>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                        King Shivaji Maharaj
+                    </h3>
+
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        Learn about the great Maratha warrior king and his forts
+                    </p>
+
+                    <span class="mt-auto text-primary dark:text-accent font-semibold hover:underline">
+                        Read More →
+                    </span>
+                </div>
+            </a>
+
+            <!-- E-Magazine -->
+            <a href="./emagazine.php" class="block h-full group focus:outline-none">
+                <div class="card hover-lift p-8 h-full flex flex-col">
+
+                    <div class="w-16 h-16 bg-earth rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-book text-2xl text-white"></i>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                        E-Magazine
+                    </h3>
+
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        Trekshitiz organization's e-magazine: forts, nature, expert guidance
+                    </p>
+
+                    <span class="mt-auto text-primary dark:text-accent font-semibold hover:underline">
+                        Read Magazine →
+                    </span>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
 
         <!-- Newsletter Section -->
      <!--   <section class="py-20 bg-gradient-nature text-white">

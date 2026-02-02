@@ -497,7 +497,7 @@ try {
                                 <!-- Action Buttons -->
                                 <div class="flex gap-2">
                                     <a href="./trek-details.php?id=<?php echo $trek['id']; ?>" 
-                                       class="flex-1 bg-primary hover:bg-mountain text-white text-center py-2.5 px-3 rounded-lg font-semibold transition-colors duration-300 text-sm">
+                                       class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2.5 px-3 rounded-lg font-semibold transition-colors duration-300 text-sm">
                                         <i class="fas fa-eye mr-1"></i>
                                         View Details
                                     </a>

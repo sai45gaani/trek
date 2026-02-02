@@ -287,26 +287,59 @@ $pastTreks = $conn->query("
 
         <?php if ($pastTreks->num_rows): ?>
         <div class="grid md:grid-cols-3 gap-8">
-            <?php while ($t = $pastTreks->fetch_assoc()): ?>
-                <div class="card p-6">
-                    <h3 class="text-2xl font-bold mb-2"><?= htmlspecialchars($t['Place']) ?></h3>
-                    <p class="text-sm text-gray-600 mb-1">
-                        <i class="fas fa-calendar-check"></i> <?= formatDate($t['TrekDate']) ?>
+    <?php while ($t = $pastTreks->fetch_assoc()): ?>
+
+        <a href="./trek-details.php?id=<?= $t['TrekId'] ?>"
+           class="block h-full group focus:outline-none">
+
+            <div class="card bg-white dark:bg-gray-800
+                        p-6 rounded-2xl border border-gray-200 dark:border-gray-700
+                        shadow-lg hover:shadow-2xl transition-all duration-300
+                        h-full flex flex-col hover:-translate-y-1">
+
+                <!-- Trek Title -->
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-3">
+                    <?= htmlspecialchars($t['Place']) ?>
+                </h3>
+
+                <!-- Meta Info -->
+                <div class="space-y-1 text-sm text-gray-600 dark:text-gray-300 mb-4">
+                    <p class="flex items-center">
+                        <i class="fas fa-calendar-check text-accent mr-2"></i>
+                        <?= formatDate($t['TrekDate']) ?>
                     </p>
-                    <p class="text-sm text-gray-600 mb-1">
-                        <i class="fas fa-user"></i> <?= htmlspecialchars($t['Leader']) ?>
+
+                    <p class="flex items-center">
+                        <i class="fas fa-user text-accent mr-2"></i>
+                        <?= htmlspecialchars($t['Leader']) ?>
                     </p>
-                    <span class="inline-block px-3 py-1 text-xs text-white rounded-full <?= getGradeColor($t['Grade']) ?>">
+                </div>
+
+                <!-- Grade -->
+                <div class="mb-6">
+                    <span class="inline-block px-3 py-1 text-xs font-bold text-white rounded-full
+                        <?= getGradeColor($t['Grade']) ?>">
                         <?= htmlspecialchars($t['Grade']) ?>
                     </span>
-
-                    <div class="mt-4">
-                        <a href="./trek-details.php?id=<?= $t['TrekId'] ?>" class="btn btn-secondary w-full">
-                            View Memories
-                        </a>
-                    </div>
                 </div>
-            <?php endwhile; ?>
+
+                <!-- CTA pinned to bottom -->
+                <div class="mt-auto">
+                    <span class="block w-full text-center
+                                 bg-primary group-hover:bg-secondary
+                                 text-white font-semibold
+                                 py-2.5 rounded-lg
+                                 transition-colors duration-300">
+                        <i class="fas fa-images mr-1"></i>
+                        View Memories
+                    </span>
+                </div>
+
+            </div>
+        </a>
+
+    <?php endwhile; ?>
+
         </div>
 
 <a href="./past-treks.php" class="block group bg-accent/10 hover:bg-accent/20 rounded-2xl">
