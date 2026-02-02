@@ -137,37 +137,37 @@ $sketchCount     = getCategoryCount($conn, 'Sketches');
                     'title' => '🏰 Fort Photography',
                     'desc'  => 'Historic forts captured across treks and seasons.',
                     'count' => $fortPhotos,
-                    'link'  => '/gallery/fort-photos.php'
+                    'link'  => './fort-gallery.php'
                 ],
                 [
                     'title' => '🗺️ Fort Maps',
                     'desc'  => 'Route maps and navigation layouts of Sahyadri forts.',
                     'count' => $fortMaps,
-                    'link'  => '/maps/map-gallery.php'
+                    'link'  => './map-gallery.php'
                 ],
                 [
                     'title' => '🌿 Nature',
                     'desc'  => 'Flora, landscapes, monsoon beauty, and wilderness.',
                     'count' => $natureCount,
-                    'link'  => '/gallery/nature.php'
+                    'link'  => './flower-gallery.php'
                 ],
                 [
                     'title' => '🦋 Butterflies',
                     'desc'  => 'Butterfly species documented across the Western Ghats.',
                     'count' => $butterflyCount,
-                    'link'  => '/gallery/butterflies.php'
+                    'link'  => './butterfly-gallery.php'
                 ],
                 [
                     'title' => '🕳️ Caves',
                     'desc'  => 'Ancient rock-cut caves and hidden cave systems.',
                     'count' => $caveCount,
-                    'link'  => '/gallery/caves.php'
+                    'link'  => './caves-gallery.php'
                 ],
                 [
                     'title' => '🎨 Sketches & Art',
                     'desc'  => 'Hand-drawn forts and artistic impressions.',
                     'count' => $sketchCount,
-                    'link'  => '/gallery/sketches.php'
+                    'link'  => './sketches-gallery.php'
                 ]
             ];
 

@@ -19,31 +19,6 @@
         <!-- Cards Grid -->
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            <!-- Project Sudhagad -->
-            <a href="./project-sudhagad-main.php" class="block h-full group focus:outline-none">
-                <div class="project-card h-full flex flex-col rounded-2xl overflow-hidden">
-
-                    <div class="h-40 bg-cover bg-center"
-                         style="background-image:url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-
-                    <div class="p-5 flex flex-col flex-grow">
-                        <span class="inline-block mb-2 text-xs font-semibold text-red-700 bg-red-100 px-3 py-1 rounded-full">
-                            Conservation
-                        </span>
-
-                        <h3 class="text-lg font-bold mb-2">Project Sudhagad</h3>
-
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                            A long-running fort conservation initiative at Sudhagad near Pali,
-                            focusing on restoration, cleaning, plantation, and heritage protection.
-                        </p>
-
-                        <span class="mt-auto text-sm font-semibold text-primary hover:text-accent">
-                            Learn more →
-                        </span>
-                    </div>
-                </div>
-            </a>
 
             <!-- Trekking Activities -->
             <a href="./treks.php" class="block h-full group focus:outline-none">
@@ -66,6 +41,32 @@
 
                         <span class="mt-auto text-sm font-semibold text-primary hover:text-accent">
                             View activities →
+                        </span>
+                    </div>
+                </div>
+            </a>
+
+                        <!-- Publications & Maps -->
+            <a href="./gallery/map-gallery.php" class="block h-full group focus:outline-none">
+                <div class="project-card h-full flex flex-col rounded-2xl overflow-hidden">
+
+                    <div class="h-40 bg-cover bg-center"
+                         style="background-image:url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+
+                    <div class="p-5 flex flex-col flex-grow">
+                        <span class="inline-block mb-2 text-xs font-semibold text-yellow-700 bg-yellow-100 px-3 py-1 rounded-full">
+                            Research
+                        </span>
+
+                        <h3 class="text-lg font-bold mb-2">Maps & Publications</h3>
+
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                            Books, fort maps, and research publications documenting
+                            Sahyadri forts for educational and preservation purposes.
+                        </p>
+
+                        <span class="mt-auto text-sm font-semibold text-primary hover:text-accent">
+                            Read more →
                         </span>
                     </div>
                 </div>
@@ -97,6 +98,34 @@
                 </div>
             </a>
 
+
+            <!-- Project Sudhagad -->
+            <a href="./project-sudhagad-main.php" class="block h-full group focus:outline-none">
+                <div class="project-card h-full flex flex-col rounded-2xl overflow-hidden">
+
+                    <div class="h-40 bg-cover bg-center"
+                         style="background-image:url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+
+                    <div class="p-5 flex flex-col flex-grow">
+                        <span class="inline-block mb-2 text-xs font-semibold text-red-700 bg-red-100 px-3 py-1 rounded-full">
+                            Conservation
+                        </span>
+
+                        <h3 class="text-lg font-bold mb-2">Project Sudhagad</h3>
+
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                            A long-running fort conservation initiative at Sudhagad near Pali,
+                            focusing on restoration, cleaning, plantation, and heritage protection.
+                        </p>
+
+                        <span class="mt-auto text-sm font-semibold text-primary hover:text-accent">
+                            Learn more →
+                        </span>
+                    </div>
+                </div>
+            </a>
+
+            
             <!-- Photography & Sketches -->
             <a href="./gallery/gallery.php" class="block h-full group focus:outline-none">
                 <div class="project-card h-full flex flex-col rounded-2xl overflow-hidden">
@@ -122,33 +151,6 @@
                     </div>
                 </div>
             </a>
-
-            <!-- Publications & Maps -->
-            <a href="./gallery/map-gallery.php" class="block h-full group focus:outline-none">
-                <div class="project-card h-full flex flex-col rounded-2xl overflow-hidden">
-
-                    <div class="h-40 bg-cover bg-center"
-                         style="background-image:url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-
-                    <div class="p-5 flex flex-col flex-grow">
-                        <span class="inline-block mb-2 text-xs font-semibold text-yellow-700 bg-yellow-100 px-3 py-1 rounded-full">
-                            Research
-                        </span>
-
-                        <h3 class="text-lg font-bold mb-2">Publications & Maps</h3>
-
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                            Books, fort maps, and research publications documenting
-                            Sahyadri forts for educational and preservation purposes.
-                        </p>
-
-                        <span class="mt-auto text-sm font-semibold text-primary hover:text-accent">
-                            Read more →
-                        </span>
-                    </div>
-                </div>
-            </a>
-
             <!-- Chhatrapati Shivaji Maharaj -->
             <a href="./shivaji_maharaja.php" class="block h-full group focus:outline-none">
                 <div class="project-card h-full flex flex-col rounded-2xl overflow-hidden">

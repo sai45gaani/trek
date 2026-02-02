@@ -824,7 +824,7 @@ html {
 
 
       <!-- Activities Performed -->
-      <a href="#sudhagad-work" class="block focus:outline-none group">
+      <a href="#sudhagad-activities" class="block focus:outline-none group">
         <div class="nature-card p-6 text-center h-full hover:scale-[1.02] transition-transform">
           
           <div class="w-16 h-16 bg-green-800 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -872,7 +872,7 @@ html {
 
 
       <!-- Contact Us -->
-      <a href="#sudhagad-future" class="block focus:outline-none group">
+      <a href="#sudhagad-contacts" class="block focus:outline-none group">
           <div class="nature-card p-6 text-center h-full hover:scale-[1.02] transition-transform">
             
             <div class="w-16 h-16 bg-green-900 rounded-full flex items-center justify-center mx-auto mb-6">

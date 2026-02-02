@@ -585,7 +585,7 @@ html {
 
 
       <!-- Activities Performed -->
-      <a href="project-sudhagad-overview.php#sudhagad-work" class="block focus:outline-none group">
+      <a href="project-sudhagad-overview.php#sudhagad-activities" class="block focus:outline-none group">
         <div class="nature-card p-6 text-center h-full hover:scale-[1.02] transition-transform">
           
           <div class="w-16 h-16 bg-green-800 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -633,7 +633,7 @@ html {
 
 
       <!-- Contact Us -->
-      <a href="project-sudhagad-overview.php#sudhagad-future" class="block focus:outline-none group">
+      <a href="project-sudhagad-overview.php#sudhagad-contacts" class="block focus:outline-none group">
           <div class="nature-card p-6 text-center h-full hover:scale-[1.02] transition-transform">
             
             <div class="w-16 h-16 bg-green-900 rounded-full flex items-center justify-center mx-auto mb-6">

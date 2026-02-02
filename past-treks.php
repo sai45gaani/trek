@@ -716,7 +716,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Share trek functionality
     window.shareTrek = function(trekId, trekName, trekDate) {
         const shareText = `Check out this amazing trek: ${trekName} on ${trekDate} with Trekshitz!`;
-        const shareUrl = `${window.location.origin}/trek-details/${trekId}`;
+        const shareUrl = `${window.location.origin}/fort/trek/trek-details.php?id=${trekId}`;
         
         if (navigator.share) {
             navigator.share({

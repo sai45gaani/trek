@@ -62,11 +62,11 @@
                                 <i class="fab fa-whatsapp text-lg"></i>
                             </div>
                         </a>
-                        <a href="#" class="group social-link">
+                        <!--<a href="#" class="group social-link">
                             <div class="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center group-hover:bg-blue-500 transition-all duration-300 transform group-hover:scale-110">
                                 <i class="fab fa-twitter text-lg"></i>
                             </div>
-                        </a>
+                        </a>-->
                     </div>
                 </div>
             </div>
@@ -179,8 +179,8 @@
                         </div>
                         <div>
                             <p class="text-sm text-gray-400 uppercase tracking-wide">Location</p>
-                            <p class="text-white font-semibold">Maharashtra, India</p>
-                            <p class="text-xs text-gray-400">Western Ghats Region</p>
+                            <p class="text-white font-semibold">Dombivli</p>
+                            <p class="text-xs text-gray-400">Maharashtra, India</p>
                         </div>
                     </div>
                 </div>
