@@ -21,21 +21,22 @@ function getDifficultyInEnglish($english) {
 // Slug generation
 function slugify($string) {
     // Convert brackets to space
-    $string = preg_replace('/[\(\)]/', ' ', $string);
+  //  $string = preg_replace('/[\(\)]/', ' ', $string);
 
     // Remove special characters
-    $string = preg_replace('/[^\p{L}\p{N}\s]/u', '', $string);
+ //   $string = preg_replace('/[^\p{L}\p{N}\s]/u', '', $string);
 
     // Normalize spaces
-    $string = preg_replace('/\s+/u', ' ', trim($string));
+ //   $string = preg_replace('/\s+/u', ' ', trim($string));
 
     // Convert to slug
-    $slug = mb_strtolower(str_replace(' ', '-', $string));
-
+ //   $slug = mb_strtolower(str_replace(' ', '-', $string));
+    $slug = $string;
     // Remove duplicate "-fort"
     $slug = preg_replace('/(-fort)+$/', '', $slug);
 
     return $slug . '-fort';
+   //   return $string;
 }
 
 
