@@ -4,6 +4,8 @@ $page_title = 'Forts by Category - Hill Forts, Sea Forts & More | Trekshitz';
 $meta_description = 'Complete categorization of forts in Maharashtra by type - Hill forts, Sea forts, Land forts, and Cave forts. Detailed information about different types of forts with trekking guides.';
 $meta_keywords = 'hill forts, sea forts, land forts, cave forts, Maharashtra fort types, Sahyadri fort categories, fort classification';
 
+$currentCategory = $_GET['category'] ?? '';
+
 require_once './config/database.php';
 // Include header
 include './includes/header.php';
@@ -274,18 +276,23 @@ $seaFortsCount = isset($fortCategories['Sea Forts']) ? $fortCategories['Sea Fort
                     
                     <div class="flex-1">
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                            <i class="fas fa-signal mr-2 text-accent"></i>Select Difficulty
+                            <i class="fas fa-signal mr-2 text-accent"></i>Select Category
                         </label>
-                        <select id="difficultyFilter" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent dark:bg-gray-700 dark:text-white transition-all duration-300">
-                            <option value="">All Difficulties</option>
-                            <option value="Easy">Easy</option>
-                            <option value="Medium">Medium</option>
-                            <option value="Hard">Hard</option>
-                            <option value="Extreme">Extreme</option>
+                        <select id="CategoryFilter"
+                                 class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600
+                                    rounded-lg focus:ring-2 focus:ring-accent focus:border-accent
+                                     dark:bg-gray-700 dark:text-white transition-all duration-300">
+
+                            <option value="">All Categories</option>
+                            <option value="Hill Forts" <?= ($_GET['category'] ?? '') === 'Hill Forts' ? 'selected' : '' ?>>Hill Forts</option>
+                            <option value="Sea Forts" <?= ($_GET['category'] ?? '') === 'Sea Forts' ? 'selected' : '' ?>>Sea Forts</option>
+                            <option value="Land Forts" <?= ($_GET['category'] ?? '') === 'Land Forts' ? 'selected' : '' ?>>Land Forts</option>
+
                         </select>
+
                     </div>
                     
-                    <div class="flex-1">
+                    <!--<div class="flex-1">
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                             <i class="fas fa-calendar mr-2 text-accent"></i>Best Season
                         </label>
@@ -295,8 +302,14 @@ $seaFortsCount = isset($fortCategories['Sea Forts']) ? $fortCategories['Sea Fort
                             <option value="November to February">November to February</option>
                             <option value="Year Round">Year Round</option>
                         </select>
-                    </div>
-                    
+                    </div>-->
+                    <button id="applyFilter"
+                         class="bg-primary hover:bg-secondary text-white
+                         px-6 py-3 rounded-lg font-semibold
+                         transition-colors flex items-center">
+                        <i class="fas fa-filter mr-2"></i>
+                        Filter
+                    </button>
                     <button onclick="clearFilters()" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-colors duration-300 transform hover:scale-105">
                         <i class="fas fa-times mr-2"></i>Clear
                     </button>
@@ -764,4 +777,36 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+const categoryFilter = document.getElementById('CategoryFilter');
+const filterButton = document.getElementById('applyFilter');
+
+function applyCategoryFilter() {
+    const category = categoryFilter.value;
+
+    if (category) {
+        window.location.href =
+            `fort-by-category-english.php?category=${encodeURIComponent(category)}`;
+    } else {
+        window.location.href = 'fort-by-category-english.php';
+    }
+}
+
+// Filter button click
+if (filterButton) {
+    filterButton.addEventListener('click', function () {
+        applyCategoryFilter();
+    });
+}
+
+// Enter key support
+if (categoryFilter) {
+    categoryFilter.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            applyCategoryFilter();
+        }
+    });
+}
+
 </script>

@@ -4,6 +4,8 @@ $page_title = 'Forts by Difficulty Grade - Trekking Levels | Trekshitz';
 $meta_description = 'Easy, Medium, Hard and Extreme difficulty level forts in Maharashtra. Find forts according to your trekking experience and fitness level.';
 $meta_keywords = 'fort grades, trekking difficulty, easy forts, hard forts, grading system, fort classification';
 
+$currentGrade = isset($_GET['grade']) ? $_GET['grade'] : '';
+
 require_once './config/database.php';
 // Include header
 include './includes/header.php';
@@ -201,12 +203,20 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
                         </label>
                         <select id="difficultyFilter" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent dark:bg-gray-700 dark:text-white">
                             <option value="">All Grades</option>
-                            <option value="Easy">Easy</option>
-                            <option value="Medium">Medium</option>
-                            <option value="Hard">Hard</option>
-                            <option value="Extreme">Extreme</option>
+                            <option value="Easy" <?= $currentGrade === 'Easy' ? 'selected' : '' ?>>Easy</option>
+                            <option value="Medium" <?= $currentGrade === 'Medium' ? 'selected' : '' ?>>Medium</option>
+                            <option value="Hard" <?= $currentGrade === 'Hard' ? 'selected' : '' ?>>Hard</option>
+                            <option value="Extreme" <?= $currentGrade === 'Extreme' ? 'selected' : '' ?>>Extreme</option>
+
                         </select>
                     </div>
+                    <button id="applyFilter"
+                         class="bg-primary hover:bg-secondary text-white
+                         px-6 py-3 rounded-lg font-semibold
+                         transition-colors flex items-center">
+                        <i class="fas fa-filter mr-2"></i>
+                        Filter
+                    </button>
                     
                     <button onclick="clearFilters()" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-colors">
                         <i class="fas fa-times mr-2"></i>Clear
@@ -293,16 +303,16 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
                                 </div>
                                 
                                 <div class="flex gap-2">
-                                    <a href="/fort/<?php echo strtolower(str_replace(' ', '-', $fort)); ?>" 
+                                    <a href="./fort/index.php?slug=<?php echo strtolower(str_replace(' ', '-', $fort)); ?>" 
                                        class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2 px-3 rounded-lg text-sm font-semibold transition-colors">
                                         <i class="fas fa-info-circle mr-1"></i>
-                                        Details
+                                        Fort Information
                                     </a>
-                                    <a href="/trek/<?php echo strtolower(str_replace(' ', '-', $fort)); ?>" 
+                                    <!--<a href="/trek/<?php echo strtolower(str_replace(' ', '-', $fort)); ?>" 
                                        class="flex-1 bg-accent hover:bg-primary text-white text-center py-2 px-3 rounded-lg text-sm font-semibold transition-colors">
                                         <i class="fas fa-route mr-1"></i>
                                         Trek
-                                    </a>
+                                    </a>-->
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -707,4 +717,37 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+</script>
+<script>
+const difficultyFilter = document.getElementById('difficultyFilter');
+const filterButton = document.getElementById('applyFilter');
+
+// Function to apply filter
+function applyGradeFilter() {
+    const grade = difficultyFilter.value;
+
+    if (grade) {
+        window.location.href = `fort_by_grade_english.php?grade=${encodeURIComponent(grade)}`;
+    } else {
+        window.location.href = 'fort_by_grade_english.php';
+    }
+}
+
+// Button click
+if (filterButton) {
+    filterButton.addEventListener('click', function () {
+        applyGradeFilter();
+    });
+}
+
+// Enter key support
+if (difficultyFilter) {
+    difficultyFilter.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            applyGradeFilter();
+        }
+    });
+}
+    
 </script>
