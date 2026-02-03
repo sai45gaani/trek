@@ -13,17 +13,18 @@
 
         <!-- Primary Actions -->
         <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-            <a href="/trek-schedule"
-               class="inline-flex items-center justify-center px-8 py-3 bg-white text-primary font-semibold rounded-full hover:bg-gray-100 transition-colors">
-                <i class="fas fa-hiking mr-2"></i>
-                आमच्या ट्रेकमध्ये सहभागी व्हा
+            <a href="./about-us.php"
+            class="inline-flex items-center justify-center px-8 py-3 bg-white text-primary font-semibold rounded-full hover:bg-gray-100 transition-colors">
+                <i class="fas fa-users mr-2"></i>
+                ट्रेकशितीज बद्दल
             </a>
 
-            <a href="/community"
-               class="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-primary transition-colors">
-                <i class="fas fa-users mr-2"></i>
-                आमचा समुदाय जाणून घ्या
+            <a href="./contact-us.php"
+            class="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-primary transition-colors">
+                <i class="fas fa-envelope mr-2"></i>
+                संपर्क साधा
             </a>
+
         </div>
 
         <!-- Social Media -->

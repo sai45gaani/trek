@@ -470,7 +470,7 @@ try {
                                         <i class="fas fa-phone mr-1"></i>
                                         Call
                                     </a>
-                                    <a href="/trek-details/<?php echo $trek['id']; ?>" 
+                                    <a href="./trek-details.php?id=<?php echo $trek['id']; ?>" 
                                        class="flex-1 bg-accent hover:bg-primary text-white text-center py-2.5 px-3 rounded-lg font-semibold transition-colors duration-300 text-sm">
                                         <i class="fas fa-info-circle mr-1"></i>
                                         Details

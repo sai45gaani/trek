@@ -110,12 +110,16 @@
                                     सह्याद्रीच्या पर्वतरांगांमध्ये ट्रेकिंग आणि किल्ले अनुभवण्यासाठी आमच्यासोबत या
                                 </p>
                                 <div class="space-x-4">
+                                    <a href="./trek_schedule.php">
                                     <button class="btn btn-primary">
                                        तुमचा प्रवास सुरू करा
                                     </button>
+                                    </a>
+                                    <a href="./treks.php">
                                     <button class="btn btn-secondary">
                                          ट्रेक्स पहा
                                     </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -134,9 +138,11 @@
                                      ३५०+ किल्ल्यांची सविस्तर माहिती, इतिहास आणि ट्रेक मार्गदर्शन
                                 </p>
                                 <div class="space-x-4">
+                                    <a href="./fort_information.php">
                                     <button class="btn btn-primary">
                                     किल्ले पाहा
                                     </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -198,12 +204,12 @@
                                             </p>
 
                                             <div class="flex justify-center gap-4 flex-wrap">
-                                                <a href="/trek-details/<?= $heroTrek['TrekId'] ?>"
+                                                <a href="./trek-details.php?id=<?= $heroTrek['TrekId'] ?>"
                                                 class="px-8 py-3 bg-primary text-white rounded-full font-semibold hover:bg-secondary transition">
                                                      तपशील पहा
                                                 </a>
 
-                                                <a href="/trek-schedule"
+                                                <a href="./trek_schedule.php"
                                                 class="px-8 py-3 text-white rounded-full font-semibold hover:bg-white hover:text-black transition btn-secondary">
                                                     संपूर्ण वेळापत्रक
                                                 </a>
@@ -246,15 +252,15 @@
                                     </p>
 
                                     <div class="flex justify-center gap-4 flex-wrap">
-                                        <a href="/gallery"
+                                        <a href="./gallery/gallery.php"
                                         class="px-8 py-3 bg-accent text-black rounded-full font-semibold hover:bg-primary hover:text-white transition">
                                            छायाचित्र संग्रह पहा
                                         </a>
 
-                                        <a href="/contact"
+                                        <!--<a href="/contact"
                                         class="px-8 py-3 border border-white text-white rounded-full font-semibold hover:bg-white hover:text-black transition">
                                            सूचना मिळवा
-                                        </a>
+                                        </a>-->
                                     </div>
 
                                     <p class="mt-6 text-sm opacity-70">
@@ -281,7 +287,7 @@
                                         <div class="grid md:grid-cols-3 gap-6">
                                             
                                             <!-- Fort Gallery -->
-                                            <a href="/gallery/forts"
+                                           <a href="./gallery/fort-gallery.php"
                                             class="group relative h-64 rounded-xl overflow-hidden">
                                                 <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition"
                                                     style="background-image:url('/assets/images/Photos/Fort/sample.jpg')"></div>
@@ -293,7 +299,7 @@
                                             </a>
 
                                             <!-- Maps Gallery -->
-                                            <a href="/gallery/maps"
+                                             <a href="./gallery/map-gallery.php"
                                             class="group relative h-64 rounded-xl overflow-hidden">
                                                 <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition"
                                                     style="background-image:url('/assets/images/Photos/Maps/MapImages/sample.jpg')"></div>
@@ -305,7 +311,7 @@
                                             </a>
 
                                             <!-- Sketches -->
-                                            <a href="/gallery/sketches"
+                                            <a href="./gallery/sketches-gallery.php"
                                             class="group relative h-64 rounded-xl overflow-hidden">
                                                 <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition"
                                                     style="background-image:url('/assets/images/Photos/Sketches/sample.jpg')"></div>
@@ -336,7 +342,7 @@
                                             <div class="grid md:grid-cols-3 gap-6">
                                             
                                             <!-- Fort Gallery -->
-                                            <a href="/gallery/forts"
+                                            <a href="./gallery/butterfly-gallery.php"
                                             class="group relative h-64 rounded-xl overflow-hidden">
                                                 <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition"
                                                     style="background-image:url('/assets/images/Photos/Fort/sample.jpg')"></div>
@@ -348,7 +354,7 @@
                                             </a>
 
                                             <!-- Maps Gallery -->
-                                            <a href="/gallery/maps"
+                                            <a href="./gallery/caves-gallery.php"
                                             class="group relative h-64 rounded-xl overflow-hidden">
                                                 <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition"
                                                     style="background-image:url('/assets/images/Photos/Maps/MapImages/sample.jpg')"></div>
@@ -360,7 +366,7 @@
                                             </a>
 
                                             <!-- Sketches -->
-                                            <a href="/gallery/sketches"
+                                            <a href="./gallery/flower-gallery.php"
                                             class="group relative h-64 rounded-xl overflow-hidden">
                                                 <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition"
                                                     style="background-image:url('/assets/images/Photos/Sketches/sample.jpg')"></div>
@@ -393,7 +399,7 @@
                                                 सह्याद्रीतील किल्ल्यांचे आत्मा
                                             </p>
 
-                                            <a href="/shivaji-maharaj"
+                                            <a href="./shivaji_maharaja.php"
                                             class="inline-flex items-center px-8 py-3 bg-accent text-black font-bold rounded-lg hover:bg-primary transition">
                                                 वारसा वाचा
                                             </a>
@@ -521,7 +527,7 @@
                                                     By <?= htmlspecialchars($t['Leader']) ?>
                                                 </div>
 
-                                                <a href="/trek-details/<?= $t['TrekId'] ?>" 
+                                                <a href="./trek-details.php?id=<?= $t['TrekId'] ?>" 
                                                 class="btn btn-primary w-full text-center">
                                                    ट्रेक पहा
                                                 </a>
@@ -548,8 +554,8 @@
                                         थोडा वेळ थांबा - लवकरच रोमांचक ट्रेक येत आहेत!
                                     </p>
 
-                                    <a href="/contact" class="btn btn-primary px-8">
-                                       सूचना मिळवा
+                                    <a href="./gallery/gallery.php" class="btn btn-primary px-8">
+                                        गॅलरी पहा
                                     </a>
                                 </div>
 
@@ -560,132 +566,159 @@
 
 
 
-        <!-- Features Grid Section -->
-        <section class="py-20 bg-cream-light dark:bg-gray-800">
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-4">आमच्यासोबत प्रवास करा</h2>
-                    <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                       आमच्यासोबत सह्याद्रीच्या सौंदर्याचा अनुभव घ्या
-                    </p>
-                </div>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Feature Card 1 -->
-                    <div class="card hover-lift p-8">
+<!-- Features Grid Section -->
+<section class="py-20 bg-cream-light dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-4">
+                    आमच्यासोबत सह्याद्रीचा शोध घ्या
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    आमच्यासोबत सह्याद्रीचे नैसर्गिक सौंदर्य अनुभवा
+                </p>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Fort Information -->
+                <a href="./fort_information.php" class="block h-full group focus:outline-none">
+                    <div class="card hover-lift p-8 h-full flex flex-col">
+
                         <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
-                            <i class="fas fa-fort-awesome text-2xl text-white"></i>
+                            <i class="fas fa-info text-2xl text-white"></i>
                         </div>
-                                                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-                                किल्ल्यांची माहिती
-                            </h3>
 
-                            <p class="text-gray-600 dark:text-gray-300 mb-6">
-                                ३५० हून अधिक किल्ल्यांची सविस्तर माहिती, छायाचित्रे व नकाशांसह
-                            </p>
-
-                            <a href="#" class="text-primary dark:text-accent font-semibold hover:underline">
-                                अधिक जाणून घ्या →
-                            </a>
-
-                    </div>
-                    
-                    <!-- Feature Card 2 -->
-                    <div class="card hover-lift p-8">
-                        <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mb-6">
-                            <i class="fas fa-images text-2xl text-white"></i>
-                        </div>
-                                                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-                                छायाचित्र संग्रह
-                            </h3>
-
-                            <p class="text-gray-600 dark:text-gray-300 mb-6">
-                                किल्ले, फुलपाखरे, गुहा, फुले आणि आणखी सुंदर छायाचित्रे
-                            </p>
-
-                            <a href="#" class="text-primary dark:text-accent font-semibold hover:underline">
-                                गॅलरी पहा →
-                            </a>
-
-                    </div>
-                    
-                    <!-- Feature Card 3 -->
-                    <div class="card hover-lift p-8">
-                        <div class="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center mb-6">
-                            <i class="fas fa-comments text-2xl text-white"></i>
-                        </div>
-                                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-                            चर्चा मंच
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                            किल्ल्यांची माहिती
                         </h3>
 
                         <p class="text-gray-600 dark:text-gray-300 mb-6">
-                            इतर ट्रेकर्सशी संपर्क साधा, अनुभव शेअर करा आणि मार्गदर्शन मिळवा
+                            ४०० पेक्षा अधिक किल्ल्यांची सविस्तर माहिती, छायाचित्रे व नकाशांसह
                         </p>
 
-                        <a href="#" class="text-primary dark:text-accent font-semibold hover:underline">
-                            चर्चेत सहभागी व्हा →
-                        </a>
-
+                        <span class="mt-auto text-primary dark:text-accent font-semibold hover:underline">
+                            अधिक जाणून घ्या →
+                        </span>
                     </div>
-                    
-                    <!-- Feature Card 4 -->
-                    <div class="card hover-lift p-8">
-                        <div class="w-16 h-16 bg-forest rounded-2xl flex items-center justify-center mb-6">
-                            <i class="fas fa-crown text-2xl text-white"></i>
-                        </div>
-                                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-                        छत्रपती शिवाजी महाराज
-                    </h3>
+                </a>
 
-                    <p class="text-gray-600 dark:text-gray-300 mb-6">
-                        महान मराठा योद्धा राजे आणि त्यांच्या किल्ल्यांविषयी माहिती मिळवा
-                    </p>
+                <!-- Maps -->
+                <a href="./gallery/map-gallery.php" class="block h-full group focus:outline-none">
+                    <div class="card hover-lift p-8 h-full flex flex-col">
 
-                    <a href="#" class="text-primary dark:text-accent font-semibold hover:underline">
-                        अधिक वाचा →
-                    </a>
-
-                    </div>
-                    
-                    <!-- Feature Card 5 -->
-                    <div class="card hover-lift p-8">
-                        <div class="w-16 h-16 bg-earth rounded-2xl flex items-center justify-center mb-6">
+                        <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mb-6">
                             <i class="fas fa-map text-2xl text-white"></i>
                         </div>
-                                            <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
                             नकाशे
                         </h3>
 
                         <p class="text-gray-600 dark:text-gray-300 mb-6">
-                            उत्तम दिशादर्शनासाठी किल्ले व परिसराचे सविस्तर नकाशे
+                            किल्ले व आजूबाजूच्या परिसराचे सविस्तर नकाशे – मार्गदर्शनासाठी उपयुक्त
                         </p>
 
-                        <a href="#" class="text-primary dark:text-accent font-semibold hover:underline">
+                        <span class="mt-auto text-primary dark:text-accent font-semibold hover:underline">
                             नकाशे पहा →
-                        </a>
-
+                        </span>
                     </div>
-                    
-                    <!-- Feature Card 6 -->
-                    <div class="card hover-lift p-8">
-                        <div class="w-16 h-16 bg-mountain rounded-2xl flex items-center justify-center mb-6">
-                            <i class="fas fa-book text-2xl text-white"></i>
+                </a>
+
+                <!-- Upcoming Treks -->
+                <a href="./trek_schedule.php" class="block h-full group focus:outline-none">
+                    <div class="card hover-lift p-8 h-full flex flex-col">
+
+                        <div class="w-16 h-16 bg-earth rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-comments text-2xl text-white"></i>
                         </div>
-                                            <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-                            ई-मासिक
+
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                            आगामी ट्रेक्स
                         </h3>
 
                         <p class="text-gray-600 dark:text-gray-300 mb-6">
-                            ट्रेकशितीज संस्थेचे ई-मासिक: किल्ले, निसर्ग आणि तज्ज्ञ मार्गदर्शन
+                            सह्याद्रीतील आगामी ट्रेक्सची माहिती, अनुभवांची देवाणघेवाण व मार्गदर्शन
                         </p>
 
-                        <a href="#" class="text-primary dark:text-accent font-semibold hover:underline">
-                            मासिक वाचा →
-                        </a>
+                        <span class="mt-auto text-primary dark:text-accent font-semibold hover:underline">
+                            वेळापत्रक पहा →
+                        </span>
                     </div>
-                </div>
+                </a>
+
+                <!-- Picture Gallery -->
+                <a href="./gallery/gallery.php" class="block h-full group focus:outline-none">
+                    <div class="card hover-lift p-8 h-full flex flex-col">
+
+                        <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-images text-2xl text-white"></i>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                            छायाचित्र संग्रह
+                        </h3>
+
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">
+                            किल्ले, फुलपाखरे, गुहा, फुले व निसर्गाची मनमोहक छायाचित्रे
+                        </p>
+
+                        <span class="mt-auto text-primary dark:text-accent font-semibold hover:underline">
+                            संग्रह पहा →
+                        </span>
+                    </div>
+                </a>
+
+                <!-- King Shivaji Maharaj -->
+                <a href="./shivaji_maharaja.php" class="block h-full group focus:outline-none">
+                    <div class="card hover-lift p-8 h-full flex flex-col">
+
+                        <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-crown text-2xl text-white"></i>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                            छत्रपती शिवाजी महाराज
+                        </h3>
+
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">
+                            महान मराठा योद्धा छत्रपती शिवाजी महाराज व त्यांच्या किल्ल्यांची माहिती
+                        </p>
+
+                        <span class="mt-auto text-primary dark:text-accent font-semibold hover:underline">
+                            अधिक वाचा →
+                        </span>
+                    </div>
+                </a>
+
+                <!-- E-Magazine -->
+                <a href="./emagazine.php" class="block h-full group focus:outline-none">
+                    <div class="card hover-lift p-8 h-full flex flex-col">
+
+                        <div class="w-16 h-16 bg-earth rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-book text-2xl text-white"></i>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                            ई-मॅगझिन
+                        </h3>
+
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">
+                            ट्रेकशितीज संस्थेचे ई-मॅगझिन – किल्ले, निसर्ग व तज्ज्ञ मार्गदर्शन
+                        </p>
+
+                        <span class="mt-auto text-primary dark:text-accent font-semibold hover:underline">
+                            मॅगझिन वाचा →
+                        </span>
+                    </div>
+                </a>
+
             </div>
-        </section>
+        </div>
+</section>
+
 
         <!-- Newsletter Section -->
      <!--   <section class="py-20 bg-gradient-nature text-white">

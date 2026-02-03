@@ -138,7 +138,7 @@
                                     Information about 350+ forts, their history and trekking guidance
                                 </p>
                                 <div class="space-x-4">
-                                    <a href="./fort_in_english.php">
+                                    <a href="./fort_information.php">
                                     <button class="btn btn-primary">
                                     Explore Forts
                                     </button>
@@ -562,8 +562,8 @@
 
 
 
-        <!-- Features Grid Section -->
-        <section class="py-20 bg-cream-light dark:bg-gray-800">
+<!-- Features Grid Section -->
+<section class="py-20 bg-cream-light dark:bg-gray-800">
     <div class="container mx-auto px-4">
 
         <!-- Section Header -->

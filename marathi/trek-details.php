@@ -1,6 +1,6 @@
 <?php
 // ================= PAGE SETUP =================
-require_once './config/database.php';
+require_once './../config/database.php';
 
 
 $db = new Database();
@@ -43,7 +43,7 @@ $isUpcoming = strtotime($trek['TrekDate']) >= strtotime(date('Y-m-d'));
 // ================= PAGE META =================
 $page_title = htmlspecialchars($trek['Place']) . ' Trek | Trekshitiz';
 $meta_description = 'Join the ' . htmlspecialchars($trek['Place']) . ' trek with Trekshitiz. Explore Sahyadri forts and nature with expert trek leaders.';
-include './includes/header.php';
+include './../includes/header.php';
 ?>
 
 <main id="main-content">
@@ -84,7 +84,7 @@ include './includes/header.php';
 
         <!-- Title -->
         <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-6">
-            Trek Overview
+           ट्रेकची संपूर्ण माहिती
         </h2>
 
         <!-- Divider -->
@@ -137,9 +137,8 @@ include './includes/header.php';
 </section>
 
 
-
-<?php include './our_important_information_for_trek.php';  ?>
+    <?php include './our_important_information_for_trek.php';  ?>
 
 </main>
 
-<?php include './includes/footer.php'; ?>
+<?php include './../includes/footer.php'; ?>

@@ -496,16 +496,16 @@ try {
                                 
                                 <!-- Action Buttons -->
                                 <div class="flex gap-2">
-                                    <a href="/trek-details/<?php echo $trek['id']; ?>" 
+                                    <a href="./trek-details.php?id=<?php echo $trek['id']; ?>" 
                                        class="flex-1 bg-primary hover:bg-mountain text-white text-center py-2.5 px-3 rounded-lg font-semibold transition-colors duration-300 text-sm">
                                         <i class="fas fa-eye mr-1"></i>
-                                        View Details
+                                        अधिक तपशील पहा
                                     </a>
-                                    <a href="/trek-photos/<?php echo $trek['id']; ?>" 
+                                    <!--<a href="/trek-photos/<?php echo $trek['id']; ?>" 
                                        class="flex-1 bg-accent hover:bg-primary text-white text-center py-2.5 px-3 rounded-lg font-semibold transition-colors duration-300 text-sm">
                                         <i class="fas fa-images mr-1"></i>
                                         Photos
-                                    </a>
+                                    </a>-->
                                     <button onclick="shareTrek(<?php echo $trek['id']; ?>, '<?php echo addslashes($trek['name']); ?>', '<?php echo $trek['date']; ?>')" 
                                             class="bg-blue-600 hover:bg-blue-700 text-white py-2.5 px-3 rounded-lg font-semibold transition-colors duration-300">
                                         <i class="fas fa-share-alt"></i>
@@ -716,7 +716,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Share trek functionality
     window.shareTrek = function(trekId, trekName, trekDate) {
         const shareText = `Check out this amazing trek: ${trekName} on ${trekDate} with Trekshitz!`;
-        const shareUrl = `${window.location.origin}/trek-details/${trekId}`;
+        const shareUrl = `${window.location.origin}/marathi/fort/trek/trek-details.php?id=${trekId}`;
         
         if (navigator.share) {
             navigator.share({

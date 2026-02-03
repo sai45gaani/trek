@@ -406,14 +406,14 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                             </div>
                         </li>
                         <li class="relative group">
-                            <a href="<?= BASE_URL ?>fort_in_english.php" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
+                            <a href="<?= BASE_URL ?>fort_information.php" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
                                 Forts
                                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary dark:bg-accent transition-all duration-300 group-hover:w-full"></span>
                             </a>
                             <!-- Dropdown Menu for Forts -->
                             <div class="absolute top-full left-0 w-64 bg-white dark:bg-gray-800 shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-2">
                                 <div class="py-2">
-                                    <a href="<?= BASE_URL ?>fort_in_english.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Fort Information</a>
+                                    <a href="<?= BASE_URL ?>fort_information.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Fort Information</a>
                                     <a href="<?= BASE_URL ?>gallery/map-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Maps</a>
                                 </div>
                             </div>
@@ -451,17 +451,17 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                     
                     <!-- Language Switcher -->
                     <div class="relative group hidden md:block">
-                        <button class="flex items-center text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none rounded-lg text-sm p-2.5">
+                        <button class="flex items-center text-gray-500 dark:text-gray-400 hover:bg-secondary dark:hover:bg-gray-700 focus:outline-none rounded-lg text-sm p-2.5">
                             <i class="fas fa-globe mr-1"></i>
                             <span class="text-xs">EN</span>
                             <i class="fas fa-chevron-down ml-1 text-xs"></i>
                         </button>
                         <div class="absolute right-0 top-full w-32 bg-white dark:bg-gray-800 shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-2">
                             <div class="py-2">
-                                <a href="<?= $englishPath ?>" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" data-language="en">
+                                <a href="<?= $englishPath ?>" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-secondary dark:hover:bg-gray-700" data-language="en">
                                     <i class="fas fa-flag mr-2"></i>English
                                 </a>
-                                <a href="<?= $marathiPath ?>" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" data-language="mr">
+                                <a href="<?= $marathiPath ?>" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-secondary dark:hover:bg-gray-700" data-language="mr">
                                     <i class="fas fa-flag mr-2"></i>मराठी
                                 </a>
                             </div>
@@ -559,7 +559,7 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                                             <i class="fas fa-chevron-down transition-transform duration-300"></i>
                                         </button>
                                         <div class="mobile-dropdown-content ml-6 mt-2 space-y-2 hidden">
-                                            <a href="<?= BASE_URL ?>fort_in_english.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">Fort Information</a>
+                                            <a href="<?= BASE_URL ?>fort_information.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">Fort Information</a>
                                             <a href="<?= BASE_URL ?>project-map.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">Maps</a>
                                         </div>
                                     </div>

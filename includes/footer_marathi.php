@@ -94,7 +94,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?= BASE_URL ?>marathi/fort-in-marathi.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>marathi/fort_information.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-fort-awesome mr-2 group-hover:translate-x-1 transition-transform"></i>
                             किल्ला माहिती
                         </a>
@@ -106,13 +106,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?= BASE_URL ?>" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>marathi/project-sudhagad-main.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-comments mr-2 group-hover:translate-x-1 transition-transform"></i>
-                            चर्चा मंच
+                            सुधागड प्रकल्प
                         </a>
                     </li>
                     <li>
-                        <a href="<?= BASE_URL ?>" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>marathi/trek-gear.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-tools mr-2 group-hover:translate-x-1 transition-transform"></i>
                            ट्रेकिंग साहित्य
                         </a>
@@ -127,19 +127,19 @@
                 </h4>
                 <ul class="space-y-3">
                     <li>
-                        <a href="<?= BASE_URL ?>>marathi/project-map.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>>marathi/gallery/map-gallery.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-map mr-2 group-hover:translate-x-1 transition-transform"></i>
                             नकाशे
                         </a>
                     </li>
                     <li>
-                        <a href="<?= BASE_URL ?>project-map.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>marathi/articles.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-newspaper mr-2 group-hover:translate-x-1 transition-transform"></i>
                             लेख
                         </a>
                     </li>
                     <li>
-                        <a href="<?= BASE_URL ?>project-map.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>marathi/emagazine.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-newspaper mr-2 group-hover:translate-x-1 transition-transform"></i>
                            ई-मासिक
                         </a>
@@ -150,12 +150,12 @@
                             मदत केंद्र
                         </a>
                     </li>
-                    <li>
+                   <!-- <li>
                         <a href="<?= BASE_URL ?>" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-mountain mr-2 group-hover:translate-x-1 transition-transform"></i>
                             रॉक क्लायम्बिंग
                         </a>
-                    </li>
+                    </li>-->
                     <li>
                         <a href="<?= BASE_URL ?>marathi/gallery/sketches-gallery.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-palette mr-2 group-hover:translate-x-1 transition-transform"></i>
@@ -163,7 +163,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?= BASE_URL ?>" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>marathi/shivaji_maharaja.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-crown mr-2 group-hover:translate-x-1 transition-transform"></i>
                             छत्रपती शिवाजी महाराज
                         </a>
@@ -182,9 +182,10 @@
                             <i class="fas fa-map-marker-alt text-accent text-xl"></i>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-400 uppercase tracking-wide">स्थान</p>
-                            <p class="text-white font-semibold">महाराष्ट्र, भारत</p>
-                            <p class="text-xs text-gray-400">पश्चिम घाट प्रदेश</p>
+                        <p class="text-sm text-gray-400 uppercase tracking-wide">स्थान</p>
+                        <p class="text-white font-semibold">डोंबिवली</p>
+                        <p class="text-xs text-gray-400">महाराष्ट्र, भारत</p>
+
                         </div>
                     </div>
                 </div>
