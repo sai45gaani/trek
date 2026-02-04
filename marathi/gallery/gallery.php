@@ -1,8 +1,12 @@
 <?php
-$page_title = 'Gallery | Trekshitiz';
+$page_title = 'छायाचित्र संग्रह | TreKshitiZ';
 
-require_once './../config/database.php';
-include './../includes/header.php';
+$meta_description = 'TreKshitiZ छायाचित्र संग्रह – सह्याद्रीतील किल्ले, ट्रेक्स, निसर्ग, वन्यजीवन व दुर्गसंवर्धन उपक्रमांची सुंदर छायाचित्रे पहा. महाराष्ट्रातील किल्ल्यांचा दृश्य इतिहास.';
+
+$meta_keywords = 'TreKshitiZ गॅलरी, किल्ल्यांची छायाचित्रे, सह्याद्री निसर्ग छायाचित्रण, ट्रेकिंग फोटो, महाराष्ट्र किल्ले गॅलरी, दुर्गसंवर्धन छायाचित्रे, निसर्ग फोटोग्राफी';
+
+require_once './../../config/database.php';
+include './../../includes/header_marathi.php';
 
 $db = new Database();
 $conn = $db->getConnection();
@@ -66,11 +70,11 @@ $sketchCount     = getCategoryCount($conn, 'Sketches');
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
                 <h1 class="text-4xl md:text-6xl font-bold mb-6 mt-6 font-bilingual">
-                   📸 Trekshitiz Gallery
+                   📸 ट्रेकशितीज छायाचित्र संग्रह
                 </h1>
               
                 <p class="text-xl md:text-2xl mb-8 opacity-90">
-                    Historic fortresses captured during trekking adventures in Sahyadri mountains
+                   सह्याद्री पर्वतरांगांतील ट्रेकिंग दरम्यान टिपलेले ऐतिहासिक किल्ल्यांचे मनमोहक क्षण
                 </p>
                 
             </div>
@@ -87,7 +91,7 @@ $sketchCount     = getCategoryCount($conn, 'Sketches');
 
             <!-- Heading -->
             <h1 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-wide text-gray-800 dark:text-white">
-                Our Story
+                आमची कहाणी
             </h1>
 
             <!-- Divider -->
@@ -96,32 +100,34 @@ $sketchCount     = getCategoryCount($conn, 'Sketches');
             <!-- Content -->
             <div class="space-y-6 text-lg leading-relaxed text-gray-600 dark:text-gray-300">
 
-                <p>
-                    Trekshitiz has been documenting the rich heritage of Sahyadri for decades — 
-                    from majestic hill forts and ancient cave complexes to diverse flora, wildlife, 
-                    and artistic interpretations inspired by the mountains.
-                </p>
+                        <p>
+                            ट्रेकशितीज गेल्या अनेक दशकांपासून सह्याद्रीच्या समृद्ध वारशाचे दस्तऐवजीकरण करत आहे —
+                            भव्य डोंगरी किल्ले, प्राचीन लेणी संकुले, विविध वनस्पती, वन्यजीवन
+                            आणि पर्वतरांगांपासून प्रेरित कलात्मक मांडणीपर्यंत.
+                        </p>
 
-                <p>
-                    This gallery serves as a centralized visual archive showcasing thousands of 
-                    photographs, detailed maps, hand-drawn sketches, and nature records collected 
-                    during treks, explorations, research visits, and community contributions across 
-                    Maharashtra and the Western Ghats.
-                </p>
+                        <p>
+                            ही गॅलरी एक केंद्रीकृत दृश्य संग्रह म्हणून कार्य करते, ज्यामध्ये
+                            हजारो छायाचित्रे, सविस्तर नकाशे, हस्तरेखाचित्रे
+                            आणि निसर्ग नोंदी समाविष्ट आहेत.
+                            हे सर्व ट्रेक्स, शोधमोहीम, संशोधन भेटी
+                            आणि महाराष्ट्र व पश्चिम घाटातील समुदायाच्या योगदानातून संकलित करण्यात आले आहे.
+                        </p>
 
-                <p>
-                    Each gallery section represents a distinct domain of exploration — historic forts 
-                    with strategic route maps, natural landscapes and flowers, butterflies and biodiversity, 
-                    rock-cut caves, and artistic sketches that preserve the cultural and natural identity 
-                    of the region.
-                </p>
+                        <p>
+                            गॅलरीतील प्रत्येक विभाग हा शोधाच्या वेगवेगळ्या क्षेत्राचे प्रतिनिधित्व करतो —
+                            रणनीतिक मार्ग नकाशांसह ऐतिहासिक किल्ले,
+                            नैसर्गिक भू-दृश्ये व फुले, फुलपाखरे व जैवविविधता,
+                            शैलकृती लेणी तसेच प्रदेशाची सांस्कृतिक
+                            आणि नैसर्गिक ओळख जपणारी कलात्मक रेखाचित्रे.
+                        </p>
 
-                <p class="font-semibold text-gray-700 dark:text-gray-200">
-                    Explore the sections below to learn, discover, and visually experience the 
-                    timeless legacy of Sahyadri with Trekshitiz.
-                </p>
-
-            </div>
+                        <p class="font-semibold text-gray-700 dark:text-gray-200">
+                            खालील विभागांचा अभ्यास करून,
+                            ट्रेकशितीजसोबत सह्याद्रीचा शाश्वत वारसा
+                            जाणून घ्या, शोधा आणि दृश्य स्वरूपात अनुभवा.
+                        </p>
+                        </div>
         </div>
     </div>
 </section>
@@ -132,77 +138,84 @@ $sketchCount     = getCategoryCount($conn, 'Sketches');
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
             <?php
-            $galleries = [
-                [
-                    'title' => '🏰 Fort Photography',
-                    'desc'  => 'Historic forts captured across treks and seasons.',
-                    'count' => $fortPhotos,
-                    'link'  => './fort-gallery.php'
-                ],
-                [
-                    'title' => '🗺️ Fort Maps',
-                    'desc'  => 'Route maps and navigation layouts of Sahyadri forts.',
-                    'count' => $fortMaps,
-                    'link'  => './map-gallery.php'
-                ],
-                [
-                    'title' => '🌿 Nature',
-                    'desc'  => 'Flora, landscapes, monsoon beauty, and wilderness.',
-                    'count' => $natureCount,
-                    'link'  => './flower-gallery.php'
-                ],
-                [
-                    'title' => '🦋 Butterflies',
-                    'desc'  => 'Butterfly species documented across the Western Ghats.',
-                    'count' => $butterflyCount,
-                    'link'  => './butterfly-gallery.php'
-                ],
-                [
-                    'title' => '🕳️ Caves',
-                    'desc'  => 'Ancient rock-cut caves and hidden cave systems.',
-                    'count' => $caveCount,
-                    'link'  => './caves-gallery.php'
-                ],
-                [
-                    'title' => '🎨 Sketches & Art',
-                    'desc'  => 'Hand-drawn forts and artistic impressions.',
-                    'count' => $sketchCount,
-                    'link'  => './sketches-gallery.php'
-                ]
-            ];
-
+                $galleries = [
+                    [
+                        'title' => '🏰 किल्ल्यांची छायाचित्रे',
+                        'desc'  => 'विविध ट्रेक्स आणि ऋतूंमध्ये टिपलेले ऐतिहासिक किल्ले.',
+                        'count' => $fortPhotos,
+                        'link'  => './fort-gallery.php'
+                    ],
+                    [
+                        'title' => '🗺️ किल्ल्यांचे नकाशे',
+                        'desc'  => 'सह्याद्रीतील किल्ल्यांचे मार्गनकाशे व दिशादर्शन.',
+                        'count' => $fortMaps,
+                        'link'  => './map-gallery.php'
+                    ],
+                    [
+                        'title' => '🌿 निसर्ग',
+                        'desc'  => 'वनस्पती, भू-दृश्ये, पावसाळी सौंदर्य आणि जंगलातील निसर्ग.',
+                        'count' => $natureCount,
+                        'link'  => './flower-gallery.php'
+                    ],
+                    [
+                        'title' => '🦋 फुलपाखरे',
+                        'desc'  => 'पश्चिम घाटात आढळणाऱ्या विविध फुलपाखरांच्या प्रजाती.',
+                        'count' => $butterflyCount,
+                        'link'  => './butterfly-gallery.php'
+                    ],
+                    [
+                        'title' => '🕳️ लेणी',
+                        'desc'  => 'प्राचीन शैलकृती लेणी आणि लपलेली गुहा प्रणाली.',
+                        'count' => $caveCount,
+                        'link'  => './caves-gallery.php'
+                    ],
+                    [
+                        'title' => '🎨 रेखाचित्रे व कला',
+                        'desc'  => 'हस्तरेखाचित्रांमधून साकारलेले किल्ले व कलात्मक मांडणी.',
+                        'count' => $sketchCount,
+                        'link'  => './sketches-gallery.php'
+                    ]
+                ];
             foreach ($galleries as $g): ?>
-    <div class="group bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 
-                shadow-sm hover:shadow-2xl transition-all duration-300 
-                p-7 flex flex-col relative overflow-hidden mb-6">
+                        <a href="<?= $g['link'] ?>"
+                    class="block focus:outline-none group mb-6">
 
-        <!-- Accent strip -->
-        <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary to-accent"></div>
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 
+                                    shadow-sm hover:shadow-2xl transition-all duration-300 
+                                    p-7 flex flex-col relative overflow-hidden h-full">
 
-        <!-- Title -->
-        <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white group-hover:text-primary transition">
-            <?= $g['title'] ?>
-        </h3>
+                            <!-- Accent strip -->
+                            <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary to-accent"></div>
 
-        <!-- Description -->
-        <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed flex-grow">
-            <?= $g['desc'] ?>
-        </p>
+                            <!-- Title -->
+                            <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white 
+                                    group-hover:text-primary transition">
+                                <?= $g['title'] ?>
+                            </h3>
 
-        <!-- Footer -->
-        <div class="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
-            <span class="inline-flex items-center text-sm font-semibold text-green-600">
-                <i class="fas fa-images mr-2 opacity-80"></i>
-                <?= $g['count'] ?> items
-            </span>
+                            <!-- Description -->
+                            <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed flex-grow">
+                                <?= $g['desc'] ?>
+                            </p>
 
-            <a href="<?= $g['link'] ?>"
-               class="inline-flex items-center text-primary font-semibold hover:underline group-hover:translate-x-1 transition">
-                Explore
-                <span class="ml-1">→</span>
-            </a>
-        </div>
-    </div>
+                            <!-- Footer -->
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
+                                <span class="inline-flex items-center text-sm font-semibold text-green-600">
+                                    <i class="fas fa-images mr-2 opacity-80"></i>
+                                    <?= $g['count'] ?> items
+                                </span>
+
+                                <!-- Fake link (card itself is clickable) -->
+                                <span class="inline-flex items-center text-primary font-semibold 
+                                            group-hover:translate-x-1 transition">
+                                    Explore
+                                    <span class="ml-1">→</span>
+                                </span>
+                            </div>
+
+                        </div>
+                    </a>
+
 <?php endforeach; ?>
 
 
@@ -210,4 +223,4 @@ $sketchCount     = getCategoryCount($conn, 'Sketches');
     </div>
 </main>
 
-<?php include './../includes/footer.php'; ?>
+<?php include './../../includes/footer_marathi.php'; ?>

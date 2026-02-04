@@ -174,7 +174,7 @@ $hillFortsCount = isset($fortCategories['पर्वतीय किल्ल�
 $seaFortsCount = isset($fortCategories['समुद्र किल्ले']) ? $fortCategories['समुद्र किल्ले']['total_count'] : 0;
 ?>
 
-<main id="main-content" class="pt-20">
+<main id="main-content" class="">
     <section class="relative py-20 bg-gradient-to-r from-primary to-secondary text-white overflow-hidden">
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
@@ -438,114 +438,11 @@ $seaFortsCount = isset($fortCategories['समुद्र किल्ले'])
     </section>
     <?php endif; ?>
 
-    <section class="py-16 bg-white dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">
-                <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    इतर वर्गीकरणानुसार शोधा
-                </span>
-            </h2>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <a href="/marathi/forts-alphabetical" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-accent group">
-                    <div class="w-16 h-16 bg-primary group-hover:bg-secondary rounded-2xl flex items-center justify-center mb-4 mx-auto transition-all">
-                        <i class="fas fa-sort-alpha-down text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">मुळाक्षरानुसार</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">अ, आ, इ... क्रमाने</p>
-                </a>
-                
-                <a href="/marathi/forts-by-range" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-accent group">
-                    <div class="w-16 h-16 bg-secondary group-hover:bg-primary rounded-2xl flex items-center justify-center mb-4 mx-auto transition-all">
-                        <i class="fas fa-mountain text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">डोंगररांगेनुसार</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">सह्याद्री, पश्चिम घाट इ.</p>
-                </a>
-                
-                <a href="/marathi/forts-by-district" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-accent group">
-                    <div class="w-16 h-16 bg-accent group-hover:bg-forest rounded-2xl flex items-center justify-center mb-4 mx-auto transition-all">
-                        <i class="fas fa-map text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">जिल्ह्यानुसार</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">पुणे, मुंबई, नाशिक इ.</p>
-                </a>
-                
-                <a href="/marathi/forts-by-grade" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-accent group">
-                    <div class="w-16 h-16 bg-forest group-hover:bg-accent rounded-2xl flex items-center justify-center mb-4 mx-auto transition-all">
-                        <i class="fas fa-signal text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">कठीणतेनुसार</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">सोपे, मध्यम, कठीण इ.</p>
-                </a>
-            </div>
-        </div>
-    </section>
+    <?php include './our_more_about_fort_info.php'; ?>
 
-    <section class="py-20 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="max-w-6xl mx-auto">
-                <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">
-                    <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                        किल्ल्यांचे प्रकार समजून घेणे
-                    </span>
-                </h2>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 text-center shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-2">
-                        <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                            <i class="fas fa-mountain text-3xl text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">पर्वतीय किल्ले</h3>
-                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                            धोरणात्मक लष्करी फायद्यासाठी उंच जमिनीवर बांधलेले. या किल्ल्यांनी भूदृश्यावर वर्चस्व गाजवले आणि डोंगर खिंडीतून जाणाऱ्या महत्त्वाच्या व्यापार मार्गांवर नियंत्रण ठेवले.
-                        </p>
-                    </div>
-                    
-                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 text-center shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-2">
-                        <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                            <i class="fas fa-anchor text-3xl text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">समुद्र किल्ले</h3>
-                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                            बंदरांचे संरक्षण आणि सागरी व्यापार नियंत्रित करण्यासाठी बांधलेले किनारी तटबंदी. हे अनोखे बेट किल्ले त्यांच्या काळातील प्रगत नौदल अभियांत्रिकी दर्शवतात.
-                        </p>
-                    </div>
-                    
-                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 text-center shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-2">
-                        <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                            <i class="fas fa-archway text-3xl text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">गुहा किल्ले</h3>
-                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                            संरक्षण आणि धार्मिक हेतूंसाठी तटबंदी केलेल्या नैसर्गिक आणि कृत्रिम गुहा. अनेकांमध्ये प्राचीन बौद्ध वास्तुकला आणि खडकात कोरलेली मंदिरे आहेत.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="bg-gradient-to-r from-primary to-secondary text-white p-8 rounded-2xl text-center">
-                    <h3 class="text-3xl font-bold mb-4">किल्ला प्रकार अन्वेषण मार्गदर्शक</h3>
-                    <p class="text-xl mb-8 opacity-90">
-                        ऐतिहासिक संदर्भ, ट्रेकिंग माहिती आणि सुरक्षा मार्गदर्शकांसह प्रत्येक किल्ल्याच्या प्रकारासाठी सविस्तर मार्गदर्शक
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="/category-guide" class="inline-flex items-center justify-center px-6 py-3 bg-accent hover:bg-forest text-white font-semibold rounded-lg transition-all shadow-lg">
-                            <i class="fas fa-download mr-2"></i>प्रकार मार्गदर्शक डाउनलोड करा
-                        </a>
-                        <a href="/historical-significance" class="inline-flex items-center justify-center px-6 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold rounded-lg transition-all border border-white border-opacity-30">
-                            <i class="fas fa-book mr-2"></i>ऐतिहासिक महत्त्व
-                        </a>
-                        <a href="/trekking-by-category" class="inline-flex items-center justify-center px-6 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold rounded-lg transition-all border border-white border-opacity-30">
-                            <i class="fas fa-route mr-2"></i>प्रकारानुसार ट्रेकिंग
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 </main>
 
-<?php include './../includes/footer.php'; ?>
+<?php include './../includes/footer_marathi.php'; ?>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

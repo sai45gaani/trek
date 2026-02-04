@@ -1,13 +1,17 @@
 <?php
 // Set page specific variables
-$page_title = 'Photo Gallery of Forts in Sahyadri | Trekshitz';
-$meta_description = 'Photographs of trekking, camping, outings etc. in wild forests, hills, forts, palaces, valleys, ravines etc. in Maharashtra.';
-$meta_keywords = 'Photos, pictures, Images, Sahyadri, Western ghats, trekking, hiking, wildlife, mumbai trek, pune trek, tourists, trek, adventure sports, forts, palaces';
+$page_title = 'सह्याद्रीतील किल्ल्यांची फोटो गॅलरी | Trekshitz';
 
-require_once '../config/database.php';
+$meta_description = 'महाराष्ट्रातील जंगल, डोंगर, किल्ले, राजवाडे, दऱ्या आणि खोऱ्यांमधील ट्रेकिंग, कॅम्पिंग व सहलींची सुंदर छायाचित्रे येथे पाहा.';
+
+$meta_keywords = 'फोटो, चित्रे, प्रतिमा, सह्याद्री, पश्चिम घाट, ट्रेकिंग, हायकिंग, वन्यजीवन, मुंबई ट्रेक, पुणे ट्रेक, पर्यटन, साहसी खेळ, किल्ले, राजवाडे';
 
 // Include header
-include '../includes/header.php';
+require_once './../../config/database.php';
+
+// Include header
+include './../../includes/header_marathi.php';
+
 
 // Connect to database
 $db = new Database();
@@ -516,25 +520,29 @@ $stats = $statsResult->fetch_assoc();
         
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 mt-6 font-bilingual">
-                    🏰 Fort Gallery
-                </h1>
-                <h2 class="text-2xl md:text-3xl font-semibold mb-8">
-                    Photo Gallery of Forts In Sahyadri
-                </h2>
-                <p class="text-xl md:text-2xl mb-8 opacity-90">
-                    Historic fortresses captured during trekking adventures in Sahyadri mountains
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#gallery" class="inline-flex items-center px-8 py-4 bg-white text-primary font-semibold rounded-full hover:bg-gray-100 transition-colors">
-                        <i class="fas fa-camera mr-2"></i>
-                        Browse Gallery
-                    </a>
-                    <a href="#alphabetical" class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-secondary transition-colors">
-                        <i class="fas fa-sort-alpha-down mr-2"></i>
-                        Alphabetical View
-                    </a>
-                </div>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 mt-6 font-bilingual">
+                        🏰 किल्ले फोटो गॅलरी
+                    </h1>
+
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-8">
+                        सह्याद्रीतील किल्ल्यांची फोटो गॅलरी
+                    </h2>
+
+                    <p class="text-xl md:text-2xl mb-8 opacity-90">
+                        सह्याद्री पर्वतरांगांमधील ट्रेकिंग मोहिमांदरम्यान टिपलेले ऐतिहासिक किल्ल्यांचे सुंदर छायाचित्रण
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="#gallery" class="inline-flex items-center px-8 py-4 bg-white text-primary font-semibold rounded-full hover:bg-gray-100 transition-colors">
+                            <i class="fas fa-camera mr-2"></i>
+                            गॅलरी पाहा
+                        </a>
+
+                        <a href="#alphabetical" class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-secondary transition-colors">
+                            <i class="fas fa-sort-alpha-down mr-2"></i>
+                            वर्णानुक्रमाने पहा
+                        </a>
+                    </div>
             </div>
         </div>
     </section>
@@ -548,15 +556,17 @@ $stats = $statsResult->fetch_assoc();
                 <div class="grid md:grid-cols-3 gap-6">
                     <div class="text-center">
                         <div class="text-3xl font-bold mb-2"><?php echo $stats['totalForts']; ?>+</div>
-                        <p class="opacity-90">Historic Forts</p>
+                        <p class="opacity-90">ऐतिहासिक किल्ले</p>
                     </div>
+
                     <div class="text-center">
                         <div class="text-3xl font-bold mb-2"><?php echo $stats['totalPhotos']; ?>+</div>
-                        <p class="opacity-90">Photographs</p>
+                        <p class="opacity-90">छायाचित्रे</p>
                     </div>
+
                     <div class="text-center">
                         <div class="text-3xl font-bold mb-2"><?php echo $stats['totalDistricts']; ?>+</div>
-                        <p class="opacity-90">Locations Covered</p>
+                        <p class="opacity-90">आवृत ठिकाणे</p>
                     </div>
                 </div>
             </div>
@@ -581,11 +591,14 @@ $stats = $statsResult->fetch_assoc();
     <section id="alphabetical" class="py-8 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4">
             <div class="text-center mb-8">
-                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-                    Browse Forts by Name
-                </h3>
-                <p class="text-gray-600 dark:text-gray-300">* Click on the photo to see more photos of the fort</p>
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                        किल्ल्यांची नावे पाहा
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        * अधिक छायाचित्रे पाहण्यासाठी संबंधित किल्ल्याच्या फोटोवर क्लिक करा
+                    </p>
             </div>
+
             
             <div class="alphabet-filter">
                 <a href="?letter=ALL&page=1" class="<?php echo $filterLetter === 'ALL' ? 'active' : ''; ?>">ALL</a>
@@ -607,9 +620,9 @@ $stats = $statsResult->fetch_assoc();
                             $fortDistrict = htmlspecialchars($fort['FortDistrict'] ?? 'Unknown District');
                             $picName = htmlspecialchars($fort['PIC_NAME']);
                             $photoCount = (int)$fort['PhotoCount'];
-                            $imagePath = "../assets/images/Photos/Fort/" . $picName;
+                            $imagePath = "../../assets/images/Photos/Fort/" . $picName;
                             $firstLetter = strtoupper(substr($fortName, 0, 1));
-                            $defaultImage = "../assets/images/default-fort.svg";
+                            $defaultImage = "../../assets/images/default-fort.svg";
                         ?>
                             <div class="fort-card" data-alphabet="<?php echo $firstLetter; ?>" data-fort-name="<?php echo $fortName; ?>">
                                 <img src="<?php echo $imagePath; ?>" 
@@ -683,50 +696,52 @@ $stats = $statsResult->fetch_assoc();
     <!-- Featured Fort Types -->
     <section class="py-16 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
-                    <i class="fas fa-star mr-3 text-green-600"></i>
-                    Featured Fort Categories
-                </h2>
-                <p class="text-xl text-gray-600 dark:text-gray-300">
-                    Explore different types of forts found in Maharashtra
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                    <div class="w-16 h-16 bg-green-600 rounded-xl flex items-center justify-center mb-4">
-                        <i class="fas fa-mountain text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Hill Forts</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Majestic fortresses built on mountain peaks and ridges</p>
-                    <a href="./../fort-by-category-english.php?category=Hill+Forts" class="text-green-600 hover:text-green-800 font-semibold">
-                        View Gallery <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+                        <i class="fas fa-star mr-3 text-green-600"></i>
+                        निवडक किल्ल्यांच्या श्रेणी
+                    </h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-300">
+                        महाराष्ट्रातील विविध प्रकारचे किल्ले येथे पाहा
+                    </p>
                 </div>
 
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                    <div class="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
-                        <i class="fas fa-water text-2xl text-white"></i>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                        <div class="w-16 h-16 bg-green-600 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-mountain text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">डोंगरी किल्ले</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">डोंगरशिखरांवर आणि कड्यांवर उभारलेले भव्य किल्ले</p>
+                        <a href="./../fort-by-category.php?category=Hill+Forts" class="text-green-600 hover:text-green-800 font-semibold">
+                            गॅलरी पहा <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Sea Forts</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Coastal fortifications protecting ancient harbors</p>
-                    <a href="./../fort-by-category-english.php?category=Sea+Forts" class="text-green-600 hover:text-green-800 font-semibold">
-                        View Gallery <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
+
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                        <div class="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-water text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">समुद्री किल्ले</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">प्राचीन बंदरांचे संरक्षण करणारे किनारी किल्ले</p>
+                        <a href="./../fort-by-category.php?category=Sea+Forts" class="text-green-600 hover:text-green-800 font-semibold">
+                            गॅलरी पहा <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                        <div class="w-16 h-16 bg-yellow-600 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-crown text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">भूप्रदेशातील किल्ले</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">सह्याद्री पर्वतरांगांमधील ऐतिहासिक भू-किल्ले</p>
+                        <a href="./../fort-by-category.php?category=Land+Forts" class="text-green-600 hover:text-green-800 font-semibold">
+                            गॅलरी पहा <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
                 </div>
 
-                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                    <div class="w-16 h-16 bg-yellow-600 rounded-xl flex items-center justify-center mb-4">
-                        <i class="fas fa-crown text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Land Forts</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Historic Land Forts of the Sahyadri Ranges </p>
-                    <a href="./../fort-by-category-english.php?category=Land+Forts" class="text-green-600 hover:text-green-800 font-semibold">
-                        View Gallery <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
-                </div>
-            </div>
         </div>
     </section>
 </main>
@@ -754,7 +769,7 @@ $stats = $statsResult->fetch_assoc();
     </div>
 </div>
 
-<?php include '../includes/footer.php'; ?>
+<?php include './../../includes/footer_marathi.php'; ?>
 
 <script>
 $(document).ready(function() {
@@ -776,7 +791,7 @@ function openFortGallery(fortName) {
     
     // AJAX request to get all photos for this fort
     $.ajax({
-        url: '../api/get_fort_photos.php',
+        url: '../../api/get_fort_photos.php',
         method: 'POST',
         data: { fortName: fortName },
         dataType: 'json',
@@ -814,7 +829,7 @@ function displayFortGallery(data) {
     photos.forEach((photo, index) => {
         modalContent += `
             <div class="fort-photo-item" onclick="openLightbox(${index}, '${fortName}')">
-                <img src="../${photo.path}" alt="${photo.description || fortName}" class="w-full h-48 object-cover rounded-lg" onerror="this.src='../assets/images/default-fort.svg';">
+                <img src="../../${photo.path}" alt="${photo.description || fortName}" class="w-full h-48 object-cover rounded-lg" onerror="this.src='../../assets/images/default-fort.svg';">
                 <div class="photo-info mt-2">
                     <p class="text-white text-sm">${photo.description || 'Photo ' + (index + 1)}</p>
                 </div>
@@ -850,7 +865,7 @@ function openLightbox(index, fortName) {
             <p class="text-gray-300 text-sm">Photo ${index + 1} of ${photos.length}</p>
         </div>
         <div class="lightbox-image-container relative">
-            <img src="../${photos[index].path}" alt="${photos[index].description}" class="max-w-full max-h-[70vh] object-contain rounded-lg mx-auto" onerror="this.src='../assets/images/default-fort.svg';">
+            <img src="../../${photos[index].path}" alt="${photos[index].description}" class="max-w-full max-h-[70vh] object-contain rounded-lg mx-auto" onerror="this.src='../../assets/images/default-fort.svg';">
             ${index > 0 ? '<button class="lightbox-prev" onclick="navigateLightbox(' + (index - 1) + ')"><i class="fas fa-chevron-left"></i></button>' : ''}
             ${index < photos.length - 1 ? '<button class="lightbox-next" onclick="navigateLightbox(' + (index + 1) + ')"><i class="fas fa-chevron-right"></i></button>' : ''}
         </div>
@@ -859,11 +874,11 @@ function openLightbox(index, fortName) {
     
     photos.forEach((photo, i) => {
         lightboxContent += `
-            <img src="../${photo.path}" 
+            <img src="../../${photo.path}" 
                  alt="${photo.description}" 
                  class="w-16 h-16 object-cover rounded cursor-pointer ${i === index ? 'ring-2 ring-green-500' : 'opacity-60'}"
                  onclick="navigateLightbox(${i})"
-                 onerror="this.src='../assets/images/default-fort.svg';">
+                 onerror="this.src='../../assets/images/default-fort.svg';">
         `;
     });
     

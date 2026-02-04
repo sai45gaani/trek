@@ -1,13 +1,17 @@
 <?php
 // Set page specific variables
-$page_title = 'Sketches Gallery - Art by KshitiZ Group Members | Trekshitz';
-$meta_description = 'Beautiful sketches and artwork created by KshitiZ group members during trekking expeditions. Hand-drawn illustrations of forts, landscapes, and nature from Maharashtra.';
-$meta_keywords = 'sketches, artwork, drawings, KshitiZ group, trekking art, fort sketches, landscape drawings, nature art, Maharashtra sketches';
+// Set page specific variables
+$page_title = 'स्केचेस गॅलरी – क्षितिज ग्रुप सदस्यांची कला | Trekshitz';
 
-require_once '../config/database.php';
+$meta_description = 'महाराष्ट्रातील ट्रेकिंग मोहिमांदरम्यान क्षितिज ग्रुप सदस्यांनी काढलेली सुंदर स्केचेस व कलाकृती. किल्ले, निसर्गदृश्ये आणि परिसराची हाताने रेखाटलेली चित्रे येथे पाहा.';
+
+$meta_keywords = 'स्केचेस, कलाकृती, रेखाचित्रे, क्षितिज ग्रुप, ट्रेकिंग कला, किल्ल्यांची स्केचेस, निसर्ग चित्रे, महाराष्ट्र स्केचेस';
 
 // Include header
-include '../includes/header.php';
+require_once './../../config/database.php';
+
+// Include header
+include './../../includes/header_marathi.php';
 
 
 // Connect to database
@@ -342,27 +346,31 @@ $stats = $statsResult->fetch_assoc();
         </div>
         
         <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center max-w-4xl mx-auto">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 mt-6 font-bilingual">
-                    🌸 Sketches Gallery
-                </h1>
-                <h2 class="text-2xl md:text-3xl font-semibold mb-8">
-                    Photo Gallery of Sketches by KshitiZ Group Members
-                </h2>
-                <p class="text-xl md:text-2xl mb-8 opacity-90">
-                    Beautiful sketches and artwork created by KshitiZ group members during trekking expeditions in Sahyadri mountains
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#gallery" class="inline-flex items-center px-8 py-4 bg-white text-primary font-semibold rounded-full hover:bg-gray-100 transition-colors">
-                        <i class="fas fa-camera mr-2"></i>
-                        Browse Gallery
-                    </a>
-                    <a href="#alphabetical" class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-secondary transition-colors">
-                        <i class="fas fa-sort-alpha-down mr-2"></i>
-                        Alphabetical View
-                    </a>
+                <div class="text-center max-w-4xl mx-auto">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-6 mt-6 font-bilingual">
+                            🌸 स्केचेस गॅलरी
+                        </h1>
+
+                        <h2 class="text-2xl md:text-3xl font-semibold mb-8">
+                            क्षितिज ग्रुप सदस्यांच्या स्केचेसची फोटो गॅलरी
+                        </h2>
+
+                        <p class="text-xl md:text-2xl mb-8 opacity-90">
+                            सह्याद्री पर्वतरांगांमधील ट्रेकिंग मोहिमांदरम्यान क्षितिज ग्रुप सदस्यांनी तयार केलेली सुंदर स्केचेस व कलाकृती
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="#gallery" class="inline-flex items-center px-8 py-4 bg-white text-primary font-semibold rounded-full hover:bg-gray-100 transition-colors">
+                                <i class="fas fa-camera mr-2"></i>
+                                गॅलरी पाहा
+                            </a>
+
+                            <a href="#alphabetical" class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-secondary transition-colors">
+                                <i class="fas fa-sort-alpha-down mr-2"></i>
+                                वर्णानुक्रमाने पहा
+                            </a>
+                        </div>
                 </div>
-            </div>
         </div>
     </section>
 
@@ -372,26 +380,26 @@ $stats = $statsResult->fetch_assoc();
         <div class="fort-stats mx-auto">
             <div class="grid md:grid-cols-3 gap-6">
                 
-                <div class="text-center">
-                    <div class="text-3xl font-bold mb-2">
-                        <?php echo $stats['totalFlowerflies']; ?>+
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">
+                            <?php echo $stats['totalFlowerflies']; ?>+
+                        </div>
+                        <p class="opacity-90">नोंदवलेल्या स्केचेस</p>
                     </div>
-                    <p class="opacity-90">Sketches Listed</p>
-                </div>
 
-                <div class="text-center">
-                    <div class="text-3xl font-bold mb-2">
-                        <?php echo $stats['totalFlowerImages']; ?>+
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">
+                            <?php echo $stats['totalFlowerImages']; ?>+
+                        </div>
+                        <p class="opacity-90">स्केचेसची छायाचित्रे</p>
                     </div>
-                    <p class="opacity-90">Sketches Images</p>
-                </div>
 
-                <div class="text-center">
-                    <div class="text-3xl font-bold mb-2">
-                        <?php echo $stats['uniqueFlowerSpecies']; ?>+
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">
+                            <?php echo $stats['uniqueFlowerSpecies']; ?>+
+                        </div>
+                        <p class="opacity-90">वैशिष्ट्यपूर्ण स्केचेस</p>
                     </div>
-                    <p class="opacity-90">Unique Sketches</p>
-                </div>
 
             </div>
         </div>
@@ -418,12 +426,14 @@ $stats = $statsResult->fetch_assoc();
         <div class="container mx-auto px-4">
             <div class="text-center mb-8">
                 <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-                    Browse Sketches by Name
+                    स्केचेसची नावे पाहा
                 </h3>
-                <p class="text-gray-600 dark:text-gray-300">* Click on the photo to see more photos of the sketches</p>
+                <p class="text-gray-600 dark:text-gray-300">
+                    * अधिक छायाचित्रे पाहण्यासाठी संबंधित स्केचच्या फोटोवर क्लिक करा
+                </p>
             </div>
             
-               <div class="alphabet-filter">
+            <div class="alphabet-filter">
                <a href="?letter=ALL&page=1" class="<?php echo $filterLetter === 'ALL' ? 'active' : ''; ?>">ALL</a>
                 <?php foreach (range('A', 'Z') as $letter): ?>
                     <a href="?letter=<?php echo $letter; ?>&page=1" class="<?php echo $filterLetter === $letter ? 'active' : ''; ?>"><?php echo $letter; ?></a>
@@ -443,7 +453,7 @@ $stats = $statsResult->fetch_assoc();
                 <?php foreach ($galleryData as $row): 
                     $name = $row['CAT_NAME'];
                     $slug = str_replace(' ', '_', $name);
-                    $image = "../assets/images/Photos/CATEGORY/Sketches/" . $row['CAT_IMAGE'];
+                    $image = "../../assets/images/Photos/CATEGORY/Sketches/" . $row['CAT_IMAGE'];
                 ?>
                     <div class="Flower-card cursor-pointer"
                          onclick="openFlowerGallery('<?= $slug ?>')">
@@ -452,7 +462,7 @@ $stats = $statsResult->fetch_assoc();
                              alt="<?= htmlspecialchars($name) ?>"
                              class="w-full h-48 object-cover rounded"
                              loading="lazy"
-                             onerror="this.src='../assets/images/default-flower.svg'">
+                             onerror="this.src='../../assets/images/default-flower.svg'">
 
                         <div class="p-3 bg-black text-white">
                             <h3 class="font-bold"><?= htmlspecialchars($name) ?></h3>
@@ -494,6 +504,7 @@ $stats = $statsResult->fetch_assoc();
 </div>
 
             <!-- Featured Galleries -->
+        <!-- Featured Galleries -->
 <section class="py-16 bg-white dark:bg-gray-900">
     <div class="container mx-auto px-4">
 
@@ -501,10 +512,10 @@ $stats = $statsResult->fetch_assoc();
         <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
                 <i class="fas fa-images mr-3 text-primary"></i>
-                Featured Galleries
+                निवडक गॅलरी
             </h2>
             <p class="text-xl text-gray-600 dark:text-gray-300">
-                Explore nature, heritage, and creativity through our curated collections
+                आमच्या निवडक संग्रहातून निसर्ग, वारसा आणि सर्जनशीलतेचा अनुभव घ्या
             </p>
         </div>
 
@@ -517,14 +528,15 @@ $stats = $statsResult->fetch_assoc();
                     <i class="fas fa-mountain text-2xl text-cream-light"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
-                    Butterflies
+                    फुलपाखरे
                 </h3>
                 <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-                    A colorful collection of butterfly species captured across Maharashtra.
+                    महाराष्ट्रभर टिपलेल्या विविध रंगीबेरंगी फुलपाखरांच्या प्रजातींचा संग्रह.
                 </p>
                 <a href="./butterfly-gallery.php" class="text-secondary font-semibold hover:underline">
-                    View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                    गॅलरी पहा <i class="fas fa-arrow-right ml-1"></i>
                 </a>
+
             </div>
 
             <!-- Caves -->
@@ -533,13 +545,13 @@ $stats = $statsResult->fetch_assoc();
                     <i class="fas fa-mountain text-2xl text-cream-light"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
-                    Caves
+                    लेणी
                 </h3>
                 <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-                    Ancient caves, rock-cut architecture, and hidden formations of Sahyadri.
+                    प्राचीन लेणी, शैलकृती स्थापत्य आणि सह्याद्रीतील लपलेली भू-रचना.
                 </p>
                 <a href="./caves-gallery.php" class="text-secondary font-semibold hover:underline">
-                    View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                    गॅलरी पहा <i class="fas fa-arrow-right ml-1"></i>
                 </a>
             </div>
 
@@ -549,13 +561,13 @@ $stats = $statsResult->fetch_assoc();
                     <i class="fas fa-seedling text-2xl text-cream-light"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
-                    Flowers
+                    फुले
                 </h3>
                 <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-                    Wildflowers and seasonal blooms found on forts and trekking routes.
+                    किल्ल्यांवर व ट्रेकिंग मार्गांवर आढळणारी रानफुले आणि ऋतुनुसार फुलणारी फुले.
                 </p>
                 <a href="./flower-gallery.php" class="text-secondary font-semibold hover:underline">
-                    View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                    गॅलरी पहा <i class="fas fa-arrow-right ml-1"></i>
                 </a>
             </div>
 
@@ -565,13 +577,13 @@ $stats = $statsResult->fetch_assoc();
                     <i class="fas fa-pencil-alt text-2xl text-white"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
-                    Sketches
+                   रेखाचित्रे
                 </h3>
                 <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-                    Hand-drawn fort sketches, maps, and artistic impressions by members.
+                    सदस्यांनी काढलेली किल्ल्यांची हाताने रेखाटलेली चित्रे, नकाशे आणि कलात्मक छायाचित्रे.
                 </p>
                 <a href="./sketches-gallery.php" class="text-secondary font-semibold hover:underline">
-                    View Gallery <i class="fas fa-arrow-right ml-1"></i>
+                    गॅलरी पहा <i class="fas fa-arrow-right ml-1"></i>
                 </a>
             </div>
 
@@ -604,7 +616,7 @@ $stats = $statsResult->fetch_assoc();
     </div>
 </div>
 
-<?php include '../includes/footer.php'; ?>
+<?php include './../../includes/footer_marathi.php'; ?>
 
 <!-- JavaScript - EXACT SAME STRUCTURE AND FUNCTIONALITY AS BUTTERFLY GALLERY -->
 <script>
@@ -659,8 +671,8 @@ function openFlowerGallery(slug) {
                 ${index},
                 '${photo.CAT_NAME}'
              )">
-                <img src="../assets/images/Photos/CATEGORY/Sketches/${photo.CAT_IMAGE}" alt="${photo.CAT_NAME}" class="w-full h-48 object-cover rounded-lg"
-                onerror="this.onerror=null; this.src='../assets/images/default-flower.svg';">
+                <img src="../../assets/images/Photos/CATEGORY/Sketches/${photo.CAT_IMAGE}" alt="${photo.CAT_NAME}" class="w-full h-48 object-cover rounded-lg"
+                onerror="this.onerror=null; this.src='../../assets/images/default-flower.svg';">
                 <div class="photo-info mt-2">
                    <p class="text-white text-sm font-semibold">
                     ${photo.CAT_NAME}
@@ -702,11 +714,11 @@ function openLightbox(index, slug) {
         </div>
         <div class="lightbox-image-container relative flex items-center justify-center min-h-[70vh]">
     <img 
-        src="../assets/images/Photos/CATEGORY/Sketches/${photos[index].CAT_IMAGE}"
+        src="../../assets/images/Photos/CATEGORY/Sketches/${photos[index].CAT_IMAGE}"
         alt="${photos[index].CAT_NAME}"
         class="max-w-[60vw] max-h-[50vh]  w-[343px] aspect-[343/229] object-contain
             rounded-lg sm:w-[400px] md:w-[550px] lg:w-[700px] xl:w-[900px]"
-        onerror="this.onerror=null; this.src='../assets/images/default-flower.svg';"
+        onerror="this.onerror=null; this.src='../../assets/images/default-flower.svg';"
     >
 
     ${index > 0
@@ -729,7 +741,7 @@ function openLightbox(index, slug) {
     
    photos.forEach((photo, i) => {
         lightboxContent += `
-            <img src="../assets/images/Photos/CATEGORY/Sketches/${photo.CAT_IMAGE}" 
+            <img src="../../assets/images/Photos/CATEGORY/Sketches/${photo.CAT_IMAGE}" 
                  alt="${photo.title}" 
                  class="w-16 h-16 object-cover rounded cursor-pointer ${i === index ? 'ring-2 ring-orange-500' : 'opacity-60'}"
                  onclick="navigateLightbox(${i}, '${name}')">

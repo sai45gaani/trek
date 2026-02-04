@@ -6,7 +6,7 @@ $meta_keywords = 'किल्ल्यांची श्रेणी, ट्�
 
 require_once './../config/database.php';
 // Include header
-include './../includes/header.php';
+include './../includes/header_marathi.php';
 
 // Connect to database
 $db = new Database();
@@ -108,7 +108,7 @@ $selectedGrade = $currentGrade && isset($gradeData[$currentGrade]) ? $gradeData[
 $totalForts = array_sum(array_map(function($grade) { return count($grade['forts']); }, $gradeData));
 ?>
 
-<main id="main-content" class="pt-20">
+<main id="main-content" class="">
     <!-- Hero Section -->
     <section class="relative py-20 bg-gradient-to-r from-primary to-secondary text-white overflow-hidden">
         <div class="absolute inset-0 opacity-10">
@@ -548,7 +548,7 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
     </section>
 </main>
 
-<?php include './../includes/footer.php'; ?>
+<?php include './../includes/footer_marathi.php'; ?>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

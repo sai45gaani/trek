@@ -417,15 +417,15 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'ट्रेकिं
                             </div>
                         </li>
                         <li class="relative group">
-                            <a href="<?= BASE_URL ?><marathi/gallery/gallery.php" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
+                            <a href="<?= BASE_URL ?>marathi/gallery/gallery.php" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300">
                                 छायाचित्र संग्रह
                                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary dark:bg-accent transition-all duration-300 group-hover:w-full"></span>
                             </a>
                             <!-- Dropdown Menu for Gallery -->
                             <div class="absolute top-full left-0 w-64 bg-white dark:bg-gray-800 shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-2">
                                 <div class="py-2">
-                                    <a href="<?= BASE_URL ?><marathi/gallery/fort-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">किल्ले</a>
-                                    <a href="<?= BASE_URL ?>marathi/gallery/map-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">किल्ले</a>
+                                    <a href="<?= BASE_URL ?>marathi/gallery/fort-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">किल्ले</a>
+                                    <a href="<?= BASE_URL ?>marathi/gallery/map-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">नकाशे</a>
 
                                     <a href="<?= BASE_URL ?>marathi/gallery/butterfly-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"> फुलपाखरे</a>
                                     <a href="<?= BASE_URL ?>marathi/gallery/caves-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">गुहा</a>

@@ -1,5 +1,9 @@
 <?php
-$page_title = 'Gallery | Trekshitiz';
+$page_title = 'Photo Gallery | TreKshitiZ';
+
+$meta_description = 'Explore the TreKshitiZ photo gallery featuring Sahyadri forts, trekking adventures, nature, wildlife, and fort conservation activities across Maharashtra.';
+
+$meta_keywords = 'TreKshitiZ gallery, fort photos Maharashtra, Sahyadri trekking images, nature photography, trekking gallery, fort conservation photos';
 
 require_once './../config/database.php';
 include './../includes/header.php';
