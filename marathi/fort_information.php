@@ -196,13 +196,13 @@ if (!isset($fortsData[$currentFilter]) && count($fortsData) > 0) {
                 <div class="flex flex-wrap justify-center gap-4 text-sm opacity-90">
                     <span class="text-accent font-semibold">मुळाक्षरानुसार</span>
                     <span>•</span>
-                    <a href="./fort_by_range_marathi.php" class="hover:text-accent transition-colors">डोंगररांगेनुसार</a>
+                    <a href="./fort_by_range.php" class="hover:text-accent transition-colors">डोंगररांगेनुसार</a>
                     <span>•</span>
-                    <a href="./fort_by_district_marathi.php" class="hover:text-accent transition-colors">जिल्ह्यानुसार</a>
+                    <a href="./fort_by_district.php" class="hover:text-accent transition-colors">जिल्ह्यानुसार</a>
                     <span>•</span>
-                    <a href="./fort_by_category_marathi.php" class="hover:text-accent transition-colors">प्रकारानुसार</a>
+                    <a href="./fort_by_category.php" class="hover:text-accent transition-colors">प्रकारानुसार</a>
                     <span>•</span>
-                    <a href="./fort_by_grade_marathi.php" class="hover:text-accent transition-colors">कठीणतेनुसार</a>
+                    <a href="./fort_by_grade.php" class="hover:text-accent transition-colors">कठीणतेनुसार</a>
                 </div>
             </div>
         </div>

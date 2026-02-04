@@ -6,7 +6,7 @@ $meta_keywords = 'सह्याद्री किल्ले, डोंग�
 
 require_once './../config/database.php';
 // Include header
-include './../includes/header.php';
+include './../includes/header_marathi.php';
 
 // Connect to database
 $db = new Database();
@@ -79,8 +79,8 @@ function getRangeColor($index) {
 
 // Slug generation function
 function slugify($string) {
-    $string = preg_replace('/[^\p{L}\p{N}\s]/u', '', $string);
-    $string = preg_replace('/\s+/u', '-', trim($string));
+//    $string = preg_replace('/[^\p{L}\p{N}\s]/u', '', $string);
+//    $string = preg_replace('/\s+/u', '-', trim($string));
     return mb_strtolower($string) . '-fort';
 }
 
@@ -149,7 +149,7 @@ $selectedRange = $currentRange && isset($mountainRanges[$currentRange]) ? $mount
 $totalForts = array_sum(array_map(function($range) { return count($range['forts']); }, $mountainRanges));
 ?>
 
-<main id="main-content" class="pt-20">
+<main id="main-content" class="">
     <!-- Hero Section -->
     <section class="relative py-20 bg-gradient-to-r from-primary to-secondary text-white overflow-hidden">
         <div class="absolute inset-0 opacity-10">
@@ -170,15 +170,15 @@ $totalForts = array_sum(array_map(function($range) { return count($range['forts'
                 
                 <!-- Navigation breadcrumb -->
                 <div class="flex flex-wrap justify-center gap-4 text-sm opacity-90">
-                    <a href="./fort_in_marathi.php" class="hover:text-accent transition-colors">मुळाक्षरानुसार</a>
+                    <a href="./fort_information.php" class="hover:text-accent transition-colors">मुळाक्षरानुसार</a>
                     <span>•</span>
                     <span class="text-accent font-semibold">डोंगररांगेनुसार</span>
                     <span>•</span>
-                    <a href="./fort_by_district_marathi.php" class="hover:text-accent transition-colors">जिल्ह्यानुसार</a>
+                    <a href="./fort_by_district.php" class="hover:text-accent transition-colors">जिल्ह्यानुसार</a>
                     <span>•</span>
-                    <a href="./fort_by_category_marathi.php" class="hover:text-accent transition-colors">प्रकारानुसार</a>
+                    <a href="./fort_by_category.php" class="hover:text-accent transition-colors">प्रकारानुसार</a>
                     <span>•</span>
-                    <a href="./fort_by_grade_marathi.php" class="hover:text-accent transition-colors">कठीणतेनुसार</a>
+                    <a href="./fort_by_grade.php" class="hover:text-accent transition-colors">कठीणतेनुसार</a>
                 </div>
             </div>
         </div>
@@ -261,16 +261,16 @@ $totalForts = array_sum(array_map(function($range) { return count($range['forts'
                                 </div>
                                 
                                 <div class="flex gap-2">
-                                    <a href="/fort/<?php echo $fort['slug']; ?>" 
+                                    <a href="./fort/index.php?slug=<?php echo $fort['slug']; ?>" 
                                        class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2 px-3 rounded-lg text-sm font-semibold transition-colors">
                                         <i class="fas fa-info-circle mr-1"></i>
                                         माहिती
                                     </a>
-                                    <a href="/trek/<?php echo $fort['slug']; ?>" 
+                                    <!--<a href="/trek/<?php echo $fort['slug']; ?>" 
                                        class="flex-1 bg-accent hover:bg-primary text-white text-center py-2 px-3 rounded-lg text-sm font-semibold transition-colors">
                                         <i class="fas fa-route mr-1"></i>
                                         ट्रेक
-                                    </a>
+                                    </a>-->
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -431,113 +431,12 @@ $totalForts = array_sum(array_map(function($range) { return count($range['forts'
         </section>
     <?php endif; ?>
 
-    <!-- Additional Information Section -->
-    <section class="py-20 bg-white dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <div class="max-w-6xl mx-auto">
-                <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">
-                    <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                        अतिरिक्त माहिती
-                    </span>
-                </h2>
-                
-                <div class="grid md:grid-cols-3 gap-8 mb-12">
-                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700 text-center">
-                        <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                            <i class="fas fa-mountain text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">सह्याद्री पर्वत</h3>
-                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                            पश्चिम घाटातील सह्याद्री रांग महाराष्ट्राच्या बहुतेक ऐतिहासिक किल्ल्यांचे ठिकाण आहे.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="bg-gradient-to-r from-primary to-secondary text-white p-8 rounded-2xl text-center">
-                    <h3 class="text-3xl font-bold mb-4">
-                        डोंगररांग शोधक मार्गदर्शक
-                    </h3>
-                    <p class="text-xl mb-8 opacity-90">
-                        संपूर्ण रांग मार्गदर्शक डाउनलोड करा ज्यामध्ये नकाशे, हवामान माहिती आणि ट्रेकिंग मार्ग आहेत
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="/range-guide" class="inline-flex items-center justify-center px-6 py-3 bg-accent hover:bg-forest text-white font-semibold rounded-lg transition-colors">
-                            <i class="fas fa-download mr-2"></i>
-                            रांग मार्गदर्शक डाउनलोड करा
-                        </a>
-                        <a href="/trek-routes" class="inline-flex items-center justify-center px-6 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold rounded-lg transition-colors border border-white border-opacity-30">
-                            <i class="fas fa-route mr-2"></i>
-                            ट्रेक मार्ग
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<?php include './our_more_about_fort_info.php'; ?>
 
-    <!-- Quick Navigation -->
-    <section class="py-16 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">
-                <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    इतर श्रेणींनुसार शोधा
-                </span>
-            </h2>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <a href="/marathi/forts-alphabetical" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 group shadow-xl border border-gray-200 dark:border-gray-700">
-                    <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:bg-secondary transition-colors">
-                        <i class="fas fa-sort-alpha-down text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">
-                        मुळाक्षरानुसार
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">
-                        अ, आ, इ... क्रमाने
-                    </p>
-                </a>
-                
-                <a href="/marathi/forts-by-district" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 group shadow-xl border border-gray-200 dark:border-gray-700">
-                    <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:bg-primary transition-colors">
-                        <i class="fas fa-map text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">
-                        जिल्ह्यानुसार
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">
-                        पुणे, मुंबई, नाशिक इ.
-                    </p>
-                </a>
-                
-                <a href="/marathi/forts-by-category" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 group shadow-xl border border-gray-200 dark:border-gray-700">
-                    <div class="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:bg-forest transition-colors">
-                        <i class="fas fa-layer-group text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">
-                        प्रकारानुसार
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">
-                        डोंगर, समुद्र किल्ले इ.
-                    </p>
-                </a>
-                
-                <a href="/marathi/forts-by-grade" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 group shadow-xl border border-gray-200 dark:border-gray-700">
-                    <div class="w-16 h-16 bg-forest rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:bg-accent transition-colors">
-                        <i class="fas fa-signal text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">
-                        कठीणतेनुसार
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">
-                        सोपे, मध्यम, कठीण इ.
-                    </p>
-                </a>
-            </div>
-        </div>
-    </section>
+
 </main>
 
-<?php include './../includes/footer.php'; ?>
+<?php include './../includes/footer_marathi.php'; ?>
 
 <!-- JavaScript for Search and Interactions -->
 <script>

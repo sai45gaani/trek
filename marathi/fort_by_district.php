@@ -6,7 +6,7 @@ $meta_keywords = 'जिल्ह्यानुसार किल्ले, �
 
 require_once './../config/database.php';
 // Include header
-include './../includes/header.php';
+include './../includes/header_marathi.php';
 
 // Connect to database
 $db = new Database();
@@ -96,8 +96,8 @@ function getDistrictColor($index) {
 
 // Slug generation function
 function slugify($string) {
-    $string = preg_replace('/[^\p{L}\p{N}\s]/u', '', $string);
-    $string = preg_replace('/\s+/u', '-', trim($string));
+//    $string = preg_replace('/[^\p{L}\p{N}\s]/u', '', $string);
+//    $string = preg_replace('/\s+/u', '-', trim($string));
     return mb_strtolower($string) . '-fort';
 }
 
@@ -173,7 +173,7 @@ $totalForts = array_sum(array_map(function($d) { return count($d['forts']); }, $
 $uniqueRegions = count(array_unique(array_column($districts, 'region')));
 ?>
 
-<main id="main-content" class="pt-20">
+<main id="main-content" class="">
     <!-- Hero Section -->
     <section class="relative py-20 bg-gradient-to-r from-primary to-secondary text-white overflow-hidden">
         <div class="absolute inset-0 opacity-10">
@@ -194,15 +194,15 @@ $uniqueRegions = count(array_unique(array_column($districts, 'region')));
                 
                 <!-- Navigation breadcrumb -->
                 <div class="flex flex-wrap justify-center gap-4 text-sm opacity-90">
-                    <a href="/marathi/forts-alphabetical" class="hover:text-accent transition-colors">मुळाक्षरानुसार</a>
+                    <a href="./forts_information.php" class="hover:text-accent transition-colors">मुळाक्षरानुसार</a>
                     <span>•</span>
-                    <a href="/marathi/forts-by-range" class="hover:text-accent transition-colors">डोंगररांगेनुसार</a>
+                    <a href="./fort_by_range.php" class="hover:text-accent transition-colors">डोंगररांगेनुसार</a>
                     <span>•</span>
                     <span class="text-accent font-semibold">जिल्ह्यानुसार</span>
                     <span>•</span>
-                    <a href="/marathi/forts-by-category" class="hover:text-accent transition-colors">प्रकारानुसार</a>
+                    <a href="./fort_by_category.php" class="hover:text-accent transition-colors">प्रकारानुसार</a>
                     <span>•</span>
-                    <a href="/marathi/forts-by-grade" class="hover:text-accent transition-colors">कठीणतेनुसार</a>
+                    <a href="./forts_by_grade.php" class="hover:text-accent transition-colors">कठीणतेनुसार</a>
                 </div>
             </div>
         </div>
@@ -341,16 +341,16 @@ $uniqueRegions = count(array_unique(array_column($districts, 'region')));
                                 </div>
                                 
                                 <div class="flex gap-2">
-                                    <a href="/fort/<?php echo $fort['slug']; ?>" 
+                                    <a href="./fort/index.php?slug=<?php echo $fort['slug']; ?>" 
                                        class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2 px-3 rounded-lg text-sm font-semibold transition-colors">
                                         <i class="fas fa-info-circle mr-1"></i>
                                         माहिती
                                     </a>
-                                    <a href="/trek/<?php echo $fort['slug']; ?>" 
+                                    <!--<a href="/trek/<?php echo $fort['slug']; ?>" 
                                        class="flex-1 bg-accent hover:bg-primary text-white text-center py-2 px-3 rounded-lg text-sm font-semibold transition-colors">
                                         <i class="fas fa-route mr-1"></i>
                                         ट्रेक
-                                    </a>
+                                    </a>-->
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -464,137 +464,13 @@ $uniqueRegions = count(array_unique(array_column($districts, 'region')));
         </section>
     <?php endif; ?>
 
-    <!-- Additional Resources Section -->
-    <section class="py-20 bg-white dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <div class="max-w-6xl mx-auto">
-                <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">
-                    <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                        अतिरिक्त माहिती
-                    </span>
-                </h2>
-                
-                <div class="grid md:grid-cols-3 gap-8 mb-12">
-                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700 text-center">
-                        <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                            <i class="fas fa-crown text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">छत्रपती शिवाजी महाराज</h3>
-                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                            महान मराठा योद्धा राजा शिवाजी महाराजांनी बांधलेले आणि जिंकलेले किल्ले महाराष्ट्राचा समृद्ध वारसा दर्शवतात.
-                        </p>
-                    </div>
-                    
-                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700 text-center">
-                        <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                            <i class="fas fa-hiking text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">ट्रेकिंग मार्गदर्शन</h3>
-                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                            सुरक्षित आणि आनंददायी साहस सुनिश्चित करण्यासाठी प्रत्येक किल्ल्यासाठी संपूर्ण ट्रेकिंग मार्गदर्शन आणि सुरक्षा सूचना.
-                        </p>
-                    </div>
-                    
-                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700 text-center">
-                        <div class="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                            <i class="fas fa-map text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">नकाशे आणि मार्ग</h3>
-                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                            सविस्तर नकाशे, जीपीएस निर्देशांक आणि प्रत्येक किल्ल्यापर्यंत पोहोचण्यासाठी मार्ग माहिती.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="bg-gradient-to-r from-primary to-secondary text-white p-8 rounded-2xl text-center">
-                    <h3 class="text-3xl font-bold mb-4">
-                        जिल्हा-निहाय किल्ला शोधक मार्गदर्शक
-                    </h3>
-                    <p class="text-xl mb-8 opacity-90">
-                        नकाशे, हवामान माहिती, स्थानिक वाहतूक आणि सांस्कृतिक अंतर्दृष्टीसह संपूर्ण जिल्हा-निहाय मार्गदर्शक
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="/district-guide" class="inline-flex items-center justify-center px-6 py-3 bg-accent hover:bg-forest text-white font-semibold rounded-lg transition-colors">
-                            <i class="fas fa-download mr-2"></i>
-                            जिल्हा मार्गदर्शक डाउनलोड करा
-                        </a>
-                        <a href="/transportation" class="inline-flex items-center justify-center px-6 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold rounded-lg transition-colors border border-white border-opacity-30">
-                            <i class="fas fa-bus mr-2"></i>
-                            वाहतूक माहिती
-                        </a>
-                        <a href="/local-culture" class="inline-flex items-center justify-center px-6 py-3 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold rounded-lg transition-colors border border-white border-opacity-30">
-                            <i class="fas fa-users mr-2"></i>
-                            स्थानिक संस्कृती
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
+<?php include './our_more_about_fort_info.php'; ?>
 
-    <!-- Quick Navigation -->
-    <section class="py-16 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">
-                <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    इतर श्रेणींनुसार शोधा
-                </span>
-            </h2>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <a href="/marathi/forts-alphabetical" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 group shadow-xl border border-gray-200 dark:border-gray-700">
-                    <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:bg-secondary transition-colors">
-                        <i class="fas fa-sort-alpha-down text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">
-                        मुळाक्षरानुसार
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">
-                        अ, आ, इ... क्रमाने
-                    </p>
-                </a>
-                
-                <a href="/marathi/forts-by-range" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 group shadow-xl border border-gray-200 dark:border-gray-700">
-                    <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:bg-primary transition-colors">
-                        <i class="fas fa-mountain text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">
-                        डोंगररांगेनुसार
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">
-                        सह्याद्री, पश्चिम घाट इ.
-                    </p>
-                </a>
-                
-                <a href="/marathi/forts-by-category" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 group shadow-xl border border-gray-200 dark:border-gray-700">
-                    <div class="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:bg-forest transition-colors">
-                        <i class="fas fa-layer-group text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">
-                        प्रकारानुसार
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">
-                        डोंगर, समुद्र किल्ले इ.
-                    </p>
-                </a>
-                
-                <a href="/marathi/forts-by-grade" class="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 group shadow-xl border border-gray-200 dark:border-gray-700">
-                    <div class="w-16 h-16 bg-forest rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:bg-accent transition-colors">
-                        <i class="fas fa-signal text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">
-                        कठीणतेनुसार
-                    </h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">
-                        सोपे, मध्यम, कठीण इ.
-                    </p>
-                </a>
-            </div>
-        </div>
-    </section>
+
 </main>
 
-<?php include './../includes/footer.php'; ?>
+<?php include './../includes/footer_marathi.php'; ?>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
