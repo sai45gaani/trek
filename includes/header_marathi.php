@@ -436,7 +436,7 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'ट्रेकिं
                         </li>
                       
                         <li>
-                            <a href="<?= BASE_URL ?>contact-us.php" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300 relative group">
+                            <a href="<?= BASE_URL ?>marathi/contact-us.php" class="nav-link block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors duration-300 relative group">
                                संपर्क
                                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary dark:bg-accent transition-all duration-300 group-hover:w-full"></span>
                             </a>

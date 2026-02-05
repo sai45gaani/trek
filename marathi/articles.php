@@ -1,7 +1,11 @@
 <?php
-$page_title = 'Trekking Experiences & Articles | TreKshitiZ';
-$meta_description = 'Read trekking experiences and articles by TreKshitiZ members in English and Marathi. Real trek stories, fort journeys, and Sahyadri memories.';
-include './includes/header.php';
+
+$page_title = 'ट्रेकिंग अनुभव व लेख | ट्रेकशित्झ';
+
+$meta_description = 'ट्रेकशित्झ सदस्यांनी लिहिलेले ट्रेकिंग अनुभव आणि लेख वाचा. मराठी व इंग्रजी भाषेत खरे ट्रेक अनुभव, किल्ले प्रवास कथा आणि सह्याद्रीतील आठवणी.';
+
+require_once './../config/database.php';
+include './../includes/header_marathi.php';
 ?>
 <style>
 
@@ -37,10 +41,13 @@ include './includes/header.php';
 
 <!-- ================= HERO / INTRO ================= -->
 <section class="py-20 bg-gradient-to-r from-primary to-secondary text-white text-center">
-    <h1 class="text-5xl font-bold mb-4">Trekking Experiences & Articles</h1>
-    <p class="text-xl max-w-3xl mx-auto opacity-90">
-        Real trekking stories and experiences shared by TreKshitiZ members — from Sahyadri forts to unforgettable journeys.
-    </p>
+  <h1 class="text-5xl font-bold mb-4">
+    ट्रेकिंग अनुभव व लेख
+  </h1>
+  <p class="text-xl max-w-3xl mx-auto opacity-90">
+    ट्रेकशित्झ सदस्यांनी शेअर केलेले खरे ट्रेकिंग अनुभव आणि कथा —
+    सह्याद्रीतील किल्ल्यांपासून ते अविस्मरणीय प्रवासांपर्यंत.
+  </p>
 </section>
 
     <!-- English Articles -->
@@ -59,43 +66,43 @@ include './includes/header.php';
             </li>
 
             <li>
-                <a href="./articles/Mungi_Tungi.php" class="article-link">
+                <a href="./articles/Mungi Tungi.html" class="article-link">
                     Mangi Tungi – Jitendra Gupta
                 </a>
             </li>
 
             <li>
-                <a href="./articles/cyclic_trek.php" class="article-link">
+                <a href="./articles/cyclictrek.htm" class="article-link">
                     Cycling Trek – Sameer Kelkar
                 </a>
             </li>
 
             <li>
-                <a href="./articles/panhala_to_vishalgad.php" class="article-link">
+                <a href="./articles/panhalgad_to_vishalgad__kaushal.htm" class="article-link">
                     Panhala to Vishalgad – Kaushal
                 </a>
             </li>
 
             <li>
-                <a href="./articles/supriya.php" class="article-link">
+                <a href="./articles/supriya.htm" class="article-link">
                     A Wonderful Experience – Supriya Bhole
                 </a>
             </li>
 
             <li>
-                <a href="./articles/prasad_nikate.php" class="article-link">
+                <a href="./articles/prasad_nikte.asp" class="article-link">
                     There is KshitiZ on the Horizon – Prasad Nikte
                 </a>
             </li>
 
             <li>
-                <a href="./articles/peth_harshal.php" class="article-link">
+                <a href="./articles/Peth_harshal.htm" class="article-link">
                     Peth – A Hilarious Account – Harshal Mahajan
                 </a>
             </li>
 
             <li>
-                <a href="./articles/alang_madan_trek.php" class="article-link">
+                <a href="./articles/Alang_madan.htm" class="article-link">
                     Trek to Alang–Madan – Harshal Mahajan
                 </a>
             </li>
@@ -109,7 +116,7 @@ include './includes/header.php';
             </li>
 
             <li>
-                <a href="./articles/thrill_at_karnala.php" class="article-link">
+                <a href="./articles/Thrill_karnala.htm" class="article-link">
                     Thrill at Karnala – Vinit Vartak
                 </a>
             </li>
@@ -133,7 +140,7 @@ include './includes/header.php';
             </li>
 
             <li>
-                <a href="./articles/niranjan_kavita.php" class="article-link">
+                <a href="./articles/niranjan_kavita.htm" class="article-link">
                     ५ वर्षे क्षितिज – कविता – निरंजन सराडे
                 </a>
             </li>
@@ -153,41 +160,16 @@ include './includes/header.php';
                     <span class="pdf-tag">PDF</span>
                 </a>
             </li>
-             <li>
-                <a href="./articles/sudhagad.php" class="article-link">
-                सुहाग – चेताली आगटे
-                </a>
-            </li>
-            <li>
-                <a href="./articles/peth-ek-adbhut-anubhav.php" class="article-link">
-                    पेठ – एक अद्भुत अनुभव – मानसी श्रीकांत कुलकर्णी
-                </a>
-            </li>
 
             <li>
-                <a href="./articles/lohagad-ek.php" class="article-link">
+                <a href="./articles/loh-vis.htm" class="article-link">
                     लोहगड–विसापूर : एक थरारक ट्रेक
                 </a>
             </li>
-               <li>
-                    <a href="./articles/swapna-durgabhramanache.php" class="article-link">
-                        स्वप्न दुर्गभ्रमणाचे, आठवण क्षितिजाचे – क्षितिज ग्रुप
-                    </a>
-                </li>
 
             <li>
-                <a href="./articles/Rajmachi.php" class="article-link">
+                <a href="./articles/Rajmachi.htm" class="article-link">
                     राजमाची – क्षितिज ग्रुप
-                </a>
-            </li>
-             <li>
-                <a href="./articles/lohagad-vishapur.php" class="article-link">
-                    लोहगड–विसापूर : एक थरारक ट्रेक
-                </a>
-            </li>
-            <li>
-                <a href="./articles/vishapur_ghata_vaibavani.php" class="article-link">
-                    विसापूर – गावेभवानी साखर – शुभदा जगताप
                 </a>
             </li>
         </ul>
@@ -195,4 +177,4 @@ include './includes/header.php';
 
 </main>
 
-<?php include './includes/footer.php'; ?>
+<?php include './../includes/footer_marathi.php'; ?>

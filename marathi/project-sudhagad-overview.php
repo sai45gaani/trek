@@ -565,25 +565,28 @@ html {
         <div class="w-14 h-14 bg-green-700 rounded-full flex items-center justify-center mb-5">
           <i class="fas fa-users-cog text-xl text-white"></i>
         </div>
-        <h3 class="text-xl font-bold mb-3 text-green-900">
-          Co-ordination Team
-        </h3>
-        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-          The Sudhagad Project is an official initiative undertaken by the
-          <strong>Kshitiz Group</strong>. To ensure effective execution, a
-          dedicated <strong>Co-ordination Team</strong> was formed in
-          September 2005.
-        </p>
-        <p class="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-          This team meets regularly and handles planning, organization, and
-          coordination of activities. Any individual — whether a Kshitiz member
-          or not — can join, provided they are willing to contribute on a
-          mid- or long-term basis.
-        </p>
-        <p class="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-          While planning is centralized, actual execution depends on
-          participation from a large number of volunteers during activity treks.
-        </p>
+          <h3 class="text-xl font-bold mb-3 text-green-900">
+            समन्वय समिती
+          </h3>
+
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+            सुधागड प्रकल्प हा <strong>क्षितिज समूह</strong> यांच्या वतीने राबविण्यात येणारा
+            अधिकृत उपक्रम आहे. प्रकल्पाची प्रभावी अंमलबजावणी सुनिश्चित करण्यासाठी
+            सप्टेंबर २००५ मध्ये एक स्वतंत्र <strong>समन्वय समिती</strong> स्थापन करण्यात आली.
+          </p>
+
+          <p class="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+            ही समिती नियमितपणे बैठक घेऊन नियोजन, आयोजन आणि उपक्रमांचे समन्वय कार्य करते.
+            कोणताही व्यक्ती — तो क्षितिजचा सदस्य असो वा नसो —
+            मध्यम किंवा दीर्घकालीन योगदान देण्याची तयारी असल्यास
+            या समितीत सहभागी होऊ शकतो.
+          </p>
+
+          <p class="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+            नियोजन केंद्रिय पातळीवर केले जाते,
+            मात्र प्रत्यक्ष अंमलबजावणी ही उपक्रम मोहिमांदरम्यान
+            मोठ्या संख्येने सहभागी होणाऱ्या स्वयंसेवकांवर अवलंबून असते.
+          </p>
       </div>
 
       <!-- Financial Support -->
@@ -592,23 +595,26 @@ html {
           <i class="fas fa-hand-holding-heart text-xl text-white"></i>
         </div>
         <h3 class="text-xl font-bold mb-3 text-green-900">
-          Financial Support
+          आर्थिक सहाय्य
         </h3>
+
         <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-          Fort conservation requires financial resources. In the initial phase,
-          interested individuals contributed personally to execute tasks such as
-          employing labor for soil removal at the Maha Darwaza.
+          किल्ला संवर्धनासाठी आर्थिक साधनसामग्रीची आवश्यकता असते.
+          प्रारंभीच्या टप्प्यात इच्छुक व्यक्तींनी स्वतःहून आर्थिक योगदान देऊन
+          महादरवाज्यातील माती हटविण्यासाठी मजूर नियुक्त करण्यासारखी कामे पूर्ण केली.
         </p>
+
         <p class="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-          As the Kshitiz Group is now a <strong>registered NGO</strong>,
-          individuals and organizations interested in fort conservation can
-          donate directly to the group.
+          सध्या <strong>क्षितिज समूह</strong> ही <strong>नोंदणीकृत स्वयंसेवी संस्था</strong> असल्यामुळे,
+          किल्ला संवर्धनात रस असलेल्या व्यक्ती आणि संस्था
+          थेट समूहाला आर्थिक मदत करू शकतात.
         </p>
+
         <p class="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-          All contributions are utilized specifically for conservation-related
-          activities at Sudhagad.
-        </p>
-      </div>
+          मिळालेली सर्व आर्थिक मदत
+          केवळ सुधागडावरील संवर्धनाशी संबंधित उपक्रमांसाठीच वापरण्यात येते.
+        </p> 
+     </div>
 
       <!-- Local Support -->
       <div class="nature-card rounded-2xl p-8">
@@ -616,22 +622,26 @@ html {
           <i class="fas fa-handshake text-xl text-white"></i>
         </div>
         <h3 class="text-xl font-bold mb-3 text-green-900">
-          Local Support
+          स्थानिक सहाय्य
         </h3>
+
         <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-          Financial backing alone is not enough. A conservation project can
-          succeed only with strong <strong>local support</strong>.
+          केवळ आर्थिक पाठबळ पुरेसे नसते.
+          मजबूत <strong>स्थानिक सहभाग</strong> असल्याशिवाय
+          कोणताही संवर्धन प्रकल्प यशस्वी होऊ शकत नाही.
         </p>
+
         <p class="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-          The Sudhagad Project has been fortunate to receive consistent support
-          from local residents. In particular,
-          <strong>Shri Puranik</strong>, Vice-Principal of
-          <strong>J. N. Paliwala College, Pali</strong>, and his students have been
-          involved since the project’s early days.
+          सुधागड प्रकल्पाला स्थानिक नागरिकांचे सातत्यपूर्ण सहकार्य लाभले आहे.
+          विशेषतः <strong>श्री. पुराणिक</strong>,
+          <strong>जे. एन. पालीवाला कॉलेज, पाली</strong> येथील उपप्राचार्य,
+          तसेच त्यांचे विद्यार्थी
+          प्रकल्पाच्या सुरुवातीपासून सक्रियपणे सहभागी आहेत.
         </p>
+
         <p class="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-          Without such local participation, continuation of the project would
-          be unthinkable.
+          अशा स्थानिक सहभागाविना
+          या प्रकल्पाची सातत्यपूर्ण अंमलबजावणी अशक्य ठरेल.
         </p>
       </div>
 
@@ -648,10 +658,10 @@ html {
     <div class="text-center mb-16">
       <div class="nature-indicator"></div>
       <h2 class="text-3xl md:text-4xl font-bold text-green-700 dark:text-green-400 mb-4">
-        Contacts
+        संपर्क
       </h2>
       <p class="text-lg text-gray-600 dark:text-gray-300">
-        Get in touch with the people behind Project Sudhagad
+        प्रकल्प सुधागडमागील व्यक्तींशी संपर्क साधा
       </p>
     </div>
 
@@ -659,36 +669,35 @@ html {
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
       <!-- Sudhir Puranik -->
-      <div class="nature-card rounded-2xl p-8">
-        <h3 class="text-xl font-bold text-green-900 mb-2">
-          Shree Sudhir Puranik
-        </h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-          Professor of Physics<br>
-          J. N. Paliwala College, Pali
-        </p>
-        <p class="text-gray-700 dark:text-gray-300">
-          📞 Tel: 02142 242033<br>
-          <span class="text-sm">(From Mumbai dial 952142)</span>
-        </p>
-        <p class="mt-3 text-gray-700 dark:text-gray-300">
-          ✉️ <a href="mailto:sudhirpuranik@hotmail.com"
-                class="text-green-700 hover:underline">
-            sudhirpuranik@hotmail.com
-          </a>
-        </p>
-      </div>
-
+        <div class="nature-card rounded-2xl p-8">
+          <h3 class="text-xl font-bold text-green-900 mb-2">
+            श्री. सुधीर पुराणिक
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            भौतिकशास्त्र प्राध्यापक<br>
+            जे. एन. पालीवाला कॉलेज, पाली
+          </p>
+          <p class="text-gray-700 dark:text-gray-300">
+            📞 दूरध्वनी: ०२१४२ २४२०३३<br>
+            <span class="text-sm">(मुंबईहून डायल करताना ९५२१४२ लावा)</span>
+          </p>
+          <p class="mt-3 text-gray-700 dark:text-gray-300">
+            ✉️ <a href="mailto:sudhirpuranik@hotmail.com"
+                  class="text-green-700 hover:underline">
+              sudhirpuranik@hotmail.com
+            </a>
+          </p>
+        </div>
       <!-- Rahul Meshram -->
       <div class="nature-card rounded-2xl p-8">
         <h3 class="text-xl font-bold text-green-900 mb-2">
-          Rahul Meshram
+          राहुल मेश्राम
         </h3>
         <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-          Member – TreKshitiz Sanstha
+          सदस्य – ट्रेकशित्झ संस्था
         </p>
         <p class="text-gray-700 dark:text-gray-300">
-          📱 Mob: +91 99876 47607
+          📱 मोबाईल: +91 99876 47607
         </p>
         <p class="mt-3 text-gray-700 dark:text-gray-300">
           ✉️ <a href="mailto:rahul.mesh@gmail.com"
@@ -699,44 +708,44 @@ html {
       </div>
 
       <!-- Prasad Nikte -->
-      <div class="nature-card rounded-2xl p-8">
-        <h3 class="text-xl font-bold text-green-900 mb-2">
-          Prasad Nikte
-        </h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-          Member – TreKshitiz Sanstha
-        </p>
-        <p class="text-gray-700 dark:text-gray-300">
-          📞 Tel: 022 2544 1072<br>
-          📱 Mob: 098201 83101
-        </p>
-        <p class="mt-3 text-gray-700 dark:text-gray-300">
-          ✉️ <a href="mailto:Prasad.Nikte@siemens.com"
-                class="text-green-700 hover:underline">
-            Prasad.Nikte@siemens.com
-          </a>
-        </p>
-      </div>
+        <div class="nature-card rounded-2xl p-8">
+          <h3 class="text-xl font-bold text-green-900 mb-2">
+            प्रसाद निकटे
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            सदस्य – ट्रेकशित्झ संस्था
+          </p>
+          <p class="text-gray-700 dark:text-gray-300">
+            📞 दूरध्वनी: ०२२ २५४४ १०७२<br>
+            📱 मोबाईल: ०९८२०१ ८३१०१
+          </p>
+          <p class="mt-3 text-gray-700 dark:text-gray-300">
+            ✉️ <a href="mailto:Prasad.Nikte@siemens.com"
+                  class="text-green-700 hover:underline">
+              Prasad.Nikte@siemens.com
+            </a>
+          </p>
+        </div>
 
     </div>
 
     <!-- General Contact -->
-    <div class="mt-16 text-center">
-      <p class="text-lg text-gray-700 dark:text-gray-300 mb-2">
-        You can always write to us at
-      </p>
-      <p class="text-xl font-semibold">
-        ✉️ <a href="mailto:harshal.r.mahajan@gmail.com"
-              class="text-green-700 hover:underline">
-          harshal.r.mahajan@gmail.com
-        </a>
-      </p>
+      <div class="mt-16 text-center">
+          <p class="text-lg text-gray-700 dark:text-gray-300 mb-2">
+            तुम्ही आम्हाला नेहमी खालील ई-मेलवर संपर्क करू शकता
+          </p>
+          <p class="text-xl font-semibold">
+            ✉️ <a href="mailto:harshal.r.mahajan@gmail.com"
+                  class="text-green-700 hover:underline">
+              harshal.r.mahajan@gmail.com
+            </a>
+          </p>
 
-      <p class="mt-6 text-gray-600 dark:text-gray-400">
-        <strong>TreKshitiz Sanstha</strong><br>
-        Dombivli
-      </p>
-    </div>
+          <p class="mt-6 text-gray-600 dark:text-gray-400">
+            <strong>ट्रेकशित्झ संस्था</strong><br>
+            डोंबिवली
+          </p>
+        </div>
 
   </div>
 </section>
@@ -750,11 +759,11 @@ html {
       <div class="nature-indicator"></div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6">
         <span class="text-green-700 dark:text-green-400">
-          Project Sudhagad
+       प्रकल्प सुधागड
         </span>
       </h2>
       <p class="text-xl text-gray-600 dark:text-gray-300">
-        Conservation initiative to protect and preserve Sudhagad Fort
+          सुधागड किल्ल्याचे संरक्षण आणि संवर्धनासाठीची उपक्रम योजना
       </p>
     </div>
 
@@ -770,16 +779,16 @@ html {
           </div>
 
           <h3 class="text-xl font-bold mb-3">
-            Project Sudhagad
-          </h3>
+              प्रकल्प सुधागड
+            </h3>
 
-          <p class="text-sm text-gray-600 mb-6">
-            Overview of the Sudhagad fort conservation initiative.
-          </p>
+            <p class="text-sm text-gray-600 mb-6">
+              सुधागड किल्ला संवर्धन उपक्रमाचा आढावा.
+            </p>
 
-          <span class="text-green-700 font-semibold">
-            Open <i class="fas fa-arrow-right ml-1"></i>
-          </span>
+            <span class="text-green-700 font-semibold">
+              उघडा <i class="fas fa-arrow-right ml-1"></i>
+            </span>
 
         </div>
       </a>
@@ -794,16 +803,16 @@ html {
           </div>
 
           <h3 class="text-xl font-bold mb-3">
-            Project Structure
-          </h3>
+              प्रकल्प रचना
+            </h3>
 
-          <p class="text-sm text-gray-600 mb-6">
-            How the conservation project is structured and organized.
-          </p>
+            <p class="text-sm text-gray-600 mb-6">
+              संवर्धन प्रकल्पाची रचना आणि कार्यपद्धती.
+            </p>
 
-          <span class="text-green-700 font-semibold">
-            Open <i class="fas fa-arrow-right ml-1"></i>
-          </span>
+            <span class="text-green-700 font-semibold">
+              उघडा <i class="fas fa-arrow-right ml-1"></i>
+            </span>
 
         </div>
       </a>
@@ -818,15 +827,15 @@ html {
                 </div>
 
                 <h3 class="text-xl font-bold mb-3">
-                  Future Activities
+                  आगामी उपक्रम
                 </h3>
 
                 <p class="text-sm text-gray-600 mb-6">
-                  Planned conservation and restoration activities.
+                  नियोजित संवर्धन आणि पुनर्संचयित उपक्रम.
                 </p>
 
                 <span class="text-green-700 font-semibold">
-                  Open <i class="fas fa-arrow-right ml-1"></i>
+                  उघडा <i class="fas fa-arrow-right ml-1"></i>
                 </span>
 
               </div>
@@ -842,16 +851,16 @@ html {
           </div>
 
           <h3 class="text-xl font-bold mb-3">
-            Activities Performed
-          </h3>
+              आतापर्यंत केलेले उपक्रम
+            </h3>
 
-          <p class="text-sm text-gray-600 mb-6">
-            Conservation work completed so far at Sudhagad.
-          </p>
+            <p class="text-sm text-gray-600 mb-6">
+              सुधागडावर आतापर्यंत पूर्ण करण्यात आलेली संवर्धन कामे.
+            </p>
 
-          <span class="text-green-700 font-semibold">
-            Open <i class="fas fa-arrow-right ml-1"></i>
-          </span>
+            <span class="text-green-700 font-semibold">
+              उघडा <i class="fas fa-arrow-right ml-1"></i>
+            </span>
 
         </div>
       </a>
@@ -865,16 +874,16 @@ html {
             <i class="fas fa-cogs text-white text-2xl"></i>
           </div>
 
-          <h3 class="text-xl font-bold mb-3">
-            How Executed
+           <h3 class="text-xl font-bold mb-3">
+            अंमलबजावणी पद्धत
           </h3>
 
           <p class="text-sm text-gray-600 mb-6">
-            Methodology and execution process of the project.
+            प्रकल्पाची कार्यपद्धती आणि अंमलबजावणी प्रक्रिया.
           </p>
 
           <span class="text-green-700 font-semibold">
-            Open <i class="fas fa-arrow-right ml-1"></i>
+            उघडा <i class="fas fa-arrow-right ml-1"></i>
           </span>
 
         </div>
@@ -890,16 +899,17 @@ html {
             </div>
 
             <h3 class="text-xl font-bold mb-3">
-              Contact / Join
-            </h3>
+                संपर्क / सहभागी व्हा
+              </h3>
 
-            <p class="text-sm text-gray-600 mb-6">
-              Be part of the Sudhagad conservation initiative.
-            </p>
+              <p class="text-sm text-gray-600 mb-6">
+                सुधागड संवर्धन उपक्रमाचा भाग बना.
+              </p>
 
-            <span class="text-green-700 font-semibold">
-              Join <i class="fas fa-arrow-right ml-1"></i>
-            </span>
+              <span class="text-green-700 font-semibold">
+                सहभागी व्हा <i class="fas fa-arrow-right ml-1"></i>
+              </span>
+
 
           </div>
       </a>
