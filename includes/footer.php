@@ -42,17 +42,17 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-3 text-accent">Follow Us</h4>
                     <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/groups/trekshitiz/" target="_blank" class="group social-link">
+                        <a href="https://www.facebook.com/trekshitiz.ts" target="_blank" class="group social-link">
                             <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center group-hover:bg-blue-700 transition-all duration-300 transform group-hover:scale-110">
                                 <i class="fab fa-facebook-f text-lg"></i>
                             </div>
                         </a>
-                        <a href="https://www.instagram.com/trekshitiz_ts/" target="_blank" class="group social-link">
+                        <a href="https://www.instagram.com/trekshitiz_official/" target="_blank" class="group social-link">
                             <div class="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center group-hover:from-purple-700 group-hover:to-pink-700 transition-all duration-300 transform group-hover:scale-110">
                                 <i class="fab fa-instagram text-lg"></i>
                             </div>
                         </a>
-                        <a href="https://www.youtube.com/channel/UCfcgOwwtNbKxZZEGZG8ndgg" target="_blank" class="group social-link">
+                        <a href="https://www.youtube.com/@TrekshitizSanstha" target="_blank" class="group social-link">
                             <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center group-hover:bg-red-700 transition-all duration-300 transform group-hover:scale-110">
                                 <i class="fab fa-youtube text-lg"></i>
                             </div>

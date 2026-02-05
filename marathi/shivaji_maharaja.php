@@ -1,11 +1,12 @@
 <?php
 // Set page specific variables
-$page_title = 'छत्रपति शिवाजी महाराज | Chhatrapati Shivaji Maharaj | Trekshitz';
-$meta_description = 'Complete information about Chhatrapati Shivaji Maharaj - the great Maratha warrior king. History, battles, administration, forts, and legacy.';
-$meta_keywords = 'Shivaji Maharaj, Maratha Empire, Maharashtra history, forts, battles, warrior king, स्वराज्य';
+$page_title = 'छत्रपती शिवाजी महाराज | स्वराज्याचे संस्थापक | ट्रेकशितीज';
 
+$meta_description = 'छत्रपती शिवाजी महाराज यांची संपूर्ण ऐतिहासिक माहिती – स्वराज्याचे संस्थापक, महान मराठा योद्धा राजा, कुशल प्रशासक आणि दूरदृष्टी असलेले नेतृत्व.';
+
+$meta_keywords = 'छत्रपती शिवाजी महाराज, स्वराज्य, मराठा साम्राज्य, महाराष्ट्राचा इतिहास, किल्ले, लढाया, मराठा राजा, शिवराय';
 // Include header
-include './includes/header.php';
+include './../includes/header_marathi.php';
 ?>
 
 <style>
@@ -160,583 +161,727 @@ include './includes/header.php';
     }
 }
 </style>
+<main id="main-content" class="">
+<section class="relative py-20 bg-gradient-to-br from-red-700 via-yellow-600 to-orange-500 text-white overflow-hidden">
 
-<main id="main-content" class="pt-20">
-    <!-- Hero Slider Section -->
-    <section id="home" class="hero-slider">
-        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80');">
-            <div class="slide-content">
-                <div class="max-w-4xl px-4">
-                    <h1 class="text-6xl md:text-8xl font-bold mb-6 font-devanagari animate-fade-in">
-                        छत्रपति शिवाजी महाराज
-                    </h1>
-                    <p class="text-2xl md:text-3xl mb-8 opacity-90">
-                        The Great Maratha Warrior King
-                    </p>
-                    <p class="text-lg md:text-xl mb-8 font-devanagari opacity-80">
-                        स्वराज्य के संस्थापक, मराठा साम्राज्य के जनक
-                    </p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80');">
-            <div class="slide-content">
-                <div class="max-w-4xl px-4">
-                    <h1 class="text-5xl md:text-7xl font-bold mb-6">
-                        350+ Forts Legacy
-                    </h1>
-                    <p class="text-xl md:text-2xl mb-8 opacity-90 font-devanagari">
-                        सह्याद्रीच्या प्रत्येक शिखरावर शिवरायांचे स्वप्न
-                    </p>
-                    <a href="#forts" class="inline-flex items-center px-8 py-4 bg-yellow-500 hover:bg-red-600 text-white font-semibold rounded-full transition-colors">
-                        <i class="fas fa-fort-awesome mr-2"></i>
-                        Explore Forts
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80');">
-            <div class="slide-content">
-                <div class="max-w-4xl px-4">
-                    <h1 class="text-5xl md:text-7xl font-bold mb-6">
-                        Maratha Navy
-                    </h1>
-                    <p class="text-xl md:text-2xl mb-8 opacity-90 font-devanagari">
-                        समुद्राचा शेणाई - भारतीय नौदलाचे जनक
-                    </p>
-                    <a href="#navy" class="inline-flex items-center px-8 py-4 bg-yellow-500 hover:bg-red-600 text-white font-semibold rounded-full transition-colors">
-                        <i class="fas fa-ship mr-2"></i>
-                        Naval History
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80');">
-            <div class="slide-content">
-                <div class="max-w-4xl px-4">
-                    <h1 class="text-5xl md:text-7xl font-bold mb-6 font-devanagari">
-                        स्वराज्य
-                    </h1>
-                    <p class="text-xl md:text-2xl mb-8 opacity-90">
-                        Self-Rule | Independent Maratha Kingdom
-                    </p>
-                    <p class="text-lg md:text-xl mb-8 opacity-80 font-devanagari">
-                        प्रजाहित हेच राज्यकारण
-                    </p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80');">
-            <div class="slide-content">
-                <div class="max-w-4xl px-4">
-                    <h1 class="text-5xl md:text-7xl font-bold mb-6">
-                        Guerrilla Warfare
-                    </h1>
-                    <p class="text-xl md:text-2xl mb-8 opacity-90 font-devanagari">
-                        गनिमी कावा - छापामार युद्धाचे जनक
-                    </p>
-                    <a href="#battles" class="inline-flex items-center px-8 py-4 bg-yellow-500 hover:bg-red-600 text-white font-semibold rounded-full transition-colors">
-                        <i class="fas fa-sword mr-2"></i>
-                        Battle Strategies
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Slider Controls -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
-            <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" data-slide="0"></button>
-            <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" data-slide="1"></button>
-            <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" data-slide="2"></button>
-            <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" data-slide="3"></button>
-            <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" data-slide="4"></button>
-        </div>
-    </section>
+    <!-- Floating Decorative Elements -->
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 maratha-pattern">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <div class="section-indicator"></div>
-                <h2 class="text-5xl md:text-6xl font-bold mb-6">
-                    <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
-                        The Great King
-                    </span>
-                </h2>
-                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto font-devanagari">
-                    छत्रपति शिवाजी महाराज - एक महान योद्धा, कुशल प्रशासक, आणि स्वातंत्र्याचे स्वप्न पाहणारा राजा
-                </p>
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center max-w-5xl mx-auto">
+
+            <!-- Title -->
+             <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up mt-6">
+            छत्रपती शिवाजी महाराज
+        </h1>
+
+            <!-- Subtitle -->
+             <p class="text-xl md:text-2xl mb-4 opacity-95">
+            स्वराज्याचे संस्थापक • महान मराठा योद्धा राजा
+        </p>
+
+            <!-- Tagline -->
+             <p class="text-lg md:text-xl mb-8 opacity-85">
+            दूरदृष्टी असलेले शासक, कुशल युद्धनीतीकार आणि स्वशासनाचे अमर प्रतीक
+        </p>    
+
+            <!-- Key Highlights -->
+            <div class="flex flex-wrap justify-center gap-4 text-sm md:text-base opacity-95">
+
+            <span class="bg-white bg-opacity-20 px-5 py-2 rounded-full backdrop-blur">
+                ३५०+ गड-किल्ले
+            </span>
+
+            <span class="bg-white bg-opacity-20 px-5 py-2 rounded-full backdrop-blur">
+                स्वराज्य
+            </span>
+
+            <span class="bg-white bg-opacity-20 px-5 py-2 rounded-full backdrop-blur">
+                इ.स. १६३० – १६८०
+            </span>
+
+            <span class="bg-white bg-opacity-20 px-5 py-2 rounded-full backdrop-blur">
+                भारतीय आरमाराचे जनक
+            </span>
+
             </div>
-            
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6">
-                    <h3 class="text-3xl font-bold text-gray-800 dark:text-white font-devanagari">
-                        जीवनपरिचय
-                    </h3>
-                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
-                        Born in 1630 at Shivneri Fort, Chhatrapati Shivaji Maharaj became one of the greatest rulers in Indian history. He founded the Maratha Empire and pioneered guerrilla warfare tactics that would influence military strategy for centuries.
+
+        </div>
+    </div>
+</section>
+
+
+<!-- PREFACE IMAGE SECTION -->
+<section class="py-16 bg-cream-medium dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+
+        <div class="max-w-5xl mx-auto text-center">
+
+            <!-- Image Card -->
+            <div class="royal-card rounded-2xl overflow-hidden border border-mountain shadow-lg">
+
+                <img 
+    src="./shivaji/photos/maharaj_prastavna.jpg"
+    alt="Chhatrapati Shivaji Maharaj - Preface"
+    class="w-full  max-w-[700px] mx-auto h-auto max-h-[680px] object-contain"
+/>
+
+
+                <!-- Optional Caption -->
+                <div class="bg-cream-light dark:bg-gray-900 p-6">
+                    <p class="text-lg text-gray-800 dark:text-gray-200">
+                        स्वराज्याचे स्वप्न पाहणारे दूरदृष्टी असलेले राजा — एका युगाचे नेतृत्व करणारे महापुरुष
                     </p>
-                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg font-devanagari">
-                        शिवनेरी किल्ल्यावर जन्मलेल्या शिवरायांनी आपल्या जीवनकाळात ३०० किल्ले जिंकून मराठा साम्राज्याची स्थापना केली. त्यांच्या स्वराज्याच्या कल्पनेने संपूर्ण भारतीय इतिहासाला नवी दिशा दिली.
+
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                        छत्रपती शिवाजी महाराज — भारतीय इतिहासाला नवे वळण देणारे दूरदृष्टी नेतृत्व
                     </p>
-                    
-                    <div class="flex flex-wrap gap-4 mt-8">
-                        <div class="bg-red-600 text-white px-6 py-3 rounded-full">
-                            <i class="fas fa-calendar mr-2"></i>
-                            1630 - 1680
-                        </div>
-                        <div class="bg-yellow-500 text-white px-6 py-3 rounded-full">
-                            <i class="fas fa-crown mr-2"></i>
-                            Maratha Empire Founder
-                        </div>
-                    </div>
                 </div>
-                
-                <div class="relative">
-                    <div class="bg-gradient-to-br from-red-600 to-yellow-500 p-1 rounded-2xl">
-                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                             alt="Shivaji Maharaj" 
-                             class="w-full h-96 object-cover rounded-2xl">
-                    </div>
-                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+        
+        <!-- ABOUT SHIVAJI MAHARAJ -->
+<section id="about" class="py-20 bg-cream-light dark:bg-gray-900">
+    <div class="container mx-auto max-w-5xl px-4">
+
+                <!-- Section Header -->
+        <div class="text-center mb-12">
+            <div class="section-indicator"></div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
+                    छत्रपती शिवाजी महाराजांविषयी
+                </span>
+            </h2>
+            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                स्वराज्याचे दूरदृष्टी असलेले संस्थापक आणि भारतीय इतिहासातील महान नेतृत्वांपैकी एक
+            </p>
+        </div>
+
+        <!-- Content Card -->
+        <div class="royal-card rounded-2xl p-8 md:p-10 space-y-6">
+
+            <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                इ.स. १६३० मध्ये <strong>शिवनेरी किल्ल्यावर</strong> जन्मलेले छत्रपती शिवाजी महाराज
+                भारतीय इतिहासाची दिशा बदलणारे एक महान नेतृत्व म्हणून उदयास आले.
+                त्यांनी <strong>मराठा साम्राज्याची</strong> स्थापना केली आणि
+                <strong>स्वराज्य</strong> या संकल्पनेला मूर्त रूप दिले — जी न्याय,
+                समानता आणि जनकल्याणावर आधारित होती.
+            </p>
+
+            <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                कुशल युद्धनीतीकार असलेल्या शिवाजी महाराजांनी
+                <strong>गनिमी कावा</strong> या युद्धतंत्राचा प्रभावी वापर केला,
+                सामर्थ्यशाली <strong>आरमार</strong> उभारले आणि शिस्तबद्ध
+                प्रशासकीय व्यवस्था निर्माण केली.
+                त्यांच्या शासनकाळात भूमी, संस्कृती आणि जनतेचा सन्मान सुरक्षित राहिला,
+                तसेच सहिष्णुता, धैर्य आणि न्यायपूर्ण राज्यकारभाराचे मूल्य जपले गेले.
+            </p>
+
+            <!-- Highlights -->
+            <div class="flex flex-wrap gap-4 pt-6">
+
+                <span class="inline-flex items-center px-4 py-2 rounded-full bg-red-600 text-white text-sm font-semibold">
+                    स्वराज्याचे संस्थापक
+                </span>
+
+                <span class="inline-flex items-center px-4 py-2 rounded-full bg-yellow-500 text-white text-sm font-semibold">
+                    महान युद्धनीतीकार
+                </span>
+
+                <span class="inline-flex items-center px-4 py-2 rounded-full bg-green-600 text-white text-sm font-semibold">
+                    आरमाराचे दूरदृष्टी नेतृत्व
+                </span>
+
+                <span class="inline-flex items-center px-4 py-2 rounded-full bg-gray-800 text-white text-sm font-semibold">
+                    जनकेंद्रित राजा
+                </span>
+
             </div>
         </div>
-    </section>
 
-    <!-- Information Cards Section -->
-    <section class="py-20 bg-white dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <div class="section-indicator"></div>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                    <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent font-devanagari">
-                        महाराजांची माहिती
-                    </span>
-                </h2>
-                <p class="text-xl text-gray-600 dark:text-gray-300">
-                    Complete information about Shivaji Maharaj's life, administration, and legacy
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                <!-- Battles Card -->
-                <div class="royal-card rounded-2xl p-6 text-center group">
+    </div>
+</section>
+
+
+<!-- Information Cards Section -->
+<section class="py-20 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <div class="section-indicator"></div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
+                    छत्रपती शिवाजी महाराजांची सविस्तर माहिती
+                </span>
+            </h2>
+            <p class="text-xl text-gray-600 dark:text-gray-300">
+                महान मराठा शासक छत्रपती शिवाजी महाराजांचे जीवन, प्रशासन, युद्धनीती आणि ऐतिहासिक वारसा याविषयी सखोल माहिती
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+            <!-- Battles -->
+            <a href="./shivaji/shivaji_battles.php" class="block group focus:outline-none">
+                <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                     <div class="w-16 h-16 bg-gradient-to-br from-red-600 to-yellow-500 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
-                        <i class="fas fa-sword text-2xl text-white"></i>
+                        <i class="fas fa-shield-alt text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 font-devanagari">
-                        शिवरायांच्या लढाया
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                        छत्रपती शिवाजी महाराजांच्या लढाया
                     </h3>
                     <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
-                        Complete details of all battles fought by Shivaji Maharaj, including strategies and outcomes.
+                        छत्रपती शिवाजी महाराजांनी लढलेल्या प्रमुख लढायांची सविस्तर माहिती, त्यातील युद्धनीती आणि परिणामांसह.
                     </p>
-                    <a href="https://trekshitiz.com/Shivaji/Battles-of-Shivaji-Maharaj1.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                        Read More <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    <span class="mt-auto text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                        अधिक वाचा <i class="fas fa-arrow-right ml-2 bottom-4"></i>
+                    </span>
                 </div>
-                
-                <!-- Books Card -->
-                <div class="royal-card rounded-2xl p-6 text-center group">
+            </a>
+
+            <!-- Books -->
+                    <a href="./shivaji/shivaji_maharaj_books.php" class="block group focus:outline-none">
+                <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                     <div class="w-16 h-16 bg-gradient-to-br from-teal-600 to-teal-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                         <i class="fas fa-book text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 font-devanagari">
-                        पुस्तके व साहित्य
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                        पुस्तके आणि साहित्य
                     </h3>
                     <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
-                        Historical books, novels, and literature about Chhatrapati Shivaji Maharaj.
+                        छत्रपती शिवाजी महाराजांच्या जीवनकार्य व पराक्रमावर आधारित ऐतिहासिक पुस्तके, कादंबऱ्या आणि साहित्यिक लेखन.
                     </p>
-                    <a href="https://trekshitiz.com/Shivaji/Historical-Books-Novels-on-Shivaji-Maharaj.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                        Read More <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    <span class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                        अधिक वाचा <i class="fas fa-arrow-right ml-2 bottom-4"></i>
+                    </span>
                 </div>
-                
-                <!-- Economy Card -->
-                <div class="royal-card rounded-2xl p-6 text-center group">
-                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-600 to-yellow-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
-                        <i class="fas fa-coins text-2xl text-white"></i>
+            </a>
+            <!-- Economic Policy -->
+             
+                <a href="./shivaji/shivaji_maharaj_economic_policy.php" class="block group focus:outline-none">
+                    <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
+                        <div class="w-16 h-16 bg-gradient-to-br from-yellow-600 to-yellow-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+                            <i class="fas fa-coins text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                            आर्थिक धोरण
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                            मराठा साम्राज्याच्या आर्थिक सुधारणा, व्यापार व्यवस्था, करप्रणाली आणि वित्तीय प्रशासनाची सविस्तर माहिती.
+                        </p>
+                        <span class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                            अधिक वाचा <i class="fas fa-arrow-right ml-2"></i>
+                        </span>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 font-devanagari">
-                        आर्थिक धोरण
-                    </h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
-                        Economic policies, trade relations, and financial administration of the empire.
-                    </p>
-                    <a href="https://trekshitiz.com/Shivaji/ECONOMIC-POLICY-OF-SHIVAJI-MAHARAJ.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                        Read More <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-                
-                <!-- Photos Card -->
-                <div class="royal-card rounded-2xl p-6 text-center group">
-                    <div class="w-16 h-16 bg-gradient-to-br from-orange-600 to-orange-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
-                        <i class="fas fa-camera text-2xl text-white"></i>
+                </a>
+
+            <!-- Photos -->
+            
+                    <a href="./shivaji/shivaji_maharaj_photos.php" class="block group focus:outline-none">
+                    <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
+                        <div class="w-16 h-16 bg-gradient-to-br from-orange-600 to-orange-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+                            <i class="fas fa-camera text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                            छायाचित्रे आणि चित्रकला
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                            छत्रपती शिवाजी महाराजांची ऐतिहासिक छायाचित्रे, व्यक्तिचित्रे, चित्रे आणि कलात्मक प्रतिमा.
+                        </p>
+                        <span class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                            अधिक वाचा <i class="fas fa-arrow-right ml-2"></i>
+                        </span>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 font-devanagari">
-                        छायाचित्रे
-                    </h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
-                        Historical photographs, paintings, and visual representations of Shivaji Maharaj.
-                    </p>
-                    <a href="https://trekshitiz.com/Shivaji/Shivaji-Maharaj-Photos.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                        Read More <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-                
-                <!-- Navy Card -->
-                <div class="royal-card rounded-2xl p-6 text-center group">
+                </a>
+
+            <!-- Navy -->
+    
+            <a href="./shivaji/shivaji_maharaj_navy_page.php" class="block group focus:outline-none">
+                <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                     <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                         <i class="fas fa-ship text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 font-devanagari">
-                        मराठा नौदल
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                        मराठा आरमार
                     </h3>
                     <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
-                        The powerful Maratha Navy and its role in coastal defense and trade protection.
+                        पश्चिम किनारपट्टीचे संरक्षण करण्यासाठी छत्रपती शिवाजी महाराजांनी उभारलेले सामर्थ्यशाली आरमार.
                     </p>
-                    <a href="https://trekshitiz.com/Shivaji/Aarmar-Navey-of-Shivaji-Maharaj.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                        Read More <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    <span class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                        अधिक वाचा <i class="fas fa-arrow-right ml-2"></i>
+                    </span>
                 </div>
-                
-                <!-- Spy Network Card -->
-                <div class="royal-card rounded-2xl p-6 text-center group">
+            </a>
+            <!-- Spy Network -->
+             
+            <a href="./shivaji/shivaji_maharaj_herchate.php" class="block group focus:outline-none">
+                <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                     <div class="w-16 h-16 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                         <i class="fas fa-eye text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 font-devanagari">
-                        हरखारे विभाग
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                        गुप्तचर व माहिती यंत्रणा
                     </h3>
                     <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
-                        Intelligence network, spy system, and information gathering methods of the empire.
+                        लष्करी मोहिमा आणि प्रशासनातील यशात महत्त्वाची भूमिका बजावणारी छत्रपती शिवाजी महाराजांची प्रभावी गुप्तचर व्यवस्था.
                     </p>
-                    <a href="https://trekshitiz.com/Shivaji/Herkhate-Spy-Department-of-Shivaji.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                        Read More <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    <span class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                        अधिक वाचा <i class="fas fa-arrow-right ml-2"></i>
+                    </span>
                 </div>
-                
-                <!-- Army Card -->
-                <div class="royal-card rounded-2xl p-6 text-center group">
+            </a>
+
+            <!-- Army -->
+    
+            <a href="./shivaji/shivaji_maharaj_lakshar_army.php" class="block group focus:outline-none">
+                <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                     <div class="w-16 h-16 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                         <i class="fas fa-shield-alt text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 font-devanagari">
-                        मराठा सेना
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                        मराठा लष्कर
                     </h3>
                     <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
-                        Military organization, training, and the legendary Maratha army structure.
+                        मराठा लष्कराची रचना, शिस्त, युद्धतंत्र आणि ऐतिहासिक सामर्थ्याची सविस्तर माहिती.
                     </p>
-                    <a href="https://trekshitiz.com/Shivaji/Lashkar-Army-of-Shivaji.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                        Read More <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    <span class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                        अधिक वाचा <i class="fas fa-arrow-right ml-2"></i>
+                    </span>
                 </div>
-                
-                <!-- Justice Card -->
-                <div class="royal-card rounded-2xl p-6 text-center group">
+            </a>
+
+            <!-- Justice -->
+             
+                    <a href="./shivaji/shivaji_maharaj_justice.php" class="block group focus:outline-none">
+                <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                     <div class="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                         <i class="fas fa-balance-scale text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 font-devanagari">
-                        न्याय व्यवस्था
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                        न्यायव्यवस्था
                     </h3>
                     <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
-                        Justice system, legal reforms, and judicial policies of Shivaji Maharaj's administration.
+                        छत्रपती शिवाजी महाराजांच्या काळातील न्यायव्यवस्था, कायदेविषयक सुधारणा आणि प्रशासकीय धोरणांची माहिती.
                     </p>
-                    <a href="https://trekshitiz.com/Shivaji/NyayNiti-Policy-of-Justice-Shivaji.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                        Read More <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    <span class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                        अधिक वाचा <i class="fas fa-arrow-right ml-2"></i>
+                    </span>
                 </div>
+            </a>
+            <!-- Factories -->
                 
-                <!-- Factories Card -->
-                <div class="royal-card rounded-2xl p-6 text-center group">
+            <a href="./shivaji/shivaji_maharaj_factories.php" class="block group focus:outline-none">
+                <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                     <div class="w-16 h-16 bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                         <i class="fas fa-industry text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 font-devanagari">
-                        कारखाने
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                        उद्योगधंदे व कार्यशाळा
                     </h3>
                     <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
-                        Industrial development, manufacturing units, and trade establishments during Maratha rule.
+                        मराठा काळातील औद्योगिक उपक्रम, उत्पादन केंद्रे आणि व्यापारी आस्थापनांची सविस्तर माहिती.
                     </p>
-                    <a href="https://trekshitiz.com/Shivaji/Karkhane-Factories-of-Shivaji.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                        Read More <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    <span class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                        अधिक वाचा <i class="fas fa-arrow-right ml-2"></i>
+                    </span>
                 </div>
+            </a>
+
+            <!-- Palaces -->
                 
-                <!-- Palaces Card -->
-                <div class="royal-card rounded-2xl p-6 text-center group">
+            <a href="./shivaji/shivaji_maharaj_palaces.php" class="block group focus:outline-none">
+                <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                     <div class="w-16 h-16 bg-gradient-to-br from-pink-600 to-pink-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
-                        <i class="fas fa-palace text-2xl text-white"></i>
+                        <i class="fas fa-landmark text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 font-devanagari">
-                        राजवाडे व महाल
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                        राजवाडे आणि निवासस्थाने
                     </h3>
                     <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
-                        Royal palaces, architecture, and residential complexes of the Maratha Empire.
+                        मराठा साम्राज्यातील राजवाडे, वास्तुशिल्पाचे अद्भुत नमुने आणि राजकीय निवासस्थाने.
                     </p>
-                    <a href="https://trekshitiz.com/Shivaji/Mahal-Palaces-of-Shivaji.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                        Read More <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    <span class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                        अधिक वाचा <i class="fas fa-arrow-right ml-2"></i>
+                    </span>
                 </div>
-                
-                <!-- Unknown Information Card -->
-                <div class="royal-card rounded-2xl p-6 text-center group">
+            </a>
+
+            <!-- Unknown Facts -->
+                <a href="./shivaji/shivaji_maharaj_unknown_info.php" class="block group focus:outline-none">
+                <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                     <div class="w-16 h-16 bg-gradient-to-br from-violet-600 to-violet-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                         <i class="fas fa-question-circle text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 font-devanagari">
-                        अज्ञात माहिती
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                        अल्पज्ञात तथ्ये
                     </h3>
                     <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
-                        Lesser-known facts and hidden information about Chhatrapati Shivaji Maharaj.
+                        छत्रपती शिवाजी महाराजांविषयी दुर्मिळ, अल्पज्ञात आणि रंजक ऐतिहासिक तथ्यांची माहिती.
                     </p>
-                    <a href="https://trekshitiz.com/Shivaji/Unknown-Information-of-Shivaji.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                        Read More <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    <span class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                        अधिक वाचा <i class="fas fa-arrow-right ml-2"></i>
+                    </span>
                 </div>
-                
-                <!-- Songs Card -->
-                <div class="royal-card rounded-2xl p-6 text-center group">
-                    <div class="w-16 h-16 bg-gradient-to-br from-red-600 to-red-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
-                        <i class="fas fa-music text-2xl text-white"></i>
+            </a>
+
+            <!-- Songs -->
+    
+                <a href="./shivaji/shivaji_maharaj_songs.php" class="block group focus:outline-none">
+                    <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
+                        <div class="w-16 h-16 bg-gradient-to-br from-red-600 to-red-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+                            <i class="fas fa-music text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                            गीते आणि कविता
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                            छत्रपती शिवाजी महाराजांच्या पराक्रम आणि वारशाला अर्पण केलेली गीते, कविता आणि संगीतात्मक अभिव्यक्ती.
+                        </p>
+                        <span class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                            अधिक वाचा <i class="fas fa-arrow-right ml-2"></i>
+                        </span>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 font-devanagari">
-                        गीते व कविता
-                    </h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
-                        Songs, poems, and musical tributes dedicated to Chhatrapati Shivaji Maharaj.
-                    </p>
-                    <a href="https://trekshitiz.com/Shivaji/Songs-of-Shivaji-Maharaj.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                        Read More <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-                
-                <!-- Shivbawani by Kavi Bhushan Card -->
-                <div class="royal-card rounded-2xl p-6 text-center group">
+                </a>
+            <!-- Shivbawani -->
+    
+                    <a href="./shivaji/shivaji_maharaj_shivbhawani_all.php" class="block group focus:outline-none">
+                <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
                     <div class="w-16 h-16 bg-gradient-to-br from-amber-600 to-amber-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                         <i class="fas fa-scroll text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 font-devanagari">
-                        शिवबावनी - कवि भूषण
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                        शिवभवानी – कवी भूषण
                     </h3>
                     <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
-                        Classic poetry by Kavi Bhushan celebrating the valor and achievements of Shivaji Maharaj.
+                        कवी भूषण यांनी रचलेली शास्त्रीय काव्यरचना, ज्यामध्ये छत्रपती शिवाजी महाराजांचा पराक्रम व कार्य गौरविले आहे.
                     </p>
-                    <a href="https://trekshitiz.com/Shivaji/Shivbawni-Kavi-Bhushan.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                        Read More <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-                
-                <!-- Shivbawani Part 2 Card -->
-                <div class="royal-card rounded-2xl p-6 text-center group">
-                    <div class="w-16 h-16 bg-gradient-to-br from-emerald-600 to-emerald-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
-                        <i class="fas fa-feather-alt text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 font-devanagari">
-                        शिवबावनी भाग २
-                    </h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
-                        Second part of the famous Shivbawani poetry collection by renowned poet Kavi Bhushan.
-                    </p>
-                    <a href="https://trekshitiz.com/Shivaji/Shiv-bawani2-Kavi-Bhushan.htm" class="inline-flex items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
-                        Read More <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Timeline Section -->
-    <section class="py-20 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <div class="section-indicator"></div>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                    <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent font-devanagari">
-                        शिवरायांचा काळक्रम
+                    <span class="mt-auto items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                        अधिक वाचा <i class="fas fa-arrow-right ml-2"></i>
                     </span>
-                </h2>
-                <p class="text-xl text-gray-600 dark:text-gray-300">
-                    Important events in the life of Chhatrapati Shivaji Maharaj
-                </p>
-            </div>
-            
-            <div class="max-w-4xl mx-auto">
-                <div class="space-y-8">
-                    <div class="timeline-item pl-8 py-6">
-                        <h3 class="text-2xl font-bold text-red-600 mb-2">1630</h3>
-                        <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2 font-devanagari">जन्म</h4>
-                        <p class="text-gray-600 dark:text-gray-300">Born at Shivneri Fort to Shahaji Bhosale and Jijabai on 19th February 1630.</p>
-                    </div>
-                    
-                    <div class="timeline-item pl-8 py-6">
-                        <h3 class="text-2xl font-bold text-red-600 mb-2">1645</h3>
-                        <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">First Fort Capture</h4>
-                        <p class="text-gray-600 dark:text-gray-300">Captured Torna Fort at the age of 15, marking the beginning of his military career.</p>
-                    </div>
-                    
-                    <div class="timeline-item pl-8 py-6">
-                        <h3 class="text-2xl font-bold text-red-600 mb-2">1659</h3>
-                        <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2 font-devanagari">अफझल खानाचा वध</h4>
-                        <p class="text-gray-600 dark:text-gray-300">Killed Afzal Khan in a famous encounter at Pratapgad, demonstrating strategic brilliance.</p>
-                    </div>
-                    
-                    <div class="timeline-item pl-8 py-6">
-                        <h3 class="text-2xl font-bold text-red-600 mb-2">1674</h3>
-                        <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2 font-devanagari">राज्याभिषेक</h4>
-                        <p class="text-gray-600 dark:text-gray-300">Coronated as Chhatrapati at Raigad Fort, formally establishing the Maratha Empire.</p>
-                    </div>
-                    
-                    <div class="timeline-item pl-8 py-6">
-                        <h3 class="text-2xl font-bold text-red-600 mb-2">1680</h3>
-                        <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2 font-devanagari">स्वर्गवास</h4>
-                        <p class="text-gray-600 dark:text-gray-300">Passed away on 3rd April 1680 at Raigad Fort, leaving behind a powerful empire.</p>
-                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </a>
 
-    <!-- Legacy Section -->
-    <section id="legacy" class="py-20 bg-white dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
+            <!-- Shivbawani Part 2 -->
+            <!--
+            <a href="./shivaji/shivaji_battles.php" class="block group focus:outline-none">
+            <div class="royal-card rounded-2xl p-6 text-center group h-full flex flex-col">
+                <div class="w-16 h-16 bg-gradient-to-br from-emerald-600 to-emerald-800 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+                    <i class="fas fa-feather-alt text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">
+                    Shivbawani – Part II
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                    The second part of the famous Shivbawani poetry composed by the renowned poet Kavi Bhushan.
+                </p>
+                <span  class="items-center text-red-600 hover:text-yellow-500 font-semibold transition-colors">
+                    Read More <i class="fas fa-arrow-right ml-2"></i>   
+                </span>
+            </div>
+            </a>
+            -->
+        </div>
+    </div>
+</section>
+
+
+<!-- KEY CONTRIBUTIONS -->
+<section class="py-20 bg-cream-warm dark:bg-gray-800">
+    <div class="container mx-auto max-w-6xl px-4">
+
+        <!-- Section Header -->
+                <div class="text-center mb-14">
                 <div class="section-indicator"></div>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
                     <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
-                        Eternal Legacy
+                        प्रमुख योगदान
                     </span>
                 </h2>
-                <p class="text-xl text-gray-600 dark:text-gray-300 font-devanagari">
-                    शाश्वत प्रेरणा - आजही जगणारे शिवरायांचे आदर्श
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    मराठा साम्राज्याची घडण घडवणारी आणि पिढ्यान्‌पिढ्या प्रेरणा देणारी अविस्मरणीय कामगिरी
                 </p>
             </div>
-            
-            <div class="grid lg:grid-cols-3 gap-8">
-                <div class="royal-card rounded-2xl p-8 text-center">
-                    <div class="w-20 h-20 bg-gradient-to-br from-red-600 to-yellow-500 rounded-full flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-flag text-3xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4 font-devanagari">स्वराज्याची संकल्पना</h3>
-                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                        The concept of Swaraj (self-rule) introduced by Shivaji Maharaj became the foundation for India's independence movement centuries later.
-                    </p>
-                </div>
-                
-                <div class="royal-card rounded-2xl p-8 text-center">
-                    <div class="w-20 h-20 bg-gradient-to-br from-yellow-500 to-red-600 rounded-full flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-heart text-3xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4 font-devanagari">धर्मसहिष्णुता</h3>
-                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                        Religious tolerance and secular governance principles that promoted unity among diverse communities in his empire.
-                    </p>
-                </div>
-                
-                <div class="royal-card rounded-2xl p-8 text-center">
-                    <div class="w-20 h-20 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-users text-3xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4 font-devanagari">प्रजाहिताची भावना</h3>
-                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                        Welfare of subjects as the primary duty of a ruler - a principle that continues to inspire modern democratic governance.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- Cards -->
+        <div class="grid md:grid-cols-3 gap-8">
 
-    <!-- Forts Gallery Section -->
-    <section id="forts" class="py-20 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <div class="section-indicator"></div>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                    <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent font-devanagari">
-                        शिवरायांचे किल्ले
-                    </span>
-                </h2>
-                <p class="text-xl text-gray-600 dark:text-gray-300">
-                    Explore the magnificent forts associated with Chhatrapati Shivaji Maharaj
+            <!-- Swarajya -->
+                        <div class="royal-card bg-cream-light dark:bg-gray-900 p-8 rounded-2xl border border-mountain text-center hover:shadow-xl transition-all">
+                <div class="w-16 h-16 bg-gradient-to-br from-red-600 to-yellow-500 rounded-full flex items-center justify-center mb-6 mx-auto">
+                    <i class="fas fa-flag text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-primary mb-3">
+                    स्वराज्य
+                </h3>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    न्याय, स्वशासन आणि सामान्य जनतेच्या कल्याणावर आधारित स्वतंत्र व जनकेंद्रित राज्याची स्थापना.
                 </p>
             </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="royal-card rounded-2xl overflow-hidden group">
-                    <div class="h-48 bg-cover bg-center group-hover:scale-110 transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2 font-devanagari">राजगड</h3>
-                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">The capital fort and seat of Maratha Empire where Shivaji Maharaj was coronated.</p>
-                        <a href="/forts/raigad" class="text-red-600 hover:text-yellow-500 font-semibold">
-                            Explore Fort <i class="fas fa-arrow-right ml-1"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="royal-card rounded-2xl overflow-hidden group">
-                    <div class="h-48 bg-cover bg-center group-hover:scale-110 transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2 font-devanagari">प्रतापगड</h3>
-                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Historic fort where the famous encounter with Afzal Khan took place.</p>
-                        <a href="/forts/pratapgad" class="text-red-600 hover:text-yellow-500 font-semibold">
-                            Explore Fort <i class="fas fa-arrow-right ml-1"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="royal-card rounded-2xl overflow-hidden group">
-                    <div class="h-48 bg-cover bg-center group-hover:scale-110 transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2 font-devanagari">शिवनेरी</h3>
-                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Birth place of Chhatrapati Shivaji Maharaj, a sacred fort in Maratha history.</p>
-                        <a href="/forts/shivneri" class="text-red-600 hover:text-yellow-500 font-semibold">
-                            Explore Fort <i class="fas fa-arrow-right ml-1"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <a href="/forts/shivaji-forts" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-red-600 to-yellow-500 text-white font-semibold rounded-full hover:from-yellow-500 hover:to-red-600 transition-all duration-300">
-                    <i class="fas fa-fort-awesome mr-2"></i>
-                    View All Shivaji Forts
-                </a>
-            </div>
-        </div>
-    </section>
 
-    <!-- Call to Action Section -->
-    <section class="py-20 bg-gradient-to-r from-red-600 to-yellow-500 text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6 font-devanagari">
-                शिवरायांच्या पावलावर चला
+            <!-- Military Strategy -->
+                    <div class="royal-card bg-cream-light dark:bg-gray-900 p-8 rounded-2xl border border-mountain text-center hover:shadow-xl transition-all">
+                <div class="w-16 h-16 bg-gradient-to-br from-yellow-600 to-orange-500 rounded-full flex items-center justify-center mb-6 mx-auto">
+                    <i class="fas fa-sword text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-primary mb-3">
+                    युद्धनीती
+                </h3>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    गनिमी कावा या युद्धतंत्राची प्रभावी मांडणी करून युद्धभूमीवरील रणनीतीत क्रांतिकारक बदल घडवून आणले, जे आजही अभ्यासले जातात.
+                </p>
+            </div>
+            <!-- Fort Administration -->
+                        <div class="royal-card bg-cream-light dark:bg-gray-900 p-8 rounded-2xl border border-mountain text-center hover:shadow-xl transition-all">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-600 to-emerald-700 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-fort-awesome text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">
+                        किल्ले प्रशासन
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                        सह्याद्री पर्वतरांगांमध्ये असलेल्या <strong>३००हून अधिक किल्ल्यांचे</strong>
+                        सुदृढीकरण, व्यवस्थापन आणि रणनीतिक नियंत्रण प्रभावीपणे केले.
+                    </p>
+                </div>
+
+        </div>
+    </div>
+</section>
+
+ 
+    <!-- Timeline Section -->
+<section class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <div class="section-indicator"></div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
+                    छत्रपती शिवाजी महाराजांचा कालपट
+                </span>
             </h2>
-            <p class="text-xl md:text-2xl mb-8 opacity-90">
-                Join us in exploring the legacy and history of the great Maratha Empire
+            <p class="text-xl text-gray-600 dark:text-gray-300">
+                महान मराठा योद्धा राजाच्या जीवनातील महत्त्वाच्या घटना
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="/trek-schedule" class="inline-flex items-center px-8 py-4 bg-white text-red-600 font-semibold rounded-full hover:bg-gray-100 transition-colors">
-                    <i class="fas fa-hiking mr-2"></i>
-                    Join Fort Treks
-                </a>
-                <a href="#newsletter" class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-red-600 transition-colors">
-                    <i class="fas fa-envelope mr-2"></i>
-                    Subscribe Newsletter
-                </a>
-                <a href="/community" class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-red-600 transition-colors">
-                    <i class="fas fa-users mr-2"></i>
-                    Join Community
-                </a>
+        </div>
+
+            <div class="max-w-4xl mx-auto">
+            <div class="space-y-8">
+
+                            <div class="timeline-item pl-8 py-6">
+                                <h3 class="text-2xl font-bold text-red-600 mb-2">१६३०</h3>
+                                <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">
+                                    जन्म
+                                </h4>
+                                <p class="text-gray-600 dark:text-gray-300">
+                                    १९ फेब्रुवारी १६३० रोजी शिवनेरी किल्ल्यावर शहाजी भोसले आणि जिजाबाई यांच्या पोटी जन्म.
+                                </p>
+                            </div>
+
+                            <div class="timeline-item pl-8 py-6">
+                                <h3 class="text-2xl font-bold text-red-600 mb-2">१६४५</h3>
+                                <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">
+                                    पहिला किल्ला जिंकला
+                                </h4>
+                                <p class="text-gray-600 dark:text-gray-300">
+                                    वयाच्या १५व्या वर्षी तोरणा किल्ला जिंकून लष्करी नेतृत्वाच्या प्रवासाची सुरुवात केली.
+                                </p>
+                            </div>
+
+                            <div class="timeline-item pl-8 py-6">
+                                <h3 class="text-2xl font-bold text-red-600 mb-2">१६५९</h3>
+                                <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">
+                                    अफझलखान वध
+                                </h4>
+                                <p class="text-gray-600 dark:text-gray-300">
+                                    प्रतापगडावर झालेल्या ऐतिहासिक भेटीत अफझलखानाचा पराभव करून असाधारण धैर्य व युद्धनीतीचे दर्शन घडवले.
+                                </p>
+                            </div>
+
+                            <div class="timeline-item pl-8 py-6">
+                                <h3 class="text-2xl font-bold text-red-600 mb-2">१६७४</h3>
+                                <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">
+                                    राज्याभिषेक
+                                </h4>
+                                <p class="text-gray-600 dark:text-gray-300">
+                                    रायगड किल्ल्यावर छत्रपती म्हणून राज्याभिषेक होऊन मराठा साम्राज्याची औपचारिक स्थापना झाली.
+                                </p>
+                            </div>
+
+                            <div class="timeline-item pl-8 py-6">
+                                <h3 class="text-2xl font-bold text-red-600 mb-2">१६८०</h3>
+                                <h4 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">
+                                    निधन
+                                </h4>
+                                <p class="text-gray-600 dark:text-gray-300">
+                                    ३ एप्रिल १६८० रोजी रायगड किल्ल्यावर निधन झाले; परंतु एक अजरामर आणि प्रेरणादायी वारसा मागे राहिला.
+                                </p>
+                            </div>
+
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<!-- Legacy Section -->
+<section id="legacy" class="py-20 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <div class="section-indicator"></div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
+                    शाश्वत वारसा
+                </span>
+            </h2>
+            <p class="text-xl text-gray-600 dark:text-gray-300">
+                काळाच्या पलीकडे असलेली प्रेरणा — छत्रपती शिवाजी महाराजांचे आदर्श आजही जिवंत आहेत
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+
+            <!-- Swarajya -->
+            <div class="royal-card rounded-2xl p-8 text-center">
+                <div class="w-20 h-20 bg-gradient-to-br from-red-600 to-yellow-500 rounded-full flex items-center justify-center mb-6 mx-auto">
+                    <i class="fas fa-flag text-3xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                    स्वराज्याची संकल्पना
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    छत्रपती शिवाजी महाराजांनी मांडलेली स्वराज्याची क्रांतिकारी संकल्पना पुढे भारताच्या स्वातंत्र्य चळवळीचा पाया ठरली.
+                </p>
+            </div>
+
+            <!-- Religious Tolerance -->
+            <div class="royal-card rounded-2xl p-8 text-center">
+                <div class="w-20 h-20 bg-gradient-to-br from-yellow-500 to-red-600 rounded-full flex items-center justify-center mb-6 mx-auto">
+                    <i class="fas fa-heart text-3xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                    धार्मिक सहिष्णुता
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    सर्व धर्मांप्रती आदर आणि सलोखा जपणारी धर्मनिरपेक्ष राज्यव्यवस्था, ज्यामुळे साम्राज्यात ऐक्य आणि विश्वास निर्माण झाला.
+                </p>
+            </div>
+
+            <!-- Welfare of People -->
+            <div class="royal-card rounded-2xl p-8 text-center">
+                <div class="w-20 h-20 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center mb-6 mx-auto">
+                    <i class="fas fa-users text-3xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                    जनकल्याण
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    जनतेचे कल्याण हेच राज्यकर्त्याचे प्रमुख कर्तव्य मानणारी शासनपद्धती, जी आजच्या लोकशाही मूल्यांनाही प्रेरणा देते.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Forts Gallery Section -->
+<section id="forts" class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <div class="section-indicator"></div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
+                    छत्रपती शिवाजी महाराजांचे किल्ले
+                </span>
+            </h2>
+            <p class="text-xl text-gray-600 dark:text-gray-300">
+                छत्रपती शिवाजी महाराजांशी संबंधित भव्य व ऐतिहासिक किल्ल्यांचा शोध घ्या
+            </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Raigad -->
+            <a href="./fort/index.php?slug=raigad-fort" class="block group focus:outline-none">
+                <div class="royal-card rounded-2xl p-6 group h-full flex flex-col">
+                    <div class="h-48 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+                         style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                            रायगड किल्ला
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                            मराठा साम्राज्याची राजधानी आणि छत्रपती शिवाजी महाराजांचा राज्याभिषेक झालेला ऐतिहासिक किल्ला.
+                        </p>
+                        <span class="mt-auto text-red-600 hover:text-yellow-500 font-semibold">
+                            किल्ला पाहा <i class="fas fa-arrow-right ml-1"></i>
+                        </span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Pratapgad -->
+            <a href="./fort/index.php?slug=pratapgad-fort" class="block group focus:outline-none">
+                <div class="royal-card rounded-2xl p-6 group h-full flex flex-col">
+                    <div class="h-48 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+                         style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                            प्रतापगड किल्ला
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                            छत्रपती शिवाजी महाराज आणि अफझलखान यांच्यातील ऐतिहासिक भेट घडलेला पराक्रमी किल्ला.
+                        </p>
+                        <span class="mt-auto text-red-600 hover:text-yellow-500 font-semibold">
+                            किल्ला पाहा <i class="fas fa-arrow-right ml-1"></i>
+                        </span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Shivneri -->
+            <a href="./fort/index.php?slug=shivneri-fort" class="block group focus:outline-none">
+                <div class="royal-card rounded-2xl p-6 group h-full flex flex-col">
+                    <div class="h-48 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+                         style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                            शिवनेरी किल्ला
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                            छत्रपती शिवाजी महाराजांचे जन्मस्थान आणि मराठा इतिहासातील अत्यंत पूजनीय किल्ला.
+                        </p>
+                        <span class="mt-auto text-red-600 hover:text-yellow-500 font-semibold">
+                            किल्ला पाहा <i class="fas fa-arrow-right ml-1"></i>
+                        </span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="./fort_in_english.php"
+               class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-red-600 to-yellow-500 text-white font-semibold rounded-full hover:from-yellow-500 hover:to-red-600 transition-all duration-300">
+                <i class="fas fa-fort-awesome mr-2"></i>
+                सर्व शिवाजी महाराजांचे किल्ले पहा
+            </a>
+        </div>
+    </div>
+</section>
+
+
 </main>
 
-<?php include './includes/footer.php'; ?>
+<?php include './../includes/footer_marathi.php'; ?>
 
 <!-- JavaScript -->
 <script>
