@@ -418,8 +418,32 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'ट्रेकिं
                             <!-- Dropdown Menu for Forts -->
                             <div class="absolute top-full left-0 w-64 bg-white dark:bg-gray-800 shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-2">
                                 <div class="py-2">
-                                    <a href="<?= BASE_URL ?>marathi/fort_information.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">किल्ल्यांची माहिती</a>
-                                    <a href="<?= BASE_URL ?>marathi/gallery/map-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">नकाशे</a>
+
+                                    <a href="<?= BASE_URL ?>marathi/fort_information.php"
+                                    class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        किल्ल्यांची माहिती
+                                    </a>
+
+                                    <a href="<?= BASE_URL ?>marathi/temple_information.php"
+                                    class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        मंदिरे
+                                    </a>
+
+                                    <a href="<?= BASE_URL ?>marathi/jungle_information.php"
+                                    class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        जंगल व व्याघ्र प्रकल्प
+                                    </a>
+
+                                    <a href="<?= BASE_URL ?>marathi/weapon_information.php"
+                                    class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        ऐतिहासिक शस्त्रे
+                                    </a>
+
+                                    <a href="<?= BASE_URL ?>marathi/gallery/map-gallery.php"
+                                    class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        नकाशे
+                                    </a>
+
                                 </div>
                             </div>
                         </li>
@@ -564,8 +588,32 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'ट्रेकिं
                                             <i class="fas fa-chevron-down transition-transform duration-300"></i>
                                         </button>
                                         <div class="mobile-dropdown-content ml-6 mt-2 space-y-2 hidden">
-                                            <a href="<?= BASE_URL ?>marathi/fort_infromation.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">किल्ले</a>
-                                            <a href="<?= BASE_URL ?>marathi/gallery/map-gallery.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">नकाशे</a>
+
+                                            <a href="<?= BASE_URL ?>marathi/fort_information.php"
+                                            class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">
+                                                किल्ले
+                                            </a>
+
+                                            <a href="<?= BASE_URL ?>marathi/temple_information.php"
+                                            class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">
+                                                मंदिरे
+                                            </a>
+
+                                            <a href="<?= BASE_URL ?>marathi/jungle_information.php"
+                                            class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">
+                                                जंगल व व्याघ्र प्रकल्प
+                                            </a>
+
+                                            <a href="<?= BASE_URL ?>marathi/weapon_information.php"
+                                            class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">
+                                                ऐतिहासिक शस्त्रे
+                                            </a>
+
+                                            <a href="<?= BASE_URL ?>marathi/gallery/map-gallery.php"
+                                            class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">
+                                                नकाशे
+                                            </a>
+
                                         </div>
                                     </div>
                               </li>

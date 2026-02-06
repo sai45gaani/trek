@@ -421,8 +421,30 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                             <!-- Dropdown Menu for Forts -->
                             <div class="absolute top-full left-0 w-64 bg-white dark:bg-gray-800 shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-2">
                                 <div class="py-2">
-                                    <a href="<?= BASE_URL ?>fort_information.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Fort Information</a>
-                                    <a href="<?= BASE_URL ?>gallery/map-gallery.php" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Maps</a>
+                                    <a href="<?= BASE_URL ?>fort_information.php"
+                                    class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        Fort Information
+                                    </a>
+
+                                    <a href="<?= BASE_URL ?>temple_information.php"
+                                    class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        Temples
+                                    </a>
+
+                                    <a href="<?= BASE_URL ?>jungle_information.php"
+                                    class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        Jungles & Tiger Reserves
+                                    </a>
+
+                                    <a href="<?= BASE_URL ?>weapon_information.php"
+                                    class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        Ancient Weapons
+                                    </a>
+
+                                    <a href="<?= BASE_URL ?>gallery/map-gallery.php"
+                                    class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        Maps
+                                    </a>
                                 </div>
                             </div>
                         </li>
@@ -566,10 +588,34 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'trekking, sahyadri, f
                                             </div>
                                             <i class="fas fa-chevron-down transition-transform duration-300"></i>
                                         </button>
-                                        <div class="mobile-dropdown-content ml-6 mt-2 space-y-2 hidden">
-                                            <a href="<?= BASE_URL ?>fort_information.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">Fort Information</a>
-                                            <a href="<?= BASE_URL ?>project-map.php" class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">Maps</a>
-                                        </div>
+                                <div class="mobile-dropdown-content ml-6 mt-2 space-y-2 hidden">
+
+                                    <a href="<?= BASE_URL ?>fort_information.php"
+                                    class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">
+                                        Fort Information
+                                    </a>
+
+                                    <a href="<?= BASE_URL ?>temple_information.php"
+                                    class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">
+                                        Temples
+                                    </a>
+
+                                    <a href="<?= BASE_URL ?>jungle_information.php"
+                                    class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">
+                                        Jungles & Tiger Reserves
+                                    </a>
+
+                                    <a href="<?= BASE_URL ?>weapon_information.php"
+                                    class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">
+                                        Ancient Weapons
+                                    </a>
+
+                                    <a href="<?= BASE_URL ?>project-map.php"
+                                    class="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-accent">
+                                        Maps
+                                    </a>
+
+                                </div>
                                     </div>
                               </li>
                                 <li>

@@ -37,75 +37,93 @@ function weaponSlug($name) {
 
 <main id="main-content">
 
-<!-- Hero -->
-<section class="relative py-20 bg-gradient-to-r from-slate-800 to-gray-700 text-white">
-    <div class="container mx-auto px-4 text-center">
-        <h1 class="text-5xl font-bold mb-4">
+<!-- HERO -->
+<section class="relative py-24 bg-gradient-to-r from-slate-800 to-gray-700 text-white overflow-hidden">
+    <div class="container mx-auto px-6 text-center relative z-10">
+
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">
             Historical <span class="text-accent">Weapons</span>
         </h1>
-        <p class="text-xl opacity-90">
-            Explore ancient and medieval weapons used in Indian history
+
+        <p class="text-lg md:text-xl opacity-90 max-w-3xl mx-auto">
+            Explore ancient and medieval weapons that shaped Indian warfare and history
         </p>
+
     </div>
 </section>
 
-<!-- Weapon Cards -->
+<!-- WEAPON LISTING -->
 <section class="py-16 bg-gray-50 dark:bg-gray-900">
-    <div class="container mx-auto px-4">
+<div class="container mx-auto px-4">
 
-        <?php if (count($weapons) > 0): ?>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<?php if (count($weapons) > 0): ?>
 
-            <?php foreach ($weapons as $weapon): ?>
-                <a href="./weapon/index.php?slug=<?php echo weaponSlug($weapon['WeaponName']); ?>"
-                   class="block group">
+<!-- GRID -->
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 items-stretch">
 
-                    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:-translate-y-1 transition-all">
+<?php foreach ($weapons as $weapon): ?>
 
-                        <!-- Image -->
-                        <div class="h-56 overflow-hidden bg-gray-200">
-                            <img
-                                src="../assets/images/Photos/Weapon/<?php echo htmlspecialchars($weapon['PIC_NAME'] ?? 'default-weapon.jpg'); ?>"
-                                alt="<?php echo htmlspecialchars($weapon['WeaponName']); ?>"
-                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            >
-                        </div>
+<a href="./weapon/index.php?slug=<?php echo weaponSlug($weapon['WeaponName']); ?>"
+   class="group h-full">
 
-                        <!-- Content -->
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">
-                                <?php echo htmlspecialchars($weapon['WeaponName']); ?>
-                            </h3>
+<article class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 h-full flex flex-col">
 
-                            <?php if (!empty($weapon['WeaponType'])): ?>
-                            <p class="text-sm text-gray-600 dark:text-gray-300 mb-1">
-                                <strong>Type:</strong> <?php echo htmlspecialchars($weapon['WeaponType']); ?>
-                            </p>
-                            <?php endif; ?>
+    <!-- IMAGE -->
+    <div class="relative h-60 bg-gray-200 overflow-hidden">
+        <img
+            src="../assets/images/Photos/Weapon/<?php echo htmlspecialchars($weapon['PIC_NAME'] ?? 'default-weapon.jpg'); ?>"
+            alt="<?php echo htmlspecialchars($weapon['WeaponName']); ?>"
+            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+        >
+    </div>
 
-                            <?php if (!empty($weapon['WeaponEra'])): ?>
-                            <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
-                                <strong>Era:</strong> <?php echo htmlspecialchars($weapon['WeaponEra']); ?>
-                            </p>
-                            <?php endif; ?>
+    <!-- CONTENT -->
+    <div class="p-6 flex flex-col flex-1">
 
-                            <span class="inline-flex items-center justify-center w-full bg-primary hover:bg-secondary text-white py-2 rounded-lg font-semibold">
-                                View Details
-                            </span>
-                        </div>
+        <!-- TEXT CONTENT -->
+        <div>
+            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2 leading-snug">
+                <?php echo htmlspecialchars($weapon['WeaponName']); ?>
+            </h3>
 
-                    </div>
-                </a>
-            <?php endforeach; ?>
-
-        </div>
-        <?php else: ?>
-            <p class="text-center text-gray-600 dark:text-gray-300">
-                Weapon information is currently unavailable.
+            <?php if (!empty($weapon['WeaponType'])): ?>
+            <p class="text-sm text-gray-600 dark:text-gray-300 mb-1">
+                <strong>Type:</strong> <?php echo htmlspecialchars($weapon['WeaponType']); ?>
             </p>
-        <?php endif; ?>
+            <?php endif; ?>
+
+            <?php if (!empty($weapon['WeaponEra'])): ?>
+            <p class="text-sm text-gray-600 dark:text-gray-300">
+                <strong>Era:</strong> <?php echo htmlspecialchars($weapon['WeaponEra']); ?>
+            </p>
+            <?php endif; ?>
+        </div>
+
+        <!-- CTA (ALWAYS BOTTOM) -->
+        <div class="mt-auto pt-6">
+            <span class="block w-full text-center bg-primary hover:bg-secondary text-white py-2.5 rounded-lg font-semibold transition-colors">
+                View Details
+            </span>
+        </div>
 
     </div>
+
+</article>
+</a>
+
+<?php endforeach; ?>
+
+</div>
+
+<?php else: ?>
+
+<p class="text-center text-gray-600 dark:text-gray-300 text-lg">
+    Weapon information is currently unavailable.
+</p>
+
+<?php endif; ?>
+
+</div>
 </section>
 
 </main>
