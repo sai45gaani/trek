@@ -4,6 +4,15 @@ $page_title = 'प्रकारानुसार किल्ले - पर�
 $meta_description = 'महाराष्ट्रातील किल्ल्यांचे प्रकारानुसार संपूर्ण वर्गीकरण - पर्वतीय किल्ले, समुद्र किल्ले, भूदुर्ग आणि गुहा किल्ले. प्रत्येक प्रकारच्या किल्ल्यांची सविस्तर माहिती.';
 $meta_keywords = 'पर्वतीय किल्ले, समुद्र किल्ले, भूदुर्ग, गुहा किल्ले, महाराष्ट्र किल्ले प्रकार, सह्याद्री किल्ले वर्गीकरण';
 
+$categorySlugMap = [
+    'hill-forts' => 'पर्वतीय किल्ले',
+    'sea-forts'  => 'समुद्र किल्ले'
+];
+
+$categorySlugReverseMap = array_flip($categorySlugMap);
+
+$currentSlug = $_GET['category'] ?? '';
+$currentCategory = $categorySlugMap[$currentSlug] ?? '';
 require_once './../config/database.php';
 include './../includes/header_marathi.php';
 
@@ -166,7 +175,7 @@ foreach ($typeData as $typeName => $forts) {
     ];
 }
 
-$currentCategory = isset($_GET['category']) ? $_GET['category'] : '';
+//$currentCategory = isset($_GET['category']) ? $_GET['category'] : '';
 $selectedCategory = $currentCategory && isset($fortCategories[$currentCategory]) ? $fortCategories[$currentCategory] : null;
 
 $totalForts = array_sum(array_map(function($cat) { return $cat['total_count']; }, $fortCategories));
@@ -226,13 +235,13 @@ $seaFortsCount = isset($fortCategories['समुद्र किल्ले'])
         <div class="container mx-auto px-4">
             <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-700 mb-8">
                 <div class="flex flex-col md:flex-row gap-4 items-end">
-                    <div class="flex-1">
+                  <!--  <div class="flex-1">
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                             <i class="fas fa-search mr-2 text-accent"></i>किल्ला प्रकार शोधा
                         </label>
                         <input type="text" id="categorySearch" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent dark:bg-gray-700 dark:text-white transition-all duration-300" placeholder="प्रकाराचे नाव टाइप करा..." autocomplete="off">
-                    </div>
-                    <div class="flex-1">
+                    </div>-->
+                    <!--<div class="flex-1">
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                             <i class="fas fa-signal mr-2 text-accent"></i>कठीणता निवडा
                         </label>
@@ -243,8 +252,8 @@ $seaFortsCount = isset($fortCategories['समुद्र किल्ले'])
                             <option value="कठीण">कठीण</option>
                             <option value="अत्यंत कठीण">अत्यंत कठीण</option>
                         </select>
-                    </div>
-                    <div class="flex-1">
+                    </div>-->
+                    <!--<div class="flex-1">
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                             <i class="fas fa-calendar mr-2 text-accent"></i>उत्तम हंगाम
                         </label>
@@ -253,6 +262,28 @@ $seaFortsCount = isset($fortCategories['समुद्र किल्ले'])
                             <option value="ऑक्टोबर ते मार्च">ऑक्टोबर ते मार्च</option>
                             <option value="नोव्हेंबर ते फेब्रुवारी">नोव्हेंबर ते फेब्रुवारी</option>
                         </select>
+                    </div>-->
+                    <div class="flex-1">
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                            <i class="fas fa-signal mr-2 text-accent"></i>Select Category
+                        </label>
+                        <select id="CategoryFilter" name="category"
+                        class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600
+                            rounded-lg focus:ring-2 focus:ring-accent focus:border-accent
+                            dark:bg-gray-700 dark:text-white transition-all duration-300">
+
+                        <option value="">सर्व प्रकार</option>
+
+                        <option value="hill-forts" <?= $currentSlug === 'hill-forts' ? 'selected' : '' ?>>
+                            पर्वतीय किल्ले
+                        </option>
+
+                        <option value="sea-forts" <?= $currentSlug === 'sea-forts' ? 'selected' : '' ?>>
+                            समुद्र किल्ले
+                        </option>
+
+                    </select>
+
                     </div>
                     <button onclick="clearFilters()" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-colors duration-300">
                         <i class="fas fa-times mr-2"></i>साफ करा
@@ -312,7 +343,7 @@ $seaFortsCount = isset($fortCategories['समुद्र किल्ले'])
                 <?php if(count($selectedCategory['forts']) > 0): ?>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     <?php foreach($selectedCategory['forts'] as $fort): ?>
-                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition-all">
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition-all flex flex-col h-full p-6">
                         <div class="flex items-center justify-between mb-4">
                             <h4 class="text-lg font-bold"><?php echo htmlspecialchars($fort['nameMar']); ?></h4>
                             <i class="<?php echo $selectedCategory['icon']; ?> text-accent text-xl"></i>
@@ -323,13 +354,13 @@ $seaFortsCount = isset($fortCategories['समुद्र किल्ले'])
                                 <span><?php echo $selectedCategory['name']; ?></span>
                             </div>
                         </div>
-                        <div class="flex gap-2">
-                            <a href="/fort/<?php echo slugify($fort['nameEng']); ?>" class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2 px-3 rounded-lg text-sm">
+                        <div class="flex gap-2 mt-auto">
+                            <a href="./fort/index.php?slug=<?php echo slugify($fort['nameEng']); ?>" class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2 px-3 rounded-lg text-sm">
                                 <i class="fas fa-info-circle mr-1"></i>माहिती
                             </a>
-                            <a href="/trek/<?php echo slugify($fort['nameEng']); ?>" class="flex-1 bg-accent hover:bg-primary text-white text-center py-2 px-3 rounded-lg text-sm">
+                           <!-- <a href="/trek/<?php echo slugify($fort['nameEng']); ?>" class="flex-1 bg-accent hover:bg-primary text-white text-center py-2 px-3 rounded-lg text-sm">
                                 <i class="fas fa-route mr-1"></i>ट्रेक
-                            </a>
+                            </a>-->
                         </div>
                     </div>
                     <?php endforeach; ?>
@@ -354,7 +385,7 @@ $seaFortsCount = isset($fortCategories['समुद्र किल्ले'])
 
             <div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-8" id="categoryGrid">
                 <?php foreach($fortCategories as $key => $category): ?>
-                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-accent group searchable-category" 
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-accent group searchable-category flex flex-col h-full p-6" 
                      data-name="<?php echo $category['name']; ?>"
                      data-difficulty="<?php echo $category['difficulty_range']; ?>"
                      data-season="<?php echo $category['best_season']; ?>">
@@ -411,11 +442,12 @@ $seaFortsCount = isset($fortCategories['समुद्र किल्ले'])
                             <?php endif; ?>
                         </div>
                     </div>
-                    
-                    <a href="?category=<?php echo urlencode($key); ?>" class="block w-full bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg font-semibold transition-all text-center">
+                    <div class="space-y-3 mt-auto">
+                    <a href="?category=<?php echo $categorySlugReverseMap[$key] ?? ''; ?>" class="block w-full bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg font-semibold transition-all text-center">
                         <?php echo $category['name']; ?> पहा
                         <i class="fas fa-arrow-right ml-2"></i>
                     </a>
+                    </div>
                 </div>
                 <?php endforeach; ?>
             </div>
@@ -438,6 +470,61 @@ $seaFortsCount = isset($fortCategories['समुद्र किल्ले'])
     </section>
     <?php endif; ?>
 
+    <!-- Additional Information Section -->
+        <section class="py-20 bg-gray-50 dark:bg-gray-800">
+            <div class="container mx-auto px-4">
+                <div class="max-w-6xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">
+                        <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                            किल्ल्यांचे प्रकार समजून घ्या
+                        </span>
+                    </h2>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                        
+                        <!-- Hill Forts -->
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 text-center shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                            <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-6 mx-auto transform transition-transform hover:scale-110">
+                                <i class="fas fa-mountain text-3xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">डोंगरी किल्ले</h3>
+                            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                                उंच डोंगरावर बांधलेले किल्ले लष्करी दृष्टिकोनातून अत्यंत महत्त्वाचे होते.
+                                घाटमार्गांवर नियंत्रण ठेवण्यासाठी आणि शत्रूच्या हालचालींवर नजर ठेवण्यासाठी
+                                या किल्ल्यांचा मोठ्या प्रमाणावर उपयोग केला जात असे.
+                            </p>
+                        </div>
+                        
+                        <!-- Sea Forts -->
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 text-center shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                            <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 mx-auto transform transition-transform hover:scale-110">
+                                <i class="fas fa-anchor text-3xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">सागरी किल्ले</h3>
+                            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                                समुद्रकिनाऱ्यावर किंवा समुद्रात उभारलेले सागरी किल्ले बंदरे सुरक्षित ठेवण्यासाठी
+                                आणि सागरी व्यापारावर नियंत्रण मिळवण्यासाठी बांधले गेले.
+                                हे किल्ले नौदल अभियांत्रिकीचे उत्तम उदाहरण आहेत.
+                            </p>
+                        </div>
+                        
+                        <!-- Cave Forts -->
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 text-center shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                            <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 mx-auto transform transition-transform hover:scale-110">
+                                <i class="fas fa-archway text-3xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">गुंफा किल्ले</h3>
+                            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                                नैसर्गिक किंवा मानवनिर्मित गुंफांमध्ये बांधलेले किल्ले संरक्षणासोबतच
+                                धार्मिक आणि सांस्कृतिक कारणांसाठी वापरले जात.
+                                अनेक गुंफा किल्ल्यांमध्ये प्राचीन बौद्ध लेणी आणि दगडी कोरीव काम आढळते.
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
     <?php include './our_more_about_fort_info.php'; ?>
 
 </main>
@@ -526,4 +613,35 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('प्रकारानुसार किल्ले (डेटाबेस-चालित) पृष्ठ यशस्वीरित्या लोड झाले');
 });
+
+const categoryFilter = document.getElementById('CategoryFilter');
+const filterButton = document.getElementById('applyFilter');
+
+function applyCategoryFilter() {
+    const category = categoryFilter.value;
+
+    if (category) {
+        window.location.href = `fort_by_category.php?category=${category}`;
+    } else {
+        window.location.href = 'fort_by_category.php';
+    }
+}
+
+// Filter button click
+if (filterButton) {
+    filterButton.addEventListener('click', function () {
+        applyCategoryFilter();
+    });
+}
+
+// Enter key support
+if (categoryFilter) {
+    categoryFilter.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            applyCategoryFilter();
+        }
+    });
+}
+
 </script>

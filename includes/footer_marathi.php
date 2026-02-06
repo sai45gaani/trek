@@ -261,14 +261,19 @@
                 <div class="flex items-center space-x-4">
                     <span class="text-gray-400 text-sm">Language:</span>
                                     <div class="flex space-x-2">
-                                        <a href="<?= BASE_URL ?>index.php"
-                                        class="px-3 py-1 text-sm bg-primary text-white rounded">
-                                            EN
+                                        <!-- Marathi (active) -->
+                                        <a href="<?= $marathiPath ?>"
+                                        class="px-3 py-1 text-sm bg-primary text-white rounded"
+                                        data-language="mr">
+                                            मराठी
                                         </a>
 
-                                        <a href="<?= BASE_URL ?>marathi/index.php"
-                                        class="px-3 py-1 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">
-                                            मराठी
+                                        <!-- English -->
+                                        <a href="<?= $englishPath ?>"
+                                        class="px-3 py-1 text-sm text-gray-600 dark:text-gray-400
+                                                hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
+                                        data-language="en">
+                                            EN
                                         </a>
                                     </div>
                 </div>

@@ -371,7 +371,7 @@ $uniqueRegions = count(array_unique(array_column($districts, 'region')));
                             
                             <div class="h-1 bg-gradient-to-r from-primary to-accent"></div>
                             
-                            <div class="p-6">
+                            <div class="p-6 flex flex-col h-full">
                                 <div class="flex justify-between items-start mb-4">
                                     <h3 class="text-2xl font-bold text-gray-800 dark:text-white">
                                         <?php echo $district['name']; ?>
@@ -424,14 +424,14 @@ $uniqueRegions = count(array_unique(array_column($districts, 'region')));
                                     </div>
                                 </div>
                                 
-                                <div class="flex justify-between items-center">
-                                    <span class="text-gray-500 dark:text-gray-400 text-sm flex items-center">
+                                <div class="flex justify-between items-center mt-auto">
+                                    <!--<span class="text-gray-500 dark:text-gray-400 text-sm flex items-center">
                                         <i class="fas fa-hiking mr-1"></i>
                                         Trekking Available
-                                    </span>
+                                    </span>-->
                                     
                                     <a href="?district=<?php echo urlencode($key); ?>" 
-                                       class="bg-primary hover:bg-secondary text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 text-sm group">
+                                       class="block w-full bg-primary hover:bg-secondary text-white text-center py-3 px-4 rounded-lg font-semibold transition-colors duration-300">
                                         Explore Forts
                                         <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                                     </a>

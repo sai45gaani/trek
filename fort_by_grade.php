@@ -184,7 +184,7 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
         <div class="container mx-auto px-4">
             <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-700">
                 <div class="flex flex-col md:flex-row gap-4 items-end">
-                    <div class="flex-1">
+                    <!--<div class="flex-1">
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                             <i class="fas fa-search mr-2"></i>Search Fort
                         </label>
@@ -195,7 +195,7 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
                             placeholder="Type fort name..."
                             autocomplete="off"
                         >
-                    </div>
+                    </div>-->
                     
                     <div class="flex-1">
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
@@ -364,7 +364,7 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
                         <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:transform hover:scale-105 searchable-grade" 
                              data-name="<?php echo $grade['name']; ?>">
                             
-                            <div class="p-8">
+                            <div class="p-8 flex flex-col h-full">
                                 <div class="flex items-center mb-6">
                                     <div class="w-16 h-16 <?php echo $iconColor; ?> rounded-full flex items-center justify-center mr-4">
                                         <i class="fas <?php echo $grade['icon']; ?> text-2xl text-white"></i>
@@ -394,7 +394,7 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
                                     </div>
                                 </div>
                                 
-                                <div class="mb-6">
+                                <div class="mb-6 mt-auto">
                                     <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
                                         Some examples:
                                     </h4>
@@ -410,7 +410,7 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
                                     </div>
                                 </div>
                                 
-                                <div class="flex justify-between items-center">
+                                <div class="flex justify-between items-center mt-auto">
                                     <span class="text-gray-500 dark:text-gray-400 text-sm flex items-center">
                                         <i class="fas fa-shield-alt mr-1"></i>
                                         Safety Guidelines
@@ -727,9 +727,9 @@ function applyGradeFilter() {
     const grade = difficultyFilter.value;
 
     if (grade) {
-        window.location.href = `fort_by_grade_english.php?grade=${encodeURIComponent(grade)}`;
+        window.location.href = `fort_by_grade.php?grade=${encodeURIComponent(grade)}`;
     } else {
-        window.location.href = 'fort_by_grade_english.php';
+        window.location.href = 'fort_by_grade.php';
     }
 }
 

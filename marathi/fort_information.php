@@ -95,82 +95,82 @@ if (!isset($fortsData[$currentFilter]) && count($fortsData) > 0) {
 
 <style>
 /* Enhanced Fort-specific styles */
-.fort-card {
-    background: white;
-    border: 1px solid #e5e7eb;
-    transition: all 0.3s ease;
-}
+    .fort-card {
+        background: white;
+        border: 1px solid #e5e7eb;
+        transition: all 0.3s ease;
+    }
 
-.dark .fort-card {
-    background: #1f2937;
-    border-color: #374151;
-}
+    .dark .fort-card {
+        background: #1f2937;
+        border-color: #374151;
+    }
 
-.fort-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    border-color: var(--accent-color);
-}
+    .fort-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        border-color: var(--accent-color);
+    }
 
-.difficulty-badge {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 1rem;
-    font-weight: 600;
-}
+    .difficulty-badge {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 1rem;
+        font-weight: 600;
+    }
 
-.difficulty-easy { background-color: #10b981; color: white; }
-.difficulty-medium { background-color: #f59e0b; color: white; }
-.difficulty-hard { background-color: #ef4444; color: white; }
-.difficulty-extreme { background-color: #8b5cf6; color: white; }
+    .difficulty-easy { background-color: #10b981; color: white; }
+    .difficulty-medium { background-color: #f59e0b; color: white; }
+    .difficulty-hard { background-color: #ef4444; color: white; }
+    .difficulty-extreme { background-color: #8b5cf6; color: white; }
 
-.alphabet-filter {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: center;
-    margin-bottom: 2rem;
-}
-
-.alphabet-btn {
-    padding: 0.5rem 1rem;
-    border: 2px solid var(--primary-color);
-    background: transparent;
-    color: var(--primary-color);
-    border-radius: 0.5rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    font-size: 1.1rem;
-}
-
-.alphabet-btn:hover,
-.alphabet-btn.active {
-    background: var(--primary-color);
-    color: white;
-    transform: scale(1.05);
-}
-
-.search-filter-card {
-    background: white;
-    border: 1px solid #e5e7eb;
-}
-
-.dark .search-filter-card {
-    background: #1f2937;
-    border-color: #374151;
-}
-
-@media (max-width: 768px) {
     .alphabet-filter {
-        gap: 0.25rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+        margin-bottom: 2rem;
     }
-    
+
     .alphabet-btn {
-        padding: 0.375rem 0.75rem;
-        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        border: 2px solid var(--primary-color);
+        background: transparent;
+        color: var(--primary-color);
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        font-size: 1.1rem;
     }
-}
+
+    .alphabet-btn:hover,
+    .alphabet-btn.active {
+        background: var(--primary-color);
+        color: white;
+        transform: scale(1.05);
+    }
+
+    .search-filter-card {
+        background: white;
+        border: 1px solid #e5e7eb;
+    }
+
+    .dark .search-filter-card {
+        background: #1f2937;
+        border-color: #374151;
+    }
+
+    @media (max-width: 768px) {
+        .alphabet-filter {
+            gap: 0.25rem;
+        }
+        
+        .alphabet-btn {
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+        }
+    }
 </style>
 
 <main id="main-content" class="">

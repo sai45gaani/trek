@@ -4,6 +4,18 @@ $page_title = 'कठीणतेनुसार किल्ले - ट्र�
 $meta_description = 'महाराष्ट्रातील सोपे, मध्यम, कठीण आणि अत्यंत कठीण किल्ले. आपल्या ट्रेकिंग अनुभव आणि फिटनेस स्तरानुसार किल्ले शोधा.';
 $meta_keywords = 'किल्ल्यांची श्रेणी, ट्रेकिंग कठीणता, सोपे किल्ले, कठीण किल्ले, श्रेणी प्रणाली, किल्ला वर्गीकरण';
 
+$gradeSlugMap = [
+    'easy'      => 'सोपी',
+    'medium'    => 'मध्यम',
+    'hard'      => 'कठीण',
+    'very-hard' => 'अत्यंत कठीण'
+];
+
+$gradeSlugReverseMap = array_flip($gradeSlugMap);
+
+$currentGradeSlug = $_GET['grade'] ?? '';
+$currentGrade = $gradeSlugMap[$currentGradeSlug] ?? '';
+
 require_once './../config/database.php';
 // Include header
 include './../includes/header_marathi.php';
@@ -101,7 +113,7 @@ while ($row = $result->fetch_assoc()) {
 }
 
 // Get current grade from URL parameter
-$currentGrade = isset($_GET['grade']) ? $_GET['grade'] : '';
+//$currentGrade = isset($_GET['grade']) ? $_GET['grade'] : '';
 $selectedGrade = $currentGrade && isset($gradeData[$currentGrade]) ? $gradeData[$currentGrade] : null;
 
 // Calculate total forts
@@ -172,7 +184,7 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
         <div class="container mx-auto px-4">
             <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-700">
                 <div class="flex flex-col md:flex-row gap-4 items-end">
-                    <div class="flex-1">
+                  <!--  <div class="flex-1">
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                             <i class="fas fa-search mr-2"></i>किल्ला शोधा
                         </label>
@@ -183,20 +195,46 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
                             placeholder="किल्ल्याचे नाव टाइप करा..."
                             autocomplete="off"
                         >
-                    </div>
+                    </div>-->
                     
                     <div class="flex-1">
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                             <i class="fas fa-signal mr-2"></i>कठीणता निवडा
                         </label>
-                        <select id="difficultyFilter" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent dark:bg-gray-700 dark:text-white">
-                            <option value="">सर्व श्रेणी</option>
-                            <option value="सोपी">सोपी</option>
-                            <option value="मध्यम">मध्यम</option>
-                            <option value="कठीण">कठीण</option>
-                            <option value="अत्यंत कठीण">अत्यंत कठीण</option>
-                        </select>
+
+                    <select id="difficultyFilter"
+                        class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600
+                            rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent
+                            dark:bg-gray-700 dark:text-white">
+
+                        <option value="">सर्व श्रेणी</option>
+
+                        <option value="easy" <?= $currentGradeSlug === 'easy' ? 'selected' : '' ?>>
+                            सोपी
+                        </option>
+
+                        <option value="medium" <?= $currentGradeSlug === 'medium' ? 'selected' : '' ?>>
+                            मध्यम
+                        </option>
+
+                        <option value="hard" <?= $currentGradeSlug === 'hard' ? 'selected' : '' ?>>
+                            कठीण
+                        </option>
+
+                        <option value="very-hard" <?= $currentGradeSlug === 'very-hard' ? 'selected' : '' ?>>
+                            अत्यंत कठीण
+                        </option>
+
+                    </select>
                     </div>
+                                 
+                        <button id="applyFilter"
+                         class="bg-primary hover:bg-secondary text-white
+                         px-6 py-3 rounded-lg font-semibold
+                         transition-colors flex items-center">
+                        <i class="fas fa-filter mr-2"></i>
+                        Filter
+                    </button>
                     
                     <button onclick="clearFilters()" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-colors">
                         <i class="fas fa-times mr-2"></i>साफ करा
@@ -263,7 +301,7 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
                     <?php if (count($selectedGrade['forts']) > 0): ?>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <?php foreach($selectedGrade['forts'] as $fort): ?>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:transform hover:scale-105 border border-gray-200 dark:border-gray-700">
+                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:transform hover:scale-105 border border-gray-200 dark:border-gray-700 ">
                                 <div class="flex items-center justify-between mb-4">
                                     <h4 class="text-xl font-bold text-gray-800 dark:text-white">
                                         <?php echo htmlspecialchars($fort['nameMar']); ?>
@@ -287,16 +325,16 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
                                 </div>
                                 
                                 <div class="flex gap-2">
-                                    <a href="/fort/<?php echo $fort['slug']; ?>" 
+                                    <a href="./fort/index.php?slug=<?php echo $fort['slug']; ?>" 
                                        class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2 px-3 rounded-lg text-sm font-semibold transition-colors">
                                         <i class="fas fa-info-circle mr-1"></i>
                                         माहिती
                                     </a>
-                                    <a href="/trek/<?php echo $fort['slug']; ?>" 
+                                    <!--<a href="/trek/<?php echo $fort['slug']; ?>" 
                                        class="flex-1 bg-accent hover:bg-primary text-white text-center py-2 px-3 rounded-lg text-sm font-semibold transition-colors">
                                         <i class="fas fa-route mr-1"></i>
                                         ट्रेक
-                                    </a>
+                                    </a>-->
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -350,7 +388,7 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
                             
                             <div class="h-1 bg-gradient-to-r from-primary to-accent"></div>
                             
-                            <div class="p-8">
+                            <div class="p-8 flex flex-col h-full">
                                 <div class="flex items-center mb-6">
                                     <div class="w-16 h-16 <?php echo $iconColor; ?> rounded-full flex items-center justify-center mr-4">
                                         <i class="fas <?php echo $grade['icon']; ?> text-2xl text-white"></i>
@@ -396,13 +434,13 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
                                     </div>
                                 </div>
                                 
-                                <div class="flex justify-between items-center">
+                                <div class="flex justify-between items-center mt-auto">
                                     <span class="text-gray-500 dark:text-gray-400 text-sm flex items-center">
                                         <i class="fas fa-shield-alt mr-1"></i>
                                         सुरक्षा मार्गदर्शन
                                     </span>
                                     
-                                    <a href="?grade=<?php echo urlencode($key); ?>" 
+                                    <a href="?grade=<?php echo $gradeSlugReverseMap[$key] ?? ''; ?>" 
                                        class="bg-primary hover:bg-secondary text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 text-sm group">
                                         तपशील पहा
                                         <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
@@ -559,9 +597,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const noResults = document.getElementById('noResults');
     const gradeGrid = document.getElementById('gradeGrid');
     
-    function filterGrades() {
-        const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
-        const selectedDifficulty = difficultyFilter ? difficultyFilter.value.toLowerCase().trim() : '';
+            function filterGrades() {
+                const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
+                const difficultySlugMap = {
+            'easy': 'सोपी',
+            'medium': 'मध्यम',
+            'hard': 'कठीण',
+            'very-hard': 'अत्यंत कठीण'
+        };
+
+        const selectedDifficulty =
+    difficultyFilter.value && difficultySlugMap[difficultyFilter.value]
+        ? difficultySlugMap[difficultyFilter.value]
+        : '';
+      //  const selectedDifficulty = difficultyFilter ? difficultyFilter.value.toLowerCase().trim() : '';
         let visibleCount = 0;
         
         gradeCards.forEach(function(card) {
@@ -720,4 +769,37 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+</script>
+<script>
+const difficultyFilter = document.getElementById('difficultyFilter');
+const filterButton = document.getElementById('applyFilter');
+
+// Function to apply filter
+function applyGradeFilter() {
+    const grade = difficultyFilter.value;
+
+    if (grade) {
+        window.location.href = `fort_by_grade.php?grade=${encodeURIComponent(grade)}`;
+    } else {
+        window.location.href = 'fort_by_grade.php';
+    }
+}
+
+// Button click
+if (filterButton) {
+    filterButton.addEventListener('click', function () {
+        applyGradeFilter();
+    });
+}
+
+// Enter key support
+if (difficultyFilter) {
+    difficultyFilter.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            applyGradeFilter();
+        }
+    });
+}
+    
 </script>

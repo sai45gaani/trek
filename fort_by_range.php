@@ -327,7 +327,7 @@ $selectedRange = $currentRange && isset($mountainRanges[$currentRange]) ? $mount
                              data-name="<?php echo $range['name']; ?>"
                              data-region="<?php echo $range['region']; ?>">
                             
-                            <div class="p-6">
+                            <div class="p-6 flex flex-col h-full">
                                 <div class="flex justify-between items-start mb-4">
                                     <h3 class="text-2xl font-bold text-gray-800 dark:text-white">
                                         <?php echo $range['name']; ?>
@@ -369,7 +369,7 @@ $selectedRange = $currentRange && isset($mountainRanges[$currentRange]) ? $mount
                                     </div>
                                 </div>
                                 
-                                <div class="flex justify-between items-center">
+                                <div class="flex justify-between items-center mt-auto">
                                     <span class="text-gray-500 dark:text-gray-400 text-sm flex items-center">
                                         <i class="fas fa-hiking mr-1"></i>
                                         Trekking Available

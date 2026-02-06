@@ -261,7 +261,7 @@ $seaFortsCount = isset($fortCategories['Sea Forts']) ? $fortCategories['Sea Fort
         <div class="container mx-auto px-4">
             <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-700 mb-8">
                 <div class="flex flex-col md:flex-row gap-4 items-end">
-                    <div class="flex-1">
+                  <!--  <div class="flex-1">
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                             <i class="fas fa-search mr-2 text-accent"></i>Search Fort Category
                         </label>
@@ -272,7 +272,7 @@ $seaFortsCount = isset($fortCategories['Sea Forts']) ? $fortCategories['Sea Fort
                             placeholder="Type category name (Hill, Sea, Land, etc.)..."
                             autocomplete="off"
                         >
-                    </div>
+                    </div>-->
                     
                     <div class="flex-1">
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
@@ -396,7 +396,7 @@ $seaFortsCount = isset($fortCategories['Sea Forts']) ? $fortCategories['Sea Fort
                     <?php if(count($selectedCategory['forts']) > 0): ?>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                         <?php foreach($selectedCategory['forts'] as $fort): ?>
-                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 border border-gray-200 dark:border-gray-700">
+                            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 border border-gray-200 dark:border-gray-700 flex flex-col h-full p-6">
                                 <div class="flex items-center justify-between mb-4">
                                     <h4 class="text-lg font-bold text-gray-800 dark:text-white">
                                         <?php echo $fort; ?>
@@ -415,7 +415,7 @@ $seaFortsCount = isset($fortCategories['Sea Forts']) ? $fortCategories['Sea Fort
                                     </div>
                                 </div>
                                 
-                                <div class="flex gap-2">
+                                <div class="flex gap-2 mt-auto">
                                     <a href="./fort/index.php?slug=<?php echo strtolower(str_replace(' ', '-', $fort)); ?>" 
                                        class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2 px-3 rounded-lg text-sm font-semibold transition-all duration-300 transform hover:scale-105">
                                         <i class="fas fa-info-circle mr-1"></i>
@@ -456,7 +456,7 @@ $seaFortsCount = isset($fortCategories['Sea Forts']) ? $fortCategories['Sea Fort
 
                 <div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-8" id="categoryGrid">
                     <?php foreach($fortCategories as $key => $category): ?>
-                        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-accent group searchable-category relative overflow-hidden" 
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-accent group searchable-category relative overflow-hidden flex flex-col h-full p-6" 
                              data-name="<?php echo $category['name']; ?>"
                              data-difficulty="<?php echo $category['difficulty_range']; ?>"
                              data-season="<?php echo $category['best_season']; ?>">
@@ -534,7 +534,7 @@ $seaFortsCount = isset($fortCategories['Sea Forts']) ? $fortCategories['Sea Fort
                             </div>
                             
                             <!-- Badges and CTA -->
-                            <div class="space-y-3">
+                            <div class="space-y-3 mt-auto">
                                 <div class="flex items-center justify-between text-sm">
                                     <span class="bg-gradient-to-r from-forest to-mountain text-white px-3 py-1 rounded-full text-xs font-semibold">
                                         <?php echo $category['difficulty_range']; ?>
@@ -786,7 +786,7 @@ function applyCategoryFilter() {
 
     if (category) {
         window.location.href =
-            `fort-by-category-english.php?category=${encodeURIComponent(category)}`;
+            `fort_by_category.php?category=${encodeURIComponent(category)}`;
     } else {
         window.location.href = 'fort-by-category-english.php';
     }

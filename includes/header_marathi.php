@@ -9,6 +9,8 @@ $host   = $scheme . '://' . $_SERVER['HTTP_HOST'];
 $currentPath = $_SERVER['PHP_SELF']; 
 $relativePath = str_replace('/fort/trek/', '', $currentPath);
 
+$relativePath = preg_replace('#^marathi/#', '', $relativePath);
+
 $englishPath = BASE_URL . $relativePath;
 $marathiPath = BASE_URL . 'marathi/' . $relativePath;
 // Paths relative to /fort/trek/
@@ -614,15 +616,20 @@ $meta_keywords = isset($meta_keywords) ? $meta_keywords : 'ट्रेकिं
                                 <!-- Language Switcher Mobile -->
                                 <div class="flex items-center justify-between mb-4">
                                     <span class="text-gray-700 dark:text-gray-300">भाषा :</span>
-                                  <div class="flex space-x-2">
-                                        <a href="<?= BASE_URL ?>index.php"
-                                        class="px-3 py-1 text-sm bg-primary text-white rounded">
-                                            EN
+                                    <div class="flex space-x-2">
+                                        <!-- Marathi (active) -->
+                                        <a href="<?= $marathiPath ?>"
+                                        class="px-3 py-1 text-sm bg-primary text-white rounded"
+                                        data-language="mr">
+                                            मराठी
                                         </a>
 
-                                        <a href="<?= BASE_URL ?>marathi/index.php"
-                                        class="px-3 py-1 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">
-                                            मराठी
+                                        <!-- English -->
+                                        <a href="<?= $englishPath ?>"
+                                        class="px-3 py-1 text-sm text-gray-600 dark:text-gray-400
+                                                hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
+                                        data-language="en">
+                                            EN
                                         </a>
                                     </div>
 

@@ -362,7 +362,7 @@ $totalForts = array_sum(array_map(function($range) { return count($range['forts'
                             
                             <div class="h-1 bg-gradient-to-r from-primary to-accent"></div>
                             
-                            <div class="p-6">
+                            <div class="p-6 flex flex-col h-full">
                                 <div class="flex justify-between items-start mb-4">
                                     <h3 class="text-2xl font-bold text-gray-800 dark:text-white">
                                         <?php echo $range['name']; ?>
@@ -404,7 +404,7 @@ $totalForts = array_sum(array_map(function($range) { return count($range['forts'
                                     </div>
                                 </div>
                                 
-                                <div class="flex justify-between items-center">
+                                <div class="flex justify-between items-center mt-auto">
                                     <span class="text-gray-500 dark:text-gray-400 text-sm flex items-center">
                                         <i class="fas fa-hiking mr-1"></i>
                                         ट्रेकिंग उपलब्ध

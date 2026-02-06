@@ -90,7 +90,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?= BASE_URL ?>fort_in_english.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
+                        <a href="<?= BASE_URL ?>fort_information.php" class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center group footer-link">
                             <i class="fas fa-fort-awesome mr-2 group-hover:translate-x-1 transition-transform"></i>
                             Forts Information
                         </a>
@@ -256,15 +256,18 @@
                 <div class="flex items-center space-x-4">
                     <span class="text-gray-400 text-sm">Language:</span>
                     <div class="flex space-x-2">
-                                        <a href="<?= BASE_URL ?>index.php"
-                                        class="px-3 py-1 text-sm bg-primary text-white rounded">
-                                            EN
-                                        </a>
+                        <a href="<?= $englishPath ?>"
+                        class="px-3 py-1 text-sm bg-primary text-white rounded"
+                        data-language="en">
+                            EN
+                        </a>
 
-                                        <a href="<?= BASE_URL ?>marathi/index.php"
-                                        class="px-3 py-1 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">
-                                            मराठी
-                                        </a>
+                        <a href="<?= $marathiPath ?>"
+                        class="px-3 py-1 text-sm text-gray-600 dark:text-gray-400
+                                hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
+                        data-language="mr">
+                            मराठी
+                        </a>
                     </div>
                 </div>
                 

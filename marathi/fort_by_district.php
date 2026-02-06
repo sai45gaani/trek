@@ -387,7 +387,7 @@ $uniqueRegions = count(array_unique(array_column($districts, 'region')));
                             
                             <div class="h-1 bg-gradient-to-r from-primary to-accent"></div>
                             
-                            <div class="p-6">
+                            <div class="p-6 flex flex-col h-full">
                                 <div class="flex justify-between items-start mb-4">
                                     <h3 class="text-2xl font-bold text-gray-800 dark:text-white">
                                         <?php echo $district['name']; ?>
@@ -439,12 +439,13 @@ $uniqueRegions = count(array_unique(array_column($districts, 'region')));
                                         <?php endif; ?>
                                     </div>
                                 </div>
-                                
+                                <div class="flex justify-between items-center mt-auto">
                                 <a href="?district=<?php echo urlencode($district['name']); ?>" 
                                    class="block w-full bg-primary hover:bg-secondary text-white text-center py-3 px-4 rounded-lg font-semibold transition-colors duration-300">
                                     सर्व किल्ले पहा
                                     <i class="fas fa-arrow-right ml-2"></i>
                                 </a>
+                                </div>
                             </div>
                         </div>
                     <?php endforeach; ?>
