@@ -185,15 +185,15 @@ $seaFortsCount = isset($fortCategories['समुद्र किल्ले'])
                     महाराष्ट्रातील विविध प्रकारचे किल्ले - पर्वतीय, समुद्र, भू, गुहा आणि अधिक
                 </p>
                 <div class="flex flex-wrap justify-center gap-4 text-sm opacity-90">
-                    <a href="/marathi/forts-alphabetical" class="hover:text-accent transition-colors">मुळाक्षरानुसार</a>
+                    <a href="./fort_information.php" class="hover:text-accent transition-colors">मुळाक्षरानुसार</a>
                     <span>•</span>
-                    <a href="/marathi/forts-by-range" class="hover:text-accent transition-colors">डोंगररांगेनुसार</a>
+                    <a href="./fort_by_range.php" class="hover:text-accent transition-colors">डोंगररांगेनुसार</a>
                     <span>•</span>
-                    <a href="/marathi/forts-by-district" class="hover:text-accent transition-colors">जिल्ह्यानुसार</a>
+                    <a href="./fort_by_district.php" class="hover:text-accent transition-colors">जिल्ह्यानुसार</a>
                     <span>•</span>
                     <span class="text-accent font-semibold">प्रकारानुसार</span>
                     <span>•</span>
-                    <a href="/marathi/forts-by-grade" class="hover:text-accent transition-colors">कठीणतेनुसार</a>
+                    <a href="./fort_by_grade.php" class="hover:text-accent transition-colors">कठीणतेनुसार</a>
                 </div>
             </div>
         </div>

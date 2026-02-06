@@ -6,9 +6,14 @@ define('BASE_URL', '/fort/trek/');
 $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
 $host   = $scheme . '://' . $_SERVER['HTTP_HOST'];
 
+$currentPath = $_SERVER['PHP_SELF']; 
+$relativePath = str_replace('/fort/trek/', '', $currentPath);
+
+$englishPath = BASE_URL . $relativePath;
+$marathiPath = BASE_URL . 'marathi/' . $relativePath;
 // Paths relative to /fort/trek/
-$englishPath = BASE_URL . basename($_SERVER['PHP_SELF']);
-$marathiPath = BASE_URL . 'marathi/' . basename($_SERVER['PHP_SELF']);
+//$englishPath = BASE_URL . basename($_SERVER['PHP_SELF']);
+//$marathiPath = BASE_URL . 'marathi/' . basename($_SERVER['PHP_SELF']);
 
 
 // Default values (can be overridden by individual pages)

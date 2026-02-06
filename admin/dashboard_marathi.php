@@ -51,6 +51,29 @@ if (isset($_GET['action']) && $_GET['action'] === 'load_content') {
         case 'caves':
             include 'partials/caves_list.php';
             break;
+        case 'temples-mar':
+            include 'partials/temples_list_marathi.php';
+            break;
+
+        case 'temples-add-mar':
+            include 'partials/temples_add_marathi.php';
+            break;
+
+        case 'jungles-mar':
+            include 'partials/jungles_list_marathi.php';
+            break;
+
+        case 'jungles-add-mar':
+            include 'partials/jungles_add_marathi.php';
+            break;
+
+        case 'weapons-mar':
+            include 'partials/weapons_list_marathi.php';
+            break;
+
+        case 'weapons-add-mar':
+            include 'partials/weapons_add_marathi.php';
+            break;
         case 'photos':
             include 'partials/photos_list.php';
             break;
@@ -266,6 +289,71 @@ $page_title = 'Admin Dashboard - Trekshitz';
                 </div>
             </div>
 
+            <!-- Important Information -->
+            <div class="mb-2">
+                <p class="text-xs text-gray-400 px-2 mb-1 uppercase font-semibold">
+                    Important Information
+                </p>
+
+                <button onclick="toggleDropdown('important-menu')"
+                        class="dropdown-toggle w-full flex items-center justify-between px-2 py-1.5 rounded hover:bg-gray-700 text-sm">
+
+                    <div class="flex items-center">
+                        <i class="fas fa-info-circle w-4 mr-2 text-accent text-xs"></i>
+                        <span>
+                            Important Info
+                            <span class="text-gray-400 ml-1">(महत्त्वाची माहिती)</span>
+                        </span>
+                    </div>
+
+                    <i class="fas fa-chevron-down text-xs transition-transform"
+                    id="important-menu-icon"></i>
+                </button>
+
+                <div id="important-menu" class="dropdown-content pl-6">
+
+                    <!-- TEMPLES -->
+                    <a href="#"
+                    data-page="temples-mar"
+                    class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">
+                        Temples (मंदिरे)
+                    </a>
+
+                    <a href="#"
+                    data-page="temples-add-mar"
+                    class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">
+                        Add Temple (नवीन मंदिर जोडा)
+                    </a>
+
+                    <!-- JUNGLES -->
+                    <a href="#"
+                    data-page="jungles-mar"
+                    class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">
+                        Jungles (अरण्ये)
+                    </a>
+
+                    <a href="#"
+                    data-page="jungles-add-mar"
+                    class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">
+                        Add Jungle (नवीन अरण्य जोडा)
+                    </a>
+
+                    <!-- WEAPONS -->
+                    <a href="#"
+                    data-page="weapons-mar"
+                    class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">
+                        Weapons (शस्त्रे)
+                    </a>
+
+                    <a href="#"
+                    data-page="weapons-add-mar"
+                    class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">
+                        Add Weapon (नवीन शस्त्र जोडा)
+                    </a>
+
+                </div>
+            </div>
+
             <!-- Trekking -->
         <!--    <div class="mb-2">
                 <p class="text-xs text-gray-400 px-2 mb-1 uppercase font-semibold">Trekking</p>
@@ -283,7 +371,7 @@ $page_title = 'Admin Dashboard - Trekshitz';
             </div>-->
 
             <!-- Gallery -->
-            <div class="mb-2">
+           <!-- <div class="mb-2">
                 <p class="text-xs text-gray-400 px-2 mb-1 uppercase font-semibold">Media <span class="normal-case">(मीडिया)</span></p>
                 <button onclick="toggleDropdown('gallery-menu')" class="dropdown-toggle w-full flex items-center justify-between px-2 py-1.5 rounded hover:bg-gray-700 text-sm">
                     <div class="flex items-center">
@@ -295,7 +383,7 @@ $page_title = 'Admin Dashboard - Trekshitz';
                 <div id="gallery-menu" class="dropdown-content pl-6">
                     <a href="#" data-page="map-photos-mar" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Map Photos <span class="text-gray-400 ml-1">(नकाशांचे फोटो)</span></a>
                 </div>
-            </div>
+            </div>-->
 
             
             <!-- Settings -->
@@ -1770,6 +1858,543 @@ function deleteMap(id) {
     .then(function () {
         loadMapPhotos(1);
     });
+}
+</script>
+<script>
+/* =====================================
+   MARATHI TEMPLES MODULE – FULL JS
+   (Same pattern as Forts Marathi)
+===================================== */
+
+/* ---------- GLOBAL ---------- */
+let currentTempleMarId = null;
+let isTempleMarEditMode = false;
+
+/* ---------- ADD TEMPLE ---------- */
+function saveNewTempleMarathi() {
+    const form = document.getElementById('add-temple-marathi-form');
+    if (!form) return;
+
+    const fd = new FormData(form);
+
+    fetch('./api/add_temple_marathi.php', {
+        method: 'POST',
+        body: fd
+    })
+    .then(r => r.json())
+    .then(res => {
+        if (res.status === 'success') {
+            alert('Temple added successfully!');
+            loadContent('temples-mar');
+        } else {
+            alert(res.message || 'Failed to add temple');
+        }
+    })
+    .catch(() => alert('Server error'));
+}
+
+/* ---------- PAGINATION ---------- */
+function loadTemplesPageMarathi(p = 1) {
+    loadContent('temples-mar&p=' + p);
+}
+
+/* ---------- FILTER ---------- */
+function applyTempleFiltersMarathi() {
+    const s = document.getElementById('search-input-mar')?.value || '';
+    loadContent('temples-mar&search=' + encodeURIComponent(s));
+}
+
+function clearTempleFiltersMarathi() {
+    loadContent('temples-mar');
+}
+
+/* ---------- VIEW TEMPLE ---------- */
+function viewTempleMarathi(id) {
+    currentTempleMarId = id;
+    isTempleMarEditMode = false;
+
+    document.getElementById('temple-mar-modal-title').innerText =
+        'View Temple Details (Marathi)';
+    document.getElementById('temple-mar-save-btn').classList.add('hidden');
+    document.getElementById('temple-mar-modal').classList.remove('hidden');
+
+    fetch(`partials/ajax/get_temple_details_marathi.php?id=${id}`)
+        .then(r => r.json())
+        .then(data => renderTempleMarathiModal(data, false));
+}
+
+/* ---------- EDIT TEMPLE ---------- */
+function editTempleMarathi(id) {
+    currentTempleMarId = id;
+    isTempleMarEditMode = true;
+
+    document.getElementById('temple-mar-modal-title').innerText =
+        'Edit Temple (Marathi)';
+    document.getElementById('temple-mar-save-btn').classList.remove('hidden');
+    document.getElementById('temple-mar-modal').classList.remove('hidden');
+
+    fetch(`partials/ajax/get_temple_details_marathi.php?id=${id}`)
+        .then(r => r.json())
+        .then(data => renderTempleMarathiModal(data, true));
+}
+
+/* ---------- RENDER MODAL ---------- */
+function renderTempleMarathiModal(data, editable) {
+    if (data.error) {
+        document.getElementById('temple-mar-modal-content').innerHTML =
+            `<p class="text-red-600">${data.error}</p>`;
+        return;
+    }
+
+    const input = (id, val='') =>
+        editable
+            ? `<input id="${id}" value="${escapeHtml(val)}"
+                class="w-full border px-3 py-2 rounded text-sm">`
+            : `<div>${escapeHtml(val || '—')}</div>`;
+
+    const textarea = (id, val='') =>
+        editable
+            ? `<textarea id="${id}" rows="3"
+                class="w-full border px-3 py-2 rounded text-sm">${escapeHtml(val)}</textarea>`
+            : `<div class="whitespace-pre-line">${val || '—'}</div>`;
+
+    document.getElementById('temple-mar-modal-content').innerHTML = `
+    <div class="space-y-4">
+
+        ${input('TempleName', data.TempleName)}
+        ${input('TempleNameMar', data.TempleNameMar)}
+
+        ${input('Village', data.Village)}
+        ${input('VillageMar', data.VillageMar)}
+
+        ${input('District', data.District)}
+        ${input('DistrictMar', data.DistrictMar)}
+
+        ${input('MainDeity', data.MainDeity)}
+        ${input('MainDeityMar', data.MainDeityMar)}
+
+        ${input('BuiltBy', data.BuiltBy)}
+        ${input('BuiltByMar', data.BuiltByMar)}
+
+        ${input('Period', data.Period)}
+        ${input('PeriodMar', data.PeriodMar)}
+
+        ${textarea('ArchitectureMar', data.ArchitectureMar)}
+        ${textarea('History', data.History)}
+        ${textarea('Notes', data.Notes)}
+
+    </div>`;
+}
+
+/* ---------- SAVE UPDATE ---------- */
+function saveTempleMarathi() {
+    if (!currentTempleMarId) return;
+
+    const fields = [
+        'TempleName','TempleNameMar',
+        'Village','VillageMar',
+        'District','DistrictMar',
+        'MainDeity','MainDeityMar',
+        'BuiltBy','BuiltByMar',
+        'Period','PeriodMar',
+        'ArchitectureMar',
+        'History','Notes'
+    ];
+
+    const payload = { id: currentTempleMarId };
+
+    fields.forEach(f => {
+        payload[f] = document.getElementById(f)?.value || '';
+    });
+
+    fetch('partials/ajax/update_temple_marathi.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    })
+    .then(r => r.json())
+    .then(res => {
+        if (res.success) {
+            closeTempleMarathiModal();
+            loadContent('temples-mar');
+            alert('Temple updated successfully!');
+        } else {
+            alert(res.message || 'Update failed');
+        }
+    });
+}
+
+/* ---------- MODAL CLOSE ---------- */
+function closeTempleMarathiModal() {
+    document.getElementById('temple-mar-modal').classList.add('hidden');
+    currentTempleMarId = null;
+    isTempleMarEditMode = false;
+}
+
+/* ---------- HELPER ---------- */
+function escapeHtml(text) {
+    const d = document.createElement('div');
+    d.textContent = text ?? '';
+    return d.innerHTML;
+}
+</script>
+
+<script>
+/* =====================================
+   MARATHI WEAPONS MODULE – FULL JS
+   (Same pattern as Forts & Temples)
+===================================== */
+
+/* ---------- GLOBAL ---------- */
+let currentWeaponMarId = null;
+let isWeaponMarEditMode = false;
+
+/* ---------- ADD WEAPON ---------- */
+function saveNewWeaponMarathi() {
+    const form = document.getElementById('add-weapon-marathi-form');
+    if (!form) return;
+
+    const fd = new FormData(form);
+
+    fetch('./api/add_weapon_marathi.php', {
+        method: 'POST',
+        body: fd
+    })
+    .then(r => r.json())
+    .then(res => {
+        if (res.status === 'success') {
+            alert('Weapon added successfully!');
+            loadContent('weapons-mar');
+        } else {
+            alert(res.message || 'Failed to add weapon');
+        }
+    })
+    .catch(() => alert('Server error'));
+}
+
+/* ---------- PAGINATION ---------- */
+function loadWeaponsPageMarathi(p = 1) {
+    loadContent('weapons-mar&p=' + p);
+}
+
+/* ---------- FILTER ---------- */
+function applyWeaponFiltersMarathi() {
+    const s = document.getElementById('search-input-mar')?.value || '';
+    loadContent('weapons-mar&search=' + encodeURIComponent(s));
+}
+
+function clearWeaponFiltersMarathi() {
+    loadContent('weapons-mar');
+}
+
+/* ---------- VIEW WEAPON ---------- */
+function viewWeaponMarathi(id) {
+    currentWeaponMarId = id;
+    isWeaponMarEditMode = false;
+
+    document.getElementById('weapon-mar-modal-title').innerText =
+        'View Weapon Details (Marathi)';
+    document.getElementById('weapon-mar-save-btn').classList.add('hidden');
+    document.getElementById('weapon-mar-modal').classList.remove('hidden');
+
+    fetch(`partials/ajax/get_weapon_details_marathi.php?id=${id}`)
+        .then(r => r.json())
+        .then(data => renderWeaponMarathiModal(data, false));
+}
+
+/* ---------- EDIT WEAPON ---------- */
+function editWeaponMarathi(id) {
+    currentWeaponMarId = id;
+    isWeaponMarEditMode = true;
+
+    document.getElementById('weapon-mar-modal-title').innerText =
+        'Edit Weapon (Marathi)';
+    document.getElementById('weapon-mar-save-btn').classList.remove('hidden');
+    document.getElementById('weapon-mar-modal').classList.remove('hidden');
+
+    fetch(`partials/ajax/get_weapon_details_marathi.php?id=${id}`)
+        .then(r => r.json())
+        .then(data => renderWeaponMarathiModal(data, true));
+}
+
+/* ---------- RENDER MODAL ---------- */
+function renderWeaponMarathiModal(data, editable) {
+    if (data.error) {
+        document.getElementById('weapon-mar-modal-content').innerHTML =
+            `<p class="text-red-600">${data.error}</p>`;
+        return;
+    }
+
+    const input = (id, val='') =>
+        editable
+            ? `<input id="${id}" value="${escapeHtml(val)}"
+                class="w-full border px-3 py-2 rounded text-sm">`
+            : `<div>${escapeHtml(val || '—')}</div>`;
+
+    const textarea = (id, val='') =>
+        editable
+            ? `<textarea id="${id}" rows="3"
+                class="w-full border px-3 py-2 rounded text-sm">${escapeHtml(val)}</textarea>`
+            : `<div class="whitespace-pre-line">${val || '—'}</div>`;
+
+    document.getElementById('weapon-mar-modal-content').innerHTML = `
+    <div class="space-y-4">
+
+        ${input('WeaponName', data.WeaponName)}
+        ${input('WeaponNameMar', data.WeaponNameMar)}
+
+        ${input('WeaponType', data.WeaponType)}
+        ${input('WeaponTypeMar', data.WeaponTypeMar)}
+
+        ${input('WeaponEra', data.WeaponEra)}
+        ${input('WeaponEraMar', data.WeaponEraMar)}
+
+        ${input('OriginCountry', data.OriginCountry)}
+        ${input('OriginCountryMar', data.OriginCountryMar)}
+
+        ${textarea('Introduction', data.Introduction)}
+        ${textarea('History', data.History)}
+
+        ${textarea('TechnologyMar', data.TechnologyMar)}
+        ${input('MaterialsUsedMar', data.MaterialsUsedMar)}
+        ${input('FiringMechanismMar', data.FiringMechanismMar)}
+
+        ${textarea('Notes', data.Notes)}
+
+    </div>`;
+}
+
+/* ---------- SAVE UPDATE ---------- */
+function saveWeaponMarathi() {
+    if (!currentWeaponMarId) return;
+
+    const fields = [
+        'WeaponName','WeaponNameMar',
+        'WeaponType','WeaponTypeMar',
+        'WeaponEra','WeaponEraMar',
+        'OriginCountry','OriginCountryMar',
+        'Introduction','History',
+        'TechnologyMar','MaterialsUsedMar',
+        'FiringMechanismMar','Notes'
+    ];
+
+    const payload = { id: currentWeaponMarId };
+
+    fields.forEach(f => {
+        payload[f] = document.getElementById(f)?.value || '';
+    });
+
+    fetch('partials/ajax/update_weapon_marathi.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    })
+    .then(r => r.json())
+    .then(res => {
+        if (res.success) {
+            closeWeaponMarathiModal();
+            loadContent('weapons-mar');
+            alert('Weapon updated successfully!');
+        } else {
+            alert(res.message || 'Update failed');
+        }
+    });
+}
+
+/* ---------- MODAL CLOSE ---------- */
+function closeWeaponMarathiModal() {
+    document.getElementById('weapon-mar-modal').classList.add('hidden');
+    currentWeaponMarId = null;
+    isWeaponMarEditMode = false;
+}
+
+/* ---------- HELPER ---------- */
+function escapeHtml(text) {
+    const d = document.createElement('div');
+    d.textContent = text ?? '';
+    return d.innerHTML;
+}
+</script>
+
+<script>
+/* =====================================
+   MARATHI JUNGLES MODULE – FULL JS
+   (Same pattern as Forts, Temples, Weapons)
+===================================== */
+
+/* ---------- GLOBAL ---------- */
+let currentJungleMarId = null;
+let isJungleMarEditMode = false;
+
+/* ---------- ADD JUNGLE ---------- */
+function saveNewJungleMarathi() {
+    const form = document.getElementById('add-jungle-marathi-form');
+    if (!form) return;
+
+    const fd = new FormData(form);
+
+    fetch('./api/add_jungle_marathi.php', {
+        method: 'POST',
+        body: fd
+    })
+    .then(r => r.json())
+    .then(res => {
+        if (res.status === 'success') {
+            alert('Jungle added successfully!');
+            loadContent('jungles-mar');
+        } else {
+            alert(res.message || 'Failed to add jungle');
+        }
+    })
+    .catch(() => alert('Server error'));
+}
+
+/* ---------- PAGINATION ---------- */
+function loadJunglesPageMarathi(p = 1) {
+    loadContent('jungles-mar&p=' + p);
+}
+
+/* ---------- FILTER ---------- */
+function applyJungleFiltersMarathi() {
+    const s = document.getElementById('search-input-mar')?.value || '';
+    loadContent('jungles-mar&search=' + encodeURIComponent(s));
+}
+
+function clearJungleFiltersMarathi() {
+    loadContent('jungles-mar');
+}
+
+/* ---------- VIEW JUNGLE ---------- */
+function viewJungleMarathi(id) {
+    currentJungleMarId = id;
+    isJungleMarEditMode = false;
+
+    document.getElementById('jungle-mar-modal-title').innerText =
+        'View Jungle Details (Marathi)';
+    document.getElementById('jungle-mar-save-btn').classList.add('hidden');
+    document.getElementById('jungle-mar-modal').classList.remove('hidden');
+
+    fetch(`partials/ajax/get_jungle_details_marathi.php?id=${id}`)
+        .then(r => r.json())
+        .then(data => renderJungleMarathiModal(data, false));
+}
+
+/* ---------- EDIT JUNGLE ---------- */
+function editJungleMarathi(id) {
+    currentJungleMarId = id;
+    isJungleMarEditMode = true;
+
+    document.getElementById('jungle-mar-modal-title').innerText =
+        'Edit Jungle (Marathi)';
+    document.getElementById('jungle-mar-save-btn').classList.remove('hidden');
+    document.getElementById('jungle-mar-modal').classList.remove('hidden');
+
+    fetch(`partials/ajax/get_jungle_details_marathi.php?id=${id}`)
+        .then(r => r.json())
+        .then(data => renderJungleMarathiModal(data, true));
+}
+
+/* ---------- RENDER MODAL ---------- */
+function renderJungleMarathiModal(data, editable) {
+    if (data.error) {
+        document.getElementById('jungle-mar-modal-content').innerHTML =
+            `<p class="text-red-600">${data.error}</p>`;
+        return;
+    }
+
+    const input = (id, val='') =>
+        editable
+            ? `<input id="${id}" value="${escapeHtml(val)}"
+                class="w-full border px-3 py-2 rounded text-sm">`
+            : `<div>${escapeHtml(val || '—')}</div>`;
+
+    const textarea = (id, val='') =>
+        editable
+            ? `<textarea id="${id}" rows="3"
+                class="w-full border px-3 py-2 rounded text-sm">${escapeHtml(val)}</textarea>`
+            : `<div class="whitespace-pre-line">${val || '—'}</div>`;
+
+    document.getElementById('jungle-mar-modal-content').innerHTML = `
+    <div class="space-y-4">
+
+        ${input('JungleName', data.JungleName)}
+        ${input('JungleNameMar', data.JungleNameMar)}
+
+        ${input('State', data.State)}
+        ${input('StateMar', data.StateMar)}
+
+        ${input('District', data.District)}
+        ${input('DistrictMar', data.DistrictMar)}
+
+        ${textarea('CoreZoneGatesMar', data.CoreZoneGatesMar)}
+        ${textarea('BufferZoneGatesMar', data.BufferZoneGatesMar)}
+
+        ${textarea('IntroductionMar', data.IntroductionMar)}
+        ${textarea('HistoryMar', data.HistoryMar)}
+        ${textarea('GeographyMar', data.GeographyMar)}
+
+        ${textarea('SafariTimingsMar', data.SafariTimingsMar)}
+        ${input('BestSeasonToVisitMar', data.BestSeasonToVisitMar)}
+
+        ${input('AnimalsMar', data.AnimalsMar)}
+        ${input('BirdsMar', data.BirdsMar)}
+        ${input('TreesMar', data.TreesMar)}
+
+        ${textarea('NotesMar', data.NotesMar)}
+
+    </div>`;
+}
+
+/* ---------- SAVE UPDATE ---------- */
+function saveJungleMarathi() {
+    if (!currentJungleMarId) return;
+
+    const fields = [
+        'JungleName','JungleNameMar',
+        'State','StateMar',
+        'District','DistrictMar',
+        'CoreZoneGatesMar','BufferZoneGatesMar',
+        'IntroductionMar','HistoryMar','GeographyMar',
+        'SafariTimingsMar','BestSeasonToVisitMar',
+        'AnimalsMar','BirdsMar','TreesMar',
+        'NotesMar'
+    ];
+
+    const payload = { id: currentJungleMarId };
+
+    fields.forEach(f => {
+        payload[f] = document.getElementById(f)?.value || '';
+    });
+
+    fetch('partials/ajax/update_jungle_marathi.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    })
+    .then(r => r.json())
+    .then(res => {
+        if (res.success) {
+            closeJungleMarathiModal();
+            loadContent('jungles-mar');
+            alert('Jungle updated successfully!');
+        } else {
+            alert(res.message || 'Update failed');
+        }
+    });
+}
+
+/* ---------- MODAL CLOSE ---------- */
+function closeJungleMarathiModal() {
+    document.getElementById('jungle-mar-modal').classList.add('hidden');
+    currentJungleMarId = null;
+    isJungleMarEditMode = false;
+}
+
+/* ---------- HELPER ---------- */
+function escapeHtml(text) {
+    const d = document.createElement('div');
+    d.textContent = text ?? '';
+    return d.innerHTML;
 }
 </script>
 

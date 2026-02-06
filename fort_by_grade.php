@@ -141,13 +141,13 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
                 
                 <!-- Navigation breadcrumb -->
                 <div class="flex flex-wrap justify-center gap-4 text-sm opacity-90">
-                    <a href="./fort_in_english.php" class="hover:text-accent transition-colors">Alphabetical</a>
+                    <a href="./fort_information.php" class="hover:text-accent transition-colors">Alphabetical</a>
                     <span>•</span>
-                    <a href="./fort_by_range_english.php" class="hover:text-accent transition-colors">By Mountain Range</a>
+                    <a href="./fort_by_range.php" class="hover:text-accent transition-colors">By Mountain Range</a>
                     <span>•</span>
-                    <a href="./fort_by_district_english.php" class="hover:text-accent transition-colors">By District</a>
+                    <a href="./fort_by_district.php" class="hover:text-accent transition-colors">By District</a>
                        <span>•</span>
-                    <a href="./fort-by-category-english.php" class="hover:text-accent transition-colors">By Type</a>
+                    <a href="./fort_by_category.php" class="hover:text-accent transition-colors">By Type</a>
                     <span>•</span>
                     <span class="text-accent font-semibold">By Difficulty</span>
                 </div>

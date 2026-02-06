@@ -48,6 +48,21 @@ if (isset($_GET['action']) && $_GET['action'] === 'load_content') {
         case 'temples':
             include 'partials/temples_list.php';
             break;
+        case 'temples-add':
+            include 'partials/temples_add.php';
+            break;
+        case 'jungles':
+            include 'partials/jungles_list.php';
+            break;
+        case 'jungles-add':
+            include 'partials/jungles_add.php';
+            break;
+        case 'weapons':
+            include 'partials/weapons_list.php';
+            break;
+        case 'weapons-add':
+            include 'partials/weapons_add.php';
+            break;
         case 'caves':
             include 'partials/caves_list.php';
             break;
@@ -63,11 +78,23 @@ if (isset($_GET['action']) && $_GET['action'] === 'load_content') {
         case 'fort-photos':
             include 'partials/fort_photos.php';
             break;
+        case 'temple-photos':
+            include 'partials/temple_photos.php';
+            break;
+        case 'weapon-photos':
+            include 'partials/weapon_photos.php';
+            break;
+        case 'jungle-photos':
+            include 'partials/jungle_photos.php';
+            break;
         case 'map-photos':
             include 'partials/map_photos.php';
             break;
         case 'nature-photos':
             include 'partials/nature_photos.php';
+            break;
+        case 'home-photos':
+            include 'partials/home_photos.php';
             break;
         case 'events':
             include 'partials/events_list.php';
@@ -267,6 +294,66 @@ $page_title = 'Admin Dashboard - Trekshitz';
                 </div>
             </div>
 
+            <!-- Important Information -->
+            <div class="mb-2">
+                <p class="text-xs text-gray-400 px-2 mb-1 uppercase font-semibold">
+                    Important Information
+                </p>
+
+                <button onclick="toggleDropdown('important-menu')"
+                    class="dropdown-toggle w-full flex items-center justify-between px-2 py-1.5 rounded hover:bg-gray-700 text-sm">
+                    <div class="flex items-center">
+                        <i class="fas fa-info-circle w-4 mr-2 text-accent text-xs"></i>
+                        <span>Important Info</span>
+                    </div>
+                    <i class="fas fa-chevron-down text-xs transition-transform"
+                    id="important-menu-icon"></i>
+                </button>
+
+                <div id="important-menu" class="dropdown-content pl-6">
+
+                    <!-- Temples -->
+                    <a href="#"
+                    data-page="temples"
+                    class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">
+                        Temples
+                    </a>
+
+                    <a href="#"
+                    data-page="temples-add"
+                    class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">
+                        Add Temple
+                    </a>
+
+                    <!-- Jungle -->
+                    <a href="#"
+                    data-page="jungles"
+                    class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">
+                        Jungles
+                    </a>
+
+                    <a href="#"
+                    data-page="jungles-add"
+                    class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">
+                        Add Jungle
+                    </a>
+
+                    <!-- Weapons -->
+                    <a href="#"
+                    data-page="weapons"
+                    class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">
+                        Weapons
+                    </a>
+
+                    <a href="#"
+                    data-page="weapons-add"
+                    class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">
+                        Add Weapon
+                    </a>
+
+                </div>
+            </div>
+
             <!-- Trekking -->
             <div class="mb-2">
                 <p class="text-xs text-gray-400 px-2 mb-1 uppercase font-semibold">Trekking</p>
@@ -314,9 +401,29 @@ $page_title = 'Admin Dashboard - Trekshitz';
                 </button>
                 <div id="gallery-menu" class="dropdown-content pl-6">
                     <a href="#" data-page="fort-photos" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Fort Photos</a>
+                    <a href="#"
+                    data-page="temple-photos"
+                    class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">
+                        Temple Photos
+                    </a>
+                    <a href="#"
+                        data-page="weapon-photos"
+                        class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">
+                            Weapon Photos
+                    </a>
+                    <a href="#"
+                    data-page="jungle-photos"
+                    class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">
+                        Jungle Photos
+                    </a>
                     <a href="#" data-page="map-photos" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Map Photos</a>
                     <a href="#" data-page="nature-photos" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Nature Photos</a>
-                  <!--  <a href="#" data-page="photos" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">All Photos</a>
+                    <a href="#"
+                    data-page="home-photos"
+                    class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">
+                        Home Page Photos
+                    </a>
+                    <!--  <a href="#" data-page="photos" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">All Photos</a>
                     <a href="#" data-page="categories" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Categories</a>
                     <a href="#" data-page="photo-upload" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Upload Photos</a>-->
                 </div>
@@ -1709,7 +1816,945 @@ function saveUser() {
 
 </script>
 
+<script>
+    /* ==============================
+    TEMPLE MODULE – FULL JS
+    (Same flow as Fort)
+    ================================ */
 
+    /* ---------- GLOBAL ---------- */
+    let currentTempleId = null;
+    let isTempleEditMode = false;
+
+    /* ---------- ADD TEMPLE ---------- */
+    function saveNewTemple() {
+        const form = document.getElementById('add-temple-form');
+        if (!form) return;
+
+        const fd = new FormData(form);
+
+        fetch('./api/add_temple.php', {
+            method: 'POST',
+            body: fd
+        })
+        .then(r => r.json())
+        .then(res => {
+            if (res.status === 'success') {
+                alert('Temple added successfully!');
+                loadContent('temples');
+            } else {
+                alert(res.message || 'Failed to add temple');
+            }
+        })
+        .catch(() => alert('Server error'));
+    }
+
+    /* ---------- LIST / FILTER / PAGINATION ---------- */
+    function loadTemplePage(p = 1) {
+        loadContent('temples&p=' + p);
+    }
+
+    function applyTempleFilters() {
+        const search = document.getElementById('search-input')?.value || '';
+        loadContent('temples&search=' + encodeURIComponent(search));
+    }
+
+    function clearTempleFilters() {
+        loadContent('temples');
+    }
+
+    /* ---------- VIEW TEMPLE ---------- */
+    function viewTemple(id) {
+        currentTempleId = id;
+        isTempleEditMode = false;
+
+        document.getElementById('temple-modal-title').innerText = 'View Temple Details';
+        document.getElementById('temple-save-btn').classList.add('hidden');
+        document.getElementById('temple-modal').classList.remove('hidden');
+
+        fetch(`partials/ajax/get_temple_details.php?id=${id}`)
+            .then(r => r.json())
+            .then(data => renderTempleModal(data, false));
+    }
+
+    /* ---------- EDIT TEMPLE ---------- */
+    function editTemple(id) {
+        currentTempleId = id;
+        isTempleEditMode = true;
+
+        document.getElementById('temple-modal-title').innerText = 'Edit Temple';
+        document.getElementById('temple-save-btn').classList.remove('hidden');
+        document.getElementById('temple-modal').classList.remove('hidden');
+
+        fetch(`partials/ajax/get_temple_details.php?id=${id}`)
+            .then(r => r.json())
+            .then(data => renderTempleModal(data, true));
+    }
+
+    /* ---------- RENDER MODAL ---------- */
+    function renderTempleModal(data, editable) {
+        if (data.error) {
+            document.getElementById('temple-modal-content').innerHTML =
+                `<p class="text-red-600">${data.error}</p>`;
+            return;
+        }
+
+        function input(label, id, value = '') {
+            return editable
+                ? `<input id="${id}" value="${escapeHtml(value)}"
+                        class="w-full border px-3 py-2 rounded text-sm">`
+                : `<div class="text-gray-800">${escapeHtml(value || '—')}</div>`;
+        }
+
+        function textarea(label, id, value = '') {
+            return editable
+                ? `<textarea id="${id}" rows="3"
+                    class="w-full border px-3 py-2 rounded text-sm">${escapeHtml(value)}</textarea>`
+                : `<div class="text-gray-800 whitespace-pre-line">${value || '—'}</div>`;
+        }
+
+        let html = `
+        <div class="space-y-4">
+            <div>
+                <label class="text-sm font-medium">Temple Name</label>
+                ${input('Temple Name','TempleName',data.TempleName)}
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="text-sm font-medium">Village</label>
+                    ${input('Village','Village',data.Village)}
+                </div>
+                <div>
+                    <label class="text-sm font-medium">District</label>
+                    ${input('District','District',data.District)}
+                </div>
+            </div>
+
+            <div>
+                <label class="text-sm font-medium">Taluka</label>
+                ${input('Taluka','Taluka',data.Taluka)}
+            </div>
+
+            <div>
+                <label class="text-sm font-medium">Nearest City</label>
+                ${input('NearestCity','NearestCity',data.NearestCity)}
+            </div>
+
+            <div>
+                <label class="text-sm font-medium">Main Deity</label>
+                ${input('MainDeity','MainDeity',data.MainDeity)}
+            </div>
+
+            <div>
+                <label class="text-sm font-medium">Temple Type</label>
+                ${input('TempleType','TempleType',data.TempleType)}
+            </div>
+
+            <div>
+                <label class="text-sm font-medium">Temple Category</label>
+                ${input('TempleCategory','TempleCategory',data.TempleCategory)}
+            </div>
+
+            <div>
+                <label class="text-sm font-medium">Introduction</label>
+                ${textarea('Introduction','Introduction',data.Introduction)}
+            </div>
+
+            <div>
+                <label class="text-sm font-medium">History</label>
+                ${textarea('History','History',data.History)}
+            </div>
+
+            <div>
+                <label class="text-sm font-medium">Notes</label>
+                ${textarea('Notes','Notes',data.Notes)}
+            </div>
+        </div>
+        `;
+
+        document.getElementById('temple-modal-content').innerHTML = html;
+    }
+
+    /* ---------- SAVE (UPDATE) ---------- */
+    function saveTemple() {
+        if (!currentTempleId) return;
+
+        const payload = {
+            id: currentTempleId,
+            TempleName: document.getElementById('TempleName').value,
+            Village: document.getElementById('Village').value,
+            District: document.getElementById('District').value,
+            Taluka: document.getElementById('Taluka').value,
+            NearestCity: document.getElementById('NearestCity').value,
+            MainDeity: document.getElementById('MainDeity').value,
+            TempleType: document.getElementById('TempleType').value,
+            TempleCategory: document.getElementById('TempleCategory').value,
+            Introduction: document.getElementById('Introduction').value,
+            History: document.getElementById('History').value,
+            Notes: document.getElementById('Notes').value
+        };
+
+        fetch('partials/ajax/update_temple.php', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify(payload)
+        })
+        .then(r => r.json())
+        .then(res => {
+            if (res.success) {
+                closeTempleModal();
+                loadContent('temples');
+                alert('Temple updated successfully!');
+            } else {
+                alert(res.message || 'Update failed');
+            }
+        });
+    }
+
+    /* ---------- MODAL CLOSE ---------- */
+    function closeTempleModal() {
+        document.getElementById('temple-modal').classList.add('hidden');
+        currentTempleId = null;
+        isTempleEditMode = false;
+    }
+
+    /* ---------- HELPER ---------- */
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text ?? '';
+        return div.innerHTML;
+    }
+</script>
+
+<script>
+/* ==============================
+   WEAPONS MODULE – FULL JS
+   (Same flow as Temple)
+================================ */
+
+/* ---------- GLOBAL ---------- */
+let currentWeaponId = null;
+let isWeaponEditMode = false;
+
+/* ---------- ADD WEAPON ---------- */
+function saveNewWeapon() {
+    const form = document.getElementById('add-weapon-form');
+    if (!form) return;
+
+    const fd = new FormData(form);
+
+    fetch('./api/add_weapon.php', {
+        method: 'POST',
+        body: fd
+    })
+    .then(r => r.json())
+    .then(res => {
+        if (res.status === 'success') {
+            alert('Weapon added successfully!');
+            loadContent('weapons');
+        } else {
+            alert(res.message || 'Failed to add weapon');
+        }
+    })
+    .catch(() => alert('Server error'));
+}
+
+/* ---------- PAGINATION ---------- */
+function loadWeaponPage(p = 1) {
+    loadContent('weapons&p=' + p);
+}
+
+/* ---------- FILTER ---------- */
+function applyWeaponFilters() {
+    const search = document.getElementById('search-input')?.value || '';
+    loadContent('weapons&search=' + encodeURIComponent(search));
+}
+
+function clearWeaponFilters() {
+    loadContent('weapons');
+}
+
+/* ---------- VIEW WEAPON ---------- */
+function viewWeapon(id) {
+    currentWeaponId = id;
+    isWeaponEditMode = false;
+
+    document.getElementById('weapon-modal-title').innerText = 'View Weapon Details';
+    document.getElementById('weapon-save-btn').classList.add('hidden');
+    document.getElementById('weapon-modal').classList.remove('hidden');
+
+    fetch(`partials/ajax/get_weapon_details.php?id=${id}`)
+        .then(r => r.json())
+        .then(data => renderWeaponModal(data, false));
+}
+
+/* ---------- EDIT WEAPON ---------- */
+function editWeapon(id) {
+    currentWeaponId = id;
+    isWeaponEditMode = true;
+
+    document.getElementById('weapon-modal-title').innerText = 'Edit Weapon';
+    document.getElementById('weapon-save-btn').classList.remove('hidden');
+    document.getElementById('weapon-modal').classList.remove('hidden');
+
+    fetch(`partials/ajax/get_weapon_details.php?id=${id}`)
+        .then(r => r.json())
+        .then(data => renderWeaponModal(data, true));
+}
+
+/* ---------- RENDER MODAL ---------- */
+function renderWeaponModal(data, editable) {
+    if (data.error) {
+        document.getElementById('weapon-modal-content').innerHTML =
+            `<p class="text-red-600">${data.error}</p>`;
+        return;
+    }
+
+    const input = (id, value='') =>
+        editable
+            ? `<input id="${id}" value="${escapeHtml(value)}"
+                class="w-full border px-3 py-2 rounded text-sm">`
+            : `<div class="text-gray-800">${escapeHtml(value || '—')}</div>`;
+
+    const textarea = (id, value='') =>
+        editable
+            ? `<textarea id="${id}" rows="3"
+                class="w-full border px-3 py-2 rounded text-sm">${escapeHtml(value)}</textarea>`
+            : `<div class="text-gray-800 whitespace-pre-line">${value || '—'}</div>`;
+
+    document.getElementById('weapon-modal-content').innerHTML = `
+    <div class="space-y-4">
+
+        <div>
+            <label class="text-sm font-medium">Weapon Name</label>
+            ${input('WeaponName', data.WeaponName)}
+        </div>
+
+        <div>
+            <label class="text-sm font-medium">Weapon Type</label>
+            ${input('WeaponType', data.WeaponType)}
+        </div>
+
+        <div>
+            <label class="text-sm font-medium">Weapon Era</label>
+            ${input('WeaponEra', data.WeaponEra)}
+        </div>
+
+        <div>
+            <label class="text-sm font-medium">Origin Country</label>
+            ${input('OriginCountry', data.OriginCountry)}
+        </div>
+
+        <div>
+            <label class="text-sm font-medium">Technology</label>
+            ${textarea('Technology', data.Technology)}
+        </div>
+
+        <div>
+            <label class="text-sm font-medium">Materials Used</label>
+            ${input('MaterialsUsed', data.MaterialsUsed)}
+        </div>
+
+        <div>
+            <label class="text-sm font-medium">Weight</label>
+            ${input('Weight', data.Weight)}
+        </div>
+
+        <div>
+            <label class="text-sm font-medium">Range / Capacity</label>
+            ${input('RangeCapacity', data.RangeCapacity)}
+        </div>
+
+        <div>
+            <label class="text-sm font-medium">Firing Mechanism</label>
+            ${input('FiringMechanism', data.FiringMechanism)}
+        </div>
+
+        <div>
+            <label class="text-sm font-medium">Introduction</label>
+            ${textarea('Introduction', data.Introduction)}
+        </div>
+
+        <div>
+            <label class="text-sm font-medium">History</label>
+            ${textarea('History', data.History)}
+        </div>
+
+        <div>
+            <label class="text-sm font-medium">Notable Usage in India</label>
+            ${textarea('NotableUsageInIndia', data.NotableUsageInIndia)}
+        </div>
+
+        <div>
+            <label class="text-sm font-medium">Related Battles</label>
+            ${textarea('RelatedBattles', data.RelatedBattles)}
+        </div>
+
+        <div>
+            <label class="text-sm font-medium">Advantages</label>
+            ${textarea('Advantages', data.Advantages)}
+        </div>
+
+        <div>
+            <label class="text-sm font-medium">Limitations</label>
+            ${textarea('Limitations', data.Limitations)}
+        </div>
+
+        <div>
+            <label class="text-sm font-medium">Notes</label>
+            ${textarea('Notes', data.Notes)}
+        </div>
+
+    </div>`;
+}
+
+/* ---------- SAVE UPDATE ---------- */
+function saveWeapon() {
+    if (!currentWeaponId) return;
+
+    const payload = {
+        id: currentWeaponId,
+        WeaponName: document.getElementById('WeaponName').value,
+        WeaponType: document.getElementById('WeaponType').value,
+        WeaponEra: document.getElementById('WeaponEra').value,
+        OriginCountry: document.getElementById('OriginCountry').value,
+        Technology: document.getElementById('Technology').value,
+        MaterialsUsed: document.getElementById('MaterialsUsed').value,
+        Weight: document.getElementById('Weight').value,
+        RangeCapacity: document.getElementById('RangeCapacity').value,
+        FiringMechanism: document.getElementById('FiringMechanism').value,
+        Introduction: document.getElementById('Introduction').value,
+        History: document.getElementById('History').value,
+        NotableUsageInIndia: document.getElementById('NotableUsageInIndia').value,
+        RelatedBattles: document.getElementById('RelatedBattles').value,
+        Advantages: document.getElementById('Advantages').value,
+        Limitations: document.getElementById('Limitations').value,
+        Notes: document.getElementById('Notes').value
+    };
+
+    fetch('partials/ajax/update_weapon.php', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(payload)
+    })
+    .then(r => r.json())
+    .then(res => {
+        if (res.success) {
+            closeWeaponModal();
+            loadContent('weapons');
+            alert('Weapon updated successfully!');
+        } else {
+            alert(res.message || 'Update failed');
+        }
+    });
+}
+
+/* ---------- MODAL CLOSE ---------- */
+function closeWeaponModal() {
+    document.getElementById('weapon-modal').classList.add('hidden');
+    currentWeaponId = null;
+    isWeaponEditMode = false;
+}
+
+/* ---------- HELPER ---------- */
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text ?? '';
+    return div.innerHTML;
+}
+</script>
+
+<script>
+/* ==============================
+   JUNGLES MODULE – FULL JS
+   (Same flow as Weapons / Temples)
+================================ */
+
+/* ---------- GLOBAL ---------- */
+let currentJungleId = null;
+let isJungleEditMode = false;
+
+/* ---------- ADD JUNGLE ---------- */
+function saveNewJungle() {
+    const form = document.getElementById('add-jungle-form');
+    if (!form) return;
+
+    const fd = new FormData(form);
+
+    fetch('./api/add_jungle.php', {
+        method: 'POST',
+        body: fd
+    })
+    .then(r => r.json())
+    .then(res => {
+        if (res.status === 'success') {
+            alert('Jungle added successfully!');
+            loadContent('jungles');
+        } else {
+            alert(res.message || 'Failed to add jungle');
+        }
+    })
+    .catch(() => alert('Server error'));
+}
+
+/* ---------- PAGINATION ---------- */
+function loadJunglePage(p = 1) {
+    loadContent('jungles&p=' + p);
+}
+
+/* ---------- FILTER ---------- */
+function applyJungleFilters() {
+    const search = document.getElementById('search-input')?.value || '';
+    loadContent('jungles&search=' + encodeURIComponent(search));
+}
+
+function clearJungleFilters() {
+    loadContent('jungles');
+}
+
+/* ---------- VIEW JUNGLE ---------- */
+function viewJungle(id) {
+    currentJungleId = id;
+    isJungleEditMode = false;
+
+    document.getElementById('jungle-modal-title').innerText = 'View Jungle Details';
+    document.getElementById('jungle-save-btn').classList.add('hidden');
+    document.getElementById('jungle-modal').classList.remove('hidden');
+
+    fetch(`partials/ajax/get_jungle_details.php?id=${id}`)
+        .then(r => r.json())
+        .then(data => renderJungleModal(data, false));
+}
+
+/* ---------- EDIT JUNGLE ---------- */
+function editJungle(id) {
+    currentJungleId = id;
+    isJungleEditMode = true;
+
+    document.getElementById('jungle-modal-title').innerText = 'Edit Jungle';
+    document.getElementById('jungle-save-btn').classList.remove('hidden');
+    document.getElementById('jungle-modal').classList.remove('hidden');
+
+    fetch(`partials/ajax/get_jungle_details.php?id=${id}`)
+        .then(r => r.json())
+        .then(data => renderJungleModal(data, true));
+}
+
+/* ---------- RENDER MODAL ---------- */
+function renderJungleModal(data, editable) {
+    if (data.error) {
+        document.getElementById('jungle-modal-content').innerHTML =
+            `<p class="text-red-600">${data.error}</p>`;
+        return;
+    }
+
+    const input = (id, value='') =>
+        editable
+            ? `<input id="${id}" value="${escapeHtml(value)}"
+                class="w-full border px-3 py-2 rounded text-sm">`
+            : `<div class="text-gray-800">${escapeHtml(value || '—')}</div>`;
+
+    const textarea = (id, value='') =>
+        editable
+            ? `<textarea id="${id}" rows="3"
+                class="w-full border px-3 py-2 rounded text-sm">${escapeHtml(value)}</textarea>`
+            : `<div class="text-gray-800 whitespace-pre-line">${value || '—'}</div>`;
+
+    document.getElementById('jungle-modal-content').innerHTML = `
+    <div class="space-y-4">
+
+        <div><label class="text-sm font-medium">Jungle Name</label>
+            ${input('JungleName', data.JungleName)}</div>
+
+        <div><label class="text-sm font-medium">State</label>
+            ${input('State', data.State)}</div>
+
+        <div><label class="text-sm font-medium">District</label>
+            ${input('District', data.District)}</div>
+
+        <div><label class="text-sm font-medium">Nearest City</label>
+            ${input('NearestCity', data.NearestCity)}</div>
+
+        <div><label class="text-sm font-medium">Core Zone Gates</label>
+            ${textarea('CoreZoneGates', data.CoreZoneGates)}</div>
+
+        <div><label class="text-sm font-medium">Buffer Zone Gates</label>
+            ${textarea('BufferZoneGates', data.BufferZoneGates)}</div>
+
+        <div><label class="text-sm font-medium">Introduction</label>
+            ${textarea('Introduction', data.Introduction)}</div>
+
+        <div><label class="text-sm font-medium">History</label>
+            ${textarea('History', data.History)}</div>
+
+        <div><label class="text-sm font-medium">Geography</label>
+            ${textarea('Geography', data.Geography)}</div>
+
+        <div><label class="text-sm font-medium">Safari Timings</label>
+            ${textarea('SafariTimings', data.SafariTimings)}</div>
+
+        <div><label class="text-sm font-medium">Best Season to Visit</label>
+            ${input('BestSeasonToVisit', data.BestSeasonToVisit)}</div>
+
+        <div><label class="text-sm font-medium">Official Website</label>
+            ${input('OfficialWebsite', data.OfficialWebsite)}</div>
+
+        <div><label class="text-sm font-medium">Animals</label>
+            ${input('Animals', data.Animals)}</div>
+
+        <div><label class="text-sm font-medium">Birds</label>
+            ${input('Birds', data.Birds)}</div>
+
+        <div><label class="text-sm font-medium">Trees</label>
+            ${input('Trees', data.Trees)}</div>
+
+        <div><label class="text-sm font-medium">Reptiles</label>
+            ${input('Reptiles', data.Reptiles)}</div>
+
+        <div><label class="text-sm font-medium">Interesting Facts</label>
+            ${textarea('InterestingFacts', data.InterestingFacts)}</div>
+
+        <div><label class="text-sm font-medium">Conservation Info</label>
+            ${textarea('ConservationInfo', data.ConservationInfo)}</div>
+
+        <div><label class="text-sm font-medium">Notes</label>
+            ${textarea('Notes', data.Notes)}</div>
+
+    </div>`;
+}
+
+/* ---------- SAVE UPDATE ---------- */
+function saveJungle() {
+    if (!currentJungleId) return;
+
+    const fields = [
+        'JungleName','State','District','NearestCity',
+        'CoreZoneGates','BufferZoneGates','Introduction','History',
+        'Geography','SafariTimings','BestSeasonToVisit','OfficialWebsite',
+        'Animals','Birds','Trees','Reptiles',
+        'InterestingFacts','ConservationInfo','Notes'
+    ];
+
+    const payload = { id: currentJungleId };
+
+    fields.forEach(f => {
+        payload[f] = document.getElementById(f)?.value || '';
+    });
+
+    fetch('partials/ajax/update_jungle.php', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(payload)
+    })
+    .then(r => r.json())
+    .then(res => {
+        if (res.success) {
+            closeJungleModal();
+            loadContent('jungles');
+            alert('Jungle updated successfully!');
+        } else {
+            alert(res.message || 'Update failed');
+        }
+    });
+}
+
+/* ---------- MODAL CLOSE ---------- */
+function closeJungleModal() {
+    document.getElementById('jungle-modal').classList.add('hidden');
+    currentJungleId = null;
+    isJungleEditMode = false;
+}
+
+/* ---------- HELPER ---------- */
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text ?? '';
+    return div.innerHTML;
+}
+</script>
+
+<script>
+/* ==============================
+   TEMPLE PHOTOS – FULL JS
+   ============================== */
+
+/* ---------- LOAD LIST ---------- */
+function loadTemplePhotos(p) {
+    fetch('?action=load_content&page=temple-photos&p=' + p)
+        .then(r => r.text())
+        .then(html => {
+            document.getElementById('content-container').innerHTML = html;
+        });
+}
+
+/* ---------- MODAL OPEN / CLOSE ---------- */
+function openTemplePhotoModal() {
+    document.getElementById('tp-id').value = '';
+    document.getElementById('tp-temple').value = '';
+    document.getElementById('tp-desc').value = '';
+    document.getElementById('tp-front').checked = false;
+    document.getElementById('tp-file').value = '';
+    document.getElementById('temple-photo-modal').classList.remove('hidden');
+}
+
+function closeTemplePhotoModal() {
+    document.getElementById('temple-photo-modal').classList.add('hidden');
+}
+
+/* ---------- EDIT ---------- */
+function editTemplePhoto(id) {
+    fetch('partials/ajax/get_temple_photo.php?id=' + id)
+        .then(r => r.json())
+        .then(d => {
+            document.getElementById('tp-id').value = d.PIC_ID;
+            document.getElementById('tp-temple').value = d.TempleName;
+            document.getElementById('tp-desc').value = d.PIC_DESC || '';
+            document.getElementById('tp-front').checked = (d.PIC_FRONT_IMAGE === 'Y');
+            document.getElementById('tp-file').value = '';
+            openTemplePhotoModal();
+        });
+}
+
+/* ---------- SAVE ---------- */
+function saveTemplePhoto() {
+    var fd = new FormData();
+
+    fd.append('id', document.getElementById('tp-id').value);
+    fd.append('temple', document.getElementById('tp-temple').value);
+    fd.append('desc', document.getElementById('tp-desc').value);
+    fd.append('front', document.getElementById('tp-front').checked ? 'Y' : '');
+
+    var fileInput = document.getElementById('tp-file');
+    if (fileInput.files.length > 0) {
+        fd.append('image', fileInput.files[0]);
+    }
+
+    fetch('partials/ajax/save_temple_photo.php', {
+        method: 'POST',
+        body: fd
+    })
+    .then(() => {
+        closeTemplePhotoModal();
+        loadTemplePhotos(1);
+    });
+}
+</script>
+
+<script>
+/* ==============================
+   WEAPON PHOTOS – FULL JS
+   ============================== */
+
+/* ---------- LOAD LIST ---------- */
+function loadWeaponPhotos(p) {
+    fetch('?action=load_content&page=weapon-photos&p=' + p)
+        .then(function (r) { return r.text(); })
+        .then(function (html) {
+            document.getElementById('content-container').innerHTML = html;
+        });
+}
+
+/* ---------- MODAL OPEN / CLOSE ---------- */
+function openWeaponPhotoModal() {
+    document.getElementById('wp-id').value = '';
+    document.getElementById('wp-weapon').value = '';
+    document.getElementById('wp-desc').value = '';
+    document.getElementById('wp-front').checked = false;
+    document.getElementById('wp-file').value = '';
+    document.getElementById('weapon-photo-modal').classList.remove('hidden');
+}
+
+function closeWeaponPhotoModal() {
+    document.getElementById('weapon-photo-modal').classList.add('hidden');
+}
+
+/* ---------- EDIT ---------- */
+function editWeaponPhoto(id) {
+    fetch('partials/ajax/get_weapon_photo.php?id=' + id)
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+            document.getElementById('wp-id').value = d.PIC_ID;
+            document.getElementById('wp-weapon').value = d.WeaponName;
+            document.getElementById('wp-desc').value = d.PIC_DESC || '';
+            document.getElementById('wp-front').checked =
+                (d.PIC_FRONT_IMAGE === 'Y');
+            document.getElementById('wp-file').value = '';
+            openWeaponPhotoModal();
+        });
+}
+
+/* ---------- SAVE ---------- */
+function saveWeaponPhoto() {
+    var fd = new FormData();
+
+    fd.append('id', document.getElementById('wp-id').value);
+    fd.append('weapon', document.getElementById('wp-weapon').value);
+    fd.append('desc', document.getElementById('wp-desc').value);
+    fd.append('front',
+        document.getElementById('wp-front').checked ? 'Y' : ''
+    );
+
+    var fileInput = document.getElementById('wp-file');
+    if (fileInput.files.length > 0) {
+        fd.append('image', fileInput.files[0]);
+    }
+
+    fetch('partials/ajax/save_weapon_photo.php', {
+        method: 'POST',
+        body: fd
+    })
+    .then(function () {
+        closeWeaponPhotoModal();
+        loadWeaponPhotos(1);
+    });
+}
+</script>
+
+
+
+<script>
+/* ==============================
+   JUNGLE PHOTOS – FULL JS
+   ============================== */
+
+/* ---------- LOAD LIST ---------- */
+function loadJunglePhotos(p) {
+    fetch('?action=load_content&page=jungle-photos&p=' + p)
+        .then(function (r) { return r.text(); })
+        .then(function (html) {
+            document.getElementById('content-container').innerHTML = html;
+        });
+}
+
+/* ---------- MODAL OPEN / CLOSE ---------- */
+function openJunglePhotoModal() {
+    document.getElementById('jp-id').value = '';
+    document.getElementById('jp-jungle').value = '';
+    document.getElementById('jp-desc').value = '';
+    document.getElementById('jp-front').checked = false;
+    document.getElementById('jp-file').value = '';
+    document.getElementById('jungle-photo-modal').classList.remove('hidden');
+}
+
+function closeJunglePhotoModal() {
+    document.getElementById('jungle-photo-modal').classList.add('hidden');
+}
+
+/* ---------- EDIT ---------- */
+function editJunglePhoto(id) {
+    fetch('partials/ajax/get_jungle_photo.php?id=' + id)
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+            document.getElementById('jp-id').value = d.PIC_ID;
+            document.getElementById('jp-jungle').value = d.JungleName;
+            document.getElementById('jp-desc').value = d.PIC_DESC || '';
+            document.getElementById('jp-front').checked =
+                (d.PIC_FRONT_IMAGE === 'Y');
+            document.getElementById('jp-file').value = '';
+            openJunglePhotoModal();
+        });
+}
+
+/* ---------- SAVE ---------- */
+function saveJunglePhoto() {
+    var fd = new FormData();
+
+    fd.append('id', document.getElementById('jp-id').value);
+    fd.append('jungle', document.getElementById('jp-jungle').value);
+    fd.append('desc', document.getElementById('jp-desc').value);
+    fd.append('front',
+        document.getElementById('jp-front').checked ? 'Y' : ''
+    );
+
+    var fileInput = document.getElementById('jp-file');
+    if (fileInput.files.length > 0) {
+        fd.append('image', fileInput.files[0]);
+    }
+
+    fetch('partials/ajax/save_jungle_photo.php', {
+        method: 'POST',
+        body: fd
+    })
+    .then(function () {
+        closeJunglePhotoModal();
+        loadJunglePhotos(1);
+    });
+}
+</script>
+
+<script>
+/* ==============================
+   HOME PHOTOS – FULL JS
+   ============================== */
+
+/* ---------- LOAD LIST ---------- */
+function loadHomePhotos(p = 1) {
+    fetch('?action=load_content&page=home-photos&p=' + p)
+        .then(function (r) { return r.text(); })
+        .then(function (html) {
+            document.getElementById('content-container').innerHTML = html;
+        });
+}
+
+/* ---------- MODAL OPEN / CLOSE ---------- */
+function openHomePhotoModal() {
+    document.getElementById('hp-id').value = '';
+    document.getElementById('hp-desc').value = '';
+    document.getElementById('hp-order').value = '';
+    document.getElementById('hp-active').checked = true;
+    document.getElementById('hp-file').value = '';
+    document.getElementById('home-photo-modal').classList.remove('hidden');
+}
+
+function closeHomePhotoModal() {
+    document.getElementById('home-photo-modal').classList.add('hidden');
+}
+
+/* ---------- EDIT ---------- */
+function editHomePhoto(id) {
+    fetch('partials/ajax/get_home_photo.php?id=' + id)
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+            document.getElementById('hp-id').value    = d.PIC_ID;
+            document.getElementById('hp-desc').value  = d.PIC_DESC || '';
+            document.getElementById('hp-order').value = d.SORT_ORDER || '';
+            document.getElementById('hp-active').checked =
+                (d.IS_ACTIVE === 'Y');
+
+            document.getElementById('hp-file').value = '';
+            openHomePhotoModal();
+        });
+}
+
+/* ---------- SAVE ---------- */
+function saveHomePhoto() {
+
+    var fd = new FormData();
+
+    fd.append('id', document.getElementById('hp-id').value);
+    fd.append('desc', document.getElementById('hp-desc').value);
+    fd.append('order', document.getElementById('hp-order').value);
+    fd.append(
+        'active',
+        document.getElementById('hp-active').checked ? 'Y' : 'N'
+    );
+
+    var fileInput = document.getElementById('hp-file');
+    if (fileInput.files.length > 0) {
+        fd.append('image', fileInput.files[0]);
+    }
+
+    fetch('partials/ajax/save_home_photo.php', {
+        method: 'POST',
+        body: fd
+    })
+    .then(function () {
+        closeHomePhotoModal();
+        loadHomePhotos(1);
+    });
+}
+</script>
 
 
 

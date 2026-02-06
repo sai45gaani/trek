@@ -129,13 +129,13 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
                 
                 <!-- Navigation breadcrumb -->
                 <div class="flex flex-wrap justify-center gap-4 text-sm opacity-90">
-                    <a href="/marathi/forts-alphabetical" class="hover:text-accent transition-colors">मुळाक्षरानुसार</a>
+                    <a href="./fort_information.php" class="hover:text-accent transition-colors">मुळाक्षरानुसार</a>
                     <span>•</span>
-                    <a href="/marathi/forts-by-range" class="hover:text-accent transition-colors">डोंगररांगेनुसार</a>
+                    <a href="./fort_by_range.php" class="hover:text-accent transition-colors">डोंगररांगेनुसार</a>
                     <span>•</span>
-                    <a href="/marathi/forts-by-district" class="hover:text-accent transition-colors">जिल्ह्यानुसार</a>
+                    <a href="./fort_by_district.php" class="hover:text-accent transition-colors">जिल्ह्यानुसार</a>
                      <span>•</span>
-                    <a href="./fort_by_category_marathi.php" class="hover:text-accent transition-colors">प्रकारानुसार</a>
+                    <a href="./fort_by_category.php" class="hover:text-accent transition-colors">प्रकारानुसार</a>
                     <span>•</span>
                     <span class="text-accent font-semibold">कठीणतेनुसार</span>
                 </div>

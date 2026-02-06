@@ -214,13 +214,13 @@ if (!isset($fortsData[$currentFilter]) && count($fortsData) > 0) {
                 <div class="flex flex-wrap justify-center gap-4 text-sm opacity-90">
                     <span class="text-accent font-semibold">Alphabetical</span>
                     <span>•</span>
-                    <a href="./fort_by_range_english.php" class="hover:text-accent transition-colors">By Mountain Range</a>
+                    <a href="./fort_by_range.php" class="hover:text-accent transition-colors">By Mountain Range</a>
                     <span>•</span>
-                    <a href="./fort_by_district_english.php" class="hover:text-accent transition-colors">By District</a>
+                    <a href="./fort_by_district.php" class="hover:text-accent transition-colors">By District</a>
                     <span>•</span>
-                    <a href="./fort-by-category-english.php" class="hover:text-accent transition-colors">By Type</a>
+                    <a href="./fort_by_category.php" class="hover:text-accent transition-colors">By Type</a>
                     <span>•</span>
-                    <a href="./fort_by_grade_english.php" class="hover:text-accent transition-colors">By Difficulty</a>
+                    <a href="./fort_by_grade.php" class="hover:text-accent transition-colors">By Difficulty</a>
                 </div>
             </div>
         </div>

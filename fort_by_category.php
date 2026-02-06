@@ -218,15 +218,15 @@ $seaFortsCount = isset($fortCategories['Sea Forts']) ? $fortCategories['Sea Fort
                 
                 <!-- Navigation breadcrumb -->
                 <div class="flex flex-wrap justify-center gap-4 text-sm opacity-90">
-                    <a href="./fort_in_english.php" class="hover:text-accent transition-colors">Alphabetical</a>
+                    <a href="./fort_information.php" class="hover:text-accent transition-colors">Alphabetical</a>
                     <span>•</span>
-                    <a href="./fort_by_range_english.php" class="hover:text-accent transition-colors">By Mountain Range</a>
+                    <a href="./fort_by_range.php" class="hover:text-accent transition-colors">By Mountain Range</a>
                     <span>•</span>
-                    <a href="./fort_by_district_english.php" class="hover:text-accent transition-colors">By District</a>
+                    <a href="./fort_by_district.php" class="hover:text-accent transition-colors">By District</a>
                     <span>•</span>
                     <span class="text-accent font-semibold">By Category</span>
                     <span>•</span>
-                    <a href="./fort_by_grade_english.php" class="hover:text-accent transition-colors">By Difficulty</a>
+                    <a href="./fort_by_grade.php" class="hover:text-accent transition-colors">By Difficulty</a>
                 </div>
             </div>
         </div>

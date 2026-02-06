@@ -194,7 +194,7 @@ $uniqueRegions = count(array_unique(array_column($districts, 'region')));
                 
                 <!-- Navigation breadcrumb -->
                 <div class="flex flex-wrap justify-center gap-4 text-sm opacity-90">
-                    <a href="./forts_information.php" class="hover:text-accent transition-colors">मुळाक्षरानुसार</a>
+                    <a href="./fort_information.php" class="hover:text-accent transition-colors">मुळाक्षरानुसार</a>
                     <span>•</span>
                     <a href="./fort_by_range.php" class="hover:text-accent transition-colors">डोंगररांगेनुसार</a>
                     <span>•</span>
