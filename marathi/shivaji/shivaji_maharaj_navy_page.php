@@ -6,7 +6,7 @@ $meta_keywords = 'Shivaji Maharaj navy, Maratha navy, Aarmar Shivaji Maharaj, �
 
 
 // Include header
-include './../includes/header.php';
+include './../../includes/header_marathi.php';
 ?>
 
 <style>
@@ -440,124 +440,75 @@ include './../includes/header.php';
 
 
 <!-- Information Cards Section -->
-<section class="max-w-6xl mx-auto px-4 pb-16">
-  <details open class="royal-card bg-[#FFF4D6] border border-yellow-700 rounded-xl p-6">
-    <summary class="cursor-pointer text-xl font-bold text-center mb-4 hover:text-maratha">
-      📜 सविस्तर ऐतिहासिक व तांत्रिक माहिती पहा
-    </summary>
+<?php include 'all_sections_infromation_about_shivaji_maharaj.php'; ?>
 
-    <div class="mt-6 space-y-4 text-justify">
-
-      <p>
-        छत्रपती शिवाजी महाराजांच्या कारकिर्दीत मराठा नौदलामध्ये सुमारे
-        <strong>६४० लहान व मध्यम आकाराच्या नौका</strong> तसेच जवळपास
-        <strong>३० मोठ्या गुराब युद्धनौका</strong> समाविष्ट होत्या.
-        उथळ पाण्यात वेग व चपळता राखण्यासाठी लहान नौका अत्यंत उपयुक्त ठरत होत्या.
-      </p>
-
-      <p>
-        गुराब या नौकांचे वजन साधारणपणे <strong>२०० ते ३०० टन</strong> इतके असून
-        त्यावर लांब पल्ल्याच्या तोफा बसविलेल्या असत. रचनेने समान असलेल्या
-        गलबत या नौका मात्र हलक्या (७०–८० टन) व अधिक वेगवान असत.
-      </p>
-
-      <p>
-        याशिवाय <strong>शिवाड, तरांडे, पाल, माचवा, जुग, विरकटी,
-        दाबरी आणि महागिरी</strong> अशा विविध प्रकारच्या नौका नौदलात होत्या,
-        ज्या विशिष्ट समुद्री मोहिमांसाठी वापरल्या जात.
-      </p>
-
-      <p>
-        <strong>सिंधुदुर्ग, रत्नागिरी व कोकण किनारपट्टीवरील</strong> गोदामांमध्ये
-        सातत्याने जहाजबांधणी व दुरुस्ती केली जात होती.
-        युरोपीय जहाजबांधणी तंत्रज्ञानाचा अभ्यास करून ते भारतीय किनारपट्टीच्या
-        गरजेनुसार रूपांतरित करण्यात आले होते.
-      </p>
-
-      <p>
-        मराठा नौदलाच्या इतिहासातील दोन महत्त्वाच्या घटना म्हणजे
-        <strong>बसूर समुद्र मोहिम (१६६५)</strong> आणि
-        <strong>खांदेरीचे युद्ध (१६७९)</strong>.
-        मुंबईपासून केवळ अकरा मैल अंतरावर असलेल्या खांदेरी बेटाचे किल्लेबांधकाम
-        करून इंग्रजांच्या नौदल वर्चस्वाला थेट आव्हान देण्यात आले.
-      </p>
-
-      <p>
-        मराठा नौदलामध्ये सर्व जाती–धर्मांतील अधिकाऱ्यांचा समावेश होता,
-        ज्यातून छत्रपती शिवाजी महाराजांची समावेशक प्रशासनपद्धती
-        आणि दूरदृष्टी स्पष्टपणे दिसून येते.
-      </p>
-
-    </div>
-  </details>
-</section>
 
 
 <!-- Legacy Section -->
-<section id="legacy" class="py-20 bg-white dark:bg-gray-900">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-            <div class="section-indicator"></div>
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
-                    Eternal Legacy
-                </span>
-            </h2>
-            <p class="text-xl text-gray-600 dark:text-gray-300">
-                Timeless inspiration — ideals of Shivaji Maharaj that continue to live on
-            </p>
+    <section id="legacy" class="py-20 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <div class="section-indicator"></div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                        <span class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent">
+                            शाश्वत वारसा
+                        </span>
+                    </h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-300">
+                        काळाच्या पलीकडे जाणारी प्रेरणा — छत्रपती शिवाजी महाराजांचे विचार आणि आदर्श आजही जिवंत आहेत
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-8">
+
+                    <!-- Swarajya -->
+                    <div class="royal-card rounded-2xl p-8 text-center">
+                        <div class="w-20 h-20 bg-gradient-to-br from-red-600 to-yellow-500 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i class="fas fa-flag text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                            स्वराज्याची संकल्पना
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                            छत्रपती शिवाजी महाराजांनी मांडलेली स्वराज्याची क्रांतिकारी कल्पना पुढे भारताच्या स्वातंत्र्य चळवळीचा भक्कम पाया ठरली.
+                        </p>
+                    </div>
+
+                    <!-- Religious Tolerance -->
+                    <div class="royal-card rounded-2xl p-8 text-center">
+                        <div class="w-20 h-20 bg-gradient-to-br from-yellow-500 to-red-600 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i class="fas fa-heart text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                            धार्मिक सहिष्णुता
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                            सर्व धर्मांप्रती आदर, सलोखा आणि समानतेवर आधारित धर्मनिरपेक्ष शासनपद्धतीमुळे साम्राज्यात ऐक्य आणि परस्पर सन्मान टिकून राहिला.
+                        </p>
+                    </div>
+
+                    <!-- Welfare of People -->
+                    <div class="royal-card rounded-2xl p-8 text-center">
+                        <div class="w-20 h-20 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i class="fas fa-users text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                            जनकल्याण
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                            जनतेचे हित हेच राज्यकर्त्याचे सर्वोच्च कर्तव्य मानणारी शासनव्यवस्था — जी आजच्या लोकशाही मूल्यांनाही प्रेरणा देते.
+                        </p>
+                    </div>
+
+                </div>
         </div>
-
-        <div class="grid lg:grid-cols-3 gap-8">
-
-            <!-- Swarajya -->
-            <div class="royal-card rounded-2xl p-8 text-center">
-                <div class="w-20 h-20 bg-gradient-to-br from-red-600 to-yellow-500 rounded-full flex items-center justify-center mb-6 mx-auto">
-                    <i class="fas fa-flag text-3xl text-white"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-                    Concept of Swarajya
-                </h3>
-                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    The revolutionary idea of Swarajya (self-rule) introduced by Shivaji Maharaj later became the foundation of India’s freedom movement.
-                </p>
-            </div>
-
-            <!-- Religious Tolerance -->
-            <div class="royal-card rounded-2xl p-8 text-center">
-                <div class="w-20 h-20 bg-gradient-to-br from-yellow-500 to-red-600 rounded-full flex items-center justify-center mb-6 mx-auto">
-                    <i class="fas fa-heart text-3xl text-white"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-                    Religious Tolerance
-                </h3>
-                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    Principles of religious harmony and secular governance that ensured unity and respect among diverse communities within the empire.
-                </p>
-            </div>
-
-            <!-- Welfare of People -->
-            <div class="royal-card rounded-2xl p-8 text-center">
-                <div class="w-20 h-20 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center mb-6 mx-auto">
-                    <i class="fas fa-users text-3xl text-white"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-                    Welfare of the People
-                </h3>
-                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    Governance centered on public welfare — a ruler’s foremost duty — a philosophy that continues to inspire modern democratic values.
-                </p>
-            </div>
-
-        </div>
-    </div>
-</section>
+    </section>
 
 
 
 </main>
 
-<?php include './../includes/footer.php'; ?>
+<?php include './../../includes/footer_marathi.php'; ?>
 
 <!-- JavaScript -->
 <script>

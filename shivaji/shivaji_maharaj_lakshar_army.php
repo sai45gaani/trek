@@ -1,9 +1,10 @@
 <?php
 // Set page specific variables
-$page_title = 'Herkhate – Spy Department of Shivaji Maharaj | Intelligence System | Trekshitz';
-$meta_description = 'Detailed information about Herkhate, the intelligence and spy department of Chhatrapati Shivaji Maharaj, its structure, operations, and historical importance.';
-$meta_keywords = 'Herkhate, Shivaji Maharaj spy department, Maratha intelligence system, espionage, Shivaji administration';
+$page_title = 'Lakshar Army of Chhatrapati Shivaji Maharaj | Maratha Army & Military System | TrekshitiZ';
 
+$meta_description = 'Detailed information about the Lakshar Army of Chhatrapati Shivaji Maharaj, including the structure of the Maratha army, infantry, cavalry, forts-based defense system, military discipline, and administration that strengthened Swarajya.';
+
+$meta_keywords = 'Lakshar Army, Maratha Army, Shivaji Maharaj army, Maratha military system, Shivaji military administration, infantry cavalry forts, Swarajya army';
 
 // Include header
 include './../includes/header.php';
