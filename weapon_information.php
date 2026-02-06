@@ -4,8 +4,8 @@ $page_title = 'Historical Weapons of India | Trekshitz';
 $meta_description = 'Detailed information about historical weapons of India including type, era, technology and usage.';
 $meta_keywords = 'historical weapons, indian weapons, ancient weapons, medieval weapons';
 
-require_once './../config/database.php';
-include './../includes/header_english.php';
+require_once './config/database.php';
+include './includes/header.php';
 
 // DB
 $db = new Database();
@@ -110,4 +110,4 @@ function weaponSlug($name) {
 
 </main>
 
-<?php include './../includes/footer_english.php'; ?>
+<?php include './includes/footer.php'; ?>

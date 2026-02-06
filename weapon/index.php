@@ -8,8 +8,8 @@ if (!isset($_GET['slug'])) {
 $slug = trim($_GET['slug']);
 $weaponName = ucwords(str_replace('-', ' ', $slug));
 
-require_once '../../config/database.php';
-include '../../includes/header_english.php';
+require_once '../config/database.php';
+include '../includes/header.php';
 
 // DB
 $db = new Database();
@@ -183,4 +183,4 @@ foreach ($images as $img) {
 
 </main>
 
-<?php include '../../includes/footer_english.php'; ?>
+<?php include '../includes/footer.php'; ?>

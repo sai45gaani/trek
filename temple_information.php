@@ -4,8 +4,8 @@ $page_title = 'Temples in Maharashtra | Trekshitz';
 $meta_description = 'Complete information about famous temples in Maharashtra including deity, history, importance and architecture.';
 $meta_keywords = 'temples in maharashtra, indian temples, hindu temples, pilgrimage';
 
-require_once './../config/database.php';
-include './../includes/header_english.php';
+require_once './config/database.php';
+include './includes/header.php';
 
 // DB
 $db = new Database();
@@ -108,4 +108,4 @@ function templeSlug($name) {
 
 </main>
 
-<?php include './../includes/footer_english.php'; ?>
+<?php include './includes/footer.php'; ?>

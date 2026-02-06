@@ -4,8 +4,9 @@ $page_title = 'Jungles & Tiger Reserves in India | Trekshitz';
 $meta_description = 'Complete information about famous jungles and tiger reserves in India including Kanha, Tadoba and more.';
 $meta_keywords = 'jungles of india, tiger reserve, kanha, tadoba';
 
-require_once './../config/database.php';
-include './../includes/header_english.php';
+require_once './config/database.php';
+// Include header
+include './includes/header.php';
 
 // DB
 $db = new Database();
@@ -98,4 +99,4 @@ function jungleSlug($name) {
 
 </main>
 
-<?php include './../includes/footer_english.php'; ?>
+<?php include './includes/footer.php'; ?>

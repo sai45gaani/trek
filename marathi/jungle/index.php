@@ -8,8 +8,8 @@ if (!isset($_GET['slug'])) {
 $slug = trim($_GET['slug']);
 $jungleName = ucwords(str_replace('-', ' ', $slug));
 
-require_once '../../../config/database.php';
-include '../../../includes/header_marathi.php';
+require_once '../../config/database.php';
+include '../../includes/header_marathi.php';
 
 $db = new Database();
 $conn = $db->getConnection();
@@ -143,4 +143,4 @@ foreach ($images as $img) {
 
 </main>
 
-<?php include '../../../includes/footer_marathi.php'; ?>
+<?php include '../../includes/footer_marathi.php'; ?>
