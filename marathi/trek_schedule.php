@@ -131,7 +131,7 @@ try {
     $where_clause = implode(" AND ", $where_conditions);
     
     // Count total treks (for statistics)
-    $count_query = "SELECT COUNT(*) as total FROM TS_tblTrekDetails WHERE " . $where_clause;
+    $count_query = "SELECT COUNT(*) as total FROM ts_tbltrekdetails WHERE " . $where_clause;
     $count_stmt = $conn->prepare($count_query);
     
     if (!empty($params)) {
@@ -163,7 +163,7 @@ try {
                 MaxParticipants,
                 Description,
                 Notes
-              FROM TS_tblTrekDetails 
+              FROM ts_tbltrekdetails 
               WHERE " . $where_clause . "
               ORDER BY TrekDate ASC
               LIMIT ? OFFSET ?";
@@ -219,7 +219,7 @@ $paginatedTreks = $treksData; // Already paginated from query
 // Get all trek names for search suggestions
 $suggestions = [];
 try {
-    $sugg_query = "SELECT DISTINCT Place FROM TS_tblTrekDetails WHERE TrekDate >= CURDATE() ORDER BY Place ASC LIMIT 20";
+    $sugg_query = "SELECT DISTINCT Place FROM ts_tbltrekdetails WHERE TrekDate >= CURDATE() ORDER BY Place ASC LIMIT 20";
     $sugg_result = $conn->query($sugg_query);
     while ($row = $sugg_result->fetch_assoc()) {
         $suggestions[] = trim($row['Place']);

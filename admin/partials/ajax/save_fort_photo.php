@@ -16,7 +16,7 @@ if(!empty($_FILES['image']['name'])){
 }
 
 if($id){
-    $sql = "UPDATE PM_tblPhotos_clean SET FortName=?, PIC_DESC=?, PIC_FRONT_IMAGE=?";
+    $sql = "UPDATE pm_tblphotos_clean SET FortName=?, PIC_DESC=?, PIC_FRONT_IMAGE=?";
     if($imageName) $sql .= ", PIC_NAME=?";
     $sql .= " WHERE PIC_ID=?";
     $stmt = $conn->prepare($sql);
@@ -26,7 +26,7 @@ if($id){
         $stmt->bind_param("sssi",$fort,$desc,$front,$id);
 }else{
     $stmt = $conn->prepare(
-        "INSERT INTO PM_tblPhotos_clean (FortName,PIC_NAME,PIC_DESC,PIC_FRONT_IMAGE)
+        "INSERT INTO pm_tblphotos_clean (FortName,PIC_NAME,PIC_DESC,PIC_FRONT_IMAGE)
          VALUES (?,?,?,?)"
     );
     $stmt->bind_param("ssss",$fort,$imageName,$desc,$front);

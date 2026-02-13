@@ -31,7 +31,7 @@ function getGradeColor($grade) {
 // ================= UPCOMING TREKS =================
 $upcomingTreks = $conn->query("
     SELECT TrekId, Place, TrekDate, Leader, Grade, ContDetails
-    FROM TS_tblTrekDetails
+    FROM ts_tbltrekdetails
     WHERE TrekDate >= CURDATE()
     ORDER BY TrekDate ASC
     LIMIT 6
@@ -40,7 +40,7 @@ $upcomingTreks = $conn->query("
 // ================= PAST TREKS =================
 $pastTreks = $conn->query("
     SELECT TrekId, Place, TrekDate, Leader, Grade
-    FROM TS_tblTrekDetails
+    FROM ts_tbltrekdetails
     WHERE TrekDate < CURDATE()
     ORDER BY TrekDate DESC
     LIMIT 6

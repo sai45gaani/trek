@@ -23,24 +23,24 @@ try {
     }
 
     // Treks (same table)
-    $res = $conn->query("SELECT COUNT(*) AS cnt FROM TS_tblTrekDetails");
+    $res = $conn->query("SELECT COUNT(*) AS cnt FROM ts_tbltrekdetails");
     if ($res && $r = $res->fetch_assoc()) {
         $stats['total_treks'] = $r['cnt'];
     }
 
-    $res = $conn->query("SELECT COUNT(*) AS cnt FROM TS_tblTrekDetails WHERE TrekDate >= CURDATE()");
+    $res = $conn->query("SELECT COUNT(*) AS cnt FROM ts_tbltrekdetails WHERE TrekDate >= CURDATE()");
     if ($res && $r = $res->fetch_assoc()) {
         $stats['upcoming_treks'] = $r['cnt'];
     }
 
     // Photos
-    $res = $conn->query("SELECT COUNT(*) AS cnt FROM PM_tblPhotos");
+    $res = $conn->query("SELECT COUNT(*) AS cnt FROM pm_tblphotos_clean");
     if ($res && $r = $res->fetch_assoc()) {
         $stats['total_photos'] = $r['cnt'];
     }
 
     // Events
-    $res = $conn->query("SELECT COUNT(*) AS cnt FROM OO_tblEventList WHERE Deleted IS NULL OR Deleted=0");
+    $res = $conn->query("SELECT COUNT(*) AS cnt FROM oo_tbleventlist WHERE Deleted IS NULL OR Deleted=0");
     if ($res && $r = $res->fetch_assoc()) {
         $stats['total_events'] = $r['cnt'];
     }

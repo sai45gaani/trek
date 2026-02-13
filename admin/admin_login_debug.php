@@ -86,20 +86,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
                 $stmt->close();
                 
             } else {
-                // admin_users table doesn't exist, try SW_tblAdmin
-                $debug_info[] = "admin_users table DOES NOT EXIST, trying SW_tblAdmin";
+                // admin_users table doesn't exist, try sw_tbladmin
+                $debug_info[] = "admin_users table DOES NOT EXIST, trying sw_tbladmin";
                 
-                $query = "SELECT * FROM SW_tblAdmin WHERE Username = ? LIMIT 1";
+                $query = "SELECT * FROM sw_tbladmin WHERE Username = ? LIMIT 1";
                 $stmt = $conn->prepare($query);
                 $stmt->bind_param("s", $username);
                 $stmt->execute();
                 $result = $stmt->get_result();
                 
-                $debug_info[] = "SW_tblAdmin query executed, rows found: " . $result->num_rows;
+                $debug_info[] = "sw_tbladmin query executed, rows found: " . $result->num_rows;
                 
                 if ($result->num_rows === 1) {
                     $admin = $result->fetch_assoc();
-                    $debug_info[] = "User found in SW_tblAdmin: " . $admin['Username'];
+                    $debug_info[] = "User found in sw_tbladmin: " . $admin['Username'];
                     
                     // Direct password comparison
                     if ($password === $admin['Password']) {
@@ -123,8 +123,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
                         $debug_info[] = "Expected: " . $admin['Password'];
                     }
                 } else {
-                    $error_message = 'User not found in SW_tblAdmin.';
-                    $debug_info[] = "ERROR: No user found in SW_tblAdmin";
+                    $error_message = 'User not found in sw_tbladmin.';
+                    $debug_info[] = "ERROR: No user found in sw_tbladmin";
                 }
                 $stmt->close();
             }

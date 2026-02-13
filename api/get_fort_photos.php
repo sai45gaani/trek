@@ -13,7 +13,7 @@ $query="SELECT p.FortName,
     p.PIC_DESC,
     (
         SELECT f.FortDistrict
-        FROM EI_tblFortInfo f
+        FROM ei_tblfortinfo f
         WHERE f.FortName = p.FortName
         LIMIT 1
     ) AS FortDistrict

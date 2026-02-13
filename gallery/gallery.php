@@ -175,16 +175,20 @@ $sketchCount     = getCategoryCount($conn, 'Sketches');
                 ]
             ];
 
-            foreach ($galleries as $g): ?>
-    <div class="group bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 
-                shadow-sm hover:shadow-2xl transition-all duration-300 
-                p-7 flex flex-col relative overflow-hidden mb-6">
+foreach ($galleries as $g): ?>
+    <a href="<?= $g['link'] ?>"
+       class="group block bg-white dark:bg-gray-800 rounded-2xl 
+              border border-gray-100 dark:border-gray-700 
+              shadow-sm hover:shadow-2xl transition-all duration-300 
+              p-7 flex flex-col overflow-hidden mb-6
+              hover:-translate-y-1">
 
         <!-- Accent strip -->
-        <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary to-accent"></div>
+        <div class="h-1 w-full bg-gradient-to-r from-primary to-accent mb-4"></div>
 
         <!-- Title -->
-        <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white group-hover:text-primary transition">
+        <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white 
+                   group-hover:text-primary transition">
             <?= $g['title'] ?>
         </h3>
 
@@ -194,19 +198,23 @@ $sketchCount     = getCategoryCount($conn, 'Sketches');
         </p>
 
         <!-- Footer -->
-        <div class="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
+        <div class="flex items-center justify-between pt-4 
+                    border-t border-gray-100 dark:border-gray-700">
+
             <span class="inline-flex items-center text-sm font-semibold text-green-600">
                 <i class="fas fa-images mr-2 opacity-80"></i>
                 <?= $g['count'] ?> items
             </span>
 
-            <a href="<?= $g['link'] ?>"
-               class="inline-flex items-center text-primary font-semibold hover:underline group-hover:translate-x-1 transition">
+            <!-- Button LOOK (not a link) -->
+            <span class="inline-flex items-center text-primary font-semibold
+                         group-hover:translate-x-1 transition">
                 Explore
                 <span class="ml-1">→</span>
-            </a>
+            </span>
+
         </div>
-    </div>
+    </a>
 <?php endforeach; ?>
 
 

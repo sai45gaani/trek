@@ -32,7 +32,7 @@ if ($id) {
     $params[] = $id;
 
     $stmt = $conn->prepare("
-        UPDATE TS_tblTrekDetails SET
+        UPDATE ts_tbltrekdetails SET
             TrekDate=?,
             Place=?,
             Leader=?,
@@ -54,7 +54,7 @@ if ($id) {
 } else {
 
     $stmt = $conn->prepare("
-        INSERT INTO TS_tblTrekDetails
+        INSERT INTO ts_tbltrekdetails
         (
             TrekDate, Place, Leader, ContDetails, DisplayDate,
             Cost, Grade, LDateBooking, MeetingPlace,

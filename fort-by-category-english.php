@@ -134,7 +134,7 @@ $fortCategories = [];
 
 // Query to get all fort types and their forts
 $query = "SELECT FortType, FortName 
-          FROM EI_tblFortInfo 
+          FROM ei_tblfortinfo 
           WHERE FortType IS NOT NULL 
           AND FortType != '' 
           AND FortName IS NOT NULL 

@@ -279,6 +279,7 @@ html {
 <section id="sudhagad-media" class="py-20 bg-white dark:bg-gray-900">
   <div class="container mx-auto max-w-6xl px-4">
 
+    <!-- Section Heading -->
     <div class="text-center mb-12">
       <div class="nature-indicator"></div>
       <h2 class="text-3xl md:text-4xl font-bold">
@@ -286,10 +287,9 @@ html {
       </h2>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-8 items-center">
-
-      <!-- YouTube Video -->
-      <div class="aspect-video rounded-2xl overflow-hidden border shadow-sm">
+    <!-- YouTube Video (Centered) -->
+    <div class="mb-12 flex justify-center">
+      <div class="aspect-video w-full max-w-4xl rounded-2xl overflow-hidden border shadow-sm">
         <iframe
           src="https://www.youtube.com/embed/vyQYL0THnKs"
           class="w-full h-full"
@@ -297,20 +297,27 @@ html {
           allowfullscreen>
         </iframe>
       </div>
+    </div>
 
-      <!-- Maha Darwaza Image -->
+    <!-- Image + Content (Left / Right) -->
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+
+      <!-- Image -->
       <div class="nature-card p-6 text-center">
         <img
           src="./sudhagad/Sudha_darwaja.jpg"
           alt="Maha Darwaza of Sudhagad Fort"
           class="w-full h-auto max-h-[320px] object-contain mx-auto rounded-xl mb-4"
         />
+      </div>
 
-        <h3 class="text-xl font-semibold mb-2">
+      <!-- Content -->
+      <div>
+        <h3 class="text-3xl font-semibold mb-3">
           Maha Darwaza
         </h3>
 
-        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+        <p class="text-gray-600 dark:text-gray-300 text-xl leading-relaxed">
           The historic main entrance of Sudhagad Fort, which was once completely
           blocked due to landslides and is now being gradually restored through
           conservation efforts.
@@ -318,6 +325,7 @@ html {
       </div>
 
     </div>
+
   </div>
 </section>
 

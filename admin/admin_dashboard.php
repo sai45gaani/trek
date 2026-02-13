@@ -32,84 +32,84 @@ try {
     $conn = $db->getConnection();
     
     // Get total forts count
-    $query = "SELECT COUNT(*) as count FROM EI_tblFortInfo";
+    $query = "SELECT COUNT(*) as count FROM ei_tblfortinfo";
     $result = $conn->query($query);
     if ($result && $row = $result->fetch_assoc()) {
         $stats['total_forts'] = $row['count'];
     }
     
     // Get total treks count
-    $query = "SELECT COUNT(*) as count FROM TS_tblTrekDetails";
+    $query = "SELECT COUNT(*) as count FROM ts_tbltrekdetails";
     $result = $conn->query($query);
     if ($result && $row = $result->fetch_assoc()) {
         $stats['total_treks'] = $row['count'];
     }
     
     // Get upcoming treks count
-    $query = "SELECT COUNT(*) as count FROM TS_tblTrekDetails WHERE TrekDate >= CURDATE()";
+    $query = "SELECT COUNT(*) as count FROM ts_tbltrekdetails WHERE TrekDate >= CURDATE()";
     $result = $conn->query($query);
     if ($result && $row = $result->fetch_assoc()) {
         $stats['upcoming_treks'] = $row['count'];
     }
     
     // Get total photos count
-    $query = "SELECT COUNT(*) as count FROM PM_tblPhotos";
+    $query = "SELECT COUNT(*) as count FROM pm_tblphotos_clean";
     $result = $conn->query($query);
     if ($result && $row = $result->fetch_assoc()) {
         $stats['total_photos'] = $row['count'];
     }
     
     // Get total events count
-    $query = "SELECT COUNT(*) as count FROM OO_tblEventList WHERE Deleted IS NULL OR Deleted = 0";
+    $query = "SELECT COUNT(*) as count FROM oo_tbleventlist WHERE Deleted IS NULL OR Deleted = 0";
     $result = $conn->query($query);
     if ($result && $row = $result->fetch_assoc()) {
         $stats['total_events'] = $row['count'];
     }
     
     // Get active events (future events)
-    $query = "SELECT COUNT(*) as count FROM OO_tblEventList WHERE (Deleted IS NULL OR Deleted = 0) AND Event_Date >= CURDATE()";
+    $query = "SELECT COUNT(*) as count FROM oo_tbleventlist WHERE (Deleted IS NULL OR Deleted = 0) AND Event_Date >= CURDATE()";
     $result = $conn->query($query);
     if ($result && $row = $result->fetch_assoc()) {
         $stats['active_events'] = $row['count'];
     }
     
     // Get birds count
-    $query = "SELECT COUNT(*) as count FROM SW_tblBird";
+    $query = "SELECT COUNT(*) as count FROM sw_tblbird";
     $result = $conn->query($query);
     if ($result && $row = $result->fetch_assoc()) {
         $stats['total_birds'] = $row['count'];
     }
     
     // Get butterflies count
-    $query = "SELECT COUNT(*) as count FROM SW_tblButterfly";
+    $query = "SELECT COUNT(*) as count FROM sw_tblbutterfly";
     $result = $conn->query($query);
     if ($result && $row = $result->fetch_assoc()) {
         $stats['total_butterflies'] = $row['count'];
     }
     
     // Get flowers count
-    $query = "SELECT COUNT(*) as count FROM SW_tblFlower";
+    $query = "SELECT COUNT(*) as count FROM sw_tblflower";
     $result = $conn->query($query);
     if ($result && $row = $result->fetch_assoc()) {
         $stats['total_flowers'] = $row['count'];
     }
     
     // Get temples count
-    $query = "SELECT COUNT(*) as count FROM SW_tblTemples";
+    $query = "SELECT COUNT(*) as count FROM sw_tbltemples";
     $result = $conn->query($query);
     if ($result && $row = $result->fetch_assoc()) {
         $stats['total_temples'] = $row['count'];
     }
     
     // Get caves count
-    $query = "SELECT COUNT(*) as count FROM SW_tblCaves";
+    $query = "SELECT COUNT(*) as count FROM sw_tblcaves";
     $result = $conn->query($query);
     if ($result && $row = $result->fetch_assoc()) {
         $stats['total_caves'] = $row['count'];
     }
     
     // Get organizations count
-    $query = "SELECT COUNT(*) as count FROM OO_tblOrgDetails";
+    $query = "SELECT COUNT(*) as count FROM oo_tblorgdetails";
     $result = $conn->query($query);
     if ($result && $row = $result->fetch_assoc()) {
         $stats['total_organizations'] = $row['count'];
@@ -117,7 +117,7 @@ try {
     
     // Get recent activity - Last 5 treks added/updated
     $query = "SELECT Place as title, TrekDate as date, 'Trek' as type 
-              FROM TS_tblTrekDetails 
+              FROM ts_tbltrekdetails 
               ORDER BY TrekDate DESC 
               LIMIT 5";
     $result = $conn->query($query);
@@ -135,7 +135,7 @@ try {
     
     // Get recent events
     $query = "SELECT Event_Name as title, Event_Date as date, 'Event' as type 
-              FROM OO_tblEventList 
+              FROM oo_tbleventlist 
               WHERE Deleted IS NULL OR Deleted = 0
               ORDER BY Event_Date DESC 
               LIMIT 3";

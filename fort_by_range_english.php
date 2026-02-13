@@ -21,7 +21,7 @@ function getRegionForRange($forts, $conn) {
         return $conn->real_escape_string($fort);
     }, $forts)) . "'";
     
-    $query = "SELECT DISTINCT FortDistrict FROM EI_tblFortInfo WHERE FortName IN ($fortNames) AND FortDistrict IS NOT NULL AND FortDistrict != ''";
+    $query = "SELECT DISTINCT FortDistrict FROM ei_tblfortinfo WHERE FortName IN ($fortNames) AND FortDistrict IS NOT NULL AND FortDistrict != ''";
     $result = $conn->query($query);
     
     $districts = [];
@@ -77,7 +77,7 @@ $mountainRanges = [];
 
 // Query to get all ranges and their forts
 $query = "SELECT FortRange, FortName, FortDistrict 
-          FROM EI_tblFortInfo 
+          FROM ei_tblfortinfo 
           WHERE FortRange IS NOT NULL 
           AND FortRange != '' 
           AND FortRange != 'N/A'

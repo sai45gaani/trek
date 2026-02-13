@@ -74,8 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
                 $stmt->close();
                 
             } else {
-                // admin_users table doesn't exist, try SW_tblAdmin
-                $query = "SELECT * FROM SW_tblAdmin WHERE Username = ? LIMIT 1";
+                // admin_users table doesn't exist, try sw_tbladmin
+                $query = "SELECT * FROM sw_tbladmin WHERE Username = ? LIMIT 1";
                 $stmt = $conn->prepare($query);
                 $stmt->bind_param("s", $username);
                 $stmt->execute();

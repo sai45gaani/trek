@@ -211,7 +211,39 @@ if (!isset($fortsData[$currentFilter]) && count($fortsData) > 0) {
                 </p>
                 
                 <!-- Navigation breadcrumb -->
-                <div class="flex flex-wrap justify-center gap-4 text-sm opacity-90">
+<div class="flex flex-wrap justify-center gap-3 text-sm">
+
+    <!-- Active / Default -->
+    <span class="px-5 py-2 rounded-full bg-white text-orange-600 font-semibold shadow-md border border-orange-400">
+        Alphabetical
+    </span>
+
+    <!-- Other Tabs -->
+    <a href="./fort_by_range.php"
+       class="px-5 py-2 rounded-full bg-orange-500/20 text-white border border-orange-300 
+       hover:bg-white hover:text-orange-600 transition shadow">
+        By Mountain Range
+    </a>
+
+    <a href="./fort_by_district.php"
+       class="px-5 py-2 rounded-full bg-orange-500/20 text-white border border-orange-300 
+       hover:bg-white hover:text-orange-600 transition shadow">
+        By District
+    </a>
+
+    <a href="./fort_by_category.php"
+       class="px-5 py-2 rounded-full bg-orange-500/20 text-white border border-orange-300 
+       hover:bg-white hover:text-orange-600 transition shadow">
+        By Type
+    </a>
+
+    <a href="./fort_by_grade.php"
+       class="px-5 py-2 rounded-full bg-orange-500/20 text-white border border-orange-300 
+       hover:bg-white hover:text-orange-600 transition shadow">
+        By Difficulty
+    </a>
+
+</div>     <!--          <div class="flex flex-wrap justify-center gap-4 text-sm opacity-90">
                     <span class="text-accent font-semibold">Alphabetical</span>
                     <span>•</span>
                     <a href="./fort_by_range.php" class="hover:text-accent transition-colors">By Mountain Range</a>
@@ -221,7 +253,7 @@ if (!isset($fortsData[$currentFilter]) && count($fortsData) > 0) {
                     <a href="./fort_by_category.php" class="hover:text-accent transition-colors">By Type</a>
                     <span>•</span>
                     <a href="./fort_by_grade.php" class="hover:text-accent transition-colors">By Difficulty</a>
-                </div>
+                </div>-->
             </div>
         </div>
     </section>

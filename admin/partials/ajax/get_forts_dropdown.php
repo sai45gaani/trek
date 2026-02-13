@@ -5,7 +5,7 @@ $db = new Database();
 $conn = $db->getConnection();
 
 $res = $conn->query(
-    "SELECT FortName FROM EI_tblFortInfo ORDER BY FortName ASC"
+    "SELECT FortName FROM ei_tblfortinfo ORDER BY FortName ASC"
 );
 
 $forts = [];

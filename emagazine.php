@@ -81,7 +81,7 @@ include './includes/header.php';
     <!-- Future Issues Section (Optional / Scalable) -->
     <section class="container mx-auto max-w-5xl px-4 py-12">
         <h3 class="text-xl font-semibold text-primary mb-4">
-            More Issues Coming Soon
+            Upcoming Editions
         </h3>
         <p class="text-earth">
             Stay tuned for upcoming editions of Kshitizians eMagazine featuring

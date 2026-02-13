@@ -13,12 +13,12 @@ $qf = $conn->query("SELECT FortName FROM mi_tblfortinfo_unicode ORDER BY FortNam
 while ($r = $qf->fetch_assoc()) $forts[] = $r['FortName'];
 
 /* Count */
-$total = $conn->query("SELECT COUNT(*) cnt FROM PM_tblPhotos_clean")->fetch_assoc()['cnt'];
+$total = $conn->query("SELECT COUNT(*) cnt FROM pm_tblphotos_clean")->fetch_assoc()['cnt'];
 $totalPages = ceil($total / $limit);
 
 /* Data */
 $sql = "SELECT PIC_ID, FortName, PIC_NAME, PIC_DESC, PIC_FRONT_IMAGE
-        FROM PM_tblPhotos_clean
+        FROM pm_tblphotos_clean
         ORDER BY PIC_ID DESC
         LIMIT $limit OFFSET $offset";
 $data = $conn->query($sql);

@@ -94,7 +94,7 @@ $gradeData['Extreme']['color'] = 'bg-red-100 dark:bg-red-900';
 
 // Query to get all forts with their grades
 $query = "SELECT FortName, Grade 
-          FROM EI_tblFortInfo 
+          FROM ei_tblfortinfo 
           WHERE FortName IS NOT NULL 
           AND Grade IS NOT NULL 
           AND Grade != ''
@@ -140,16 +140,41 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
                 </p>
                 
                 <!-- Navigation breadcrumb -->
-                <div class="flex flex-wrap justify-center gap-4 text-sm opacity-90">
-                    <a href="./fort_information.php" class="hover:text-accent transition-colors">Alphabetical</a>
-                    <span>•</span>
-                    <a href="./fort_by_range.php" class="hover:text-accent transition-colors">By Mountain Range</a>
-                    <span>•</span>
-                    <a href="./fort_by_district.php" class="hover:text-accent transition-colors">By District</a>
-                       <span>•</span>
-                    <a href="./fort_by_category.php" class="hover:text-accent transition-colors">By Type</a>
-                    <span>•</span>
-                    <span class="text-accent font-semibold">By Difficulty</span>
+                <div class="flex flex-wrap justify-center gap-3 text-sm">
+
+                    <!-- Alphabetical -->
+                    <a href="./fort_information.php"
+                    class="px-5 py-2 rounded-full bg-orange-500/20 text-white border border-orange-300 
+                    hover:bg-white hover:text-orange-600 transition shadow">
+                        Alphabetical
+                    </a>
+
+                    <!-- Mountain Range -->
+                    <a href="./fort_by_range.php"
+                    class="px-5 py-2 rounded-full bg-orange-500/20 text-white border border-orange-300 
+                    hover:bg-white hover:text-orange-600 transition shadow">
+                        By Mountain Range
+                    </a>
+
+                    <!-- District -->
+                    <a href="./fort_by_district.php"
+                    class="px-5 py-2 rounded-full bg-orange-500/20 text-white border border-orange-300 
+                    hover:bg-white hover:text-orange-600 transition shadow">
+                        By District
+                    </a>
+
+                    <!-- Type -->
+                    <a href="./fort_by_category.php"
+                    class="px-5 py-2 rounded-full bg-orange-500/20 text-white border border-orange-300 
+                    hover:bg-white hover:text-orange-600 transition shadow">
+                        By Type
+                    </a>
+
+                    <!-- Active Tab -->
+                    <span class="px-5 py-2 rounded-full bg-white text-orange-600 font-semibold shadow-md border border-orange-400">
+                        By Difficulty
+                    </span>
+
                 </div>
             </div>
         </div>

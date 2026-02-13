@@ -2707,6 +2707,11 @@ function openHomePhotoModal() {
     document.getElementById('home-photo-modal').classList.remove('hidden');
 }
 
+function openeditHomePhotoModal() {
+    document.getElementById('hp-file').value = '';
+    document.getElementById('home-photo-modal').classList.remove('hidden');
+}
+
 function closeHomePhotoModal() {
     document.getElementById('home-photo-modal').classList.add('hidden');
 }
@@ -2723,7 +2728,7 @@ function editHomePhoto(id) {
                 (d.IS_ACTIVE === 'Y');
 
             document.getElementById('hp-file').value = '';
-            openHomePhotoModal();
+            openeditHomePhotoModal();
         });
 }
 

@@ -1,7 +1,7 @@
 <?php
 // Slug check
 if (!isset($_GET['slug'])) {
-    header('Location: /marathi/temple_information.php');
+    header('Location: ./../temple_information.php');
     exit;
 }
 
@@ -42,13 +42,14 @@ $imgStmt->bind_param("s", $temple['TempleName']);
 $imgStmt->execute();
 $images = $imgStmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
+
 // Front image
 $frontImage = null;
 foreach ($images as $img) {
-    if ($img['PIC_FRONT_IMAGE'] === 'y') {
-        $frontImage = $img;
-        break;
-    }
+if (strtoupper($img['PIC_FRONT_IMAGE']) === 'Y') {
+    $frontImage = $img;
+    break;
+}
 }
 ?>
 
@@ -88,11 +89,12 @@ foreach ($images as $img) {
 <!-- FEATURE IMAGE -->
 <?php if ($frontImage): ?>
 <section class="py-12 bg-white dark:bg-gray-900">
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto px-4 flex justify-center">
         <img
             src="../../assets/images/Photos/Temple/<?php echo htmlspecialchars($frontImage['PIC_NAME']); ?>"
-            alt="<?php echo htmlspecialchars($temple['TempleNameMar']); ?>"
-            class="rounded-2xl shadow-2xl w-full max-h-[520px] object-cover"
+            class="rounded-2xl shadow-2xl w-full md:w-3/5 max-h-[520px] object-cover"
+            alt="<?php echo htmlspecialchars($frontImage['PIC_DESC'] ?? 'Temple Image'); ?>"
+            loading="lazy"
         >
     </div>
 </section>

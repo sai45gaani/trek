@@ -55,7 +55,7 @@ $fortPhotos = [];
 
 try {
     // Fetch main fort information
-    $query = "SELECT * FROM EI_tblFortInfo WHERE FortName LIKE ? LIMIT 1";
+    $query = "SELECT * FROM ei_tblfortinfo WHERE FortName LIKE ? LIMIT 1";
    // echo $query;
    // echo "<br>";
     $stmt = $conn->prepare($query);
@@ -72,7 +72,7 @@ try {
         $meta_description = 'Complete information about ' . $fortData['FortName'] . ' fort including history, ways to reach, facilities, and trekking details.';
         
         // Fetch front/cover image
-        $front_img_query = "SELECT * FROM PM_tblPhotos_clean WHERE FortName LIKE ? AND PIC_FRONT_IMAGE = 'y' LIMIT 1";
+        $front_img_query = "SELECT * FROM pm_tblphotos_clean WHERE FortName LIKE ? AND PIC_FRONT_IMAGE = 'y' LIMIT 1";
         $front_stmt = $conn->prepare($front_img_query);
         $front_stmt->bind_param("s", $search_param);
         $front_stmt->execute();
@@ -83,7 +83,7 @@ try {
         $front_stmt->close();
         
         // Fetch maps (maximum 4)
-        $maps_query = "SELECT * FROM MM_tblMapInfo_clean WHERE FortName = ? LIMIT 4";
+        $maps_query = "SELECT * FROM mm_tblmapinfo_clean WHERE FortName = ? LIMIT 4";
         $maps_stmt = $conn->prepare($maps_query);
         $maps_stmt->bind_param("s", $fortData['FortName']);
         $maps_stmt->execute();
@@ -116,7 +116,7 @@ try {
         
         // Fetch related forts (same range)
         if (!empty($fortData['FortRange']) && $fortData['FortRange'] != 'N/A') {
-            $related_query = "SELECT FortName, Grade FROM EI_tblFortInfo WHERE FortRange = ? AND FortName != ? LIMIT 6";
+            $related_query = "SELECT FortName, Grade FROM ei_tblfortinfo WHERE FortRange = ? AND FortName != ? LIMIT 6";
             $related_stmt = $conn->prepare($related_query);
             $related_stmt->bind_param("ss", $fortData['FortRange'], $fortData['FortName']);
             $related_stmt->execute();
@@ -127,7 +127,7 @@ try {
         }
         
         // Fetch photos
-        $photos_query = "SELECT * FROM PM_tblPhotos_clean WHERE FortName = ? LIMIT 12";
+        $photos_query = "SELECT * FROM pm_tblphotos_clean WHERE FortName = ? LIMIT 12";
         $photos_stmt = $conn->prepare($photos_query);
         $photos_stmt->bind_param("s", $fortData['FortName']);
         $photos_stmt->execute();

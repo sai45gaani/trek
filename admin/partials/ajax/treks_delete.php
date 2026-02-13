@@ -4,5 +4,5 @@ $db = new Database();
 $conn = $db->getConnection();
 
 $id = intval($_POST['id']);
-$conn->query("DELETE FROM TS_tblTrekDetails WHERE TrekId=$id");
+$conn->query("DELETE FROM ts_tbltrekdetails WHERE TrekId=$id");
 echo json_encode(['success'=>true]);

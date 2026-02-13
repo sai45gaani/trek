@@ -105,10 +105,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
                 if (isset($stmt)) $stmt->close();
                 
             } else {
-                $debug_info[] = "✓ Using SW_tblAdmin table (old structure)";
+                $debug_info[] = "✓ Using sw_tbladmin table (old structure)";
                 
-                // Fallback to SW_tblAdmin (old table)
-                $query = "SELECT * FROM SW_tblAdmin WHERE Username = ? LIMIT 1";
+                // Fallback to sw_tbladmin (old table)
+                $query = "SELECT * FROM sw_tbladmin WHERE Username = ? LIMIT 1";
                 $stmt = $conn->prepare($query);
                 $stmt->bind_param("s", $username);
                 $stmt->execute();
@@ -143,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
                     }
                 } else {
                     $error_message = 'User not found in system.';
-                    $debug_info[] = "✗ No user found in SW_tblAdmin with username: " . htmlspecialchars($username);
+                    $debug_info[] = "✗ No user found in sw_tbladmin with username: " . htmlspecialchars($username);
                 }
                 
                 if (isset($stmt)) $stmt->close();

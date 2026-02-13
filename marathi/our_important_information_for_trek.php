@@ -10,7 +10,7 @@
                 <div class="grid md:grid-cols-2 gap-8 mb-12">
                     <div class="card bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700">
                         <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
-                            <i class="fas fa-backpack text-2xl text-white"></i>
+                           <i class="fas fa-hiking text-2xl text-white"></i>
                         </div>
                         <h3 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">  काय सोबत आणावे</h3>
                         <ul class="text-gray-600 dark:text-gray-300 space-y-3">

@@ -12,7 +12,7 @@ $offset = ($page - 1) * $limit;
    FORT DROPDOWN
 ======================= */
 $forts = [];
-$fq = $conn->query("SELECT FortName FROM EI_tblFortInfo ORDER BY FortName ASC");
+$fq = $conn->query("SELECT FortName FROM ei_tblfortinfo ORDER BY FortName ASC");
 while ($r = $fq->fetch_assoc()) {
     $forts[] = $r['FortName'];
 }

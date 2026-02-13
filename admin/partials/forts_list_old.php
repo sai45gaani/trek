@@ -13,7 +13,7 @@ try {
     $conn = $db->getConnection();
     
     // Get total count
-    $result = $conn->query("SELECT COUNT(*) as count FROM EI_tblFortInfo");
+    $result = $conn->query("SELECT COUNT(*) as count FROM ei_tblfortinfo");
     if ($result && $row = $result->fetch_assoc()) {
         $total_count = $row['count'];
     }
@@ -22,7 +22,7 @@ try {
     
     // Get forts list with pagination
     $query = "SELECT FortID, FortName, FortType, FortDistrict, Grade 
-              FROM EI_tblFortInfo 
+              FROM ei_tblfortinfo 
               ORDER BY FortName ASC 
               LIMIT ? OFFSET ?";
     $stmt = $conn->prepare($query);

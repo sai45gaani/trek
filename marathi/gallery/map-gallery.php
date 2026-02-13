@@ -33,7 +33,7 @@ if ($filterLetter !== 'ALL') {
 
 // Get total count for pagination (Map Gallery)
 $countQuery = "SELECT COUNT(DISTINCT f.FortName) AS total
-               FROM EI_tblFortInfo f
+               FROM ei_tblfortinfo f
                INNER JOIN mm_tblmapinfo_clean m ON f.FortName = m.FortName
                WHERE m.MapPath IS NOT NULL $whereClause";
 $countResult = $conn->query($countQuery);
@@ -53,7 +53,7 @@ $query = "SELECT
                 FROM mm_tblmapinfo_clean 
                 WHERE FortName = f.FortName
             ) AS MapCount
-          FROM EI_tblFortInfo f
+          FROM ei_tblfortinfo f
           INNER JOIN mm_tblmapinfo_clean m 
               ON f.FortName = m.FortName
           WHERE m.MapPath IS NOT NULL $whereClause
@@ -78,7 +78,7 @@ if ($result && $result->num_rows > 0) {
 // Get actual stats from database
 $statsQuery = "SELECT
     (SELECT COUNT(DISTINCT f.FortName)
-     FROM EI_tblFortInfo f
+     FROM ei_tblfortinfo f
      INNER JOIN mm_tblmapinfo_clean m ON f.FortName = m.FortName
     ) AS totalForts,
 
@@ -87,7 +87,7 @@ $statsQuery = "SELECT
     ) AS totalMaps,
 
     (SELECT COUNT(DISTINCT FortDistrict)
-     FROM EI_tblFortInfo
+     FROM ei_tblfortinfo
      WHERE FortDistrict IS NOT NULL
     ) AS totalDistricts";
 $statsResult = $conn->query($statsQuery);

@@ -224,11 +224,12 @@
             </div>
         </div>
         
+        
         <!-- Stats Section -->
         <div class="border-t border-gray-700 pt-8 mb-8">
             <div class="grid grid-cols-3 md:grid-cols-3 gap-6 text-center">
                 <div class="group">
-                    <div class="text-3xl font-bold text-accent mb-2 group-hover:scale-110 transition-transform footer-stat" data-target="350">0</div>
+                    <div class="text-3xl font-bold text-accent mb-2 group-hover:scale-110 transition-transform footer-stat" data-target="405">0</div>
                     <div class="text-gray-400 text-sm">किल्ले</div>
                     <div class="text-xs text-gray-500">नोंदवलेले किल्ले</div>
                 </div>

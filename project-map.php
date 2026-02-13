@@ -19,7 +19,7 @@ $conn = $db->getConnection();
 */
 $fortsQuery = "
     SELECT DISTINCT f.FortName
-    FROM EI_tblFortInfo f
+    FROM ei_tblfortinfo f
     INNER JOIN mm_tblmapinfo_clean m ON f.FortName = m.FortName
     ORDER BY f.FortName ASC
 ";

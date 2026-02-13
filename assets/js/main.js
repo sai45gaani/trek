@@ -50,12 +50,12 @@ const TrekshitzApp = {
     },
 
     // Initialize Swiper for Hero Section
-    initializeSwiper() {
+  /*  initializeSwiper() {
         if (typeof Swiper !== 'undefined' && document.querySelector('.hero-swiper')) {
             const heroSwiper = new Swiper('.hero-swiper', {
                 loop: true,
                 autoplay: {
-                    delay: 5000,
+                    delay: 3000,
                     disableOnInteraction: false,
                     pauseOnMouseEnter: true
                 },
@@ -94,7 +94,67 @@ const TrekshitzApp = {
                 });
             }
         }
-    },
+    },*/
+
+    initializeSwiper() {
+            if (typeof Swiper !== 'undefined' && document.querySelector('.hero-swiper')) {
+                const heroSwiper = new Swiper('.hero-swiper', {
+                    loop: true,
+                    autoplay: {
+                        delay: 3000,
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: true
+                    },
+                    pagination: {
+                        el: '.hero-swiper .swiper-pagination',
+                        clickable: true,
+                        dynamicBullets: true
+                    },
+                    navigation: {
+                        nextEl: '.hero-swiper .swiper-button-next',
+                        prevEl: '.hero-swiper .swiper-button-prev',
+                    },
+                    effect: 'fade',
+                    fadeEffect: {
+                        crossFade: true
+                    },
+                    keyboard: {
+                        enabled: true,
+                        onlyInViewport: true
+                    },
+                    a11y: {
+                        prevSlideMessage: 'Previous slide',
+                        nextSlideMessage: 'Next slide',
+                        paginationBulletMessage: 'Go to slide {{index}}'
+                    }
+                });
+            }
+
+            // ================= GALLERY SWIPER =================
+            if (document.querySelector('.gallery-swiper')) {
+                const gallerySwiper = new Swiper('.gallery-swiper', {
+                    loop: true,
+                    centeredSlides: true,
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+
+                    autoplay: {
+                        delay: 2500,
+                        disableOnInteraction: false,
+                    },
+
+                    pagination: {
+                        el: '.gallery-swiper .swiper-pagination',
+                        clickable: true,
+                    },
+
+                    breakpoints: {
+                        640: { slidesPerView: 2 },
+                        1024: { slidesPerView: 3 }
+                    }
+                });
+            }
+        },
 
     // Dark Mode Toggle
     setupThemeToggle() {

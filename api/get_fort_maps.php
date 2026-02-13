@@ -37,7 +37,7 @@ $query = "
         m.Description,
         (
             SELECT f.FortDistrict
-            FROM EI_tblFortInfo f
+            FROM ei_tblfortinfo f
             WHERE f.FortName = m.FortName
             LIMIT 1
         ) AS FortDistrict

@@ -154,7 +154,7 @@ function templeSlug($name) {
     <!-- IMAGE -->
     <div class="relative h-60 bg-gray-200 overflow-hidden">
         <img
-            src="../assets/images/Photos/Temple/<?php echo htmlspecialchars($temple['PIC_NAME'] ?? 'default-temple.jpg'); ?>"
+            src="./assets/images/Photos/Temple/<?php echo htmlspecialchars($temple['PIC_NAME'] ?? 'default-temple.jpg'); ?>"
             alt="<?php echo htmlspecialchars($temple['TempleName']); ?>"
             class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
         >

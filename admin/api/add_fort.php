@@ -8,7 +8,7 @@ try {
     $conn = $db->getConnection();
 
     $stmt = $conn->prepare("
-        INSERT INTO EI_tblFortInfo
+        INSERT INTO ei_tblfortinfo
         (FortName, FortType, FortDistrict, FortRange, Grade, Height,
          Introduction, History, Geography, BestSeasonToVisit, Notes, Date)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())

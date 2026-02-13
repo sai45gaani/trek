@@ -140,16 +140,41 @@ $totalForts = array_sum(array_map(function($grade) { return count($grade['forts'
                 </p>
                 
                 <!-- Navigation breadcrumb -->
-                <div class="flex flex-wrap justify-center gap-4 text-sm opacity-90">
-                    <a href="./fort_information.php" class="hover:text-accent transition-colors">मुळाक्षरानुसार</a>
-                    <span>•</span>
-                    <a href="./fort_by_range.php" class="hover:text-accent transition-colors">डोंगररांगेनुसार</a>
-                    <span>•</span>
-                    <a href="./fort_by_district.php" class="hover:text-accent transition-colors">जिल्ह्यानुसार</a>
-                     <span>•</span>
-                    <a href="./fort_by_category.php" class="hover:text-accent transition-colors">प्रकारानुसार</a>
-                    <span>•</span>
-                    <span class="text-accent font-semibold">कठीणतेनुसार</span>
+                <div class="flex flex-wrap justify-center gap-3 text-sm">
+
+                    <!-- Alphabetical -->
+                    <a href="./fort_information.php"
+                    class="px-5 py-2 rounded-full bg-orange-500/20 text-white border border-orange-300 
+                    hover:bg-white hover:text-orange-600 transition shadow tracking-wide">
+                        मुळाक्षरानुसार
+                    </a>
+
+                    <!-- Mountain Range -->
+                    <a href="./fort_by_range.php"
+                    class="px-5 py-2 rounded-full bg-orange-500/20 text-white border border-orange-300 
+                    hover:bg-white hover:text-orange-600 transition shadow tracking-wide">
+                        डोंगररांगेनुसार
+                    </a>
+
+                    <!-- District -->
+                    <a href="./fort_by_district.php"
+                    class="px-5 py-2 rounded-full bg-orange-500/20 text-white border border-orange-300 
+                    hover:bg-white hover:text-orange-600 transition shadow tracking-wide">
+                        जिल्ह्यानुसार
+                    </a>
+
+                    <!-- Category -->
+                    <a href="./fort_by_category.php"
+                    class="px-5 py-2 rounded-full bg-orange-500/20 text-white border border-orange-300 
+                    hover:bg-white hover:text-orange-600 transition shadow tracking-wide">
+                        प्रकारानुसार
+                    </a>
+
+                    <!-- Active Tab -->
+                    <span class="px-5 py-2 rounded-full bg-white text-orange-600 font-semibold shadow-md border border-orange-400 tracking-wide">
+                        कठीणतेनुसार
+                    </span>
+
                 </div>
             </div>
         </div>

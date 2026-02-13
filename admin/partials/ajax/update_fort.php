@@ -33,7 +33,7 @@ try {
     $conn = $db->getConnection();
     
     // Update fort details
-    $query = "UPDATE EI_tblFortInfo 
+    $query = "UPDATE ei_tblfortinfo 
               SET FortName = ?, 
                   FortType = ?, 
                   FortDistrict = ?, 
@@ -61,7 +61,7 @@ try {
             ]);
         } else {
             // Check if fort exists
-            $checkQuery = "SELECT FortID FROM EI_tblFortInfo WHERE FortID = ?";
+            $checkQuery = "SELECT FortID FROM ei_tblfortinfo WHERE FortID = ?";
             $checkStmt = $conn->prepare($checkQuery);
             $checkStmt->bind_param("i", $fortId);
             $checkStmt->execute();

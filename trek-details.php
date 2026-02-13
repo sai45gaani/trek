@@ -17,7 +17,7 @@ if (!$trekId || !is_numeric($trekId)) {
 // ================= FETCH TREK =================
 $stmt = $conn->prepare("
     SELECT TrekId, Place, TrekDate, Leader, Grade, ContDetails, Description
-    FROM TS_tblTrekDetails
+    FROM ts_tbltrekdetails
     WHERE TrekId = ?
 ");
 $stmt->bind_param("i", $trekId);

@@ -193,17 +193,42 @@ if (!isset($fortsData[$currentFilter]) && count($fortsData) > 0) {
                 </p>
                 
                 <!-- Navigation breadcrumb -->
-                <div class="flex flex-wrap justify-center gap-4 text-sm opacity-90">
-                    <span class="text-accent font-semibold">मुळाक्षरानुसार</span>
-                    <span>•</span>
-                    <a href="./fort_by_range.php" class="hover:text-accent transition-colors">डोंगररांगेनुसार</a>
-                    <span>•</span>
-                    <a href="./fort_by_district.php" class="hover:text-accent transition-colors">जिल्ह्यानुसार</a>
-                    <span>•</span>
-                    <a href="./fort_by_category.php" class="hover:text-accent transition-colors">प्रकारानुसार</a>
-                    <span>•</span>
-                    <a href="./fort_by_grade.php" class="hover:text-accent transition-colors">कठीणतेनुसार</a>
-                </div>
+                    <div class="flex flex-wrap justify-center gap-3 text-sm">
+
+                        <!-- Active Tab -->
+                        <span class="px-5 py-2 rounded-full bg-white text-orange-600 font-semibold shadow-md border border-orange-400">
+                            मुळाक्षरानुसार
+                        </span>
+
+                        <!-- Mountain Range -->
+                        <a href="./fort_by_range.php"
+                        class="px-5 py-2 rounded-full bg-orange-500/20 text-white border border-orange-300 
+                        hover:bg-white hover:text-orange-600 transition shadow">
+                            डोंगररांगेनुसार
+                        </a>
+
+                        <!-- District -->
+                        <a href="./fort_by_district.php"
+                        class="px-5 py-2 rounded-full bg-orange-500/20 text-white border border-orange-300 
+                        hover:bg-white hover:text-orange-600 transition shadow">
+                            जिल्ह्यानुसार
+                        </a>
+
+                        <!-- Category -->
+                        <a href="./fort_by_category.php"
+                        class="px-5 py-2 rounded-full bg-orange-500/20 text-white border border-orange-300 
+                        hover:bg-white hover:text-orange-600 transition shadow">
+                            प्रकारानुसार
+                        </a>
+
+                        <!-- Difficulty -->
+                        <a href="./fort_by_grade.php"
+                        class="px-5 py-2 rounded-full bg-orange-500/20 text-white border border-orange-300 
+                        hover:bg-white hover:text-orange-600 transition shadow">
+                            कठीणतेनुसार
+                        </a>
+
+                    </div>
             </div>
         </div>
     </section>

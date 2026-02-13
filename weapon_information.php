@@ -71,7 +71,7 @@ function weaponSlug($name) {
     <!-- IMAGE -->
     <div class="relative h-60 bg-gray-200 overflow-hidden">
         <img
-            src="../assets/images/Photos/Weapon/<?php echo htmlspecialchars($weapon['PIC_NAME'] ?? 'default-weapon.jpg'); ?>"
+            src="./assets/images/Photos/Weapon/<?php echo htmlspecialchars($weapon['PIC_NAME'] ?? 'default-weapon.jpg'); ?>"
             alt="<?php echo htmlspecialchars($weapon['WeaponName']); ?>"
             class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
         >

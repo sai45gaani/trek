@@ -18,31 +18,31 @@ try {
     $conn = $db->getConnection();
     
     // Get total forts
-    $result = $conn->query("SELECT COUNT(*) as count FROM EI_tblFortInfo");
+    $result = $conn->query("SELECT COUNT(*) as count FROM ei_tblfortinfo");
     if ($result && $row = $result->fetch_assoc()) {
         $stats['total_forts'] = $row['count'];
     }
     
     // Get total treks
-    $result = $conn->query("SELECT COUNT(*) as count FROM TS_tblTrekDetails");
+    $result = $conn->query("SELECT COUNT(*) as count FROM ts_tbltrekdetails");
     if ($result && $row = $result->fetch_assoc()) {
         $stats['total_treks'] = $row['count'];
     }
     
     // Get upcoming treks
-    $result = $conn->query("SELECT COUNT(*) as count FROM TS_tblTrekDetails WHERE TrekDate >= CURDATE()");
+    $result = $conn->query("SELECT COUNT(*) as count FROM ts_tbltrekdetails WHERE TrekDate >= CURDATE()");
     if ($result && $row = $result->fetch_assoc()) {
         $stats['upcoming_treks'] = $row['count'];
     }
     
     // Get total photos
-    $result = $conn->query("SELECT COUNT(*) as count FROM PM_tblPhotos");
+    $result = $conn->query("SELECT COUNT(*) as count FROM pm_tblphotos_clean");
     if ($result && $row = $result->fetch_assoc()) {
         $stats['total_photos'] = $row['count'];
     }
     
     // Get total events
-    $result = $conn->query("SELECT COUNT(*) as count FROM OO_tblEventList WHERE Deleted IS NULL OR Deleted = 0");
+    $result = $conn->query("SELECT COUNT(*) as count FROM oo_tbleventlist WHERE Deleted IS NULL OR Deleted = 0");
     if ($result && $row = $result->fetch_assoc()) {
         $stats['total_events'] = $row['count'];
     }

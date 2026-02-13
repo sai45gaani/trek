@@ -17,7 +17,7 @@ try {
     $conn = $db->getConnection();
     
     // Fetch fort details
-    $query = "SELECT * FROM EI_tblFortInfo WHERE FortID = ?";
+    $query = "SELECT * FROM ei_tblfortinfo WHERE FortID = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $fortId);
     $stmt->execute();

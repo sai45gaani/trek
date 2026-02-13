@@ -8,7 +8,7 @@ if (isset($_GET['slug']) && !empty($_GET['slug'])) {
     $fort_slug = trim($_GET['slug']);
 } else {
     // If no slug found, redirect
-    header('Location: /marathi/fort_information.php');
+    header('Location: ../fort_information.php');
     exit;
 }
 
@@ -72,7 +72,7 @@ try {
         $meta_description = 'Complete information about ' . $fortData['FortName'] . ' fort including history, ways to reach, facilities, and trekking details.';
         
         // Fetch front/cover image
-        $front_img_query = "SELECT * FROM PM_tblPhotos_clean WHERE FortName LIKE ? AND PIC_FRONT_IMAGE = 'y' LIMIT 1";
+        $front_img_query = "SELECT * FROM pm_tblphotos_clean WHERE FortName LIKE ? AND PIC_FRONT_IMAGE = 'y' LIMIT 1";
         $front_stmt = $conn->prepare($front_img_query);
         $front_stmt->bind_param("s", $search_param);
         $front_stmt->execute();
@@ -83,7 +83,7 @@ try {
         $front_stmt->close();
         
         // Fetch maps (maximum 4)
-        $maps_query = "SELECT * FROM MM_tblMapInfo_clean WHERE FortName = ? LIMIT 4";
+        $maps_query = "SELECT * FROM mm_tblmapinfo_clean WHERE FortName = ? LIMIT 4";
         $maps_stmt = $conn->prepare($maps_query);
         $maps_stmt->bind_param("s", $fortData['FortName']);
         $maps_stmt->execute();
@@ -127,7 +127,7 @@ try {
         }
         
         // Fetch photos
-        $photos_query = "SELECT * FROM PM_tblPhotos_clean WHERE FortName = ? LIMIT 12";
+        $photos_query = "SELECT * FROM pm_tblphotos_clean WHERE FortName = ? LIMIT 12";
         $photos_stmt = $conn->prepare($photos_query);
         $photos_stmt->bind_param("s", $fortData['FortName']);
         $photos_stmt->execute();
@@ -386,7 +386,10 @@ include '../../includes/header_marathi.php';
 
 <main id="main-content" class="">
     <!-- Hero Section with Fort Name -->
-    <section class="relative py-24 bg-gradient-to-r from-primary to-secondary text-white overflow-hidden">
+    <section class="relative py-24 bg-gradient-to-r from-primary to-secondary text-white overflow-hidden" style="background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+url('./../../assets/images/Photos/Fort/<?php echo htmlspecialchars($fortPhotos[0]['PIC_NAME']); ?>');
+background-size: cover;
+background-position: center;">
         <div class="absolute inset-0 opacity-10">
            <!-- <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"fort-pattern\" x=\"0\" y=\"0\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\"><polygon points=\"10,2 18,10 10,18 2,10\" fill=\"%23ffffff\" opacity=\"0.1\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23fort-pattern)\"/></svg>');"></div>-->
         </div>
@@ -629,7 +632,7 @@ include '../../includes/header_marathi.php';
                     <div class="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 border-l-4 border-accent">
                         <div class="prose prose-lg dark:prose-invert max-w-none">
                             <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                                <?php echo nl2br(htmlspecialchars($fortData['History'])); ?>
+                                <?php echo $fortData['History']; ?>
                             </p>
                         </div>
                     </div>
@@ -646,7 +649,7 @@ include '../../includes/header_marathi.php';
                     <div class="bg-blue-50 dark:bg-gray-800 rounded-2xl p-8">
                         <div class="prose prose-lg dark:prose-invert max-w-none">
                             <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                                <?php echo nl2br(htmlspecialchars($fortData['Geography'])); ?>
+                                <?php echo $fortData['Geography']; ?>
                             </p>
                         </div>
                     </div>
@@ -665,7 +668,7 @@ include '../../includes/header_marathi.php';
                     <?php if (!empty($fortData['IntroductionWTR'])): ?>
                     <div class="mb-6 p-6 bg-green-50 dark:bg-gray-800 rounded-xl">
                         <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            <?php echo nl2br(htmlspecialchars($fortData['IntroductionWTR'])); ?>
+                            <?php echo $fortData['IntroductionWTR']; ?>
                         </p>
                     </div>
                     <?php endif; ?>
@@ -679,7 +682,7 @@ include '../../includes/header_marathi.php';
                                 <?php echo htmlspecialchars($way['NameOfWay']); ?>
                             </h3>
                             <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                                <?php echo nl2br(htmlspecialchars($way['Description'])); ?>
+                                <?php echo $way['Description']; ?>
                             </p>
                         </div>
                         <?php endforeach; ?>
@@ -700,7 +703,7 @@ include '../../includes/header_marathi.php';
                     <?php if (!empty($fortData['IntroductionFS'])): ?>
                     <div class="mb-6 p-6 bg-purple-50 dark:bg-gray-800 rounded-xl">
                         <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            <?php echo nl2br(htmlspecialchars($fortData['IntroductionFS'])); ?>
+                            <?php echo $fortData['IntroductionFS']; ?>
                         </p>
                     </div>
                     <?php endif; ?>
@@ -714,7 +717,7 @@ include '../../includes/header_marathi.php';
                                 <?php echo htmlspecialchars($spot['NameOfSpot']); ?>
                             </h3>
                             <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                                <?php echo nl2br(htmlspecialchars($spot['Description'])); ?>
+                                <?php echo $spot['Description']; ?>
                             </p>
                         </div>
                         <?php endforeach; ?>
@@ -737,7 +740,7 @@ include '../../includes/header_marathi.php';
                             <div class="text-4xl mb-4">🏠</div>
                             <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-3">निवास व्यवस्था</h3>
                             <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                                <?php echo nl2br(htmlspecialchars($fortData['AccommodationFacility'])); ?>
+                                <?php echo $fortData['AccommodationFacility']; ?>
                             </p>
                         </div>
                         <?php endif; ?>
@@ -747,7 +750,7 @@ include '../../includes/header_marathi.php';
                             <div class="text-4xl mb-4">🍽️</div>
                             <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-3">अन्न व्यवस्था</h3>
                             <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                                <?php echo nl2br(htmlspecialchars($fortData['FoodFacility'])); ?>
+                                <?php echo $fortData['FoodFacility']; ?>
                             </p>
                         </div>
                         <?php endif; ?>
@@ -757,7 +760,7 @@ include '../../includes/header_marathi.php';
                             <div class="text-4xl mb-4">💧</div>
                             <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-3">पाणी उपलब्धता</h3>
                             <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                                <?php echo nl2br(htmlspecialchars($fortData['DrinkingWaterFacility'])); ?>
+                                <?php echo $fortData['DrinkingWaterFacility']; ?>
                             </p>
                         </div>
                         <?php endif; ?>
@@ -855,7 +858,7 @@ include '../../includes/header_marathi.php';
                     </h2>
                     <div class="bg-yellow-50 dark:bg-gray-800 rounded-xl p-6 border-l-4 border-yellow-500">
                         <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            <?php echo nl2br(htmlspecialchars($fortData['Notes'])); ?>
+                            <?php echo $fortData['Notes']; ?>
                         </p>
                     </div>
                 </div>

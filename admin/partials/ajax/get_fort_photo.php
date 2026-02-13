@@ -4,5 +4,5 @@ $db = new Database();
 $conn = $db->getConnection();
 
 $id = intval($_GET['id']);
-$res = $conn->query("SELECT * FROM PM_tblPhotos_clean WHERE PIC_ID=$id");
+$res = $conn->query("SELECT * FROM pm_tblphotos_clean WHERE PIC_ID=$id");
 echo json_encode($res->fetch_assoc());

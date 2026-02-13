@@ -16,14 +16,14 @@ if ($search !== '') {
 }
 
 /* COUNT */
-$totalRes = $conn->query("SELECT COUNT(*) AS cnt FROM TS_tblTrekDetails $where");
+$totalRes = $conn->query("SELECT COUNT(*) AS cnt FROM ts_tbltrekdetails $where");
 $totalRows = $totalRes->fetch_assoc()['cnt'];
 $totalPages = ceil($totalRows / $limit);
 
 /* DATA */
 $sql = "
 SELECT TrekId, Place, TrekDate, Leader, Grade, MaxParticipants
-FROM TS_tblTrekDetails
+FROM ts_tbltrekdetails
 $where
 ORDER BY TrekDate DESC
 LIMIT $limit OFFSET $offset

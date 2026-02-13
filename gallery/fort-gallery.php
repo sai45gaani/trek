@@ -29,8 +29,8 @@ if ($filterLetter !== 'ALL') {
 
 // Get total count for pagination
 $countQuery = "SELECT COUNT(DISTINCT f.FortName) as total 
-               FROM EI_tblFortInfo f 
-               LEFT JOIN PM_tblPhotos_clean p ON f.FortName = p.FortName 
+               FROM ei_tblfortinfo f 
+               LEFT JOIN pm_tblphotos_clean p ON f.FortName = p.FortName 
                WHERE p.PIC_FRONT_IMAGE = 'Y' $whereClause";
 $countResult = $conn->query($countQuery);
 $totalForts = $countResult->fetch_assoc()['total'];
@@ -43,9 +43,9 @@ $query = "SELECT
             f.FortType,
             p.PIC_NAME,
             p.PIC_DESC,
-            (SELECT COUNT(*) FROM PM_tblPhotos_clean WHERE FortName = f.FortName) as PhotoCount
-          FROM EI_tblFortInfo f
-          LEFT JOIN PM_tblPhotos_clean p ON f.FortName = p.FortName AND p.PIC_FRONT_IMAGE = 'Y'
+            (SELECT COUNT(*) FROM pm_tblphotos_clean WHERE FortName = f.FortName) as PhotoCount
+          FROM ei_tblfortinfo f
+          LEFT JOIN pm_tblphotos_clean p ON f.FortName = p.FortName AND p.PIC_FRONT_IMAGE = 'Y'
           WHERE p.PIC_NAME IS NOT NULL $whereClause
           ORDER BY f.FortName ASC
           LIMIT $fortsPerPage OFFSET $offset";
@@ -65,9 +65,9 @@ if ($result && $result->num_rows > 0) {
 
 // Get actual stats from database
 $statsQuery = "SELECT 
-                (SELECT COUNT(DISTINCT FortName) FROM EI_tblFortInfo) as totalForts,
-                (SELECT COUNT(*) FROM PM_tblPhotos_clean) as totalPhotos,
-                (SELECT COUNT(DISTINCT FortDistrict) FROM EI_tblFortInfo WHERE FortDistrict IS NOT NULL) as totalDistricts";
+                (SELECT COUNT(DISTINCT FortName) FROM ei_tblfortinfo) as totalForts,
+                (SELECT COUNT(*) FROM pm_tblphotos_clean) as totalPhotos,
+                (SELECT COUNT(DISTINCT FortDistrict) FROM ei_tblfortinfo WHERE FortDistrict IS NOT NULL) as totalDistricts";
 $statsResult = $conn->query($statsQuery);
 $stats = $statsResult->fetch_assoc();
 ?>

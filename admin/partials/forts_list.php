@@ -18,7 +18,7 @@ try {
     $conn = $db->getConnection();
     
     // Get unique fort types for dropdown
-    $type_query = "SELECT DISTINCT FortType FROM EI_tblFortInfo WHERE FortType IS NOT NULL AND FortType != '' ORDER BY FortType ASC";
+    $type_query = "SELECT DISTINCT FortType FROM ei_tblfortinfo WHERE FortType IS NOT NULL AND FortType != '' ORDER BY FortType ASC";
     $type_result = $conn->query($type_query);
     if ($type_result) {
         while ($row = $type_result->fetch_assoc()) {
@@ -48,7 +48,7 @@ try {
     $where_clause = count($where_conditions) > 0 ? 'WHERE ' . implode(' AND ', $where_conditions) : '';
     
     // Get total count with filters
-    $count_query = "SELECT COUNT(*) as count FROM EI_tblFortInfo {$where_clause}";
+    $count_query = "SELECT COUNT(*) as count FROM ei_tblfortinfo {$where_clause}";
     if (count($params) > 0) {
         $count_stmt = $conn->prepare($count_query);
         $count_stmt->bind_param($param_types, ...$params);
@@ -69,7 +69,7 @@ try {
     
     // Get forts list with pagination and filters
     $query = "SELECT FortID, FortName, FortType, FortDistrict, Grade 
-              FROM EI_tblFortInfo 
+              FROM ei_tblfortinfo 
               {$where_clause}
               ORDER BY FortName ASC 
               LIMIT ? OFFSET ?";

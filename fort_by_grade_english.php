@@ -94,7 +94,7 @@ $gradeData['Extreme']['color'] = 'bg-red-100 dark:bg-red-900';
 
 // Query to get all forts with their grades
 $query = "SELECT FortName, Grade 
-          FROM EI_tblFortInfo 
+          FROM ei_tblfortinfo 
           WHERE FortName IS NOT NULL 
           AND Grade IS NOT NULL 
           AND Grade != ''

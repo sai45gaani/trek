@@ -280,6 +280,7 @@ html {
 <section id="sudhagad-media" class="py-20 bg-white dark:bg-gray-900">
   <div class="container mx-auto max-w-6xl px-4">
 
+    <!-- Section Heading -->
     <div class="text-center mb-12">
       <div class="nature-indicator"></div>
       <h2 class="text-3xl md:text-4xl font-bold">
@@ -287,10 +288,9 @@ html {
       </h2>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-8 items-center">
-
-      <!-- YouTube Video -->
-      <div class="aspect-video rounded-2xl overflow-hidden border shadow-sm">
+    <!-- YouTube Video (Centered, Top) -->
+    <div class="mb-12 flex justify-center">
+      <div class="aspect-video w-full max-w-4xl rounded-2xl overflow-hidden border shadow-sm">
         <iframe
           src="https://www.youtube.com/embed/vyQYL0THnKs"
           class="w-full h-full"
@@ -298,27 +298,34 @@ html {
           allowfullscreen>
         </iframe>
       </div>
+    </div>
 
-      <!-- Maha Darwaza Image -->
+    <!-- Image + Content (Left / Right) -->
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+
+      <!-- Image -->
       <div class="nature-card p-6 text-center">
         <img
           src="./../sudhagad/Sudha_darwaja.jpg"
-          alt="Maha Darwaza of Sudhagad Fort"
+          alt="महादरवाजा, सुधागड किल्ला"
           class="w-full h-auto max-h-[320px] object-contain mx-auto rounded-xl mb-4"
         />
+      </div>
 
-        <h3 class="text-xl font-semibold mb-2">
-            महादरवाजा
+      <!-- Content -->
+      <div>
+        <h3 class="text-3xl font-semibold mb-3">
+          महादरवाजा
         </h3>
 
-        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-            सुधागड किल्ल्याचा ऐतिहासिक मुख्य प्रवेशद्वार, जे एकेकाळी दरड कोसळल्यामुळे पूर्णपणे बंद झाले होते,
-            आणि सध्या संवर्धनाच्या प्रयत्नांद्वारे हळूहळू पुनर्संचयित केले जात आहे.
+        <p class="text-gray-600 dark:text-gray-300 text-xl leading-relaxed">
+          सुधागड किल्ल्याचा ऐतिहासिक मुख्य प्रवेशद्वार, जे एकेकाळी दरड कोसळल्यामुळे पूर्णपणे बंद झाले होते,
+          आणि सध्या संवर्धनाच्या प्रयत्नांद्वारे हळूहळू पुनर्संचयित केले जात आहे.
         </p>
-
       </div>
 
     </div>
+
   </div>
 </section>
 

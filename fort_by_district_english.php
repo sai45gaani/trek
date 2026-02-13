@@ -99,7 +99,7 @@ $districts = [];
 
 // Query to get all districts and their forts
 $query = "SELECT FortDistrict, FortName 
-          FROM EI_tblFortInfo 
+          FROM ei_tblfortinfo 
           WHERE FortDistrict IS NOT NULL 
           AND FortDistrict != '' 
           AND FortName IS NOT NULL 

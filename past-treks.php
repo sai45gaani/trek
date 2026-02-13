@@ -163,7 +163,7 @@ try {
     $where_clause = implode(" AND ", $where_conditions);
     
     // Get total participants count
-    $count_query = "SELECT COUNT(*) as total, SUM(MaxParticipants) as participants FROM TS_tblTrekDetails WHERE " . $where_clause;
+    $count_query = "SELECT COUNT(*) as total, SUM(MaxParticipants) as participants FROM ts_tbltrekdetails WHERE " . $where_clause;
     $count_stmt = $conn->prepare($count_query);
     
     if (!empty($params)) {
@@ -197,7 +197,7 @@ try {
                 MaxParticipants,
                 Description,
                 Notes
-              FROM TS_tblTrekDetails 
+              FROM ts_tbltrekdetails 
               WHERE " . $where_clause . "
               ORDER BY TrekDate DESC
               LIMIT ? OFFSET ?";
@@ -253,7 +253,7 @@ try {
     $stmt->close();
     
     // Get unique categories and years for filters
-    $cat_query = "SELECT DISTINCT YEAR(TrekDate) as year FROM TS_tblTrekDetails WHERE TrekDate < CURDATE() ORDER BY year DESC";
+    $cat_query = "SELECT DISTINCT YEAR(TrekDate) as year FROM ts_tbltrekdetails WHERE TrekDate < CURDATE() ORDER BY year DESC";
     $cat_result = $conn->query($cat_query);
     while ($row = $cat_result->fetch_assoc()) {
         $years[] = $row['year'];
@@ -279,7 +279,7 @@ $paginatedTreks = $pastTreksData;
 // Get suggestions for search
 $suggestions = [];
 try {
-    $sugg_query = "SELECT DISTINCT Place FROM TS_tblTrekDetails WHERE TrekDate < CURDATE() ORDER BY TrekDate DESC LIMIT 20";
+    $sugg_query = "SELECT DISTINCT Place FROM ts_tbltrekdetails WHERE TrekDate < CURDATE() ORDER BY TrekDate DESC LIMIT 20";
     $sugg_result = $conn->query($sugg_query);
     while ($row = $sugg_result->fetch_assoc()) {
         $suggestions[] = trim($row['Place']);
@@ -310,14 +310,14 @@ try {
                 
                 <!-- Quick Navigation -->
                 <div class="flex flex-wrap justify-center gap-4 text-sm opacity-90">
-                    <a href="/trek-schedule" class="flex items-center gap-2 hover:text-accent transition-colors">
+                    <a href="./trek_schedule.php" class="flex items-center gap-2 hover:text-accent transition-colors">
                         <i class="fas fa-calendar-plus"></i>
                         <span>Upcoming Treks</span>
                     </a>
                     <span class="text-accent">•</span>
                     <span class="text-accent font-semibold">Past Adventures</span>
                     <span class="text-accent">•</span>
-                    <a href="/gallery" class="flex items-center gap-2 hover:text-accent transition-colors">
+                    <a href="./gallery/gallery.php" class="flex items-center gap-2 hover:text-accent transition-colors">
                         <i class="fas fa-images"></i>
                         <span>Photo Gallery</span>
                     </a>
@@ -434,85 +434,93 @@ try {
 
                 <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8" id="pastTreksGrid">
                     <?php foreach($paginatedTreks as $trek): ?>
-                        <div class="card hover-lift bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300">
-                            <!-- Trek Image -->
-                            <div class="relative h-48 bg-cover bg-center" style="background-image: url('<?php echo $trek['image']; ?>');">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                                
-                                <!-- Category Badge -->
-                                <span class="absolute top-4 right-4 px-3 py-1 text-xs font-bold text-white rounded-full <?php echo getCategoryColor($trek['category']); ?>">
-                                    <i class="<?php echo getCategoryIcon($trek['category']); ?> mr-1"></i>
-                                    <?php echo htmlspecialchars($trek['category']); ?>
-                                </span>
-                                
-                                <!-- Time Ago Badge -->
-                                <span class="absolute top-4 left-4 px-3 py-1 text-xs font-semibold bg-black bg-opacity-50 text-white rounded-full">
-                                    <?php echo getTimeAgo($trek['date']); ?>
-                                </span>
+<div class="card hover-lift bg-white dark:bg-gray-800 rounded-2xl 
+            shadow-xl border border-gray-200 dark:border-gray-700 
+            overflow-hidden transition-all duration-300 flex flex-col">
 
-                                <!-- Participants Count -->
-                                <div class="absolute bottom-4 right-4 flex items-center bg-accent text-white px-3 py-1 rounded-full text-sm font-bold">
-                                    <i class="fas fa-users mr-1"></i>
-                                    <?php echo $trek['participants']; ?>
-                                </div>
-                            </div>
-                            
-                            <div class="p-6">
-                                <!-- Trek Name and Date -->
-                                <div class="mb-4">
-                                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2 line-clamp-2">
-                                        <?php echo htmlspecialchars($trek['name']); ?>
-                                    </h3>
-                                    <div class="flex items-center text-gray-500 dark:text-gray-400 text-sm">
-                                        <i class="fas fa-calendar-check text-accent mr-2"></i>
-                                        <span><?php echo formatDate($trek['date']); ?></span>
-                                    </div>
-                                </div>
+    <!-- Trek Image -->
+    <div class="relative h-48 bg-cover bg-center"
+         style="background-image: url('<?php echo $trek['image']; ?>');">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
 
-                                <!-- Trek Details -->
-                                <div class="space-y-2 mb-4">
-                                    <div class="flex items-center justify-between text-sm">
-                                        <div class="flex items-center text-gray-600 dark:text-gray-300">
-                                            <i class="fas fa-map-marker-alt text-accent mr-2 w-4"></i>
-                                            <span class="font-medium"><?php echo htmlspecialchars($trek['location']); ?></span>
-                                        </div>
-                                        <span class="px-2 py-1 text-xs font-bold text-white rounded-full <?php echo getGradeColor($trek['grade']); ?>">
-                                            <?php echo htmlspecialchars($trek['grade']); ?>
-                                        </span>
-                                    </div>
-                                    
-                                    <div class="flex items-center text-gray-600 dark:text-gray-300 text-sm">
-                                        <i class="fas fa-user-tie text-accent mr-2 w-4"></i>
-                                        <span>Led by: <strong><?php echo htmlspecialchars($trek['leader']); ?></strong></span>
-                                    </div>
-                                </div>
+        <!-- Category Badge -->
+        <span class="absolute top-4 right-4 px-3 py-1 text-xs font-bold text-white rounded-full <?php echo getCategoryColor($trek['category']); ?>">
+            <i class="<?php echo getCategoryIcon($trek['category']); ?> mr-1"></i>
+            <?php echo htmlspecialchars($trek['category']); ?>
+        </span>
 
-                                <!-- Trek Description -->
-                                <div class="mb-6">
-                                    <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed line-clamp-3">
-                                        <?php echo htmlspecialchars($trek['description']); ?>
-                                    </p>
-                                </div>
-                                
-                                <!-- Action Buttons -->
-                                <div class="flex gap-2">
-                                    <a href="./trek-details.php?id=<?php echo $trek['id']; ?>" 
-                                       class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2.5 px-3 rounded-lg font-semibold transition-colors duration-300 text-sm">
-                                        <i class="fas fa-eye mr-1"></i>
-                                        View Details
-                                    </a>
-                                  <!--  <a href="/trek-photos/<?php echo $trek['id']; ?>" 
-                                       class="flex-1 bg-accent hover:bg-primary text-white text-center py-2.5 px-3 rounded-lg font-semibold transition-colors duration-300 text-sm">
-                                        <i class="fas fa-images mr-1"></i>
-                                        Photos
-                                    </a>-->
-                                    <button onclick="shareTrek(<?php echo $trek['id']; ?>, '<?php echo addslashes($trek['name']); ?>', '<?php echo $trek['date']; ?>')" 
-                                            class="bg-blue-600 hover:bg-blue-700 text-white py-2.5 px-3 rounded-lg font-semibold transition-colors duration-300">
-                                        <i class="fas fa-share-alt"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+        <!-- Time Ago Badge -->
+        <span class="absolute top-4 left-4 px-3 py-1 text-xs font-semibold bg-black/50 text-white rounded-full">
+            <?php echo getTimeAgo($trek['date']); ?>
+        </span>
+
+        <!-- Participants Count -->
+        <div class="absolute bottom-4 right-4 flex items-center bg-accent text-white px-3 py-1 rounded-full text-sm font-bold">
+            <i class="fas fa-users mr-1"></i>
+            <?php echo $trek['participants']; ?>
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="p-6 flex flex-col h-full">
+
+        <!-- GROWING CONTENT -->
+        <div class="flex-grow">
+
+            <!-- Trek Name and Date -->
+            <div class="mb-4">
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2 line-clamp-2">
+                    <?php echo htmlspecialchars($trek['name']); ?>
+                </h3>
+                <div class="flex items-center text-gray-500 dark:text-gray-400 text-sm">
+                    <i class="fas fa-calendar-check text-accent mr-2"></i>
+                    <span><?php echo formatDate($trek['date']); ?></span>
+                </div>
+            </div>
+
+            <!-- Trek Details -->
+            <div class="space-y-2 mb-4">
+                <div class="flex items-center justify-between text-sm">
+                    <div class="flex items-center text-gray-600 dark:text-gray-300">
+                        <i class="fas fa-map-marker-alt text-accent mr-2 w-4"></i>
+                        <span class="font-medium"><?php echo htmlspecialchars($trek['location']); ?></span>
+                    </div>
+                    <span class="px-2 py-1 text-xs font-bold text-white rounded-full <?php echo getGradeColor($trek['grade']); ?>">
+                        <?php echo htmlspecialchars($trek['grade']); ?>
+                    </span>
+                </div>
+
+                <div class="flex items-center text-gray-600 dark:text-gray-300 text-sm">
+                    <i class="fas fa-user-tie text-accent mr-2 w-4"></i>
+                    <span>Led by: <strong><?php echo htmlspecialchars($trek['leader']); ?></strong></span>
+                </div>
+            </div>
+
+            <!-- Trek Description -->
+            <div class="mb-6">
+                <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed line-clamp-3">
+                    <?php echo htmlspecialchars($trek['description']); ?>
+                </p>
+            </div>
+
+        </div>
+
+        <!-- ACTION BUTTONS (ALWAYS BOTTOM) -->
+        <div class="flex gap-2 mt-auto">
+            <a href="./trek-details.php?id=<?php echo $trek['id']; ?>"
+               class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2.5 px-3 rounded-lg font-semibold transition-colors duration-300 text-sm">
+                <i class="fas fa-eye mr-1"></i>
+                View Details
+            </a>
+
+            <button onclick="shareTrek(<?php echo $trek['id']; ?>, '<?php echo addslashes($trek['name']); ?>', '<?php echo $trek['date']; ?>')"
+                    class="bg-blue-600 hover:bg-blue-700 text-white py-2.5 px-3 rounded-lg font-semibold transition-colors duration-300">
+                <i class="fas fa-share-alt"></i>
+            </button>
+        </div>
+
+    </div>
+</div>
                     <?php endforeach; ?>
                 </div>
 

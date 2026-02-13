@@ -310,7 +310,7 @@ include './includes/header.php';
                 <div class="flex flex-wrap justify-center gap-4 text-sm opacity-90">
                     <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">
                         <i class="fas fa-mountain mr-2"></i>
-                        350+ Forts
+                        400+ Forts
                     </span>
                     <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full">
                         <i class="fas fa-users mr-2"></i>
@@ -375,7 +375,7 @@ include './includes/header.php';
                     </a>
                     was launched, becoming the first platform to provide systematic fort information in Marathi.
                     Over time, the website expanded to include information on more than
-                    <strong>350 forts</strong>, nearly <strong>10,000 photographs</strong>,
+                    <strong>400+ forts</strong>, nearly <strong>10,000 photographs</strong>,
                     computer-generated maps, trekking resources, and travel guidance.
                 </p>
 
@@ -447,7 +447,7 @@ include './includes/header.php';
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
 
             <div class="text-center">
-                <div class="stats-counter animate-number text-3xl md:text-4xl" data-target="350">0</div>
+                <div class="stats-counter animate-number text-3xl md:text-4xl" data-target="405">0</div>
                 <div class="mt-1 text-sm font-semibold text-gray-700 dark:text-gray-200">
                     Forts Documented
                 </div>
@@ -468,7 +468,7 @@ include './includes/header.php';
             </div>
 
             <div class="text-center">
-                <div class="stats-counter animate-number text-3xl md:text-4xl" data-target="24">0</div>
+                <div class="stats-counter animate-number text-3xl md:text-4xl" data-target="25">0</div>
                 <div class="mt-1 text-sm font-semibold text-gray-700 dark:text-gray-200">
                     Years of Legacy
                 </div>

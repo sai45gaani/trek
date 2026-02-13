@@ -71,7 +71,7 @@ function jungleSlug($name) {
     <!-- IMAGE -->
     <div class="relative h-60 bg-gray-200 overflow-hidden">
         <img
-            src="../assets/images/Photos/Jungle/<?php echo htmlspecialchars($jungle['PIC_NAME'] ?? 'default-jungle.jpg'); ?>"
+            src="./assets/images/Photos/Jungle/<?php echo htmlspecialchars($jungle['PIC_NAME'] ?? 'default-jungle.jpg'); ?>"
             alt="<?php echo htmlspecialchars($jungle['JungleName']); ?>"
             class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
         >
