@@ -96,6 +96,9 @@ if (isset($_GET['action']) && $_GET['action'] === 'load_content') {
         case 'home-photos':
             include 'partials/home_photos.php';
             break;
+        case 'trek-photos':
+            include 'partials/trek_photos.php';
+            break;
         case 'events':
             include 'partials/events_list.php';
             break;
@@ -415,6 +418,10 @@ $page_title = 'Admin Dashboard - Trekshitz';
                     data-page="jungle-photos"
                     class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">
                         Jungle Photos
+                    </a>
+                    <a href="#" data-page="trek-photos"
+                     class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">
+                        Trek Photos
                     </a>
                     <a href="#" data-page="map-photos" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Map Photos</a>
                     <a href="#" data-page="nature-photos" class="nav-link block px-2 py-1.5 rounded hover:bg-gray-700 text-xs">Nature Photos</a>
@@ -2761,7 +2768,81 @@ function saveHomePhoto() {
 }
 </script>
 
+<script>
 
+/* LOAD LIST (pagination supported) */
+function loadTrekPhotos(p = 1) {
+    fetch('?action=load_content&page=trek-photos&p=' + p)
+        .then(r => r.text())
+        .then(html => {
+            document.getElementById('content-container').innerHTML = html;
+        });
+}
+
+/* OPEN MODAL */
+function openTrekPhotoModal() {
+    document.getElementById('trp-id').value = '';
+    document.getElementById('trp-trek').value = '';
+    document.getElementById('trp-desc').value = '';
+    document.getElementById('trp-front').checked = false;
+    document.getElementById('trp-file').value = '';
+    document.getElementById('trek-photo-modal').classList.remove('hidden');
+}
+
+function openEditTrekPhotoModal() {
+    document.getElementById('trp-file').value = '';
+    document.getElementById('trek-photo-modal').classList.remove('hidden');
+}
+
+/* CLOSE MODAL */
+function closeTrekPhotoModal() {
+    document.getElementById('trek-photo-modal').classList.add('hidden');
+}
+
+/* EDIT */
+function editTrekPhoto(id) {
+    fetch('partials/ajax/get_trek_photo.php?id=' + id)
+        .then(r => r.json())
+        .then(d => {
+            document.getElementById('trp-id').value = d.PIC_ID;
+            document.getElementById('trp-trek').value = d.TrekId;
+            document.getElementById('trp-desc').value = d.PIC_DESC || '';
+            document.getElementById('trp-front').checked =
+                (d.PIC_FRONT_IMAGE === 'Y');
+            //openTrekPhotoModal();
+            openEditTrekPhotoModal();
+        });
+}
+
+/* SAVE */
+function saveTrekPhoto() {
+
+    var fd = new FormData();
+
+    fd.append('id', document.getElementById('trp-id').value);
+    fd.append('trek', document.getElementById('trp-trek').value);
+    fd.append('desc', document.getElementById('trp-desc').value);
+    fd.append(
+        'front',
+        document.getElementById('trp-front').checked ? 'Y' : ''
+    );
+
+    var fileInput = document.getElementById('trp-file');
+    if (fileInput.files.length > 0) {
+        fd.append('image', fileInput.files[0]);
+    }
+
+    fetch('partials/ajax/save_trek_photo.php', {
+        method: 'POST',
+        body: fd
+    })
+    .then(() => {
+        closeTrekPhotoModal();
+        loadTrekPhotos(1);
+    });
+}
+
+</script>
 
 
 
